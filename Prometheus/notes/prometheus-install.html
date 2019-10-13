@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+
+
+
+
+
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 3.9.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.4.1">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32.ico?v=7.4.1">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16.ico?v=7.4.1">
+  <link rel="mask-icon" href="/images/logo.svg?v=7.4.1" color="#222">
+  <link rel="alternate" href="/atom.xml" title="Erdong’ Blog" type="application/atom+xml">
+
+<link rel="stylesheet" href="/css/main.css?v=7.4.1">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '7.4.1',
+    exturl: false,
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
+    copycode: {"enable":false,"show_result":false,"style":null},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: 'search.xml',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    translation: {
+      copy_button: '复制',
+      copy_success: '复制成功',
+      copy_failure: '复制失败'
+    },
+    sidebarPadding: 40
+  };
+</script>
+
+  <meta name="description" content="Prometheus是一个监控平台，它通过抓取这些目标主机上采集器暴露的指标来展示监控数据。本文介绍如何安装、配置和监控 Prometheus。你需要下载安装 Prometheus 并且安装 Exporter，这些工具采集了主机和对应服务的时间序列数据。我们的第一个 Exporter 是 Prometheus 本身，它提供了关于内存使用、垃圾收集等各种各样的主机级指标。">
+<meta name="keywords" content="Prometheus">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Prometheus 安装">
+<meta property="og:url" content="https://erdong.site/Prometheus/notes/prometheus-install.html">
+<meta property="og:site_name" content="Erdong’ Blog">
+<meta property="og:description" content="Prometheus是一个监控平台，它通过抓取这些目标主机上采集器暴露的指标来展示监控数据。本文介绍如何安装、配置和监控 Prometheus。你需要下载安装 Prometheus 并且安装 Exporter，这些工具采集了主机和对应服务的时间序列数据。我们的第一个 Exporter 是 Prometheus 本身，它提供了关于内存使用、垃圾收集等各种各样的主机级指标。">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-10-13T15:31:57.912Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Prometheus 安装">
+<meta name="twitter:description" content="Prometheus是一个监控平台，它通过抓取这些目标主机上采集器暴露的指标来展示监控数据。本文介绍如何安装、配置和监控 Prometheus。你需要下载安装 Prometheus 并且安装 Exporter，这些工具采集了主机和对应服务的时间序列数据。我们的第一个 Exporter 是 Prometheus 本身，它提供了关于内存使用、垃圾收集等各种各样的主机级指标。">
+  <link rel="canonical" href="https://erdong.site/Prometheus/notes/prometheus-install">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true,
+    isPage: false,
+    isArchive: false
+  };
+</script>
+
+  <title>Prometheus 安装 | Erdong’ Blog</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Erdong’ Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <p class="site-subtitle">苦练七十二变，笑对八十一难。</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+      
+      
+      
+        
+        <li class="menu-item menu-item-home">
+      
+    
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-about">
+      
+    
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>关于</a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-tags">
+      
+    
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签</a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-categories">
+      
+    
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类</a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-archives">
+      
+    
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档</a>
+
+  </li>
+  </ul>
+
+</nav>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+            
+
+          <div id="content" class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://erdong.site/Prometheus/notes/prometheus-install.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Er Dong">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/myavatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Erdong’ Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">Prometheus 安装
+
+          
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              
+                
+              
+
+              <time title="创建时间：2019-05-16 21:57:45" itemprop="dateCreated datePublished" datetime="2019-05-16T21:57:45+08:00">2019-05-16</time>
+            </span>
+          
+            
+
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2019-10-13 23:31:57" itemprop="dateModified" datetime="2019-10-13T23:31:57+08:00">2019-10-13</time>
+              </span>
+            
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Prometheus/" itemprop="url" rel="index"><span itemprop="name">Prometheus</span></a></span>
+
+                
+                
+                  ，
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Prometheus/notes/" itemprop="url" rel="index"><span itemprop="name">notes</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>Prometheus是一个监控平台，它通过抓取这些目标主机上采集器暴露的指标来展示监控数据。本文介绍如何安装、配置和监控 Prometheus。你需要下载安装 Prometheus 并且安装 Exporter，这些工具采集了主机和对应服务的时间序列数据。我们的第一个 Exporter 是 Prometheus 本身，它提供了关于内存使用、垃圾收集等各种各样的主机级指标。</p>
+<a id="more"></a>
+<h1 id="下载-Prometheus"><a href="#下载-Prometheus" class="headerlink" title="下载 Prometheus"></a>下载 Prometheus</h1><p>首先下载最新版本的 Prometheus 然后解压，下载地址如下：</p>
+<p><a href="https://prometheus.io/download" target="_blank" rel="noopener">https://prometheus.io/download</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">tar xvfz prometheus-*.tar.gz</span><br><span class="line">cd prometheus-*</span><br></pre></td></tr></table></figure>
+
+<p>Prometheus 服务是一个名为 Prometheus( 或Windows系统上的 prometheus.exe)的二进制文件。我们可以运行二进制文件，并通过<code>--help</code> 参数选项来查看帮助，如下所示。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><span class="line">$ ./prometheus --help</span><br><span class="line">usage: prometheus [&lt;flags&gt;]</span><br><span class="line"></span><br><span class="line">The Prometheus monitoring server</span><br><span class="line"></span><br><span class="line">Flags:</span><br><span class="line">  -h, --help                     Show context-sensitive help (also try --help-long and --help-man).</span><br><span class="line">      --version                  Show application version.</span><br><span class="line">      --config.file=&quot;prometheus.yml&quot;</span><br><span class="line">                                 Prometheus configuration file path.</span><br><span class="line">      --web.listen-address=&quot;0.0.0.0:9090&quot;</span><br><span class="line">                                 Address to listen on for UI, API, and telemetry.</span><br><span class="line">      --web.read-timeout=5m      Maximum duration before timing out read of the request, and closing idle connections.</span><br><span class="line">      --web.max-connections=512  Maximum number of simultaneous connections.</span><br><span class="line">      --web.external-url=&lt;URL&gt;   The URL under which Prometheus is externally reachable (for example, if Prometheus is served via a reverse</span><br><span class="line">                                 proxy). Used for generating relative and absolute links back to Prometheus itself. If the URL has a path</span><br><span class="line">                                 portion, it will be used to prefix all HTTP endpoints served by Prometheus. If omitted, relevant URL</span><br><span class="line">                                 components will be derived automatically.</span><br><span class="line">      --web.route-prefix=&lt;path&gt;  Prefix for the internal routes of web endpoints. Defaults to path of --web.external-url.</span><br><span class="line">      --web.user-assets=&lt;path&gt;   Path to static asset directory, available at /user.</span><br><span class="line">      --web.enable-lifecycle     Enable shutdown and reload via HTTP request.</span><br><span class="line">      --web.enable-admin-api     Enable API endpoints for admin control actions.</span><br><span class="line">      --web.console.templates=&quot;consoles&quot;</span><br><span class="line">                                 Path to the console template directory, available at /consoles.</span><br><span class="line">      --web.console.libraries=&quot;console_libraries&quot;</span><br><span class="line">                                 Path to the console library directory.</span><br><span class="line">      --web.page-title=&quot;Prometheus Time Series Collection and Processing Server&quot;</span><br><span class="line">                                 Document title of Prometheus instance.</span><br><span class="line">      --storage.tsdb.path=&quot;data/&quot;</span><br><span class="line">                                 Base path for metrics storage.</span><br><span class="line">      --storage.tsdb.retention=15d</span><br><span class="line">                                 How long to retain samples in storage.</span><br><span class="line">      --storage.tsdb.no-lockfile</span><br><span class="line">                                 Do not create lockfile in data directory.</span><br><span class="line">      --storage.remote.flush-deadline=&lt;duration&gt;</span><br><span class="line">                                 How long to wait flushing sample on shutdown or config reload.</span><br><span class="line">      --storage.remote.read-sample-limit=5e7</span><br><span class="line">                                 Maximum overall number of samples to return via the remote read interface, in a single query. 0 means no</span><br><span class="line">                                 limit.</span><br><span class="line">      --storage.remote.read-concurrent-limit=10</span><br><span class="line">                                 Maximum number of concurrent remote read calls. 0 means no limit.</span><br><span class="line">      --rules.alert.for-outage-tolerance=1h</span><br><span class="line">                                 Max time to tolerate prometheus outage for restoring &apos;for&apos; state of alert.</span><br><span class="line">      --rules.alert.for-grace-period=10m</span><br><span class="line">                                 Minimum duration between alert and restored &apos;for&apos; state. This is maintained only for alerts with configured</span><br><span class="line">                                 &apos;for&apos; time greater than grace period.</span><br><span class="line">      --rules.alert.resend-delay=1m</span><br><span class="line">                                 Minimum amount of time to wait before resending an alert to Alertmanager.</span><br><span class="line">      --alertmanager.notification-queue-capacity=10000</span><br><span class="line">                                 The capacity of the queue for pending Alertmanager notifications.</span><br><span class="line">      --alertmanager.timeout=10s</span><br><span class="line">                                 Timeout for sending alerts to Alertmanager.</span><br><span class="line">      --query.lookback-delta=5m  The delta difference allowed for retrieving metrics during expression evaluations.</span><br><span class="line">      --query.timeout=2m         Maximum time a query may take before being aborted.</span><br><span class="line">      --query.max-concurrency=20</span><br><span class="line">                                 Maximum number of queries executed concurrently.</span><br><span class="line">      --query.max-samples=50000000</span><br><span class="line">                                 Maximum number of samples a single query can load into memory. Note that queries will fail if they would</span><br><span class="line">                                 load more samples than this into memory, so this also limits the number of samples a query can return.</span><br><span class="line">      --log.level=info           Only log messages with the given severity or above. One of: [debug, info, warn, error]</span><br><span class="line">      --log.format=logfmt        Output format of log messages. One of: [logfmt, json]</span><br></pre></td></tr></table></figure>
+
+<h1 id="配置-Prometheus"><a href="#配置-Prometheus" class="headerlink" title="配置 Prometheus"></a>配置 Prometheus</h1><p>Prometheus 的配置采用了 YAML 语法描述，Prometheus 下载好以后会有一个示例配置文件，文件名叫 <code>prometheus.yml</code> ，可以先配置这个文件。</p>
+<p>将示例配置文件删除注释和一些高级配置以后，剩下的最基本、最少的配置项如下</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">global:</span><br><span class="line">  scrape_interval:     15s</span><br><span class="line">  evaluation_interval: 15s</span><br><span class="line"></span><br><span class="line">rule_files:</span><br><span class="line">  # - &quot;first.rules&quot;</span><br><span class="line">  # - &quot;second.rules&quot;</span><br><span class="line"></span><br><span class="line">scrape_configs:</span><br><span class="line">  - job_name: prometheus</span><br><span class="line">    static_configs:</span><br><span class="line">      - targets: [&apos;localhost:9090&apos;]</span><br></pre></td></tr></table></figure>
+
+<p>在示例配置文件中有三个配置块：global、rule_files、scrape_configs 。</p>
+<p><code>global</code> 块控制 Prometheus 服务的全局配置，有两个选项。<code>scrape_interval</code> 控制Prometheus 采集数据的频率。你可以为某些指标数据覆盖此选项。默认情况下，全局设置是每15秒采集一次。<code>evaluation_interval</code>选项控制 Prometheus 评估规则的频率。Prometheus 使用规则创建新的时间序列并生成警报。</p>
+<p><code>rule_files</code> 用来指定我们需要加载的规则的配置文件路径，这个配置文件也是 YAML 语法。当前没有配置规则，这部分注释掉不生效。</p>
+<p><code>scrape_configs</code> 控制 Prometheus 监听的资源。由于 Prometheus 还将自己的数据作通过 HTTP 公开出来，因此它可以收集和监控自己的健康状况。在默认配置中有一个名为prometheus 的 job，它抓取 prometheus 服务公开的时间序列数据。该 Job 包含一个静态配置的目标，一般是本地主机的 9090 端口。 Prometheus 希望 Metric 能够在 <code>/metric</code> 的路径上可用。所以默认的 job 可以通过如下 RUEL 来采集，<a href="http://localhost:9090/metrics" target="_blank" rel="noopener">http://localhost:9090/metrics</a> .</p>
+<p>返回的时间序列数据详细描述了 Prometheus 服务的状态和性能。</p>
+<p>对于完整的配置文件，可以查看<a href="https://prometheus.io/docs/prometheus/latest/configuration/configuration/" target="_blank" rel="noopener">官网的文档</a> ， 后续我也会整理出来。</p>
+<h1 id="启动-Prometheus"><a href="#启动-Prometheus" class="headerlink" title="启动 Prometheus"></a>启动 Prometheus</h1><p>使用刚才修改好的配置文件来启动 Prometheus，切换到 Prometheus 二进制文件的目录下，执行如下命令。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./prometheus --config.file=prometheus.yml</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>当二进制文件和配置文件在同一个目录的时候可以直接使用上述命令。如果不在同一个目录，请指定配置文件的绝对路径。</p>
+</blockquote>
+<p>这样 Prometheus 就会启动起来。你可以使用浏览器访问 <a href="http://localhost:9090" target="_blank" rel="noopener">http://localhost:9090</a> 地址可以看到关于它自身的状态页面，Prometheus 在启动 30 秒以后在页面就可以看到数据了。</p>
+<p>你也可以通过访问 <a href="http://localhost:9090/metrics，来验证" target="_blank" rel="noopener">http://localhost:9090/metrics，来验证</a> Prometheus 是否在暴露自己的指标。</p>
+<h1 id="使用浏览器查看"><a href="#使用浏览器查看" class="headerlink" title="使用浏览器查看"></a>使用浏览器查看</h1><p>我们来看一下 Prometheus 收集的一些关于自己的数据。访问 <a href="http://localhost:9090/graph，并在" target="_blank" rel="noopener">http://localhost:9090/graph，并在</a> “graph” 选项卡中选择 “Console” 视图。</p>
+<p>将 <code>promhttp_metric_handler_requests_total</code> (Prometheus 提供的一个Metric 名称) 输入到控制台，这将返回许多不同的时间序列(以及为每个时间序列记录的最新值)，所有这些时间序列的 Metric 名称都是 promhttp_metric_handler_requests_total，但是具有不同的 label 。这些 label 指定不同的请求状态。</p>
+<p>如果想看 HTTP 请求返回码 200 的数据，可以使用下面这条语句:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">promhttp_metric_handler_requests_total&#123;code=&quot;200&quot;&#125;</span><br></pre></td></tr></table></figure>
+
+<p>如果要计算返回的时间序列的数量，可以使用 count 来查询，后边会写到函数相关的内容:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">count(promhttp_metric_handler_requests_total)</span><br></pre></td></tr></table></figure>
+
+<h1 id="推荐目录结构"><a href="#推荐目录结构" class="headerlink" title="推荐目录结构"></a>推荐目录结构</h1><p>新安装的 Prometheus 建议使用如下目录结构进行调整。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">.</span><br><span class="line">├── conf</span><br><span class="line">│   └── prometheus.yml</span><br><span class="line">├── current -&gt; deploy/prometheus-2.8.1.linux-amd64</span><br><span class="line">├── data</span><br><span class="line">├── deploy</span><br><span class="line">│   └── prometheus-2.8.1.linux-amd64</span><br><span class="line">│       ├── LICENSE</span><br><span class="line">│       ├── NOTICE</span><br><span class="line">│       ├── console_libraries</span><br><span class="line">│       ├── consoles</span><br><span class="line">│       ├── prometheus</span><br><span class="line">│       ├── prometheus.yml</span><br><span class="line">│       └── promtool</span><br><span class="line">├── logs</span><br><span class="line">│   └── prometheus.log</span><br><span class="line">├── run</span><br><span class="line">│   └── prometheus.pid</span><br><span class="line">└── scripts</span><br><span class="line">    └── run.sh</span><br></pre></td></tr></table></figure>
+
+<p><code>conf</code> 目录用来存储 Prometheus 的配置文件，启动的时候指定配置文件。</p>
+<p><code>current</code> 该目录软连接到二进制文件所在的目录</p>
+<p><code>data</code> Prometheus 数据库的数据存储位置，</p>
+<p><code>deploy</code> 放置 Prometheus 的二进制文件，方便 current 进行软连接</p>
+<p><code>logs</code> 存放日志。如果普通用户启动，建议日志放置在这个目录。如果 root 用户启动，日志可以放在这个目录，也可以放在 /var/log/messages </p>
+<p><code>scripts</code> 放置启动脚本。如果普通用户启动 ，放置启动进程的脚本。如果 root 用户启动，可以放置脚本到该目录，或者写成系统服务。</p>
+<p>使用该目录结构可以方便的进行备份、迁移、升级、维护。</p>
+<p>提供一个启动脚本 start.sh 的参考模板</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">PATH=/opt/prometheus</span><br><span class="line">LOG=$BASEPATH/logs</span><br><span class="line">nohup $PATH/current/prometheus --config.file=$PATH/conf/prometheus.yml --web.listen-address=:9090 --storage.tsdb.path=$PATH/data/  --storage.tsdb.retention=30d &gt;&gt; $LOG/prometheus.log  2&gt;&amp;1 &amp; echo $! &gt; $PATH/run/prometheus.pid</span><br></pre></td></tr></table></figure>
+
+<p>该脚本做了如下内容</p>
+<ul>
+<li>指定配置文件</li>
+<li>指定数据暴露的端口</li>
+<li>指定数据文件存储的路径</li>
+<li>指定数据文件存储的时间（轮询时间）</li>
+<li>指定日志的存储位置（nohup 输出作为日志）</li>
+<li>生成 PID 文件</li>
+</ul>
+<p>CentOS 7 启动脚本可以使用如下模板，</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">[Unit]</span><br><span class="line">Description=Prometheus Node Exporter</span><br><span class="line">After=network.target</span><br><span class="line"></span><br><span class="line">[Service]</span><br><span class="line">ExecStart=/opt/prometheus/current/prometheus --config.file=/opt/prometheus/conf/prometheus.yml --web.listen-address=:9090 --storage.tsdb.path=/opt/prometheus/data/  --storage.tsdb.retention=30d</span><br><span class="line">User=root</span><br><span class="line"></span><br><span class="line">[Install]</span><br><span class="line">WantedBy=multi-user.target</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>使用 root 用户启动</li>
+<li>日志会存储在 /var/log/messages</li>
+<li>指定配置文件</li>
+<li>指定数据暴露的端口</li>
+<li>指定数据文件存储的路径</li>
+<li>指定数据文件存储的时间（轮询时间）</li>
+</ul>
+<p>大家根据自己需求取用、修改。</p>
+<p>======================<br>Erdong, A Linux user !</p>
+
+    </div>
+
+    
+    
+    
+        <div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center;">
+  <img id="wechat_subscriber_qcode" src="/images/erdongxt.jpg" alt="Er Dong wechat" style="width: 200px; max-width: 100%;">
+  <div>扫描二维码关注微信公众号</div>
+</div>
+
+      
+        
+      
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>Er Dong</li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://erdong.site/Prometheus/notes/prometheus-install.html" title="Prometheus 安装">https://erdong.site/Prometheus/notes/prometheus-install.html</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-ND</a> 许可协议。转载请注明出处！</li>
+</ul>
+</div>
+
+      
+
+      <footer class="post-footer">
+          
+            
+          
+          <div class="post-tags">
+            
+              <a href="/tags/Prometheus/" rel="tag"># Prometheus</a>
+            
+          </div>
+        
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-next post-nav-item">
+              
+                <a href="/article/two-monitors-or-one-ultrawide.html" rel="next" title="工程师的显示器怎么选">
+                  <i class="fa fa-chevron-left"></i> 工程师的显示器怎么选
+                </a>
+              
+            </div>
+
+            <span class="post-nav-divider"></span>
+
+            <div class="post-nav-prev post-nav-item">
+              
+                <a href="/Prometheus/notes/prometheus-introduction.html" rel="prev" title="Prometheus 简介">
+                  Prometheus 简介 <i class="fa fa-chevron-right"></i>
+                </a>
+              
+            </div>
+          </div>
+        
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+        
+        
+        
+        
+      
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#下载-Prometheus"><span class="nav-number">1.</span> <span class="nav-text">下载 Prometheus</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#配置-Prometheus"><span class="nav-number">2.</span> <span class="nav-text">配置 Prometheus</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#启动-Prometheus"><span class="nav-number">3.</span> <span class="nav-text">启动 Prometheus</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#使用浏览器查看"><span class="nav-number">4.</span> <span class="nav-text">使用浏览器查看</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#推荐目录结构"><span class="nav-number">5.</span> <span class="nav-text">推荐目录结构</span></a></li></ol></div>
+        
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image"
+      src="/images/myavatar.jpg"
+      alt="Er Dong">
+  <p class="site-author-name" itemprop="name">Er Dong</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">77</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+    
+      
+      
+      <div class="site-state-item site-state-categories">
+        
+          
+            <a href="/categories/">
+          
+        
+        <span class="site-state-item-count">15</span>
+        <span class="site-state-item-name">分类</span>
+        </a>
+      </div>
+    
+      
+      
+      <div class="site-state-item site-state-tags">
+        
+          
+            <a href="/tags/">
+          
+        
+        <span class="site-state-item-count">45</span>
+        <span class="site-state-item-name">标签</span>
+        </a>
+      </div>
+    
+  </nav>
+</div>
+  <div class="feed-link motion-element">
+    <a href="/atom.xml" rel="alternate">
+      <i class="fa fa-rss"></i>RSS
+    </a>
+  </div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+      
+      
+        
+      
+      
+        
+      
+        <a href="https://github.com/erdong" title="GitHub &rarr; https://github.com/erdong" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+    
+      <span class="links-of-author-item">
+      
+      
+        
+      
+      
+        
+      
+        <a href="mailto:erdong@mail.erdong.site" title="E-Mail &rarr; mailto:erdong@mail.erdong.site" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+      </span>
+    
+  </div>
+  <div class="cc-license motion-element" itemprop="license">
+    
+  
+    <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-nd.svg" alt="Creative Commons"></a>
+  </div>
+
+
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title">
+      <i class="fa fa-fw fa-link"></i>
+      Links
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="http://www.ruanyifeng.com/blog/" title="http://www.ruanyifeng.com/blog/" rel="noopener" target="_blank">Ruanyifeng</a>
+        </li>
+      
+        <li class="links-of-blogroll-item">
+          <a href="https://coolshell.cn" title="https://coolshell.cn" rel="noopener" target="_blank">左耳朵耗子</a>
+        </li>
+      
+    </ul>
+  </div>
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2018 – <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Er Dong</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动</div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a></div>
+
+        
+
+
+
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js?v=3.1.0"></script>
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+<script src="/js/utils.js?v=7.4.1"></script><script src="/js/motion.js?v=7.4.1"></script>
+<script src="/js/schemes/pisces.js?v=7.4.1"></script>
+<script src="/js/next-boot.js?v=7.4.1"></script>
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+</body>
+</html>

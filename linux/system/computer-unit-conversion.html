@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+
+
+
+
+
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 3.9.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.4.1">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32.ico?v=7.4.1">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16.ico?v=7.4.1">
+  <link rel="mask-icon" href="/images/logo.svg?v=7.4.1" color="#222">
+  <link rel="alternate" href="/atom.xml" title="Erdong’ Blog" type="application/atom+xml">
+
+<link rel="stylesheet" href="/css/main.css?v=7.4.1">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '7.4.1',
+    exturl: false,
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
+    copycode: {"enable":false,"show_result":false,"style":null},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: 'search.xml',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    translation: {
+      copy_button: '复制',
+      copy_success: '复制成功',
+      copy_failure: '复制失败'
+    },
+    sidebarPadding: 40
+  };
+</script>
+
+  <meta name="description" content="在计算机行业经常进行单位换算，这些单位到底该怎么换算，通过本文来说明一下。">
+<meta name="keywords" content="unit,conversion">
+<meta property="og:type" content="article">
+<meta property="og:title" content="计算机中遇到的单位该怎么换算">
+<meta property="og:url" content="https://erdong.site/linux/system/computer-unit-conversion.html">
+<meta property="og:site_name" content="Erdong’ Blog">
+<meta property="og:description" content="在计算机行业经常进行单位换算，这些单位到底该怎么换算，通过本文来说明一下。">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-10-13T15:31:57.911Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="计算机中遇到的单位该怎么换算">
+<meta name="twitter:description" content="在计算机行业经常进行单位换算，这些单位到底该怎么换算，通过本文来说明一下。">
+  <link rel="canonical" href="https://erdong.site/linux/system/computer-unit-conversion">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true,
+    isPage: false,
+    isArchive: false
+  };
+</script>
+
+  <title>计算机中遇到的单位该怎么换算 | Erdong’ Blog</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Erdong’ Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <p class="site-subtitle">苦练七十二变，笑对八十一难。</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+      
+      
+      
+        
+        <li class="menu-item menu-item-home">
+      
+    
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-about">
+      
+    
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>关于</a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-tags">
+      
+    
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签</a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-categories">
+      
+    
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类</a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-archives">
+      
+    
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档</a>
+
+  </li>
+  </ul>
+
+</nav>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+            
+
+          <div id="content" class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://erdong.site/linux/system/computer-unit-conversion.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Er Dong">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/myavatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Erdong’ Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">计算机中遇到的单位该怎么换算
+
+          
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              
+                
+              
+
+              <time title="创建时间：2019-01-29 09:39:21" itemprop="dateCreated datePublished" datetime="2019-01-29T09:39:21+08:00">2019-01-29</time>
+            </span>
+          
+            
+
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2019-10-13 23:31:57" itemprop="dateModified" datetime="2019-10-13T23:31:57+08:00">2019-10-13</time>
+              </span>
+            
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/linux/" itemprop="url" rel="index"><span itemprop="name">linux</span></a></span>
+
+                
+                
+                  ，
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/linux/system/" itemprop="url" rel="index"><span itemprop="name">system</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>在计算机行业经常进行单位换算，这些单位到底该怎么换算，通过本文来说明一下。</p>
+<a id="more"></a>
+
+
+<p>** bit **</p>
+<p>bit 是字长，意思是一个字所包含二进制输的位数，一个 bit 存放一位二进制数，即 0 或 1，最小的存储单位，简写为 b 。字长越长，运算速度越快，计算精度越高</p>
+<p>** byte **</p>
+<p>byte 是字节，计算机中处理信息的最小单位，以八位二进制信息，简写为 B 。</p>
+<p>byte 和 bit 之间的换算是 8 ，原因是一个字节需要 8个字长</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">1 byte = 8 bit</span><br><span class="line"></span><br><span class="line">或者</span><br><span class="line"></span><br><span class="line">1 B = 8 b</span><br></pre></td></tr></table></figure>
+
+<p>** K M G T P E 是什么**</p>
+<p>K M G T P E 等是国际单位制(SI)中所规定的词头(prefix)。词头加在SI单位(非SI单位也可以使用并通常遵循此用法)之前表示10的整数幂次，譬如k表示10^3=1000，M表示10^6=1,000,000，G则表示10^9=1,000,000,000. </p>
+<p>举些例子，1kg=1000g，1km=1000m, 都是大家所熟悉的用法 。</p>
+<p>那我们接下来看这些单位怎么换算。</p>
+<h2 id="CPU-主频单位换算"><a href="#CPU-主频单位换算" class="headerlink" title="CPU 主频单位换算"></a>CPU 主频单位换算</h2><p>在计算机的使用过程中，我们会经常用到 CPU 的主频，那么主频是怎么换算呢？</p>
+<p>所谓CPU的主频，就是说这块CPU的工作频率，也就是说这块CPU是在以哪个频率在进行运算处理。CPU的工作频率单位是以Hz（赫）计量，随着科技发展，CPU的制造工艺越来越先进，其主频也得到大幅度提升。现今，虽然CPU主频的计量单位Hz（赫）没变，但我们往往都会在单位前面加上M，甚至G，也就是我们常说的主频MHz（兆赫）和GHz（吉赫）。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1 GHz = 1000 MHz</span><br></pre></td></tr></table></figure>
+
+<p>对于 CPU 来说，除了主频以外还有更重要的一个参数叫做浮点性能，有单精度和双精度，个别情况下会用到半精度，他们的单位是 FLOPS，那么浮点性能的单位怎么换算呢？</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1 TFLOPS = 1000 GFLOPS</span><br></pre></td></tr></table></figure>
+
+<p>相邻两个单位之间的进制 1000 。</p>
+<h2 id="速率单位换算"><a href="#速率单位换算" class="headerlink" title="速率单位换算"></a>速率单位换算</h2><p>我们在下载文件或者拷贝数据时经常用到一个单位 Mbps 来描述数据拷贝的快慢或者网络带宽的大小，这个 Mbps 的意思是 Mb 每秒，及在一秒内可以传输的数据量为多少 Mb ，p 的 per 的简写。</p>
+<p>我们在一些提供下载功能的软件里经常可以看到下载是数据是 MB/s ，那么这个单位和上边的 Mbps 有什么区别呢？</p>
+<p>区别有两点</p>
+<ul>
+<li>表示方法不统一。也就是说，二者同样的表示方式应该是 Mbps 和 MBps 或者 Mb/s 和 MB/s 。</li>
+<li>b 和 B 的区别。这个我们在最开始的时候说过了，一个是字节一个是字长。</li>
+</ul>
+<p>那么他们应该这么换算呢？</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">1 MB/s = 8Mb/s</span><br><span class="line"></span><br><span class="line">1 GB/s = 1024MB/s = 8192 Mb/s</span><br><span class="line">1 Gb/s = 1024Gb/s</span><br></pre></td></tr></table></figure>
+
+<p>这样就清楚了，我们一般口头说的网络带宽的单位一般是 Mb/s , 下载文件和拷贝文件的单位一般是 MB/s ， 下次我们就可以自己换算一下了。</p>
+<h2 id="存储单位换算"><a href="#存储单位换算" class="headerlink" title="存储单位换算"></a>存储单位换算</h2><p>我们经常看到的存储单位有 KB、MB、GB、TB、PB 等，这些单位在计算机操作系统内的换算情况是这样的</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">1 PB = 1024 TB</span><br><span class="line">1 TB = 1024 GB</span><br><span class="line">1 GB = 1024 MB</span><br><span class="line">1 MB = 1024 KB</span><br><span class="line">1 KB = 1024 B</span><br></pre></td></tr></table></figure>
+
+<p>在硬盘厂商的宣传里是这样的</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">1 PB = 1000 TB</span><br><span class="line">1 TB = 1000 GB</span><br><span class="line">1 GB = 1000 MB</span><br><span class="line">1 MB = 1000 KB</span><br><span class="line">1 KB = 1000 B</span><br></pre></td></tr></table></figure>
+
+<p>造成这种差异的原因是，起先计算机的存储容量低到可怜，几千个 Byte 算是很奢侈的容量，由于计算机的二进制特性，这个容量通常是 2 的整数次幂，用起来不方便。IT工程师们发现 2^10=1024 与 k=10^3 接近，相差不过 2%。于是就有人偷懒以 1kB 表示 2^10B 也就是1024B，初看起来一切都好，2% 的差距并不大，时间长了大家也就接受了。</p>
+<p>但问题在于，随着计算机的存储容量依摩尔定律(Moore’s Law)以指数增长，这个差值会越来越大。1kB与1KiB(稍后解释)相差不过2%，1MB 与 1MiB 相差近 5%，1GB 与 1GiB 相差7%，1TB 和 1TiB 足足差了10%。可以预见，随着硬盘容量的进一步扩大，这个差别会越来越大。</p>
+<p>时至今日，在IT业中已经形成了这种混乱的局面，为了解决这个混乱的局面，还是有人做过努力。早在 1998 年 SI 手册中明确要求 SI 词头不应用于 2 的幂次。而同年国际电工委员会(IEC)推出了一套适用于2进制的词头，并且得到了 IEEE 的批准 (IEEE 1541)——不过这还是一个试用的标准。简单来说就是在 SI 词头后加”i”。比如说 K 就成了 Ki，M 成了 Mi，G 成了 Gi。发音把原来SI词头的第二个音节换成[bi]。譬如Ki念 [kibi]，Mi念[mebi],Gi则是[Gibi]等等依此类推。这样，kMG 之类的的 SI 词头回复原来的含义，表示2幂次重任就交给了 Ki= 2^10=1024，Mi=2^20=1048576，Gi=2^30=1073741824 等等。这么一来，当表述一台电脑是3.15GHz CPU/2GiB内存/320GB硬盘时，G/Gi的含义就不存在歧义。</p>
+<p>很简明易懂的解决方案，然而很不幸似乎买 IEC 帐的着实不多，目前支持IEC词头的软件屈指可数。更糟糕的是 1G=1024M 这种约定俗成的错误观念已经根深蒂固。</p>
+<h2 id="进制的选择依据"><a href="#进制的选择依据" class="headerlink" title="进制的选择依据"></a>进制的选择依据</h2><p>看了上边各项单位的换算，不知道大家有没有发现什么规律。</p>
+<p>在计算机里相邻两个单位之间的换算有 1000 和 1024 ，那么什么时候是1000，什么时候是 1024 ？</p>
+<p>其实，一般的换算按照国际单位制(SI) 的规定，相邻两个单位之间的换算是 1000 。</p>
+<p>那么什么时候用 1024 呢？</p>
+<p>那就是单位里含有 byte 或者 bit 的时候，用 1024 来进行换算。其实按照 IEC 的规定，使用 Mi 和 M 进行区分就不会有这样的歧义和疑惑了。</p>
+<p>======================<br>Erdong, A Linux user !</p>
+
+    </div>
+
+    
+    
+    
+        <div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center;">
+  <img id="wechat_subscriber_qcode" src="/images/erdongxt.jpg" alt="Er Dong wechat" style="width: 200px; max-width: 100%;">
+  <div>扫描二维码关注微信公众号</div>
+</div>
+
+      
+        
+      
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>Er Dong</li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://erdong.site/linux/system/computer-unit-conversion.html" title="计算机中遇到的单位该怎么换算">https://erdong.site/linux/system/computer-unit-conversion.html</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-ND</a> 许可协议。转载请注明出处！</li>
+</ul>
+</div>
+
+      
+
+      <footer class="post-footer">
+          
+            
+          
+          <div class="post-tags">
+            
+              <a href="/tags/unit/" rel="tag"># unit</a>
+            
+              <a href="/tags/conversion/" rel="tag"># conversion</a>
+            
+          </div>
+        
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-next post-nav-item">
+              
+                <a href="/weekly/weekly04.html" rel="next" title="第04周分享">
+                  <i class="fa fa-chevron-left"></i> 第04周分享
+                </a>
+              
+            </div>
+
+            <span class="post-nav-divider"></span>
+
+            <div class="post-nav-prev post-nav-item">
+              
+                <a href="/Prometheus/New-Features/New-Features-in-Prometheus-2-7-0.html" rel="prev" title="【翻译】Prometheus 2.7.0 新特性">
+                  【翻译】Prometheus 2.7.0 新特性 <i class="fa fa-chevron-right"></i>
+                </a>
+              
+            </div>
+          </div>
+        
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+        
+        
+        
+        
+      
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#CPU-主频单位换算"><span class="nav-number">1.</span> <span class="nav-text">CPU 主频单位换算</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#速率单位换算"><span class="nav-number">2.</span> <span class="nav-text">速率单位换算</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#存储单位换算"><span class="nav-number">3.</span> <span class="nav-text">存储单位换算</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#进制的选择依据"><span class="nav-number">4.</span> <span class="nav-text">进制的选择依据</span></a></li></ol></div>
+        
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image"
+      src="/images/myavatar.jpg"
+      alt="Er Dong">
+  <p class="site-author-name" itemprop="name">Er Dong</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">77</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+    
+      
+      
+      <div class="site-state-item site-state-categories">
+        
+          
+            <a href="/categories/">
+          
+        
+        <span class="site-state-item-count">15</span>
+        <span class="site-state-item-name">分类</span>
+        </a>
+      </div>
+    
+      
+      
+      <div class="site-state-item site-state-tags">
+        
+          
+            <a href="/tags/">
+          
+        
+        <span class="site-state-item-count">45</span>
+        <span class="site-state-item-name">标签</span>
+        </a>
+      </div>
+    
+  </nav>
+</div>
+  <div class="feed-link motion-element">
+    <a href="/atom.xml" rel="alternate">
+      <i class="fa fa-rss"></i>RSS
+    </a>
+  </div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+      
+      
+        
+      
+      
+        
+      
+        <a href="https://github.com/erdong" title="GitHub &rarr; https://github.com/erdong" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+    
+      <span class="links-of-author-item">
+      
+      
+        
+      
+      
+        
+      
+        <a href="mailto:erdong@mail.erdong.site" title="E-Mail &rarr; mailto:erdong@mail.erdong.site" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+      </span>
+    
+  </div>
+  <div class="cc-license motion-element" itemprop="license">
+    
+  
+    <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-nd.svg" alt="Creative Commons"></a>
+  </div>
+
+
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title">
+      <i class="fa fa-fw fa-link"></i>
+      Links
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="http://www.ruanyifeng.com/blog/" title="http://www.ruanyifeng.com/blog/" rel="noopener" target="_blank">Ruanyifeng</a>
+        </li>
+      
+        <li class="links-of-blogroll-item">
+          <a href="https://coolshell.cn" title="https://coolshell.cn" rel="noopener" target="_blank">左耳朵耗子</a>
+        </li>
+      
+    </ul>
+  </div>
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2018 – <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Er Dong</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动</div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a></div>
+
+        
+
+
+
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js?v=3.1.0"></script>
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+<script src="/js/utils.js?v=7.4.1"></script><script src="/js/motion.js?v=7.4.1"></script>
+<script src="/js/schemes/pisces.js?v=7.4.1"></script>
+<script src="/js/next-boot.js?v=7.4.1"></script>
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+</body>
+</html>
