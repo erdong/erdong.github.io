@@ -1,6 +1,75 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>第32周分享</title>
+    <url>/weekly/weekly32.html</url>
+    <content><![CDATA[<p>这里记录过去一周，我看到的值得分享的东西。</p>
+<a id="more"></a>
+
+
+<h1 id="新闻"><a href="#新闻" class="headerlink" title="新闻"></a>新闻</h1><h2 id="1-cncf-新增了应用发布-SIG"><a href="#1-cncf-新增了应用发布-SIG" class="headerlink" title="1. cncf 新增了应用发布 SIG"></a>1. <a href="https://github.com/cncf/sig-app-delivery" target="_blank" rel="noopener">cncf 新增了应用发布 SIG</a></h2><pre><code>应用程序交付SIG专注于交付云本地应用程序，它涉及多个阶段，包括构建、部署、管理和操作。此外，团体为最终用户提供支持材料和最佳实践，并为团体范围内的 CNCF 项目提供指导和协调。</code></pre><h2 id="2-CentOS-8-发布"><a href="#2-CentOS-8-发布" class="headerlink" title="2. CentOS 8 发布"></a>2. <a href="https://wiki.centos.org/Manuals/ReleaseNotes/CentOS8.1905" target="_blank" rel="noopener">CentOS 8 发布</a></h2><p>CentOS 在 2019 年 9 月 25 日 发布了 8.0 版本，build 号是 1905 。相较于其他的大版本，这次的 8.0 新增了 stream 版本，可以滚动升级，发行注记 是 <a href="https://wiki.centos.org/Manuals/ReleaseNotes/CentOSStream" target="_blank" rel="noopener">https://wiki.centos.org/Manuals/ReleaseNotes/CentOSStream</a>  。</p>
+<p>从资源占用角度来看，CentOS 7 要求最小内存是 1280MB，CentOS 8 要求最小是 2GB。</p>
+<p>发行版本上，CentOS 7 发布了 DVD、Everthing、Mini 等多种版本，CentOS 8 目前只有 DVD 版本可以下载，其他版本发布与否以及发布时间尚未知晓。</p>
+<h2 id="3-键盘厂商-cherry-联合华为推出了手机机械键盘，在手机上使用线圈马达模拟机械键盘的手感和音效。"><a href="#3-键盘厂商-cherry-联合华为推出了手机机械键盘，在手机上使用线圈马达模拟机械键盘的手感和音效。" class="headerlink" title="3. 键盘厂商 cherry 联合华为推出了手机机械键盘，在手机上使用线圈马达模拟机械键盘的手感和音效。"></a>3. 键盘厂商 cherry 联合华为推出了手机机械键盘，在手机上使用线圈马达模拟机械键盘的手感和音效。</h2><h1 id="工具"><a href="#工具" class="headerlink" title="工具"></a>工具</h1><h2 id="1-Kong"><a href="#1-Kong" class="headerlink" title="1. Kong"></a>1. <a href="https://konghq.com/" target="_blank" rel="noopener">Kong</a></h2><p>Kong 是 API 管理的强大效率工具。对需要从事 API 管理的广大开发员来说，它是最出色的工具之一。Kong 是开源工具，具有可扩展性和模块性，可以在任何一种基础设施上运行。多年来，Kong 一直在支持优秀的开发项目，比如 Mashape（世界上规模最大的API市场）。</p>
+<h2 id="2-KongA"><a href="#2-KongA" class="headerlink" title="2. KongA"></a>2. <a href="https://github.com/pantsel/konga" target="_blank" rel="noopener">KongA</a></h2><p>KongA 带来的一个最大的便利就是可以很好地通过 UI 观察到现在 Kong 的所有的配置，并且可以对于管理 Kong 节点情况进行查看、监控和预警，konga主要特性如下：</p>
+<ul>
+<li>多用户管理</li>
+<li>管理多个Kong节点</li>
+<li>电子邮件异常信息通知</li>
+<li>管理所有Kong Admin API</li>
+<li>使用快照备份，还原和迁移Kong节点</li>
+<li>使用运行状况检查监控节点和API状态</li>
+<li>轻松的数据库集成</li>
+</ul>
+<h1 id="资源"><a href="#资源" class="headerlink" title="资源"></a>资源</h1><h2 id="1-Getting-started-with-Python"><a href="#1-Getting-started-with-Python" class="headerlink" title="1. Getting started with Python"></a>1. <a href="https://github.com/microsoft/c9-python-getting-started" target="_blank" rel="noopener">Getting started with Python</a></h2><p>微软的第九频道的系列视频旨在帮助您快速了解Python。如果您是一个初学者，希望将Python添加到您的语言库中，或者尝试开始一个数据科学或web项目，这些视频可以帮助您了解快速入门或其他教程所需的基础知识。</p>
+<p>目前这套视频教程包括 18 类内容，旨在帮助快速了解 Python。</p>
+<p>你能学到：</p>
+<ul>
+<li>Python 3.x 的基础知识</li>
+<li>如何开始一个项目</li>
+<li>Python常见语法</li>
+<li>包管理</li>
+</ul>
+<p>这套教程不讲的东西有：</p>
+<ul>
+<li>Python 类设计和继承</li>
+<li>异步编程</li>
+<li>编程基本知识</li>
+</ul>
+<h2 id="2-Distro-Test"><a href="#2-Distro-Test" class="headerlink" title="2. Distro Test"></a>2. <a href="https://distrotest.net/" target="_blank" rel="noopener">Distro Test</a></h2><h1 id="首发在线操作系统测试网站，网站收录了-200-Linux-发行版操作系统，可以在线体验各个版本的特性，网站通过-noVNC-来提供图形给用户。"><a href="#首发在线操作系统测试网站，网站收录了-200-Linux-发行版操作系统，可以在线体验各个版本的特性，网站通过-noVNC-来提供图形给用户。" class="headerlink" title="首发在线操作系统测试网站，网站收录了 200+ Linux 发行版操作系统，可以在线体验各个版本的特性，网站通过 noVNC 来提供图形给用户。"></a>首发在线操作系统测试网站，网站收录了 200+ Linux 发行版操作系统，可以在线体验各个版本的特性，网站通过 noVNC 来提供图形给用户。</h1><p>Erdong, A Linux user !</p>
+]]></content>
+      <categories>
+        <category>weekly</category>
+      </categories>
+      <tags>
+        <tag>weekly</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>第31周分享</title>
+    <url>/weekly/weekly31.html</url>
+    <content><![CDATA[<p>这里记录过去一周，我看到的值得分享的东西。</p>
+<a id="more"></a>
+
+<h1 id="新闻"><a href="#新闻" class="headerlink" title="新闻"></a>新闻</h1><h2 id="1-首届微软Linux大会于2020年3月10日至11日举行"><a href="#1-首届微软Linux大会于2020年3月10日至11日举行" class="headerlink" title="1. 首届微软Linux大会于2020年3月10日至11日举行"></a>1. <a href="http://t.zijieimg.com/mdyoo1/" target="_blank" rel="noopener">首届微软Linux大会于2020年3月10日至11日举行</a></h2><p>微软宣布了Linux用户梦寐以求的东西，这就是针对WSL（Linux Windows子系统）的第一次微软Linux大会。WSL是由微软设计的兼容层，允许用户在Windows 10和Windows Server 2019操作系统上安装GNU / Linux发行版并本机运行Linux二进制文件。</p>
+<p>WSL 2是Linux的Windows子系统最新版本，今年夏天早些时候由微软宣布推出，它引入了一些主要的新功能，例如全新的体系结构，它使用真正的内部构建的Linux内核，以及完整的系统调用兼容性，以便运行更多Linux应用程序。</p>
+<h2 id="2-stackoverflow-2019-开发者调查"><a href="#2-stackoverflow-2019-开发者调查" class="headerlink" title="2. stackoverflow 2019 开发者调查"></a>2. <a href="https://insights.stackoverflow.com/survey/2019" target="_blank" rel="noopener">stackoverflow 2019 开发者调查</a></h2><p>stackoverflow 今年的开发者调查已经发布了，大家可以一睹为快了。</p>
+<h1 id="教程"><a href="#教程" class="headerlink" title="教程"></a>教程</h1><h2 id="1-一文读懂什么是进程、线程、协程"><a href="#1-一文读懂什么是进程、线程、协程" class="headerlink" title="1. 一文读懂什么是进程、线程、协程"></a>1. <a href="https://www.cnblogs.com/Survivalist/p/11527949.html" target="_blank" rel="noopener">一文读懂什么是进程、线程、协程</a></h2><p>解释了什么是进程、线程、协程。</p>
+<h2 id="2-Learning-Rust"><a href="#2-Learning-Rust" class="headerlink" title="2. Learning Rust"></a>2. <a href="https://learning-rust.github.io/" target="_blank" rel="noopener">Learning Rust</a></h2><p>一个比较轻量 Rust 学习教程</p>
+<ul>
+<li>“Rust By Example” 在 Rust 场景下，上来直接学习容易懵逼。</li>
+<li>“The Rust Programming Language” 上来有点重量级，适合深入学习。</li>
+</ul>
+<p>======================<br>Erdong, A Linux user !</p>
+]]></content>
+      <categories>
+        <category>weekly</category>
+      </categories>
+      <tags>
+        <tag>weekly</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>第30周分享</title>
     <url>/weekly/weekly30.html</url>
     <content><![CDATA[<p>这里记录过去一周，我看到的值得分享的东西。</p>
