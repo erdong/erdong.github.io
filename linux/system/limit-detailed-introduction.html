@@ -1,0 +1,1572 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=6.7.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.7.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32.ico?v=6.7.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16.ico?v=6.7.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.7.0" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '6.7.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":true,"scrollpercent":true,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="今天在使用 Prometheus 时遇到了问题，报错  err=”list block dirs /prometheus/data/: open /prometheus/data/: too many open files”, 经查询发现，系统默认的普通用户系统最大打开文件数为 1024，Prometheus 数据太多导致该问题，将普通用户的这个限制适当的上调即可。 经过这个事情发现，对 limi">
+<meta name="keywords" content="linux,limit">
+<meta property="og:type" content="article">
+<meta property="og:title" content="limit 详解">
+<meta property="og:url" content="https://erdong.site/linux/system/limit-detailed-introduction.html">
+<meta property="og:site_name" content="Erdong’ Blog">
+<meta property="og:description" content="今天在使用 Prometheus 时遇到了问题，报错  err=”list block dirs /prometheus/data/: open /prometheus/data/: too many open files”, 经查询发现，系统默认的普通用户系统最大打开文件数为 1024，Prometheus 数据太多导致该问题，将普通用户的这个限制适当的上调即可。 经过这个事情发现，对 limi">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-10-14T11:07:51.615Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="limit 详解">
+<meta name="twitter:description" content="今天在使用 Prometheus 时遇到了问题，报错  err=”list block dirs /prometheus/data/: open /prometheus/data/: too many open files”, 经查询发现，系统默认的普通用户系统最大打开文件数为 1024，Prometheus 数据太多导致该问题，将普通用户的这个限制适当的上调即可。 经过这个事情发现，对 limi">
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Erdong’ Blog" type="application/atom+xml">
+
+
+
+
+  <link rel="canonical" href="https://erdong.site/linux/system/limit-detailed-introduction.html">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>limit 详解 | Erdong’ Blog</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Erdong’ Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <h1 class="site-subtitle" itemprop="description">苦练七十二变，笑对八十一难。</h1>
+      
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
+
+  </li>
+
+      
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>搜索</a>
+        </li>
+      
+    </ul>
+  
+
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://erdong.site/linux/system/limit-detailed-introduction.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Er Dong">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/myavatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Erdong’ Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">limit 详解
+
+              
+            
+          </h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-08-23 11:55:52" itemprop="dateCreated datePublished" datetime="2018-08-23T11:55:52+08:00">2018-08-23</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-10-14 19:07:51" itemprop="dateModified" datetime="2019-10-14T19:07:51+08:00">2019-10-14</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/linux/" itemprop="url" rel="index"><span itemprop="name">linux</span></a></span>
+
+                
+                
+                  ，
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/linux/system/" itemprop="url" rel="index"><span itemprop="name">system</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="post-meta-item-icon">
+            <i class="fa fa-eye"></i>
+             阅读次数： 
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>今天在使用 Prometheus 时遇到了问题，报错  err=”list block dirs /prometheus/data/: open /prometheus/data/: too many open files”, 经查询发现，系统默认的普通用户系统最大打开文件数为 1024，Prometheus 数据太多导致该问题，将普通用户的这个限制适当的上调即可。</p>
+<p>经过这个事情发现，对 limit 的掌握并不熟悉，特意搜索了 limit 的相关信息整理在这里，学习以及备忘。</p>
+<p>环境说明：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">CentOS Linux release 7.4.1708 (Core)</span><br><span class="line">Linux hulk 3.10.0-693.el7.x86_64 <span class="comment">#1 SMP Tue Aug 22 21:09:27 UTC 2017 x86_64 x86_64 x86_64 GNU/Linux</span></span><br></pre></td></tr></table></figure>
+
+<a id="more"></a> 
+
+
+<h1 id="ulimit-命令详解"><a href="#ulimit-命令详解" class="headerlink" title="ulimit 命令详解"></a>ulimit 命令详解</h1><p>  Linux是有文件句柄限制的，而且Linux默认普通用户都是1024，root 用户没有限制，作为生产系统使用很容易就达到这个数量</p>
+<p>  操作系统各方面的资源都是非常紧缺的, ulimit 可以起到很大的作用，它是一种简单并且有效的实现资源限制的方式。</p>
+<p>  ulimit 用于限制 shell 启动进程所占用的资源，支持以下各种类型的限制：所创建的内核文件的大小、进程数据块的大小、Shell 进程创建文件的大小、内存锁住的大小、常驻内存集的大小、打开文件描述符的数量、分配堆栈的最大大小、CPU 时间、单个用户的最大线程数、Shell 进程所能使用的最大虚拟内存。同时，它支持硬资源和软资源的限制。</p>
+<p>  作为临时限制，ulimit 可以作用于通过使用其命令登录的 shell 会话，在会话终止时便结束限制，并不影响于其他 shell 会话。而对于长期的固定限制，ulimit 命令语句又可以被添加到由登录 shell 读取的文件中，作用于特定的 shell 用户。</p>
+<p>参数说明</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">-a：显示目前资源限制的设定；</span><br><span class="line">-c &lt;core文件上限&gt;：设定core文件的最大值，单位为区块；</span><br><span class="line">-d &lt;数据节区大小&gt;：程序数据节区的最大值，单位为KB；</span><br><span class="line">-f &lt;文件大小&gt;：shell所能建立的最大文件，单位为区块；</span><br><span class="line">-H：设定资源的硬性限制，也就是管理员所设下的限制；</span><br><span class="line">-m &lt;内存大小&gt;：指定可使用内存的上限，单位为KB；</span><br><span class="line">-n &lt;文件数目&gt;：指定同一时间最多可开启的文件数；</span><br><span class="line">-p &lt;缓冲区大小&gt;：指定管道缓冲区的大小，单位512字节；</span><br><span class="line">-s &lt;堆叠大小&gt;：指定堆叠的上限，单位为KB；</span><br><span class="line">-S：设定资源的弹性限制；</span><br><span class="line">-t &lt;CPU时间&gt;：指定CPU使用时间的上限，单位为秒；</span><br><span class="line">-u &lt;程序数目&gt;：用户最多可开启的程序数目；</span><br><span class="line">-v &lt;虚拟内存大小&gt;：指定可使用的虚拟内存上限，单位为KB。</span><br></pre></td></tr></table></figure>
+
+<h1 id="limit-conf-文件说明"><a href="#limit-conf-文件说明" class="headerlink" title="limit.conf 文件说明"></a>limit.conf 文件说明</h1><p>  limits.conf 文件是 Linux PAM（插入式认证模块，Pluggable Authentication Modules）中 pam_limits.so 的配置文件，pam_limits 模块对用户的会话进行资源限制。对系统访问资源有一定保护作用。</p>
+<p>一个 shell 的初始limits就是由 pam_limits 设定的，用户登录后，pam_limits 会给用户的shell设定在 limits.conf 定义的值。</p>
+<p>pam_limits模块对用户的会话进行资源限制，然后 /etc/pam.d/ 下的应用程序调用 pam_***.so 模块。<br>pam_limits 的设定值也是 per-process 的。<br>pam_limits 的设置是永久生效的。</p>
+<p>limit.conf 文件的格式如下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;domain&gt;        &lt;<span class="built_in">type</span>&gt;  &lt;item&gt;  &lt;value&gt;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>&lt;domain&gt; 可以是如下:</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">- user   可以是一个用户名</span><br><span class="line">- @group 可以是一个组名，但是要加@ ，例如：@group</span><br><span class="line">- *      通配符*来做所有用户的限制</span><br><span class="line">- the wildcard %, can be also used with %group syntax, <span class="keyword">for</span> maxlogin <span class="built_in">limit</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>&lt;type&gt; 只能是下列三个值之一:</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">    - soft  当前系统生效的设置值</span><br><span class="line">    - hard  系统中所能设定的最大值</span><br><span class="line">    - -     用 - 就表明同时设置了 soft 和 hard 的值。</span><br><span class="line"></span><br><span class="line">soft 的限制不能比hard 限制高</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>&lt;item&gt; 可以是下列的选项之一:</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">- core           限制内核文件的大小(KB)               - limits the core file size (KB)</span><br><span class="line">- data           最大数据大小(KB)                     - max data size (KB)</span><br><span class="line">- fsize          最大文件大小(KB)                     - maximum filesize (KB)</span><br><span class="line">- memlock        最大锁定内存地址空间(KB)             - max locked-in-memory address space (KB)</span><br><span class="line">- nofile         打开文件的最大数目                   - max number of open file descriptors</span><br><span class="line">- rss            最大持久设置大小(KB)                 - max resident <span class="built_in">set</span> size (KB)</span><br><span class="line">- stack          最大栈大小(KB)                       - max stack size (KB)</span><br><span class="line">- cpu            以分钟为单位的最多 CPU 时间          - max CPU time (MIN)</span><br><span class="line">- nproc          进程的最大数目                       - max number of processes</span><br><span class="line">- as             地址空间限制(KB)                     - address space <span class="built_in">limit</span> (KB)</span><br><span class="line">- maxlogins      此用户允许登录的最大数目             - max number of logins <span class="keyword">for</span> this user</span><br><span class="line">- maxsyslogins   在系统上可以登录的最大数量           - max number of logins on the system</span><br><span class="line">- priority       优先运行该用户的进程                 - the priority to run user process with</span><br><span class="line">- locks          用户可以持有的文件锁的最大数量       - max number of file locks the user can hold</span><br><span class="line">- sigpending     最大等待信号数                       - max number of pending signals</span><br><span class="line">- msgqueue       POSIX消息队列使用的最大内存          - max memory used by POSIX message queues (bytes)</span><br><span class="line">- nice           最大的优先级允许提高到值:[-20, 19]   - max nice priority allowed to raise to values: [-20, 19]</span><br><span class="line">- rtprio         最大的实时优先级                     - max realtime priority</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>&lt;value&gt; 可以选择如下之一：</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">    - 0          最小值</span><br><span class="line">    - x          范围内的整数</span><br><span class="line">    - unlimited  不做限制</span><br><span class="line"></span><br><span class="line">最大值不要超过系统限制的最大值。</span><br></pre></td></tr></table></figure>
+
+<h1 id="查看当前-limit-限制"><a href="#查看当前-limit-限制" class="headerlink" title="查看当前 limit 限制"></a>查看当前 limit 限制</h1><p>使用 ulimit -a 即可查看当前的 limit ，open files 对应的就是当前登陆用户的最大文件打开数量。（也可以用 ulimit -n 快速查看）</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">[root@hulk ~]<span class="comment"># ulimit -a</span></span><br><span class="line">core file size          (blocks, -c) 0</span><br><span class="line">data seg size           (kbytes, -d) unlimited</span><br><span class="line">scheduling priority             (-e) 0</span><br><span class="line">file size               (blocks, -f) unlimited</span><br><span class="line">pending signals                 (-i) 31847</span><br><span class="line">max locked memory       (kbytes, -l) 64</span><br><span class="line">max memory size         (kbytes, -m) unlimited</span><br><span class="line">open files                      (-n) 1024</span><br><span class="line">pipe size            (512 bytes, -p) 8</span><br><span class="line">POSIX message queues     (bytes, -q) 819200</span><br><span class="line">real-time priority              (-r) 0</span><br><span class="line">stack size              (kbytes, -s) 8192</span><br><span class="line">cpu time               (seconds, -t) unlimited</span><br><span class="line">max user processes              (-u) 31847</span><br><span class="line">virtual memory          (kbytes, -v) unlimited</span><br><span class="line">file locks                      (-x) unlimited</span><br><span class="line">[root@hulk ~]<span class="comment">#</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="临时修改-limit-限制"><a href="#临时修改-limit-限制" class="headerlink" title="临时修改 limit 限制"></a>临时修改 limit 限制</h1><p>很多时候为了检查问题，需要临时修改设置以确认问题的原因，或者不希望永久生效，那么可以使用如下命令进行快速设置</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">ulimit</span> -n 4096</span><br></pre></td></tr></table></figure>
+
+<p>很多文章称 ulimit -n 只允许设置得越来越小，比如先执行了ulimit -n 1000，在执行ulimit -n 1001，就会报 “cannot modify limit: Operation not permitted” 错误。<br>这个其实也是不准确的说法。首先要搞清楚，任何用户都可以执行ulimit，但root用户和非root用户是非常不一样的。</p>
+<p>非root用户只能越设置越小，不能越设置越大。<br>root 用户没有限制，可以随意增加或者缩小。</p>
+<h1 id="永久修改-limit-限制"><a href="#永久修改-limit-限制" class="headerlink" title="永久修改 limit 限制"></a>永久修改 limit 限制</h1><p>上述的设置只能临时生效，如果想要永久生效，那么要换其他方法。<br>想要永久生效，有2种方法。</p>
+<h2 id="将上述命令写到登陆后默认加载的文件"><a href="#将上述命令写到登陆后默认加载的文件" class="headerlink" title="将上述命令写到登陆后默认加载的文件"></a>将上述命令写到登陆后默认加载的文件</h2><p>该方法对应的操作是，如果需要<br>所有用户有效，将 ulimit -n 4096 添加到 /etc/profile 。 所有用户登录后都会检查该文件，并加载其中的配置。<br>特定用户有效，将 ulimit -n 4096 添加到对应用户的 ~/.bash_profile 。 用户登录后都会检查自己家目录下的 .bash* 文件，并加载其中的配置。</p>
+<p><strong>个人并不建议使用这种方式进行修改，原因是修改不好或者在某些未考虑周全的情况下，会导致用户无法登录系统，人为增加故障率</strong></p>
+<h2 id="修改-limit-conf-配置文件"><a href="#修改-limit-conf-配置文件" class="headerlink" title="修改 limit.conf 配置文件"></a>修改 limit.conf 配置文件</h2><p>在 /etc/security/limits.conf 文件中按照文件的规则添加配置例如</p>
+<p>设置 test 的最大打开数为8196</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">test - nofile 8196</span><br></pre></td></tr></table></figure>
+
+<p>如果对某一用户或者某中特定的场景有很多的 limit 设置，那么不建议直接修改 /etc/security/limits.conf 文件，这样管理起来成本太大。<br>这种情况下，可以在 /etc/security/limits.d/ 目录下新建 .conf 结尾的配置文件进行单独管理，pam_limits.so 在执行时也会一并加载。</p>
+<p>在系统里，/etc/security/limits.d/ 目录下的文件会覆盖 /etc/security/limits.conf 的内容，所以如果在 limits.conf 文件里配置的内容不要和 limits.d 目录下的内容冲突，如果担心冲突，可以将配置都放在 limits.d 下进行管理。</p>
+<p>覆盖的顺序是，</p>
+<ol>
+<li><p>limits.d 目录下的会覆盖 limits.conf 文件。</p>
+</li>
+<li><p>limits.d 目录下按照英文字母顺序进行加载，后加载的覆盖前边加载的 。</p>
+</li>
+<li><p>数字应该按照 01 、02、……09、10 这样的顺序进行排序。</p>
+</li>
+</ol>
+<h1 id="修改系统总限制。"><a href="#修改系统总限制。" class="headerlink" title="修改系统总限制。"></a>修改系统总限制。</h1><p>上边讲了很多种查看和修改的方法，一般情况下是够用了，那么现在来说说特殊情况。上边提过，最大文件打开数量最大不要超过系统的限制。</p>
+<p>那么怎么查看呢？系统将这个数字存储在了 /proc/sys/fs/file-max 文件，直接查看就好。/proc/sys/fs/file-nr 文件里存储了整个系统目前使用的文件句柄数量。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[<span class="built_in">test</span>@hulk ~]$ cat /proc/sys/fs/file-max</span><br><span class="line">807968</span><br><span class="line">[<span class="built_in">test</span>@hulk ~]$ cat /proc/sys/fs/file-nr</span><br><span class="line">1408	0	807968</span><br><span class="line">[<span class="built_in">test</span>@hulk ~]$</span><br></pre></td></tr></table></figure>
+
+<p>那么怎么修改这个值呢？有2个方法，一个是临时的，一个是永久的。</p>
+<h2 id="临时修改系统限制"><a href="#临时修改系统限制" class="headerlink" title="临时修改系统限制"></a>临时修改系统限制</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span>  6553560 &gt; /proc/sys/fs/file-max</span><br></pre></td></tr></table></figure>
+
+<h2 id="永久修改系统限制"><a href="#永久修改系统限制" class="headerlink" title="永久修改系统限制"></a>永久修改系统限制</h2><p>修改 /etc/sysctl.conf, 加入下列配置，由于修改了系统的内核参数，所以需要使用 sysctl -p 来使新的参数生效。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fs.file-max = 6553560</span><br></pre></td></tr></table></figure>
+
+<h1 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h1><ul>
+<li>数值设置根据实际情况进行设置，不要一味的增大，否则会导致系统故障无法运行；</li>
+<li>网上说修改了 limit.conf 以后如果要生效，必须要确保 pam_limits.so 文件被加入到启动文件中。查看 /etc/pam.d/login 文件中有：session required /lib/security/pam_limits.so 。我在 CentOS 7 的系统里找了/etc/pam.d/login 文件，发现没有 pam_limits.so ， 也可以正常生效;</li>
+<li>修改系统最大值时或许可以参考本地磁盘或者存储的相关指标，不要“超标”； </li>
+<li>limits.conf 和sysctl.conf区别在于limits.conf是针对用户，而sysctl.conf是针对整个系统参数配置。</li>
+</ul>
+<p>参考链接</p>
+<ul>
+<li><a href="http://man.linuxde.net/ulimit" target="_blank" rel="noopener">http://man.linuxde.net/ulimit</a></li>
+<li>linux 系统文件 /etc/security/limits.conf </li>
+<li><a href="http://smilejay.com/2016/06/centos-7-systemd-conf-limits/" target="_blank" rel="noopener">http://smilejay.com/2016/06/centos-7-systemd-conf-limits/</a></li>
+</ul>
+<p>======================<br>Erdong, A Linux user !</p>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+      <div>
+        <div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
+  <img id="wechat_subscriber_qcode" src="/images/erdongxt.jpg" alt="Er Dong wechat" style="width: 200px; max-width: 100%;">
+  <div>扫描二维码关注微信公众号</div>
+</div>
+
+      </div>
+    
+
+    
+      
+    
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>坚持原创技术分享，您的支持将鼓励我继续创作!</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/WeChatPay.png" alt="Er Dong 微信支付">
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/AliPay.png" alt="Er Dong 支付宝">
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        
+
+
+
+  
+
+
+
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>Er Dong</li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    
+    <a href="https://erdong.site/linux/system/limit-detailed-introduction.html" title="limit 详解">https://erdong.site/linux/system/limit-detailed-introduction.html</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-ND</a> 许可协议。转载请注明出处！</li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/linux/" rel="tag"># linux</a>
+          
+            <a href="/tags/limit/" rel="tag"># limit</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/life/gossip/blog-163-closed.html" rel="next" title="网易博客要关闭了">
+                <i class="fa fa-chevron-left"></i> 网易博客要关闭了
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/tools/IB-tool-install.html" rel="prev" title="IB 工具安装">
+                IB 工具安装 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/myavatar.jpg" alt="Er Dong">
+            
+              <p class="site-author-name" itemprop="name">Er Dong</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">77</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">15</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">45</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://github.com/erdong" title="GitHub &rarr; https://github.com/erdong" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="mailto:erdong@mail.erdong.site" title="E-Mail &rarr; mailto:erdong@mail.erdong.site" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                </span>
+              
+            </div>
+          
+
+          
+             <div class="cc-license motion-element" itemprop="license">
+              
+                
+              
+              
+              
+              <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-nd.svg" alt="Creative Commons"></a>
+             </div>
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.ruanyifeng.com/blog/" title="http://www.ruanyifeng.com/blog/" rel="noopener" target="_blank">Ruanyifeng</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://coolshell.cn" title="https://coolshell.cn" rel="noopener" target="_blank">左耳朵耗子</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#ulimit-命令详解"><span class="nav-number">1.</span> <span class="nav-text">ulimit 命令详解</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#limit-conf-文件说明"><span class="nav-number">2.</span> <span class="nav-text">limit.conf 文件说明</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#查看当前-limit-限制"><span class="nav-number">3.</span> <span class="nav-text">查看当前 limit 限制</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#临时修改-limit-限制"><span class="nav-number">4.</span> <span class="nav-text">临时修改 limit 限制</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#永久修改-limit-限制"><span class="nav-number">5.</span> <span class="nav-text">永久修改 limit 限制</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#将上述命令写到登陆后默认加载的文件"><span class="nav-number">5.1.</span> <span class="nav-text">将上述命令写到登陆后默认加载的文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#修改-limit-conf-配置文件"><span class="nav-number">5.2.</span> <span class="nav-text">修改 limit.conf 配置文件</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#修改系统总限制。"><span class="nav-number">6.</span> <span class="nav-text">修改系统总限制。</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#临时修改系统限制"><span class="nav-number">6.1.</span> <span class="nav-text">临时修改系统限制</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#永久修改系统限制"><span class="nav-number">6.2.</span> <span class="nav-text">永久修改系统限制</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#注意"><span class="nav-number">7.</span> <span class="nav-text">注意</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2018 – <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Er Dong</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a></div>
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="post-meta-item-icon">
+      <i class="fa fa-user"></i>
+    </span>
+    <span class="site-uv" title="总访客量">
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+    </span>
+  
+
+  
+    <span class="post-meta-divider">|</span>
+  
+
+  
+    <span class="post-meta-item-icon">
+      <i class="fa fa-eye"></i>
+    </span>
+    <span class="site-pv" title="总访问量">
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/src/utils.js?v=6.7.0"></script>
+
+  <script src="/js/src/motion.js?v=6.7.0"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/src/affix.js?v=6.7.0"></script>
+
+  <script src="/js/src/schemes/pisces.js?v=6.7.0"></script>
+
+
+
+  
+  <script src="/js/src/scrollspy.js?v=6.7.0"></script>
+<script src="/js/src/post-details.js?v=6.7.0"></script>
+
+
+
+  
+
+
+  <script src="/js/src/bootstrap.js?v=6.7.0"></script>
+
+
+
+  
+  
+
+<script src="//cdn1.lncld.net/static/js/3.11.1/av-min.js"></script>
+
+
+
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+
+<script>
+  var GUEST = ['nick', 'mail', 'link'];
+  var guest = 'nick,mail,link';
+  guest = guest.split(',').filter(function(item) {
+    return GUEST.indexOf(item) > -1;
+  });
+  new Valine({
+    el: '#comments',
+    verify: false,
+    notify: false,
+    appId: 'HRD9im0IBzHxxgQbx9N34mWm-gzGzoHsz',
+    appKey: 'zxHghf4xK1BpoIq3TIPhuHYR',
+    placeholder: 'Just go go',
+    avatar: 'mm',
+    meta: guest,
+    pageSize: '10' || 10,
+    visitor: false
+  });
+</script>
+
+
+
+
+
+  
+
+  <script>
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url).replace(/\/{2,}/g, '/');
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x"></i></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x"></i></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
