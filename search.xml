@@ -1386,6 +1386,35 @@
       </tags>
   </entry>
   <entry>
+    <title>QDS03 pip</title>
+    <url>/QDS/qds03.html</url>
+    <content><![CDATA[<p>QDS （Quick Deployment Series）快速的部署一个软件。这次我们来部署 pip 。</p>
+<p>pip 是 Python 包管理工具，该工具提供了对Python 包的查找、下载、安装、卸载的功能。<br>pip 官网：<a href="https://pypi.org/project/pip/" target="_blank" rel="noopener">https://pypi.org/project/pip/</a></p>
+<a id="more"></a>
+
+
+<h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><p>首先下载安装脚本 get-pip.py , 大约 1.7 MiB 。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py</span><br></pre></td></tr></table></figure>
+
+<p>安装 python2  的 pip 执行下列命令</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">python get-pip.py</span><br></pre></td></tr></table></figure>
+
+<p>安装 python3  的 pip 执行下列命令</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">python3 get-pip.py</span><br></pre></td></tr></table></figure>
+
+<h1 id="验证"><a href="#验证" class="headerlink" title="验证"></a>验证</h1><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[root@node31 ~]# pip --version</span><br><span class="line">pip 19.0.3 from /usr/lib/python2.7/site-packages/pip (python 2.7)</span><br><span class="line">[root@node31 ~]#</span><br></pre></td></tr></table></figure>
+
+<p>======================<br>Erdong, A Linux user !</p>
+]]></content>
+      <categories>
+        <category>QDS</category>
+      </categories>
+      <tags>
+        <tag>QDS</tag>
+        <tag>pip</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>QDS04 TensorFlow</title>
     <url>/QDS/qds04.html</url>
     <content><![CDATA[<p>QDS （Quick Deployment Series）快速的部署一个软件。这次我们来部署 TensorFlow。</p>
@@ -1425,35 +1454,6 @@
       <tags>
         <tag>QDS</tag>
         <tag>TensorFlow</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>QDS03 pip</title>
-    <url>/QDS/qds03.html</url>
-    <content><![CDATA[<p>QDS （Quick Deployment Series）快速的部署一个软件。这次我们来部署 pip 。</p>
-<p>pip 是 Python 包管理工具，该工具提供了对Python 包的查找、下载、安装、卸载的功能。<br>pip 官网：<a href="https://pypi.org/project/pip/" target="_blank" rel="noopener">https://pypi.org/project/pip/</a></p>
-<a id="more"></a>
-
-
-<h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><p>首先下载安装脚本 get-pip.py , 大约 1.7 MiB 。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py</span><br></pre></td></tr></table></figure>
-
-<p>安装 python2  的 pip 执行下列命令</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">python get-pip.py</span><br></pre></td></tr></table></figure>
-
-<p>安装 python3  的 pip 执行下列命令</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">python3 get-pip.py</span><br></pre></td></tr></table></figure>
-
-<h1 id="验证"><a href="#验证" class="headerlink" title="验证"></a>验证</h1><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[root@node31 ~]# pip --version</span><br><span class="line">pip 19.0.3 from /usr/lib/python2.7/site-packages/pip (python 2.7)</span><br><span class="line">[root@node31 ~]#</span><br></pre></td></tr></table></figure>
-
-<p>======================<br>Erdong, A Linux user !</p>
-]]></content>
-      <categories>
-        <category>QDS</category>
-      </categories>
-      <tags>
-        <tag>QDS</tag>
-        <tag>pip</tag>
       </tags>
   </entry>
   <entry>

@@ -157,7 +157,7 @@
     <link href="https://erdong.site/weekly/weekly29.html"/>
     <id>https://erdong.site/weekly/weekly29.html</id>
     <published>2019-07-21T07:06:24.000Z</published>
-    <updated>2019-10-13T15:31:57.910Z</updated>
+    <updated>2019-10-14T11:18:34.550Z</updated>
     
     <content type="html"><![CDATA[<p>这里记录过去一周，我看到的值得分享的东西。</p><a id="more"></a><h1 id="工具"><a href="#工具" class="headerlink" title="工具"></a>工具</h1><h2 id="1-DownGit"><a href="#1-DownGit" class="headerlink" title="1. DownGit"></a>1. <a href="https://minhaskamal.github.io/DownGit/#/home" target="_blank" rel="noopener">DownGit</a></h2><p>一个小工具用来在 GitHub 上下载某个文件夹或者文件，还可以创建下载链接给其他人。</p><p>Github中并不提供单个文件夹下载, 每当下载仓库中某个文件夹时,只能克隆整个仓库, 浪费硬盘空间不说,浪费时间不说,每次克隆仓库时候,看到这下下载速度简直不能忍受，使用这个工具就好了。 </p><h2 id="2-阮一峰的免费招聘服务"><a href="#2-阮一峰的免费招聘服务" class="headerlink" title="2. 阮一峰的免费招聘服务"></a>2. <a href="https://github.com/ruanyf/weekly/issues/692" target="_blank" rel="noopener">阮一峰的免费招聘服务</a></h2><p>官方介绍：<br>这个帖子是周刊的免费招聘服务。如果你们公司正在招人，欢迎把招聘信息发在这个帖子里面。请简要描述，岗位名称、工作地点、岗位要求、公司简介、联系方式等等。</p><p>如果希望把信息发到正式的周刊上面，推送到所有读者，请与我联系（Email: <a href="mailto:yifeng.ruan@gmail.com" target="_blank" rel="noopener">yifeng.ruan@gmail.com</a>），价格是人民币 250元/条。</p><p>读者可以咨询，但请不要发布与招聘无关的内容，禁止对公司或岗位进行评论或抱怨。如果有意应聘，请直接与发贴人联系。</p><p>======================<br>Erdong, A Linux user !</p>]]></content>
     
@@ -1085,31 +1085,6 @@
   </entry>
   
   <entry>
-    <title>QDS04 TensorFlow</title>
-    <link href="https://erdong.site/QDS/qds04.html"/>
-    <id>https://erdong.site/QDS/qds04.html</id>
-    <published>2019-02-21T12:19:47.000Z</published>
-    <updated>2019-10-14T11:13:07.541Z</updated>
-    
-    <content type="html"><![CDATA[<p>QDS （Quick Deployment Series）快速的部署一个软件。这次我们来部署 TensorFlow。</p><a id="more"></a><h1 id="系统要求"><a href="#系统要求" class="headerlink" title="系统要求"></a>系统要求</h1><p>Ubuntu 16.04 或更高版本（64 位）<br>macOS 10.12.6 (Sierra) 或更高版本（64 位）（不支持 GPU）<br>Windows 7 或更高版本（64 位）（仅支持 Python 3）<br>Raspbian 9.0 或更高版本</p><h1 id="硬件要求"><a href="#硬件要求" class="headerlink" title="硬件要求"></a>硬件要求</h1><p>从 TensorFlow 1.6 开始，二进制文件使用 AVX 指令，这些指令可能无法在旧版 CPU 上运行。</p><p>CUDA® 计算能力为 3.5 或更高的 NVIDIA® GPU 卡。</p><h1 id="软件要求"><a href="#软件要求" class="headerlink" title="软件要求"></a>软件要求</h1><p>必须在系统中安装以下 NVIDIA® 软件：</p><ul><li>NVIDIA® GPU 驱动程序 - CUDA 9.0 需要 384.x 或更高版本。</li><li>CUDA® 工具包 - TensorFlow 支持 CUDA 9.0。</li><li>CUDA 工具包附带的 CUPTI。</li><li>cuDNN SDK（7.2 及更高版本）</li><li>（可选）NCCL 2.2，可实现多 GPU 支持。</li><li>（可选）TensorRT 4.0，可缩短在某些模型上进行推断的延迟并提高吞吐量。</li></ul><h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><h2 id="环境检测"><a href="#环境检测" class="headerlink" title="环境检测"></a>环境检测</h2><p>python 2 环境检测，如果没有某个部分，请补装。</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">python --version</span><br><span class="line">pip --version</span><br></pre></td></tr></table></figure><p>python3 和 python2 类似，换成 python3 的命令即可。</p><h2 id="安装-1"><a href="#安装-1" class="headerlink" title="安装"></a>安装</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">pip install tensorflow  // 安装 TensorFlow CPU 版本</span><br><span class="line">pip install tensorflow-gpu  // 安装 TensorFlow GPU 版本</span><br><span class="line">pip install tf-nightly    // 安装 TensorFlow CPU 暗夜版本 不稳定</span><br><span class="line">pip install tf-nightly-gpu   // 安装 TensorFlow GPU 暗夜版本 不稳定</span><br></pre></td></tr></table></figure><p>不过这样通过 pip 安装速度有点慢啊，使用了 pip 官方的源。</p><p>换阿里云的 pip 源以后很快就完成了。</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install -i https://mirrors.aliyun.com/pypi/simple tensorflow-gpu</span><br></pre></td></tr></table></figure><h1 id="验证"><a href="#验证" class="headerlink" title="验证"></a>验证</h1><p>依次输入如下命令：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">[root@node31 ~]# python</span><br><span class="line">Python 2.7.5 (default, Jul 13 2018, 13:06:57)</span><br><span class="line">[GCC 4.8.5 20150623 (Red Hat 4.8.5-28)] on linux2</span><br><span class="line">Type &quot;help&quot;, &quot;copyright&quot;, &quot;credits&quot; or &quot;license&quot; for more information.</span><br><span class="line">&gt;&gt;&gt; import tensorflow as tf</span><br><span class="line">&gt;&gt;&gt; tf.__version__</span><br><span class="line">&apos;1.12.0&apos;</span><br><span class="line">&gt;&gt;&gt; tf.__path__</span><br><span class="line">[&apos;/usr/lib/python2.7/site-packages/tensorflow&apos;, &apos;/usr/lib/python2.7/site-packages/tensorflow/python/estimator/api&apos;, &apos;/usr/lib/python2.7/site-packages/tensorflow/_api/v1&apos;]</span><br><span class="line">&gt;&gt;&gt;</span><br></pre></td></tr></table></figure><p>可以看到，已经安装了 TensorFlow 的 1.12 版本和安装的路径。</p><p>======================<br>Erdong, A Linux user !</p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;QDS （Quick Deployment Series）快速的部署一个软件。这次我们来部署 TensorFlow。&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="QDS" scheme="https://erdong.site/categories/QDS/"/>
-    
-    
-      <category term="QDS" scheme="https://erdong.site/tags/QDS/"/>
-    
-      <category term="TensorFlow" scheme="https://erdong.site/tags/TensorFlow/"/>
-    
-  </entry>
-  
-  <entry>
     <title>QDS03 pip</title>
     <link href="https://erdong.site/QDS/qds03.html"/>
     <id>https://erdong.site/QDS/qds03.html</id>
@@ -1132,6 +1107,31 @@
       <category term="QDS" scheme="https://erdong.site/tags/QDS/"/>
     
       <category term="pip" scheme="https://erdong.site/tags/pip/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>QDS04 TensorFlow</title>
+    <link href="https://erdong.site/QDS/qds04.html"/>
+    <id>https://erdong.site/QDS/qds04.html</id>
+    <published>2019-02-21T12:19:47.000Z</published>
+    <updated>2019-10-14T11:13:07.541Z</updated>
+    
+    <content type="html"><![CDATA[<p>QDS （Quick Deployment Series）快速的部署一个软件。这次我们来部署 TensorFlow。</p><a id="more"></a><h1 id="系统要求"><a href="#系统要求" class="headerlink" title="系统要求"></a>系统要求</h1><p>Ubuntu 16.04 或更高版本（64 位）<br>macOS 10.12.6 (Sierra) 或更高版本（64 位）（不支持 GPU）<br>Windows 7 或更高版本（64 位）（仅支持 Python 3）<br>Raspbian 9.0 或更高版本</p><h1 id="硬件要求"><a href="#硬件要求" class="headerlink" title="硬件要求"></a>硬件要求</h1><p>从 TensorFlow 1.6 开始，二进制文件使用 AVX 指令，这些指令可能无法在旧版 CPU 上运行。</p><p>CUDA® 计算能力为 3.5 或更高的 NVIDIA® GPU 卡。</p><h1 id="软件要求"><a href="#软件要求" class="headerlink" title="软件要求"></a>软件要求</h1><p>必须在系统中安装以下 NVIDIA® 软件：</p><ul><li>NVIDIA® GPU 驱动程序 - CUDA 9.0 需要 384.x 或更高版本。</li><li>CUDA® 工具包 - TensorFlow 支持 CUDA 9.0。</li><li>CUDA 工具包附带的 CUPTI。</li><li>cuDNN SDK（7.2 及更高版本）</li><li>（可选）NCCL 2.2，可实现多 GPU 支持。</li><li>（可选）TensorRT 4.0，可缩短在某些模型上进行推断的延迟并提高吞吐量。</li></ul><h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><h2 id="环境检测"><a href="#环境检测" class="headerlink" title="环境检测"></a>环境检测</h2><p>python 2 环境检测，如果没有某个部分，请补装。</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">python --version</span><br><span class="line">pip --version</span><br></pre></td></tr></table></figure><p>python3 和 python2 类似，换成 python3 的命令即可。</p><h2 id="安装-1"><a href="#安装-1" class="headerlink" title="安装"></a>安装</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">pip install tensorflow  // 安装 TensorFlow CPU 版本</span><br><span class="line">pip install tensorflow-gpu  // 安装 TensorFlow GPU 版本</span><br><span class="line">pip install tf-nightly    // 安装 TensorFlow CPU 暗夜版本 不稳定</span><br><span class="line">pip install tf-nightly-gpu   // 安装 TensorFlow GPU 暗夜版本 不稳定</span><br></pre></td></tr></table></figure><p>不过这样通过 pip 安装速度有点慢啊，使用了 pip 官方的源。</p><p>换阿里云的 pip 源以后很快就完成了。</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install -i https://mirrors.aliyun.com/pypi/simple tensorflow-gpu</span><br></pre></td></tr></table></figure><h1 id="验证"><a href="#验证" class="headerlink" title="验证"></a>验证</h1><p>依次输入如下命令：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">[root@node31 ~]# python</span><br><span class="line">Python 2.7.5 (default, Jul 13 2018, 13:06:57)</span><br><span class="line">[GCC 4.8.5 20150623 (Red Hat 4.8.5-28)] on linux2</span><br><span class="line">Type &quot;help&quot;, &quot;copyright&quot;, &quot;credits&quot; or &quot;license&quot; for more information.</span><br><span class="line">&gt;&gt;&gt; import tensorflow as tf</span><br><span class="line">&gt;&gt;&gt; tf.__version__</span><br><span class="line">&apos;1.12.0&apos;</span><br><span class="line">&gt;&gt;&gt; tf.__path__</span><br><span class="line">[&apos;/usr/lib/python2.7/site-packages/tensorflow&apos;, &apos;/usr/lib/python2.7/site-packages/tensorflow/python/estimator/api&apos;, &apos;/usr/lib/python2.7/site-packages/tensorflow/_api/v1&apos;]</span><br><span class="line">&gt;&gt;&gt;</span><br></pre></td></tr></table></figure><p>可以看到，已经安装了 TensorFlow 的 1.12 版本和安装的路径。</p><p>======================<br>Erdong, A Linux user !</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;QDS （Quick Deployment Series）快速的部署一个软件。这次我们来部署 TensorFlow。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="QDS" scheme="https://erdong.site/categories/QDS/"/>
+    
+    
+      <category term="QDS" scheme="https://erdong.site/tags/QDS/"/>
+    
+      <category term="TensorFlow" scheme="https://erdong.site/tags/TensorFlow/"/>
     
   </entry>
   
