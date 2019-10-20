@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://erdong.site/weekly/weekly33.html</loc>
+    
+    <lastmod>2019-10-20T15:18:43.988Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://erdong.site/Prometheus/New-Features/New-Features-in-Prometheus-2-13-0.html</loc>
     
     <lastmod>2019-10-16T15:19:40.005Z</lastmod>
@@ -569,14 +576,14 @@
   </url>
   
   <url>
-    <loc>https://erdong.site/about/index.html</loc>
+    <loc>https://erdong.site/categories/index.html</loc>
     
     <lastmod>2019-10-13T15:31:57.910Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://erdong.site/categories/index.html</loc>
+    <loc>https://erdong.site/about/index.html</loc>
     
     <lastmod>2019-10-13T15:31:57.910Z</lastmod>
     

@@ -1,6 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>第33周分享</title>
+    <url>/weekly/weekly33.html</url>
+    <content><![CDATA[<p>这里记录过去一周，我看到的值得分享的东西。</p>
+<a id="more"></a>
+
+<h1 id="资源"><a href="#资源" class="headerlink" title="资源"></a>资源</h1><h2 id="1-50-days-from-zero-to-hero-with-kubernetes"><a href="#1-50-days-from-zero-to-hero-with-kubernetes" class="headerlink" title="1. 50 days from zero to hero with kubernetes"></a>1. <a href="https://azure.microsoft.com/mediahandler/files/resourcefiles/kubernetes-learning-path/Kubernetes%20Learning%20Path%20version%201.0.pdf" target="_blank" rel="noopener">50 days from zero to hero with kubernetes</a></h2><p>微软出品的 Kubernetes 学习路径，用 50 天来完成整个学习过程。</p>
+<h2 id="2-Uber-Go语言编码规范"><a href="#2-Uber-Go语言编码规范" class="headerlink" title="2. Uber Go语言编码规范"></a>2. <a href="https://mp.weixin.qq.com/s/LYLLghOjevBDieAM_LKrjA" target="_blank" rel="noopener">Uber Go语言编码规范</a></h2><p>Uber是世界领先的生活出行服务提供商，也是Go语言的早期adopter，根据Uber工程博客的内容，大致可以判断出Go语言在Uber内部扮演了十分重要的角色。Uber内部的Go语言工程实践也是硕果累累，有大量Go实现的内部工具被Uber开源到github上，诸如被Gopher圈熟知的zap、jaeger等。2018年年末Uber将内部的Go风格规范开源到github，经过一年的积累和更新，该规范已经初具规模，并受到广大Gopher的关注。本文是该规范的中文版本，并”夹带“了部分笔者的点评，希望对国内Gopher有所帮助。</p>
+<h2 id="3-SaltStack-Chinese-ManualBook"><a href="#3-SaltStack-Chinese-ManualBook" class="headerlink" title="3.SaltStack-Chinese-ManualBook"></a>3.<a href="https://github.com/watermelonbig/SaltStack-Chinese-ManualBook" target="_blank" rel="noopener">SaltStack-Chinese-ManualBook</a></h2><p>作者 watermelonbig 基于 SaltStack 官网英文文档翻译的中文用户手册。</p>
+<h2 id="4-Salt-Tiger"><a href="#4-Salt-Tiger" class="headerlink" title="4. Salt Tiger"></a>4. <a href="https://salttiger.com/archives/" target="_blank" rel="noopener">Salt Tiger</a></h2><p>作者 Salt Tiger ，网站收集计算机类的电子书，已经有 2000多本，可以下载查看。</p>
+<h2 id="5-Kubernetes-中文社区"><a href="#5-Kubernetes-中文社区" class="headerlink" title="5. Kubernetes 中文社区"></a>5. <a href="https://www.kubernetes.org.cn" target="_blank" rel="noopener">Kubernetes 中文社区</a></h2><p>Kubernetes 中文社区是包含大量 K8S 中文资料的社区，可以经常查看。</p>
+<p>======================<br>由于无法及时收到评论内容，所以关闭评论功能。<br>大家有问题欢迎发邮件到 <a href="mailto:erdong@mail.erdong.site" target="_blank" rel="noopener">erdong@mail.erdong.site</a> ，或者 <a href="https://github.com/erdong/erdong.github.io/issues" target="_blank" rel="noopener">https://github.com/erdong/erdong.github.io/issues</a> 提 Issue ，我会及时回复。</p>
+<p>======================<br>Erdong, A Linux user !</p>
+]]></content>
+      <categories>
+        <category>weekly</category>
+      </categories>
+      <tags>
+        <tag>weekly</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Prometheus 2.13.0 新特性</title>
     <url>/Prometheus/New-Features/New-Features-in-Prometheus-2-13-0.html</url>
     <content><![CDATA[<p>Prometheus <a href="https://github.com/prometheus/prometheus/releases/tag/v2.13.0" target="_blank" rel="noopener">2.13.0</a> 现在(2019.10.04)已经发布，在上个月的 <a href="http://erdong.site/Prometheus/New-Features/New-Features-in-Prometheus-2-12-0.html">2.12.0</a> 之后又进行了一些修正和改进。</p>
