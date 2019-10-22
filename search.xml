@@ -1,6 +1,432 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Kong 的集群怎么用</title>
+    <url>/Kong/kong-06.html</url>
+    <content><![CDATA[<p>Kong 集群允许您通过添加更多的机器来处理更多的传入请求来横向扩展系统。它们将共享相同的配置，因为它们指向相同的数据库。指向相同数据存储的 Kong 节点将属于相同的 Kong 集群。</p>
+<p>您需要在Kong集群前面安装一个负载平衡器，以便在可用节点之间分配流量。</p>
+<a id="more"></a>
+
+<h1 id="Kong-集群可以做什么，不能做什么"><a href="#Kong-集群可以做什么，不能做什么" class="headerlink" title="Kong 集群可以做什么，不能做什么"></a>Kong 集群可以做什么，不能做什么</h1><p>拥有一个 Kong 集群并不意味着你的客户机流量将在您的 Kong 节点之间实现开箱即用的负载平衡。你仍然需要在Kong节点前安装一个负载平衡器来分配流量。相反，Kong集群意味着这些节点将共享相同的配置。</p>
+<p>出于性能原因，Kong在代理请求时避免数据库连接，并将数据库的内容缓存到内存中。缓存的实体包括服务、路由、消费者、插件、凭证等……由于这些值都在内存中，因此通过其中一个节点的管理API所做的任何更改都需要传播到其他节点。</p>
+<p>本文档描述了如何使这些缓存的实体失效，以及如何为用例配置Kong节点，该用例介于性能和一致性之间。</p>
+<h1 id="单节点集群"><a href="#单节点集群" class="headerlink" title="单节点集群"></a>单节点集群</h1><p>单个的 Kong 节点连到数据库创建一个单节点的 Kong 集群。通过该节点的管理 API 应用的任何更改都将立即生效。</p>
+<p>考虑一个单独的 Kong 节点A。如果我们删除之前注册的服务:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ curl -X DELETE http://127.0.0.1:8001/services/test-service</span><br></pre></td></tr></table></figure>
+
+<p>然后，任何对节点 A 的后续请求都会立即返回 <code>404 Not Found</code>，因为节点将其从本地缓存中清除。</p>
+<h1 id="多节点集群"><a href="#多节点集群" class="headerlink" title="多节点集群"></a>多节点集群</h1><p>在一个集群有多个 Kong 节点的情况下，连接到同一数据库的其他节点不会立即被通知服务已被节点 A 删除。 虽然服务不在数据库中(被节点A删除)，但它仍然在节点B的内存中。</p>
+<p>所有节点执行一个周期性的后台作业，以同步其他节点可能触发的更改。此作业的频率可通过以下方式配置:</p>
+<blockquote>
+<p>db_update_frequency (default: 5 seconds)</p>
+</blockquote>
+<p>每隔 <code>db_update_frequency</code> 秒，所有运行的 Kong 节点都将轮询数据库以获得任何更新，并在必要时从缓存中清除相关实体。</p>
+<p>如果我们从节点 A 中删除一个服务，这个更改在节点B中不会有效，直到节点B的下一次数据库轮询，该轮询将在几秒后发生，直到 <code>db_update_frequency</code> (尽管可能更快)。</p>
+<p>这使得 Kong 集群最终保持一致。</p>
+<h1 id="集群的搭建"><a href="#集群的搭建" class="headerlink" title="集群的搭建"></a>集群的搭建</h1><p>Kong 的集群在早期是通过 cluster 命令来创建和维护的，从 0.11 版本开始，变换了集群的搭建方式。参考文档 <a href="https://github.com/Kong/kong/blob/master/UPGRADE.md#upgrade-to-013x" target="_blank" rel="noopener">Kong 0.11 changeLog</a> 。</p>
+<p>从 0.11 版本之后去除了 cluster 管理功能以后，Kong 变成了完全无状态，只要是连接到同一个 Kong 数据库的节点，都认为是同一个 Kong 集群而不需要额外的通信机制，因此也不需要在 kong.conf 文件中配置 cluster 参数。</p>
+<p>Kong 集群的搭建就是把所有的 Kong 节点都连同一个 Kong 数据库就可以了，所有结果通过轮询机制去读取数据库来保证数据的一致性。</p>
+<h1 id="缓存是什么"><a href="#缓存是什么" class="headerlink" title="缓存是什么"></a>缓存是什么</h1><p>所有的核心实体，如服务、路由、插件、消费者、凭证，都由Kong缓存在内存中，并依赖于它们通过要更新的轮询机制的失效。</p>
+<p>此外，Kong还缓存数据库 的 misses。这意味着如果您配置一个没有插件的服务，Kong将缓存此信息。例子:</p>
+<p>假设我们通过节点A的管理API向该服务添加一个插件：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># node A</span><br><span class="line">$ curl -X POST http://127.0.0.1:8001/services/example-service/plugins \</span><br><span class="line">    --data &quot;name=example-plugin&quot;</span><br></pre></td></tr></table></figure>
+
+<p>由于此请求是通过节点 A 的 Admin API 发出的，因此节点 A 将在本地使其缓存无效，并在随后的请求中检测到此 API 配置了插件。</p>
+<p>此时，节点 B 还没有运行数据库同步更新缓存任务，并且仍然缓存这个 API 没有插件可以运行的数据。在节点B运行其数据库轮询作业之前，情况将一直如此。</p>
+<p>结论:所有CRUD操作都会触发缓存失效。创建(POST、PUT)将使缓存数据库的错误失效，而更新/删除(PATCH、DELETE)将使缓存数据库的错误失效。</p>
+<h1 id="如何配置数据库缓存"><a href="#如何配置数据库缓存" class="headerlink" title="如何配置数据库缓存"></a>如何配置数据库缓存</h1><p>可以在Kong配置文件中配置3个属性，其中最重要的一个属性是db_update_frequency，它决定了Kong节点在性能与一致性之间的权衡。　　</p>
+<p>　　kong 已经提供了默认的配置，为了让你权衡集群性能和数据一致性两个方面，避免意外的结果。你可以按照下面的配置步骤，改变配置的值，从而确保性能和数据一致性能够被接受。</p>
+<h2 id="1-db-update-frequency-default-5s"><a href="#1-db-update-frequency-default-5s" class="headerlink" title="1.db_update_frequency (default: 5s)"></a>1.db_update_frequency (default: 5s)</h2><p>该配置决定 kong 节点从数据库拉取更新缓存的时间间隔，同步任务执行的频率。值越小意味着同步任务将会执行的更频繁，Kong 节点的缓存数据将保持和数据库更强的一致性。值越大的时候，意味着你的 Kong 节点花更少的时间去处理同步任务，从而将更多的资源用来处理请求。</p>
+<p>Note：变更将会在 <code>db_update_frequency</code> 秒后在整个集群节点中生效。</p>
+<h2 id="2-db-update-propagation-default-0s"><a href="#2-db-update-propagation-default-0s" class="headerlink" title="2.db_update_propagation (default: 0s)"></a>2.db_update_propagation (default: 0s)</h2><p>如果你的数据库也是集群的并且最终一致性的（比如：Cassandra），你必须配置该值。它将确保 <code>db_update_propagation</code> 秒后，数据库节点间的变化在整个数据库集群中所有节点生效。当配置了该值，Kong 节点从同步任务中接收无效事件，清除本地缓存将会延迟 <code>db_update_propagation</code> 秒。</p>
+<p>如果一个 Kong 节点连接到最终一致性数据库上，且没有延迟事件需要处理，它可能会清除缓存，然后把没有更新的值再次缓存起来。（因为这个改变还没有传播到数据库集群的每一个节点，注释：数据库一致性还没有在数据库集群中达到一致，此时 Kong 缓存到期了，但是没有更新到变化事件，此时会把没有更新的值再次缓存起来，导致 Kong 也出现不一致，即便 Kong 执行了同步任务。）。</p>
+<p>你应该配置该值，通过评估数据库集群发生变更后，最终达到一致性所需要的时间。（确保数据库一致之后，才去执行 Kong 同步任务处理变更事件，从而达到 Kong 数据一致性）</p>
+<p>Note：当配置了该配置项，数据变更传播到 Kong 集群的最大时间是 <code>db_update_frequency + db_update_propagation</code> 秒。</p>
+<h2 id="3-db-cache-ttl-default-3600s"><a href="#3-db-cache-ttl-default-3600s" class="headerlink" title="3.db_cache_ttl (default: 3600s)"></a>3.db_cache_ttl (default: 3600s)</h2><p>该配置项的时间（单位秒）是 Kong 缓存数据库实体的时间（包括缓存命中或者穿透），该存活时间是一种保护措施，以防 Kong 节点漏掉处理缓存无效事件，避免旧数据长时间没有被清理。当缓存生存时间到了，缓存值将会被清理掉，下一次将会从数据库读取数据并再次缓存起来。</p>
+<h2 id="4-当使用-Cassandra-数据库"><a href="#4-当使用-Cassandra-数据库" class="headerlink" title="4.当使用 Cassandra 数据库"></a>4.当使用 Cassandra 数据库</h2><p>如果使用 Cassandra 作为 Kong 的数据库，你必须配置 <code>db_update_propagation</code> 为一个非零值。由于 Cassandra 本身是最终一致性数据库，这将确保 Kong 节点不会过早地使本地缓存失效，仅仅当再次获取到一个不是最新值的时候。如果你使用了 Cassandra 但你没有配置该值时，Kong 将会输出一条警告日志。</p>
+<p>此外，你可以配置 <code>cassandra_consistency</code> 的值为 <code>QUORUM</code> 或者 <code>LOCAL_QUORUM</code>，确保被 Kong 缓存的值是数据库中最新的。 </p>
+<h1 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h1><p>本文讲解了 Kong 的集群相关的东西，如果由于某些原因，你希望通过 Kong 查看缓存的值，或者手动清理缓存（当缓存被命中或者丢失），你可以通过使用 Admin api 的 <code>/cache</code> 接口进行管理。</p>
+<p>======================<br>由于无法及时收到评论内容，所以关闭评论功能。<br>大家有问题欢迎发邮件到 <a href="mailto:erdong@mail.erdong.site" target="_blank" rel="noopener">erdong@mail.erdong.site</a> ，或者 <a href="https://github.com/erdong/erdong.github.io/issues" target="_blank" rel="noopener">https://github.com/erdong/erdong.github.io/issues</a> 提 Issue ，我会及时回复。</p>
+<p>======================<br>Erdong, A Linux user !</p>
+]]></content>
+      <categories>
+        <category>Kong</category>
+      </categories>
+      <tags>
+        <tag>Kong</tag>
+        <tag>cluster</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Kong 的健康检查和监控</title>
+    <url>/Kong/kong-05.html</url>
+    <content><![CDATA[<p>Kong 的健康检查和监控</p>
+<p>您可以让 Kong 代理的 API 使用 ring-balancer ， 通过添加包含一个或多个目标实体的upstream 实体来配置，每个目标指向不同的IP地址(或主机名)和端口。ring-balancer 将在不同的target之间平衡负载，并基于 uptream 配置对目标执行健康检查，使它们成为健康或不健康的，无论它们是否响应，ring-balancer 将只把流量路由到健康的target。</p>
+<a id="more"></a>
+
+<p>Kong 支持两种健康检查方式，可以单独使用，也可以组合使用。</p>
+<ul>
+<li><p>active checks：其中定期请求目标中的特定 HTTP 或 HTTPS 端点，并根据其响应确定目标的健康状态;</p>
+</li>
+<li><p>passive checks： Kong 分析正在代理的通信，并根据目标的行为响应请求来确定目标的健康状况。</p>
+</li>
+</ul>
+<h1 id="健康和不健康的-target"><a href="#健康和不健康的-target" class="headerlink" title="健康和不健康的 target"></a>健康和不健康的 target</h1><p>健康检查功能的目标是为给定的 Kong 节点动态地将 target 标记为健康或不健康。没有集群范围内的健康信息同步，每个 Kong 节点分别确定其 target 的健康状况。这是可以取到的，因为在给定的点上，一个 Kong 节点可能能够成功地连接到一个目标，而另一个节点则无法到达。这样第一个节点将认为它是健康的，而第二个则会将其标记为不健康，并开始将流量路由到upstream 的其他 target。</p>
+<p>无论是主动探测(针对主动健康检查)还是代理请求(针对被动健康检查)，都会生成用于确定目标是否健康的数据。请求可能会产生TCP错误、超时或HTTP状态代码。基于此信息，健康检查器更新了一系列内部计数器:</p>
+<ul>
+<li>如果返回的状态码配置为 “healthy”，则将增加目标的 “Successes” 计数器，并清除其所有其他计数器;</li>
+<li>如果连接失败，将增加目标的 “TCP failure”计数器，并清除 “Successes” 计数器;</li>
+<li>如果超时，将增加目标的 “timeouts” 计数器并清除 “Successes” 计数器;</li>
+<li>如果返回的状态代码配置为 “unhealthy”，它将增加目标的 “HTTP failures” 计数器，并清除 “Successes” 计数器。</li>
+</ul>
+<p>如果任何 “TCP failure”、“HTTP failure” 或 “timeout” 计数器达到其配置的阈值，则target 将被标记为不健康。</p>
+<p>如果 “success” 计数器达到其配置的阈值，则 target 将被标记为健康。<br>如果一个 upstream 的所有 target 都是不健康，Kong 会将 upstream 的请求返回 <code>503 Service Unavailable</code> 。</p>
+<blockquote>
+<ol>
+<li>健康检查只对状态是 active 的 target 执行，不修改 Kong 数据库中目标的活动状态。</li>
+</ol>
+</blockquote>
+<blockquote>
+<ol start="2">
+<li>不健康的 target 不会从 loadbalancer 中删除，因此在使用哈希算法时不会对balancer 布局产生任何影响(只会跳过它们)。</li>
+</ol>
+</blockquote>
+<blockquote>
+<ol start="3">
+<li>DNS警告和 Balancer 警告也适用于健康检查。如果对 target 使用主机名，需要确保DNS服务器始终为完整的 IP地址和名称，并且不限制响应。如果不这样做，可能会导致没有执行健康检查。</li>
+</ol>
+</blockquote>
+<h1 id="健康检查的类型"><a href="#健康检查的类型" class="headerlink" title="健康检查的类型"></a>健康检查的类型</h1><p>健康检查有两种类型，分别是 <code>Active health checks</code> 和 <code>Passive health checks</code></p>
+<h2 id="Active-health-checks"><a href="#Active-health-checks" class="headerlink" title="Active health checks"></a>Active health checks</h2><p>Active health checks 就是主动探测他们的健康状态。当 upstream 实体启用活动健康检查时，Kong 将定期向 upstream 的每个 target 的配置路径发出 HTTP 或 HTTPS 请求。这允许 Kong 根据探测结果自动启用和禁用 balancer 中的 target 。</p>
+<p>Active health checks 的周期性是可以被配置的，当 target 是健康还是不健康。如果其中一个的interval值设置为零，则在相应的场景中禁用检查。如果两者都为零，则完全禁用活动健康检查。</p>
+<h2 id="Passive-health-checks"><a href="#Passive-health-checks" class="headerlink" title="Passive health checks"></a>Passive health checks</h2><p>Passive health checks 是否基于由 Kong 代理的请求(HTTP/HTTPS/TCP)执行检查，而不生成额外的流量。当 target 变得无响应时，被动健康检查器将检测到这一点，并将目标标记为不健康。Ring-balancer 将开始跳过这个 target ，因此不会有更多的流量被路由到它。</p>
+<p>当目标的问题解决，并准备再次接收流量时，Kong管理员可以手动通知health checker目标应该再次启用，通过一个Admin API端点:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ curl -i -X POST http://localhost:8001/upstreams/my_upstream/targets/10.1.2.3:1234/healthy</span><br><span class="line">HTTP/1.1 204 No Content</span><br></pre></td></tr></table></figure>
+
+<p>这个命令将广播一个集群范围的消息，以便将 “health” 状态传播到整个 Kong 集群。这将导致 Kong 节点重置在 Kong 节点的所有 worker 中运行的健康检查器的健康计数器，从而允许环平衡器再次将流量路由到目标。</p>
+<p>被动健康检查的优点是不会产生额外的流量，但它们不能自动将 target 重新标记为健康状态:“circuit is broken”，需要由系统管理员重新启用目标。</p>
+<h1 id="Kong-的监控"><a href="#Kong-的监控" class="headerlink" title="Kong 的监控"></a>Kong 的监控</h1><p>Kong 支持使用 Prometheus 进行监控数据采集，并且官方提供了采集方式和 Grafana 的Dashboard 模板</p>
+<p>官方的 <a href="https://github.com/Kong/kong-plugin-prometheus" target="_blank" rel="noopener">Kong Plugin Prometheus</a> 会定期更新，看上去比较活跃。</p>
+<p>除了官网以外，有网友也提供了一个监控模板，不过最后一次更新时间是2018 年 5 月 17 日，之后就没有更新了，大家也可以参考。<a href="https://github.com/yciabaud/kong-plugin-prometheus" target="_blank" rel="noopener">kong-prometheus-plugin</a></p>
+<h1 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h1><p>Kong 的健康检查主要介绍了健康检查的类型，这两类的健康检查是可以打开和关闭的，打开和关闭的具体方法请参考官网文档。</p>
+<p>======================<br>由于无法及时收到评论内容，所以关闭评论功能。<br>大家有问题欢迎发邮件到 <a href="mailto:erdong@mail.erdong.site" target="_blank" rel="noopener">erdong@mail.erdong.site</a> ，或者 <a href="https://github.com/erdong/erdong.github.io/issues" target="_blank" rel="noopener">https://github.com/erdong/erdong.github.io/issues</a> 提 Issue ，我会及时回复。</p>
+<p>======================<br>Erdong, A Linux user !</p>
+]]></content>
+      <categories>
+        <category>Kong</category>
+      </categories>
+      <tags>
+        <tag>Kong</tag>
+        <tag>Heath Check</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Nginx、OpenResty、Kong 的基本概念和区别联系</title>
+    <url>/Kong/kong-04.html</url>
+    <content><![CDATA[<p>Nginx、OpenRestry、Kong 这三个项目关系比较紧密： </p>
+<ul>
+<li>Nginx 是模块化设计的反向代理软件，C语言开发； </li>
+<li>OpenResty 是以 Nginx 为核心的 Web 开发平台，可以解析执行 Lua 脚本</li>
+<li>Kong 是 OpenResty 的一个应用，是一个 API 网关，具有API管理和请求代理的功能。</li>
+</ul>
+<a id="more"></a>
+<h1 id="Nginx"><a href="#Nginx" class="headerlink" title="Nginx"></a>Nginx</h1><p>Nginx  是一个高性能的 HTTP 和反向代理 web 服务器，同时也提供了 IMAP/POP3/SMTP 服务。Nginx 是由伊戈尔·赛索耶夫为俄罗斯访问量第二的 Rambler.ru 站点（俄文：Рамблер）开发的，第一个公开版本0.1.0发布于2004年10月4日。</p>
+<p>Nginx 是一个高性能的 Web 和反向代理服务器, 它具有有很多非常优越的特性:</p>
+<p>作为 Web 服务器：相比 Apache，Nginx 使用更少的资源，支持更多的并发连接，体现更高的效率，这点使 Nginx 尤其受到虚拟主机提供商的欢迎。能够支持高达 50,000 个并发连接数的响应，感谢 Nginx 为我们选择了 epoll and kqueue 作为开发模型.</p>
+<p>作为负载均衡服务器：Nginx 既可以在内部直接支持 Rails 和 PHP，也可以支持作为 HTTP代理服务器 对外进行服务。Nginx 用 C 编写, 不论是系统资源开销还是 CPU 使用效率都比 Perlbal 要好的多。</p>
+<p>作为邮件代理服务器: Nginx 同时也是一个非常优秀的邮件代理服务器（最早开发这个产品的目的之一也是作为邮件代理服务器），Last.fm 描述了成功并且美妙的使用经验。</p>
+<p>Nginx 安装非常的简单，配置文件 非常简洁（还能够支持perl语法），Bugs非常少的服务器: Nginx 启动特别容易，并且几乎可以做到7*24不间断运行，即使运行数个月也不需要重新启动。你还能够在 不间断服务的情况下进行软件版本的升级。</p>
+<h1 id="OpenResty"><a href="#OpenResty" class="headerlink" title="OpenResty"></a>OpenResty</h1><p>OpenResty® 是一个基于 Nginx 与 Lua 的高性能 Web 平台，其内部集成了大量精良的 Lua 库、第三方模块以及大多数的依赖项。用于方便地搭建能够处理超高并发、扩展性极高的动态 Web 应用、Web 服务和动态网关。</p>
+<p>OpenResty® 通过汇聚各种设计精良的 Nginx 模块（主要由 OpenResty 团队自主开发），从而将 Nginx 有效地变成一个强大的通用 Web 应用平台。这样，Web 开发人员和系统工程师可以使用 Lua 脚本语言调动 Nginx 支持的各种 C 以及 Lua 模块，快速构造出足以胜任 10K 乃至 1000K 以上单机并发连接的高性能 Web 应用系统。</p>
+<p>OpenResty® 的目标是让你的Web服务直接跑在 Nginx 服务内部，充分利用 Nginx 的非阻塞 I/O 模型，不仅仅对 HTTP 客户端请求,甚至于对远程后端诸如 MySQL、PostgreSQL、Memcached 以及 Redis 等都进行一致的高性能响应。</p>
+<h1 id="Kong"><a href="#Kong" class="headerlink" title="Kong"></a>Kong</h1><p>Kong 是 API 管理的强大效率工具。对需要从事 API 管理的广大开发员来说，它是最出色的工具之一。Kong 是开源工具，具有可扩展性和模块性，可以在任何一种基础设施上运行。多年来，Kong 一直在支持优秀的开发项目，比如 Mashape（世界上规模最大的API市场）。最棒的是，Kong得到了强大的 Nginx 的支持。</p>
+<p>Kong的主要特性</p>
+<ul>
+<li><p>Kong 的扩展性：只要增添更多的服务器实例，它就能横向扩展，毫无问题，那样你可以支持更多流量，同时确保网络延迟很短。</p>
+</li>
+<li><p>Kong 的灵活性：它可以部署在单个或多个数据中心环境的私有云或公有云上。它还支持大多数流行的操作系统，比如Linux、Mac和Windows。Kong包括许多实用技巧，以便针对大多数现代平台完成安装和配置工作。</p>
+</li>
+<li><p>Kong 的模块性：它可以与新的插件协同运行，扩展基本功能。可将你的API与许多不同的插件整合起来，以增强安全、分析、验证、日志及/或监测机制。最好的例子之一就是Nginx Plus插件（<a href="https://getkong.org/plugins/nginx-plus-monitoring/），该插件提供了服务器实时监测机制，以获得关于负载和请求的度量指标和统计数字。" target="_blank" rel="noopener">https://getkong.org/plugins/nginx-plus-monitoring/），该插件提供了服务器实时监测机制，以获得关于负载和请求的度量指标和统计数字。</a></p>
+</li>
+<li><p>Kong 的生态：虽然 Kong 是开源工具，可供每个人免费使用，但你也能获得企业版，企业版通过电子邮件、电话和聊天提供了快速支持，此外还提供初始安装、从第三方API管理工具来迁移、紧急补丁、热修复程序及更多特性。</p>
+</li>
+</ul>
+<h1 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h1><p>Nginx、OpenRestry、Kong 的关系就描述到这里。</p>
+<h1 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h1><p><a href="https://www.lijiaocn.com/项目/2018/09/29/nginx-openresty-kong.html" target="_blank" rel="noopener">https://www.lijiaocn.com/项目/2018/09/29/nginx-openresty-kong.html</a></p>
+<p>======================<br>由于无法及时收到评论内容，所以关闭评论功能。<br>大家有问题欢迎发邮件到 <a href="mailto:erdong@mail.erdong.site" target="_blank" rel="noopener">erdong@mail.erdong.site</a> ，或者 <a href="https://github.com/erdong/erdong.github.io/issues" target="_blank" rel="noopener">https://github.com/erdong/erdong.github.io/issues</a> 提 Issue ，我会及时回复。</p>
+<p>======================<br>Erdong, A Linux user !</p>
+]]></content>
+      <categories>
+        <category>Kong</category>
+      </categories>
+      <tags>
+        <tag>Kong</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Kong 四大参考说明</title>
+    <url>/Kong/kong-03.html</url>
+    <content><![CDATA[<p>Kong 的官方有很多详细的参考说明，比如配置文件、命令行、Admin API、代理、负载均衡，接下来我们简单看一下，都提供什么内容。</p>
+<p>本文主要基于 Kong 1.3 版本进行描述，如有更新，请查看最新文档。</p>
+<a id="more"></a>
+
+<h1 id="配置文件"><a href="#配置文件" class="headerlink" title="配置文件"></a>配置文件</h1><p>通过对配置文件的 深入理解，可以优化 Kong 集群、使用的数据库、配置 Nginx ，<br>官方的参考资料是 <a href="https://docs.konghq.com/1.3.x/configuration/" target="_blank" rel="noopener">Configuration Reference</a></p>
+<p>Kong 在启动时，可以通过 <code>-c</code> 或者 <code>--conf</code>参数来指定配置文件，比如：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">kong start -c /path/to/kong.conf</span><br></pre></td></tr></table></figure>
+
+<p>可以使用 check 命令来校验配置文件的语法正确性，</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ kong check &lt;path/to/kong.conf&gt;</span><br><span class="line">configuration at &lt;path/to/kong.conf&gt;</span><br><span class="line"> is valid</span><br></pre></td></tr></table></figure>
+
+<p>Kong 的配置在加载的时候也会去找同名的环境变量，所有也可以通过环境变量来配置 Kong，而且环境变量的优先级高于配置文件。可以通过环境变量来配置 Kong 这样方便了基于容器的部署和运行。如果要使用环境变量，需要以 <code>KONG_</code> 字段开头。</p>
+<h1 id="命令行参考"><a href="#命令行参考" class="headerlink" title="命令行参考"></a>命令行参考</h1><p>所提供的CLI(命令行接口)允许您启动、停止和管理 Kong 实例。CLI 可以管理本地节点(如在当前机器上)。可以参考官网文档<br><a href="https://docs.konghq.com/1.3.x/cli/" target="_blank" rel="noopener">CLI Reference</a></p>
+<p>主要由如下命令</p>
+<h2 id="全局标记"><a href="#全局标记" class="headerlink" title="全局标记"></a>全局标记</h2><p>所有的命令都可以使用如下参数</p>
+<ul>
+<li>–help ： 打印命令的帮助信息</li>
+<li>–v ： 打开详情模式</li>
+<li>–vv ： 打开 debug 模式</li>
+</ul>
+<h2 id="可用的命令"><a href="#可用的命令" class="headerlink" title="可用的命令"></a>可用的命令</h2><ul>
+<li>kong check 检查配置文件语法等等</li>
+<li>kong config 使用申明式配置文件。</li>
+<li>kong health 检查该节点上的 kong 是否在运行</li>
+<li>kong migration 管理 Kong 的数据库</li>
+<li>kong prepare 此命令准备Kong前缀文件夹及其子文件夹和文件。</li>
+<li>kong quit 优雅的退出 Kong 实例</li>
+<li>kong reload 重载 kong 实例配置</li>
+<li>kong restart 重启 kong 实例</li>
+<li>kong start 启动 kong 实例</li>
+<li>kong stop 停止 kong 实例</li>
+<li>kong version 打印版本信息</li>
+</ul>
+<h1 id="Admin-API-参考"><a href="#Admin-API-参考" class="headerlink" title="Admin API 参考"></a>Admin API 参考</h1><p>Admin API 的说明可以参考官网文档：<br><a href="https://docs.konghq.com/1.3.x/admin-api/" target="_blank" rel="noopener">Admin API Reference</a></p>
+<p>Admin API 接受 2 两种连接类型在每个终端。<br>分别是</p>
+<ul>
+<li>application/x-www-from-urlencoded</li>
+<li>application/json</li>
+</ul>
+<p>共有 9 个对象，分别是：</p>
+<ul>
+<li>Service Object</li>
+<li>Route Object</li>
+<li>Consumer Object</li>
+<li>Plugin Object-Precedence</li>
+<li>Certificate Object</li>
+<li>CA Certificate Object</li>
+<li>SNI Object</li>
+<li>Upstream Object</li>
+<li>Target Object</li>
+</ul>
+<h1 id="Proxy-参考"><a href="#Proxy-参考" class="headerlink" title="Proxy 参考"></a>Proxy 参考</h1><p>在本文档中，我们将通过详细解释Kong的路由功能和内部工作原理来介绍它的代理功能。</p>
+<p>Kong 公开了几个接口，可以通过两个配置属性进行调整:</p>
+<ul>
+<li>proxy_listen，它定义了一个地址/端口列表，Kong将在这些地址/端口上接受来自客户机的公共通信，并将其代理到您的上游服务(默认为8000)。</li>
+<li>admin_listen，它还定义了一个地址和端口列表，但是这些应该被限制为只能由管理员访问，因为它们公开了Kong的配置功能:Admin API(默认情况下为8001)。<br><a href="https://docs.konghq.com/1.3.x/proxy/" target="_blank" rel="noopener">Proxy Reference</a></li>
+</ul>
+<p>Kong 经常用到的术语有：</p>
+<ul>
+<li>client : 指下游客户向 Kong 代理端口发出请求。</li>
+<li>upstream service ：指自己位于 Kong 后面的 API/Service，客户端请求被转发到这些API/Service。</li>
+<li>Service : 顾名思义，服务实体是上游服务的抽象。服务的示例包括数据转换微服务、计费API等。</li>
+<li>Route : 这是指 Kong 路由实体。Route 是进入 Kong 的入口点，并为要匹配的请求定义规则，然后路由到给定的服务。</li>
+<li>Plugin : 指 Kong 的 “plugins”，它是在代理生命周期中运行的业务逻辑片段。插件可以通过管理 API 进行配置——可以是全局的(所有传入的流量)，也可以是在特定的路由和服务上配置。</li>
+</ul>
+<h1 id="负载均衡参考"><a href="#负载均衡参考" class="headerlink" title="负载均衡参考"></a>负载均衡参考</h1><p>Kong 为多个后端服务提供了多种负载平衡请求的方法: 一种简单的基于 DNS 的方法，另一种是更动态的环形平衡器，该平衡器还允许在不需要DNS服务器的情况下进行服务注册。</p>
+<p>负载均衡可以参考官网文档<br><a href="https://docs.konghq.com/1.3.x/loadbalancing/" target="_blank" rel="noopener">Load Balancing Reference</a>  来了解。</p>
+<h2 id="基于-DNS-的负载均衡"><a href="#基于-DNS-的负载均衡" class="headerlink" title="基于 DNS 的负载均衡"></a>基于 DNS 的负载均衡</h2><p>当使用基于 DNS 的负载平衡时，后端服务的注册是在 Kong 之外完成的，而 Kong 只接收来自 DNS 服务器的更新。</p>
+<p>如果主机名没有解析为上游名称或 DNS 主机文件中的名称，则使用包含主机名(而不是IP地址)的主机定义的每个服务都将自动使用基于 DNS 的负载平衡。</p>
+<p>DNS 记录 ttl 设置(生存时间)决定信息刷新的频率。当使用 ttl 为 0 时，每个请求都将使用自己的 DNS 查询进行解析。这将带来性能损失，但是更新/更改的延迟将非常低。</p>
+<p>A 记录</p>
+<p>一个 A 记录对应一个或者多个 IP 地址，因此，当主机名解析为 A 记录时，每个后端服务必须有自己的IP地址。</p>
+<p>因为没有权重信息，所以所有条目在负载平衡器中都将被视为同等权重，并且平衡器将进行直接的循环。</p>
+<p>SRV 记录<br>SRV记录包含所有IP地址的权重和端口信息。后端服务可以通过IP地址和端口号的唯一组合来标识。因此，一个IP地址可以在不同的端口上承载相同服务的多个实例。</p>
+<p>因为权重信息是可用的，所以每个条目将在负载平衡器中获得自己的权重，并执行加权循环。</p>
+<p>DNS 的优先级</p>
+<p>1、前面解析的最后一个成功类型<br>2、SRV 记录<br>3、A记录<br>4、CNAME 记录</p>
+<p>这些可以在配置文件的 <code>dns_order</code> 进行配置。</p>
+<h2 id="基于-Ring-balancer-的负载均衡"><a href="#基于-Ring-balancer-的负载均衡" class="headerlink" title="基于 Ring-balancer 的负载均衡"></a>基于 Ring-balancer 的负载均衡</h2><p>使用 Ring-balancer 时，后端服务的添加和删除将由 Kong 处理，不需要 DNS 更新。Kong 将作为服务注册处。节点可以通过一个HTTP请求添加/删除，并将立即启动/停止接收流量。</p>
+<p>配置 Ring-balancer 工作需要有 Upstream 和 target 两个实体。</p>
+<ul>
+<li>target ： 带有后端服务所在端口号的IP地址或主机名，例如。“192.168.100.12:80”。每个目标都获得一个额外的权重，以指示它获得的相对负载。IP地址可以是IPv4和IPv6格式。</li>
+<li>upstream ： 一个 <code>virtual hostname</code>，可用于路由的 <code>host</code> 字段，例如一个 upstream 是 weather.v2 会收到服务 host=weather.v2.service 的所有请求。</li>
+</ul>
+<h1 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h1><p>本来大致讲述了 Kong 的配置文件、命令行、代理、负载均衡等内容。</p>
+<p>======================<br>由于无法及时收到评论内容，所以关闭评论功能。<br>大家有问题欢迎发邮件到 <a href="mailto:erdong@mail.erdong.site" target="_blank" rel="noopener">erdong@mail.erdong.site</a> ，或者 <a href="https://github.com/erdong/erdong.github.io/issues" target="_blank" rel="noopener">https://github.com/erdong/erdong.github.io/issues</a> 提 Issue ，我会及时回复。</p>
+<p>======================<br>Erdong, A Linux user !</p>
+]]></content>
+      <categories>
+        <category>Kong</category>
+      </categories>
+      <tags>
+        <tag>Kong</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>KongA 介绍</title>
+    <url>/Kong/kong-02.html</url>
+    <content><![CDATA[<p>KongA 是 Kong 的一个 GUI 工具。GitHub 地址是 <a href="https://github.com/pantsel/konga" target="_blank" rel="noopener">https://github.com/pantsel/konga</a> 。</p>
+<a id="more"></a>
+
+<h1 id="KongA-概述"><a href="#KongA-概述" class="headerlink" title="KongA 概述"></a>KongA 概述</h1><p>KongA 带来的一个最大的便利就是可以很好地通过UI观察到现在 Kong 的所有的配置，并且可以对于管理 Kong 节点情况进行查看、监控和预警，KongA 主要特性如下：</p>
+<ul>
+<li>多用户管理</li>
+<li>管理多个 Kong 节点</li>
+<li>电子邮件异常信息通知</li>
+<li>管理所有Kong Admin API</li>
+<li>使用快照备份，还原和迁移Kong节点</li>
+<li>使用运行状况检查监控节点和API状态</li>
+<li>轻松的数据库集成（MySQL，postgresSQL，MongoDB）</li>
+</ul>
+<p>KongA 当前最新版本是 v0.14.1（update：2019.01.28），KongA 从 v0.14.0 开始，只支持 Kong 大于 v1.0.0 的版本。如果 Kong 的版本低于 v1.0.0 ，需要使用 konga:legacy 分支去构建发布版本。</p>
+<p>KongA 的使用依赖如下内容：</p>
+<ul>
+<li>一个安装好，处于运行状态的 Kong</li>
+<li>Nodejs &gt;= 8 （推荐使用 8.11.3 LTS 版本）</li>
+<li>Npm</li>
+</ul>
+<p>KongA 的安装参考它在 GitHub 上的 <a href="https://github.com/pantsel/konga#installation" target="_blank" rel="noopener">Installation</a> 即可。</p>
+<p>如果使用 Docker 进行安装的话，使用 Kong 创建的 Docker 网络，启动命令如下：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">docker run -p 1337:1337 \</span><br><span class="line">             --network kong-net \</span><br><span class="line">             --name konga \</span><br><span class="line">             -e &quot;NODE_ENV=production&quot; \</span><br><span class="line">             pantsel/konga:0.14.1</span><br></pre></td></tr></table></figure>
+
+<p>启动后访问 1337 端口 即可访问 KongA 首页，并且可以注册自己的 KongA 账号。</p>
+<p>这样启动的 KongA 可以快速使用，但是如果重新部署数据就丢失了，KongA 和 Kong 一样都可以使用外部数据库来做到数据持久化存储。在启动 KongA 的时候连接数据库，并且设置好数据库连接参数。</p>
+<h1 id="KongA-基本使用"><a href="#KongA-基本使用" class="headerlink" title="KongA 基本使用"></a>KongA 基本使用</h1><h2 id="创建用户"><a href="#创建用户" class="headerlink" title="创建用户"></a>创建用户</h2><p>启动 KongA 以后，首先注册账户，如图所示：<br><img src="https://image.erdong.site/blog/2019/10/16/15694939314024.png" alt="KongA login"></p>
+<h2 id="添加-Kong"><a href="#添加-Kong" class="headerlink" title="添加 Kong"></a>添加 Kong</h2><p>在 KongA 里需要先添加 Kong 才能使用。</p>
+<p>KongA 左侧的菜单栏分为两大类，分别是 API GATEWAY 和 APPLICATION。在 APPLICATION 下有一个 CONNECTIONS 选项，在这个选项里新建一个 Kong 的连接，点击<code>NEW CONNECTION</code> 后选择认证类型，认证类型可以选择DEFAULT、KEY AUTH、JWT AUTH ，如果选择 DEFAULT 填入如下信息：</p>
+<ul>
+<li>NAME ：Kong 的名称，用来标识不同的 Kong。</li>
+<li>KONG ADMIN URL ：填入 Kong 的 admin url，用来连接 Kong。</li>
+</ul>
+<p>填好以后点击 <code>CREATE CONNECTION</code> 来创建 Kong。</p>
+<h2 id="KongA-的配置。"><a href="#KongA-的配置。" class="headerlink" title="KongA 的配置。"></a>KongA 的配置。</h2><p>KongA 连接好 Kong 以后，剩下的就是管理 Kong 了，主要需要配置 Services 、Routes、Upstream 三个部分。</p>
+<p>Services 主要是配置 upstream 的地址，</p>
+<p>Routes 主要配置请求到来之后不同的 path 路径按照不同的路由转发</p>
+<p>Upstream 主要配置 url 的代理最后转发到的机器上，可以是一个，也可以是多个按照权重进行分配。除了转发以为，还可以配置健康检查。</p>
+<h1 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h1><p>本文主要讲解了 KongA 的简单使用。</p>
+<p>======================<br>由于无法及时收到评论内容，所以关闭评论功能。<br>大家有问题欢迎发邮件到 <a href="mailto:erdong@mail.erdong.site" target="_blank" rel="noopener">erdong@mail.erdong.site</a> ，或者 <a href="https://github.com/erdong/erdong.github.io/issues" target="_blank" rel="noopener">https://github.com/erdong/erdong.github.io/issues</a> 提 Issue ，我会及时回复。</p>
+<p>======================<br>Erdong, A Linux user !</p>
+]]></content>
+      <categories>
+        <category>Kong</category>
+      </categories>
+      <tags>
+        <tag>Kong</tag>
+        <tag>KongA</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Kong 介绍</title>
+    <url>/Kong/kong-01.html</url>
+    <content><![CDATA[<h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><p>Kong 是在客户端和（微）服务间转发API通信的API网关，通过插件扩展功能。</p>
+<p>Kong 的官方网站，<a href="https://konghq.com/kong" target="_blank" rel="noopener">https://konghq.com/kong</a><br>Kong 的官方 Github 站点：<a href="https://github.com/kong/kong" target="_blank" rel="noopener">https://github.com/kong/kong</a><br>Kong 有两个主要组件：</p>
+<p>Kong Server ：基于 nginx 的服务器，用来接收 API 请求。<br>Apache Cassandra ：用来存储操作数据。</p>
+<a id="more"></a>
+<p>Kong 的数据存储支持两个组件，Cassandra 和 PostgreSQL 。</p>
+<p>Kong 官方推荐的 GUI 工具叫 Kong-Dashboard，但是友好度不太好。</p>
+<p>Kong 还有一个 GUI 的工具叫做 KongA，GitHub 地址是  <a href="https://github.com/pantsel/konga" target="_blank" rel="noopener">https://github.com/pantsel/konga</a>  。</p>
+<p>你可以通过增加更多 Kong Server 机器对 Kong 服务进行水平扩展，通过前置的负载均衡器向这些机器分发请求。根据文档描述，两个Cassandra节点就足以支撑绝大多数情况，但如果网络非常拥挤，可以考虑适当增加更多节点。</p>
+<p>对于开源社区来说，Kong 中最诱人的一个特性是可以通过插件扩展已有功能，这些插件在 API 请求响应循环的生命周期中被执行。插件使用 Lua 编写，而且 Kong 还有如下几个基础功能：HTTP 基本认证、密钥认证、CORS（ Cross-origin Resource Sharing，跨域资源共享）、TCP、UDP、文件日志、API 请求限流、请求转发以及 nginx 监控。</p>
+<p>Kong 包可运行在部分的 Linux 发行版（包括CentOS、RHEL、Debian、Ubuntu）、Mac OS X 和 Docker 、Kubernetes、AWS-cloud、Google-Cloud 中，无论是本地机还是云端服务器皆可运行。</p>
+<p>除了免费的开源版本，Mashape 还提供了付费的企业版，其中包括技术支持、使用培训服务以及 API 分析插件。</p>
+<h1 id="基于-rpm-安装"><a href="#基于-rpm-安装" class="headerlink" title="基于 rpm 安装"></a>基于 rpm 安装</h1><p>当前基于 CentOS 7 进行安装。</p>
+<p>当前 Kong 的最新版本是 1.3.0 。</p>
+<p>下载软件包可以从官方地址下载</p>
+<p><a href="https://bintray.com/kong/kong-rpm/download_file?file_path=centos/7/kong-1.3.0.el7.amd64.rpm" target="_blank" rel="noopener">https://bintray.com/kong/kong-rpm/download_file?file_path=centos/7/kong-1.3.0.el7.amd64.rpm</a></p>
+<p>也可以使用yum 仓库进行下载，<br>修改 yum 仓库的 repo 文件的 baseurl 路径为：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">baseurl=https://kong.bintray.com/kong-rpm/centos/7</span><br></pre></td></tr></table></figure>
+
+<p>我们接下来使用 yum 的 epel 源来进行安装。</p>
+<h2 id="安装-rpm-包"><a href="#安装-rpm-包" class="headerlink" title="安装 rpm 包"></a>安装 rpm 包</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">yum install epel-release</span><br><span class="line">yum install kong-1.3.0.*.noarch.rpm --nogpgcheck</span><br></pre></td></tr></table></figure>
+
+<h2 id="安装数据存储的数据库"><a href="#安装数据存储的数据库" class="headerlink" title="安装数据存储的数据库"></a>安装数据存储的数据库</h2><p>Kong 在运行过程中可以有数据库，也可以没有数据库。</p>
+<p>如果你要使用数据库，你需要使用 <code>kong.conf</code> 配置文件中去配置启动数据库作为数据存储的方式，以及相应的路由或者 Kong 的代理。</p>
+<p>如果你不需要使用数据数据库，那么你在   <code>kong.conf</code> 文件中指定一个 <code>kong.yml</code>的声明式配置文件来作为数据存储的文件。</p>
+<p>Kong 支持 PostgreSQL 9.5+ 和 Cassandra 3.xx 来作为他的数据存储数据库。</p>
+<p>如果使用数据库：</p>
+<p>如果你使用 PostgreSQL ，需要初始化一个数据库和一个用户，例如：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">CREATE USER kong; CREATE DATABASE kong OWNER kong;</span><br></pre></td></tr></table></figure>
+
+<p>现在 运行 Kong migrations</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">kong migrations bootstrap [-c /path/to/kong.conf]</span><br></pre></td></tr></table></figure>
+
+<p>如果不使用数据库：</p>
+<p>如果要以无db模式运行Kong，应该首先生成声明性配置文件。使用下面的命令在当前的文件夹下，生成一个普通的 <code>kong.yml</code> </p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">kong config init</span><br></pre></td></tr></table></figure>
+
+<p>在生成好 <code>kong.yml</code> 文件后，编辑你的 <code>kong.conf</code> 文件，设置如下参数：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">database = off</span><br><span class="line">declarative_config = /path/to/kong.yml</span><br></pre></td></tr></table></figure>
+
+<h2 id="启动-kong"><a href="#启动-kong" class="headerlink" title="启动 kong"></a>启动 kong</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">kong start [-c /path/to/kong.conf]</span><br></pre></td></tr></table></figure>
+
+<p>如果要停止，请使用如下命令来停止</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">kong stop</span><br></pre></td></tr></table></figure>
+
+<p>重载命令是 </p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">kong reload</span><br></pre></td></tr></table></figure>
+
+<h2 id="使用-Kong"><a href="#使用-Kong" class="headerlink" title="使用 Kong"></a>使用 Kong</h2><p>Kong 默认运行在本地的 8001 端口</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">curl -i http://localhost:8001/</span><br></pre></td></tr></table></figure>
+
+<h1 id="基于-Docker-安装-Kong"><a href="#基于-Docker-安装-Kong" class="headerlink" title="基于 Docker 安装 Kong"></a>基于 Docker 安装 Kong</h1><h2 id="使用数据库"><a href="#使用数据库" class="headerlink" title="使用数据库"></a>使用数据库</h2><p>接下来可以快速的连接到 Kong 容器以及他的数据库容器。</p>
+<h3 id="创建-Docker-网络"><a href="#创建-Docker-网络" class="headerlink" title="创建 Docker 网络"></a>创建 Docker 网络</h3><p>需要创建一个自定义的网络，运行容器发现并且彼此之间通信，接下来创建一个名称为 <code>kong-net</code> 的网络，也可以使用其他名称。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">docker network create kong-net</span><br></pre></td></tr></table></figure>
+
+<h3 id="启动数据库"><a href="#启动数据库" class="headerlink" title="启动数据库"></a>启动数据库</h3><p>如果你想要使用 Cassandra 容器</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">docker run -d --name kong-database \</span><br><span class="line">              --network=kong-net \</span><br><span class="line">              -p 9042:9042 \</span><br><span class="line">              cassandra:3</span><br></pre></td></tr></table></figure>
+
+<p>如果你想要使用 PostgreSQL  容器</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">docker run -d --name kong-database \</span><br><span class="line">              --network=kong-net \</span><br><span class="line">              -p 5432:5432 \</span><br><span class="line">              -e &quot;POSTGRES_USER=kong&quot; \</span><br><span class="line">              -e &quot;POSTGRES_DB=kong&quot; \</span><br><span class="line">              postgres:9.6</span><br></pre></td></tr></table></figure>
+
+<h3 id="初始化数据库"><a href="#初始化数据库" class="headerlink" title="初始化数据库"></a>初始化数据库</h3><p>运行 migrations 使用一个短暂的 Kong 容器</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">docker run --rm \</span><br><span class="line">     --network=kong-net \</span><br><span class="line">     -e &quot;KONG_DATABASE=postgres&quot; \</span><br><span class="line">     -e &quot;KONG_PG_HOST=kong-database&quot; \</span><br><span class="line">     -e &quot;KONG_CASSANDRA_CONTACT_POINTS=kong-database&quot; \</span><br><span class="line">     kong:latest kong migrations bootstrap</span><br></pre></td></tr></table></figure>
+
+<p>在上边的示例中，需要你自行修改你的 <code>KONG_DATABASE</code> 参数。</p>
+<h3 id="启动-Kong"><a href="#启动-Kong" class="headerlink" title="启动 Kong"></a>启动 Kong</h3><p>当 migration 已经执行，并且数据库已经准备好，启动 Kong 容器来连接数据库容器，比如：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">docker run -d --name kong \</span><br><span class="line">     --network=kong-net \</span><br><span class="line">     -e &quot;KONG_DATABASE=postgres&quot; \</span><br><span class="line">     -e &quot;KONG_PG_HOST=kong-database&quot; \</span><br><span class="line">     -e &quot;KONG_CASSANDRA_CONTACT_POINTS=kong-database&quot; \</span><br><span class="line">     -e &quot;KONG_PROXY_ACCESS_LOG=/dev/stdout&quot; \</span><br><span class="line">     -e &quot;KONG_ADMIN_ACCESS_LOG=/dev/stdout&quot; \</span><br><span class="line">     -e &quot;KONG_PROXY_ERROR_LOG=/dev/stderr&quot; \</span><br><span class="line">     -e &quot;KONG_ADMIN_ERROR_LOG=/dev/stderr&quot; \</span><br><span class="line">     -e &quot;KONG_ADMIN_LISTEN=0.0.0.0:8001, 0.0.0.0:8444 ssl&quot; \</span><br><span class="line">     -p 8000:8000 \</span><br><span class="line">     -p 8443:8443 \</span><br><span class="line">     -p 8001:8001 \</span><br><span class="line">     -p 8444:8444 \</span><br><span class="line">     kong:latest</span><br></pre></td></tr></table></figure>
+
+<h3 id="使用-Kong-1"><a href="#使用-Kong-1" class="headerlink" title="使用 Kong"></a>使用 Kong</h3><p>Kong 运行在 8001</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">curl -i http://localhost:8001/</span><br></pre></td></tr></table></figure>
+
+<h2 id="无数据库模式"><a href="#无数据库模式" class="headerlink" title="无数据库模式"></a>无数据库模式</h2><h3 id="创建-Docker-网络-1"><a href="#创建-Docker-网络-1" class="headerlink" title="创建 Docker 网络"></a>创建 Docker 网络</h3><p>需要创建一个自定义的网络，运行容器发现并且彼此之间通信，接下来创建一个名称为 <code>kong-net</code> 的网络，也可以使用其他名称。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">docker network create kong-net</span><br></pre></td></tr></table></figure>
+
+<p>在没有数据库的模式下，不一定需要创建一个专用的网络，但是创建以后可以更好的用来添加其他内容，比如 Redis 集群支持的限速插件。</p>
+<h3 id="创建-Docker-卷"><a href="#创建-Docker-卷" class="headerlink" title="创建 Docker 卷"></a>创建 Docker 卷</h3><p>对于本指南的目的，Docker 卷是主机内的一个文件夹。可以将其映射到容器中的文件夹，我们给卷起一个名字，叫 kong-vol</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">docker volume create kong-vol</span><br></pre></td></tr></table></figure>
+
+<p>使用 如下命令查看 卷的 挂载点路径</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ docker volume inspect kong-vol</span><br><span class="line">[</span><br><span class="line">    &#123;</span><br><span class="line">        &quot;CreatedAt&quot;: &quot;2019-05-28T12:40:09Z&quot;,</span><br><span class="line">        &quot;Driver&quot;: &quot;local&quot;,</span><br><span class="line">        &quot;Labels&quot;: &#123;&#125;,</span><br><span class="line">        &quot;Mountpoint&quot;: &quot;/var/lib/docker/volumes/kong-vol/_data&quot;,</span><br><span class="line">        &quot;Name&quot;: &quot;kong-vol&quot;,</span><br><span class="line">        &quot;Options&quot;: &#123;&#125;,</span><br><span class="line">        &quot;Scope&quot;: &quot;local&quot;</span><br><span class="line">    &#125;</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+
+<p>记录 MountPoint 的路径，下边会用到。</p>
+<h3 id="初始化配置文件"><a href="#初始化配置文件" class="headerlink" title="初始化配置文件"></a>初始化配置文件</h3><p>按照声明是配置文件的规范进行修改配置文件，添加必要的配置项，比如 serveice、route、plugins、consumer 等等，保存配置文件在 MountPoint 的路径下，本文会放在 <code>/var/lib/docker/volumes/kong-vol/_data/kong.yml</code></p>
+<h3 id="在无数据库模式下启动-Kong"><a href="#在无数据库模式下启动-Kong" class="headerlink" title="在无数据库模式下启动 Kong"></a>在无数据库模式下启动 Kong</h3><p>使用如下命令启动 Kong ，并且使用 <code>-v</code> 参数挂载数据卷，使用 <code>-e</code> 参数指定必须的环境变量。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ docker run -d --name kong \</span><br><span class="line">     --network=kong-net \</span><br><span class="line">     -v &quot;kong-vol:/usr/local/kong/declarative&quot; \</span><br><span class="line">     -e &quot;KONG_DATABASE=off&quot; \</span><br><span class="line">     -e &quot;KONG_DECLARATIVE_CONFIG=/usr/local/kong/declarative/kong.yml&quot; \</span><br><span class="line">     -e &quot;KONG_PROXY_ACCESS_LOG=/dev/stdout&quot; \</span><br><span class="line">     -e &quot;KONG_ADMIN_ACCESS_LOG=/dev/stdout&quot; \</span><br><span class="line">     -e &quot;KONG_PROXY_ERROR_LOG=/dev/stderr&quot; \</span><br><span class="line">     -e &quot;KONG_ADMIN_ERROR_LOG=/dev/stderr&quot; \</span><br><span class="line">     -e &quot;KONG_ADMIN_LISTEN=0.0.0.0:8001, 0.0.0.0:8444 ssl&quot; \</span><br><span class="line">     -p 8000:8000 \</span><br><span class="line">     -p 8443:8443 \</span><br><span class="line">     -p 8001:8001 \</span><br><span class="line">     -p 8444:8444 \</span><br><span class="line">     kong:latest</span><br></pre></td></tr></table></figure>
+
+<h3 id="使用-Kong-2"><a href="#使用-Kong-2" class="headerlink" title="使用 Kong"></a>使用 Kong</h3><p>Kong 启动后，就可以使用了，可以使用如下方式来访问 Kong</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">curl -i http://localhost:8001/</span><br></pre></td></tr></table></figure>
+
+<p>比如，获取一个service 的列表</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">curl -i http://localhost:8001/services</span><br></pre></td></tr></table></figure>
+
+<h1 id="Kong-的默认端口"><a href="#Kong-的默认端口" class="headerlink" title="Kong 的默认端口"></a>Kong 的默认端口</h1><p>Kong 一切正常，启动以后会默认监听如下端口</p>
+<ul>
+<li><code>:8000</code> Kong 监听来自客户端的传入 HTTP 请求，并将其转发到上游服务。</li>
+<li><code>:8443</code> Kong 监听来自 HTTPS 流量，这个端口的行为类似于 <code>:8000</code>，只是用来监控 HTTPS 的请求，没有转发功能，这个端口可以在配置文件里关闭。</li>
+<li><code>:8001</code> Admin API 接口用来对 Kong 的监听服务进行配置。</li>
+<li><code>:8444</code> Admin API 监听 HTTPS 的流量。</li>
+</ul>
+<h1 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h1><p>本文描述了 Kong 是什么，以及如何在 CentOS 下和 Docker 下进行安装。Kong 是 OpenResty 的一个应用组件，如果要从源码安装 Kong 的话，需要先安装 OpenResty，具体参考 <a href="https://docs.konghq.com/install/source/?_ga=2.5871988.63313777.1569377530-595520565.1569377530" target="_blank" rel="noopener">Compile Source</a></p>
+<p>======================<br>由于无法及时收到评论内容，所以关闭评论功能。<br>大家有问题欢迎发邮件到 <a href="mailto:erdong@mail.erdong.site" target="_blank" rel="noopener">erdong@mail.erdong.site</a> ，或者 <a href="https://github.com/erdong/erdong.github.io/issues" target="_blank" rel="noopener">https://github.com/erdong/erdong.github.io/issues</a> 提 Issue ，我会及时回复。</p>
+<p>======================<br>Erdong, A Linux user !</p>
+]]></content>
+      <categories>
+        <category>Kong</category>
+      </categories>
+      <tags>
+        <tag>Kong</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>第33周分享</title>
     <url>/weekly/weekly33.html</url>
     <content><![CDATA[<p>这里记录过去一周，我看到的值得分享的东西。</p>
@@ -165,15 +591,17 @@
       </tags>
   </entry>
   <entry>
-    <title>【翻译】Prometheus 2.12.0 新特性</title>
-    <url>/Prometheus/New-Features/New-Features-in-Prometheus-2-12-0.html</url>
-    <content><![CDATA[<p>Prometheus <a href="https://github.com/prometheus/prometheus/releases/tag/v2.12.0" target="_blank" rel="noopener">2.12.0</a> 现在(2019.08.17)已经发布，在上个月的 <a href="http://erdong.site/Prometheus/New-Features/New-Features-in-Prometheus-2-11-0.html">2.11.0</a> 之后又进行了一些修正和改进。</p>
+    <title>【翻译】Prometheus 2.11.0 新特性</title>
+    <url>/Prometheus/New-Features/New-Features-in-Prometheus-2-11-0.html</url>
+    <content><![CDATA[<p>Prometheus <a href="https://github.com/prometheus/prometheus/releases/tag/v2.11.0" target="_blank" rel="noopener">2.11.0</a> 现在(2019.07.9)已经发布，在5月的 <a href="http://erdong.site/Prometheus/New-Features/New-Features-in-Prometheus-2-10-0.html">2.10.0</a> 之后又进行了一些修正和改进。</p>
 <a id="more"></a>
-<p>在当前的 6 周发布周期中，每一个 Prometheus 版本都有比较少的特性，但是发布的更有规律。在这个版本中最引人注目的特性是，如果 Prometheus 在下一次启动时崩溃，它将打印正在运行的 PromQL ，这有助于查找开销过大的查询。</p>
-<p>在内存方面 TSDB 有很多的性能改进，还添加了一个 <code>prometheus_tsdb_retention_limit_bytes</code> 的指标。虽然与用户无关，但 TSDB 存储库已经合并到 GitHub 上的  Prometheus 主存储库中。这将使我们作为开发人员的生活更加轻松。</p>
-<p>还有许多改进、bug修复和其他更改，可以查看 <a href="https://github.com/prometheus/prometheus/releases/tag/v2.12.0" target="_blank" rel="noopener">release notes</a> 来获取更多的信息。</p>
+
+<p>从TSDB开始，记录逻辑有了更多的性能改进。特别需要注意的是，如果您有一个像 <code>a|b</code> 这样的正则表达式(例如 Grafana 为选择多个变量的表达式)，那么它现在被评估为查找而不是正则表达式扫描，因此 <code>x=~&quot;a&quot;</code> 现在和 <code>x=&quot;a&quot;</code>一样高效。</p>
+<p>对于 WAL 的 “unknown series references” 现在已经完全修复。每次头部压缩时都会启动一个新的段，这对于在低容量实例上减少磁盘空间很有用，对于现在应该完全修复的WAL“未知系列引用”，在每次头部压缩时都会启动一个新的段，这对于在低卷实例上减少磁盘空间很有用，并且还有 还有一个选择进入 <code>--storage.tsdb.wal-compression</code>的标志来压缩 WAL 。</p>
+<p>在 Prometheus 中，PromQL和远程写都有性能改进。现在可以像在 <code>prometheus.yml</code> 中一样，将 globs 用于单元测试的规则文件。还有一个配置选项可以通过 Alertmanager 的 v2 API 接口来获取。</p>
+<p>还有许多改进、bug修复和其他更改，可以查看 <a href="https://github.com/prometheus/prometheus/releases/tag/v2.11.0" target="_blank" rel="noopener">release notes</a> 来获取更多的信息。</p>
 <h1 id="原文链接"><a href="#原文链接" class="headerlink" title="原文链接"></a>原文链接</h1><ul>
-<li><a href="https://www.robustperception.io/new-features-in-prometheus-2-12-0" target="_blank" rel="noopener">https://www.robustperception.io/new-features-in-prometheus-2-12-0</a> ， By Brian Brazil</li>
+<li><a href="https://www.robustperception.io/new-features-in-prometheus-2-11-0" target="_blank" rel="noopener">https://www.robustperception.io/new-features-in-prometheus-2-11-0</a> ， By Brian Brazil</li>
 </ul>
 <p>======================<br>Erdong, A Linux user !</p>
 ]]></content>
@@ -188,17 +616,15 @@
       </tags>
   </entry>
   <entry>
-    <title>【翻译】Prometheus 2.11.0 新特性</title>
-    <url>/Prometheus/New-Features/New-Features-in-Prometheus-2-11-0.html</url>
-    <content><![CDATA[<p>Prometheus <a href="https://github.com/prometheus/prometheus/releases/tag/v2.11.0" target="_blank" rel="noopener">2.11.0</a> 现在(2019.07.9)已经发布，在5月的 <a href="http://erdong.site/Prometheus/New-Features/New-Features-in-Prometheus-2-10-0.html">2.10.0</a> 之后又进行了一些修正和改进。</p>
+    <title>【翻译】Prometheus 2.12.0 新特性</title>
+    <url>/Prometheus/New-Features/New-Features-in-Prometheus-2-12-0.html</url>
+    <content><![CDATA[<p>Prometheus <a href="https://github.com/prometheus/prometheus/releases/tag/v2.12.0" target="_blank" rel="noopener">2.12.0</a> 现在(2019.08.17)已经发布，在上个月的 <a href="http://erdong.site/Prometheus/New-Features/New-Features-in-Prometheus-2-11-0.html">2.11.0</a> 之后又进行了一些修正和改进。</p>
 <a id="more"></a>
-
-<p>从TSDB开始，记录逻辑有了更多的性能改进。特别需要注意的是，如果您有一个像 <code>a|b</code> 这样的正则表达式(例如 Grafana 为选择多个变量的表达式)，那么它现在被评估为查找而不是正则表达式扫描，因此 <code>x=~&quot;a&quot;</code> 现在和 <code>x=&quot;a&quot;</code>一样高效。</p>
-<p>对于 WAL 的 “unknown series references” 现在已经完全修复。每次头部压缩时都会启动一个新的段，这对于在低容量实例上减少磁盘空间很有用，对于现在应该完全修复的WAL“未知系列引用”，在每次头部压缩时都会启动一个新的段，这对于在低卷实例上减少磁盘空间很有用，并且还有 还有一个选择进入 <code>--storage.tsdb.wal-compression</code>的标志来压缩 WAL 。</p>
-<p>在 Prometheus 中，PromQL和远程写都有性能改进。现在可以像在 <code>prometheus.yml</code> 中一样，将 globs 用于单元测试的规则文件。还有一个配置选项可以通过 Alertmanager 的 v2 API 接口来获取。</p>
-<p>还有许多改进、bug修复和其他更改，可以查看 <a href="https://github.com/prometheus/prometheus/releases/tag/v2.11.0" target="_blank" rel="noopener">release notes</a> 来获取更多的信息。</p>
+<p>在当前的 6 周发布周期中，每一个 Prometheus 版本都有比较少的特性，但是发布的更有规律。在这个版本中最引人注目的特性是，如果 Prometheus 在下一次启动时崩溃，它将打印正在运行的 PromQL ，这有助于查找开销过大的查询。</p>
+<p>在内存方面 TSDB 有很多的性能改进，还添加了一个 <code>prometheus_tsdb_retention_limit_bytes</code> 的指标。虽然与用户无关，但 TSDB 存储库已经合并到 GitHub 上的  Prometheus 主存储库中。这将使我们作为开发人员的生活更加轻松。</p>
+<p>还有许多改进、bug修复和其他更改，可以查看 <a href="https://github.com/prometheus/prometheus/releases/tag/v2.12.0" target="_blank" rel="noopener">release notes</a> 来获取更多的信息。</p>
 <h1 id="原文链接"><a href="#原文链接" class="headerlink" title="原文链接"></a>原文链接</h1><ul>
-<li><a href="https://www.robustperception.io/new-features-in-prometheus-2-11-0" target="_blank" rel="noopener">https://www.robustperception.io/new-features-in-prometheus-2-11-0</a> ， By Brian Brazil</li>
+<li><a href="https://www.robustperception.io/new-features-in-prometheus-2-12-0" target="_blank" rel="noopener">https://www.robustperception.io/new-features-in-prometheus-2-12-0</a> ， By Brian Brazil</li>
 </ul>
 <p>======================<br>Erdong, A Linux user !</p>
 ]]></content>
@@ -626,7 +1052,7 @@
 <p><code>scripts</code> 放置启动脚本。如果普通用户启动 ，放置启动进程的脚本。如果 root 用户启动，可以放置脚本到该目录，或者写成系统服务。</p>
 <p>使用该目录结构可以方便的进行备份、迁移、升级、维护。</p>
 <p>提供一个启动脚本 start.sh 的参考模板</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">PATH=/opt/prometheus</span><br><span class="line">LOG=$BASEPATH/logs</span><br><span class="line">nohup $PATH/current/prometheus --config.file=$PATH/conf/prometheus.yml --web.listen-address=:9090 --storage.tsdb.path=$PATH/data/  --storage.tsdb.retention=30d &gt;&gt; $LOG/prometheus.log  2&gt;&amp;1 &amp; echo $! &gt; $PATH/run/prometheus.pid</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#!/bin/bash</span><br><span class="line">BASEPATH=/opt/prometheus</span><br><span class="line">LOG=$BASEPATH/logs</span><br><span class="line">nohup $BASEPATH/current/prometheus --config.file=$BASEPATH/conf/prometheus.yml --web.listen-address=:9090 --storage.tsdb.path=$BASEPATH/data/  --storage.tsdb.retention=31d &gt;&gt; $LOG/prometheus.log  2&gt;&amp;1 &amp; echo $! &gt; $BASEPATH/run/prometheus.pid</span><br><span class="line"></span><br><span class="line">sleep 5</span><br><span class="line">PROC=`ps -ef |grep \`cat $BASEPATH/run/prometheus.pid\` |grep -v grep`</span><br><span class="line"></span><br><span class="line">if  [ ! -n &quot;$PROC&quot; ] ;then</span><br><span class="line">    echo &quot;##########################################&quot;</span><br><span class="line">    echo &quot;Process not found, please check by yourself&quot;</span><br><span class="line">    echo &quot;##########################################&quot;</span><br><span class="line">else</span><br><span class="line">    echo &quot;##########################################&quot;</span><br><span class="line">    echo &quot;Prometheus is running&quot;</span><br><span class="line">    echo &quot;##########################################&quot;</span><br><span class="line">fi</span><br></pre></td></tr></table></figure>
 
 <p>该脚本做了如下内容</p>
 <ul>
@@ -638,7 +1064,7 @@
 <li>生成 PID 文件</li>
 </ul>
 <p>CentOS 7 启动脚本可以使用如下模板，</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[Unit]</span><br><span class="line">Description=Prometheus Node Exporter</span><br><span class="line">After=network.target</span><br><span class="line"></span><br><span class="line">[Service]</span><br><span class="line">ExecStart=/opt/prometheus/current/prometheus --config.file=/opt/prometheus/conf/prometheus.yml --web.listen-address=:9090 --storage.tsdb.path=/opt/prometheus/data/  --storage.tsdb.retention=30d</span><br><span class="line">User=root</span><br><span class="line"></span><br><span class="line">[Install]</span><br><span class="line">WantedBy=multi-user.target</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[Unit]</span><br><span class="line">Description=Prometheus Server</span><br><span class="line">After=network.target</span><br><span class="line"></span><br><span class="line">[Service]</span><br><span class="line">ExecStart=/opt/prometheus/current/prometheus --config.file=/opt/prometheus/conf/prometheus.yml --web.listen-address=:9090 --storage.tsdb.path=/opt/prometheus/data/  --storage.tsdb.retention=30d</span><br><span class="line">User=root</span><br><span class="line"></span><br><span class="line">[Install]</span><br><span class="line">WantedBy=multi-user.target</span><br></pre></td></tr></table></figure>
 
 <ul>
 <li>使用 root 用户启动</li>

@@ -2,6 +2,62 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://erdong.site/Kong/kong-06.html</loc>
+    
+    <lastmod>2019-10-22T15:59:05.237Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://erdong.site/Kong/kong-05.html</loc>
+    
+    <lastmod>2019-10-22T15:52:23.474Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://erdong.site/Kong/kong-04.html</loc>
+    
+    <lastmod>2019-10-22T15:51:27.471Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://erdong.site/Kong/kong-02.html</loc>
+    
+    <lastmod>2019-10-22T15:50:45.179Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://erdong.site/Kong/kong-03.html</loc>
+    
+    <lastmod>2019-10-22T15:50:23.522Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://erdong.site/Kong/kong-01.html</loc>
+    
+    <lastmod>2019-10-22T15:46:05.949Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://erdong.site/Prometheus/notes/prometheus-install.html</loc>
+    
+    <lastmod>2019-10-22T03:49:38.852Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://erdong.site/about/index.html</loc>
+    
+    <lastmod>2019-10-22T02:36:09.788Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://erdong.site/weekly/weekly33.html</loc>
     
     <lastmod>2019-10-20T15:18:43.988Z</lastmod>
@@ -331,13 +387,6 @@
   </url>
   
   <url>
-    <loc>https://erdong.site/Prometheus/notes/prometheus-install.html</loc>
-    
-    <lastmod>2019-10-14T11:11:32.872Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://erdong.site/Prometheus/guide/prometheus-incomplete-guide.html</loc>
     
     <lastmod>2019-10-14T11:11:21.826Z</lastmod>
@@ -534,14 +583,14 @@
   </url>
   
   <url>
-    <loc>https://erdong.site/Prometheus/New-Features/New-Features-in-Prometheus-2-12-0.html</loc>
+    <loc>https://erdong.site/Prometheus/New-Features/New-Features-in-Prometheus-2-11-0.html</loc>
     
     <lastmod>2019-10-13T15:31:57.912Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://erdong.site/Prometheus/New-Features/New-Features-in-Prometheus-2-11-0.html</loc>
+    <loc>https://erdong.site/Prometheus/New-Features/New-Features-in-Prometheus-2-12-0.html</loc>
     
     <lastmod>2019-10-13T15:31:57.912Z</lastmod>
     
@@ -577,13 +626,6 @@
   
   <url>
     <loc>https://erdong.site/categories/index.html</loc>
-    
-    <lastmod>2019-10-13T15:31:57.910Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://erdong.site/about/index.html</loc>
     
     <lastmod>2019-10-13T15:31:57.910Z</lastmod>
     
