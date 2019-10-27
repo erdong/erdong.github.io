@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://erdong.site/"/>
-  <updated>2019-10-22T15:59:05.237Z</updated>
+  <updated>2019-10-27T13:38:36.519Z</updated>
   <id>https://erdong.site/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>第34周分享</title>
+    <link href="https://erdong.site/weekly/weekly34.html"/>
+    <id>https://erdong.site/weekly/weekly34.html</id>
+    <published>2019-10-27T15:16:59.000Z</published>
+    <updated>2019-10-27T13:38:36.519Z</updated>
+    
+    <content type="html"><![CDATA[<p>这里记录过去一周，我看到的值得分享的东西。</p><a id="more"></a><h1 id="新闻"><a href="#新闻" class="headerlink" title="新闻"></a>新闻</h1><h2 id="1-Jimmy-Song"><a href="#1-Jimmy-Song" class="headerlink" title="1. Jimmy Song"></a>1. <a href="https://jimmysong.io" target="_blank" rel="noopener">Jimmy Song</a></h2><p>宋净超（Jimmy Song），蚂蚁金服云原生布道师和 CNCF Ambassador。ServiceMesher 社区联合创始人。</p><h1 id="资源"><a href="#资源" class="headerlink" title="资源"></a>资源</h1><h2 id="1-Go-入门指南"><a href="#1-Go-入门指南" class="headerlink" title="1. Go 入门指南"></a>1. <a href="https://github.com/unknwon/the-way-to-go_ZH_CN" target="_blank" rel="noopener">Go 入门指南</a></h2><p>英文版 《The Way to Go》的 中文译本，中文正式名《Go 入门指南》，</p><p>本书的英文版作者是 Ivo Balbaert 。中文版由社区进行翻译。</p><h2 id="2-Kubernetes-Handbook"><a href="#2-Kubernetes-Handbook" class="headerlink" title="2. Kubernetes Handbook"></a>2. <a href="https://jimmysong.io/kubernetes-handbook/" target="_blank" rel="noopener">Kubernetes Handbook</a></h2><p>Kubernetes Handbook——Kubernetes中文指南/云原生应用架构实践手册</p><p>Kubernetes是Google基于Borg开源的容器编排调度引擎，作为CNCF（Cloud Native Computing Foundation）最重要的组件之一，它的目标不仅仅是一个编排系统，而是提供一个规范，可以让你来描述集群的架构，定义服务的最终状态，Kubernetes可以帮你将系统自动地达到和维持在这个状态。Kubernetes作为云原生应用的基石，相当于一个云操作系统，其重要性不言而喻。</p><p>======================<br>由于无法及时收到评论内容，所以关闭评论功能。<br>大家有问题欢迎发邮件到 <a href="mailto:erdong@mail.erdong.site" target="_blank" rel="noopener">erdong@mail.erdong.site</a> ，或者 <a href="https://github.com/erdong/erdong.github.io/issues" target="_blank" rel="noopener">https://github.com/erdong/erdong.github.io/issues</a> 提 Issue ，我会及时回复。</p><p>======================<br>Erdong, A Linux user !</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;这里记录过去一周，我看到的值得分享的东西。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="weekly" scheme="https://erdong.site/categories/weekly/"/>
+    
+    
+      <category term="weekly" scheme="https://erdong.site/tags/weekly/"/>
+    
+  </entry>
   
   <entry>
     <title>Kong 的集群怎么用</title>
@@ -2184,16 +2207,16 @@
     <link href="https://erdong.site/uncategorized/hello-world.html"/>
     <id>https://erdong.site/uncategorized/hello-world.html</id>
     <published>2018-08-22T04:22:12.000Z</published>
-    <updated>2019-10-13T15:31:57.911Z</updated>
+    <updated>2019-10-26T14:00:40.816Z</updated>
     
-    <content type="html"><![CDATA[<p>Welcome to <a href="https://erdong2018.github.io/" target="_blank" rel="noopener">Erdong’s blog</a>! This is my first blog. </p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><p>  最近花时间搭建了这个博客，基于 hexo 和 github pages，想把日常遇到的问题和一些学习的知识点记录下来，梳理自己的知识体系，不断提高自己的能力。</p><p>  个人比较喜欢阮一峰的博客，他的文字描述总是简单易懂，容易学习，希望以后也能达到这一目的。</p><p>  人生总是存在各种各样的巧合，好像总和数字2会有关系，像这次发布第一篇博客刚好赶上22号，年份和月份全部是2的整数倍。</p><p>  发现阮一峰有一个关于中文文档编写的规范，会尽量的按照这个来写。<a href="https://github.com/ruanyf/document-style-guide" target="_blank" rel="noopener">document-style-guide</a></p><p>惯例: hello world 输出。一切的开始。</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"><span class="comment">#version: 1.0</span></span><br><span class="line"><span class="comment">#Author: Erdong</span></span><br><span class="line"><span class="built_in">echo</span> Hello World</span><br><span class="line"><span class="built_in">echo</span> 2018-08-22</span><br></pre></td></tr></table></figure>]]></content>
+    <content type="html"><![CDATA[<p>Welcome to <a href="https://erdong.site">Erdong’s blog</a>! This is my first blog. </p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><p>  最近花时间搭建了这个博客，基于 hexo 和 github pages，想把日常遇到的问题和一些学习的知识点记录下来，梳理自己的知识体系，不断提高自己的能力。</p><p>  个人比较喜欢阮一峰的博客，他的文字描述总是简单易懂，容易学习，希望以后也能达到这一目的。</p><p>  人生总是存在各种各样的巧合，好像总和数字2会有关系，像这次发布第一篇博客刚好赶上22号，年份和月份全部是2的整数倍。</p><p>  发现阮一峰有一个关于中文文档编写的规范，会尽量的按照这个来写。<a href="https://github.com/ruanyf/document-style-guide" target="_blank" rel="noopener">document-style-guide</a></p><p>惯例: hello world 输出。一切的开始。</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"><span class="comment">#version: 1.0</span></span><br><span class="line"><span class="comment">#Author: Erdong</span></span><br><span class="line"><span class="built_in">echo</span> Hello World</span><br><span class="line"><span class="built_in">echo</span> 2018-08-22</span><br></pre></td></tr></table></figure>]]></content>
     
     <summary type="html">
     
       
       
-        &lt;p&gt;Welcome to &lt;a href=&quot;https://erdong2018.github.io/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Erdong’s blog&lt;/a&gt;! This is my first blog. &lt;/p&gt;
-&lt;h2 id=&quot;
+        &lt;p&gt;Welcome to &lt;a href=&quot;https://erdong.site&quot;&gt;Erdong’s blog&lt;/a&gt;! This is my first blog. &lt;/p&gt;
+&lt;h2 id=&quot;Quick-Start&quot;&gt;&lt;a href=&quot;#Quick-Start&quot; class
       
     
     </summary>

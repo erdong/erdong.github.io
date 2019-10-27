@@ -1,6 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>第34周分享</title>
+    <url>/weekly/weekly34.html</url>
+    <content><![CDATA[<p>这里记录过去一周，我看到的值得分享的东西。</p>
+<a id="more"></a>
+
+<h1 id="新闻"><a href="#新闻" class="headerlink" title="新闻"></a>新闻</h1><h2 id="1-Jimmy-Song"><a href="#1-Jimmy-Song" class="headerlink" title="1. Jimmy Song"></a>1. <a href="https://jimmysong.io" target="_blank" rel="noopener">Jimmy Song</a></h2><p>宋净超（Jimmy Song），蚂蚁金服云原生布道师和 CNCF Ambassador。ServiceMesher 社区联合创始人。</p>
+<h1 id="资源"><a href="#资源" class="headerlink" title="资源"></a>资源</h1><h2 id="1-Go-入门指南"><a href="#1-Go-入门指南" class="headerlink" title="1. Go 入门指南"></a>1. <a href="https://github.com/unknwon/the-way-to-go_ZH_CN" target="_blank" rel="noopener">Go 入门指南</a></h2><p>英文版 《The Way to Go》的 中文译本，中文正式名《Go 入门指南》，</p>
+<p>本书的英文版作者是 Ivo Balbaert 。中文版由社区进行翻译。</p>
+<h2 id="2-Kubernetes-Handbook"><a href="#2-Kubernetes-Handbook" class="headerlink" title="2. Kubernetes Handbook"></a>2. <a href="https://jimmysong.io/kubernetes-handbook/" target="_blank" rel="noopener">Kubernetes Handbook</a></h2><p>Kubernetes Handbook——Kubernetes中文指南/云原生应用架构实践手册</p>
+<p>Kubernetes是Google基于Borg开源的容器编排调度引擎，作为CNCF（Cloud Native Computing Foundation）最重要的组件之一，它的目标不仅仅是一个编排系统，而是提供一个规范，可以让你来描述集群的架构，定义服务的最终状态，Kubernetes可以帮你将系统自动地达到和维持在这个状态。Kubernetes作为云原生应用的基石，相当于一个云操作系统，其重要性不言而喻。</p>
+<p>======================<br>由于无法及时收到评论内容，所以关闭评论功能。<br>大家有问题欢迎发邮件到 <a href="mailto:erdong@mail.erdong.site" target="_blank" rel="noopener">erdong@mail.erdong.site</a> ，或者 <a href="https://github.com/erdong/erdong.github.io/issues" target="_blank" rel="noopener">https://github.com/erdong/erdong.github.io/issues</a> 提 Issue ，我会及时回复。</p>
+<p>======================<br>Erdong, A Linux user !</p>
+]]></content>
+      <categories>
+        <category>weekly</category>
+      </categories>
+      <tags>
+        <tag>weekly</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Kong 的集群怎么用</title>
     <url>/Kong/kong-06.html</url>
     <content><![CDATA[<p>Kong 集群允许您通过添加更多的机器来处理更多的传入请求来横向扩展系统。它们将共享相同的配置，因为它们指向相同的数据库。指向相同数据存储的 Kong 节点将属于相同的 Kong 集群。</p>
@@ -3479,7 +3500,7 @@
   <entry>
     <title>Hello World</title>
     <url>/uncategorized/hello-world.html</url>
-    <content><![CDATA[<p>Welcome to <a href="https://erdong2018.github.io/" target="_blank" rel="noopener">Erdong’s blog</a>! This is my first blog. </p>
+    <content><![CDATA[<p>Welcome to <a href="https://erdong.site">Erdong’s blog</a>! This is my first blog. </p>
 <h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><p>  最近花时间搭建了这个博客，基于 hexo 和 github pages，想把日常遇到的问题和一些学习的知识点记录下来，梳理自己的知识体系，不断提高自己的能力。</p>
 <p>  个人比较喜欢阮一峰的博客，他的文字描述总是简单易懂，容易学习，希望以后也能达到这一目的。</p>
 <p>  人生总是存在各种各样的巧合，好像总和数字2会有关系，像这次发布第一篇博客刚好赶上22号，年份和月份全部是2的整数倍。</p>
