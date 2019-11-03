@@ -1,6 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>第35周分享</title>
+    <url>/weekly/weekly35.html</url>
+    <content><![CDATA[<p>这里记录过去一周，我看到的值得分享的东西。</p>
+<a id="more"></a>
+
+<h1 id="新闻"><a href="#新闻" class="headerlink" title="新闻"></a>新闻</h1><h2 id="1-中华人民共和国密码法"><a href="#1-中华人民共和国密码法" class="headerlink" title="1. 中华人民共和国密码法"></a>1. <a href="http://www.gov.cn/xinwen/2019-10/27/content_5445395.htm" target="_blank" rel="noopener">中华人民共和国密码法</a></h2><p>《中华人民共和国密码法》已由第十三届全国人民代表大会常务委员会第十四次会议于2019年10月26日通过，自2020年1月1日起施行。</p>
+<h1 id="教程"><a href="#教程" class="headerlink" title="教程"></a>教程</h1><h2 id="1-CloudWatch-exporter"><a href="#1-CloudWatch-exporter" class="headerlink" title="1. CloudWatch exporter"></a>1. <a href="https://github.com/prometheus/cloudwatch_exporter" target="_blank" rel="noopener">CloudWatch exporter</a></h2><p>Prometheus 官方发布的云上资源监控采集器，目前可以采集 AWS 的情况。</p>
+<h1 id="工具"><a href="#工具" class="headerlink" title="工具"></a>工具</h1><h2 id="1-MobaXterm"><a href="#1-MobaXterm" class="headerlink" title="1. MobaXterm"></a>1. <a href="https://mobaxterm.mobatek.net" target="_blank" rel="noopener">MobaXterm</a></h2><p>一个好用的 Windows 下的命令行工具。支持SSH、Telnet、串口、X11、FTP、SFTP、MOSH…等远程协议，甚至包括 VNC/RDP/Xdmcp 等远程桌面协议，内建了轻量级的 FTP/HTTP/SSH/NFS/VNC 等服务器可随时轻松使用。同时MobaXterm也提供了一个本地终端用于在Windows上执行Unix命令(bash, ls, cat, sed, grep, awk, rsync, …) ，可与Linux上的命令行相媲美。MobaXterm内建X server，可具有OpenSSH X11转发能力，可在本地远程运行X窗口程序！</p>
+<h1 id="资源"><a href="#资源" class="headerlink" title="资源"></a>资源</h1><h2 id="1-influxdb-中文文档"><a href="#1-influxdb-中文文档" class="headerlink" title="1. influxdb 中文文档"></a>1. <a href="https://jasper-zhang1.gitbooks.io/influxdb/content/" target="_blank" rel="noopener">influxdb 中文文档</a></h2><p>作者 Jasper zhang 基于 InfluxDB 版本1.3.x 翻译的官方文档，作者表示如果后续版本有较大的改动，此文档也会跟进。<br>文档项目地址(Github)：<a href="https://github.com/jasper-zhang/influxdb-document-cn" target="_blank" rel="noopener">https://github.com/jasper-zhang/influxdb-document-cn</a></p>
+<p>文档在线地址(Gitbook)：<a href="https://jasper-zhang1.gitbooks.io/influxdb/content/" target="_blank" rel="noopener">https://jasper-zhang1.gitbooks.io/influxdb/content/</a></p>
+<p>作者博客：<a href="http://www.opscoder.info" target="_blank" rel="noopener">http://www.opscoder.info</a></p>
+<h2 id="2-吴叶磊的博客"><a href="#2-吴叶磊的博客" class="headerlink" title="2. 吴叶磊的博客"></a>2. <a href="https://aleiwu.com" target="_blank" rel="noopener">吴叶磊的博客</a></h2><p>吴叶磊的博客，记录了一些有用的知识，值得去查看。</p>
+<p>======================<br>由于无法及时收到评论内容，所以关闭评论功能。<br>大家有问题欢迎发邮件到 <a href="mailto:erdong@mail.erdong.site" target="_blank" rel="noopener">erdong@mail.erdong.site</a> ，或者 <a href="https://github.com/erdong/erdong.github.io/issues" target="_blank" rel="noopener">https://github.com/erdong/erdong.github.io/issues</a> 提 Issue ，我会及时回复。</p>
+<p>======================<br>Erdong, A Linux user !</p>
+]]></content>
+      <categories>
+        <category>weekly</category>
+      </categories>
+      <tags>
+        <tag>weekly</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>第34周分享</title>
     <url>/weekly/weekly34.html</url>
     <content><![CDATA[<p>这里记录过去一周，我看到的值得分享的东西。</p>
