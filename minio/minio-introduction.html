@@ -1,0 +1,1550 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=6.7.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.7.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32.ico?v=6.7.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16.ico?v=6.7.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.7.0" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '6.7.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":true,"scrollpercent":true,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="MinIO 搭建MinIO 是一个基于 Apache License v2.0 开源协议的对象存储服务。它兼容亚马逊 S3 云存储服务接口，非常适合于存储大容量非结构化的数据，例如图片、视频、日志文件、备份数据和容器/虚拟机镜像等，而一个对象文件可以是任意大小，从几 kb 到最大 5T 不等。">
+<meta name="keywords" content="minio">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MinIO 简介和搭建">
+<meta property="og:url" content="https://erdong.site/minio/minio-introduction.html">
+<meta property="og:site_name" content="Erdong’ Blog">
+<meta property="og:description" content="MinIO 搭建MinIO 是一个基于 Apache License v2.0 开源协议的对象存储服务。它兼容亚马逊 S3 云存储服务接口，非常适合于存储大容量非结构化的数据，例如图片、视频、日志文件、备份数据和容器/虚拟机镜像等，而一个对象文件可以是任意大小，从几 kb 到最大 5T 不等。">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-11-09T15:54:11.198Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="MinIO 简介和搭建">
+<meta name="twitter:description" content="MinIO 搭建MinIO 是一个基于 Apache License v2.0 开源协议的对象存储服务。它兼容亚马逊 S3 云存储服务接口，非常适合于存储大容量非结构化的数据，例如图片、视频、日志文件、备份数据和容器/虚拟机镜像等，而一个对象文件可以是任意大小，从几 kb 到最大 5T 不等。">
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Erdong’ Blog" type="application/atom+xml">
+
+
+
+
+  <link rel="canonical" href="https://erdong.site/minio/minio-introduction.html">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>MinIO 简介和搭建 | Erdong’ Blog</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Erdong’ Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <h1 class="site-subtitle" itemprop="description">苦练七十二变，笑对八十一难。</h1>
+      
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
+
+  </li>
+
+      
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>搜索</a>
+        </li>
+      
+    </ul>
+  
+
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://erdong.site/minio/minio-introduction.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Er Dong">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/myavatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Erdong’ Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">MinIO 简介和搭建
+
+              
+            
+          </h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-11-09 23:52:21 / 修改时间：23:54:11" itemprop="dateCreated datePublished" datetime="2019-11-09T23:52:21+08:00">2019-11-09</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/minio/" itemprop="url" rel="index"><span itemprop="name">minio</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="post-meta-item-icon">
+            <i class="fa fa-eye"></i>
+             阅读次数： 
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="MinIO-搭建"><a href="#MinIO-搭建" class="headerlink" title="MinIO 搭建"></a>MinIO 搭建</h1><p>MinIO 是一个基于 Apache License v2.0 开源协议的对象存储服务。它兼容亚马逊 S3 云存储服务接口，非常适合于存储大容量非结构化的数据，例如图片、视频、日志文件、备份数据和容器/虚拟机镜像等，而一个对象文件可以是任意大小，从几 kb 到最大 5T 不等。</p>
+<a id="more"></a>
+<p>MinIO 是一个非常轻量的服务,可以很简单的和其他应用的结合，类似 NodeJS, Redis 或者 MySQL。</p>
+<p>官方对 Minio 的定义是一个高性能的对象存储。</p>
+<blockquote>
+<p>Build high performance data infrastructure<br>for machine learning, analytics and<br>application data workloads with MinIO 。</p>
+</blockquote>
+<p>Minio 的官方网站是 <a href="https://min.io" target="_blank" rel="noopener">https://min.io</a> ，<br>Minio 的官方文档是 <a href="https://docs.min.io/cn/" target="_blank" rel="noopener">https://docs.min.io/cn/</a> ，<br>GitHub 仓库地址是：<a href="https://github.com/minio/minio" target="_blank" rel="noopener">https://github.com/minio/minio</a> ，目前有 18.8k Stars (2019.11.9)</p>
+<p>Minio 的 benchmark 说明：</p>
+<p><a href="https://min.io/resources/docs/MinIO-vs-HDFS-MapReduce-performance-comparison.pdf" target="_blank" rel="noopener">https://min.io/resources/docs/MinIO-vs-HDFS-MapReduce-performance-comparison.pdf</a><br><a href="https://min.io/resources/docs/MinIO-throughput-benchmarks-on-NVMe-SSD.pdf" target="_blank" rel="noopener">https://min.io/resources/docs/MinIO-throughput-benchmarks-on-NVMe-SSD.pdf</a><br><a href="https://min.io/resources/docs/Performance-comparison-Starburst-Presto-SQL.pdf" target="_blank" rel="noopener">https://min.io/resources/docs/Performance-comparison-Starburst-Presto-SQL.pdf</a><br><a href="https://min.io/resources/docs/MinIO-throughput-benchmarks-on-HDD.pdf" target="_blank" rel="noopener">https://min.io/resources/docs/MinIO-throughput-benchmarks-on-HDD.pdf</a><br><a href="https://min.io/resources/docs/Performance-comparison-Apache-Spark.pdf" target="_blank" rel="noopener">https://min.io/resources/docs/Performance-comparison-Apache-Spark.pdf</a></p>
+<h1 id="快速开始一个单节点的-MinIO"><a href="#快速开始一个单节点的-MinIO" class="headerlink" title="快速开始一个单节点的 MinIO"></a>快速开始一个单节点的 MinIO</h1><p>MinIO 分为服务端和客户端，服务端提供一个对象存储，也提供一个 Web 的管理页面。客户端是用来管理、查看服务端的一个工具。服务端的二进制文件是 <code>minio</code> ，客户端的二进制文件是 <code>mc</code> 。</p>
+<h2 id="使用二进制文件启动"><a href="#使用二进制文件启动" class="headerlink" title="使用二进制文件启动"></a>使用二进制文件启动</h2><p>首先先下载服务端的二进制文件，其次准备一个用来存储的磁盘或者目录，</p>
+<p>下载好以后赋予执行权限，可以使用如下命令快速启动。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">chmod +x minio</span><br><span class="line">./minio server /erdong/data</span><br></pre></td></tr></table></figure>
+
+<p>启动后可以通过访问 <a href="http://localhost:9000" target="_blank" rel="noopener">http://localhost:9000</a> 来访问你的对象存储。</p>
+<h2 id="使用-Docker-启动"><a href="#使用-Docker-启动" class="headerlink" title="使用 Docker 启动"></a>使用 Docker 启动</h2><p>MinIO 需要一个持久卷来存储配置和应用数据。不过, 如果只是为了测试一下, 您可以通过简单地传递一个目录（在下面的示例中为 <code>/erdong/data</code>）启动 MinIO 。这个目录会在容器启动时在容器的文件系统中创建，不过所有的数据都会在容器退出时丢失。</p>
+<p>要创建具有永久存储的 MinIO 容器，您需要将本地持久目录从主机操作系统映射到虚拟配置 ~/.minio 并导出 /data 目录。 为此，请运行以下命令</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">docker run -p 9000:9000 --name minio \</span><br><span class="line">  -e &quot;MINIO_ACCESS_KEY=minioadmin&quot; \</span><br><span class="line">  -e &quot;MINIO_SECRET_KEY=minioadminpassword&quot; \</span><br><span class="line">  -v /erdong/minio/data:/data \</span><br><span class="line">  -v /erdong/minio/config:/root/.minio \</span><br><span class="line">  minio/minio server /data</span><br></pre></td></tr></table></figure>
+
+<p>启动后，即可访问 <a href="http://localhost:9000" target="_blank" rel="noopener">http://localhost:9000</a> 来访问你的对象存储。</p>
+<p>上述命令中设置了如下参数：</p>
+<ul>
+<li>MINIO_ACCESS_KEY 管理员的访问秘钥</li>
+<li>MINIO_SECRET_KEY 管理员的秘钥</li>
+<li>/erdong/minio/data:/data  挂载持久化数据目录</li>
+<li>/erdong/minio/config:/root/.minio  挂载配置文件</li>
+<li>server 启动 Server 模式，除了该模式还有一个 Gateway 模式。</li>
+<li>/data  指定数据目录</li>
+</ul>
+<p>如果需要指定端口可以使用如下参数</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">--address &quot;:9000&quot;</span><br></pre></td></tr></table></figure>
+
+<h1 id="使用-TLS-安全访问-MinIO-服务"><a href="#使用-TLS-安全访问-MinIO-服务" class="headerlink" title="使用 TLS 安全访问 MinIO 服务"></a>使用 TLS 安全访问 MinIO 服务</h1><p>接下来我们看看如何在 linux 上配置 MinIO 服务使用 TLS 。</p>
+<p>使用 TLS 的前提是先下载好 MinIO Server 。</p>
+<p>如果你已经有私钥和公钥证书，你需要将他们拷贝到 MinIO 的 <code>$HOME/.minio/certs</code> 文件夹，私钥的名字必须是 <code>private.key</code> ，公钥证书的名字必须是 <code>public.crt</code> 。 MinIO 在 Linux 只支持使用 PEM 格式的秘钥和证书，在 Windows 上只支持 PEM 格式的秘钥和证书，目前不支持 PFX 证书。</p>
+<p>如果这个证书是被证书机构签发的，<code>public.crt</code> 应该是服务器的证书。</p>
+<p>Linux 可以使用如下工具来生成证书</p>
+<ul>
+<li>Let‘s Encrypt</li>
+<li>generate_cert.go</li>
+<li>OpenSSL </li>
+</ul>
+<p>Windows 可以使用如下工具来生成证书</p>
+<ul>
+<li>GnuTLS</li>
+</ul>
+<p>Minio 也可以配置成连接其它服务，不管是 Minio 节点还是像 NATs、Redis 这些。如果这些服务用的不是在已知证书机构注册的证书，你可以让 Minio 服务信任这些 CA ，怎么做呢，将这些证书放到Minio配置路径下(~/.minio/certs/CAs/ Linux 或者 C:\Users&lt;Username&gt;.minio\certs\CAs Windows).</p>
+<h2 id="如何使用-OpenSSL-来生成自签证书"><a href="#如何使用-OpenSSL-来生成自签证书" class="headerlink" title="如何使用 OpenSSL 来生成自签证书"></a>如何使用 OpenSSL 来生成自签证书</h2><p>使用如下命令生成私钥，私钥会生成在执行命令的目录下</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">openssl genrsa -out private.key 2048</span><br></pre></td></tr></table></figure>
+
+<p>生成自签名的证书，证书会生成在执行命令的目录下</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">openssl req -new -x509 -days 3650 -key private.key -out public.crt -subj &quot;/C=US/ST=state/L=location/O=organization/CN=domain&quot;</span><br></pre></td></tr></table></figure>
+
+<p>其中相关内容可以按照实际情况修改，比如 <code>/C</code> 是国家，中国是 CN ，<code>/ST</code> 是州或者省， <code>/L</code> 是市或者区， <code>/CN</code> 是域名。</p>
+<p>秘钥和证书生成好以后，按照上边的要求放置在对应的目录即可。</p>
+<h1 id="Q-amp-A"><a href="#Q-amp-A" class="headerlink" title="Q&amp;A"></a>Q&amp;A</h1><p>Thanos 在连接 MinIO 的时候遇到了一些问题，日志里有很多错误提示，列在下边供参考。</p>
+<h2 id="1-提示冒号太多"><a href="#1-提示冒号太多" class="headerlink" title="1. 提示冒号太多"></a>1. 提示冒号太多</h2><p>日志报错如下所示：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">level=info ts=2019-11-08T02:43:40.981858805Z caller=main.go:170 msg=&quot;Tracing will be disabled&quot;</span><br><span class="line">level=info ts=2019-11-08T02:43:40.982326667Z caller=factory.go:39 msg=&quot;loading bucket configuration&quot;</span><br><span class="line">level=error ts=2019-11-08T02:43:40.982682262Z caller=main.go:200 err=&quot;store command failed: create bucket client: create S3 client: initialize s3 client: address http://127.0.0.1:9000: too many colons in address&quot;</span><br></pre></td></tr></table></figure>
+
+<p>日志描述直译过来就是冒号太多了，原因是在配置文件中，填写了 MinIO 提供的 S3 协议的 endpoint 的时候，多填写了 <code>http://</code> ，导致提示该错误。本意是在内网使用， HTTP 协议就可以了，不需要要开启 HTTPS ，但是 Thanos 在连接 S3 存储的时候默认是使用 HTTPS 的，不能通过这种方式来使用 HTTP 。</p>
+<p>错误的配置如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">type: S3</span><br><span class="line">config:</span><br><span class="line">  bucket: &quot;disk1&quot;</span><br><span class="line">  endpoint: &quot;http://127.0.0.1:9000&quot;</span><br></pre></td></tr></table></figure>
+
+<p>正确的配置如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">type: S3</span><br><span class="line">config:</span><br><span class="line">  bucket: &quot;disk1&quot;</span><br><span class="line">  endpoint: &quot;127.0.0.1:9000&quot;</span><br></pre></td></tr></table></figure>
+
+<h2 id="2-提示对方没有使用-HTTPS"><a href="#2-提示对方没有使用-HTTPS" class="headerlink" title="2. 提示对方没有使用 HTTPS"></a>2. 提示对方没有使用 HTTPS</h2><p>日志报错如下</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">level=info ts=2019-11-08T02:42:04.366000876Z caller=main.go:170 msg=&quot;Tracing will be disabled&quot;</span><br><span class="line">level=info ts=2019-11-08T02:42:04.366417674Z caller=factory.go:39 msg=&quot;loading bucket configuration&quot;</span><br><span class="line">level=info ts=2019-11-08T02:42:04.384413714Z caller=cache.go:172 msg=&quot;created index cache&quot; maxItemSizeBytes=131072000 maxSizeBytes=262144000 maxItems=math.MaxInt64</span><br><span class="line">level=error ts=2019-11-08T02:42:04.385632149Z caller=main.go:200 err=&quot;store command failed: bucket store initial sync: sync block: iter: Get https://127.0.0.1:9000/prometheus-store/?delimiter=%2F&amp;max-keys=1000&amp;prefix=: http: server gave HTTP response to HTTPS client&quot;</span><br></pre></td></tr></table></figure>
+
+<p>这是 Thanos 连接的对象存储只提供了 HTTP ，没有提供 HTTPS，这个时候需要让对象存储添加证书，启用 HTTPS 。</p>
+<h2 id="3-不能够认证某个域名"><a href="#3-不能够认证某个域名" class="headerlink" title="3. 不能够认证某个域名"></a>3. 不能够认证某个域名</h2><p>日志报错如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">level=info ts=2019-11-08T03:06:57.90508837Z caller=main.go:170 msg=&quot;Tracing will be disabled&quot;</span><br><span class="line">level=info ts=2019-11-08T03:06:57.905445182Z caller=factory.go:39 msg=&quot;loading bucket configuration&quot;</span><br><span class="line">level=info ts=2019-11-08T03:06:57.923283984Z caller=cache.go:172 msg=&quot;created index cache&quot; maxItemSizeBytes=131072000 maxSizeBytes=262144000 maxItems=math.MaxInt64</span><br><span class="line">level=error ts=2019-11-08T03:06:57.927125234Z caller=main.go:200 err=&quot;store command failed: bucket store initial sync: sync block: iter: Get https://10.23.80.18:9000/prometheus-store/?delimiter=%2F&amp;max-keys=1000&amp;prefix=: x509: cannot validate certificate for minio-erdong.site because it doesn&apos;t contain any IP SANs&quot;</span><br></pre></td></tr></table></figure>
+
+<p>因为 Thanos 连接 Minio 的 HTTP 配置里，有一个 <code>insecure_skip_verify</code> 选项，该选项默认为 false ，需要对域名的证书进行验证，由于使用了自签证书，没有在权威的 CA 机构做认证，所以在连接过程中会提示不安全，将值改为 true，跳过这个验证就可以了。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">http_config:</span><br><span class="line">  idle_conn_timeout: 90s</span><br><span class="line">  response_header_timeout: 2m</span><br><span class="line">  insecure_skip_verify: true</span><br></pre></td></tr></table></figure>
+
+<h1 id="end"><a href="#end" class="headerlink" title="end"></a>end</h1><p>======================<br>由于无法及时收到评论内容，所以关闭评论功能。<br>大家有问题欢迎发邮件到 <a href="mailto:erdong@mail.erdong.site" target="_blank" rel="noopener">erdong@mail.erdong.site</a> ，或者 <a href="https://github.com/erdong/erdong.github.io/issues" target="_blank" rel="noopener">https://github.com/erdong/erdong.github.io/issues</a> 提 Issue ，我会及时回复。</p>
+<p>======================<br>Erdong, A Linux user !</p>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+      <div>
+        <div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
+  <img id="wechat_subscriber_qcode" src="/images/erdongxt.jpg" alt="Er Dong wechat" style="width: 200px; max-width: 100%;">
+  <div>扫描二维码关注微信公众号</div>
+</div>
+
+      </div>
+    
+
+    
+      
+    
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>坚持原创技术分享，您的支持将鼓励我继续创作!</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/WeChatPay.png" alt="Er Dong 微信支付">
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/AliPay.png" alt="Er Dong 支付宝">
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        
+
+
+
+  
+
+
+
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>Er Dong</li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    
+    <a href="https://erdong.site/minio/minio-introduction.html" title="MinIO 简介和搭建">https://erdong.site/minio/minio-introduction.html</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-ND</a> 许可协议。转载请注明出处！</li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/minio/" rel="tag"># minio</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/weekly/weekly36.html" rel="next" title="第36周分享">
+                <i class="fa fa-chevron-left"></i> 第36周分享
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/myavatar.jpg" alt="Er Dong">
+            
+              <p class="site-author-name" itemprop="name">Er Dong</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">91</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">17</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">50</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://github.com/erdong" title="GitHub &rarr; https://github.com/erdong" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="mailto:erdong@mail.erdong.site" title="E-Mail &rarr; mailto:erdong@mail.erdong.site" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                </span>
+              
+            </div>
+          
+
+          
+             <div class="cc-license motion-element" itemprop="license">
+              
+                
+              
+              
+              
+              <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-nd.svg" alt="Creative Commons"></a>
+             </div>
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.ruanyifeng.com/blog/" title="http://www.ruanyifeng.com/blog/" rel="noopener" target="_blank">Ruanyifeng</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://coolshell.cn" title="https://coolshell.cn" rel="noopener" target="_blank">左耳朵耗子</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#MinIO-搭建"><span class="nav-number">1.</span> <span class="nav-text">MinIO 搭建</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#快速开始一个单节点的-MinIO"><span class="nav-number">2.</span> <span class="nav-text">快速开始一个单节点的 MinIO</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#使用二进制文件启动"><span class="nav-number">2.1.</span> <span class="nav-text">使用二进制文件启动</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用-Docker-启动"><span class="nav-number">2.2.</span> <span class="nav-text">使用 Docker 启动</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#使用-TLS-安全访问-MinIO-服务"><span class="nav-number">3.</span> <span class="nav-text">使用 TLS 安全访问 MinIO 服务</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#如何使用-OpenSSL-来生成自签证书"><span class="nav-number">3.1.</span> <span class="nav-text">如何使用 OpenSSL 来生成自签证书</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Q-amp-A"><span class="nav-number">4.</span> <span class="nav-text">Q&amp;A</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-提示冒号太多"><span class="nav-number">4.1.</span> <span class="nav-text">1. 提示冒号太多</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-提示对方没有使用-HTTPS"><span class="nav-number">4.2.</span> <span class="nav-text">2. 提示对方没有使用 HTTPS</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-不能够认证某个域名"><span class="nav-number">4.3.</span> <span class="nav-text">3. 不能够认证某个域名</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#end"><span class="nav-number">5.</span> <span class="nav-text">end</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2018 – <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Er Dong</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a></div>
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="post-meta-item-icon">
+      <i class="fa fa-user"></i>
+    </span>
+    <span class="site-uv" title="总访客量">
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+    </span>
+  
+
+  
+    <span class="post-meta-divider">|</span>
+  
+
+  
+    <span class="post-meta-item-icon">
+      <i class="fa fa-eye"></i>
+    </span>
+    <span class="site-pv" title="总访问量">
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/src/utils.js?v=6.7.0"></script>
+
+  <script src="/js/src/motion.js?v=6.7.0"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/src/affix.js?v=6.7.0"></script>
+
+  <script src="/js/src/schemes/pisces.js?v=6.7.0"></script>
+
+
+
+  
+  <script src="/js/src/scrollspy.js?v=6.7.0"></script>
+<script src="/js/src/post-details.js?v=6.7.0"></script>
+
+
+
+  
+
+
+  <script src="/js/src/bootstrap.js?v=6.7.0"></script>
+
+
+
+  
+  
+
+<script src="//cdn1.lncld.net/static/js/3.11.1/av-min.js"></script>
+
+
+
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+
+<script>
+  var GUEST = ['nick', 'mail', 'link'];
+  var guest = 'nick,mail,link';
+  guest = guest.split(',').filter(function(item) {
+    return GUEST.indexOf(item) > -1;
+  });
+  new Valine({
+    el: '#comments',
+    verify: false,
+    notify: false,
+    appId: 'HRD9im0IBzHxxgQbx9N34mWm-gzGzoHsz',
+    appKey: 'zxHghf4xK1BpoIq3TIPhuHYR',
+    placeholder: 'Just go go',
+    avatar: 'mm',
+    meta: guest,
+    pageSize: '10' || 10,
+    visitor: false
+  });
+</script>
+
+
+
+
+
+  
+
+  <script>
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url).replace(/\/{2,}/g, '/');
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x"></i></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x"></i></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
