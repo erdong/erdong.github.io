@@ -138,7 +138,7 @@
       </tags>
   </entry>
   <entry>
-    <title>第36周分享</title>
+    <title>攻城狮周刊：第36期</title>
     <url>/weekly/weekly36.html</url>
     <content><![CDATA[<p>这里记录过去一周，我看到的值得分享的东西。</p>
 <a id="more"></a>
@@ -161,7 +161,10 @@
 <h2 id="2-CS-Notes"><a href="#2-CS-Notes" class="headerlink" title="2. CS-Notes"></a>2. <a href="https://github.com/CyC2018/CS-Notes" target="_blank" rel="noopener">CS-Notes</a></h2><p>很火的一个计算机类笔记。</p>
 <h2 id="3-Go-夜读"><a href="#3-Go-夜读" class="headerlink" title="3. Go 夜读"></a>3. <a href="https://github.com/developer-learning/night-reading-go" target="_blank" rel="noopener">Go 夜读</a></h2><p>范畴：Go 标准包、开源项目、Go 项目工程实践与架构设计等。<br>希望通过阅读学术文献的方式，来帮助我们去学习和理解计算机系统，以及 Go 语言。<br>有 YouTube 和 B站 回放。</p>
 <h2 id="4-Go-学习之路"><a href="#4-Go-学习之路" class="headerlink" title="4. Go 学习之路"></a>4. <a href="https://github.com/developer-learning/learning-golang" target="_blank" rel="noopener">Go 学习之路</a></h2><p>Go 学习之路：Go 开发者博客、Go 微信公众号、Go 学习资料（文档、书籍、视频）</p>
-<h1 id="一句话"><a href="#一句话" class="headerlink" title="一句话"></a>一句话</h1><p>CNCF 最近很高产，不到一个月的时间，连续毕业了两个项目，Jaeger 和 Vitess 。</p>
+<h1 id="一句话"><a href="#一句话" class="headerlink" title="一句话"></a>一句话</h1><ul>
+<li>CNCF 最近很高产，不到一个月的时间，连续毕业了两个项目，Jaeger 和 Vitess 。</li>
+<li>今天给这个周更的内容起了个名字，叫攻城狮周刊。“攻城狮” 谐音 “工程师”，计算机从业者基本都是各种工程师，SRE 工程师在这里向大家问好。</li>
+</ul>
 <p>======================<br>由于无法及时收到评论内容，所以关闭评论功能。<br>大家有问题欢迎发邮件到 <a href="mailto:erdong@mail.erdong.site" target="_blank" rel="noopener">erdong@mail.erdong.site</a> ，或者 <a href="https://github.com/erdong/erdong.github.io/issues" target="_blank" rel="noopener">https://github.com/erdong/erdong.github.io/issues</a> 提 Issue ，我会及时回复。</p>
 <p>======================<br>Erdong, A Linux user !</p>
 ]]></content>
