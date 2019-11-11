@@ -96,13 +96,18 @@
 
 
 
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Erdong’ Blog">
-<meta property="og:url" content="https://erdong.site/archives/2019/11/index.html">
+  <meta name="description" content="MinIO 参数解析与限制MinIO server 在默认情况下会将所有配置信息存到 ${HOME}/.minio/config.json 文件中。 以下部分提供每个字段的详细说明以及如何自定义它们。一个完整的 config.json 在 这里">
+<meta name="keywords" content="minio">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MinIO 参数解析与限制">
+<meta property="og:url" content="https://erdong.site/minio/minio-parameter-and-limit.html">
 <meta property="og:site_name" content="Erdong’ Blog">
+<meta property="og:description" content="MinIO 参数解析与限制MinIO server 在默认情况下会将所有配置信息存到 ${HOME}/.minio/config.json 文件中。 以下部分提供每个字段的详细说明以及如何自定义它们。一个完整的 config.json 在 这里">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-11-11T13:48:40.069Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Erdong’ Blog">
+<meta name="twitter:title" content="MinIO 参数解析与限制">
+<meta name="twitter:description" content="MinIO 参数解析与限制MinIO server 在默认情况下会将所有配置信息存到 ${HOME}/.minio/config.json 文件中。 以下部分提供每个字段的详细说明以及如何自定义它们。一个完整的 config.json 在 这里">
 
 
 
@@ -111,7 +116,7 @@
 
 
 
-  <link rel="canonical" href="https://erdong.site/archives/2019/11/">
+  <link rel="canonical" href="https://erdong.site/minio/minio-parameter-and-limit.html">
 
 
 
@@ -121,7 +126,7 @@
   };
 </script>
 
-  <title>归档 | Erdong’ Blog</title>
+  <title>MinIO 参数解析与限制 | Erdong’ Blog</title>
   
 
 
@@ -169,7 +174,7 @@
     
   
 
-  <div class="container sidebar-position-left page-archive">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -245,7 +250,7 @@
         
         
           
-          <li class="menu-item menu-item-archives menu-item-active">
+          <li class="menu-item menu-item-archives">
 
     
     
@@ -350,239 +355,395 @@
           
             
 
-    
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-    
-
-  
-
-
           
           <div id="content" class="content">
             
 
-  
-  
-  
-  <div class="post-block archive">
-    <div id="posts" class="posts-collapse">
-      <span class="archive-move-on"></span>
+  <div id="posts" class="posts-expand">
+    
 
-      
-      <span class="archive-page-counter">
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://erdong.site/minio/minio-parameter-and-limit.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Er Dong">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/myavatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Erdong’ Blog">
+    </span>
+
+    
+      <header class="post-header">
+
         
         
-         
+          <h2 class="post-title" itemprop="name headline">MinIO 参数解析与限制
+
+              
+            
+          </h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-11-11 21:47:35 / 修改时间：21:48:40" itemprop="dateCreated datePublished" datetime="2019-11-11T21:47:35+08:00">2019-11-11</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
           
-        很好! 目前共计 93 篇日志。 继续努力。
-      </span>
-      
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/minio/" itemprop="url" rel="index"><span itemprop="name">minio</span></a></span>
 
-      
-
-        
-        
-        
-
-        
+                
+                
+              
+            </span>
           
-          <div class="collection-title">
-            <h2 class="archive-year" id="archive-year-2019">2019</h2>
-          </div>
-        
-        
 
-        
+          
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+          
+          
 
-      <h3 class="post-title">
-        
-          <a class="post-title-link" href="/minio/minio-parameter-and-limit.html" itemprop="url">
-            
-              <span itemprop="name">MinIO 参数解析与限制</span>
-            
-          </a>
-        
-      </h3>
+          
+            <span class="post-meta-divider">|</span>
+            <span class="post-meta-item-icon">
+            <i class="fa fa-eye"></i>
+             阅读次数： 
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+            </span>
+          
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-11-11T21:47:35+08:00" content="2019-11-11">
-          11-11
-        </time>
-      </div>
+          
 
-    </header>
-  </article>
+          
 
+        </div>
+      </header>
+    
 
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h3 class="post-title">
-        
-          <a class="post-title-link" href="/minio/minio-cluster.html" itemprop="url">
-            
-              <span itemprop="name">MinIO 分布式集群搭建</span>
-            
-          </a>
-        
-      </h3>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-11-10T14:36:48+08:00" content="2019-11-10">
-          11-10
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
       
 
-        
-        
-        
+      
+        <h1 id="MinIO-参数解析与限制"><a href="#MinIO-参数解析与限制" class="headerlink" title="MinIO 参数解析与限制"></a>MinIO 参数解析与限制</h1><p>MinIO server 在默认情况下会将所有配置信息存到 <code>${HOME}/.minio/config.json</code> 文件中。 以下部分提供每个字段的详细说明以及如何自定义它们。一个完整的 config.json 在 <a href="https://raw.githubusercontent.com/minio/minio/master/docs/config/config.sample.json" target="_blank" rel="noopener">这里</a></p>
+<a id="more"></a>
+<p>默认的配置目录是 <code>${HOME}/.minio</code>，你可以使用 <code>--config-dir</code> 选项指定新的路径覆盖默认的路径。MinIO server 在首次启动时会生成一个新的 config.json ，里面带有自动生成的访问凭据。</p>
+<p>TLS 证书存在 <code>${HOME}/.minio/certs</code> 目录下，你需要将证书放在该目录下来启用 HTTPS 。</p>
+<p>以下是一个带来TLS证书的MinIO server的目录结构。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$ tree ~/.minio</span><br><span class="line">/home/user1/.minio</span><br><span class="line">├── certs</span><br><span class="line">│   ├── CAs</span><br><span class="line">│   ├── private.key</span><br><span class="line">│   └── public.crt</span><br><span class="line">└── config.json</span><br></pre></td></tr></table></figure>
 
-        
-        
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>version</td>
+<td>string</td>
+<td>version决定了配置文件的格式，任何老版本都会在启动时自动迁移到新版本中。 [请勿手动修改]</td>
+</tr>
+<tr>
+<td>credential</td>
+<td></td>
+<td>对象存储和Web访问的验证凭据。</td>
+</tr>
+<tr>
+<td>credential.accessKey</td>
+<td>string</td>
+<td>Access key长度最小是5个字符，你可以通过 MINIO_ACCESS_KEY环境变量进行修改</td>
+</tr>
+<tr>
+<td>credential.secretKey</td>
+<td>string</td>
+<td>Secret key长度最小是8个字符，你可以通过MINIO_SECRET_KEY环境变量进行修改</td>
+</tr>
+<tr>
+<td>region</td>
+<td>string</td>
+<td>region描述的是服务器的物理位置，默认是us-east-1（美国东区1）,这也是亚马逊S3的默认区域。你可以通过MINIO_REGION_NAME 环境变量进行修改。如果不了解这块，建议不要随意修改</td>
+</tr>
+<tr>
+<td>browser</td>
+<td>string</td>
+<td>开启或关闭浏览器访问，默认是开启的，你可以通过 MINIO_BROWSER 环境变量进行修改</td>
+</tr>
+</tbody></table>
+<p>示例</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">export MINIO_BROWSER=off</span><br><span class="line">minio server /data</span><br></pre></td></tr></table></figure>
 
-        
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h3 class="post-title">
-        
-          <a class="post-title-link" href="/minio/minio-introduction.html" itemprop="url">
-            
-              <span itemprop="name">MinIO 简介和搭建</span>
-            
-          </a>
-        
-      </h3>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-11-09T23:52:21+08:00" content="2019-11-09">
-          11-09
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
+<h1 id="MinIO-服务限制"><a href="#MinIO-服务限制" class="headerlink" title="MinIO 服务限制"></a>MinIO 服务限制</h1><p>由于纠删码的原因，MinIO 有如下限制</p>
+<table>
+<thead>
+<tr>
+<th>项目</th>
+<th>参数</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>最大驱动器数量</td>
+<td>16</td>
+</tr>
+<tr>
+<td>最小驱动器数量</td>
+<td>4</td>
+</tr>
+<tr>
+<td>读仲裁</td>
+<td>N/2</td>
+</tr>
+<tr>
+<td>写仲裁</td>
+<td>N/2+1</td>
+</tr>
+</tbody></table>
+<p>通过浏览器访问 MinIO ，由于浏览器的限制，上传文件的大小限制为 5GB。</p>
+<p>S3 API 的限制</p>
+<table>
+<thead>
+<tr>
+<th>项目</th>
+<th>参数</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>最大桶数</td>
+<td>无限额</td>
+</tr>
+<tr>
+<td>每桶最大对象数</td>
+<td>无限额</td>
+</tr>
+<tr>
+<td>最大对象大小</td>
+<td>5TB</td>
+</tr>
+<tr>
+<td>最小对象大小</td>
+<td>0</td>
+</tr>
+<tr>
+<td>每次 PUT 操作的最大对象大小</td>
+<td>5GB</td>
+</tr>
+<tr>
+<td>每次上传的最大 Part 数量</td>
+<td>10000</td>
+</tr>
+<tr>
+<td>Part 大小</td>
+<td>5MB到5GB. 最后一个part可以从0B到5GB</td>
+</tr>
+<tr>
+<td>每次list parts请求可返回的part最大数量</td>
+<td>1000</td>
+</tr>
+<tr>
+<td>每次list objects请求可返回的object最大数量</td>
+<td>1000</td>
+</tr>
+<tr>
+<td>每次list multipart uploads请求可返回的multipart uploads最大数量</td>
+<td>1000</td>
+</tr>
+</tbody></table>
+<p>Minio 不支持的 Amazon S3 Bucket API</p>
+<ul>
+<li>BucketACL (可以用 bucket policies)</li>
+<li>BucketCORS (所有HTTP方法的所有存储桶都默认启用CORS)</li>
+<li>BucketLifecycle (Minio纠删码不需要)</li>
+<li>BucketReplication (可以用 mc mirror)</li>
+<li>BucketVersions, BucketVersioning (可以用 s3git)</li>
+<li>BucketWebsite (可以用 caddy or nginx)</li>
+<li>BucketAnalytics, BucketMetrics, BucketLogging (可以用 bucket notification APIs)</li>
+<li>BucketRequestPayment</li>
+<li>BucketTagging</li>
+</ul>
+<p>Minio不支持的Amazon S3 Object API.</p>
+<ul>
+<li>ObjectACL (可以用 bucket policies)</li>
+<li>ObjectTorrent</li>
+</ul>
+<p>======================<br>由于无法及时收到评论内容，所以关闭评论功能。<br>大家有问题欢迎发邮件到 <a href="mailto:erdong@mail.erdong.site" target="_blank" rel="noopener">erdong@mail.erdong.site</a> ，或者 <a href="https://github.com/erdong/erdong.github.io/issues" target="_blank" rel="noopener">https://github.com/erdong/erdong.github.io/issues</a> 提 Issue ，我会及时回复。</p>
+<p>======================<br>Erdong, A Linux user !</p>
 
       
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h3 class="post-title">
-        
-          <a class="post-title-link" href="/weekly/weekly36.html" itemprop="url">
-            
-              <span itemprop="name">攻城狮周刊：第36期</span>
-            
-          </a>
-        
-      </h3>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-11-09T23:16:59+08:00" content="2019-11-09">
-          11-09
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h3 class="post-title">
-        
-          <a class="post-title-link" href="/weekly/weekly35.html" itemprop="url">
-            
-              <span itemprop="name">第35周分享</span>
-            
-          </a>
-        
-      </h3>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-11-03T23:16:59+08:00" content="2019-11-03">
-          11-03
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
     </div>
+
+    
+
+    
+    
+    
+
+    
+      <div>
+        <div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
+  <img id="wechat_subscriber_qcode" src="/images/erdongxt.jpg" alt="Er Dong wechat" style="width: 200px; max-width: 100%;">
+  <div>扫描二维码关注微信公众号</div>
+</div>
+
+      </div>
+    
+
+    
+      
+    
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>坚持原创技术分享，您的支持将鼓励我继续创作!</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/WeChatPay.png" alt="Er Dong 微信支付">
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/AliPay.png" alt="Er Dong 支付宝">
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        
+
+
+
+  
+
+
+
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>Er Dong</li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    
+    <a href="https://erdong.site/minio/minio-parameter-and-limit.html" title="MinIO 参数解析与限制">https://erdong.site/minio/minio-parameter-and-limit.html</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-ND</a> 许可协议。转载请注明出处！</li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/minio/" rel="tag"># minio</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/minio/minio-cluster.html" rel="next" title="MinIO 分布式集群搭建">
+                <i class="fa fa-chevron-left"></i> MinIO 分布式集群搭建
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
 
+  </div>
 
 
           </div>
@@ -607,8 +768,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <div class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -871,6 +1041,23 @@
       </div>
 
       
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#MinIO-参数解析与限制"><span class="nav-number">1.</span> <span class="nav-text">MinIO 参数解析与限制</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#MinIO-服务限制"><span class="nav-number">2.</span> <span class="nav-text">MinIO 服务限制</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
 
       
         <div class="back-to-top">
@@ -1027,6 +1214,10 @@
 
 
   
+  <script src="/js/src/scrollspy.js?v=6.7.0"></script>
+<script src="/js/src/post-details.js?v=6.7.0"></script>
+
+
 
   
 

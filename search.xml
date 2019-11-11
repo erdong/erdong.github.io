@@ -1,6 +1,161 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>MinIO 参数解析与限制</title>
+    <url>/minio/minio-parameter-and-limit.html</url>
+    <content><![CDATA[<h1 id="MinIO-参数解析与限制"><a href="#MinIO-参数解析与限制" class="headerlink" title="MinIO 参数解析与限制"></a>MinIO 参数解析与限制</h1><p>MinIO server 在默认情况下会将所有配置信息存到 <code>${HOME}/.minio/config.json</code> 文件中。 以下部分提供每个字段的详细说明以及如何自定义它们。一个完整的 config.json 在 <a href="https://raw.githubusercontent.com/minio/minio/master/docs/config/config.sample.json" target="_blank" rel="noopener">这里</a></p>
+<a id="more"></a>
+<p>默认的配置目录是 <code>${HOME}/.minio</code>，你可以使用 <code>--config-dir</code> 选项指定新的路径覆盖默认的路径。MinIO server 在首次启动时会生成一个新的 config.json ，里面带有自动生成的访问凭据。</p>
+<p>TLS 证书存在 <code>${HOME}/.minio/certs</code> 目录下，你需要将证书放在该目录下来启用 HTTPS 。</p>
+<p>以下是一个带来TLS证书的MinIO server的目录结构。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ tree ~/.minio</span><br><span class="line">/home/user1/.minio</span><br><span class="line">├── certs</span><br><span class="line">│   ├── CAs</span><br><span class="line">│   ├── private.key</span><br><span class="line">│   └── public.crt</span><br><span class="line">└── config.json</span><br></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>version</td>
+<td>string</td>
+<td>version决定了配置文件的格式，任何老版本都会在启动时自动迁移到新版本中。 [请勿手动修改]</td>
+</tr>
+<tr>
+<td>credential</td>
+<td></td>
+<td>对象存储和Web访问的验证凭据。</td>
+</tr>
+<tr>
+<td>credential.accessKey</td>
+<td>string</td>
+<td>Access key长度最小是5个字符，你可以通过 MINIO_ACCESS_KEY环境变量进行修改</td>
+</tr>
+<tr>
+<td>credential.secretKey</td>
+<td>string</td>
+<td>Secret key长度最小是8个字符，你可以通过MINIO_SECRET_KEY环境变量进行修改</td>
+</tr>
+<tr>
+<td>region</td>
+<td>string</td>
+<td>region描述的是服务器的物理位置，默认是us-east-1（美国东区1）,这也是亚马逊S3的默认区域。你可以通过MINIO_REGION_NAME 环境变量进行修改。如果不了解这块，建议不要随意修改</td>
+</tr>
+<tr>
+<td>browser</td>
+<td>string</td>
+<td>开启或关闭浏览器访问，默认是开启的，你可以通过 MINIO_BROWSER 环境变量进行修改</td>
+</tr>
+</tbody></table>
+<p>示例</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">export MINIO_BROWSER=off</span><br><span class="line">minio server /data</span><br></pre></td></tr></table></figure>
+
+
+<h1 id="MinIO-服务限制"><a href="#MinIO-服务限制" class="headerlink" title="MinIO 服务限制"></a>MinIO 服务限制</h1><p>由于纠删码的原因，MinIO 有如下限制</p>
+<table>
+<thead>
+<tr>
+<th>项目</th>
+<th>参数</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>最大驱动器数量</td>
+<td>16</td>
+</tr>
+<tr>
+<td>最小驱动器数量</td>
+<td>4</td>
+</tr>
+<tr>
+<td>读仲裁</td>
+<td>N/2</td>
+</tr>
+<tr>
+<td>写仲裁</td>
+<td>N/2+1</td>
+</tr>
+</tbody></table>
+<p>通过浏览器访问 MinIO ，由于浏览器的限制，上传文件的大小限制为 5GB。</p>
+<p>S3 API 的限制</p>
+<table>
+<thead>
+<tr>
+<th>项目</th>
+<th>参数</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>最大桶数</td>
+<td>无限额</td>
+</tr>
+<tr>
+<td>每桶最大对象数</td>
+<td>无限额</td>
+</tr>
+<tr>
+<td>最大对象大小</td>
+<td>5TB</td>
+</tr>
+<tr>
+<td>最小对象大小</td>
+<td>0</td>
+</tr>
+<tr>
+<td>每次 PUT 操作的最大对象大小</td>
+<td>5GB</td>
+</tr>
+<tr>
+<td>每次上传的最大 Part 数量</td>
+<td>10000</td>
+</tr>
+<tr>
+<td>Part 大小</td>
+<td>5MB到5GB. 最后一个part可以从0B到5GB</td>
+</tr>
+<tr>
+<td>每次list parts请求可返回的part最大数量</td>
+<td>1000</td>
+</tr>
+<tr>
+<td>每次list objects请求可返回的object最大数量</td>
+<td>1000</td>
+</tr>
+<tr>
+<td>每次list multipart uploads请求可返回的multipart uploads最大数量</td>
+<td>1000</td>
+</tr>
+</tbody></table>
+<p>Minio 不支持的 Amazon S3 Bucket API</p>
+<ul>
+<li>BucketACL (可以用 bucket policies)</li>
+<li>BucketCORS (所有HTTP方法的所有存储桶都默认启用CORS)</li>
+<li>BucketLifecycle (Minio纠删码不需要)</li>
+<li>BucketReplication (可以用 mc mirror)</li>
+<li>BucketVersions, BucketVersioning (可以用 s3git)</li>
+<li>BucketWebsite (可以用 caddy or nginx)</li>
+<li>BucketAnalytics, BucketMetrics, BucketLogging (可以用 bucket notification APIs)</li>
+<li>BucketRequestPayment</li>
+<li>BucketTagging</li>
+</ul>
+<p>Minio不支持的Amazon S3 Object API.</p>
+<ul>
+<li>ObjectACL (可以用 bucket policies)</li>
+<li>ObjectTorrent</li>
+</ul>
+<p>======================<br>由于无法及时收到评论内容，所以关闭评论功能。<br>大家有问题欢迎发邮件到 <a href="mailto:erdong@mail.erdong.site" target="_blank" rel="noopener">erdong@mail.erdong.site</a> ，或者 <a href="https://github.com/erdong/erdong.github.io/issues" target="_blank" rel="noopener">https://github.com/erdong/erdong.github.io/issues</a> 提 Issue ，我会及时回复。</p>
+<p>======================<br>Erdong, A Linux user !</p>
+]]></content>
+      <categories>
+        <category>minio</category>
+      </categories>
+      <tags>
+        <tag>minio</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>MinIO 分布式集群搭建</title>
     <url>/minio/minio-cluster.html</url>
     <content><![CDATA[<h1 id="MinIO-分布式集群搭建"><a href="#MinIO-分布式集群搭建" class="headerlink" title="MinIO 分布式集群搭建"></a>MinIO 分布式集群搭建</h1><p>分布式 Minio 可以让你将多块硬盘（甚至在不同的机器上）组成一个对象存储服务。由于硬盘分布在不同的节点上，分布式 Minio 避免了单点故障。</p>
