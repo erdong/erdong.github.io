@@ -96,18 +96,18 @@
 
 
 
-  <meta name="description" content="MinIO 搭建MinIO 是一个基于 Apache License v2.0 开源协议的对象存储服务。它兼容亚马逊 S3 云存储服务接口，非常适合于存储大容量非结构化的数据，例如图片、视频、日志文件、备份数据和容器/虚拟机镜像等，而一个对象文件可以是任意大小，从几 kb 到最大 5T 不等。">
-<meta name="keywords" content="minio">
+  <meta name="description" content="这里记录过去一周，我看到的值得分享的东西。">
+<meta name="keywords" content="Newsletter">
 <meta property="og:type" content="article">
-<meta property="og:title" content="MinIO 简介和搭建">
-<meta property="og:url" content="https://erdong.site/minio/minio-introduction.html">
+<meta property="og:title" content="攻城狮周刊：第37期">
+<meta property="og:url" content="https://erdong.site/weekly/weekly37.html">
 <meta property="og:site_name" content="Erdong’ Blog">
-<meta property="og:description" content="MinIO 搭建MinIO 是一个基于 Apache License v2.0 开源协议的对象存储服务。它兼容亚马逊 S3 云存储服务接口，非常适合于存储大容量非结构化的数据，例如图片、视频、日志文件、备份数据和容器/虚拟机镜像等，而一个对象文件可以是任意大小，从几 kb 到最大 5T 不等。">
+<meta property="og:description" content="这里记录过去一周，我看到的值得分享的东西。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-11-09T15:54:11.198Z">
+<meta property="og:updated_time" content="2019-11-23T09:44:22.555Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="MinIO 简介和搭建">
-<meta name="twitter:description" content="MinIO 搭建MinIO 是一个基于 Apache License v2.0 开源协议的对象存储服务。它兼容亚马逊 S3 云存储服务接口，非常适合于存储大容量非结构化的数据，例如图片、视频、日志文件、备份数据和容器/虚拟机镜像等，而一个对象文件可以是任意大小，从几 kb 到最大 5T 不等。">
+<meta name="twitter:title" content="攻城狮周刊：第37期">
+<meta name="twitter:description" content="这里记录过去一周，我看到的值得分享的东西。">
 
 
 
@@ -116,7 +116,7 @@
 
 
 
-  <link rel="canonical" href="https://erdong.site/minio/minio-introduction.html">
+  <link rel="canonical" href="https://erdong.site/weekly/weekly37.html">
 
 
 
@@ -126,7 +126,7 @@
   };
 </script>
 
-  <title>MinIO 简介和搭建 | Erdong’ Blog</title>
+  <title>攻城狮周刊：第37期 | Erdong’ Blog</title>
   
 
 
@@ -375,7 +375,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://erdong.site/minio/minio-introduction.html">
+    <link itemprop="mainEntityOfPage" href="https://erdong.site/weekly/weekly37.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Er Dong">
@@ -392,7 +392,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">MinIO 简介和搭建
+          <h2 class="post-title" itemprop="name headline">攻城狮周刊：第37期
 
               
             
@@ -418,12 +418,24 @@
                 
               
 
-              <time title="创建时间：2019-11-09 23:52:21 / 修改时间：23:54:11" itemprop="dateCreated datePublished" datetime="2019-11-09T23:52:21+08:00">2019-11-09</time>
+              <time title="创建时间：2019-11-24 13:16:59" itemprop="dateCreated datePublished" datetime="2019-11-24T13:16:59+08:00">2019-11-24</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-11-23 17:44:22" itemprop="dateModified" datetime="2019-11-23T17:44:22+08:00">2019-11-23</time>
               
             
           </span>
@@ -440,7 +452,7 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/minio/" itemprop="url" rel="index"><span itemprop="name">minio</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/weekly/" itemprop="url" rel="index"><span itemprop="name">weekly</span></a></span>
 
                 
                 
@@ -479,84 +491,14 @@
       
 
       
-        <h1 id="MinIO-搭建"><a href="#MinIO-搭建" class="headerlink" title="MinIO 搭建"></a>MinIO 搭建</h1><p>MinIO 是一个基于 Apache License v2.0 开源协议的对象存储服务。它兼容亚马逊 S3 云存储服务接口，非常适合于存储大容量非结构化的数据，例如图片、视频、日志文件、备份数据和容器/虚拟机镜像等，而一个对象文件可以是任意大小，从几 kb 到最大 5T 不等。</p>
+        <p>这里记录过去一周，我看到的值得分享的东西。</p>
 <a id="more"></a>
-<p>MinIO 是一个非常轻量的服务,可以很简单的和其他应用的结合，类似 NodeJS, Redis 或者 MySQL。</p>
-<p>官方对 Minio 的定义是一个高性能的对象存储。</p>
-<blockquote>
-<p>Build high performance data infrastructure<br>for machine learning, analytics and<br>application data workloads with MinIO 。</p>
-</blockquote>
-<p>Minio 的官方网站是 <a href="https://min.io" target="_blank" rel="noopener">https://min.io</a> ，<br>Minio 的官方文档是 <a href="https://docs.min.io/cn/" target="_blank" rel="noopener">https://docs.min.io/cn/</a> ，<br>GitHub 仓库地址是：<a href="https://github.com/minio/minio" target="_blank" rel="noopener">https://github.com/minio/minio</a> ，目前有 18.8k Stars (2019.11.9)</p>
-<p>Minio 的 benchmark 说明：</p>
-<p><a href="https://min.io/resources/docs/MinIO-vs-HDFS-MapReduce-performance-comparison.pdf" target="_blank" rel="noopener">https://min.io/resources/docs/MinIO-vs-HDFS-MapReduce-performance-comparison.pdf</a><br><a href="https://min.io/resources/docs/MinIO-throughput-benchmarks-on-NVMe-SSD.pdf" target="_blank" rel="noopener">https://min.io/resources/docs/MinIO-throughput-benchmarks-on-NVMe-SSD.pdf</a><br><a href="https://min.io/resources/docs/Performance-comparison-Starburst-Presto-SQL.pdf" target="_blank" rel="noopener">https://min.io/resources/docs/Performance-comparison-Starburst-Presto-SQL.pdf</a><br><a href="https://min.io/resources/docs/MinIO-throughput-benchmarks-on-HDD.pdf" target="_blank" rel="noopener">https://min.io/resources/docs/MinIO-throughput-benchmarks-on-HDD.pdf</a><br><a href="https://min.io/resources/docs/Performance-comparison-Apache-Spark.pdf" target="_blank" rel="noopener">https://min.io/resources/docs/Performance-comparison-Apache-Spark.pdf</a></p>
-<h1 id="快速开始一个单节点的-MinIO"><a href="#快速开始一个单节点的-MinIO" class="headerlink" title="快速开始一个单节点的 MinIO"></a>快速开始一个单节点的 MinIO</h1><p>MinIO 分为服务端和客户端，服务端提供一个对象存储，也提供一个 Web 的管理页面。客户端是用来管理、查看服务端的一个工具。服务端的二进制文件是 <code>minio</code> ，客户端的二进制文件是 <code>mc</code> 。</p>
-<h2 id="使用二进制文件启动"><a href="#使用二进制文件启动" class="headerlink" title="使用二进制文件启动"></a>使用二进制文件启动</h2><p>首先先下载服务端的二进制文件，其次准备一个用来存储的磁盘或者目录，</p>
-<p>下载好以后赋予执行权限，可以使用如下命令快速启动。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">chmod +x minio</span><br><span class="line">./minio server /erdong/data</span><br></pre></td></tr></table></figure>
 
-<p>启动后可以通过访问 <a href="http://localhost:9000" target="_blank" rel="noopener">http://localhost:9000</a> 来访问你的对象存储。</p>
-<h2 id="使用-Docker-启动"><a href="#使用-Docker-启动" class="headerlink" title="使用 Docker 启动"></a>使用 Docker 启动</h2><p>MinIO 需要一个持久卷来存储配置和应用数据。不过, 如果只是为了测试一下, 您可以通过简单地传递一个目录（在下面的示例中为 <code>/erdong/data</code>）启动 MinIO 。这个目录会在容器启动时在容器的文件系统中创建，不过所有的数据都会在容器退出时丢失。</p>
-<p>要创建具有永久存储的 MinIO 容器，您需要将本地持久目录从主机操作系统映射到虚拟配置 ~/.minio 并导出 /data 目录。 为此，请运行以下命令</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">docker run -p 9000:9000 --name minio \</span><br><span class="line">  -e &quot;MINIO_ACCESS_KEY=minioadmin&quot; \</span><br><span class="line">  -e &quot;MINIO_SECRET_KEY=minioadminpassword&quot; \</span><br><span class="line">  -v /erdong/minio/data:/data \</span><br><span class="line">  -v /erdong/minio/config:/root/.minio \</span><br><span class="line">  minio/minio server /data</span><br></pre></td></tr></table></figure>
-
-<p>启动后，即可访问 <a href="http://localhost:9000" target="_blank" rel="noopener">http://localhost:9000</a> 来访问你的对象存储。</p>
-<p>上述命令中设置了如下参数：</p>
-<ul>
-<li>MINIO_ACCESS_KEY 管理员的访问秘钥</li>
-<li>MINIO_SECRET_KEY 管理员的秘钥</li>
-<li>/erdong/minio/data:/data  挂载持久化数据目录</li>
-<li>/erdong/minio/config:/root/.minio  挂载配置文件</li>
-<li>server 启动 Server 模式，除了该模式还有一个 Gateway 模式。</li>
-<li>/data  指定数据目录</li>
-</ul>
-<p>如果需要指定端口可以使用如下参数</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">--address &quot;:9000&quot;</span><br></pre></td></tr></table></figure>
-
-<h1 id="使用-TLS-安全访问-MinIO-服务"><a href="#使用-TLS-安全访问-MinIO-服务" class="headerlink" title="使用 TLS 安全访问 MinIO 服务"></a>使用 TLS 安全访问 MinIO 服务</h1><p>接下来我们看看如何在 linux 上配置 MinIO 服务使用 TLS 。</p>
-<p>使用 TLS 的前提是先下载好 MinIO Server 。</p>
-<p>如果你已经有私钥和公钥证书，你需要将他们拷贝到 MinIO 的 <code>$HOME/.minio/certs</code> 文件夹，私钥的名字必须是 <code>private.key</code> ，公钥证书的名字必须是 <code>public.crt</code> 。 MinIO 在 Linux 只支持使用 PEM 格式的秘钥和证书，在 Windows 上只支持 PEM 格式的秘钥和证书，目前不支持 PFX 证书。</p>
-<p>如果这个证书是被证书机构签发的，<code>public.crt</code> 应该是服务器的证书。</p>
-<p>Linux 可以使用如下工具来生成证书</p>
-<ul>
-<li>Let‘s Encrypt</li>
-<li>generate_cert.go</li>
-<li>OpenSSL </li>
-</ul>
-<p>Windows 可以使用如下工具来生成证书</p>
-<ul>
-<li>GnuTLS</li>
-</ul>
-<p>Minio 也可以配置成连接其它服务，不管是 Minio 节点还是像 NATs、Redis 这些。如果这些服务用的不是在已知证书机构注册的证书，你可以让 Minio 服务信任这些 CA ，怎么做呢，将这些证书放到Minio配置路径下(~/.minio/certs/CAs/ Linux 或者 C:\Users&lt;Username&gt;.minio\certs\CAs Windows).</p>
-<h2 id="如何使用-OpenSSL-来生成自签证书"><a href="#如何使用-OpenSSL-来生成自签证书" class="headerlink" title="如何使用 OpenSSL 来生成自签证书"></a>如何使用 OpenSSL 来生成自签证书</h2><p>使用如下命令生成私钥，私钥会生成在执行命令的目录下</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">openssl genrsa -out private.key 2048</span><br></pre></td></tr></table></figure>
-
-<p>生成自签名的证书，证书会生成在执行命令的目录下</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">openssl req -new -x509 -days 3650 -key private.key -out public.crt -subj &quot;/C=US/ST=state/L=location/O=organization/CN=domain&quot;</span><br></pre></td></tr></table></figure>
-
-<p>其中相关内容可以按照实际情况修改，比如 <code>/C</code> 是国家，中国是 CN ，<code>/ST</code> 是州或者省， <code>/L</code> 是市或者区， <code>/CN</code> 是域名。</p>
-<p>秘钥和证书生成好以后，按照上边的要求放置在对应的目录即可。</p>
-<h1 id="Q-amp-A"><a href="#Q-amp-A" class="headerlink" title="Q&amp;A"></a>Q&amp;A</h1><p>Thanos 在连接 MinIO 的时候遇到了一些问题，日志里有很多错误提示，列在下边供参考。</p>
-<h2 id="1-提示冒号太多"><a href="#1-提示冒号太多" class="headerlink" title="1. 提示冒号太多"></a>1. 提示冒号太多</h2><p>日志报错如下所示：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">level=info ts=2019-11-08T02:43:40.981858805Z caller=main.go:170 msg=&quot;Tracing will be disabled&quot;</span><br><span class="line">level=info ts=2019-11-08T02:43:40.982326667Z caller=factory.go:39 msg=&quot;loading bucket configuration&quot;</span><br><span class="line">level=error ts=2019-11-08T02:43:40.982682262Z caller=main.go:200 err=&quot;store command failed: create bucket client: create S3 client: initialize s3 client: address http://127.0.0.1:9000: too many colons in address&quot;</span><br></pre></td></tr></table></figure>
-
-<p>日志描述直译过来就是冒号太多了，原因是在配置文件中，填写了 MinIO 提供的 S3 协议的 endpoint 的时候，多填写了 <code>http://</code> ，导致提示该错误。本意是在内网使用， HTTP 协议就可以了，不需要要开启 HTTPS ，但是 Thanos 在连接 S3 存储的时候默认是使用 HTTPS 的，不能通过这种方式来使用 HTTP 。</p>
-<p>错误的配置如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">type: S3</span><br><span class="line">config:</span><br><span class="line">  bucket: &quot;disk1&quot;</span><br><span class="line">  endpoint: &quot;http://127.0.0.1:9000&quot;</span><br></pre></td></tr></table></figure>
-
-<p>正确的配置如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">type: S3</span><br><span class="line">config:</span><br><span class="line">  bucket: &quot;disk1&quot;</span><br><span class="line">  endpoint: &quot;127.0.0.1:9000&quot;</span><br></pre></td></tr></table></figure>
-
-<h2 id="2-提示对方没有使用-HTTPS"><a href="#2-提示对方没有使用-HTTPS" class="headerlink" title="2. 提示对方没有使用 HTTPS"></a>2. 提示对方没有使用 HTTPS</h2><p>日志报错如下</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">level=info ts=2019-11-08T02:42:04.366000876Z caller=main.go:170 msg=&quot;Tracing will be disabled&quot;</span><br><span class="line">level=info ts=2019-11-08T02:42:04.366417674Z caller=factory.go:39 msg=&quot;loading bucket configuration&quot;</span><br><span class="line">level=info ts=2019-11-08T02:42:04.384413714Z caller=cache.go:172 msg=&quot;created index cache&quot; maxItemSizeBytes=131072000 maxSizeBytes=262144000 maxItems=math.MaxInt64</span><br><span class="line">level=error ts=2019-11-08T02:42:04.385632149Z caller=main.go:200 err=&quot;store command failed: bucket store initial sync: sync block: iter: Get https://127.0.0.1:9000/prometheus-store/?delimiter=%2F&amp;max-keys=1000&amp;prefix=: http: server gave HTTP response to HTTPS client&quot;</span><br></pre></td></tr></table></figure>
-
-<p>这是 Thanos 连接的对象存储只提供了 HTTP ，没有提供 HTTPS，这个时候需要让对象存储添加证书，启用 HTTPS 。</p>
-<h2 id="3-不能够认证某个域名"><a href="#3-不能够认证某个域名" class="headerlink" title="3. 不能够认证某个域名"></a>3. 不能够认证某个域名</h2><p>日志报错如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">level=info ts=2019-11-08T03:06:57.90508837Z caller=main.go:170 msg=&quot;Tracing will be disabled&quot;</span><br><span class="line">level=info ts=2019-11-08T03:06:57.905445182Z caller=factory.go:39 msg=&quot;loading bucket configuration&quot;</span><br><span class="line">level=info ts=2019-11-08T03:06:57.923283984Z caller=cache.go:172 msg=&quot;created index cache&quot; maxItemSizeBytes=131072000 maxSizeBytes=262144000 maxItems=math.MaxInt64</span><br><span class="line">level=error ts=2019-11-08T03:06:57.927125234Z caller=main.go:200 err=&quot;store command failed: bucket store initial sync: sync block: iter: Get https://10.23.80.18:9000/prometheus-store/?delimiter=%2F&amp;max-keys=1000&amp;prefix=: x509: cannot validate certificate for minio-erdong.site because it doesn&apos;t contain any IP SANs&quot;</span><br></pre></td></tr></table></figure>
-
-<p>因为 Thanos 连接 Minio 的 HTTP 配置里，有一个 <code>insecure_skip_verify</code> 选项，该选项默认为 false ，需要对域名的证书进行验证，由于使用了自签证书，没有在权威的 CA 机构做认证，所以在连接过程中会提示不安全，将值改为 true，跳过这个验证就可以了。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">http_config:</span><br><span class="line">  idle_conn_timeout: 90s</span><br><span class="line">  response_header_timeout: 2m</span><br><span class="line">  insecure_skip_verify: true</span><br></pre></td></tr></table></figure>
-
-<h1 id="end"><a href="#end" class="headerlink" title="end"></a>end</h1><p>======================<br>由于无法及时收到评论内容，所以关闭评论功能。<br>大家有问题欢迎发邮件到 <a href="mailto:erdong@mail.erdong.site" target="_blank" rel="noopener">erdong@mail.erdong.site</a> ，或者 <a href="https://github.com/erdong/erdong.github.io/issues" target="_blank" rel="noopener">https://github.com/erdong/erdong.github.io/issues</a> 提 Issue ，我会及时回复。</p>
+<h1 id="新闻"><a href="#新闻" class="headerlink" title="新闻"></a>新闻</h1><h2 id="1-国务院办公厅关于2020年部分节假日安排的通知"><a href="#1-国务院办公厅关于2020年部分节假日安排的通知" class="headerlink" title="1. 国务院办公厅关于2020年部分节假日安排的通知"></a>1. <a href="http://www.gov.cn/zhengce/content/2019-11/21/content_5454164.htm" target="_blank" rel="noopener">国务院办公厅关于2020年部分节假日安排的通知</a></h2><p>2020 年的假期安排已经发布，祝大家每个假期都开心快乐，收获满满。</p>
+<h1 id="工具"><a href="#工具" class="headerlink" title="工具"></a>工具</h1><h2 id="1-法信"><a href="#1-法信" class="headerlink" title="1. 法信"></a>1. <a href="http://www.faxin.cn/keyword/index.aspx" target="_blank" rel="noopener">法信</a></h2><p>一个法律仓库，可以在线搜索国内的各种法律。</p>
+<h1 id="资源"><a href="#资源" class="headerlink" title="资源"></a>资源</h1><h2 id="1-《高性能-Go-代码工坊》中译"><a href="#1-《高性能-Go-代码工坊》中译" class="headerlink" title="1. 《高性能 Go 代码工坊》中译"></a>1. <a href="https://www.yuque.com/ksco/uiondt" target="_blank" rel="noopener">《高性能 Go 代码工坊》中译</a></h2><p><a href="https://dave.cheney.net/high-performance-go-workshop/dotgo-paris.html" target="_blank" rel="noopener">原文</a>是深入研究 Go 应用性能提升的英语系列文章，这里是中译。</p>
+<h2 id="2-容错、高可用、灾备"><a href="#2-容错、高可用、灾备" class="headerlink" title="2. 容错、高可用、灾备"></a>2. <a href="http://www.ruanyifeng.com/blog/2019/11/fault-tolerance.html" target="_blank" rel="noopener">容错、高可用、灾备</a></h2><p>简单明了的说明了这三种方式有什么区别。</p>
+<h2 id="3-IBM-Developer"><a href="#3-IBM-Developer" class="headerlink" title="3. IBM Developer"></a>3. <a href="https://www.ibm.com/developerworks/cn/" target="_blank" rel="noopener">IBM Developer</a></h2><p>曾经叫做 developerWorks ，现在叫 IBM Developer ，是 IBM 公司提供的一个知识社区，里边有很多文章条理清晰、阅读体验良好。很适合学一写东西。</p>
 <p>======================<br>Erdong, A Linux user !</p>
 
       
@@ -628,7 +570,7 @@
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
     
-    <a href="https://erdong.site/minio/minio-introduction.html" title="MinIO 简介和搭建">https://erdong.site/minio/minio-introduction.html</a>
+    <a href="https://erdong.site/weekly/weekly37.html" title="攻城狮周刊：第37期">https://erdong.site/weekly/weekly37.html</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-ND</a> 许可协议。转载请注明出处！</li>
@@ -641,7 +583,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/minio/" rel="tag"># minio</a>
+            <a href="/tags/weekly/" rel="tag"># weekly</a>
           
         </div>
       
@@ -654,8 +596,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/weekly/weekly36.html" rel="next" title="攻城狮周刊：第36期">
-                <i class="fa fa-chevron-left"></i> 攻城狮周刊：第36期
+              <a href="/Prometheus/New-Features/New-Features-in-Prometheus-2-14-0.html" rel="next" title="Prometheus 2.14.0 新特性">
+                <i class="fa fa-chevron-left"></i> Prometheus 2.14.0 新特性
               </a>
             
           </div>
@@ -663,10 +605,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/minio/minio-cluster.html" rel="prev" title="MinIO 分布式集群搭建">
-                MinIO 分布式集群搭建 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -990,7 +928,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#MinIO-搭建"><span class="nav-number">1.</span> <span class="nav-text">MinIO 搭建</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#快速开始一个单节点的-MinIO"><span class="nav-number">2.</span> <span class="nav-text">快速开始一个单节点的 MinIO</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#使用二进制文件启动"><span class="nav-number">2.1.</span> <span class="nav-text">使用二进制文件启动</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用-Docker-启动"><span class="nav-number">2.2.</span> <span class="nav-text">使用 Docker 启动</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#使用-TLS-安全访问-MinIO-服务"><span class="nav-number">3.</span> <span class="nav-text">使用 TLS 安全访问 MinIO 服务</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#如何使用-OpenSSL-来生成自签证书"><span class="nav-number">3.1.</span> <span class="nav-text">如何使用 OpenSSL 来生成自签证书</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Q-amp-A"><span class="nav-number">4.</span> <span class="nav-text">Q&amp;A</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-提示冒号太多"><span class="nav-number">4.1.</span> <span class="nav-text">1. 提示冒号太多</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-提示对方没有使用-HTTPS"><span class="nav-number">4.2.</span> <span class="nav-text">2. 提示对方没有使用 HTTPS</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-不能够认证某个域名"><span class="nav-number">4.3.</span> <span class="nav-text">3. 不能够认证某个域名</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#end"><span class="nav-number">5.</span> <span class="nav-text">end</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#新闻"><span class="nav-number">1.</span> <span class="nav-text">新闻</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-国务院办公厅关于2020年部分节假日安排的通知"><span class="nav-number">1.1.</span> <span class="nav-text">1. 国务院办公厅关于2020年部分节假日安排的通知</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#工具"><span class="nav-number">2.</span> <span class="nav-text">工具</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-法信"><span class="nav-number">2.1.</span> <span class="nav-text">1. 法信</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#资源"><span class="nav-number">3.</span> <span class="nav-text">资源</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-《高性能-Go-代码工坊》中译"><span class="nav-number">3.1.</span> <span class="nav-text">1. 《高性能 Go 代码工坊》中译</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-容错、高可用、灾备"><span class="nav-number">3.2.</span> <span class="nav-text">2. 容错、高可用、灾备</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-IBM-Developer"><span class="nav-number">3.3.</span> <span class="nav-text">3. IBM Developer</span></a></li></ol></li></ol></div>
             
 
           </div>

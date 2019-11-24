@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://erdong.site/"/>
-  <updated>2019-11-23T09:31:36.743Z</updated>
+  <updated>2019-11-23T09:44:22.555Z</updated>
   <id>https://erdong.site/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>攻城狮周刊：第37期</title>
+    <link href="https://erdong.site/weekly/weekly37.html"/>
+    <id>https://erdong.site/weekly/weekly37.html</id>
+    <published>2019-11-24T05:16:59.000Z</published>
+    <updated>2019-11-23T09:44:22.555Z</updated>
+    
+    <content type="html"><![CDATA[<p>这里记录过去一周，我看到的值得分享的东西。</p><a id="more"></a><h1 id="新闻"><a href="#新闻" class="headerlink" title="新闻"></a>新闻</h1><h2 id="1-国务院办公厅关于2020年部分节假日安排的通知"><a href="#1-国务院办公厅关于2020年部分节假日安排的通知" class="headerlink" title="1. 国务院办公厅关于2020年部分节假日安排的通知"></a>1. <a href="http://www.gov.cn/zhengce/content/2019-11/21/content_5454164.htm" target="_blank" rel="noopener">国务院办公厅关于2020年部分节假日安排的通知</a></h2><p>2020 年的假期安排已经发布，祝大家每个假期都开心快乐，收获满满。</p><h1 id="工具"><a href="#工具" class="headerlink" title="工具"></a>工具</h1><h2 id="1-法信"><a href="#1-法信" class="headerlink" title="1. 法信"></a>1. <a href="http://www.faxin.cn/keyword/index.aspx" target="_blank" rel="noopener">法信</a></h2><p>一个法律仓库，可以在线搜索国内的各种法律。</p><h1 id="资源"><a href="#资源" class="headerlink" title="资源"></a>资源</h1><h2 id="1-《高性能-Go-代码工坊》中译"><a href="#1-《高性能-Go-代码工坊》中译" class="headerlink" title="1. 《高性能 Go 代码工坊》中译"></a>1. <a href="https://www.yuque.com/ksco/uiondt" target="_blank" rel="noopener">《高性能 Go 代码工坊》中译</a></h2><p><a href="https://dave.cheney.net/high-performance-go-workshop/dotgo-paris.html" target="_blank" rel="noopener">原文</a>是深入研究 Go 应用性能提升的英语系列文章，这里是中译。</p><h2 id="2-容错、高可用、灾备"><a href="#2-容错、高可用、灾备" class="headerlink" title="2. 容错、高可用、灾备"></a>2. <a href="http://www.ruanyifeng.com/blog/2019/11/fault-tolerance.html" target="_blank" rel="noopener">容错、高可用、灾备</a></h2><p>简单明了的说明了这三种方式有什么区别。</p><h2 id="3-IBM-Developer"><a href="#3-IBM-Developer" class="headerlink" title="3. IBM Developer"></a>3. <a href="https://www.ibm.com/developerworks/cn/" target="_blank" rel="noopener">IBM Developer</a></h2><p>曾经叫做 developerWorks ，现在叫 IBM Developer ，是 IBM 公司提供的一个知识社区，里边有很多文章条理清晰、阅读体验良好。很适合学一写东西。</p><p>======================<br>Erdong, A Linux user !</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;这里记录过去一周，我看到的值得分享的东西。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="weekly" scheme="https://erdong.site/categories/weekly/"/>
+    
+    
+      <category term="weekly" scheme="https://erdong.site/tags/weekly/"/>
+    
+  </entry>
   
   <entry>
     <title>Prometheus 2.14.0 新特性</title>
