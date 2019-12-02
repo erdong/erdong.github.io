@@ -1,6 +1,125 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>发布一本用 GitBook 编辑的书</title>
+    <url>/gitbook/gitbook-release-book.html</url>
+    <content><![CDATA[<p>在上一篇的文章里，我们已经写好了一本名叫 <code>erdong-first-book</code> 的书，但是在本地浏览很不方便，我们希望放到网络上，可以随时、方便的访问这个书籍。这个需求可以使用多种方式来实现，比如第一种，可以通过 GitBook 官网来发布这本书，GitBook 除了是一个电子书的工具以为，自身也有一个网址，在该网站注册成为会员后，可以发布自己的电子书，并且可以和 GitHub 进行关联。</p>
+<p>除了使用 GitBook 官网以外，可以直接将电子书放在 GitHub 上，通过 GitHub Pages 来发布这本书。</p>
+<a id="more"></a>
+
+<h1 id="使用-GitHub-发布你的书籍"><a href="#使用-GitHub-发布你的书籍" class="headerlink" title="使用 GitHub 发布你的书籍"></a>使用 GitHub 发布你的书籍</h1><p>接下来我们看一下如何使用 GitHub Pages 来发布一本书。</p>
+<p>首先你需要一个 GitHub 的账号，在你的账号下创建一个用来放置你书籍的仓库，这两个步骤在网络上有太多的资料，很容易就可以达成了。</p>
+<p>创建好仓库以后，在仓库中创建一个 docs 文件夹，用来放置 GitBook 生成的静态文件。</p>
+<p>打开 GitHub 仓库的设置页面，找到 GitHub Pages 选项，选择 <code>master branch /docs folder</code> 选项即可。</p>
+<blockquote>
+<p>注意：一定要先在仓库中创建 docs 文件夹，否则无法勾选该选项。</p>
+</blockquote>
+<p><img src="https://image.erdong.site/blog/2019/10/18/githubpagesdocs.jpg" alt="GithubPagesDocs"></p>
+<p>做完上述步骤以后开始使用 Git 上传你写好的内容到 GitHub , 关键点是将 GitBook 生成的静态文件 <code>_book</code> 重命名为 <code>docs</code> 上传替换刚才创建的 docs 文件夹即可。</p>
+<p>这个时候使用浏览器打开  <a href="http://your_github_id.github.io/your_github_gitbook" target="_blank" rel="noopener">http://your_github_id.github.io/your_github_gitbook</a>  这个地址即可。比如我的 GitBook 地址是<br> <a href="http://erdong.github.io/gitbook-notes-samples" target="_blank" rel="noopener">http://erdong.github.io/gitbook-notes-samples</a> ，大家在点击以后发现会自动跳转到 <a href="https://erdong.site/gitbook-notes-samples">https://erdong.site/gitbook-notes-samples</a>  是因为我做了域名绑定。</p>
+<h1 id="本地-GitBook-迁移"><a href="#本地-GitBook-迁移" class="headerlink" title="本地 GitBook 迁移"></a>本地 GitBook 迁移</h1><p>在迁移前可以使用如下命令查看一下曾经使用 npm 安装过什么模块</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">npm list -g --depth 0</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>list : 已经安装的 node 包</li>
+<li>-g ： 全局的安装包</li>
+<li>–depth : 包的显示层级，0 代表显示第一级的包，数字越大，显示的越全。</li>
+</ul>
+<p>迁移其实非常简单，你在原来的环境将整本书打包，最好把文件夹里的node_modules 目录也一起打包，这样在新的环境就不需要安装这些组件了。在新的环境按照如下顺序依次进行安装你之前安装过的组件</p>
+<p>&lt; 1.&gt; 安装 npm<br>&lt; 2.&gt; 安装 gitbook<br>&lt; 3.&gt; 拷贝打包好的文件夹<br>&lt; 4.&gt; 减压到新的位置</p>
+<p>这样就完成了你的书的迁移。你在新的位置可以继续进行内容的编写、静态文件的生成，和之前一样，没有任何区别。</p>
+<p>======================<br>由于无法及时收到评论内容，所以关闭评论功能。<br>大家有问题欢迎发邮件到 <a href="mailto:erdong@mail.erdong.site" target="_blank" rel="noopener">erdong@mail.erdong.site</a> ，或者 <a href="https://github.com/erdong/erdong.github.io/issues" target="_blank" rel="noopener">https://github.com/erdong/erdong.github.io/issues</a> 提 Issue ，我会及时回复。</p>
+<p>======================<br>Erdong, A Linux user !</p>
+]]></content>
+      <categories>
+        <category>gitbook</category>
+      </categories>
+      <tags>
+        <tag>gitbook</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>用 GitBook 创建一本书</title>
+    <url>/gitbook/gitbook-create-book.html</url>
+    <content><![CDATA[<h1 id="用-GitBook-创建一本书"><a href="#用-GitBook-创建一本书" class="headerlink" title="用 GitBook 创建一本书"></a>用 GitBook 创建一本书</h1><p>gitbook 首先是一个软件，它使用 Git 和 Markdown 来编排书本，如果你没有听过 Git 和 Markdown，那么 gitbook 可能不适合你直接入手，你需要先去学习 Git 和 Markdown。Git 是一个版本控制工具，Markdown 是一个文本编辑语法，基本的使用大概几个小时就可以都学会了，并不复杂。</p>
+<a id="more"></a>
+<p>这是 gitbook 项目主页上对 gitbook 的定义。</p>
+<blockquote>
+<p>Modern book format and toolchain using Git and Markdown .</p>
+</blockquote>
+<h1 id="安装-GitBook"><a href="#安装-GitBook" class="headerlink" title="安装 GitBook"></a>安装 GitBook</h1><p>首先需要安装 nodejs，以便能够使用 npm 来安装 gitbook</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ wget -qO- https://raw.github.com/creationix/nvm/v0.33.11/install.sh | sh</span><br><span class="line">``` </span><br><span class="line"></span><br><span class="line">该命令会安装 nvm 命令，安装好以后会添加 nvm 的环境变量到 `.bashrc` 文件里，接下来退出终端，重新登陆使得 `.bashrc` 文件生效，或者使用其他方法使添加的环境变量生效。</span><br><span class="line">   </span><br><span class="line">接下来使用下列命令来安装 npm </span><br><span class="line"></span><br><span class="line">```   </span><br><span class="line">$ nvm install stable</span><br></pre></td></tr></table></figure>
+
+<p>可以使用下列命令来查看 npm 的版本，比如我这次安装的是 6.11.3 版本。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[erdong@testhost ~]$ npm --version</span><br><span class="line">6.11.3</span><br><span class="line">[erdong@testhost ~]$</span><br></pre></td></tr></table></figure>
+
+<p>接下来使用 npm 来安装 gitbook</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ npm install gitbook-cli -g</span><br></pre></td></tr></table></figure>
+
+<h1 id="创建第一本书"><a href="#创建第一本书" class="headerlink" title="创建第一本书"></a>创建第一本书</h1><p>首先新建一个目录，这个目录就是这本书的一个载体，就好比在现实世界里你要先准备一个本子，以后所有的内容会写在这个本子上。在 gitbook，我们以后所有的内容都会存放在这个目录里。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ mkdir erdong-first-book</span><br></pre></td></tr></table></figure>
+
+<p>接下来我们初始化这个目录，就好比你在你准备的本子上做一些基本的工作，</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[erdong@testhost ~]$ cd erdong-first-book</span><br><span class="line">[erdong@testhost erdong-first-book]$ gitbook init</span><br><span class="line">[erdong@testhost erdong-first-book]$ ls</span><br><span class="line">README.md  SUMMARY.md</span><br></pre></td></tr></table></figure>
+
+<p>初始化过后，在这个文件夹会生成 2 个文件，<code>README.md</code> 和 <code>SUMMARY.md</code> 。</p>
+<ul>
+<li>README.md ： 是书的简单介绍，类似于一本书的序或者前言部分。</li>
+<li>SUMMARY.md ： 是书的目录，程序按照这个文件来生成书的结构。</li>
+</ul>
+<p>初始化结束后，就可以写东西了，</p>
+<p>比如我们现在往这两个文件里写入以下内容，在 README.md 文件中我们写入如下内容：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># Introduction</span><br><span class="line"></span><br><span class="line">This erdong&apos;s first book</span><br><span class="line"></span><br><span class="line">This a samples in GitHub, https://github.com/erdong/gitbook-notes-samples</span><br></pre></td></tr></table></figure>
+
+<p>在 SUMMARY.md  文件中写入如下内容：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># Summary</span><br><span class="line"></span><br><span class="line">* [Introduction](README.md)</span><br><span class="line"></span><br><span class="line">* [Part I]()</span><br><span class="line">* [Part II]()</span><br><span class="line">* [Part III]()</span><br></pre></td></tr></table></figure>
+
+<p>写入内容后，我们可以通过 <code>gitbook serve</code> 命令来预览我们写的书</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[erdong@testhost erdong-first-book]$ gitbook serve</span><br><span class="line">Live reload server started on port: 35729</span><br><span class="line">Press CTRL+C to quit ...</span><br><span class="line"></span><br><span class="line">info: 7 plugins are installed</span><br><span class="line">info: loading plugin &quot;livereload&quot;... OK</span><br><span class="line">info: loading plugin &quot;highlight&quot;... OK</span><br><span class="line">info: loading plugin &quot;search&quot;... OK</span><br><span class="line">info: loading plugin &quot;lunr&quot;... OK</span><br><span class="line">info: loading plugin &quot;sharing&quot;... OK</span><br><span class="line">info: loading plugin &quot;fontsettings&quot;... OK</span><br><span class="line">info: loading plugin &quot;theme-default&quot;... OK</span><br><span class="line">info: found 1 pages</span><br><span class="line">info: found 0 asset files</span><br><span class="line">info: &gt;&gt; generation finished with success in 0.5s !</span><br><span class="line"></span><br><span class="line">Starting server ...</span><br><span class="line">Serving book on http://localhost:4000</span><br></pre></td></tr></table></figure>
+
+<p>这样会在前台运行一个 web 程序，对外以 4000 端口提供一个可以浏览的页面，浏览的地址是 <a href="http://localhost:4000" target="_blank" rel="noopener">http://localhost:4000</a> ，</p>
+<p>这样我们就可以查看我们写好的书了。如下图所示。</p>
+<p><img src="https://image.erdong.site/blog/2019/10/16/gitbookintroduction.jpg" alt="Gitbook Introduction"></p>
+<p>如果我们不想使用这种方式来预览书籍的话，也可以用 gitbook 生成一份静态的页面，放在 web 服务器或者其他可以提供 web 浏览访问的地方。生成静态页面使用 <code>gitbook build</code> 命令即可，会生成一个 <code>_book</code> 的文件夹，这个目录里放的就是生成好的静态页面，拷贝到对应的目录即可。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[erdong@testhost erdong-first-book]$ gitbook build </span><br><span class="line">info: 7 plugins are installed</span><br><span class="line">info: 6 explicitly listed</span><br><span class="line">info: loading plugin &quot;highlight&quot;... OK</span><br><span class="line">info: loading plugin &quot;search&quot;... OK</span><br><span class="line">info: loading plugin &quot;lunr&quot;... OK</span><br><span class="line">info: loading plugin &quot;sharing&quot;... OK</span><br><span class="line">info: loading plugin &quot;fontsettings&quot;... OK</span><br><span class="line">info: loading plugin &quot;theme-default&quot;... OK</span><br><span class="line">info: found 1 pages</span><br><span class="line">info: found 0 asset files</span><br><span class="line">info: &gt;&gt; generation finished with success in 0.5s !</span><br><span class="line">[erdong@testhost erdong-first-book]$</span><br></pre></td></tr></table></figure>
+
+<h1 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h1><p>这样，我们就通过 GitBook 工具写了一本书，或者一个小册子。</p>
+<p>======================<br>由于无法及时收到评论内容，所以关闭评论功能。<br>大家有问题欢迎发邮件到 <a href="mailto:erdong@mail.erdong.site" target="_blank" rel="noopener">erdong@mail.erdong.site</a> ，或者 <a href="https://github.com/erdong/erdong.github.io/issues" target="_blank" rel="noopener">https://github.com/erdong/erdong.github.io/issues</a> 提 Issue ，我会及时回复。</p>
+<p>======================<br>Erdong, A Linux user !</p>
+]]></content>
+      <categories>
+        <category>gitbook</category>
+      </categories>
+      <tags>
+        <tag>gitbook</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>攻城狮周刊：第38期</title>
+    <url>/weekly/weekly38.html</url>
+    <content><![CDATA[<p>这里记录过去一周，我看到的值得分享的东西。</p>
+<a id="more"></a>
+
+<h1 id="新闻"><a href="#新闻" class="headerlink" title="新闻"></a>新闻</h1><h2 id="1-IPv4地址耗尽"><a href="#1-IPv4地址耗尽" class="headerlink" title="1. IPv4地址耗尽"></a>1. <a href="http://cn.chinadaily.com.cn/a/201911/29/WS5de0d9d8a31099ab995eecc7.html" target="_blank" rel="noopener">IPv4地址耗尽</a></h2><p>就在 2019/11/25 UTC+1 15:35 时，一封来自欧洲 RIPE  NCC 的邮件中得到确认：全球的IPv4地址已经彻底耗尽。</p>
+<h1 id="工具"><a href="#工具" class="headerlink" title="工具"></a>工具</h1><h2 id="1-Apollo-分布式配置中心"><a href="#1-Apollo-分布式配置中心" class="headerlink" title="1. Apollo 分布式配置中心"></a>1. <a href="https://github.com/ctripcorp/apollo" target="_blank" rel="noopener">Apollo 分布式配置中心</a></h2><p>携程开发的分布式配置中心。能够集中化管理应用不同环境、不同集群的配置，配置修改后能够实时推送到应用端，并且具备规范的权限、流程治理等特性，适用于微服务配置管理场景。</p>
+<p>已经有很多人在用了很久了，最近使用了几个月，感受很好。</p>
+<h2 id="2-Dragonwell"><a href="#2-Dragonwell" class="headerlink" title="2. Dragonwell"></a>2. <a href="https://github.com/alibaba/dragonwell8" target="_blank" rel="noopener">Dragonwell</a></h2><p>阿里巴巴的免费OpenJDK发行版.</p>
+<ul>
+<li>2019-03, 项目开源，8.0 preview版本 </li>
+<li>2019-07, 8.0.0-GA版本, JWarmUp, JFR, RAS </li>
+<li>2019-09, 8.0.1 版本, ElasticHeap<h1 id="资源"><a href="#资源" class="headerlink" title="资源"></a>资源</h1></li>
+</ul>
+<h2 id="1-《Go语言高级编程》"><a href="#1-《Go语言高级编程》" class="headerlink" title="1. 《Go语言高级编程》"></a>1. <a href="https://github.com/chai2010/advanced-go-programming-book" target="_blank" rel="noopener">《Go语言高级编程》</a></h2><p>《Go语言高级编程》开源图书，涵盖CGO、Go汇编语言、RPC实现、Protobuf插件实现、Web框架实现、分布式系统等高阶主题</p>
+<p>======================<br>Erdong, A Linux user !</p>
+]]></content>
+      <categories>
+        <category>weekly</category>
+      </categories>
+      <tags>
+        <tag>weekly</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>攻城狮周刊：第37期</title>
     <url>/weekly/weekly37.html</url>
     <content><![CDATA[<p>这里记录过去一周，我看到的值得分享的东西。</p>
