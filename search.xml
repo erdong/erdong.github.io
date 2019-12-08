@@ -1,6 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>攻城狮周刊：第39期</title>
+    <url>/weekly/weekly39.html</url>
+    <content><![CDATA[<p>这里记录过去一周，我看到的值得分享的东西。</p>
+<a id="more"></a>
+
+<h1 id="工具"><a href="#工具" class="headerlink" title="工具"></a>工具</h1><h2 id="1-根域名服务"><a href="#1-根域名服务" class="headerlink" title="1. 根域名服务"></a>1. <a href="https://root-servers.org" target="_blank" rel="noopener">根域名服务</a></h2><p>根域名服务相关的一些内容，比如 12 个运营服务商，13 个根域名服务，到 2019.12.06 共计有 1202 个根域名服务器。</p>
+<h2 id="2-IANA"><a href="#2-IANA" class="headerlink" title="2. IANA"></a>2. <a href="https://www.iana.org" target="_blank" rel="noopener">IANA</a></h2><p>DNS根、IP寻址和其他 Internet 协议资源的全球协调是 IANA 来执行的。</p>
+<h1 id="资源"><a href="#资源" class="headerlink" title="资源"></a>资源</h1><h2 id="1-云厂商官方文档汇总"><a href="#1-云厂商官方文档汇总" class="headerlink" title="1. 云厂商官方文档汇总"></a>1. <a href>云厂商官方文档汇总</a></h2><p>云计算领域一些比较常用的工具和概念在云厂商的官方文档里都有介绍，可以当做快速入门的参考手册。<br>AWS： <a href="https://docs.aws.amazon.com" target="_blank" rel="noopener">https://docs.aws.amazon.com</a><br>微乳云： <a href="https://docs.microsoft.com/zh-cn/azure/" target="_blank" rel="noopener">https://docs.microsoft.com/zh-cn/azure/</a><br>阿里云： <a href="https://help.aliyun.com" target="_blank" rel="noopener">https://help.aliyun.com</a><br>腾讯云： <a href="https://cloud.tencent.com/document/product" target="_blank" rel="noopener">https://cloud.tencent.com/document/product</a><br>华为云： <a href="https://support.huaweicloud.com/index.html" target="_blank" rel="noopener">https://support.huaweicloud.com/index.html</a></p>
+<p>======================<br>Erdong, A Linux user !</p>
+]]></content>
+      <categories>
+        <category>weekly</category>
+      </categories>
+      <tags>
+        <tag>weekly</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>发布一本用 GitBook 编辑的书</title>
     <url>/gitbook/gitbook-release-book.html</url>
     <content><![CDATA[<p>在上一篇的文章里，我们已经写好了一本名叫 <code>erdong-first-book</code> 的书，但是在本地浏览很不方便，我们希望放到网络上，可以随时、方便的访问这个书籍。这个需求可以使用多种方式来实现，比如第一种，可以通过 GitBook 官网来发布这本书，GitBook 除了是一个电子书的工具以为，自身也有一个网址，在该网站注册成为会员后，可以发布自己的电子书，并且可以和 GitHub 进行关联。</p>
@@ -870,14 +888,13 @@
 <p>Kong 包可运行在部分的 Linux 发行版（包括CentOS、RHEL、Debian、Ubuntu）、Mac OS X 和 Docker 、Kubernetes、AWS-cloud、Google-Cloud 中，无论是本地机还是云端服务器皆可运行。</p>
 <p>除了免费的开源版本，Mashape 还提供了付费的企业版，其中包括技术支持、使用培训服务以及 API 分析插件。</p>
 <h1 id="基于-rpm-安装"><a href="#基于-rpm-安装" class="headerlink" title="基于 rpm 安装"></a>基于 rpm 安装</h1><p>当前基于 CentOS 7 进行安装。</p>
-<p>当前 Kong 的最新版本是 1.3.0 。</p>
 <p>下载软件包可以从官方地址下载</p>
-<p><a href="https://bintray.com/kong/kong-rpm/download_file?file_path=centos/7/kong-1.3.0.el7.amd64.rpm" target="_blank" rel="noopener">https://bintray.com/kong/kong-rpm/download_file?file_path=centos/7/kong-1.3.0.el7.amd64.rpm</a></p>
-<p>也可以使用yum 仓库进行下载，<br>修改 yum 仓库的 repo 文件的 baseurl 路径为：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">baseurl=https://kong.bintray.com/kong-rpm/centos/7</span><br></pre></td></tr></table></figure>
-
-<p>我们接下来使用 yum 的 epel 源来进行安装。</p>
-<h2 id="安装-rpm-包"><a href="#安装-rpm-包" class="headerlink" title="安装 rpm 包"></a>安装 rpm 包</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">yum install epel-release</span><br><span class="line">yum install kong-1.3.0.*.noarch.rpm --nogpgcheck</span><br></pre></td></tr></table></figure>
+<p><a href="https://konghq.com/install/" target="_blank" rel="noopener">https://konghq.com/install/</a></p>
+<p>CentOS 7 的 rpm 包可以从以下地址找到</p>
+<p><a href="https://kong.bintray.com/kong-rpm/centos/7/" target="_blank" rel="noopener">https://kong.bintray.com/kong-rpm/centos/7/</a></p>
+<p>比如最近发布的 1.4.0 版本</p>
+<p><a href="https://kong.bintray.com/kong-rpm/centos/7/kong-1.4.0.el7.noarch.rpm" target="_blank" rel="noopener">https://kong.bintray.com/kong-rpm/centos/7/kong-1.4.0.el7.noarch.rpm</a></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">yum install kong-1.4.0.el7.noarch.rpm</span><br></pre></td></tr></table></figure>
 
 <h2 id="安装数据存储的数据库"><a href="#安装数据存储的数据库" class="headerlink" title="安装数据存储的数据库"></a>安装数据存储的数据库</h2><p>Kong 在运行过程中可以有数据库，也可以没有数据库。</p>
 <p>如果你要使用数据库，你需要使用 <code>kong.conf</code> 配置文件中去配置启动数据库作为数据存储的方式，以及相应的路由或者 Kong 的代理。</p>
