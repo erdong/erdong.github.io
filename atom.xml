@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://erdong.site/"/>
-  <updated>2019-12-08T15:55:49.580Z</updated>
+  <updated>2019-12-22T15:04:14.249Z</updated>
   <id>https://erdong.site/</id>
   
   <author>
@@ -15,6 +15,52 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>攻城狮周刊：第41期</title>
+    <link href="https://erdong.site/weekly/weekly41.html"/>
+    <id>https://erdong.site/weekly/weekly41.html</id>
+    <published>2019-12-22T05:16:59.000Z</published>
+    <updated>2019-12-22T15:04:14.249Z</updated>
+    
+    <content type="html"><![CDATA[<p>这里记录过去一周，我看到的值得分享的东西。</p><a id="more"></a><h1 id="新闻"><a href="#新闻" class="headerlink" title="新闻"></a>新闻</h1><h2 id="1-文言文編程語言"><a href="#1-文言文編程語言" class="headerlink" title="1. 文言文編程語言"></a>1. <a href="https://github.com/LingDong-/wenyan-lang" target="_blank" rel="noopener">文言文編程語言</a></h2><p>作者 LingDong-Huang，卡耐基梅隆大学大三学生，编写了该项目，仓库的 README 中有演示地址，有 IDE 支持，有在线体验网址。</p><h1 id="资源"><a href="#资源" class="headerlink" title="资源"></a>资源</h1><h2 id="1-图解-HTTP"><a href="#1-图解-HTTP" class="headerlink" title="1. 图解 HTTP"></a>1. <a href="https://item.jd.com/11449491.html?dist=jd" target="_blank" rel="noopener">图解 HTTP</a></h2><p>《图灵程序设计丛书：图解HTTP》对 HTTP 协议进行了全面系统的介绍。作者由HTTP 协议的发展历史娓娓道来，严谨细致地剖析了HTTP协议的结构，列举诸多常见通信场景及实战案例，最后延伸到Web安全、全新技术动向等方面。《图解HTTP》的特色为在讲解的同时，辅以大量生动形象的通信图例，更好地帮助读者深刻理解 HTTP 通信过程中客户端与服务器之间的交互情况。读者可通过《图灵程序设计丛书：图解 HTTP》快速了解并掌握 HTTP 协议的基础，前端工程师分析抓包数据，后端工程师实现 REST API、实现自己的 HTTP 服务器等过程中所需的 HTTP 相关知识点本书均有介绍。<br>　　《图灵程序设计丛书：图解HTTP》适合 Web 开发工程师，以及对 HTTP 协议感兴趣的各层次读者。<br>　　该书作者是上野·宣 ，OWASP 日本分会会长，TRICORDER株式会社董事长。主要从事安全咨询、风险评估、信息安全教育等工作。著有《今晚我们一起学习邮件协议》（今夜わかるメールプロトコル）、《今晚我们一起学习TCP/IP》（今夜わかるTCP/IP）、《今晚我们一起学习HTTP》（今夜わかるHTTP）。担任The Tangled Web：A Guide to Securing Modern Web Application日文版的审校工作。<br>　　<br>　　于均良（译者），上海交通大学硕士，高级软件工程师，马拉松跑者，四点网创始人。</p><p>======================<br>Erdong, A Linux user !</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;这里记录过去一周，我看到的值得分享的东西。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="weekly" scheme="https://erdong.site/categories/weekly/"/>
+    
+    
+      <category term="weekly" scheme="https://erdong.site/tags/weekly/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>攻城狮周刊：第40期</title>
+    <link href="https://erdong.site/weekly/weekly40.html"/>
+    <id>https://erdong.site/weekly/weekly40.html</id>
+    <published>2019-12-15T05:16:59.000Z</published>
+    <updated>2019-12-22T15:04:50.460Z</updated>
+    
+    <content type="html"><![CDATA[<p>这里记录过去一周，我看到的值得分享的东西。</p><a id="more"></a><h1 id="资源"><a href="#资源" class="headerlink" title="资源"></a>资源</h1><h2 id="1-Mozilla-HTTP教程"><a href="#1-Mozilla-HTTP教程" class="headerlink" title="1. Mozilla HTTP教程"></a>1. <a href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP" target="_blank" rel="noopener">Mozilla HTTP教程</a></h2><p>MDN Web Docs 是一个提供的 HTTP 教程，比较详细。</p><h2 id="2-Mozilla-Developer-Network"><a href="#2-Mozilla-Developer-Network" class="headerlink" title="2. Mozilla Developer Network"></a>2. <a href="https://developer.mozilla.org/zh-CN/" target="_blank" rel="noopener">Mozilla Developer Network</a></h2><p>MDN Web Docs 是一个提供 Web 技术和促进 Web 技术软件的不断发展的学习平台，包括：</p><ul><li>Web 标准（例如：CSS、HTML 和 JavaScript）</li><li>开放 Web 应用开发</li><li>Firefox 附加组件开发</li></ul><p>Mozilla 开发者网络（亦称作 Mozilla 开发者中心（MDC）或 Devmo）在2005年年初启动。那时 Mozilla 基金会 从 AOL 获得了许可协议，得以使用原创的 DevEdge 内容。DevEdge 内容的引入具有抛砖引玉之效，因此在那不久在社区志愿者的努力下它被迁移到了这个更易于更新与维护的 wiki 。</p><p>此后，这个项目不断发展，现在已经成为所有与关于 Mozilla 项目和开放网络技术的文档的核心一环。在2010年，该项目更名为Mozilla开发者网络（Mozilla Developer Network）。2011年，又添加了供web开发者分享与展示代码的 Demo Studio 与提供教程的 Learning 页面。（MDC 现在表示了”MDN文档中心（MDN Doc Center）”）现在，Mozilla开发者网络正向着成为供Web设计师、应用开发者、以及拓展、主题制作者们时常参考的资源的方向发展。</p><p>MDN 的使命很简单：为开发人员提供在开放的 Web 网络上轻松构建项目所必需的信息。如果它是一种暴露于 Web 网络上的开放技术，我们希望将其记录下来。</p><h2 id="3-面向信仰编程"><a href="#3-面向信仰编程" class="headerlink" title="3. 面向信仰编程"></a>3. <a href="https://draveness.me/" target="_blank" rel="noopener">面向信仰编程</a></h2><p>给 kubernetes 提交 pr 的大神的博客，里边有很多设计相关的内容，值得查看思考。</p><p>======================<br>Erdong, A Linux user !</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;这里记录过去一周，我看到的值得分享的东西。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="weekly" scheme="https://erdong.site/categories/weekly/"/>
+    
+    
+      <category term="weekly" scheme="https://erdong.site/tags/weekly/"/>
+    
+  </entry>
   
   <entry>
     <title>攻城狮周刊：第39期</title>
