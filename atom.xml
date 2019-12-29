@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://erdong.site/"/>
-  <updated>2019-12-22T15:04:14.249Z</updated>
+  <updated>2019-12-29T15:37:02.105Z</updated>
   <id>https://erdong.site/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>攻城狮周刊：第42期</title>
+    <link href="https://erdong.site/weekly/weekly42.html"/>
+    <id>https://erdong.site/weekly/weekly42.html</id>
+    <published>2019-12-29T07:16:59.000Z</published>
+    <updated>2019-12-29T15:37:02.105Z</updated>
+    
+    <content type="html"><![CDATA[<p>这里记录过去一周，我看到的值得分享的东西。</p><a id="more"></a><h1 id="新闻"><a href="#新闻" class="headerlink" title="新闻"></a>新闻</h1><h1 id="资源"><a href="#资源" class="headerlink" title="资源"></a>资源</h1><h2 id="1-chinese-poetry"><a href="#1-chinese-poetry" class="headerlink" title="1. chinese poetry"></a>1. <a href="https://github.com/chinese-poetry/chinese-poetry" target="_blank" rel="noopener">chinese poetry</a></h2><p>中文古诗的一个仓库，据作者介绍，唐宋两朝近一万四千古诗人, 接近5.5万首唐诗加26万宋诗. 两宋时期1564位词人，21050首词。 </p><h1 id="这么全的话用来做深度学习可能不错。"><a href="#这么全的话用来做深度学习可能不错。" class="headerlink" title="这么全的话用来做深度学习可能不错。"></a>这么全的话用来做深度学习可能不错。</h1><p>Erdong, A Linux user !</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;这里记录过去一周，我看到的值得分享的东西。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="weekly" scheme="https://erdong.site/categories/weekly/"/>
+    
+    
+      <category term="weekly" scheme="https://erdong.site/tags/weekly/"/>
+    
+  </entry>
   
   <entry>
     <title>攻城狮周刊：第41期</title>
@@ -653,17 +676,17 @@
   </entry>
   
   <entry>
-    <title>【翻译】Prometheus 2.11.0 新特性</title>
-    <link href="https://erdong.site/Prometheus/New-Features/New-Features-in-Prometheus-2-11-0.html"/>
-    <id>https://erdong.site/Prometheus/New-Features/New-Features-in-Prometheus-2-11-0.html</id>
+    <title>【翻译】Prometheus 2.12.0 新特性</title>
+    <link href="https://erdong.site/Prometheus/New-Features/New-Features-in-Prometheus-2-12-0.html"/>
+    <id>https://erdong.site/Prometheus/New-Features/New-Features-in-Prometheus-2-12-0.html</id>
     <published>2019-08-20T13:09:34.000Z</published>
     <updated>2019-10-13T15:31:57.912Z</updated>
     
-    <content type="html"><![CDATA[<p>Prometheus <a href="https://github.com/prometheus/prometheus/releases/tag/v2.11.0" target="_blank" rel="noopener">2.11.0</a> 现在(2019.07.9)已经发布，在5月的 <a href="http://erdong.site/Prometheus/New-Features/New-Features-in-Prometheus-2-10-0.html">2.10.0</a> 之后又进行了一些修正和改进。</p><a id="more"></a><p>从TSDB开始，记录逻辑有了更多的性能改进。特别需要注意的是，如果您有一个像 <code>a|b</code> 这样的正则表达式(例如 Grafana 为选择多个变量的表达式)，那么它现在被评估为查找而不是正则表达式扫描，因此 <code>x=~&quot;a&quot;</code> 现在和 <code>x=&quot;a&quot;</code>一样高效。</p><p>对于 WAL 的 “unknown series references” 现在已经完全修复。每次头部压缩时都会启动一个新的段，这对于在低容量实例上减少磁盘空间很有用，对于现在应该完全修复的WAL“未知系列引用”，在每次头部压缩时都会启动一个新的段，这对于在低卷实例上减少磁盘空间很有用，并且还有 还有一个选择进入 <code>--storage.tsdb.wal-compression</code>的标志来压缩 WAL 。</p><p>在 Prometheus 中，PromQL和远程写都有性能改进。现在可以像在 <code>prometheus.yml</code> 中一样，将 globs 用于单元测试的规则文件。还有一个配置选项可以通过 Alertmanager 的 v2 API 接口来获取。</p><p>还有许多改进、bug修复和其他更改，可以查看 <a href="https://github.com/prometheus/prometheus/releases/tag/v2.11.0" target="_blank" rel="noopener">release notes</a> 来获取更多的信息。</p><h1 id="原文链接"><a href="#原文链接" class="headerlink" title="原文链接"></a>原文链接</h1><ul><li><a href="https://www.robustperception.io/new-features-in-prometheus-2-11-0" target="_blank" rel="noopener">https://www.robustperception.io/new-features-in-prometheus-2-11-0</a> ， By Brian Brazil</li></ul><p>======================<br>Erdong, A Linux user !</p>]]></content>
+    <content type="html"><![CDATA[<p>Prometheus <a href="https://github.com/prometheus/prometheus/releases/tag/v2.12.0" target="_blank" rel="noopener">2.12.0</a> 现在(2019.08.17)已经发布，在上个月的 <a href="http://erdong.site/Prometheus/New-Features/New-Features-in-Prometheus-2-11-0.html">2.11.0</a> 之后又进行了一些修正和改进。</p><a id="more"></a><p>在当前的 6 周发布周期中，每一个 Prometheus 版本都有比较少的特性，但是发布的更有规律。在这个版本中最引人注目的特性是，如果 Prometheus 在下一次启动时崩溃，它将打印正在运行的 PromQL ，这有助于查找开销过大的查询。</p><p>在内存方面 TSDB 有很多的性能改进，还添加了一个 <code>prometheus_tsdb_retention_limit_bytes</code> 的指标。虽然与用户无关，但 TSDB 存储库已经合并到 GitHub 上的  Prometheus 主存储库中。这将使我们作为开发人员的生活更加轻松。</p><p>还有许多改进、bug修复和其他更改，可以查看 <a href="https://github.com/prometheus/prometheus/releases/tag/v2.12.0" target="_blank" rel="noopener">release notes</a> 来获取更多的信息。</p><h1 id="原文链接"><a href="#原文链接" class="headerlink" title="原文链接"></a>原文链接</h1><ul><li><a href="https://www.robustperception.io/new-features-in-prometheus-2-12-0" target="_blank" rel="noopener">https://www.robustperception.io/new-features-in-prometheus-2-12-0</a> ， By Brian Brazil</li></ul><p>======================<br>Erdong, A Linux user !</p>]]></content>
     
     <summary type="html">
     
-      &lt;p&gt;Prometheus &lt;a href=&quot;https://github.com/prometheus/prometheus/releases/tag/v2.11.0&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;2.11.0&lt;/a&gt; 现在(2019.07.9)已经发布，在5月的 &lt;a href=&quot;http://erdong.site/Prometheus/New-Features/New-Features-in-Prometheus-2-10-0.html&quot;&gt;2.10.0&lt;/a&gt; 之后又进行了一些修正和改进。&lt;/p&gt;
+      &lt;p&gt;Prometheus &lt;a href=&quot;https://github.com/prometheus/prometheus/releases/tag/v2.12.0&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;2.12.0&lt;/a&gt; 现在(2019.08.17)已经发布，在上个月的 &lt;a href=&quot;http://erdong.site/Prometheus/New-Features/New-Features-in-Prometheus-2-11-0.html&quot;&gt;2.11.0&lt;/a&gt; 之后又进行了一些修正和改进。&lt;/p&gt;
     
     </summary>
     
@@ -682,17 +705,17 @@
   </entry>
   
   <entry>
-    <title>【翻译】Prometheus 2.12.0 新特性</title>
-    <link href="https://erdong.site/Prometheus/New-Features/New-Features-in-Prometheus-2-12-0.html"/>
-    <id>https://erdong.site/Prometheus/New-Features/New-Features-in-Prometheus-2-12-0.html</id>
+    <title>【翻译】Prometheus 2.11.0 新特性</title>
+    <link href="https://erdong.site/Prometheus/New-Features/New-Features-in-Prometheus-2-11-0.html"/>
+    <id>https://erdong.site/Prometheus/New-Features/New-Features-in-Prometheus-2-11-0.html</id>
     <published>2019-08-20T13:09:34.000Z</published>
     <updated>2019-10-13T15:31:57.912Z</updated>
     
-    <content type="html"><![CDATA[<p>Prometheus <a href="https://github.com/prometheus/prometheus/releases/tag/v2.12.0" target="_blank" rel="noopener">2.12.0</a> 现在(2019.08.17)已经发布，在上个月的 <a href="http://erdong.site/Prometheus/New-Features/New-Features-in-Prometheus-2-11-0.html">2.11.0</a> 之后又进行了一些修正和改进。</p><a id="more"></a><p>在当前的 6 周发布周期中，每一个 Prometheus 版本都有比较少的特性，但是发布的更有规律。在这个版本中最引人注目的特性是，如果 Prometheus 在下一次启动时崩溃，它将打印正在运行的 PromQL ，这有助于查找开销过大的查询。</p><p>在内存方面 TSDB 有很多的性能改进，还添加了一个 <code>prometheus_tsdb_retention_limit_bytes</code> 的指标。虽然与用户无关，但 TSDB 存储库已经合并到 GitHub 上的  Prometheus 主存储库中。这将使我们作为开发人员的生活更加轻松。</p><p>还有许多改进、bug修复和其他更改，可以查看 <a href="https://github.com/prometheus/prometheus/releases/tag/v2.12.0" target="_blank" rel="noopener">release notes</a> 来获取更多的信息。</p><h1 id="原文链接"><a href="#原文链接" class="headerlink" title="原文链接"></a>原文链接</h1><ul><li><a href="https://www.robustperception.io/new-features-in-prometheus-2-12-0" target="_blank" rel="noopener">https://www.robustperception.io/new-features-in-prometheus-2-12-0</a> ， By Brian Brazil</li></ul><p>======================<br>Erdong, A Linux user !</p>]]></content>
+    <content type="html"><![CDATA[<p>Prometheus <a href="https://github.com/prometheus/prometheus/releases/tag/v2.11.0" target="_blank" rel="noopener">2.11.0</a> 现在(2019.07.9)已经发布，在5月的 <a href="http://erdong.site/Prometheus/New-Features/New-Features-in-Prometheus-2-10-0.html">2.10.0</a> 之后又进行了一些修正和改进。</p><a id="more"></a><p>从TSDB开始，记录逻辑有了更多的性能改进。特别需要注意的是，如果您有一个像 <code>a|b</code> 这样的正则表达式(例如 Grafana 为选择多个变量的表达式)，那么它现在被评估为查找而不是正则表达式扫描，因此 <code>x=~&quot;a&quot;</code> 现在和 <code>x=&quot;a&quot;</code>一样高效。</p><p>对于 WAL 的 “unknown series references” 现在已经完全修复。每次头部压缩时都会启动一个新的段，这对于在低容量实例上减少磁盘空间很有用，对于现在应该完全修复的WAL“未知系列引用”，在每次头部压缩时都会启动一个新的段，这对于在低卷实例上减少磁盘空间很有用，并且还有 还有一个选择进入 <code>--storage.tsdb.wal-compression</code>的标志来压缩 WAL 。</p><p>在 Prometheus 中，PromQL和远程写都有性能改进。现在可以像在 <code>prometheus.yml</code> 中一样，将 globs 用于单元测试的规则文件。还有一个配置选项可以通过 Alertmanager 的 v2 API 接口来获取。</p><p>还有许多改进、bug修复和其他更改，可以查看 <a href="https://github.com/prometheus/prometheus/releases/tag/v2.11.0" target="_blank" rel="noopener">release notes</a> 来获取更多的信息。</p><h1 id="原文链接"><a href="#原文链接" class="headerlink" title="原文链接"></a>原文链接</h1><ul><li><a href="https://www.robustperception.io/new-features-in-prometheus-2-11-0" target="_blank" rel="noopener">https://www.robustperception.io/new-features-in-prometheus-2-11-0</a> ， By Brian Brazil</li></ul><p>======================<br>Erdong, A Linux user !</p>]]></content>
     
     <summary type="html">
     
-      &lt;p&gt;Prometheus &lt;a href=&quot;https://github.com/prometheus/prometheus/releases/tag/v2.12.0&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;2.12.0&lt;/a&gt; 现在(2019.08.17)已经发布，在上个月的 &lt;a href=&quot;http://erdong.site/Prometheus/New-Features/New-Features-in-Prometheus-2-11-0.html&quot;&gt;2.11.0&lt;/a&gt; 之后又进行了一些修正和改进。&lt;/p&gt;
+      &lt;p&gt;Prometheus &lt;a href=&quot;https://github.com/prometheus/prometheus/releases/tag/v2.11.0&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;2.11.0&lt;/a&gt; 现在(2019.07.9)已经发布，在5月的 &lt;a href=&quot;http://erdong.site/Prometheus/New-Features/New-Features-in-Prometheus-2-10-0.html&quot;&gt;2.10.0&lt;/a&gt; 之后又进行了一些修正和改进。&lt;/p&gt;
     
     </summary>
     
