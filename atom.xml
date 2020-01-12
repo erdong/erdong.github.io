@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://erdong.site/"/>
-  <updated>2019-12-29T15:37:02.105Z</updated>
+  <updated>2020-01-12T14:54:13.605Z</updated>
   <id>https://erdong.site/</id>
   
   <author>
@@ -15,6 +15,52 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Prometheus 删除指定 Metric</title>
+    <link href="https://erdong.site/prometheus/prometheus-delete-metrics.html"/>
+    <id>https://erdong.site/prometheus/prometheus-delete-metrics.html</id>
+    <published>2020-01-12T14:52:50.000Z</published>
+    <updated>2020-01-12T14:54:13.605Z</updated>
+    
+    <content type="html"><![CDATA[<p>Prometheus 发布以后，很长的一段时间里，是无法删除指定的 Metric 。如果你在某次测试中，有一些 Metric 的名称或者值有问题，那么你没有任何办法及时处理，只能等待数据的时间到了以后自动删除。我一度以为直到现在也是这样，最近在翻看 Prometheus 的官方文档的时候发现，Prometheus 在 2.0 版本以后已经提供了一个简单的管理接口，可以用来删除这些坏 Metric 数据。</p><a id="more"></a><p>下面我们来一起看一下 Prometheus 的管理 API 接口，官方到现在一共提供了三个接口，对应的分别是快照功能、数据删除功能、数据清理功能，想要使用 API 需要先添加启动参数 <code>--web.enable-admin-api</code> 打开这个接口，默认这个接口是关闭的。</p><p>快速启动 Prometheus 可以使用如下命令 ，详细规范的启动方式可以参考之前的文章。</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./prometheus --web.enable-admin-api</span><br></pre></td></tr></table></figure><h1 id="数据删除"><a href="#数据删除" class="headerlink" title="数据删除"></a>数据删除</h1><p>使用数据删除接口可以删除一定时间范围内的 Metric 数据。实际的数据仍然存在于磁盘上，并在将来的压缩中清除，也可以通过数据清理接口显式地清除。</p><p>如果删除成功，会返回 204 。接口如下：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">POST /api/v1/admin/tsdb/delete_series</span><br><span class="line">PUT /api/v1/admin/tsdb/delete_series</span><br></pre></td></tr></table></figure><p>这个接口可以使用 3 个参数，分别如下：</p><ul><li>match[]=<series_selector> : Metric 的名称</series_selector></li><li>start=&lt;rfc3339 | unix_timestamp&gt; : 开始的时间戳</li><li>end=&lt;rfc3339 | unix_timestamp&gt;  : 结束的时间戳</li></ul><p>如果没有指定开始和结束时间将清除数据库中匹配的所有数据。</p><p>接下来举几个例子</p><p> 删除指定 Metric 名称的全部数据</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -X POST -g &apos;http://127.0.0.1:9090/api/v1/admin/tsdb/delete_series?match[]=node_cpu_seconds_total&apos;</span><br></pre></td></tr></table></figure><p>删除指定 Metric 名称和特定 label 名称的全部数据</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -X POST -g &apos;http://127.0.0.1:9090/api/v1/admin/tsdb/delete_series?match[]=node_cpu_seconds_total&#123;mode=&quot;idle&quot;&#125;&apos;</span><br></pre></td></tr></table></figure><p>删除指定时间范围内的 Metric 数据</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -X POST -g &apos;http://127.0.0.1:9090/api/v1/admin/tsdb/delete_series?start=1578301194&amp;end=1578301694&amp;match[]=node_cpu_seconds_total&#123;mode=&quot;idle&quot;&#125;&apos;</span><br></pre></td></tr></table></figure><blockquote><p>linux 可以使用 <code>date  +%s</code> 获得当前的时间戳，可以使用 <code>date -d &quot;2019-12-22 00:00:00&quot; +%s</code> 将指定的日期转成时间戳。</p></blockquote><h1 id="数据清理"><a href="#数据清理" class="headerlink" title="数据清理"></a>数据清理</h1><p>数据清理会从磁盘删除已经被 <code>delete_series</code> 接口删除的数据，并清理现有的 tombstones。可以在使用 <code>delete_series</code> 接口删除数据之后使用它来释放空间。</p><p>如果清理成功，会返回 204 。</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">POST /api/v1/admin/tsdb/clean_tombstones</span><br><span class="line">PUT /api/v1/admin/tsdb/clean_tombstones</span><br></pre></td></tr></table></figure><p>示例</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -X POST http://127.0.0.1:9090/api/v1/admin/tsdb/clean_tombstones</span><br></pre></td></tr></table></figure><p>这个接口不需要参数。</p><h1 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h1><ul><li><a href="https://prometheus.io/docs/prometheus/latest/querying/api/#tsdb-admin-apis" target="_blank" rel="noopener">https://prometheus.io/docs/prometheus/latest/querying/api/#tsdb-admin-apis</a></li></ul><p>======================<br>由于无法及时收到评论内容，所以关闭评论功能。<br>大家有问题欢迎发邮件到 <a href="mailto:erdong@mail.erdong.site" target="_blank" rel="noopener">erdong@mail.erdong.site</a> ，或者 <a href="https://github.com/erdong/erdong.github.io/issues" target="_blank" rel="noopener">https://github.com/erdong/erdong.github.io/issues</a> 提 Issue ，我会及时回复。</p><p>======================<br>Erdong, A Linux user !</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Prometheus 发布以后，很长的一段时间里，是无法删除指定的 Metric 。如果你在某次测试中，有一些 Metric 的名称或者值有问题，那么你没有任何办法及时处理，只能等待数据的时间到了以后自动删除。我一度以为直到现在也是这样，最近在翻看 Prometheus 的官方文档的时候发现，Prometheus 在 2.0 版本以后已经提供了一个简单的管理接口，可以用来删除这些坏 Metric 数据。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="prometheus" scheme="https://erdong.site/categories/prometheus/"/>
+    
+    
+      <category term="prometheus" scheme="https://erdong.site/tags/prometheus/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>攻城狮周刊：第43期</title>
+    <link href="https://erdong.site/weekly/weekly43.html"/>
+    <id>https://erdong.site/weekly/weekly43.html</id>
+    <published>2020-01-12T07:16:59.000Z</published>
+    <updated>2020-01-12T14:51:09.364Z</updated>
+    
+    <content type="html"><![CDATA[<p>这里记录过去一周，我看到的值得分享的东西。</p><a id="more"></a><h1 id="工具"><a href="#工具" class="headerlink" title="工具"></a>工具</h1><h2 id="1-dockerfile-lint"><a href="#1-dockerfile-lint" class="headerlink" title="1. dockerfile_lint"></a>1. <a href="https://github.com/projectatomic/dockerfile_lint" target="_blank" rel="noopener">dockerfile_lint</a></h2><p>截止到2019年12月底，社区比较出色的dockerfile扫描工具有：hadolint、dockerlint和红帽推出的dockerfile_lint。总体上来说这三个工具其实都不完善，基本上处于alpha之前的状态。</p><p>hadolint是目前为止成熟最高的一个工具，一共支持60多条的自带规则。而且hadolint还支持对Run命令中带的shell命令进行审计。这一点功能是目前其他竞品不具备的。不过hadolint使用Haskell语言编写，且目前不支持规则文件导入。<br>如果有新的规则需要编程实现。<br>dockerlint 使用coffee_script语言编写，自带规则数量小于hadolint；也不支持规则文件导入功能。<br>dockerfile_lint 红帽发布，使用node.js编写的一个dockerfile扫描工具。支持的规则数量小于hadolint，但是支持通过yaml文件方式导入用户自定义规则。</p><p>从以上分析来看，我认为dockerfile_lint其实更具潜力，因为dockerfile扫描规则其实是不固定的。每个用户都可以有自己的dockerfile扫描规范，所以通过脚本添加规则其实是一种刚需。 hadolint和dockerlint恰恰不具备这个能力，所以我最终选择了dockerfile_lint作为扫描工具。</p><p>======================<br>Erdong, A Linux user !</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;这里记录过去一周，我看到的值得分享的东西。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="weekly" scheme="https://erdong.site/categories/weekly/"/>
+    
+    
+      <category term="weekly" scheme="https://erdong.site/tags/weekly/"/>
+    
+  </entry>
   
   <entry>
     <title>攻城狮周刊：第42期</title>
@@ -647,17 +693,17 @@
   </entry>
   
   <entry>
-    <title>【翻译】Prometheus 2.10.0 新特性</title>
-    <link href="https://erdong.site/Prometheus/New-Features/New-Features-in-Prometheus-2-10-0.html"/>
-    <id>https://erdong.site/Prometheus/New-Features/New-Features-in-Prometheus-2-10-0.html</id>
+    <title>【翻译】Prometheus 2.11.0 新特性</title>
+    <link href="https://erdong.site/Prometheus/New-Features/New-Features-in-Prometheus-2-11-0.html"/>
+    <id>https://erdong.site/Prometheus/New-Features/New-Features-in-Prometheus-2-11-0.html</id>
     <published>2019-08-20T13:09:34.000Z</published>
     <updated>2019-10-13T15:31:57.912Z</updated>
     
-    <content type="html"><![CDATA[<p>Prometheus <a href="https://github.com/prometheus/prometheus/releases/tag/v2.10.0" target="_blank" rel="noopener">2.10.0</a> 现在(2019.05.25)已经发布，在上个月的 <a href="http://erdong.site/Prometheus/New-Features/New-Features-in-Prometheus-2-9-0.html">2.9.0</a> 之后又进行了一些修正和改进。</p><a id="more"></a><p>TSDB 的数据记录又一次得到了改进，这意味着对许多系列的查询速度更快。还添加了一个新的特殊度量 <code>scrape_series_add</code> ，这将有助于找到引起混乱的目标。</p><p>在 Azure 上添加公共 IP 可以使 Kubernetes 的服务发现 endpoint 节点和主机名。用于警报的 UI 也得到了改进，模板添加了新的变量。</p><p>对于使用 Alerts API的人来说有一个小的中断更改，该值现在是一个字符串，而不是一个浮点数(正如我们在查询 API 上所做的那样)，以正确地支持 non-real values。</p><p>还有许多改进、bug修复和其他更改，可以查看 <a href="https://github.com/prometheus/prometheus/releases/tag/v2.10.0" target="_blank" rel="noopener">release notes</a> 来获取更多的信息。</p><h1 id="原文链接"><a href="#原文链接" class="headerlink" title="原文链接"></a>原文链接</h1><ul><li><a href="https://www.robustperception.io/new-features-in-prometheus-2-10-0" target="_blank" rel="noopener">https://www.robustperception.io/new-features-in-prometheus-2-10-0</a> ， By Brian Brazil</li></ul><p>======================<br>Erdong, A Linux user !</p>]]></content>
+    <content type="html"><![CDATA[<p>Prometheus <a href="https://github.com/prometheus/prometheus/releases/tag/v2.11.0" target="_blank" rel="noopener">2.11.0</a> 现在(2019.07.9)已经发布，在5月的 <a href="http://erdong.site/Prometheus/New-Features/New-Features-in-Prometheus-2-10-0.html">2.10.0</a> 之后又进行了一些修正和改进。</p><a id="more"></a><p>从TSDB开始，记录逻辑有了更多的性能改进。特别需要注意的是，如果您有一个像 <code>a|b</code> 这样的正则表达式(例如 Grafana 为选择多个变量的表达式)，那么它现在被评估为查找而不是正则表达式扫描，因此 <code>x=~&quot;a&quot;</code> 现在和 <code>x=&quot;a&quot;</code>一样高效。</p><p>对于 WAL 的 “unknown series references” 现在已经完全修复。每次头部压缩时都会启动一个新的段，这对于在低容量实例上减少磁盘空间很有用，对于现在应该完全修复的WAL“未知系列引用”，在每次头部压缩时都会启动一个新的段，这对于在低卷实例上减少磁盘空间很有用，并且还有 还有一个选择进入 <code>--storage.tsdb.wal-compression</code>的标志来压缩 WAL 。</p><p>在 Prometheus 中，PromQL和远程写都有性能改进。现在可以像在 <code>prometheus.yml</code> 中一样，将 globs 用于单元测试的规则文件。还有一个配置选项可以通过 Alertmanager 的 v2 API 接口来获取。</p><p>还有许多改进、bug修复和其他更改，可以查看 <a href="https://github.com/prometheus/prometheus/releases/tag/v2.11.0" target="_blank" rel="noopener">release notes</a> 来获取更多的信息。</p><h1 id="原文链接"><a href="#原文链接" class="headerlink" title="原文链接"></a>原文链接</h1><ul><li><a href="https://www.robustperception.io/new-features-in-prometheus-2-11-0" target="_blank" rel="noopener">https://www.robustperception.io/new-features-in-prometheus-2-11-0</a> ， By Brian Brazil</li></ul><p>======================<br>Erdong, A Linux user !</p>]]></content>
     
     <summary type="html">
     
-      &lt;p&gt;Prometheus &lt;a href=&quot;https://github.com/prometheus/prometheus/releases/tag/v2.10.0&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;2.10.0&lt;/a&gt; 现在(2019.05.25)已经发布，在上个月的 &lt;a href=&quot;http://erdong.site/Prometheus/New-Features/New-Features-in-Prometheus-2-9-0.html&quot;&gt;2.9.0&lt;/a&gt; 之后又进行了一些修正和改进。&lt;/p&gt;
+      &lt;p&gt;Prometheus &lt;a href=&quot;https://github.com/prometheus/prometheus/releases/tag/v2.11.0&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;2.11.0&lt;/a&gt; 现在(2019.07.9)已经发布，在5月的 &lt;a href=&quot;http://erdong.site/Prometheus/New-Features/New-Features-in-Prometheus-2-10-0.html&quot;&gt;2.10.0&lt;/a&gt; 之后又进行了一些修正和改进。&lt;/p&gt;
     
     </summary>
     
@@ -705,17 +751,17 @@
   </entry>
   
   <entry>
-    <title>【翻译】Prometheus 2.11.0 新特性</title>
-    <link href="https://erdong.site/Prometheus/New-Features/New-Features-in-Prometheus-2-11-0.html"/>
-    <id>https://erdong.site/Prometheus/New-Features/New-Features-in-Prometheus-2-11-0.html</id>
+    <title>【翻译】Prometheus 2.10.0 新特性</title>
+    <link href="https://erdong.site/Prometheus/New-Features/New-Features-in-Prometheus-2-10-0.html"/>
+    <id>https://erdong.site/Prometheus/New-Features/New-Features-in-Prometheus-2-10-0.html</id>
     <published>2019-08-20T13:09:34.000Z</published>
     <updated>2019-10-13T15:31:57.912Z</updated>
     
-    <content type="html"><![CDATA[<p>Prometheus <a href="https://github.com/prometheus/prometheus/releases/tag/v2.11.0" target="_blank" rel="noopener">2.11.0</a> 现在(2019.07.9)已经发布，在5月的 <a href="http://erdong.site/Prometheus/New-Features/New-Features-in-Prometheus-2-10-0.html">2.10.0</a> 之后又进行了一些修正和改进。</p><a id="more"></a><p>从TSDB开始，记录逻辑有了更多的性能改进。特别需要注意的是，如果您有一个像 <code>a|b</code> 这样的正则表达式(例如 Grafana 为选择多个变量的表达式)，那么它现在被评估为查找而不是正则表达式扫描，因此 <code>x=~&quot;a&quot;</code> 现在和 <code>x=&quot;a&quot;</code>一样高效。</p><p>对于 WAL 的 “unknown series references” 现在已经完全修复。每次头部压缩时都会启动一个新的段，这对于在低容量实例上减少磁盘空间很有用，对于现在应该完全修复的WAL“未知系列引用”，在每次头部压缩时都会启动一个新的段，这对于在低卷实例上减少磁盘空间很有用，并且还有 还有一个选择进入 <code>--storage.tsdb.wal-compression</code>的标志来压缩 WAL 。</p><p>在 Prometheus 中，PromQL和远程写都有性能改进。现在可以像在 <code>prometheus.yml</code> 中一样，将 globs 用于单元测试的规则文件。还有一个配置选项可以通过 Alertmanager 的 v2 API 接口来获取。</p><p>还有许多改进、bug修复和其他更改，可以查看 <a href="https://github.com/prometheus/prometheus/releases/tag/v2.11.0" target="_blank" rel="noopener">release notes</a> 来获取更多的信息。</p><h1 id="原文链接"><a href="#原文链接" class="headerlink" title="原文链接"></a>原文链接</h1><ul><li><a href="https://www.robustperception.io/new-features-in-prometheus-2-11-0" target="_blank" rel="noopener">https://www.robustperception.io/new-features-in-prometheus-2-11-0</a> ， By Brian Brazil</li></ul><p>======================<br>Erdong, A Linux user !</p>]]></content>
+    <content type="html"><![CDATA[<p>Prometheus <a href="https://github.com/prometheus/prometheus/releases/tag/v2.10.0" target="_blank" rel="noopener">2.10.0</a> 现在(2019.05.25)已经发布，在上个月的 <a href="http://erdong.site/Prometheus/New-Features/New-Features-in-Prometheus-2-9-0.html">2.9.0</a> 之后又进行了一些修正和改进。</p><a id="more"></a><p>TSDB 的数据记录又一次得到了改进，这意味着对许多系列的查询速度更快。还添加了一个新的特殊度量 <code>scrape_series_add</code> ，这将有助于找到引起混乱的目标。</p><p>在 Azure 上添加公共 IP 可以使 Kubernetes 的服务发现 endpoint 节点和主机名。用于警报的 UI 也得到了改进，模板添加了新的变量。</p><p>对于使用 Alerts API的人来说有一个小的中断更改，该值现在是一个字符串，而不是一个浮点数(正如我们在查询 API 上所做的那样)，以正确地支持 non-real values。</p><p>还有许多改进、bug修复和其他更改，可以查看 <a href="https://github.com/prometheus/prometheus/releases/tag/v2.10.0" target="_blank" rel="noopener">release notes</a> 来获取更多的信息。</p><h1 id="原文链接"><a href="#原文链接" class="headerlink" title="原文链接"></a>原文链接</h1><ul><li><a href="https://www.robustperception.io/new-features-in-prometheus-2-10-0" target="_blank" rel="noopener">https://www.robustperception.io/new-features-in-prometheus-2-10-0</a> ， By Brian Brazil</li></ul><p>======================<br>Erdong, A Linux user !</p>]]></content>
     
     <summary type="html">
     
-      &lt;p&gt;Prometheus &lt;a href=&quot;https://github.com/prometheus/prometheus/releases/tag/v2.11.0&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;2.11.0&lt;/a&gt; 现在(2019.07.9)已经发布，在5月的 &lt;a href=&quot;http://erdong.site/Prometheus/New-Features/New-Features-in-Prometheus-2-10-0.html&quot;&gt;2.10.0&lt;/a&gt; 之后又进行了一些修正和改进。&lt;/p&gt;
+      &lt;p&gt;Prometheus &lt;a href=&quot;https://github.com/prometheus/prometheus/releases/tag/v2.10.0&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;2.10.0&lt;/a&gt; 现在(2019.05.25)已经发布，在上个月的 &lt;a href=&quot;http://erdong.site/Prometheus/New-Features/New-Features-in-Prometheus-2-9-0.html&quot;&gt;2.9.0&lt;/a&gt; 之后又进行了一些修正和改进。&lt;/p&gt;
     
     </summary>
     
