@@ -1,6 +1,88 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Prometheus 2.15.0 新特性</title>
+    <url>/Prometheus/New-Features/New-Features-in-Prometheus-2-15-0.html</url>
+    <content><![CDATA[<p> <a href="https://github.com/prometheus/prometheus/releases/tag/v2.15.0" target="_blank" rel="noopener">2.15.0</a> 现在(2019.12.23)已经发布，在上个月的 <a href="http://erdong.site/Prometheus/New-Features/New-Features-in-Prometheus-2-14-0.html">2.14.0</a> 之后又进行了一些修正和改进。</p>
+<a id="more"></a>
+<p>这个版本最大的改进是对块（block）和内存使用的压缩进行了优化，块不再将所有的 symbol/postings 放在对上，并且压缩过程也不将他们长期放在内存。比较显著的效果是减少了具有高基数/搅动的系统的内存使用量，压缩内存峰值现在基本上应该消失了。因为这是典型的RAM与CPU之间的折衷，所以压缩会慢一些。在WAL replay(即启动时间)方面也有了性能上的改进，并且WAL占用的空间现在可以基于存储空间大小进行保留，删除超出的数据。</p>
+<p>有一个新的 Metric prometheus_sd_kubernetes_cache_* 已经被删除，</p>
+<p>PromQL解析器的性能也得到了一些改进。</p>
+<p>React UI的工作也在继续。实现了一些缺少的页面，比如 /targets , TSDB 的状态页面，以及其他的 fix 修复和性能提升。</p>
+<p>在 API 方面，新增了 /metadata 接口，用来公开 metadata 数据。</p>
+<p>在 v2.15.1 中修正了对相同数据的并发查询竞争的 Bug。<br>在 v2.15.2 中支持 Prometheus v2.1.0 之前的 TSDB block ；修复了 Windows 上的块压缩问题。</p>
+<p>详细的发行注记可以查看 <a href="https://github.com/prometheus/prometheus/releases/tag/v2.15.0" target="_blank" rel="noopener">release notes</a> 。</p>
+<h1 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h1><ul>
+<li><a href="https://www.robustperception.io/new-features-in-prometheus-2-15-0" target="_blank" rel="noopener">https://www.robustperception.io/new-features-in-prometheus-2-15-0</a> ， By Brian Brazil</li>
+<li><a href="https://github.com/prometheus/prometheus/releases/tag/v2.15.0" target="_blank" rel="noopener">https://github.com/prometheus/prometheus/releases/tag/v2.15.0</a> ，By prombot of GitHub  <a href="https://github.com/prometheus/prometheus/releases/tag/v2.14.0" target="_blank" rel="noopener">https://github.com/prometheus/prometheus/releases/tag/v2.14.0</a> ，By prombot of GitHub </li>
+</ul>
+<p>======================<br>由于无法及时收到评论内容，所以关闭评论功能。<br>大家有问题欢迎发邮件到 <a href="mailto:erdong@mail.erdong.site" target="_blank" rel="noopener">erdong@mail.erdong.site</a> ，或者 <a href="https://github.com/erdong/erdong.github.io/issues" target="_blank" rel="noopener">https://github.com/erdong/erdong.github.io/issues</a> 提 Issue ，我会及时回复。</p>
+<p>======================<br>Erdong, A Linux user !</p>
+]]></content>
+      <categories>
+        <category>Prometheus</category>
+        <category>New-Features</category>
+      </categories>
+      <tags>
+        <tag>Prometheus</tag>
+        <tag>Features</tag>
+        <tag>release</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Prometheus 2.16.0 新特性</title>
+    <url>/Prometheus/New-Features/New-Features-in-Prometheus-2-16-0.html</url>
+    <content><![CDATA[<p>Prometheus <a href="https://github.com/prometheus/prometheus/releases/tag/v2.16.0" target="_blank" rel="noopener">2.16.0</a> 现在(2020.02.13)已经发布，在上个月的 <a href="http://erdong.site/Prometheus/New-Features/New-Features-in-Prometheus-2-15-0.html">2.15.0</a> 之后又进行了一些修正和改进。</p>
+<a id="more"></a>
+<p>在这个版本中有很多的性能改进，如果你的查询只涉及最近几个小时的数值，会变的非常快，因为 Brian Brazil 删除了一些不必要的排序。在实际使用中，这会使得记录规则在处理 100 万个序列的高基数时快 1 秒。</p>
+<p>现在可以配置 Prometheus 来记录它执行的所有 PromQL 查询。</p>
+<p>PromQL 解析器已经被一个带有改进的错误消息的生成解析器所取代，这也会快一些。 还有一个新的 absent_over_time 函数，在没有任何变化的情况下，重新加载配置和告警规则配置的效率会更高。</p>
+<p>有新的 prometheus_target_metadata_cache_* 来展示元数据占用的内存，还有针对 WAL 写失败的 prometheus_tsdb_wal_writes_failed_total 的指标。</p>
+<p>新的 UI 支持本地时区，可以勾选 local timezone 。新增支持告警规则页面以及“Xs ago” 之前。</p>
+<p>TSDB 提升了查询最近 2 小时内数据的查询性能。<br>promtool 工具支持显示无效规则的行号。</p>
+<p>还有其他一些 BUG 修复。</p>
+<p>详细的发行注记可以查看 <a href="https://github.com/prometheus/prometheus/releases/tag/v2.16.0" target="_blank" rel="noopener">release notes</a> 。</p>
+<h1 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h1><ul>
+<li><a href="https://www.robustperception.io/new-features-in-prometheus-2-16-0" target="_blank" rel="noopener">https://www.robustperception.io/new-features-in-prometheus-2-16-0</a> ， By Brian Brazil</li>
+<li><a href="https://github.com/prometheus/prometheus/releases/tag/v2.16.0" target="_blank" rel="noopener">https://github.com/prometheus/prometheus/releases/tag/v2.16.0</a> ，By prombot of GitHub </li>
+</ul>
+<p>======================<br>由于无法及时收到评论内容，所以关闭评论功能。<br>大家有问题欢迎发邮件到 <a href="mailto:erdong@mail.erdong.site" target="_blank" rel="noopener">erdong@mail.erdong.site</a> ，或者 <a href="https://github.com/erdong/erdong.github.io/issues" target="_blank" rel="noopener">https://github.com/erdong/erdong.github.io/issues</a> 提 Issue ，我会及时回复。</p>
+<p>======================<br>Erdong, A Linux user !</p>
+]]></content>
+      <categories>
+        <category>Prometheus</category>
+        <category>New-Features</category>
+      </categories>
+      <tags>
+        <tag>Prometheus</tag>
+        <tag>Features</tag>
+        <tag>release</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>攻城狮周刊：第44期</title>
+    <url>/weekly/weekly44.html</url>
+    <content><![CDATA[<p>这里记录过去一周，我看到的值得分享的东西。</p>
+<a id="more"></a>
+
+
+<h1 id="新闻"><a href="#新闻" class="headerlink" title="新闻"></a>新闻</h1><h2 id="1-CentOS-8-1-1911"><a href="#1-CentOS-8-1-1911" class="headerlink" title="1. CentOS 8.1 1911"></a>1. <a href="https://www.oschina.net/news/112846/centos-8-1-1911-released" target="_blank" rel="noopener">CentOS 8.1 1911</a></h2><p>CentOS 8.1 版本已经发布了。</p>
+<h1 id="教程"><a href="#教程" class="headerlink" title="教程"></a>教程</h1><h2 id="1-leetcode-前-300-题"><a href="#1-leetcode-前-300-题" class="headerlink" title="1. leetcode 前 300 题"></a>1. <a href="https://leetcode.wang" target="_blank" rel="noopener">leetcode 前 300 题</a></h2><p>Leetcode 前 300 题，作者 wind-liang 对每道都进行了详细通俗的分析，并且提供多种思路解法.</p>
+<h2 id="2-Go-语言示例教程"><a href="#2-Go-语言示例教程" class="headerlink" title="2. Go 语言示例教程"></a>2. <a href="https://github.com/inancgumus/learngo" target="_blank" rel="noopener">Go 语言示例教程</a></h2><p>该仓库是一个 Go 语言初学者教程的示例库，收集了1000多个示例、练习和问题。</p>
+<h1 id="工具"><a href="#工具" class="headerlink" title="工具"></a>工具</h1><h2 id="1-spug"><a href="#1-spug" class="headerlink" title="1. spug"></a>1. <a href="https://github.com/openspug/spug" target="_blank" rel="noopener">spug</a></h2><p>开源运维平台：面向中小型企业设计的轻量级无Agent的自动化运维平台，整合了主机管理、主机批量执行、主机在线终端、应用发布部署、在线任务计划、配置中心、监控、报警等一系列功能。 <a href="https://spug.dev" target="_blank" rel="noopener">https://spug.dev</a></p>
+<h2 id="2-NGINX-Config"><a href="#2-NGINX-Config" class="headerlink" title="2. NGINX Config"></a>2. <a href="https://www.digitalocean.com/community/tools/nginx" target="_blank" rel="noopener">NGINX Config</a></h2><p>Nginx 的图形配置界面，点几下鼠标，自动生成配置文件，可以上传到服务器。</p>
+<h1 id="资源"><a href="#资源" class="headerlink" title="资源"></a>资源</h1><h2 id="1-阿里云云原生应用"><a href="#1-阿里云云原生应用" class="headerlink" title="1. 阿里云云原生应用"></a>1. <a href="https://github.com/cloudnativeapp" target="_blank" rel="noopener">阿里云云原生应用</a></h2><p>该组织是阿里云开发者社区维护的，有部分内容由阿里云提供。有一些参考价值。</p>
+<h1 id="杂谈"><a href="#杂谈" class="headerlink" title="杂谈"></a>杂谈</h1><h2 id="1-开源程序员主题相声"><a href="#1-开源程序员主题相声" class="headerlink" title="1. 开源程序员主题相声"></a>1. <a href="https://github.com/koolob/programmer-crosstalk" target="_blank" rel="noopener">开源程序员主题相声</a></h2><p>有点意思，无聊的时候可以看看，或者表演节目的时候可以用上。</p>
+<p>======================<br>由于无法及时收到评论内容，所以关闭评论功能。<br>大家有问题欢迎发邮件到 <a href="mailto:erdong@mail.erdong.site" target="_blank" rel="noopener">erdong@mail.erdong.site</a> ，或者 <a href="https://github.com/erdong/erdong.github.io/issues" target="_blank" rel="noopener">https://github.com/erdong/erdong.github.io/issues</a> 提 Issue ，我会及时回复&gt;。<br>======================<br>Erdong, A Linux user !</p>
+]]></content>
+      <categories>
+        <category>weekly</category>
+      </categories>
+      <tags>
+        <tag>weekly</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Prometheus 删除指定 Metric</title>
     <url>/prometheus/prometheus-delete-metrics.html</url>
     <content><![CDATA[<p>Prometheus 发布以后，很长的一段时间里，是无法删除指定的 Metric 。如果你在某次测试中，有一些 Metric 的名称或者值有问题，那么你没有任何办法及时处理，只能等待数据的时间到了以后自动删除。我一度以为直到现在也是这样，最近在翻看 Prometheus 的官方文档的时候发现，Prometheus 在 2.0 版本以后已经提供了一个简单的管理接口，可以用来删除这些坏 Metric 数据。</p>
@@ -1255,6 +1337,31 @@
       </tags>
   </entry>
   <entry>
+    <title>【翻译】Prometheus 2.10.0 新特性</title>
+    <url>/Prometheus/New-Features/New-Features-in-Prometheus-2-10-0.html</url>
+    <content><![CDATA[<p>Prometheus <a href="https://github.com/prometheus/prometheus/releases/tag/v2.10.0" target="_blank" rel="noopener">2.10.0</a> 现在(2019.05.25)已经发布，在上个月的 <a href="http://erdong.site/Prometheus/New-Features/New-Features-in-Prometheus-2-9-0.html">2.9.0</a> 之后又进行了一些修正和改进。</p>
+<a id="more"></a>
+
+<p>TSDB 的数据记录又一次得到了改进，这意味着对许多系列的查询速度更快。还添加了一个新的特殊度量 <code>scrape_series_add</code> ，这将有助于找到引起混乱的目标。</p>
+<p>在 Azure 上添加公共 IP 可以使 Kubernetes 的服务发现 endpoint 节点和主机名。用于警报的 UI 也得到了改进，模板添加了新的变量。</p>
+<p>对于使用 Alerts API的人来说有一个小的中断更改，该值现在是一个字符串，而不是一个浮点数(正如我们在查询 API 上所做的那样)，以正确地支持 non-real values。</p>
+<p>还有许多改进、bug修复和其他更改，可以查看 <a href="https://github.com/prometheus/prometheus/releases/tag/v2.10.0" target="_blank" rel="noopener">release notes</a> 来获取更多的信息。</p>
+<h1 id="原文链接"><a href="#原文链接" class="headerlink" title="原文链接"></a>原文链接</h1><ul>
+<li><a href="https://www.robustperception.io/new-features-in-prometheus-2-10-0" target="_blank" rel="noopener">https://www.robustperception.io/new-features-in-prometheus-2-10-0</a> ， By Brian Brazil</li>
+</ul>
+<p>======================<br>Erdong, A Linux user !</p>
+]]></content>
+      <categories>
+        <category>Prometheus</category>
+        <category>New-Features</category>
+      </categories>
+      <tags>
+        <tag>Prometheus</tag>
+        <tag>Features</tag>
+        <tag>release</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>【翻译】Prometheus 2.11.0 新特性</title>
     <url>/Prometheus/New-Features/New-Features-in-Prometheus-2-11-0.html</url>
     <content><![CDATA[<p>Prometheus <a href="https://github.com/prometheus/prometheus/releases/tag/v2.11.0" target="_blank" rel="noopener">2.11.0</a> 现在(2019.07.9)已经发布，在5月的 <a href="http://erdong.site/Prometheus/New-Features/New-Features-in-Prometheus-2-10-0.html">2.10.0</a> 之后又进行了一些修正和改进。</p>
@@ -1289,31 +1396,6 @@
 <p>还有许多改进、bug修复和其他更改，可以查看 <a href="https://github.com/prometheus/prometheus/releases/tag/v2.12.0" target="_blank" rel="noopener">release notes</a> 来获取更多的信息。</p>
 <h1 id="原文链接"><a href="#原文链接" class="headerlink" title="原文链接"></a>原文链接</h1><ul>
 <li><a href="https://www.robustperception.io/new-features-in-prometheus-2-12-0" target="_blank" rel="noopener">https://www.robustperception.io/new-features-in-prometheus-2-12-0</a> ， By Brian Brazil</li>
-</ul>
-<p>======================<br>Erdong, A Linux user !</p>
-]]></content>
-      <categories>
-        <category>Prometheus</category>
-        <category>New-Features</category>
-      </categories>
-      <tags>
-        <tag>Prometheus</tag>
-        <tag>Features</tag>
-        <tag>release</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>【翻译】Prometheus 2.10.0 新特性</title>
-    <url>/Prometheus/New-Features/New-Features-in-Prometheus-2-10-0.html</url>
-    <content><![CDATA[<p>Prometheus <a href="https://github.com/prometheus/prometheus/releases/tag/v2.10.0" target="_blank" rel="noopener">2.10.0</a> 现在(2019.05.25)已经发布，在上个月的 <a href="http://erdong.site/Prometheus/New-Features/New-Features-in-Prometheus-2-9-0.html">2.9.0</a> 之后又进行了一些修正和改进。</p>
-<a id="more"></a>
-
-<p>TSDB 的数据记录又一次得到了改进，这意味着对许多系列的查询速度更快。还添加了一个新的特殊度量 <code>scrape_series_add</code> ，这将有助于找到引起混乱的目标。</p>
-<p>在 Azure 上添加公共 IP 可以使 Kubernetes 的服务发现 endpoint 节点和主机名。用于警报的 UI 也得到了改进，模板添加了新的变量。</p>
-<p>对于使用 Alerts API的人来说有一个小的中断更改，该值现在是一个字符串，而不是一个浮点数(正如我们在查询 API 上所做的那样)，以正确地支持 non-real values。</p>
-<p>还有许多改进、bug修复和其他更改，可以查看 <a href="https://github.com/prometheus/prometheus/releases/tag/v2.10.0" target="_blank" rel="noopener">release notes</a> 来获取更多的信息。</p>
-<h1 id="原文链接"><a href="#原文链接" class="headerlink" title="原文链接"></a>原文链接</h1><ul>
-<li><a href="https://www.robustperception.io/new-features-in-prometheus-2-10-0" target="_blank" rel="noopener">https://www.robustperception.io/new-features-in-prometheus-2-10-0</a> ， By Brian Brazil</li>
 </ul>
 <p>======================<br>Erdong, A Linux user !</p>
 ]]></content>
@@ -1917,17 +1999,18 @@
       </tags>
   </entry>
   <entry>
-    <title>【翻译】Prometheus 2.8.0 新特性</title>
-    <url>/Prometheus/New-Features/New-Features-in-Prometheus-2-8-0.html</url>
-    <content><![CDATA[<p>Prometheus <a href="https://github.com/prometheus/prometheus/releases/tag/v2.8.0" target="_blank" rel="noopener">2.8.0</a> 现在(2019.03.18)已经发布，在上个月的 <a href="http://erdong.site/Prometheus/New-Features/New-Features-in-Prometheus-2-7-0.html">2.7.0</a> 之后又进行了一些修正和改进。</p>
+    <title>【翻译】Prometheus 2.9.0 新特性</title>
+    <url>/Prometheus/New-Features/New-Features-in-Prometheus-2-9-0.html</url>
+    <content><![CDATA[<p>Prometheus <a href="https://github.com/prometheus/prometheus/releases/tag/v2.9.0" target="_blank" rel="noopener">2.9.0</a> 现在(2019.04.15)已经发布，在上个月的 <a href="http://erdong.site/Prometheus/New-Features/New-Features-in-Prometheus-2-8-0.html">2.8.0</a> 之后又进行了一些修正和改进。</p>
 <a id="more"></a>
 
-<p>这个版本中最大的变化是远程写现在通过 WAL 工作，使它更加可靠，资源使用更加可预测。另一个改进是TSDB现在支持压缩重叠块，将来的特性将使用这些重叠块来支持批量导入。</p>
-<p>需要注意的一件事是，如果您指定了–storage.tsdb.retention。那么默认的时间保留将不适用。您还可以指定时间保留，在这种情况下两者都适用。</p>
-<p>还有其他一些小的改进，包括PromQL 多对多匹配出现错误时显示违规的标签，重新加载配置对警报的影响已经减少，现在表达式浏览器度量自动完成有10k的限制，以避免包含标签的度量名称过多，导致浏览器退出。</p>
-<p>还有许多改进、bug修复和其他更改，可以查看 <a href="https://github.com/prometheus/prometheus/releases/tag/v2.8.0" target="_blank" rel="noopener">release notes</a> 来获取更多的信息。</p>
+
+<p>在 2.8.0 中引入的从 WAL 远程写读取时缺少时间序列的问题已经解决。这还应该修复启动时的 “unknown series references” 警告。为了让问题消失，需要一个干净的WAL(或等待所有的时间序列粗制滥造)。节省了远程写的内存使用，降低了片状目标对CPU的影响，并且对于连续第三个版本，针对 TSDB 中的索引也有了改进。</p>
+<p>有一个 <code>honor_timestamp</code> 选项来处理异常目标产生的不必要和有问题的时间戳。TLS 证书现在从磁盘自动重新加载，现在 scrapes 交错跨 Prometheus 服务间(以前它们只交错在 Prometheus 服务中)。在服务发现中，OpenStack 和 Kubernetes 有更多的元数据，Consul 现在支持更多的 tags 如果你使用 tag ( 现在是 tags )配置字段来提高性能，。</p>
+<p>还有其他一些小的改进，包括可读性稍强的日志输出、状态页包含更多信息以及其他端点通过POST工作。</p>
+<p>还有许多改进、bug修复和其他更改，可以查看 <a href="https://github.com/prometheus/prometheus/releases/tag/v2.9.0" target="_blank" rel="noopener">release notes</a> 来获取更多的信息。</p>
 <h1 id="原文链接"><a href="#原文链接" class="headerlink" title="原文链接"></a>原文链接</h1><ul>
-<li><a href="https://www.robustperception.io/new-features-in-prometheus-2-8-0" target="_blank" rel="noopener">https://www.robustperception.io/new-features-in-prometheus-2-8-0</a> ， By Brian Brazil</li>
+<li><a href="https://www.robustperception.io/new-features-in-prometheus-2-7-0" target="_blank" rel="noopener">https://www.robustperception.io/new-features-in-prometheus-2-7-0</a> ， By Brian Brazil</li>
 </ul>
 <p>======================<br>Erdong, A Linux user !</p>
 ]]></content>
@@ -1942,18 +2025,17 @@
       </tags>
   </entry>
   <entry>
-    <title>【翻译】Prometheus 2.9.0 新特性</title>
-    <url>/Prometheus/New-Features/New-Features-in-Prometheus-2-9-0.html</url>
-    <content><![CDATA[<p>Prometheus <a href="https://github.com/prometheus/prometheus/releases/tag/v2.9.0" target="_blank" rel="noopener">2.9.0</a> 现在(2019.04.15)已经发布，在上个月的 <a href="http://erdong.site/Prometheus/New-Features/New-Features-in-Prometheus-2-8-0.html">2.8.0</a> 之后又进行了一些修正和改进。</p>
+    <title>【翻译】Prometheus 2.8.0 新特性</title>
+    <url>/Prometheus/New-Features/New-Features-in-Prometheus-2-8-0.html</url>
+    <content><![CDATA[<p>Prometheus <a href="https://github.com/prometheus/prometheus/releases/tag/v2.8.0" target="_blank" rel="noopener">2.8.0</a> 现在(2019.03.18)已经发布，在上个月的 <a href="http://erdong.site/Prometheus/New-Features/New-Features-in-Prometheus-2-7-0.html">2.7.0</a> 之后又进行了一些修正和改进。</p>
 <a id="more"></a>
 
-
-<p>在 2.8.0 中引入的从 WAL 远程写读取时缺少时间序列的问题已经解决。这还应该修复启动时的 “unknown series references” 警告。为了让问题消失，需要一个干净的WAL(或等待所有的时间序列粗制滥造)。节省了远程写的内存使用，降低了片状目标对CPU的影响，并且对于连续第三个版本，针对 TSDB 中的索引也有了改进。</p>
-<p>有一个 <code>honor_timestamp</code> 选项来处理异常目标产生的不必要和有问题的时间戳。TLS 证书现在从磁盘自动重新加载，现在 scrapes 交错跨 Prometheus 服务间(以前它们只交错在 Prometheus 服务中)。在服务发现中，OpenStack 和 Kubernetes 有更多的元数据，Consul 现在支持更多的 tags 如果你使用 tag ( 现在是 tags )配置字段来提高性能，。</p>
-<p>还有其他一些小的改进，包括可读性稍强的日志输出、状态页包含更多信息以及其他端点通过POST工作。</p>
-<p>还有许多改进、bug修复和其他更改，可以查看 <a href="https://github.com/prometheus/prometheus/releases/tag/v2.9.0" target="_blank" rel="noopener">release notes</a> 来获取更多的信息。</p>
+<p>这个版本中最大的变化是远程写现在通过 WAL 工作，使它更加可靠，资源使用更加可预测。另一个改进是TSDB现在支持压缩重叠块，将来的特性将使用这些重叠块来支持批量导入。</p>
+<p>需要注意的一件事是，如果您指定了–storage.tsdb.retention。那么默认的时间保留将不适用。您还可以指定时间保留，在这种情况下两者都适用。</p>
+<p>还有其他一些小的改进，包括PromQL 多对多匹配出现错误时显示违规的标签，重新加载配置对警报的影响已经减少，现在表达式浏览器度量自动完成有10k的限制，以避免包含标签的度量名称过多，导致浏览器退出。</p>
+<p>还有许多改进、bug修复和其他更改，可以查看 <a href="https://github.com/prometheus/prometheus/releases/tag/v2.8.0" target="_blank" rel="noopener">release notes</a> 来获取更多的信息。</p>
 <h1 id="原文链接"><a href="#原文链接" class="headerlink" title="原文链接"></a>原文链接</h1><ul>
-<li><a href="https://www.robustperception.io/new-features-in-prometheus-2-7-0" target="_blank" rel="noopener">https://www.robustperception.io/new-features-in-prometheus-2-7-0</a> ， By Brian Brazil</li>
+<li><a href="https://www.robustperception.io/new-features-in-prometheus-2-8-0" target="_blank" rel="noopener">https://www.robustperception.io/new-features-in-prometheus-2-8-0</a> ， By Brian Brazil</li>
 </ul>
 <p>======================<br>Erdong, A Linux user !</p>
 ]]></content>
@@ -2744,8 +2826,8 @@
         <category>QDS</category>
       </categories>
       <tags>
-        <tag>Grafana</tag>
         <tag>QDS</tag>
+        <tag>Grafana</tag>
       </tags>
   </entry>
   <entry>

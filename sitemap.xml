@@ -2,6 +2,27 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://erdong.site/weekly/weekly44.html</loc>
+    
+    <lastmod>2020-05-23T14:50:28.034Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://erdong.site/Prometheus/New-Features/New-Features-in-Prometheus-2-15-0.html</loc>
+    
+    <lastmod>2020-05-23T14:50:13.715Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://erdong.site/Prometheus/New-Features/New-Features-in-Prometheus-2-16-0.html</loc>
+    
+    <lastmod>2020-05-23T14:49:55.169Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://erdong.site/prometheus/prometheus-delete-metrics.html</loc>
     
     <lastmod>2020-01-12T14:54:13.605Z</lastmod>
@@ -702,6 +723,13 @@
   </url>
   
   <url>
+    <loc>https://erdong.site/Prometheus/New-Features/New-Features-in-Prometheus-2-10-0.html</loc>
+    
+    <lastmod>2019-10-13T15:31:57.912Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://erdong.site/Prometheus/New-Features/New-Features-in-Prometheus-2-11-0.html</loc>
     
     <lastmod>2019-10-13T15:31:57.912Z</lastmod>
@@ -710,13 +738,6 @@
   
   <url>
     <loc>https://erdong.site/Prometheus/New-Features/New-Features-in-Prometheus-2-12-0.html</loc>
-    
-    <lastmod>2019-10-13T15:31:57.912Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://erdong.site/Prometheus/New-Features/New-Features-in-Prometheus-2-10-0.html</loc>
     
     <lastmod>2019-10-13T15:31:57.912Z</lastmod>
     
