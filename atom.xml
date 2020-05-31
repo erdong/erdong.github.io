@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://erdong.site/"/>
-  <updated>2020-05-23T14:49:55.169Z</updated>
+  <updated>2020-05-31T11:38:06.395Z</updated>
   <id>https://erdong.site/</id>
   
   <author>
@@ -15,6 +15,112 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Prometheus 2.18.0 新特性</title>
+    <link href="https://erdong.site/Prometheus/New-Features/New-Features-in-Prometheus-2-18-0.html"/>
+    <id>https://erdong.site/Prometheus/New-Features/New-Features-in-Prometheus-2-18-0.html</id>
+    <published>2020-05-31T15:17:11.000Z</published>
+    <updated>2020-05-31T11:38:06.395Z</updated>
+    
+    <content type="html"><![CDATA[<p>Prometheus <a href="https://github.com/prometheus/prometheus/releases/tag/v2.18.0" target="_blank" rel="noopener">2.18.0</a> 现在(2020.05.05)已经发布，在上个月的 <a href="http://erdong.site/Prometheus/New-Features/New-Features-in-Prometheus-2-17-0.html">2.17.0</a> 之后又进行了一些修正和改进。</p><a id="more"></a><p>这是一个相当轻的版本。最显著的变化是，WAL保存在磁盘上的时间已经减少了一半，从6个小时减少到3个小时，这是我为之前的一篇博客文章所做的研究得出的结论。</p><p>Federation 现在只查询本地TSDB，由于 read_recent 默认为 false，大多数远程读用户应该已经这样做了。</p><p>EC2服务发现现在新增了 architecture 元数据 label。</p><p>修复了一些 UI 和远程写的 BUG。</p><p>在 2020 年 5 月 7 日，发布了 2.18.1 TSDB 修复了一个快照 API 的 BUG。</p><p>详细的发行注记可以查看 <a href="https://github.com/prometheus/prometheus/releases/tag/v2.18.0" target="_blank" rel="noopener">release notes</a> 。</p><h1 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h1><ul><li><a href="https://www.robustperception.io/new-features-in-prometheus-2-18-0" target="_blank" rel="noopener">https://www.robustperception.io/new-features-in-prometheus-2-18-0</a> ， By Brian Brazil</li><li><a href="https://github.com/prometheus/prometheus/releases/tag/v2.18.0" target="_blank" rel="noopener">https://github.com/prometheus/prometheus/releases/tag/v2.18.0</a> ，By prombot of GitHub</li></ul><p>======================<br>由于无法及时收到评论内容，所以关闭评论功能。<br>大家有问题欢迎发邮件到 <a href="mailto:erdong@mail.erdong.site" target="_blank" rel="noopener">erdong@mail.erdong.site</a> ，或者 <a href="https://github.com/erdong/erdong.github.io/issues" target="_blank" rel="noopener">https://github.com/erdong/erdong.github.io/issues</a> 提 Issue ，我会及时回复。</p><p>======================<br>Erdong, A Linux user !</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Prometheus &lt;a href=&quot;https://github.com/prometheus/prometheus/releases/tag/v2.18.0&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;2.18.0&lt;/a&gt; 现在(2020.05.05)已经发布，在上个月的 &lt;a href=&quot;http://erdong.site/Prometheus/New-Features/New-Features-in-Prometheus-2-17-0.html&quot;&gt;2.17.0&lt;/a&gt; 之后又进行了一些修正和改进。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="Prometheus" scheme="https://erdong.site/categories/Prometheus/"/>
+    
+      <category term="New-Features" scheme="https://erdong.site/categories/Prometheus/New-Features/"/>
+    
+    
+      <category term="Prometheus" scheme="https://erdong.site/tags/Prometheus/"/>
+    
+      <category term="Features" scheme="https://erdong.site/tags/Features/"/>
+    
+      <category term="release" scheme="https://erdong.site/tags/release/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>MAC OS 下 HomeBrew 使用</title>
+    <link href="https://erdong.site/macos/macos-homebrew-introduction.html"/>
+    <id>https://erdong.site/macos/macos-homebrew-introduction.html</id>
+    <published>2020-05-31T11:46:10.000Z</published>
+    <updated>2020-05-31T11:47:31.643Z</updated>
+    
+    <content type="html"><![CDATA[<p>Homebrew 是一个很方便的包管理器，主要用来管理 mac 操作系统的软件包，现在也支持 linux 操作系统的包管理以及 Windows 10 Subsystem for Linux。官网是 <a href="https://brew.sh" target="_blank" rel="noopener">https://brew.sh</a>  。</p><a id="more"></a><p>Homebrew 通过 Tap 方式定义源，官方默认提供了 brew、homebrew-core 、homebrew-cask 、homebrew-bottles 四个常用的源（仓库），用户也可以通过 Tap 定义自己的源。</p><p>在安装 brew 和使用 brew install 安装软件的过程中，经常会遇到安装缓慢、卡死的情况，这大多是由于 Homebrew 的默认安装源位于国外，国内访问速度慢造成的，解决这个问题的方法是将安装源替换为国内镜像，常用的国内镜像源可以使用中科大 LUG 源、清华 Tuna 源等。</p><h1 id="Brew-安装"><a href="#Brew-安装" class="headerlink" title="Brew 安装"></a>Brew 安装</h1><p>网上提供的安装方式都是之前的旧的安装方式，里边提到的都是使用 Ruby 脚本来安装的。现在 Brew 已经可以使用 Bash 来进行安装了，这是在 Github 的仓库 <a href="https://github.com/Homebrew/install" target="_blank" rel="noopener">Homebrew Install</a> 。</p><p>安装方式为 </p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/bin/bash -c &quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)&quot;</span><br></pre></td></tr></table></figure><p>这个脚本脚本中使用了 Brew 的默认源，源在国外，安装过程会非常缓慢，这个时候可以单独把 install.sh 脚本下载下来，修改其中的默认源为 中科大 LUG 源或者清华 Tuna 源。</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">#默认源</span><br><span class="line">BREW_REPO=&quot;https://github.com/Homebrew/brew&quot;</span><br></pre></td></tr></table></figure><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"># 中科大 LUG 源</span><br><span class="line">BREW_REPO=&quot;https://mirrors.ustc.edu.cn/brew.git&quot;</span><br><span class="line"># 清华 Tuna 源</span><br><span class="line">BREW_REPO=&quot;https://mirrors.tuna.tsinghua.edu.cn/git/homebrew/brew.git&quot;</span><br></pre></td></tr></table></figure><p>替换好以后，执行 <code>/bin/bash install.sh</code> 即可，速度会快很多。</p><p>如果需要卸载可以使用 </p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/bin/bash -c &quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/uninstall.sh)&quot;</span><br></pre></td></tr></table></figure><h1 id="Brew-替换源"><a href="#Brew-替换源" class="headerlink" title="Brew 替换源"></a>Brew 替换源</h1><p>Homebrew 安装好以后，就可以使用 brew install 来安装软件了，这个时候会可以通过更换国内源的方式来加速安装。Brew 常用的是 4 个源，分别是 brew、<br>homebrew-core、homebrew-cask、homebrew-bottles 。<br>本文的编写目的是简单的介绍四个常用的源（源），以及如何更换为国内镜像实现快速安装软件。</p><h2 id="brew"><a href="#brew" class="headerlink" title="brew"></a>brew</h2><p>说明：Homebrew 源代码仓库。<br>默认地址：<a href="https://github.com/Homebrew/brew.git" target="_blank" rel="noopener">https://github.com/Homebrew/brew.git</a></p><h2 id="homebrew-core"><a href="#homebrew-core" class="headerlink" title="homebrew-core"></a>homebrew-core</h2><p>说明：Homebrew 核心源（仓库），它是 brew install 的默认安装源（仓库）。<br>默认地址：<a href="https://github.com/Homebrew/homebrew-core.git" target="_blank" rel="noopener">https://github.com/Homebrew/homebrew-core.git</a></p><h2 id="homebrew-cask"><a href="#homebrew-cask" class="headerlink" title="homebrew-cask"></a>homebrew-cask</h2><p>说明：homebrew-cask 源（仓库），提供 macOS 应用和大型二进制文件的安装。通常我们在 mac 操作系统上安装图形用户界面软件，系统都会提示“若要安装，请拖动此图标…”。homebrew-cask 扩展了Homebrew，为安装和管理 Atom 和 Google Chrome 之类的图形用户界面应用程序带来了优雅、简单和速度。</p><p>默认地址：<a href="https://github.com/Homebrew/homebrew-cask.git" target="_blank" rel="noopener">https://github.com/Homebrew/homebrew-cask.git</a></p><h2 id="homebrew-bottles"><a href="#homebrew-bottles" class="headerlink" title="homebrew-bottles"></a>homebrew-bottles</h2><p>说明：Homebrew 预编译二进制软件包。<br>默认地址：<a href="https://bintray.com/homebrew/bottles" target="_blank" rel="noopener">https://bintray.com/homebrew/bottles</a></p><p>了解了这个 4 个源以后，我们就可以对他们进行更新，主要是中科大 LUG 源、清华 Tuna 源，这样在其中一个故障的时候切换另外一个来正常使用。</p><p>替换中科大的默认源<br><a href="http://mirrors.ustc.edu.cn/help/homebrew-core.git.html" target="_blank" rel="noopener">http://mirrors.ustc.edu.cn/help/homebrew-core.git.html</a></p><p>替换中科大的 bottles<br><a href="http://mirrors.ustc.edu.cn/help/homebrew-bottles.html" target="_blank" rel="noopener">http://mirrors.ustc.edu.cn/help/homebrew-bottles.html</a></p><p>替换清华的默认源</p><p><a href="https://mirrors.tuna.tsinghua.edu.cn/help/homebrew/" target="_blank" rel="noopener">https://mirrors.tuna.tsinghua.edu.cn/help/homebrew/</a></p><p>替换清华的 bottles</p><p><a href="https://mirrors.tuna.tsinghua.edu.cn/help/homebrew-bottles/" target="_blank" rel="noopener">https://mirrors.tuna.tsinghua.edu.cn/help/homebrew-bottles/</a></p><p>替换 bottles 源的时候，如果你使用了 Zsh 等其他解释器，请更新对应的配置文件。</p><p>参考<br><a href="https://lug.ustc.edu.cn/wiki/mirrors/help/brew.git" target="_blank" rel="noopener">https://lug.ustc.edu.cn/wiki/mirrors/help/brew.git</a><br><a href="https://lug.ustc.edu.cn/wiki/mirrors/help/homebrew-bottles" target="_blank" rel="noopener">https://lug.ustc.edu.cn/wiki/mirrors/help/homebrew-bottles</a></p><p>======================<br>由于无法及时收到评论内容，所以关闭评论功能。<br>大家有问题欢迎发邮件到 <a href="mailto:erdong@mail.erdong.site" target="_blank" rel="noopener">erdong@mail.erdong.site</a> ，或者 <a href="https://github.com/erdong/erdong.github.io/issues" target="_blank" rel="noopener">https://github.com/erdong/erdong.github.io/issues</a> 提 Issue ，我会及时回复。</p><p>======================<br>Erdong, A Linux user !</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Homebrew 是一个很方便的包管理器，主要用来管理 mac 操作系统的软件包，现在也支持 linux 操作系统的包管理以及 Windows 10 Subsystem for Linux。官网是 &lt;a href=&quot;https://brew.sh&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;https://brew.sh&lt;/a&gt;  。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="macos" scheme="https://erdong.site/categories/macos/"/>
+    
+    
+      <category term="macos" scheme="https://erdong.site/tags/macos/"/>
+    
+      <category term="brew" scheme="https://erdong.site/tags/brew/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>攻城狮周刊：第45期</title>
+    <link href="https://erdong.site/weekly/weekly45.html"/>
+    <id>https://erdong.site/weekly/weekly45.html</id>
+    <published>2020-05-31T07:16:59.000Z</published>
+    <updated>2020-05-31T11:44:15.322Z</updated>
+    
+    <content type="html"><![CDATA[<p>这里记录过去一周，我看到的值得分享的东西。</p><a id="more"></a><h1 id="教程"><a href="#教程" class="headerlink" title="教程"></a>教程</h1><h2 id="1"><a href="#1" class="headerlink" title="1. "></a>1. <a href="https://www.nginx.com/blog/help-the-world-by-healing-your-nginx-configuration/" target="_blank" rel="noopener"></a></h2><p>NGINX 官方的博客文章，教大家五个小技巧，通过改进配置来节省带宽、提高性能。</p><h1 id="工具"><a href="#工具" class="headerlink" title="工具"></a>工具</h1><h2 id="1-Consul-template"><a href="#1-Consul-template" class="headerlink" title="1. Consul-template"></a>1. <a href="https://github.com/hashicorp/consul-template" target="_blank" rel="noopener">Consul-template</a></h2><p>Consul template 是 Consul 周边的一个配置渲染的工具，和 confd 类似，可以从 Consul 的 kv 存储里读取数据，渲染成各种格式的文件来让 Prometheus、Nginx等等工具来读取。使用的文档可以参考：<br><a href="https://www.bookstack.cn/read/consul-guide/11_consul_template.md#使用" target="_blank" rel="noopener">https://www.bookstack.cn/read/consul-guide/11_consul_template.md#使用</a></p><h2 id="2-Confd"><a href="#2-Confd" class="headerlink" title="2. Confd"></a>2. <a href="https://github.com/kelseyhightower/confd" target="_blank" rel="noopener">Confd</a></h2><p>Confd 是一个使用模板来管理本地应用配置文件，可以从 consul 和 etcd 读取数据，和 consul-template 类似，使用模板渲染好配置文件后，也可以通过命令来重启或重载应用，使配置文件生效。但是该项目在 2018 年 7 月 16 日以后就没有新的代码提交。当前最新的版本是 v0.16.0 ，发布于 2018 年 5 月 5 日。</p><h2 id="3-Gossip"><a href="#3-Gossip" class="headerlink" title="3. Gossip"></a>3. <a href="https://pearmini.gitee.io/gossip/" target="_blank" rel="noopener">Gossip</a></h2><p>一个制作幻灯片的在线工具，只需要少量拖拽和对齐操作，就可以生成通过浏览器播放的幻灯片,比较炫酷。</p><h2 id="4-javaagent"><a href="#4-javaagent" class="headerlink" title="4. javaagent"></a>4. <a href="https://github.com/dingjs/javaagent" target="_blank" rel="noopener">javaagent</a></h2><p>基于javaagent开发的APM工具，收集方法的执行次数和执行时间，定时输出成json格式的日志。</p><h1 id="资源"><a href="#资源" class="headerlink" title="资源"></a>资源</h1><h2 id="1-阿里云藏经阁"><a href="#1-阿里云藏经阁" class="headerlink" title="1. 阿里云藏经阁"></a>1. <a href="https://developer.aliyun.com/topic/ebook" target="_blank" rel="noopener">阿里云藏经阁</a></h2><h1 id="阿里云开发者社区——藏经阁系列电子书，汇聚了一线大厂的技术沉淀精华，爆款不断。"><a href="#阿里云开发者社区——藏经阁系列电子书，汇聚了一线大厂的技术沉淀精华，爆款不断。" class="headerlink" title="阿里云开发者社区——藏经阁系列电子书，汇聚了一线大厂的技术沉淀精华，爆款不断。"></a>阿里云开发者社区——藏经阁系列电子书，汇聚了一线大厂的技术沉淀精华，爆款不断。</h1><p>由于无法及时收到评论内容，所以关闭评论功能。<br>大家有问题欢迎发邮件到 <a href="mailto:erdong@mail.erdong.site" target="_blank" rel="noopener">erdong@mail.erdong.site</a> ，或者 <a href="https://github.com/erdong/erdong.github.io/issues" target="_blank" rel="noopener">https://github.com/erdong/erdong.github.io/issues</a> 提 Issue ，我会及时回复&gt;。<br>======================<br>Erdong, A Linux user !</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;这里记录过去一周，我看到的值得分享的东西。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="weekly" scheme="https://erdong.site/categories/weekly/"/>
+    
+    
+      <category term="weekly" scheme="https://erdong.site/tags/weekly/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Prometheus 2.17.0 新特性</title>
+    <link href="https://erdong.site/Prometheus/New-Features/New-Features-in-Prometheus-2-17-0.html"/>
+    <id>https://erdong.site/Prometheus/New-Features/New-Features-in-Prometheus-2-17-0.html</id>
+    <published>2020-05-30T15:17:11.000Z</published>
+    <updated>2020-05-31T11:42:52.324Z</updated>
+    
+    <content type="html"><![CDATA[<p>Prometheus <a href="https://github.com/prometheus/prometheus/releases/tag/v2.17.0" target="_blank" rel="noopener">2.17.0</a> 现在(2020.03.24)已经发布，在上个月的 <a href="http://erdong.site/Prometheus/New-Features/New-Features-in-Prometheus-2-16-0.html">2.16.0</a> 之后又进行了一些修正和改进。</p><a id="more"></a><p>这个版本中最大的变化是将隔离添加到了tsdb中。API查询和记录规则保证只能看到完整的片段和完整的记录规则。这样在内存使用和 CPU 使用上会多一些，但是相对的，不会产生错误的结果，这样做是值得的。在查询过程中提高部分命中 head 的查询性能</p><p>现在可以并发地对多个端点进行远程读取。</p><p>PromQL解析器在幕后进行了一些更改。用户可以看到的惟一方面是，某些关键字现在也可以作为纯度量名称使用，但另一方面，我怀疑是否有人会命名一个名为count_values 的度量。</p><p>针对 Consul、EC2、OpenStack 和 Kubernetes 的服务发现获得了一些新的元数据。Kubernetes SD 还获得了对大量目标进行预过滤的能力，因为对大量目标进行重新标记是不现实的。</p><p>对于 Consul 服务发现，可以暴露服务健康作为meta标签。</p><p>对于 EC2 服务发现，将 EC2 的实例生命周期作为元标签公开。</p><p>在 React UI 方面，在 target 页面规范了本地主机 url 。</p><p>对于告警规则方面，在重新加载后将已删除的规则标记为旧的，过期的。</p><p>对于 PromQL，不要在查询日志中转义类似于 html 的字符</p><p>在 2020 年 3 月 26 日，发布了 2.17.1 ，修复了之前 CPU 和内存使用升高的问题。</p><p>在 2020 年 4 月 20 日，发布了 2.17.2 ，修复 Prometheus 启动一个空TSDB WAL时的内存泄漏，修复了删除一个正在计算的告警组的时候重载会卡住的问题，</p><p>建议使用最新的版本。</p><p>详细的发行注记可以查看 <a href="https://github.com/prometheus/prometheus/releases/tag/v2.17.0" target="_blank" rel="noopener">release notes</a> 。</p><h1 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h1><ul><li><a href="https://www.robustperception.io/new-features-in-prometheus-2-17-0" target="_blank" rel="noopener">https://www.robustperception.io/new-features-in-prometheus-2-17-0</a> ， By Brian Brazil</li><li><a href="https://github.com/prometheus/prometheus/releases/tag/v2.17.0" target="_blank" rel="noopener">https://github.com/prometheus/prometheus/releases/tag/v2.17.0</a> ，By prombot of GitHub </li></ul><p>======================<br>由于无法及时收到评论内容，所以关闭评论功能。<br>大家有问题欢迎发邮件到 <a href="mailto:erdong@mail.erdong.site" target="_blank" rel="noopener">erdong@mail.erdong.site</a> ，或者 <a href="https://github.com/erdong/erdong.github.io/issues" target="_blank" rel="noopener">https://github.com/erdong/erdong.github.io/issues</a> 提 Issue ，我会及时回复。</p><p>======================<br>Erdong, A Linux user !</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Prometheus &lt;a href=&quot;https://github.com/prometheus/prometheus/releases/tag/v2.17.0&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;2.17.0&lt;/a&gt; 现在(2020.03.24)已经发布，在上个月的 &lt;a href=&quot;http://erdong.site/Prometheus/New-Features/New-Features-in-Prometheus-2-16-0.html&quot;&gt;2.16.0&lt;/a&gt; 之后又进行了一些修正和改进。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="Prometheus" scheme="https://erdong.site/categories/Prometheus/"/>
+    
+      <category term="New-Features" scheme="https://erdong.site/categories/Prometheus/New-Features/"/>
+    
+    
+      <category term="Prometheus" scheme="https://erdong.site/tags/Prometheus/"/>
+    
+      <category term="Features" scheme="https://erdong.site/tags/Features/"/>
+    
+      <category term="release" scheme="https://erdong.site/tags/release/"/>
+    
+  </entry>
   
   <entry>
     <title>Prometheus 2.16.0 新特性</title>
@@ -1913,9 +2019,9 @@
       <category term="QDS" scheme="https://erdong.site/categories/QDS/"/>
     
     
-      <category term="Grafana" scheme="https://erdong.site/tags/Grafana/"/>
-    
       <category term="QDS" scheme="https://erdong.site/tags/QDS/"/>
+    
+      <category term="Grafana" scheme="https://erdong.site/tags/Grafana/"/>
     
   </entry>
   
