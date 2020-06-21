@@ -96,18 +96,18 @@
 
 
 
-  <meta name="description" content="这里记录过去一周，我看到的值得分享的东西。">
-<meta name="keywords" content="Newsletter">
+  <meta name="description" content="Prometheus 2.19.0 现在(2020.06.15)已经发布，在上个月的 2.18.0 之后又进行了很多的修复和改进。">
+<meta name="keywords" content="Prometheus">
 <meta property="og:type" content="article">
-<meta property="og:title" content="第13周分享">
-<meta property="og:url" content="https://erdong.site/weekly/weekly13.html">
+<meta property="og:title" content="Prometheus 2.19.0 新特性">
+<meta property="og:url" content="https://erdong.site/Prometheus/New-Features/New-Features-in-Prometheus-2-19-0.html">
 <meta property="og:site_name" content="Erdong’ Blog">
-<meta property="og:description" content="这里记录过去一周，我看到的值得分享的东西。">
+<meta property="og:description" content="Prometheus 2.19.0 现在(2020.06.15)已经发布，在上个月的 2.18.0 之后又进行了很多的修复和改进。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-10-14T11:16:43.848Z">
+<meta property="og:updated_time" content="2020-06-21T15:26:44.581Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="第13周分享">
-<meta name="twitter:description" content="这里记录过去一周，我看到的值得分享的东西。">
+<meta name="twitter:title" content="Prometheus 2.19.0 新特性">
+<meta name="twitter:description" content="Prometheus 2.19.0 现在(2020.06.15)已经发布，在上个月的 2.18.0 之后又进行了很多的修复和改进。">
 
 
 
@@ -116,7 +116,7 @@
 
 
 
-  <link rel="canonical" href="https://erdong.site/weekly/weekly13.html">
+  <link rel="canonical" href="https://erdong.site/Prometheus/New-Features/New-Features-in-Prometheus-2-19-0.html">
 
 
 
@@ -126,7 +126,7 @@
   };
 </script>
 
-  <title>第13周分享 | Erdong’ Blog</title>
+  <title>Prometheus 2.19.0 新特性 | Erdong’ Blog</title>
   
 
 
@@ -375,7 +375,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://erdong.site/weekly/weekly13.html">
+    <link itemprop="mainEntityOfPage" href="https://erdong.site/Prometheus/New-Features/New-Features-in-Prometheus-2-19-0.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Er Dong">
@@ -392,7 +392,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">第13周分享
+          <h2 class="post-title" itemprop="name headline">Prometheus 2.19.0 新特性
 
               
             
@@ -418,24 +418,12 @@
                 
               
 
-              <time title="创建时间：2019-03-31 11:06:24" itemprop="dateCreated datePublished" datetime="2019-03-31T11:06:24+08:00">2019-03-31</time>
+              <time title="创建时间：2020-06-21 23:17:11 / 修改时间：23:26:44" itemprop="dateCreated datePublished" datetime="2020-06-21T23:17:11+08:00">2020-06-21</time>
             
 
             
               
 
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2019-10-14 19:16:43" itemprop="dateModified" datetime="2019-10-14T19:16:43+08:00">2019-10-14</time>
               
             
           </span>
@@ -452,7 +440,14 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/weekly/" itemprop="url" rel="index"><span itemprop="name">weekly</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Prometheus/" itemprop="url" rel="index"><span itemprop="name">Prometheus</span></a></span>
+
+                
+                
+                  ，
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Prometheus/New-Features/" itemprop="url" rel="index"><span itemprop="name">New-Features</span></a></span>
 
                 
                 
@@ -491,11 +486,19 @@
       
 
       
-        <p>这里记录过去一周，我看到的值得分享的东西。</p>
+        <p>Prometheus <a href="https://github.com/prometheus/prometheus/releases/tag/v2.19.0" target="_blank" rel="noopener">2.19.0</a> 现在(2020.06.15)已经发布，在上个月的 <a href="http://erdong.site/Prometheus/New-Features/New-Features-in-Prometheus-2-18-0.html">2.18.0</a> 之后又进行了很多的修复和改进。</p>
 <a id="more"></a>
 
-<h1 id="资源"><a href="#资源" class="headerlink" title="资源"></a>资源</h1><h2 id="1-Language-Design-in-the-Service-of-Software-Engineering"><a href="#1-Language-Design-in-the-Service-of-Software-Engineering" class="headerlink" title="1. Language Design in the Service of Software Engineering"></a>1. <a href="https://talks.golang.org/2012/splash.article" target="_blank" rel="noopener">Language Design in the Service of Software Engineering</a></h2><p>2012 年的老文章，Rob 伯伯讲述 Go 很多设计的初衷是什么。凡事必有因，了解背后的故事更有利于理解事物本身。</p>
-<h2 id="2-Redox"><a href="#2-Redox" class="headerlink" title="2. Redox"></a>2. <a href="https://www.redox-os.org/" target="_blank" rel="noopener">Redox</a></h2><p>Redox是一个用Rust语言编写的类UNIX操作系统 , 它的目标是把Rust语言的创新带入到一个现代的微内核和全系列的应用程序。</p>
+<p>最大的一个特性就是 TSDB 的 head block 现在存储在 mmaped 中，而不是存储在  heap 中 。这样就减少了内存的需求，特别是高频的获取采集端的数据场景，而且可以在重启进程的时候可以变的更快。而且在隔离性上也有改进，减少了高负载的争用。</p>
+<p>Triton 服务发现，现在支持全局空间。<br>增加告警重发延迟，可以容忍一些发送失败的场景。<br>增加了一个关于远程读的新的 Metric，<code>prometheus_remote_storage_remote_read_queries_total</code> ，是 count 类型。</p>
+<p>在 API 中添加了 label name 和 label values 的时间范围参数</p>
+<p>修正了TSDB配置远程读取时使用Prometheus时出现的不正确的查询结果的 BUG</p>
+<p>在 2020 年 6 月 18 日，发布了 2.19.1 ，修复了 m-map 文件被截断导致的文件无序的 BUG 。</p>
+<p>详细的发行注记可以查看 <a href="https://github.com/prometheus/prometheus/releases/tag/v2.19.0" target="_blank" rel="noopener">release notes</a> 。</p>
+<h1 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h1><ul>
+<li><a href="https://www.robustperception.io/new-features-in-prometheus-2-19-0" target="_blank" rel="noopener">https://www.robustperception.io/new-features-in-prometheus-2-19-0</a> ， By Brian Brazil</li>
+<li><h1 id="https-github-com-prometheus-prometheus-releases-tag-v2-19-0-，By-prombot-of-GitHub"><a href="#https-github-com-prometheus-prometheus-releases-tag-v2-19-0-，By-prombot-of-GitHub" class="headerlink" title="https://github.com/prometheus/prometheus/releases/tag/v2.19.0 ，By prombot of GitHub"></a><a href="https://github.com/prometheus/prometheus/releases/tag/v2.19.0" target="_blank" rel="noopener">https://github.com/prometheus/prometheus/releases/tag/v2.19.0</a> ，By prombot of GitHub</h1>由于无法及时收到评论内容，所以关闭评论功能。<br>大家有问题欢迎发邮件到 <a href="mailto:erdong@mail.erdong.site" target="_blank" rel="noopener">erdong@mail.erdong.site</a> ，或者 <a href="https://github.com/erdong/erdong.github.io/issues" target="_blank" rel="noopener">https://github.com/erdong/erdong.github.io/issues</a> 提 Issue ，我会及时回复。</li>
+</ul>
 <p>======================<br>Erdong, A Linux user !</p>
 
       
@@ -567,7 +570,7 @@
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
     
-    <a href="https://erdong.site/weekly/weekly13.html" title="第13周分享">https://erdong.site/weekly/weekly13.html</a>
+    <a href="https://erdong.site/Prometheus/New-Features/New-Features-in-Prometheus-2-19-0.html" title="Prometheus 2.19.0 新特性">https://erdong.site/Prometheus/New-Features/New-Features-in-Prometheus-2-19-0.html</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-ND</a> 许可协议。转载请注明出处！</li>
@@ -580,7 +583,11 @@
       
         <div class="post-tags">
           
-            <a href="/tags/weekly/" rel="tag"># weekly</a>
+            <a href="/tags/Prometheus/" rel="tag"># Prometheus</a>
+          
+            <a href="/tags/Features/" rel="tag"># Features</a>
+          
+            <a href="/tags/release/" rel="tag"># release</a>
           
         </div>
       
@@ -593,8 +600,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/weekly/weekly12.html" rel="next" title="第12周分享">
-                <i class="fa fa-chevron-left"></i> 第12周分享
+              <a href="/Prometheus/New-Features/New-Features-in-Prometheus-2-18-0.html" rel="next" title="Prometheus 2.18.0 新特性">
+                <i class="fa fa-chevron-left"></i> Prometheus 2.18.0 新特性
               </a>
             
           </div>
@@ -602,10 +609,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/weekly/weekly14.html" rel="prev" title="第14周分享">
-                第14周分享 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -941,7 +944,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#资源"><span class="nav-number">1.</span> <span class="nav-text">资源</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-Language-Design-in-the-Service-of-Software-Engineering"><span class="nav-number">1.1.</span> <span class="nav-text">1. Language Design in the Service of Software Engineering</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-Redox"><span class="nav-number">1.2.</span> <span class="nav-text">2. Redox</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#参考链接"><span class="nav-number">1.</span> <span class="nav-text">参考链接</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#https-github-com-prometheus-prometheus-releases-tag-v2-19-0-，By-prombot-of-GitHub"><span class="nav-number">2.</span> <span class="nav-text">https://github.com/prometheus/prometheus/releases/tag/v2.19.0 ，By prombot of GitHub</span></a></li></ol></div>
             
 
           </div>
