@@ -15,11 +15,11 @@
 
 
 <html class="theme-next pisces use-motion" lang="zh-CN">
-<head><meta name="generator" content="Hexo 3.9.0">
-  <meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
-<meta name="theme-color" content="#222">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
+<meta name="theme-color" content="#222"/>
 
 
 
@@ -46,9 +46,9 @@
 
 
 
-<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2"/>
 
-<link rel="stylesheet" href="/css/main.css?v=6.7.0">
+<link rel="stylesheet" href="/css/main.css?v=6.7.0"/>
 
 
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.7.0">
@@ -97,26 +97,26 @@
 
 
   <meta name="description" content="QDS （Quick Deployment Series）快速的部署一个软件。这次我们来部署 Prometheus 。 Prometheus 有两个意思，一个是时序数据库，另一个是基于时序数据库的监控解决方案。 我们本次安装特指安装 Prometheus 时序数据库。">
-<meta name="keywords" content="prometheus">
 <meta property="og:type" content="article">
 <meta property="og:title" content="QDS05 Prometheus">
 <meta property="og:url" content="https://erdong.site/QDS/qds05.html">
 <meta property="og:site_name" content="Erdong’ Blog">
 <meta property="og:description" content="QDS （Quick Deployment Series）快速的部署一个软件。这次我们来部署 Prometheus 。 Prometheus 有两个意思，一个是时序数据库，另一个是基于时序数据库的监控解决方案。 我们本次安装特指安装 Prometheus 时序数据库。">
-<meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-10-14T11:13:15.635Z">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2019-06-27T10:22:14.000Z">
+<meta property="article:modified_time" content="2019-10-14T11:13:15.635Z">
+<meta property="article:author" content="Er Dong">
+<meta property="article:tag" content="prometheus">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="QDS05 Prometheus">
-<meta name="twitter:description" content="QDS （Quick Deployment Series）快速的部署一个软件。这次我们来部署 Prometheus 。 Prometheus 有两个意思，一个是时序数据库，另一个是基于时序数据库的监控解决方案。 我们本次安装特指安装 Prometheus 时序数据库。">
 
 
 
-  <link rel="alternate" href="/atom.xml" title="Erdong’ Blog" type="application/atom+xml">
+  <link rel="alternate" href="/atom.xml" title="Erdong’ Blog" type="application/atom+xml"/>
 
 
 
 
-  <link rel="canonical" href="https://erdong.site/QDS/qds05.html">
+  <link rel="canonical" href="https://erdong.site/QDS/qds05.html"/>
 
 
 
@@ -165,7 +165,7 @@
   </style>
 </noscript>
 
-</head>
+<meta name="generator" content="Hexo 4.2.1"></head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
 
@@ -226,7 +226,7 @@
 
     
 
-    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+    <a href="/" rel="section">&lt;i class&#x3D;&quot;menu-item-icon fa fa-fw fa-home&quot;&gt;&lt;&#x2F;i&gt; &lt;br&#x2F;&gt;首页</a>
 
   </li>
         
@@ -243,7 +243,7 @@
 
     
 
-    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+    <a href="/categories/" rel="section">&lt;i class&#x3D;&quot;menu-item-icon fa fa-fw fa-th&quot;&gt;&lt;&#x2F;i&gt; &lt;br&#x2F;&gt;分类</a>
 
   </li>
         
@@ -260,7 +260,7 @@
 
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+    <a href="/archives/" rel="section">&lt;i class&#x3D;&quot;menu-item-icon fa fa-fw fa-archive&quot;&gt;&lt;&#x2F;i&gt; &lt;br&#x2F;&gt;归档</a>
 
   </li>
         
@@ -277,7 +277,7 @@
 
     
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+    <a href="/tags/" rel="section">&lt;i class&#x3D;&quot;menu-item-icon fa fa-fw fa-tags&quot;&gt;&lt;&#x2F;i&gt; &lt;br&#x2F;&gt;标签</a>
 
   </li>
         
@@ -294,7 +294,7 @@
 
     
 
-    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
+    <a href="/about/" rel="section">&lt;i class&#x3D;&quot;menu-item-icon fa fa-fw fa-user&quot;&gt;&lt;&#x2F;i&gt; &lt;br&#x2F;&gt;关于</a>
 
   </li>
 
@@ -305,7 +305,7 @@
             <a href="javascript:;" class="popup-trigger">
           
             
-              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>搜索</a>
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br/>搜索</a>
         </li>
       
     </ul>
@@ -325,7 +325,9 @@
       <i class="fa fa-times-circle"></i>
     </span>
     <div class="local-search-input-wrapper">
-      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
     </div>
   </div>
   <div id="local-search-result"></div>
@@ -375,16 +377,16 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://erdong.site/QDS/qds05.html">
+    <link itemprop="mainEntityOfPage" href="https://erdong.site/QDS/qds05.html"/>
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Er Dong">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/myavatar.jpg">
+      <meta itemprop="name" content="Er Dong"/>
+      <meta itemprop="description" content=""/>
+      <meta itemprop="image" content="/images/myavatar.jpg"/>
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Erdong’ Blog">
+      <meta itemprop="name" content="Erdong’ Blog"/>
     </span>
 
     
@@ -467,7 +469,8 @@
 
           
             <span class="post-meta-divider">|</span>
-            <span class="post-meta-item-icon">
+            <span class="post-meta-item-icon"
+            >
             <i class="fa fa-eye"></i>
              阅读次数： 
             <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
@@ -503,42 +506,46 @@
 <p>这两个地方最终的下载源都是一样的。使用下载工具将构建好的压缩包下载到要安装的机器上即可。</p>
 <h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><p>当前（2019 年 6 月）最新的版本是 2.10，下载好的安装包名称是 prometheus-2.10.0.linux-amd64.tar.gz</p>
 <p>首先在要安装的目录解压该软件包</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar -zxf prometheus-2.10.0.linux-amd64.tar.gz -C /opt/prometheus</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar -zxf prometheus-2.10.0.linux-amd64.tar.gz -C &#x2F;opt&#x2F;prometheus</span><br></pre></td></tr></table></figure>
 
 <p>解压好的目录里有如下内容</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">console_libraries  consoles  LICENSE  NOTICE  prometheus  prometheus.yml  promtool</span><br></pre></td></tr></table></figure>
-
 <p>其中 prometheus 是程序的可执行二进制文件， prometheus.yml 是数据库的默认配置。</p>
 <h1 id="启动服务"><a href="#启动服务" class="headerlink" title="启动服务"></a>启动服务</h1><p>Prometheus 启动非常简单，不需要 root 权限，直接执行二进制文件 prometheus 即可启动。</p>
 <p>为了方便管理，我们创建数据存储目录和日志目录以及 pid 目录。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd /opt/prometheus</span><br><span class="line">mkdir data logs run</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd &#x2F;opt&#x2F;prometheus</span><br><span class="line">mkdir data logs run</span><br></pre></td></tr></table></figure>
+
 
 <p>我们提供两种方式来启动 prometheus 。</p>
 <h2 id="守护进程"><a href="#守护进程" class="headerlink" title="守护进程"></a>守护进程</h2><p>在 CentOS 7 里，可以将启动 Prometheus 的脚本让系统去维护，还可以设置成开机自启动。 </p>
 <p>创建系统启动文件 prometheus.service </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">touch /usr/lib/systemd/system/prometheus.service</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">touch &#x2F;usr&#x2F;lib&#x2F;systemd&#x2F;system&#x2F;prometheus.service</span><br></pre></td></tr></table></figure>
 
 <p>编辑该文件，写入如下内容</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Description=Prometheus Database</span><br><span class="line">After=network.target</span><br><span class="line"></span><br><span class="line">[Service]</span><br><span class="line">ExecStart=/opt/prometheus/prometheus --config.file=/opt/prometheus/prometheus.yml --web.listen-address=:9090 --storage.tsdb.path=/opt/prometheus/data/</span><br><span class="line">User=root</span><br><span class="line"></span><br><span class="line">[Install]</span><br><span class="line">WantedBy=multi-user.target</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Description&#x3D;Prometheus Database</span><br><span class="line">After&#x3D;network.target</span><br><span class="line"></span><br><span class="line">[Service]</span><br><span class="line">ExecStart&#x3D;&#x2F;opt&#x2F;prometheus&#x2F;prometheus --config.file&#x3D;&#x2F;opt&#x2F;prometheus&#x2F;prometheus.yml --web.listen-address&#x3D;:9090 --storage.tsdb.path&#x3D;&#x2F;opt&#x2F;prometheus&#x2F;data&#x2F;</span><br><span class="line">User&#x3D;root</span><br><span class="line"></span><br><span class="line">[Install]</span><br><span class="line">WantedBy&#x3D;multi-user.target</span><br></pre></td></tr></table></figure>
 
 <p>这种情况下，日志会写入系统日志。</p>
 <p>启动服务</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl start prometheus</span><br></pre></td></tr></table></figure>
-
 <p>设置开机自起</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl enable prometheus</span><br></pre></td></tr></table></figure>
-
 <h2 id="普通用户脚本启动"><a href="#普通用户脚本启动" class="headerlink" title="普通用户脚本启动"></a>普通用户脚本启动</h2><p>创建一个 启动脚本 run.sh</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">touch run.sh</span><br></pre></td></tr></table></figure>
-
 <p>编辑 run.sh , 写入如下内容，</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">#!/bin/bash</span><br><span class="line">nohup /opt/prometheus/prometheus --config.file=/opt/prometheus/prometheus.yml --web.listen-address=:9090 --storage.tsdb.path=/opt/prometheus/data/ &gt;&gt; /opt/prometheus/logs/prometheus.log  2&gt;&amp;1 &amp; echo $! &gt; $BASEPATH/run/prometheus.pid</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">#!&#x2F;bin&#x2F;bash</span><br><span class="line">nohup &#x2F;opt&#x2F;prometheus&#x2F;prometheus --config.file&#x3D;&#x2F;opt&#x2F;prometheus&#x2F;prometheus.yml --web.listen-address&#x3D;:9090 --storage.tsdb.path&#x3D;&#x2F;opt&#x2F;prometheus&#x2F;data&#x2F; &gt;&gt; &#x2F;opt&#x2F;prometheus&#x2F;logs&#x2F;prometheus.log  2&gt;&amp;1 &amp; echo $! &gt; $BASEPATH&#x2F;run&#x2F;prometheus.pid</span><br></pre></td></tr></table></figure>
 
 <p>启动服务 </p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sh run.sh</span><br></pre></td></tr></table></figure>
 
 <h1 id="简单验证"><a href="#简单验证" class="headerlink" title="简单验证"></a>简单验证</h1><p>执行 如下命令有时序数据输出即为正常。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl 127.0.0.1:9090/metrics</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl 127.0.0.1:9090&#x2F;metrics</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
 
 <p>======================<br>Erdong, A Linux user !</p>
 
@@ -554,7 +561,7 @@
     
       <div>
         <div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
-  <img id="wechat_subscriber_qcode" src="/images/erdongxt.jpg" alt="Er Dong wechat" style="width: 200px; max-width: 100%;">
+  <img id="wechat_subscriber_qcode" src="/images/erdongxt.jpg" alt="Er Dong wechat" style="width: 200px; max-width: 100%;"/>
   <div>扫描二维码关注微信公众号</div>
 </div>
 
@@ -575,14 +582,14 @@
 
     
       <div id="wechat" style="display: inline-block">
-        <img id="wechat_qr" src="/images/WeChatPay.png" alt="Er Dong 微信支付">
+        <img id="wechat_qr" src="/images/WeChatPay.png" alt="Er Dong 微信支付"/>
         <p>微信支付</p>
       </div>
     
 
     
       <div id="alipay" style="display: inline-block">
-        <img id="alipay_qr" src="/images/AliPay.png" alt="Er Dong 支付宝">
+        <img id="alipay_qr" src="/images/AliPay.png" alt="Er Dong 支付宝"/>
         <p>支付宝</p>
       </div>
     
@@ -611,10 +618,10 @@
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
     
-    <a href="https://erdong.site/QDS/qds05.html" title="QDS05 Prometheus">https://erdong.site/QDS/qds05.html</a>
+    <a href="https://erdong.site/QDS/qds05.html" title="QDS05 Prometheus">https:&#x2F;&#x2F;erdong.site&#x2F;QDS&#x2F;qds05.html</a>
   </li>
   <li class="post-copyright-license">
-    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-ND</a> 许可协议。转载请注明出处！</li>
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" rel="noopener" target="_blank">&lt;i class&#x3D;&quot;fa fa-fw fa-creative-commons&quot;&gt;&lt;&#x2F;i&gt;BY-NC-ND</a> 许可协议。转载请注明出处！</li>
 </ul>
 
       </div>
@@ -706,7 +713,9 @@
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
-              <img class="site-author-image" itemprop="image" src="/images/myavatar.jpg" alt="Er Dong">
+              <img class="site-author-image" itemprop="image"
+                src="/images/myavatar.jpg"
+                alt="Er Dong"/>
             
               <p class="site-author-name" itemprop="name">Er Dong</p>
               <p class="site-description motion-element" itemprop="description"></p>
@@ -717,7 +726,7 @@
               
                 <div class="site-state-item site-state-posts">
                 
-                  <a href="/archives/">
+                  <a href="/archives/%20%7C%7C%20archive">
                 
                     <span class="site-state-item-count">114</span>
                     <span class="site-state-item-name">日志</span>
@@ -919,7 +928,7 @@
                   
                     
                   
-                  <a href="https://github.com/erdong" title="GitHub &rarr; https://github.com/erdong" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                  <a href="https://github.com/erdong" title="GitHub &amp;rarr; https:&#x2F;&#x2F;github.com&#x2F;erdong" rel="noopener" target="_blank">&lt;i class&#x3D;&quot;fa fa-fw fa-github&quot;&gt;&lt;&#x2F;i&gt;GitHub</a>
                 </span>
               
                 <span class="links-of-author-item">
@@ -930,7 +939,7 @@
                   
                     
                   
-                  <a href="mailto:erdong@mail.erdong.site" title="E-Mail &rarr; mailto:erdong@mail.erdong.site" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  <a href="mailto:erdong@mail.erdong.site" title="E-Mail &amp;rarr; mailto:erdong@mail.erdong.site" rel="noopener" target="_blank">&lt;i class&#x3D;&quot;fa fa-fw fa-envelope&quot;&gt;&lt;&#x2F;i&gt;E-Mail</a>
                 </span>
               
             </div>
@@ -943,7 +952,7 @@
               
               
               
-              <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-nd.svg" alt="Creative Commons"></a>
+              <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" class="cc-opacity" rel="noopener" target="_blank">&lt;img src&#x3D;&quot;&#x2F;images&#x2F;cc-by-nc-nd.svg&quot; alt&#x3D;&quot;Creative Commons&quot;&#x2F;&gt;</a>
              </div>
           
 
@@ -957,11 +966,11 @@
               <ul class="links-of-blogroll-list">
                 
                   <li class="links-of-blogroll-item">
-                    <a href="http://www.ruanyifeng.com/blog/" title="http://www.ruanyifeng.com/blog/" rel="noopener" target="_blank">Ruanyifeng</a>
+                    <a href="http://www.ruanyifeng.com/blog/" title="http:&#x2F;&#x2F;www.ruanyifeng.com&#x2F;blog&#x2F;" rel="noopener" target="_blank">Ruanyifeng</a>
                   </li>
                 
                   <li class="links-of-blogroll-item">
-                    <a href="https://coolshell.cn" title="https://coolshell.cn" rel="noopener" target="_blank">左耳朵耗子</a>
+                    <a href="https://coolshell.cn/" title="https:&#x2F;&#x2F;coolshell.cn" rel="noopener" target="_blank">左耳朵耗子</a>
                   </li>
                 
               </ul>
@@ -1026,7 +1035,7 @@
 </div>
 
 
-  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动</div>
 
 
 
@@ -1034,7 +1043,7 @@
 
 
 
-  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a></div>
+  <div class="theme-info">主题 – <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a></div>
 
 
 

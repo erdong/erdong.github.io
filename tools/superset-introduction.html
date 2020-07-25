@@ -15,11 +15,11 @@
 
 
 <html class="theme-next pisces use-motion" lang="zh-CN">
-<head><meta name="generator" content="Hexo 3.9.0">
-  <meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
-<meta name="theme-color" content="#222">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
+<meta name="theme-color" content="#222"/>
 
 
 
@@ -46,9 +46,9 @@
 
 
 
-<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2"/>
 
-<link rel="stylesheet" href="/css/main.css?v=6.7.0">
+<link rel="stylesheet" href="/css/main.css?v=6.7.0"/>
 
 
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.7.0">
@@ -96,27 +96,28 @@
 
 
 
-  <meta name="description" content="人是视觉动物，要用数据把一个故事讲活，图表是必不可少的。如果你经常看到做数据分析同事，在SQL客户端里执行完查询，把结果复制/粘贴到Excel里再做成图表，那说明你的公司缺少一个可靠的数据可视化平台。数据可视化是Business Intelligence(简称BI)中的核心功能，有许多成熟的解决方案，例如今天要介绍的 Superset 。 Superset最初是由Airbnb的数据团队开源的，目前">
-<meta name="keywords" content="superset,BI">
+  <meta name="description" content="人是视觉动物，要用数据把一个故事讲活，图表是必不可少的。如果你经常看到做数据分析同事，在SQL客户端里执行完查询，把结果复制&#x2F;粘贴到Excel里再做成图表，那说明你的公司缺少一个可靠的数据可视化平台。数据可视化是Business Intelligence(简称BI)中的核心功能，有许多成熟的解决方案，例如今天要介绍的 Superset 。 Superset最初是由Airbnb的数据团队开源的，目前">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Superset 介绍及 docker 安装">
 <meta property="og:url" content="https://erdong.site/tools/superset-introduction.html">
 <meta property="og:site_name" content="Erdong’ Blog">
-<meta property="og:description" content="人是视觉动物，要用数据把一个故事讲活，图表是必不可少的。如果你经常看到做数据分析同事，在SQL客户端里执行完查询，把结果复制/粘贴到Excel里再做成图表，那说明你的公司缺少一个可靠的数据可视化平台。数据可视化是Business Intelligence(简称BI)中的核心功能，有许多成熟的解决方案，例如今天要介绍的 Superset 。 Superset最初是由Airbnb的数据团队开源的，目前">
-<meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-10-14T11:13:33.542Z">
+<meta property="og:description" content="人是视觉动物，要用数据把一个故事讲活，图表是必不可少的。如果你经常看到做数据分析同事，在SQL客户端里执行完查询，把结果复制&#x2F;粘贴到Excel里再做成图表，那说明你的公司缺少一个可靠的数据可视化平台。数据可视化是Business Intelligence(简称BI)中的核心功能，有许多成熟的解决方案，例如今天要介绍的 Superset 。 Superset最初是由Airbnb的数据团队开源的，目前">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2018-08-31T01:53:29.000Z">
+<meta property="article:modified_time" content="2019-10-14T11:13:33.542Z">
+<meta property="article:author" content="Er Dong">
+<meta property="article:tag" content="superset">
+<meta property="article:tag" content="BI">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Superset 介绍及 docker 安装">
-<meta name="twitter:description" content="人是视觉动物，要用数据把一个故事讲活，图表是必不可少的。如果你经常看到做数据分析同事，在SQL客户端里执行完查询，把结果复制/粘贴到Excel里再做成图表，那说明你的公司缺少一个可靠的数据可视化平台。数据可视化是Business Intelligence(简称BI)中的核心功能，有许多成熟的解决方案，例如今天要介绍的 Superset 。 Superset最初是由Airbnb的数据团队开源的，目前">
 
 
 
-  <link rel="alternate" href="/atom.xml" title="Erdong’ Blog" type="application/atom+xml">
+  <link rel="alternate" href="/atom.xml" title="Erdong’ Blog" type="application/atom+xml"/>
 
 
 
 
-  <link rel="canonical" href="https://erdong.site/tools/superset-introduction.html">
+  <link rel="canonical" href="https://erdong.site/tools/superset-introduction.html"/>
 
 
 
@@ -165,7 +166,7 @@
   </style>
 </noscript>
 
-</head>
+<meta name="generator" content="Hexo 4.2.1"></head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
 
@@ -226,7 +227,7 @@
 
     
 
-    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+    <a href="/" rel="section">&lt;i class&#x3D;&quot;menu-item-icon fa fa-fw fa-home&quot;&gt;&lt;&#x2F;i&gt; &lt;br&#x2F;&gt;首页</a>
 
   </li>
         
@@ -243,7 +244,7 @@
 
     
 
-    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+    <a href="/categories/" rel="section">&lt;i class&#x3D;&quot;menu-item-icon fa fa-fw fa-th&quot;&gt;&lt;&#x2F;i&gt; &lt;br&#x2F;&gt;分类</a>
 
   </li>
         
@@ -260,7 +261,7 @@
 
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+    <a href="/archives/" rel="section">&lt;i class&#x3D;&quot;menu-item-icon fa fa-fw fa-archive&quot;&gt;&lt;&#x2F;i&gt; &lt;br&#x2F;&gt;归档</a>
 
   </li>
         
@@ -277,7 +278,7 @@
 
     
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+    <a href="/tags/" rel="section">&lt;i class&#x3D;&quot;menu-item-icon fa fa-fw fa-tags&quot;&gt;&lt;&#x2F;i&gt; &lt;br&#x2F;&gt;标签</a>
 
   </li>
         
@@ -294,7 +295,7 @@
 
     
 
-    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
+    <a href="/about/" rel="section">&lt;i class&#x3D;&quot;menu-item-icon fa fa-fw fa-user&quot;&gt;&lt;&#x2F;i&gt; &lt;br&#x2F;&gt;关于</a>
 
   </li>
 
@@ -305,7 +306,7 @@
             <a href="javascript:;" class="popup-trigger">
           
             
-              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>搜索</a>
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br/>搜索</a>
         </li>
       
     </ul>
@@ -325,7 +326,9 @@
       <i class="fa fa-times-circle"></i>
     </span>
     <div class="local-search-input-wrapper">
-      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
     </div>
   </div>
   <div id="local-search-result"></div>
@@ -375,16 +378,16 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://erdong.site/tools/superset-introduction.html">
+    <link itemprop="mainEntityOfPage" href="https://erdong.site/tools/superset-introduction.html"/>
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Er Dong">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/myavatar.jpg">
+      <meta itemprop="name" content="Er Dong"/>
+      <meta itemprop="description" content=""/>
+      <meta itemprop="image" content="/images/myavatar.jpg"/>
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Erdong’ Blog">
+      <meta itemprop="name" content="Erdong’ Blog"/>
     </span>
 
     
@@ -467,7 +470,8 @@
 
           
             <span class="post-meta-divider">|</span>
-            <span class="post-meta-item-icon">
+            <span class="post-meta-item-icon"
+            >
             <i class="fa fa-eye"></i>
              阅读次数： 
             <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
@@ -536,23 +540,21 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 操作系统</span></span><br><span class="line">CentOS Linux release 7.4.1708 (Core)</span><br><span class="line">Linux 172-18-12-17 3.10.0-693.el7.x86_64 <span class="comment">#1 SMP Tue Aug 22 21:09:27 UTC 2017 x86_64 x86_64 x86_64 GNU/Linux</span></span><br><span class="line"><span class="comment"># docker version</span></span><br><span class="line">Client:</span><br><span class="line"> Version:           18.06.1-ce</span><br><span class="line"> API version:       1.38</span><br><span class="line"> Go version:        go1.10.3</span><br><span class="line"> Git commit:        e68fc7a</span><br><span class="line"> Built:             Tue Aug 21 17:23:03 2018</span><br><span class="line"> OS/Arch:           linux/amd64</span><br><span class="line"> Experimental:      <span class="literal">false</span></span><br><span class="line"></span><br><span class="line">Server:</span><br><span class="line"> Engine:</span><br><span class="line">  Version:          18.06.1-ce</span><br><span class="line">  API version:      1.38 (minimum version 1.12)</span><br><span class="line">  Go version:       go1.10.3</span><br><span class="line">  Git commit:       e68fc7a</span><br><span class="line">  Built:            Tue Aug 21 17:25:29 2018</span><br><span class="line">  OS/Arch:          linux/amd64</span><br><span class="line">  Experimental:     <span class="literal">false</span></span><br><span class="line"><span class="comment"># superset version</span></span><br><span class="line">0.26.3</span><br></pre></td></tr></table></figure>
 
 <h2 id="下载官方推荐的-docker-镜像"><a href="#下载官方推荐的-docker-镜像" class="headerlink" title="下载官方推荐的 docker 镜像"></a>下载官方推荐的 docker 镜像</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">docker pull amancevice/superset:0.26.3</span><br><span class="line">[root@hulk ~]<span class="comment"># docker images</span></span><br><span class="line">REPOSITORY            TAG                 IMAGE ID            CREATED             SIZE</span><br><span class="line">amancevice/superset   0.26.3              7ddd79c685a7        9 days ago          923MB</span><br><span class="line">``` </span><br><span class="line"></span><br><span class="line"><span class="comment">## 启动 superset 镜像</span></span><br><span class="line"></span><br><span class="line">建议事先准备好 superset 的配置文件和数据目录，</span><br></pre></td></tr></table></figure>
-
 <h1 id="create-config-dir"><a href="#create-config-dir" class="headerlink" title="create config dir"></a>create config dir</h1><p>mkdir /superset/conf</p>
 <h1 id="create-data-dir"><a href="#create-data-dir" class="headerlink" title="create data dir"></a>create data dir</h1><p>mkdir /superset/data</p>
 <h1 id="start-superset"><a href="#start-superset" class="headerlink" title="start superset"></a>start superset</h1><p>docker run -d -p 8088:8088 -v /superset/conf:/etc/superset -v /superset/data:/var/lib/superset –name superset amancevice/superset:0.26.3</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">## 初始化 superset 镜像</span><br><span class="line"></span><br><span class="line">``` bash</span><br><span class="line"># 设定superset的用户名和密码</span><br><span class="line">docker exec -it superset fabmanager create-admin --app superset</span><br><span class="line">Username [admin]: ****</span><br><span class="line">User first name [admin]: ****</span><br><span class="line">User last name [user]: ****</span><br><span class="line">Email [admin@fab.org]: ****</span><br><span class="line">Password:</span><br><span class="line">Repeat for confirmation:</span><br><span class="line">Recognized Database Authentications.</span><br><span class="line"></span><br><span class="line"># 初始化数据库</span><br><span class="line">docker exec -it superset superset db upgrade</span><br><span class="line"># 创建默认角色和许可</span><br><span class="line">docker exec -it superset superset init</span><br><span class="line"># 开启superset服务</span><br><span class="line">docker exec -it superset superset runserver</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">## 初始化 superset 镜像</span><br><span class="line"></span><br><span class="line">&#96;&#96;&#96; bash</span><br><span class="line"># 设定superset的用户名和密码</span><br><span class="line">docker exec -it superset fabmanager create-admin --app superset</span><br><span class="line">Username [admin]: ****</span><br><span class="line">User first name [admin]: ****</span><br><span class="line">User last name [user]: ****</span><br><span class="line">Email [admin@fab.org]: ****</span><br><span class="line">Password:</span><br><span class="line">Repeat for confirmation:</span><br><span class="line">Recognized Database Authentications.</span><br><span class="line"></span><br><span class="line"># 初始化数据库</span><br><span class="line">docker exec -it superset superset db upgrade</span><br><span class="line"># 创建默认角色和许可</span><br><span class="line">docker exec -it superset superset init</span><br><span class="line"># 开启superset服务</span><br><span class="line">docker exec -it superset superset runserver</span><br></pre></td></tr></table></figure>
 
 <h2 id="使用浏览器登陆"><a href="#使用浏览器登陆" class="headerlink" title="使用浏览器登陆"></a>使用浏览器登陆</h2><p>打开宿主机上的浏览器，输入<a href="http://localhost:8088" target="_blank" rel="noopener">http://localhost:8088</a> 用你刚刚创建的用户名进行登录即可。</p>
 <h1 id="迁移"><a href="#迁移" class="headerlink" title="迁移"></a>迁移</h1><h2 id="备份数据"><a href="#备份数据" class="headerlink" title="备份数据"></a>备份数据</h2><p>如果在启动时，数据目录是挂载出来的，那么可以忽略数据<br>如果数据目录是在 docker 容器内的，那么先把数据库文件拷出来，superset 官方默认使用 sqlite 数据库，该数据库可以直接拷贝数据库文件，如果使用了其他数据库请参照对应的数据库备份方法备份。</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker cp superset:/var/lib/superset/superset.db .</span><br></pre></td></tr></table></figure>
-
 <p>将superset.db 拷贝到新机器的/superset/data 目录下，数据备份完成。</p>
 <h2 id="启动服务"><a href="#启动服务" class="headerlink" title="启动服务"></a>启动服务</h2><p>在新的机器上安装好 docker，实现 pull 好 superset 的镜像。执行下列命令启动就可以了。</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -d -p 8088:8088 -v /superset/conf:/etc/superset -v /superset/data:/var/lib/superset --name superset amancevice/superset:0.26.3</span><br></pre></td></tr></table></figure>
 
+
 <h2 id="升级"><a href="#升级" class="headerlink" title="升级"></a>升级</h2><p>与迁移类似，先备份数据，方式参考迁移的备份数据。</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Pull desired version</span></span><br><span class="line">docker pull amancevice/superset:latest</span><br><span class="line"></span><br><span class="line"><span class="comment"># Remove the current container</span></span><br><span class="line">docker rm -f superset</span><br><span class="line"></span><br><span class="line"><span class="comment"># Deploy a new container ...</span></span><br><span class="line">docker run -d -p 8088:8088 -v /superset/conf:/etc/superset -v /superset/data:/var/lib/superset --name superset amancevice/superset:latest</span><br><span class="line"></span><br><span class="line"><span class="comment"># Upgrade the DB</span></span><br><span class="line">docker <span class="built_in">exec</span> superset-new superset db upgrade</span><br></pre></td></tr></table></figure>
-
 <h1 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h1><ul>
 <li><a href="http://itindex.net/detail/58117-数据-可视化-开源" target="_blank" rel="noopener">http://itindex.net/detail/58117-数据-可视化-开源</a></li>
 <li>官方文档</li>
@@ -571,7 +573,7 @@
     
       <div>
         <div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
-  <img id="wechat_subscriber_qcode" src="/images/erdongxt.jpg" alt="Er Dong wechat" style="width: 200px; max-width: 100%;">
+  <img id="wechat_subscriber_qcode" src="/images/erdongxt.jpg" alt="Er Dong wechat" style="width: 200px; max-width: 100%;"/>
   <div>扫描二维码关注微信公众号</div>
 </div>
 
@@ -592,14 +594,14 @@
 
     
       <div id="wechat" style="display: inline-block">
-        <img id="wechat_qr" src="/images/WeChatPay.png" alt="Er Dong 微信支付">
+        <img id="wechat_qr" src="/images/WeChatPay.png" alt="Er Dong 微信支付"/>
         <p>微信支付</p>
       </div>
     
 
     
       <div id="alipay" style="display: inline-block">
-        <img id="alipay_qr" src="/images/AliPay.png" alt="Er Dong 支付宝">
+        <img id="alipay_qr" src="/images/AliPay.png" alt="Er Dong 支付宝"/>
         <p>支付宝</p>
       </div>
     
@@ -628,10 +630,10 @@
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
     
-    <a href="https://erdong.site/tools/superset-introduction.html" title="Superset 介绍及 docker 安装">https://erdong.site/tools/superset-introduction.html</a>
+    <a href="https://erdong.site/tools/superset-introduction.html" title="Superset 介绍及 docker 安装">https:&#x2F;&#x2F;erdong.site&#x2F;tools&#x2F;superset-introduction.html</a>
   </li>
   <li class="post-copyright-license">
-    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-ND</a> 许可协议。转载请注明出处！</li>
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" rel="noopener" target="_blank">&lt;i class&#x3D;&quot;fa fa-fw fa-creative-commons&quot;&gt;&lt;&#x2F;i&gt;BY-NC-ND</a> 许可协议。转载请注明出处！</li>
 </ul>
 
       </div>
@@ -723,7 +725,9 @@
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
-              <img class="site-author-image" itemprop="image" src="/images/myavatar.jpg" alt="Er Dong">
+              <img class="site-author-image" itemprop="image"
+                src="/images/myavatar.jpg"
+                alt="Er Dong"/>
             
               <p class="site-author-name" itemprop="name">Er Dong</p>
               <p class="site-description motion-element" itemprop="description"></p>
@@ -734,7 +738,7 @@
               
                 <div class="site-state-item site-state-posts">
                 
-                  <a href="/archives/">
+                  <a href="/archives/%20%7C%7C%20archive">
                 
                     <span class="site-state-item-count">114</span>
                     <span class="site-state-item-name">日志</span>
@@ -936,7 +940,7 @@
                   
                     
                   
-                  <a href="https://github.com/erdong" title="GitHub &rarr; https://github.com/erdong" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                  <a href="https://github.com/erdong" title="GitHub &amp;rarr; https:&#x2F;&#x2F;github.com&#x2F;erdong" rel="noopener" target="_blank">&lt;i class&#x3D;&quot;fa fa-fw fa-github&quot;&gt;&lt;&#x2F;i&gt;GitHub</a>
                 </span>
               
                 <span class="links-of-author-item">
@@ -947,7 +951,7 @@
                   
                     
                   
-                  <a href="mailto:erdong@mail.erdong.site" title="E-Mail &rarr; mailto:erdong@mail.erdong.site" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  <a href="mailto:erdong@mail.erdong.site" title="E-Mail &amp;rarr; mailto:erdong@mail.erdong.site" rel="noopener" target="_blank">&lt;i class&#x3D;&quot;fa fa-fw fa-envelope&quot;&gt;&lt;&#x2F;i&gt;E-Mail</a>
                 </span>
               
             </div>
@@ -960,7 +964,7 @@
               
               
               
-              <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-nd.svg" alt="Creative Commons"></a>
+              <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" class="cc-opacity" rel="noopener" target="_blank">&lt;img src&#x3D;&quot;&#x2F;images&#x2F;cc-by-nc-nd.svg&quot; alt&#x3D;&quot;Creative Commons&quot;&#x2F;&gt;</a>
              </div>
           
 
@@ -974,11 +978,11 @@
               <ul class="links-of-blogroll-list">
                 
                   <li class="links-of-blogroll-item">
-                    <a href="http://www.ruanyifeng.com/blog/" title="http://www.ruanyifeng.com/blog/" rel="noopener" target="_blank">Ruanyifeng</a>
+                    <a href="http://www.ruanyifeng.com/blog/" title="http:&#x2F;&#x2F;www.ruanyifeng.com&#x2F;blog&#x2F;" rel="noopener" target="_blank">Ruanyifeng</a>
                   </li>
                 
                   <li class="links-of-blogroll-item">
-                    <a href="https://coolshell.cn" title="https://coolshell.cn" rel="noopener" target="_blank">左耳朵耗子</a>
+                    <a href="https://coolshell.cn/" title="https:&#x2F;&#x2F;coolshell.cn" rel="noopener" target="_blank">左耳朵耗子</a>
                   </li>
                 
               </ul>
@@ -1043,7 +1047,7 @@
 </div>
 
 
-  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动</div>
 
 
 
@@ -1051,7 +1055,7 @@
 
 
 
-  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a></div>
+  <div class="theme-info">主题 – <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a></div>
 
 
 

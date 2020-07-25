@@ -15,11 +15,11 @@
 
 
 <html class="theme-next pisces use-motion" lang="zh-CN">
-<head><meta name="generator" content="Hexo 3.9.0">
-  <meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
-<meta name="theme-color" content="#222">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
+<meta name="theme-color" content="#222"/>
 
 
 
@@ -46,9 +46,9 @@
 
 
 
-<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2"/>
 
-<link rel="stylesheet" href="/css/main.css?v=6.7.0">
+<link rel="stylesheet" href="/css/main.css?v=6.7.0"/>
 
 
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.7.0">
@@ -97,26 +97,26 @@
 
 
   <meta name="description" content="前言由于某些安全事件的发生，对于系统安全需要进行进行一步的评估，本次主要使用 vuls 工具对日常主要使用的几个版本操作系统对其进行安全基线的建立和系统安全性的评分。">
-<meta name="keywords" content="vuls">
 <meta property="og:type" content="article">
 <meta property="og:title" content="使用 vuls 对 CentOS 操作系统安全评估">
 <meta property="og:url" content="https://erdong.site/tools/vuls-tool-introduction.html">
 <meta property="og:site_name" content="Erdong’ Blog">
 <meta property="og:description" content="前言由于某些安全事件的发生，对于系统安全需要进行进行一步的评估，本次主要使用 vuls 工具对日常主要使用的几个版本操作系统对其进行安全基线的建立和系统安全性的评分。">
-<meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-10-14T11:13:57.273Z">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2018-09-18T14:43:14.000Z">
+<meta property="article:modified_time" content="2019-10-14T11:13:57.273Z">
+<meta property="article:author" content="Er Dong">
+<meta property="article:tag" content="vuls">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="使用 vuls 对 CentOS 操作系统安全评估">
-<meta name="twitter:description" content="前言由于某些安全事件的发生，对于系统安全需要进行进行一步的评估，本次主要使用 vuls 工具对日常主要使用的几个版本操作系统对其进行安全基线的建立和系统安全性的评分。">
 
 
 
-  <link rel="alternate" href="/atom.xml" title="Erdong’ Blog" type="application/atom+xml">
+  <link rel="alternate" href="/atom.xml" title="Erdong’ Blog" type="application/atom+xml"/>
 
 
 
 
-  <link rel="canonical" href="https://erdong.site/tools/vuls-tool-introduction.html">
+  <link rel="canonical" href="https://erdong.site/tools/vuls-tool-introduction.html"/>
 
 
 
@@ -165,7 +165,7 @@
   </style>
 </noscript>
 
-</head>
+<meta name="generator" content="Hexo 4.2.1"></head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
 
@@ -226,7 +226,7 @@
 
     
 
-    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+    <a href="/" rel="section">&lt;i class&#x3D;&quot;menu-item-icon fa fa-fw fa-home&quot;&gt;&lt;&#x2F;i&gt; &lt;br&#x2F;&gt;首页</a>
 
   </li>
         
@@ -243,7 +243,7 @@
 
     
 
-    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+    <a href="/categories/" rel="section">&lt;i class&#x3D;&quot;menu-item-icon fa fa-fw fa-th&quot;&gt;&lt;&#x2F;i&gt; &lt;br&#x2F;&gt;分类</a>
 
   </li>
         
@@ -260,7 +260,7 @@
 
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+    <a href="/archives/" rel="section">&lt;i class&#x3D;&quot;menu-item-icon fa fa-fw fa-archive&quot;&gt;&lt;&#x2F;i&gt; &lt;br&#x2F;&gt;归档</a>
 
   </li>
         
@@ -277,7 +277,7 @@
 
     
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+    <a href="/tags/" rel="section">&lt;i class&#x3D;&quot;menu-item-icon fa fa-fw fa-tags&quot;&gt;&lt;&#x2F;i&gt; &lt;br&#x2F;&gt;标签</a>
 
   </li>
         
@@ -294,7 +294,7 @@
 
     
 
-    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
+    <a href="/about/" rel="section">&lt;i class&#x3D;&quot;menu-item-icon fa fa-fw fa-user&quot;&gt;&lt;&#x2F;i&gt; &lt;br&#x2F;&gt;关于</a>
 
   </li>
 
@@ -305,7 +305,7 @@
             <a href="javascript:;" class="popup-trigger">
           
             
-              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>搜索</a>
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br/>搜索</a>
         </li>
       
     </ul>
@@ -325,7 +325,9 @@
       <i class="fa fa-times-circle"></i>
     </span>
     <div class="local-search-input-wrapper">
-      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
     </div>
   </div>
   <div id="local-search-result"></div>
@@ -375,16 +377,16 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://erdong.site/tools/vuls-tool-introduction.html">
+    <link itemprop="mainEntityOfPage" href="https://erdong.site/tools/vuls-tool-introduction.html"/>
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Er Dong">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/myavatar.jpg">
+      <meta itemprop="name" content="Er Dong"/>
+      <meta itemprop="description" content=""/>
+      <meta itemprop="image" content="/images/myavatar.jpg"/>
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Erdong’ Blog">
+      <meta itemprop="name" content="Erdong’ Blog"/>
     </span>
 
     
@@ -467,7 +469,8 @@
 
           
             <span class="post-meta-divider">|</span>
-            <span class="post-meta-item-icon">
+            <span class="post-meta-item-icon"
+            >
             <i class="fa fa-eye"></i>
              阅读次数： 
             <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
@@ -515,7 +518,7 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 官方没有提供构建好的二进制文件，但是提供了 docker image。</span></span><br><span class="line">docker run --rm -i \</span><br><span class="line">	-v <span class="variable">$PWD</span>:/vuls \</span><br><span class="line">	-v <span class="variable">$PWD</span>:/var/<span class="built_in">log</span>/gost \</span><br><span class="line">	vuls/gost fetch redhat --after=2016-01-01</span><br></pre></td></tr></table></figure>
 
 <p>使用这些工具将 2002年以后的 CVE 事件和 Bug fix 情况在本地建立副本用于测试。时间范围为2002年到2018年9月13日。</p>
-<h2 id="vuls-配置"><a href="#vuls-配置" class="headerlink" title="vuls 配置"></a>vuls 配置</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">[servers.172-31-4-82]</span><br><span class="line"># 主机地址</span><br><span class="line">host         = &quot;172.31.4.82&quot;</span><br><span class="line"># 用户名</span><br><span class="line">user        = &quot;ec2-user&quot;</span><br><span class="line"># ssh 登陆 key 文件路径</span><br><span class="line">keyPath     = &quot;/home/username/.ssh/id_rsa&quot;</span><br><span class="line"># 扫描模式 fast fast-root deep </span><br><span class="line">scanMode     = [&quot;fast-root&quot;]</span><br><span class="line"># 扫描在运行的 docker 容器，通过 docker exec 实现，所以只能是在运行的容器。</span><br><span class="line">containerType = &quot;docker&quot;</span><br><span class="line">containersIncluded = [&quot;$&#123;running&#125;&quot;]</span><br></pre></td></tr></table></figure>
+<h2 id="vuls-配置"><a href="#vuls-配置" class="headerlink" title="vuls 配置"></a>vuls 配置</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">[servers.172-31-4-82]</span><br><span class="line"># 主机地址</span><br><span class="line">host         &#x3D; &quot;172.31.4.82&quot;</span><br><span class="line"># 用户名</span><br><span class="line">user        &#x3D; &quot;ec2-user&quot;</span><br><span class="line"># ssh 登陆 key 文件路径</span><br><span class="line">keyPath     &#x3D; &quot;&#x2F;home&#x2F;username&#x2F;.ssh&#x2F;id_rsa&quot;</span><br><span class="line"># 扫描模式 fast fast-root deep </span><br><span class="line">scanMode     &#x3D; [&quot;fast-root&quot;]</span><br><span class="line"># 扫描在运行的 docker 容器，通过 docker exec 实现，所以只能是在运行的容器。</span><br><span class="line">containerType &#x3D; &quot;docker&quot;</span><br><span class="line">containersIncluded &#x3D; [&quot;$&#123;running&#125;&quot;]</span><br></pre></td></tr></table></figure>
 
 <h2 id="vuls-模式"><a href="#vuls-模式" class="headerlink" title="vuls 模式"></a>vuls 模式</h2><p> vuls 从联网和不联网有两种模式 online 和 offline，本次测试使用 online </p>
 <p> vuls 从扫描的角度有三种模式 ，分别是 fast， fast-root， deep。</p>
@@ -529,14 +532,13 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vuls report</span><br></pre></td></tr></table></figure>
 
 <p>单行模式</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">vuls report -format-one-line-text</span><br><span class="line"></span><br><span class="line">One Line Summary</span><br><span class="line">================</span><br><span class="line">c74     Total: 294 (High:65 Medium:198 Low:24 ?:7)      93/294 Fixed    708 installed, 285 updatable</span><br><span class="line">deb8    Total: 490 (High:62 Medium:158 Low:22 ?:248)    11/490 Fixed    512 installed</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">vuls report -format-one-line-text</span><br><span class="line"></span><br><span class="line">One Line Summary</span><br><span class="line">&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;</span><br><span class="line">c74     Total: 294 (High:65 Medium:198 Low:24 ?:7)      93&#x2F;294 Fixed    708 installed, 285 updatable</span><br><span class="line">deb8    Total: 490 (High:62 Medium:158 Low:22 ?:248)    11&#x2F;490 Fixed    512 installed</span><br></pre></td></tr></table></figure>
 
 <p>完整模式</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">vuls report -format-full-text</span><br><span class="line"></span><br><span class="line">c74 (centos7.4.1708)</span><br><span class="line">====================</span><br><span class="line">Total: 23 (High:22 Medium:1 Low:0), 9/23 Fixed, 708 installed, 285 updatable</span><br><span class="line"></span><br><span class="line">+---------------+----------------------------------------------------------------------------------+</span><br><span class="line">| CVE-2017-9233 |                                                                                  |</span><br><span class="line">+---------------+----------------------------------------------------------------------------------+</span><br><span class="line">| Max Score     | 7.5 HIGH (nvd)                                                                   |</span><br><span class="line">| nvd           | 7.5/CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H HIGH                            |</span><br><span class="line">| redhat_api    | 6.5/CVSS:3.0/AV:N/AC:L/PR:N/UI:R/S:U/C:N/I:N/A:H MODERATE                        |</span><br><span class="line">| nvd           | 5.0/AV:N/AC:L/Au:N/C:N/I:N/A:P MEDIUM                                            |</span><br><span class="line">| Summary       | XML External Entity vulnerability in libexpat 2.2.0 and earlier (Expat XML       |</span><br><span class="line">|               | Parser Library) allows attackers to put the parser in an infinite loop using a   |</span><br><span class="line">|               | malformed external entity definition from an external DTD.                       |</span><br><span class="line">| Mitigation    |  Do not parse untrusted arbitrary XML data using the expat                       |</span><br><span class="line">|               | package.                                                                         |</span><br><span class="line">| CWE           | CWE-835: Loop with Unreachable Exit Condition (&apos;Infinite Loop&apos;) (redhat_api)     |</span><br><span class="line">| CWE           | [OWASP Top4] CWE-611: Improper Restriction of XML External Entity Reference      |</span><br><span class="line">|               | (&apos;XXE&apos;) (nvd)                                                                    |</span><br><span class="line">| Affected PKG  | expat-2.1.0-10.el7_3 -&gt; Will not fix                                             |</span><br><span class="line">| Confidence    | 100 / RedHatAPIMatch                                                             |</span><br><span class="line">| Source        | https://nvd.nist.gov/vuln/detail/CVE-2017-9233                                   |</span><br><span class="line">| CVSSv2 Calc   | https://nvd.nist.gov/vuln-metrics/cvss/v2-calculator?name=CVE-2017-9233          |</span><br><span class="line">| CVSSv3 Calc   | https://nvd.nist.gov/vuln-metrics/cvss/v3-calculator?name=CVE-2017-9233          |</span><br><span class="line">| RHEL-CVE      | https://access.redhat.com/security/cve/CVE-2017-9233                             |</span><br><span class="line">| CWE           | https://cwe.mitre.org/data/definitions/CWE-835.html                              |</span><br><span class="line">| CWE           | https://cwe.mitre.org/data/definitions/CWE-611.html                              |</span><br><span class="line">| OWASP Top10   | https://github.com/OWASP/Top10/blob/master/2017/en/0xa4-xxe.md                   |</span><br><span class="line">+---------------+----------------------------------------------------------------------------------+</span><br><span class="line"></span><br><span class="line">... snip ...</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">vuls report -format-full-text</span><br><span class="line"></span><br><span class="line">c74 (centos7.4.1708)</span><br><span class="line">&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;</span><br><span class="line">Total: 23 (High:22 Medium:1 Low:0), 9&#x2F;23 Fixed, 708 installed, 285 updatable</span><br><span class="line"></span><br><span class="line">+---------------+----------------------------------------------------------------------------------+</span><br><span class="line">| CVE-2017-9233 |                                                                                  |</span><br><span class="line">+---------------+----------------------------------------------------------------------------------+</span><br><span class="line">| Max Score     | 7.5 HIGH (nvd)                                                                   |</span><br><span class="line">| nvd           | 7.5&#x2F;CVSS:3.0&#x2F;AV:N&#x2F;AC:L&#x2F;PR:N&#x2F;UI:N&#x2F;S:U&#x2F;C:N&#x2F;I:N&#x2F;A:H HIGH                            |</span><br><span class="line">| redhat_api    | 6.5&#x2F;CVSS:3.0&#x2F;AV:N&#x2F;AC:L&#x2F;PR:N&#x2F;UI:R&#x2F;S:U&#x2F;C:N&#x2F;I:N&#x2F;A:H MODERATE                        |</span><br><span class="line">| nvd           | 5.0&#x2F;AV:N&#x2F;AC:L&#x2F;Au:N&#x2F;C:N&#x2F;I:N&#x2F;A:P MEDIUM                                            |</span><br><span class="line">| Summary       | XML External Entity vulnerability in libexpat 2.2.0 and earlier (Expat XML       |</span><br><span class="line">|               | Parser Library) allows attackers to put the parser in an infinite loop using a   |</span><br><span class="line">|               | malformed external entity definition from an external DTD.                       |</span><br><span class="line">| Mitigation    |  Do not parse untrusted arbitrary XML data using the expat                       |</span><br><span class="line">|               | package.                                                                         |</span><br><span class="line">| CWE           | CWE-835: Loop with Unreachable Exit Condition (&#39;Infinite Loop&#39;) (redhat_api)     |</span><br><span class="line">| CWE           | [OWASP Top4] CWE-611: Improper Restriction of XML External Entity Reference      |</span><br><span class="line">|               | (&#39;XXE&#39;) (nvd)                                                                    |</span><br><span class="line">| Affected PKG  | expat-2.1.0-10.el7_3 -&gt; Will not fix                                             |</span><br><span class="line">| Confidence    | 100 &#x2F; RedHatAPIMatch                                                             |</span><br><span class="line">| Source        | https:&#x2F;&#x2F;nvd.nist.gov&#x2F;vuln&#x2F;detail&#x2F;CVE-2017-9233                                   |</span><br><span class="line">| CVSSv2 Calc   | https:&#x2F;&#x2F;nvd.nist.gov&#x2F;vuln-metrics&#x2F;cvss&#x2F;v2-calculator?name&#x3D;CVE-2017-9233          |</span><br><span class="line">| CVSSv3 Calc   | https:&#x2F;&#x2F;nvd.nist.gov&#x2F;vuln-metrics&#x2F;cvss&#x2F;v3-calculator?name&#x3D;CVE-2017-9233          |</span><br><span class="line">| RHEL-CVE      | https:&#x2F;&#x2F;access.redhat.com&#x2F;security&#x2F;cve&#x2F;CVE-2017-9233                             |</span><br><span class="line">| CWE           | https:&#x2F;&#x2F;cwe.mitre.org&#x2F;data&#x2F;definitions&#x2F;CWE-835.html                              |</span><br><span class="line">| CWE           | https:&#x2F;&#x2F;cwe.mitre.org&#x2F;data&#x2F;definitions&#x2F;CWE-611.html                              |</span><br><span class="line">| OWASP Top10   | https:&#x2F;&#x2F;github.com&#x2F;OWASP&#x2F;Top10&#x2F;blob&#x2F;master&#x2F;2017&#x2F;en&#x2F;0xa4-xxe.md                   |</span><br><span class="line">+---------------+----------------------------------------------------------------------------------+</span><br><span class="line"></span><br><span class="line">... snip ...</span><br></pre></td></tr></table></figure>
 
 <p>命令行图形化</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vuls tui</span><br></pre></td></tr></table></figure>
-
 <p>通过 tab 键来进行窗口的切换，通过方向键来翻页。</p>
 <h1 id="基线测试环境"><a href="#基线测试环境" class="headerlink" title="基线测试环境"></a>基线测试环境</h1><p>本次测试主要针对 CentOS 操作系统的 7.2、7.4、7.5 devel安装和 minimal 安装进行测试，建立以建立基线。</p>
 <p>devel 安装时选择 “Development and Creative Workstations” 中的 “development Tools”</p>
@@ -656,7 +658,7 @@
     
       <div>
         <div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
-  <img id="wechat_subscriber_qcode" src="/images/erdongxt.jpg" alt="Er Dong wechat" style="width: 200px; max-width: 100%;">
+  <img id="wechat_subscriber_qcode" src="/images/erdongxt.jpg" alt="Er Dong wechat" style="width: 200px; max-width: 100%;"/>
   <div>扫描二维码关注微信公众号</div>
 </div>
 
@@ -677,14 +679,14 @@
 
     
       <div id="wechat" style="display: inline-block">
-        <img id="wechat_qr" src="/images/WeChatPay.png" alt="Er Dong 微信支付">
+        <img id="wechat_qr" src="/images/WeChatPay.png" alt="Er Dong 微信支付"/>
         <p>微信支付</p>
       </div>
     
 
     
       <div id="alipay" style="display: inline-block">
-        <img id="alipay_qr" src="/images/AliPay.png" alt="Er Dong 支付宝">
+        <img id="alipay_qr" src="/images/AliPay.png" alt="Er Dong 支付宝"/>
         <p>支付宝</p>
       </div>
     
@@ -713,10 +715,10 @@
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
     
-    <a href="https://erdong.site/tools/vuls-tool-introduction.html" title="使用 vuls 对 CentOS 操作系统安全评估">https://erdong.site/tools/vuls-tool-introduction.html</a>
+    <a href="https://erdong.site/tools/vuls-tool-introduction.html" title="使用 vuls 对 CentOS 操作系统安全评估">https:&#x2F;&#x2F;erdong.site&#x2F;tools&#x2F;vuls-tool-introduction.html</a>
   </li>
   <li class="post-copyright-license">
-    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-ND</a> 许可协议。转载请注明出处！</li>
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" rel="noopener" target="_blank">&lt;i class&#x3D;&quot;fa fa-fw fa-creative-commons&quot;&gt;&lt;&#x2F;i&gt;BY-NC-ND</a> 许可协议。转载请注明出处！</li>
 </ul>
 
       </div>
@@ -806,7 +808,9 @@
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
-              <img class="site-author-image" itemprop="image" src="/images/myavatar.jpg" alt="Er Dong">
+              <img class="site-author-image" itemprop="image"
+                src="/images/myavatar.jpg"
+                alt="Er Dong"/>
             
               <p class="site-author-name" itemprop="name">Er Dong</p>
               <p class="site-description motion-element" itemprop="description"></p>
@@ -817,7 +821,7 @@
               
                 <div class="site-state-item site-state-posts">
                 
-                  <a href="/archives/">
+                  <a href="/archives/%20%7C%7C%20archive">
                 
                     <span class="site-state-item-count">114</span>
                     <span class="site-state-item-name">日志</span>
@@ -1019,7 +1023,7 @@
                   
                     
                   
-                  <a href="https://github.com/erdong" title="GitHub &rarr; https://github.com/erdong" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                  <a href="https://github.com/erdong" title="GitHub &amp;rarr; https:&#x2F;&#x2F;github.com&#x2F;erdong" rel="noopener" target="_blank">&lt;i class&#x3D;&quot;fa fa-fw fa-github&quot;&gt;&lt;&#x2F;i&gt;GitHub</a>
                 </span>
               
                 <span class="links-of-author-item">
@@ -1030,7 +1034,7 @@
                   
                     
                   
-                  <a href="mailto:erdong@mail.erdong.site" title="E-Mail &rarr; mailto:erdong@mail.erdong.site" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  <a href="mailto:erdong@mail.erdong.site" title="E-Mail &amp;rarr; mailto:erdong@mail.erdong.site" rel="noopener" target="_blank">&lt;i class&#x3D;&quot;fa fa-fw fa-envelope&quot;&gt;&lt;&#x2F;i&gt;E-Mail</a>
                 </span>
               
             </div>
@@ -1043,7 +1047,7 @@
               
               
               
-              <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-nd.svg" alt="Creative Commons"></a>
+              <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" class="cc-opacity" rel="noopener" target="_blank">&lt;img src&#x3D;&quot;&#x2F;images&#x2F;cc-by-nc-nd.svg&quot; alt&#x3D;&quot;Creative Commons&quot;&#x2F;&gt;</a>
              </div>
           
 
@@ -1057,11 +1061,11 @@
               <ul class="links-of-blogroll-list">
                 
                   <li class="links-of-blogroll-item">
-                    <a href="http://www.ruanyifeng.com/blog/" title="http://www.ruanyifeng.com/blog/" rel="noopener" target="_blank">Ruanyifeng</a>
+                    <a href="http://www.ruanyifeng.com/blog/" title="http:&#x2F;&#x2F;www.ruanyifeng.com&#x2F;blog&#x2F;" rel="noopener" target="_blank">Ruanyifeng</a>
                   </li>
                 
                   <li class="links-of-blogroll-item">
-                    <a href="https://coolshell.cn" title="https://coolshell.cn" rel="noopener" target="_blank">左耳朵耗子</a>
+                    <a href="https://coolshell.cn/" title="https:&#x2F;&#x2F;coolshell.cn" rel="noopener" target="_blank">左耳朵耗子</a>
                   </li>
                 
               </ul>
@@ -1126,7 +1130,7 @@
 </div>
 
 
-  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动</div>
 
 
 
@@ -1134,7 +1138,7 @@
 
 
 
-  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a></div>
+  <div class="theme-info">主题 – <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a></div>
 
 
 

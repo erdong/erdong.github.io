@@ -15,11 +15,11 @@
 
 
 <html class="theme-next pisces use-motion" lang="zh-CN">
-<head><meta name="generator" content="Hexo 3.9.0">
-  <meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
-<meta name="theme-color" content="#222">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
+<meta name="theme-color" content="#222"/>
 
 
 
@@ -46,9 +46,9 @@
 
 
 
-<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2"/>
 
-<link rel="stylesheet" href="/css/main.css?v=6.7.0">
+<link rel="stylesheet" href="/css/main.css?v=6.7.0"/>
 
 
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.7.0">
@@ -96,27 +96,27 @@
 
 
 
-  <meta name="description" content="MinIO 搭建MinIO 是一个基于 Apache License v2.0 开源协议的对象存储服务。它兼容亚马逊 S3 云存储服务接口，非常适合于存储大容量非结构化的数据，例如图片、视频、日志文件、备份数据和容器/虚拟机镜像等，而一个对象文件可以是任意大小，从几 kb 到最大 5T 不等。">
-<meta name="keywords" content="minio">
+  <meta name="description" content="MinIO 搭建MinIO 是一个基于 Apache License v2.0 开源协议的对象存储服务。它兼容亚马逊 S3 云存储服务接口，非常适合于存储大容量非结构化的数据，例如图片、视频、日志文件、备份数据和容器&#x2F;虚拟机镜像等，而一个对象文件可以是任意大小，从几 kb 到最大 5T 不等。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="MinIO 简介和搭建">
 <meta property="og:url" content="https://erdong.site/minio/minio-introduction.html">
 <meta property="og:site_name" content="Erdong’ Blog">
-<meta property="og:description" content="MinIO 搭建MinIO 是一个基于 Apache License v2.0 开源协议的对象存储服务。它兼容亚马逊 S3 云存储服务接口，非常适合于存储大容量非结构化的数据，例如图片、视频、日志文件、备份数据和容器/虚拟机镜像等，而一个对象文件可以是任意大小，从几 kb 到最大 5T 不等。">
-<meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-11-09T15:54:11.198Z">
+<meta property="og:description" content="MinIO 搭建MinIO 是一个基于 Apache License v2.0 开源协议的对象存储服务。它兼容亚马逊 S3 云存储服务接口，非常适合于存储大容量非结构化的数据，例如图片、视频、日志文件、备份数据和容器&#x2F;虚拟机镜像等，而一个对象文件可以是任意大小，从几 kb 到最大 5T 不等。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2019-11-09T15:52:21.000Z">
+<meta property="article:modified_time" content="2019-11-09T15:54:11.198Z">
+<meta property="article:author" content="Er Dong">
+<meta property="article:tag" content="minio">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="MinIO 简介和搭建">
-<meta name="twitter:description" content="MinIO 搭建MinIO 是一个基于 Apache License v2.0 开源协议的对象存储服务。它兼容亚马逊 S3 云存储服务接口，非常适合于存储大容量非结构化的数据，例如图片、视频、日志文件、备份数据和容器/虚拟机镜像等，而一个对象文件可以是任意大小，从几 kb 到最大 5T 不等。">
 
 
 
-  <link rel="alternate" href="/atom.xml" title="Erdong’ Blog" type="application/atom+xml">
+  <link rel="alternate" href="/atom.xml" title="Erdong’ Blog" type="application/atom+xml"/>
 
 
 
 
-  <link rel="canonical" href="https://erdong.site/minio/minio-introduction.html">
+  <link rel="canonical" href="https://erdong.site/minio/minio-introduction.html"/>
 
 
 
@@ -165,7 +165,7 @@
   </style>
 </noscript>
 
-</head>
+<meta name="generator" content="Hexo 4.2.1"></head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
 
@@ -226,7 +226,7 @@
 
     
 
-    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+    <a href="/" rel="section">&lt;i class&#x3D;&quot;menu-item-icon fa fa-fw fa-home&quot;&gt;&lt;&#x2F;i&gt; &lt;br&#x2F;&gt;首页</a>
 
   </li>
         
@@ -243,7 +243,7 @@
 
     
 
-    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+    <a href="/categories/" rel="section">&lt;i class&#x3D;&quot;menu-item-icon fa fa-fw fa-th&quot;&gt;&lt;&#x2F;i&gt; &lt;br&#x2F;&gt;分类</a>
 
   </li>
         
@@ -260,7 +260,7 @@
 
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+    <a href="/archives/" rel="section">&lt;i class&#x3D;&quot;menu-item-icon fa fa-fw fa-archive&quot;&gt;&lt;&#x2F;i&gt; &lt;br&#x2F;&gt;归档</a>
 
   </li>
         
@@ -277,7 +277,7 @@
 
     
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+    <a href="/tags/" rel="section">&lt;i class&#x3D;&quot;menu-item-icon fa fa-fw fa-tags&quot;&gt;&lt;&#x2F;i&gt; &lt;br&#x2F;&gt;标签</a>
 
   </li>
         
@@ -294,7 +294,7 @@
 
     
 
-    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
+    <a href="/about/" rel="section">&lt;i class&#x3D;&quot;menu-item-icon fa fa-fw fa-user&quot;&gt;&lt;&#x2F;i&gt; &lt;br&#x2F;&gt;关于</a>
 
   </li>
 
@@ -305,7 +305,7 @@
             <a href="javascript:;" class="popup-trigger">
           
             
-              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>搜索</a>
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br/>搜索</a>
         </li>
       
     </ul>
@@ -325,7 +325,9 @@
       <i class="fa fa-times-circle"></i>
     </span>
     <div class="local-search-input-wrapper">
-      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
     </div>
   </div>
   <div id="local-search-result"></div>
@@ -375,16 +377,16 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://erdong.site/minio/minio-introduction.html">
+    <link itemprop="mainEntityOfPage" href="https://erdong.site/minio/minio-introduction.html"/>
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Er Dong">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/myavatar.jpg">
+      <meta itemprop="name" content="Er Dong"/>
+      <meta itemprop="description" content=""/>
+      <meta itemprop="image" content="/images/myavatar.jpg"/>
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Erdong’ Blog">
+      <meta itemprop="name" content="Erdong’ Blog"/>
     </span>
 
     
@@ -455,7 +457,8 @@
 
           
             <span class="post-meta-divider">|</span>
-            <span class="post-meta-item-icon">
+            <span class="post-meta-item-icon"
+            >
             <i class="fa fa-eye"></i>
              阅读次数： 
             <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
@@ -492,12 +495,12 @@
 <h1 id="快速开始一个单节点的-MinIO"><a href="#快速开始一个单节点的-MinIO" class="headerlink" title="快速开始一个单节点的 MinIO"></a>快速开始一个单节点的 MinIO</h1><p>MinIO 分为服务端和客户端，服务端提供一个对象存储，也提供一个 Web 的管理页面。客户端是用来管理、查看服务端的一个工具。服务端的二进制文件是 <code>minio</code> ，客户端的二进制文件是 <code>mc</code> 。</p>
 <h2 id="使用二进制文件启动"><a href="#使用二进制文件启动" class="headerlink" title="使用二进制文件启动"></a>使用二进制文件启动</h2><p>首先先下载服务端的二进制文件，其次准备一个用来存储的磁盘或者目录，</p>
 <p>下载好以后赋予执行权限，可以使用如下命令快速启动。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">chmod +x minio</span><br><span class="line">./minio server /erdong/data</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">chmod +x minio</span><br><span class="line">.&#x2F;minio server &#x2F;erdong&#x2F;data</span><br></pre></td></tr></table></figure>
 
 <p>启动后可以通过访问 <a href="http://localhost:9000" target="_blank" rel="noopener">http://localhost:9000</a> 来访问你的对象存储。</p>
 <h2 id="使用-Docker-启动"><a href="#使用-Docker-启动" class="headerlink" title="使用 Docker 启动"></a>使用 Docker 启动</h2><p>MinIO 需要一个持久卷来存储配置和应用数据。不过, 如果只是为了测试一下, 您可以通过简单地传递一个目录（在下面的示例中为 <code>/erdong/data</code>）启动 MinIO 。这个目录会在容器启动时在容器的文件系统中创建，不过所有的数据都会在容器退出时丢失。</p>
 <p>要创建具有永久存储的 MinIO 容器，您需要将本地持久目录从主机操作系统映射到虚拟配置 ~/.minio 并导出 /data 目录。 为此，请运行以下命令</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">docker run -p 9000:9000 --name minio \</span><br><span class="line">  -e &quot;MINIO_ACCESS_KEY=minioadmin&quot; \</span><br><span class="line">  -e &quot;MINIO_SECRET_KEY=minioadminpassword&quot; \</span><br><span class="line">  -v /erdong/minio/data:/data \</span><br><span class="line">  -v /erdong/minio/config:/root/.minio \</span><br><span class="line">  minio/minio server /data</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">docker run -p 9000:9000 --name minio \</span><br><span class="line">  -e &quot;MINIO_ACCESS_KEY&#x3D;minioadmin&quot; \</span><br><span class="line">  -e &quot;MINIO_SECRET_KEY&#x3D;minioadminpassword&quot; \</span><br><span class="line">  -v &#x2F;erdong&#x2F;minio&#x2F;data:&#x2F;data \</span><br><span class="line">  -v &#x2F;erdong&#x2F;minio&#x2F;config:&#x2F;root&#x2F;.minio \</span><br><span class="line">  minio&#x2F;minio server &#x2F;data</span><br></pre></td></tr></table></figure>
 
 <p>启动后，即可访问 <a href="http://localhost:9000" target="_blank" rel="noopener">http://localhost:9000</a> 来访问你的对象存储。</p>
 <p>上述命令中设置了如下参数：</p>
@@ -531,32 +534,32 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">openssl genrsa -out private.key 2048</span><br></pre></td></tr></table></figure>
 
 <p>生成自签名的证书，证书会生成在执行命令的目录下</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">openssl req -new -x509 -days 3650 -key private.key -out public.crt -subj &quot;/C=US/ST=state/L=location/O=organization/CN=domain&quot;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">openssl req -new -x509 -days 3650 -key private.key -out public.crt -subj &quot;&#x2F;C&#x3D;US&#x2F;ST&#x3D;state&#x2F;L&#x3D;location&#x2F;O&#x3D;organization&#x2F;CN&#x3D;domain&quot;</span><br></pre></td></tr></table></figure>
 
 <p>其中相关内容可以按照实际情况修改，比如 <code>/C</code> 是国家，中国是 CN ，<code>/ST</code> 是州或者省， <code>/L</code> 是市或者区， <code>/CN</code> 是域名。</p>
 <p>秘钥和证书生成好以后，按照上边的要求放置在对应的目录即可。</p>
 <h1 id="Q-amp-A"><a href="#Q-amp-A" class="headerlink" title="Q&amp;A"></a>Q&amp;A</h1><p>Thanos 在连接 MinIO 的时候遇到了一些问题，日志里有很多错误提示，列在下边供参考。</p>
 <h2 id="1-提示冒号太多"><a href="#1-提示冒号太多" class="headerlink" title="1. 提示冒号太多"></a>1. 提示冒号太多</h2><p>日志报错如下所示：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">level=info ts=2019-11-08T02:43:40.981858805Z caller=main.go:170 msg=&quot;Tracing will be disabled&quot;</span><br><span class="line">level=info ts=2019-11-08T02:43:40.982326667Z caller=factory.go:39 msg=&quot;loading bucket configuration&quot;</span><br><span class="line">level=error ts=2019-11-08T02:43:40.982682262Z caller=main.go:200 err=&quot;store command failed: create bucket client: create S3 client: initialize s3 client: address http://127.0.0.1:9000: too many colons in address&quot;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">level&#x3D;info ts&#x3D;2019-11-08T02:43:40.981858805Z caller&#x3D;main.go:170 msg&#x3D;&quot;Tracing will be disabled&quot;</span><br><span class="line">level&#x3D;info ts&#x3D;2019-11-08T02:43:40.982326667Z caller&#x3D;factory.go:39 msg&#x3D;&quot;loading bucket configuration&quot;</span><br><span class="line">level&#x3D;error ts&#x3D;2019-11-08T02:43:40.982682262Z caller&#x3D;main.go:200 err&#x3D;&quot;store command failed: create bucket client: create S3 client: initialize s3 client: address http:&#x2F;&#x2F;127.0.0.1:9000: too many colons in address&quot;</span><br></pre></td></tr></table></figure>
 
 <p>日志描述直译过来就是冒号太多了，原因是在配置文件中，填写了 MinIO 提供的 S3 协议的 endpoint 的时候，多填写了 <code>http://</code> ，导致提示该错误。本意是在内网使用， HTTP 协议就可以了，不需要要开启 HTTPS ，但是 Thanos 在连接 S3 存储的时候默认是使用 HTTPS 的，不能通过这种方式来使用 HTTP 。</p>
 <p>错误的配置如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">type: S3</span><br><span class="line">config:</span><br><span class="line">  bucket: &quot;disk1&quot;</span><br><span class="line">  endpoint: &quot;http://127.0.0.1:9000&quot;</span><br></pre></td></tr></table></figure>
-
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">type: S3</span><br><span class="line">config:</span><br><span class="line">  bucket: &quot;disk1&quot;</span><br><span class="line">  endpoint: &quot;http:&#x2F;&#x2F;127.0.0.1:9000&quot;</span><br></pre></td></tr></table></figure>
 <p>正确的配置如下：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">type: S3</span><br><span class="line">config:</span><br><span class="line">  bucket: &quot;disk1&quot;</span><br><span class="line">  endpoint: &quot;127.0.0.1:9000&quot;</span><br></pre></td></tr></table></figure>
 
 <h2 id="2-提示对方没有使用-HTTPS"><a href="#2-提示对方没有使用-HTTPS" class="headerlink" title="2. 提示对方没有使用 HTTPS"></a>2. 提示对方没有使用 HTTPS</h2><p>日志报错如下</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">level=info ts=2019-11-08T02:42:04.366000876Z caller=main.go:170 msg=&quot;Tracing will be disabled&quot;</span><br><span class="line">level=info ts=2019-11-08T02:42:04.366417674Z caller=factory.go:39 msg=&quot;loading bucket configuration&quot;</span><br><span class="line">level=info ts=2019-11-08T02:42:04.384413714Z caller=cache.go:172 msg=&quot;created index cache&quot; maxItemSizeBytes=131072000 maxSizeBytes=262144000 maxItems=math.MaxInt64</span><br><span class="line">level=error ts=2019-11-08T02:42:04.385632149Z caller=main.go:200 err=&quot;store command failed: bucket store initial sync: sync block: iter: Get https://127.0.0.1:9000/prometheus-store/?delimiter=%2F&amp;max-keys=1000&amp;prefix=: http: server gave HTTP response to HTTPS client&quot;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">level&#x3D;info ts&#x3D;2019-11-08T02:42:04.366000876Z caller&#x3D;main.go:170 msg&#x3D;&quot;Tracing will be disabled&quot;</span><br><span class="line">level&#x3D;info ts&#x3D;2019-11-08T02:42:04.366417674Z caller&#x3D;factory.go:39 msg&#x3D;&quot;loading bucket configuration&quot;</span><br><span class="line">level&#x3D;info ts&#x3D;2019-11-08T02:42:04.384413714Z caller&#x3D;cache.go:172 msg&#x3D;&quot;created index cache&quot; maxItemSizeBytes&#x3D;131072000 maxSizeBytes&#x3D;262144000 maxItems&#x3D;math.MaxInt64</span><br><span class="line">level&#x3D;error ts&#x3D;2019-11-08T02:42:04.385632149Z caller&#x3D;main.go:200 err&#x3D;&quot;store command failed: bucket store initial sync: sync block: iter: Get https:&#x2F;&#x2F;127.0.0.1:9000&#x2F;prometheus-store&#x2F;?delimiter&#x3D;%2F&amp;max-keys&#x3D;1000&amp;prefix&#x3D;: http: server gave HTTP response to HTTPS client&quot;</span><br></pre></td></tr></table></figure>
 
 <p>这是 Thanos 连接的对象存储只提供了 HTTP ，没有提供 HTTPS，这个时候需要让对象存储添加证书，启用 HTTPS 。</p>
 <h2 id="3-不能够认证某个域名"><a href="#3-不能够认证某个域名" class="headerlink" title="3. 不能够认证某个域名"></a>3. 不能够认证某个域名</h2><p>日志报错如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">level=info ts=2019-11-08T03:06:57.90508837Z caller=main.go:170 msg=&quot;Tracing will be disabled&quot;</span><br><span class="line">level=info ts=2019-11-08T03:06:57.905445182Z caller=factory.go:39 msg=&quot;loading bucket configuration&quot;</span><br><span class="line">level=info ts=2019-11-08T03:06:57.923283984Z caller=cache.go:172 msg=&quot;created index cache&quot; maxItemSizeBytes=131072000 maxSizeBytes=262144000 maxItems=math.MaxInt64</span><br><span class="line">level=error ts=2019-11-08T03:06:57.927125234Z caller=main.go:200 err=&quot;store command failed: bucket store initial sync: sync block: iter: Get https://10.23.80.18:9000/prometheus-store/?delimiter=%2F&amp;max-keys=1000&amp;prefix=: x509: cannot validate certificate for minio-erdong.site because it doesn&apos;t contain any IP SANs&quot;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">level&#x3D;info ts&#x3D;2019-11-08T03:06:57.90508837Z caller&#x3D;main.go:170 msg&#x3D;&quot;Tracing will be disabled&quot;</span><br><span class="line">level&#x3D;info ts&#x3D;2019-11-08T03:06:57.905445182Z caller&#x3D;factory.go:39 msg&#x3D;&quot;loading bucket configuration&quot;</span><br><span class="line">level&#x3D;info ts&#x3D;2019-11-08T03:06:57.923283984Z caller&#x3D;cache.go:172 msg&#x3D;&quot;created index cache&quot; maxItemSizeBytes&#x3D;131072000 maxSizeBytes&#x3D;262144000 maxItems&#x3D;math.MaxInt64</span><br><span class="line">level&#x3D;error ts&#x3D;2019-11-08T03:06:57.927125234Z caller&#x3D;main.go:200 err&#x3D;&quot;store command failed: bucket store initial sync: sync block: iter: Get https:&#x2F;&#x2F;10.23.80.18:9000&#x2F;prometheus-store&#x2F;?delimiter&#x3D;%2F&amp;max-keys&#x3D;1000&amp;prefix&#x3D;: x509: cannot validate certificate for minio-erdong.site because it doesn&#39;t contain any IP SANs&quot;</span><br></pre></td></tr></table></figure>
 
 <p>因为 Thanos 连接 Minio 的 HTTP 配置里，有一个 <code>insecure_skip_verify</code> 选项，该选项默认为 false ，需要对域名的证书进行验证，由于使用了自签证书，没有在权威的 CA 机构做认证，所以在连接过程中会提示不安全，将值改为 true，跳过这个验证就可以了。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">http_config:</span><br><span class="line">  idle_conn_timeout: 90s</span><br><span class="line">  response_header_timeout: 2m</span><br><span class="line">  insecure_skip_verify: true</span><br></pre></td></tr></table></figure>
 
-<h1 id="end"><a href="#end" class="headerlink" title="end"></a>end</h1><p>======================<br>由于无法及时收到评论内容，所以关闭评论功能。<br>大家有问题欢迎发邮件到 <a href="mailto:erdong@mail.erdong.site" target="_blank" rel="noopener">erdong@mail.erdong.site</a> ，或者 <a href="https://github.com/erdong/erdong.github.io/issues" target="_blank" rel="noopener">https://github.com/erdong/erdong.github.io/issues</a> 提 Issue ，我会及时回复。</p>
+
+<h1 id="end"><a href="#end" class="headerlink" title="end"></a>end</h1><p>======================<br>由于无法及时收到评论内容，所以关闭评论功能。<br>大家有问题欢迎发邮件到 <a href="mailto:erdong@mail.erdong.site">erdong@mail.erdong.site</a> ，或者 <a href="https://github.com/erdong/erdong.github.io/issues" target="_blank" rel="noopener">https://github.com/erdong/erdong.github.io/issues</a> 提 Issue ，我会及时回复。</p>
 <p>======================<br>Erdong, A Linux user !</p>
 
       
@@ -571,7 +574,7 @@
     
       <div>
         <div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
-  <img id="wechat_subscriber_qcode" src="/images/erdongxt.jpg" alt="Er Dong wechat" style="width: 200px; max-width: 100%;">
+  <img id="wechat_subscriber_qcode" src="/images/erdongxt.jpg" alt="Er Dong wechat" style="width: 200px; max-width: 100%;"/>
   <div>扫描二维码关注微信公众号</div>
 </div>
 
@@ -592,14 +595,14 @@
 
     
       <div id="wechat" style="display: inline-block">
-        <img id="wechat_qr" src="/images/WeChatPay.png" alt="Er Dong 微信支付">
+        <img id="wechat_qr" src="/images/WeChatPay.png" alt="Er Dong 微信支付"/>
         <p>微信支付</p>
       </div>
     
 
     
       <div id="alipay" style="display: inline-block">
-        <img id="alipay_qr" src="/images/AliPay.png" alt="Er Dong 支付宝">
+        <img id="alipay_qr" src="/images/AliPay.png" alt="Er Dong 支付宝"/>
         <p>支付宝</p>
       </div>
     
@@ -628,10 +631,10 @@
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
     
-    <a href="https://erdong.site/minio/minio-introduction.html" title="MinIO 简介和搭建">https://erdong.site/minio/minio-introduction.html</a>
+    <a href="https://erdong.site/minio/minio-introduction.html" title="MinIO 简介和搭建">https:&#x2F;&#x2F;erdong.site&#x2F;minio&#x2F;minio-introduction.html</a>
   </li>
   <li class="post-copyright-license">
-    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-ND</a> 许可协议。转载请注明出处！</li>
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" rel="noopener" target="_blank">&lt;i class&#x3D;&quot;fa fa-fw fa-creative-commons&quot;&gt;&lt;&#x2F;i&gt;BY-NC-ND</a> 许可协议。转载请注明出处！</li>
 </ul>
 
       </div>
@@ -721,7 +724,9 @@
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
-              <img class="site-author-image" itemprop="image" src="/images/myavatar.jpg" alt="Er Dong">
+              <img class="site-author-image" itemprop="image"
+                src="/images/myavatar.jpg"
+                alt="Er Dong"/>
             
               <p class="site-author-name" itemprop="name">Er Dong</p>
               <p class="site-description motion-element" itemprop="description"></p>
@@ -732,7 +737,7 @@
               
                 <div class="site-state-item site-state-posts">
                 
-                  <a href="/archives/">
+                  <a href="/archives/%20%7C%7C%20archive">
                 
                     <span class="site-state-item-count">114</span>
                     <span class="site-state-item-name">日志</span>
@@ -934,7 +939,7 @@
                   
                     
                   
-                  <a href="https://github.com/erdong" title="GitHub &rarr; https://github.com/erdong" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                  <a href="https://github.com/erdong" title="GitHub &amp;rarr; https:&#x2F;&#x2F;github.com&#x2F;erdong" rel="noopener" target="_blank">&lt;i class&#x3D;&quot;fa fa-fw fa-github&quot;&gt;&lt;&#x2F;i&gt;GitHub</a>
                 </span>
               
                 <span class="links-of-author-item">
@@ -945,7 +950,7 @@
                   
                     
                   
-                  <a href="mailto:erdong@mail.erdong.site" title="E-Mail &rarr; mailto:erdong@mail.erdong.site" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  <a href="mailto:erdong@mail.erdong.site" title="E-Mail &amp;rarr; mailto:erdong@mail.erdong.site" rel="noopener" target="_blank">&lt;i class&#x3D;&quot;fa fa-fw fa-envelope&quot;&gt;&lt;&#x2F;i&gt;E-Mail</a>
                 </span>
               
             </div>
@@ -958,7 +963,7 @@
               
               
               
-              <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-nd.svg" alt="Creative Commons"></a>
+              <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" class="cc-opacity" rel="noopener" target="_blank">&lt;img src&#x3D;&quot;&#x2F;images&#x2F;cc-by-nc-nd.svg&quot; alt&#x3D;&quot;Creative Commons&quot;&#x2F;&gt;</a>
              </div>
           
 
@@ -972,11 +977,11 @@
               <ul class="links-of-blogroll-list">
                 
                   <li class="links-of-blogroll-item">
-                    <a href="http://www.ruanyifeng.com/blog/" title="http://www.ruanyifeng.com/blog/" rel="noopener" target="_blank">Ruanyifeng</a>
+                    <a href="http://www.ruanyifeng.com/blog/" title="http:&#x2F;&#x2F;www.ruanyifeng.com&#x2F;blog&#x2F;" rel="noopener" target="_blank">Ruanyifeng</a>
                   </li>
                 
                   <li class="links-of-blogroll-item">
-                    <a href="https://coolshell.cn" title="https://coolshell.cn" rel="noopener" target="_blank">左耳朵耗子</a>
+                    <a href="https://coolshell.cn/" title="https:&#x2F;&#x2F;coolshell.cn" rel="noopener" target="_blank">左耳朵耗子</a>
                   </li>
                 
               </ul>
@@ -1041,7 +1046,7 @@
 </div>
 
 
-  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动</div>
 
 
 
@@ -1049,7 +1054,7 @@
 
 
 
-  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a></div>
+  <div class="theme-info">主题 – <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a></div>
 
 
 

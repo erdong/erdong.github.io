@@ -15,11 +15,11 @@
 
 
 <html class="theme-next pisces use-motion" lang="zh-CN">
-<head><meta name="generator" content="Hexo 3.9.0">
-  <meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
-<meta name="theme-color" content="#222">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
+<meta name="theme-color" content="#222"/>
 
 
 
@@ -46,9 +46,9 @@
 
 
 
-<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2"/>
 
-<link rel="stylesheet" href="/css/main.css?v=6.7.0">
+<link rel="stylesheet" href="/css/main.css?v=6.7.0"/>
 
 
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.7.0">
@@ -97,26 +97,26 @@
 
 
   <meta name="description" content="Kong 集群允许您通过添加更多的机器来处理更多的传入请求来横向扩展系统。它们将共享相同的配置，因为它们指向相同的数据库。指向相同数据存储的 Kong 节点将属于相同的 Kong 集群。 您需要在Kong集群前面安装一个负载平衡器，以便在可用节点之间分配流量。">
-<meta name="keywords" content="Kong">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Kong 的集群怎么用">
 <meta property="og:url" content="https://erdong.site/Kong/kong-06.html">
 <meta property="og:site_name" content="Erdong’ Blog">
 <meta property="og:description" content="Kong 集群允许您通过添加更多的机器来处理更多的传入请求来横向扩展系统。它们将共享相同的配置，因为它们指向相同的数据库。指向相同数据存储的 Kong 节点将属于相同的 Kong 集群。 您需要在Kong集群前面安装一个负载平衡器，以便在可用节点之间分配流量。">
-<meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-10-22T15:59:05.237Z">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2019-10-22T15:46:29.000Z">
+<meta property="article:modified_time" content="2019-10-22T15:59:05.237Z">
+<meta property="article:author" content="Er Dong">
+<meta property="article:tag" content="Kong">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Kong 的集群怎么用">
-<meta name="twitter:description" content="Kong 集群允许您通过添加更多的机器来处理更多的传入请求来横向扩展系统。它们将共享相同的配置，因为它们指向相同的数据库。指向相同数据存储的 Kong 节点将属于相同的 Kong 集群。 您需要在Kong集群前面安装一个负载平衡器，以便在可用节点之间分配流量。">
 
 
 
-  <link rel="alternate" href="/atom.xml" title="Erdong’ Blog" type="application/atom+xml">
+  <link rel="alternate" href="/atom.xml" title="Erdong’ Blog" type="application/atom+xml"/>
 
 
 
 
-  <link rel="canonical" href="https://erdong.site/Kong/kong-06.html">
+  <link rel="canonical" href="https://erdong.site/Kong/kong-06.html"/>
 
 
 
@@ -165,7 +165,7 @@
   </style>
 </noscript>
 
-</head>
+<meta name="generator" content="Hexo 4.2.1"></head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
 
@@ -226,7 +226,7 @@
 
     
 
-    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+    <a href="/" rel="section">&lt;i class&#x3D;&quot;menu-item-icon fa fa-fw fa-home&quot;&gt;&lt;&#x2F;i&gt; &lt;br&#x2F;&gt;首页</a>
 
   </li>
         
@@ -243,7 +243,7 @@
 
     
 
-    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+    <a href="/categories/" rel="section">&lt;i class&#x3D;&quot;menu-item-icon fa fa-fw fa-th&quot;&gt;&lt;&#x2F;i&gt; &lt;br&#x2F;&gt;分类</a>
 
   </li>
         
@@ -260,7 +260,7 @@
 
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+    <a href="/archives/" rel="section">&lt;i class&#x3D;&quot;menu-item-icon fa fa-fw fa-archive&quot;&gt;&lt;&#x2F;i&gt; &lt;br&#x2F;&gt;归档</a>
 
   </li>
         
@@ -277,7 +277,7 @@
 
     
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+    <a href="/tags/" rel="section">&lt;i class&#x3D;&quot;menu-item-icon fa fa-fw fa-tags&quot;&gt;&lt;&#x2F;i&gt; &lt;br&#x2F;&gt;标签</a>
 
   </li>
         
@@ -294,7 +294,7 @@
 
     
 
-    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
+    <a href="/about/" rel="section">&lt;i class&#x3D;&quot;menu-item-icon fa fa-fw fa-user&quot;&gt;&lt;&#x2F;i&gt; &lt;br&#x2F;&gt;关于</a>
 
   </li>
 
@@ -305,7 +305,7 @@
             <a href="javascript:;" class="popup-trigger">
           
             
-              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>搜索</a>
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br/>搜索</a>
         </li>
       
     </ul>
@@ -325,7 +325,9 @@
       <i class="fa fa-times-circle"></i>
     </span>
     <div class="local-search-input-wrapper">
-      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
     </div>
   </div>
   <div id="local-search-result"></div>
@@ -375,16 +377,16 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://erdong.site/Kong/kong-06.html">
+    <link itemprop="mainEntityOfPage" href="https://erdong.site/Kong/kong-06.html"/>
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Er Dong">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/myavatar.jpg">
+      <meta itemprop="name" content="Er Dong"/>
+      <meta itemprop="description" content=""/>
+      <meta itemprop="image" content="/images/myavatar.jpg"/>
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Erdong’ Blog">
+      <meta itemprop="name" content="Erdong’ Blog"/>
     </span>
 
     
@@ -455,7 +457,8 @@
 
           
             <span class="post-meta-divider">|</span>
-            <span class="post-meta-item-icon">
+            <span class="post-meta-item-icon"
+            >
             <i class="fa fa-eye"></i>
              阅读次数： 
             <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
@@ -488,8 +491,7 @@
 <p>本文档描述了如何使这些缓存的实体失效，以及如何为用例配置Kong节点，该用例介于性能和一致性之间。</p>
 <h1 id="单节点集群"><a href="#单节点集群" class="headerlink" title="单节点集群"></a>单节点集群</h1><p>单个的 Kong 节点连到数据库创建一个单节点的 Kong 集群。通过该节点的管理 API 应用的任何更改都将立即生效。</p>
 <p>考虑一个单独的 Kong 节点A。如果我们删除之前注册的服务:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ curl -X DELETE http://127.0.0.1:8001/services/test-service</span><br></pre></td></tr></table></figure>
-
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ curl -X DELETE http:&#x2F;&#x2F;127.0.0.1:8001&#x2F;services&#x2F;test-service</span><br></pre></td></tr></table></figure>
 <p>然后，任何对节点 A 的后续请求都会立即返回 <code>404 Not Found</code>，因为节点将其从本地缓存中清除。</p>
 <h1 id="多节点集群"><a href="#多节点集群" class="headerlink" title="多节点集群"></a>多节点集群</h1><p>在一个集群有多个 Kong 节点的情况下，连接到同一数据库的其他节点不会立即被通知服务已被节点 A 删除。 虽然服务不在数据库中(被节点A删除)，但它仍然在节点B的内存中。</p>
 <p>所有节点执行一个周期性的后台作业，以同步其他节点可能触发的更改。此作业的频率可通过以下方式配置:</p>
@@ -505,7 +507,7 @@
 <h1 id="缓存是什么"><a href="#缓存是什么" class="headerlink" title="缓存是什么"></a>缓存是什么</h1><p>所有的核心实体，如服务、路由、插件、消费者、凭证，都由Kong缓存在内存中，并依赖于它们通过要更新的轮询机制的失效。</p>
 <p>此外，Kong还缓存数据库 的 misses。这意味着如果您配置一个没有插件的服务，Kong将缓存此信息。例子:</p>
 <p>假设我们通过节点A的管理API向该服务添加一个插件：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"># node A</span><br><span class="line">$ curl -X POST http://127.0.0.1:8001/services/example-service/plugins \</span><br><span class="line">    --data &quot;name=example-plugin&quot;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"># node A</span><br><span class="line">$ curl -X POST http:&#x2F;&#x2F;127.0.0.1:8001&#x2F;services&#x2F;example-service&#x2F;plugins \</span><br><span class="line">    --data &quot;name&#x3D;example-plugin&quot;</span><br></pre></td></tr></table></figure>
 
 <p>由于此请求是通过节点 A 的 Admin API 发出的，因此节点 A 将在本地使其缓存无效，并在随后的请求中检测到此 API 配置了插件。</p>
 <p>此时，节点 B 还没有运行数据库同步更新缓存任务，并且仍然缓存这个 API 没有插件可以运行的数据。在节点B运行其数据库轮询作业之前，情况将一直如此。</p>
@@ -522,7 +524,7 @@
 <h2 id="4-当使用-Cassandra-数据库"><a href="#4-当使用-Cassandra-数据库" class="headerlink" title="4.当使用 Cassandra 数据库"></a>4.当使用 Cassandra 数据库</h2><p>如果使用 Cassandra 作为 Kong 的数据库，你必须配置 <code>db_update_propagation</code> 为一个非零值。由于 Cassandra 本身是最终一致性数据库，这将确保 Kong 节点不会过早地使本地缓存失效，仅仅当再次获取到一个不是最新值的时候。如果你使用了 Cassandra 但你没有配置该值时，Kong 将会输出一条警告日志。</p>
 <p>此外，你可以配置 <code>cassandra_consistency</code> 的值为 <code>QUORUM</code> 或者 <code>LOCAL_QUORUM</code>，确保被 Kong 缓存的值是数据库中最新的。 </p>
 <h1 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h1><p>本文讲解了 Kong 的集群相关的东西，如果由于某些原因，你希望通过 Kong 查看缓存的值，或者手动清理缓存（当缓存被命中或者丢失），你可以通过使用 Admin api 的 <code>/cache</code> 接口进行管理。</p>
-<p>======================<br>由于无法及时收到评论内容，所以关闭评论功能。<br>大家有问题欢迎发邮件到 <a href="mailto:erdong@mail.erdong.site" target="_blank" rel="noopener">erdong@mail.erdong.site</a> ，或者 <a href="https://github.com/erdong/erdong.github.io/issues" target="_blank" rel="noopener">https://github.com/erdong/erdong.github.io/issues</a> 提 Issue ，我会及时回复。</p>
+<p>======================<br>由于无法及时收到评论内容，所以关闭评论功能。<br>大家有问题欢迎发邮件到 <a href="mailto:erdong@mail.erdong.site">erdong@mail.erdong.site</a> ，或者 <a href="https://github.com/erdong/erdong.github.io/issues" target="_blank" rel="noopener">https://github.com/erdong/erdong.github.io/issues</a> 提 Issue ，我会及时回复。</p>
 <p>======================<br>Erdong, A Linux user !</p>
 
       
@@ -537,7 +539,7 @@
     
       <div>
         <div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
-  <img id="wechat_subscriber_qcode" src="/images/erdongxt.jpg" alt="Er Dong wechat" style="width: 200px; max-width: 100%;">
+  <img id="wechat_subscriber_qcode" src="/images/erdongxt.jpg" alt="Er Dong wechat" style="width: 200px; max-width: 100%;"/>
   <div>扫描二维码关注微信公众号</div>
 </div>
 
@@ -558,14 +560,14 @@
 
     
       <div id="wechat" style="display: inline-block">
-        <img id="wechat_qr" src="/images/WeChatPay.png" alt="Er Dong 微信支付">
+        <img id="wechat_qr" src="/images/WeChatPay.png" alt="Er Dong 微信支付"/>
         <p>微信支付</p>
       </div>
     
 
     
       <div id="alipay" style="display: inline-block">
-        <img id="alipay_qr" src="/images/AliPay.png" alt="Er Dong 支付宝">
+        <img id="alipay_qr" src="/images/AliPay.png" alt="Er Dong 支付宝"/>
         <p>支付宝</p>
       </div>
     
@@ -594,10 +596,10 @@
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
     
-    <a href="https://erdong.site/Kong/kong-06.html" title="Kong 的集群怎么用">https://erdong.site/Kong/kong-06.html</a>
+    <a href="https://erdong.site/Kong/kong-06.html" title="Kong 的集群怎么用">https:&#x2F;&#x2F;erdong.site&#x2F;Kong&#x2F;kong-06.html</a>
   </li>
   <li class="post-copyright-license">
-    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-ND</a> 许可协议。转载请注明出处！</li>
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" rel="noopener" target="_blank">&lt;i class&#x3D;&quot;fa fa-fw fa-creative-commons&quot;&gt;&lt;&#x2F;i&gt;BY-NC-ND</a> 许可协议。转载请注明出处！</li>
 </ul>
 
       </div>
@@ -689,7 +691,9 @@
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
-              <img class="site-author-image" itemprop="image" src="/images/myavatar.jpg" alt="Er Dong">
+              <img class="site-author-image" itemprop="image"
+                src="/images/myavatar.jpg"
+                alt="Er Dong"/>
             
               <p class="site-author-name" itemprop="name">Er Dong</p>
               <p class="site-description motion-element" itemprop="description"></p>
@@ -700,7 +704,7 @@
               
                 <div class="site-state-item site-state-posts">
                 
-                  <a href="/archives/">
+                  <a href="/archives/%20%7C%7C%20archive">
                 
                     <span class="site-state-item-count">114</span>
                     <span class="site-state-item-name">日志</span>
@@ -902,7 +906,7 @@
                   
                     
                   
-                  <a href="https://github.com/erdong" title="GitHub &rarr; https://github.com/erdong" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                  <a href="https://github.com/erdong" title="GitHub &amp;rarr; https:&#x2F;&#x2F;github.com&#x2F;erdong" rel="noopener" target="_blank">&lt;i class&#x3D;&quot;fa fa-fw fa-github&quot;&gt;&lt;&#x2F;i&gt;GitHub</a>
                 </span>
               
                 <span class="links-of-author-item">
@@ -913,7 +917,7 @@
                   
                     
                   
-                  <a href="mailto:erdong@mail.erdong.site" title="E-Mail &rarr; mailto:erdong@mail.erdong.site" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  <a href="mailto:erdong@mail.erdong.site" title="E-Mail &amp;rarr; mailto:erdong@mail.erdong.site" rel="noopener" target="_blank">&lt;i class&#x3D;&quot;fa fa-fw fa-envelope&quot;&gt;&lt;&#x2F;i&gt;E-Mail</a>
                 </span>
               
             </div>
@@ -926,7 +930,7 @@
               
               
               
-              <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-nd.svg" alt="Creative Commons"></a>
+              <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" class="cc-opacity" rel="noopener" target="_blank">&lt;img src&#x3D;&quot;&#x2F;images&#x2F;cc-by-nc-nd.svg&quot; alt&#x3D;&quot;Creative Commons&quot;&#x2F;&gt;</a>
              </div>
           
 
@@ -940,11 +944,11 @@
               <ul class="links-of-blogroll-list">
                 
                   <li class="links-of-blogroll-item">
-                    <a href="http://www.ruanyifeng.com/blog/" title="http://www.ruanyifeng.com/blog/" rel="noopener" target="_blank">Ruanyifeng</a>
+                    <a href="http://www.ruanyifeng.com/blog/" title="http:&#x2F;&#x2F;www.ruanyifeng.com&#x2F;blog&#x2F;" rel="noopener" target="_blank">Ruanyifeng</a>
                   </li>
                 
                   <li class="links-of-blogroll-item">
-                    <a href="https://coolshell.cn" title="https://coolshell.cn" rel="noopener" target="_blank">左耳朵耗子</a>
+                    <a href="https://coolshell.cn/" title="https:&#x2F;&#x2F;coolshell.cn" rel="noopener" target="_blank">左耳朵耗子</a>
                   </li>
                 
               </ul>
@@ -1009,7 +1013,7 @@
 </div>
 
 
-  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动</div>
 
 
 
@@ -1017,7 +1021,7 @@
 
 
 
-  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a></div>
+  <div class="theme-info">主题 – <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a></div>
 
 
 

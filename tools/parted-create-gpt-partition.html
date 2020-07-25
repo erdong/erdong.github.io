@@ -15,11 +15,11 @@
 
 
 <html class="theme-next pisces use-motion" lang="zh-CN">
-<head><meta name="generator" content="Hexo 3.9.0">
-  <meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
-<meta name="theme-color" content="#222">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
+<meta name="theme-color" content="#222"/>
 
 
 
@@ -46,9 +46,9 @@
 
 
 
-<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2"/>
 
-<link rel="stylesheet" href="/css/main.css?v=6.7.0">
+<link rel="stylesheet" href="/css/main.css?v=6.7.0"/>
 
 
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.7.0">
@@ -97,26 +97,29 @@
 
 
   <meta name="description" content="对于磁盘的分区表 MBR与GPT区别。MBR：MBR分区表(即主引导记录)大家都很熟悉，是过去我们使用windows时常用的。所支持的最大卷：2T，而且对分区有限制：最多4个主分区或3个主分区加一个扩展分区 GPT： GPT（即GUID分区表）。是源自EFI标准的一种较新的磁盘分区表结构的标准，是未来磁盘分区的主要形式。与MBR分区方式相比，具有如下优点。">
-<meta name="keywords" content="parted,fdisk,GPT,MBR">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Parted 创建 GPT 分区">
 <meta property="og:url" content="https://erdong.site/tools/parted-create-gpt-partition.html">
 <meta property="og:site_name" content="Erdong’ Blog">
 <meta property="og:description" content="对于磁盘的分区表 MBR与GPT区别。MBR：MBR分区表(即主引导记录)大家都很熟悉，是过去我们使用windows时常用的。所支持的最大卷：2T，而且对分区有限制：最多4个主分区或3个主分区加一个扩展分区 GPT： GPT（即GUID分区表）。是源自EFI标准的一种较新的磁盘分区表结构的标准，是未来磁盘分区的主要形式。与MBR分区方式相比，具有如下优点。">
-<meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-10-14T11:10:58.268Z">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2019-02-27T11:44:34.000Z">
+<meta property="article:modified_time" content="2019-10-14T11:10:58.268Z">
+<meta property="article:author" content="Er Dong">
+<meta property="article:tag" content="parted">
+<meta property="article:tag" content="fdisk">
+<meta property="article:tag" content="GPT">
+<meta property="article:tag" content="MBR">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Parted 创建 GPT 分区">
-<meta name="twitter:description" content="对于磁盘的分区表 MBR与GPT区别。MBR：MBR分区表(即主引导记录)大家都很熟悉，是过去我们使用windows时常用的。所支持的最大卷：2T，而且对分区有限制：最多4个主分区或3个主分区加一个扩展分区 GPT： GPT（即GUID分区表）。是源自EFI标准的一种较新的磁盘分区表结构的标准，是未来磁盘分区的主要形式。与MBR分区方式相比，具有如下优点。">
 
 
 
-  <link rel="alternate" href="/atom.xml" title="Erdong’ Blog" type="application/atom+xml">
+  <link rel="alternate" href="/atom.xml" title="Erdong’ Blog" type="application/atom+xml"/>
 
 
 
 
-  <link rel="canonical" href="https://erdong.site/tools/parted-create-gpt-partition.html">
+  <link rel="canonical" href="https://erdong.site/tools/parted-create-gpt-partition.html"/>
 
 
 
@@ -165,7 +168,7 @@
   </style>
 </noscript>
 
-</head>
+<meta name="generator" content="Hexo 4.2.1"></head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
 
@@ -226,7 +229,7 @@
 
     
 
-    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+    <a href="/" rel="section">&lt;i class&#x3D;&quot;menu-item-icon fa fa-fw fa-home&quot;&gt;&lt;&#x2F;i&gt; &lt;br&#x2F;&gt;首页</a>
 
   </li>
         
@@ -243,7 +246,7 @@
 
     
 
-    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+    <a href="/categories/" rel="section">&lt;i class&#x3D;&quot;menu-item-icon fa fa-fw fa-th&quot;&gt;&lt;&#x2F;i&gt; &lt;br&#x2F;&gt;分类</a>
 
   </li>
         
@@ -260,7 +263,7 @@
 
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+    <a href="/archives/" rel="section">&lt;i class&#x3D;&quot;menu-item-icon fa fa-fw fa-archive&quot;&gt;&lt;&#x2F;i&gt; &lt;br&#x2F;&gt;归档</a>
 
   </li>
         
@@ -277,7 +280,7 @@
 
     
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+    <a href="/tags/" rel="section">&lt;i class&#x3D;&quot;menu-item-icon fa fa-fw fa-tags&quot;&gt;&lt;&#x2F;i&gt; &lt;br&#x2F;&gt;标签</a>
 
   </li>
         
@@ -294,7 +297,7 @@
 
     
 
-    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
+    <a href="/about/" rel="section">&lt;i class&#x3D;&quot;menu-item-icon fa fa-fw fa-user&quot;&gt;&lt;&#x2F;i&gt; &lt;br&#x2F;&gt;关于</a>
 
   </li>
 
@@ -305,7 +308,7 @@
             <a href="javascript:;" class="popup-trigger">
           
             
-              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>搜索</a>
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br/>搜索</a>
         </li>
       
     </ul>
@@ -325,7 +328,9 @@
       <i class="fa fa-times-circle"></i>
     </span>
     <div class="local-search-input-wrapper">
-      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
     </div>
   </div>
   <div id="local-search-result"></div>
@@ -375,16 +380,16 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://erdong.site/tools/parted-create-gpt-partition.html">
+    <link itemprop="mainEntityOfPage" href="https://erdong.site/tools/parted-create-gpt-partition.html"/>
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Er Dong">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/myavatar.jpg">
+      <meta itemprop="name" content="Er Dong"/>
+      <meta itemprop="description" content=""/>
+      <meta itemprop="image" content="/images/myavatar.jpg"/>
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Erdong’ Blog">
+      <meta itemprop="name" content="Erdong’ Blog"/>
     </span>
 
     
@@ -467,7 +472,8 @@
 
           
             <span class="post-meta-divider">|</span>
-            <span class="post-meta-item-icon">
+            <span class="post-meta-item-icon"
+            >
             <i class="fa fa-eye"></i>
              阅读次数： 
             <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
@@ -500,13 +506,13 @@
 <h1 id="Parted-介绍"><a href="#Parted-介绍" class="headerlink" title="Parted 介绍"></a>Parted 介绍</h1><p>Parted 命令分为两种模式：命令行模式和交互模式。</p>
 <h2 id="命令行模式"><a href="#命令行模式" class="headerlink" title="命令行模式"></a>命令行模式</h2><p>parted [option] device [command] ,该模式可以直接在命令行下对磁盘进行分区操作，比较适合编程应用。如：</p>
 <p>显示磁盘/dev/sdb分区。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">parted /dev/sdb print</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">parted &#x2F;dev&#x2F;sdb print</span><br></pre></td></tr></table></figure>
 
 <h2 id="交互模式"><a href="#交互模式" class="headerlink" title="交互模式"></a>交互模式</h2><p>parted [option] device 进入交互模式。尤其是对 parted 命令不是很熟悉的情况下建议使用交互模式。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">parted /dev/sdb</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">parted &#x2F;dev&#x2F;sdb</span><br></pre></td></tr></table></figure>
 
 <h1 id="parted命令常用选项"><a href="#parted命令常用选项" class="headerlink" title="parted命令常用选项"></a>parted命令常用选项</h1><p>进入 交互模式下， 输入 <code>help</code> 可以看到如下提示，本文基于 Parted 3.2 进行说明。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">test@test01:~$ sudo parted /dev/sdb</span><br><span class="line">GNU Parted 3.2</span><br><span class="line">使用 /dev/sdb</span><br><span class="line">欢迎使用 GNU Parted! 输入 &apos;help&apos;可获得命令列表.</span><br><span class="line">(parted) help</span><br><span class="line">  align-check TYPE N                        check partition N for TYPE(min|opt) alignment</span><br><span class="line">  help [COMMAND]                           print general help, or help on COMMAND</span><br><span class="line">  mklabel,mktable LABEL-TYPE               create a new disklabel (partition table)</span><br><span class="line">  mkpart 分区类型 [文件系统类型] 起始点 终止点      创建一个分区</span><br><span class="line">  name NUMBER 名称               将编号为NUMBER 的分区命名为“名称”</span><br><span class="line">  print [devices|free|list,all|NUMBER]     display the partition table, available devices, free space,</span><br><span class="line">        all found partitions, or a particular partition</span><br><span class="line">  quit                          退出程序</span><br><span class="line">  rescue 起始点 终止点  挽救临近“起始点”、“终止点”的遗失的分区</span><br><span class="line">  resizepart NUMBER END                    resize partition NUMBER</span><br><span class="line">  rm MINOR                      删除编号为 MINOR 的分区</span><br><span class="line">  选择设备  选择要编辑的设备</span><br><span class="line">  disk_set FLAG STATE                      change the FLAG on selected device</span><br><span class="line">  disk_toggle [FLAG]                       toggle the state of FLAG on selected device</span><br><span class="line">  set NUMBER FLAG STATE                    change the FLAG on partition NUMBER</span><br><span class="line">  toggle [NUMBER [FLAG]]                   切换分区 NUMBER 的 FLAG 标记</span><br><span class="line">  unit UNIT                                set the default unit to UNIT</span><br><span class="line">  version                                  display the version number and copyright information of GNU</span><br><span class="line">        Parted</span><br><span class="line">(parted)</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">test@test01:~$ sudo parted &#x2F;dev&#x2F;sdb</span><br><span class="line">GNU Parted 3.2</span><br><span class="line">使用 &#x2F;dev&#x2F;sdb</span><br><span class="line">欢迎使用 GNU Parted! 输入 &#39;help&#39;可获得命令列表.</span><br><span class="line">(parted) help</span><br><span class="line">  align-check TYPE N                        check partition N for TYPE(min|opt) alignment</span><br><span class="line">  help [COMMAND]                           print general help, or help on COMMAND</span><br><span class="line">  mklabel,mktable LABEL-TYPE               create a new disklabel (partition table)</span><br><span class="line">  mkpart 分区类型 [文件系统类型] 起始点 终止点      创建一个分区</span><br><span class="line">  name NUMBER 名称               将编号为NUMBER 的分区命名为“名称”</span><br><span class="line">  print [devices|free|list,all|NUMBER]     display the partition table, available devices, free space,</span><br><span class="line">        all found partitions, or a particular partition</span><br><span class="line">  quit                          退出程序</span><br><span class="line">  rescue 起始点 终止点  挽救临近“起始点”、“终止点”的遗失的分区</span><br><span class="line">  resizepart NUMBER END                    resize partition NUMBER</span><br><span class="line">  rm MINOR                      删除编号为 MINOR 的分区</span><br><span class="line">  选择设备  选择要编辑的设备</span><br><span class="line">  disk_set FLAG STATE                      change the FLAG on selected device</span><br><span class="line">  disk_toggle [FLAG]                       toggle the state of FLAG on selected device</span><br><span class="line">  set NUMBER FLAG STATE                    change the FLAG on partition NUMBER</span><br><span class="line">  toggle [NUMBER [FLAG]]                   切换分区 NUMBER 的 FLAG 标记</span><br><span class="line">  unit UNIT                                set the default unit to UNIT</span><br><span class="line">  version                                  display the version number and copyright information of GNU</span><br><span class="line">        Parted</span><br><span class="line">(parted)</span><br></pre></td></tr></table></figure>
 
 <p>比较常用的几个选项是</p>
 <ul>
@@ -519,33 +525,32 @@
 <li>quit 退出该交互界面</li>
 </ul>
 <h1 id="对磁盘进行分区"><a href="#对磁盘进行分区" class="headerlink" title="对磁盘进行分区"></a>对磁盘进行分区</h1><p>首先对于容量较大的磁盘使用 fdisk 工具会得到如下提示：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">test@test01:~$ sudo fdisk /dev/sdb</span><br><span class="line"></span><br><span class="line">欢迎使用 fdisk (util-linux 2.31.1)。</span><br><span class="line">更改将停留在内存中，直到您决定将更改写入磁盘。</span><br><span class="line">使用写入命令前请三思。</span><br><span class="line"></span><br><span class="line">设备不包含可识别的分区表。</span><br><span class="line">The size of this disk is 3.7 TiB (4000787030016 bytes). DOS partition table format cannot be used on drives for volumes larger than 2199023255040 bytes for 512-byte sectors. Use GUID partition table format (GPT).</span><br><span class="line"></span><br><span class="line">创建了一个磁盘标识符为 0x9f682389 的新 DOS 磁盘标签。</span><br><span class="line"></span><br><span class="line">命令(输入 m 获取帮助)：</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">test@test01:~$ sudo fdisk &#x2F;dev&#x2F;sdb</span><br><span class="line"></span><br><span class="line">欢迎使用 fdisk (util-linux 2.31.1)。</span><br><span class="line">更改将停留在内存中，直到您决定将更改写入磁盘。</span><br><span class="line">使用写入命令前请三思。</span><br><span class="line"></span><br><span class="line">设备不包含可识别的分区表。</span><br><span class="line">The size of this disk is 3.7 TiB (4000787030016 bytes). DOS partition table format cannot be used on drives for volumes larger than 2199023255040 bytes for 512-byte sectors. Use GUID partition table format (GPT).</span><br><span class="line"></span><br><span class="line">创建了一个磁盘标识符为 0x9f682389 的新 DOS 磁盘标签。</span><br><span class="line"></span><br><span class="line">命令(输入 m 获取帮助)：</span><br></pre></td></tr></table></figure>
 
 <p>这个时候我们就需要更新 parted 来对磁盘进行分区。</p>
 <h2 id="更改分区表"><a href="#更改分区表" class="headerlink" title="更改分区表"></a>更改分区表</h2><p>操作如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">(parted) mklabel gpt</span><br><span class="line">(parted) print</span><br><span class="line">Model: ATA ST4000DM004-2CV1 (scsi)</span><br><span class="line">磁盘 /dev/sdb: 4001GB</span><br><span class="line">Sector size (logical/physical): 512B/4096B</span><br><span class="line">分区表：gpt</span><br><span class="line">Disk Flags:</span><br><span class="line"></span><br><span class="line">数字  开始：  End  大小  文件系统  Name  标志</span><br><span class="line"></span><br><span class="line">(parted)</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">(parted) mklabel gpt</span><br><span class="line">(parted) print</span><br><span class="line">Model: ATA ST4000DM004-2CV1 (scsi)</span><br><span class="line">磁盘 &#x2F;dev&#x2F;sdb: 4001GB</span><br><span class="line">Sector size (logical&#x2F;physical): 512B&#x2F;4096B</span><br><span class="line">分区表：gpt</span><br><span class="line">Disk Flags:</span><br><span class="line"></span><br><span class="line">数字  开始：  End  大小  文件系统  Name  标志</span><br><span class="line"></span><br><span class="line">(parted)</span><br></pre></td></tr></table></figure>
 
 <h2 id="创建分区"><a href="#创建分区" class="headerlink" title="创建分区"></a>创建分区</h2><p>使用 mkpart 创建自己需要的大小的分区</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">(parted) mkpart primary 0 4TB</span><br><span class="line">(parted) p</span><br><span class="line">Model: ATA ST4000DM004-2CV1 (scsi)</span><br><span class="line">磁盘 /dev/sdb: 4001GB</span><br><span class="line">Sector size (logical/physical): 512B/4096B</span><br><span class="line">分区表：gpt</span><br><span class="line">Disk Flags:</span><br><span class="line"></span><br><span class="line">数字  开始：  End     大小    文件系统  Name     标志</span><br><span class="line"> 1    1049kB  4001GB  4001GB            primary</span><br><span class="line"></span><br><span class="line">(parted)</span><br></pre></td></tr></table></figure>
-
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">(parted) mkpart primary 0 4TB</span><br><span class="line">(parted) p</span><br><span class="line">Model: ATA ST4000DM004-2CV1 (scsi)</span><br><span class="line">磁盘 &#x2F;dev&#x2F;sdb: 4001GB</span><br><span class="line">Sector size (logical&#x2F;physical): 512B&#x2F;4096B</span><br><span class="line">分区表：gpt</span><br><span class="line">Disk Flags:</span><br><span class="line"></span><br><span class="line">数字  开始：  End     大小    文件系统  Name     标志</span><br><span class="line"> 1    1049kB  4001GB  4001GB            primary</span><br><span class="line"></span><br><span class="line">(parted)</span><br></pre></td></tr></table></figure>
 <p>创建好以后退出。</p>
 <blockquote>
 <p>parted 的每一个操作都是即时生效，和 fdisk 不同，fdisk 只有在最后使用 <code>w</code> 进行保存以后才会生效 。</p>
 </blockquote>
 <h2 id="格式化分区"><a href="#格式化分区" class="headerlink" title="格式化分区"></a>格式化分区</h2><p>格式化成你需要的文件系统。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mkfs.ext4 /dev/sdb1</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mkfs.ext4 &#x2F;dev&#x2F;sdb1</span><br></pre></td></tr></table></figure>
 
 <p>整个分区创建过程就结束了。</p>
 <h1 id="对齐分区以得到最优性能"><a href="#对齐分区以得到最优性能" class="headerlink" title="对齐分区以得到最优性能"></a>对齐分区以得到最优性能</h1><p>当分区不对齐时，parted 会提示如下</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">警告: The resulting partition is not properly aligned for best performance.</span><br><span class="line">忽略/Ignore/放弃/Cancel?</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">警告: The resulting partition is not properly aligned for best performance.</span><br><span class="line">忽略&#x2F;Ignore&#x2F;放弃&#x2F;Cancel?</span><br></pre></td></tr></table></figure>
 
 <p>对于这个提示，只要分区对齐就好。如果你的设计，就是要不对齐，那么可以忽略这个提示。</p>
 <p>对齐分区有两个方法，</p>
 <p>方法一，使用百分比来表示要分区的的空间大小，那么到100%的时候自然是对齐的。示例如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">(parted) mkpart primary 0% 100%</span><br><span class="line">(parted) p</span><br><span class="line">Model: ATA ST4000DM004-2CV1 (scsi)</span><br><span class="line">磁盘 /dev/sdb: 4001GB</span><br><span class="line">Sector size (logical/physical): 512B/4096B</span><br><span class="line">分区表：gpt</span><br><span class="line">Disk Flags:</span><br><span class="line"></span><br><span class="line">数字  开始：  End     大小    文件系统  Name     标志</span><br><span class="line"> 1    1049kB  4001GB  4001GB            primary</span><br><span class="line"></span><br><span class="line">(parted)</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">(parted) mkpart primary 0% 100%</span><br><span class="line">(parted) p</span><br><span class="line">Model: ATA ST4000DM004-2CV1 (scsi)</span><br><span class="line">磁盘 &#x2F;dev&#x2F;sdb: 4001GB</span><br><span class="line">Sector size (logical&#x2F;physical): 512B&#x2F;4096B</span><br><span class="line">分区表：gpt</span><br><span class="line">Disk Flags:</span><br><span class="line"></span><br><span class="line">数字  开始：  End     大小    文件系统  Name     标志</span><br><span class="line"> 1    1049kB  4001GB  4001GB            primary</span><br><span class="line"></span><br><span class="line">(parted)</span><br></pre></td></tr></table></figure>
 
 <p>方法二，如果是使用容量来进行空间大小的话，那么 <code>-1</code> 这个值代表的是最后的位置。示例如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">(parted) mkpart primary 0TB -1</span><br><span class="line">(parted) p</span><br><span class="line">Model: ATA ST4000DM004-2CV1 (scsi)</span><br><span class="line">磁盘 /dev/sdb: 4001GB</span><br><span class="line">Sector size (logical/physical): 512B/4096B</span><br><span class="line">分区表：gpt</span><br><span class="line">Disk Flags:</span><br><span class="line"></span><br><span class="line">数字  开始：  End     大小    文件系统  Name     标志</span><br><span class="line"> 1    1049kB  4001GB  4001GB            primary</span><br><span class="line"></span><br><span class="line">(parted)</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">(parted) mkpart primary 0TB -1</span><br><span class="line">(parted) p</span><br><span class="line">Model: ATA ST4000DM004-2CV1 (scsi)</span><br><span class="line">磁盘 &#x2F;dev&#x2F;sdb: 4001GB</span><br><span class="line">Sector size (logical&#x2F;physical): 512B&#x2F;4096B</span><br><span class="line">分区表：gpt</span><br><span class="line">Disk Flags:</span><br><span class="line"></span><br><span class="line">数字  开始：  End     大小    文件系统  Name     标志</span><br><span class="line"> 1    1049kB  4001GB  4001GB            primary</span><br><span class="line"></span><br><span class="line">(parted)</span><br></pre></td></tr></table></figure>
 
 <p>方法三，手动进行计算。</p>
 <p>下边这篇博客的作者描述了如何计算磁盘的扇区来保证分区对齐。</p>
@@ -564,7 +569,7 @@
     
       <div>
         <div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
-  <img id="wechat_subscriber_qcode" src="/images/erdongxt.jpg" alt="Er Dong wechat" style="width: 200px; max-width: 100%;">
+  <img id="wechat_subscriber_qcode" src="/images/erdongxt.jpg" alt="Er Dong wechat" style="width: 200px; max-width: 100%;"/>
   <div>扫描二维码关注微信公众号</div>
 </div>
 
@@ -585,14 +590,14 @@
 
     
       <div id="wechat" style="display: inline-block">
-        <img id="wechat_qr" src="/images/WeChatPay.png" alt="Er Dong 微信支付">
+        <img id="wechat_qr" src="/images/WeChatPay.png" alt="Er Dong 微信支付"/>
         <p>微信支付</p>
       </div>
     
 
     
       <div id="alipay" style="display: inline-block">
-        <img id="alipay_qr" src="/images/AliPay.png" alt="Er Dong 支付宝">
+        <img id="alipay_qr" src="/images/AliPay.png" alt="Er Dong 支付宝"/>
         <p>支付宝</p>
       </div>
     
@@ -621,10 +626,10 @@
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
     
-    <a href="https://erdong.site/tools/parted-create-gpt-partition.html" title="Parted 创建 GPT 分区">https://erdong.site/tools/parted-create-gpt-partition.html</a>
+    <a href="https://erdong.site/tools/parted-create-gpt-partition.html" title="Parted 创建 GPT 分区">https:&#x2F;&#x2F;erdong.site&#x2F;tools&#x2F;parted-create-gpt-partition.html</a>
   </li>
   <li class="post-copyright-license">
-    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-ND</a> 许可协议。转载请注明出处！</li>
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" rel="noopener" target="_blank">&lt;i class&#x3D;&quot;fa fa-fw fa-creative-commons&quot;&gt;&lt;&#x2F;i&gt;BY-NC-ND</a> 许可协议。转载请注明出处！</li>
 </ul>
 
       </div>
@@ -720,7 +725,9 @@
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
-              <img class="site-author-image" itemprop="image" src="/images/myavatar.jpg" alt="Er Dong">
+              <img class="site-author-image" itemprop="image"
+                src="/images/myavatar.jpg"
+                alt="Er Dong"/>
             
               <p class="site-author-name" itemprop="name">Er Dong</p>
               <p class="site-description motion-element" itemprop="description"></p>
@@ -731,7 +738,7 @@
               
                 <div class="site-state-item site-state-posts">
                 
-                  <a href="/archives/">
+                  <a href="/archives/%20%7C%7C%20archive">
                 
                     <span class="site-state-item-count">114</span>
                     <span class="site-state-item-name">日志</span>
@@ -933,7 +940,7 @@
                   
                     
                   
-                  <a href="https://github.com/erdong" title="GitHub &rarr; https://github.com/erdong" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                  <a href="https://github.com/erdong" title="GitHub &amp;rarr; https:&#x2F;&#x2F;github.com&#x2F;erdong" rel="noopener" target="_blank">&lt;i class&#x3D;&quot;fa fa-fw fa-github&quot;&gt;&lt;&#x2F;i&gt;GitHub</a>
                 </span>
               
                 <span class="links-of-author-item">
@@ -944,7 +951,7 @@
                   
                     
                   
-                  <a href="mailto:erdong@mail.erdong.site" title="E-Mail &rarr; mailto:erdong@mail.erdong.site" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  <a href="mailto:erdong@mail.erdong.site" title="E-Mail &amp;rarr; mailto:erdong@mail.erdong.site" rel="noopener" target="_blank">&lt;i class&#x3D;&quot;fa fa-fw fa-envelope&quot;&gt;&lt;&#x2F;i&gt;E-Mail</a>
                 </span>
               
             </div>
@@ -957,7 +964,7 @@
               
               
               
-              <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-nd.svg" alt="Creative Commons"></a>
+              <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" class="cc-opacity" rel="noopener" target="_blank">&lt;img src&#x3D;&quot;&#x2F;images&#x2F;cc-by-nc-nd.svg&quot; alt&#x3D;&quot;Creative Commons&quot;&#x2F;&gt;</a>
              </div>
           
 
@@ -971,11 +978,11 @@
               <ul class="links-of-blogroll-list">
                 
                   <li class="links-of-blogroll-item">
-                    <a href="http://www.ruanyifeng.com/blog/" title="http://www.ruanyifeng.com/blog/" rel="noopener" target="_blank">Ruanyifeng</a>
+                    <a href="http://www.ruanyifeng.com/blog/" title="http:&#x2F;&#x2F;www.ruanyifeng.com&#x2F;blog&#x2F;" rel="noopener" target="_blank">Ruanyifeng</a>
                   </li>
                 
                   <li class="links-of-blogroll-item">
-                    <a href="https://coolshell.cn" title="https://coolshell.cn" rel="noopener" target="_blank">左耳朵耗子</a>
+                    <a href="https://coolshell.cn/" title="https:&#x2F;&#x2F;coolshell.cn" rel="noopener" target="_blank">左耳朵耗子</a>
                   </li>
                 
               </ul>
@@ -1040,7 +1047,7 @@
 </div>
 
 
-  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动</div>
 
 
 
@@ -1048,7 +1055,7 @@
 
 
 
-  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a></div>
+  <div class="theme-info">主题 – <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a></div>
 
 
 

@@ -15,11 +15,11 @@
 
 
 <html class="theme-next pisces use-motion" lang="zh-CN">
-<head><meta name="generator" content="Hexo 3.9.0">
-  <meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
-<meta name="theme-color" content="#222">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
+<meta name="theme-color" content="#222"/>
 
 
 
@@ -46,9 +46,9 @@
 
 
 
-<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2"/>
 
-<link rel="stylesheet" href="/css/main.css?v=6.7.0">
+<link rel="stylesheet" href="/css/main.css?v=6.7.0"/>
 
 
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.7.0">
@@ -97,26 +97,31 @@
 
 
   <meta name="description" content="Prometheus 与 Graphite范围Graphite 专注于成为一个具有查询语言和绘图功能的被动时间序列数据库。任何其他问题都由外部组件处理。 Prometheus 是一个完整的监控和趋势系统，包括内置和活动的抓取、存储、查询、绘图和基于时间序列数据的报警。它知道监控应该是什么样子(监控点应该存在，时间序列模式意味着什么问题，等等)，并积极地寻找错误。">
-<meta name="keywords" content="prometheus,OpenTSDB,InfluxDB,Graphite,Nagios,Sensu">
 <meta property="og:type" content="article">
 <meta property="og:title" content="【翻译】时序数据库为什么选 Prometheus">
 <meta property="og:url" content="https://erdong.site/Prometheus/guide/prometheus-comparison-tsdb.html">
 <meta property="og:site_name" content="Erdong’ Blog">
 <meta property="og:description" content="Prometheus 与 Graphite范围Graphite 专注于成为一个具有查询语言和绘图功能的被动时间序列数据库。任何其他问题都由外部组件处理。 Prometheus 是一个完整的监控和趋势系统，包括内置和活动的抓取、存储、查询、绘图和基于时间序列数据的报警。它知道监控应该是什么样子(监控点应该存在，时间序列模式意味着什么问题，等等)，并积极地寻找错误。">
-<meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-10-14T11:11:11.280Z">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2019-03-02T03:39:13.000Z">
+<meta property="article:modified_time" content="2019-10-14T11:11:11.280Z">
+<meta property="article:author" content="Er Dong">
+<meta property="article:tag" content="prometheus">
+<meta property="article:tag" content="OpenTSDB">
+<meta property="article:tag" content="InfluxDB">
+<meta property="article:tag" content="Graphite">
+<meta property="article:tag" content="Nagios">
+<meta property="article:tag" content="Sensu">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="【翻译】时序数据库为什么选 Prometheus">
-<meta name="twitter:description" content="Prometheus 与 Graphite范围Graphite 专注于成为一个具有查询语言和绘图功能的被动时间序列数据库。任何其他问题都由外部组件处理。 Prometheus 是一个完整的监控和趋势系统，包括内置和活动的抓取、存储、查询、绘图和基于时间序列数据的报警。它知道监控应该是什么样子(监控点应该存在，时间序列模式意味着什么问题，等等)，并积极地寻找错误。">
 
 
 
-  <link rel="alternate" href="/atom.xml" title="Erdong’ Blog" type="application/atom+xml">
+  <link rel="alternate" href="/atom.xml" title="Erdong’ Blog" type="application/atom+xml"/>
 
 
 
 
-  <link rel="canonical" href="https://erdong.site/Prometheus/guide/prometheus-comparison-tsdb.html">
+  <link rel="canonical" href="https://erdong.site/Prometheus/guide/prometheus-comparison-tsdb.html"/>
 
 
 
@@ -165,7 +170,7 @@
   </style>
 </noscript>
 
-</head>
+<meta name="generator" content="Hexo 4.2.1"></head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
 
@@ -226,7 +231,7 @@
 
     
 
-    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+    <a href="/" rel="section">&lt;i class&#x3D;&quot;menu-item-icon fa fa-fw fa-home&quot;&gt;&lt;&#x2F;i&gt; &lt;br&#x2F;&gt;首页</a>
 
   </li>
         
@@ -243,7 +248,7 @@
 
     
 
-    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+    <a href="/categories/" rel="section">&lt;i class&#x3D;&quot;menu-item-icon fa fa-fw fa-th&quot;&gt;&lt;&#x2F;i&gt; &lt;br&#x2F;&gt;分类</a>
 
   </li>
         
@@ -260,7 +265,7 @@
 
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+    <a href="/archives/" rel="section">&lt;i class&#x3D;&quot;menu-item-icon fa fa-fw fa-archive&quot;&gt;&lt;&#x2F;i&gt; &lt;br&#x2F;&gt;归档</a>
 
   </li>
         
@@ -277,7 +282,7 @@
 
     
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+    <a href="/tags/" rel="section">&lt;i class&#x3D;&quot;menu-item-icon fa fa-fw fa-tags&quot;&gt;&lt;&#x2F;i&gt; &lt;br&#x2F;&gt;标签</a>
 
   </li>
         
@@ -294,7 +299,7 @@
 
     
 
-    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
+    <a href="/about/" rel="section">&lt;i class&#x3D;&quot;menu-item-icon fa fa-fw fa-user&quot;&gt;&lt;&#x2F;i&gt; &lt;br&#x2F;&gt;关于</a>
 
   </li>
 
@@ -305,7 +310,7 @@
             <a href="javascript:;" class="popup-trigger">
           
             
-              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>搜索</a>
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br/>搜索</a>
         </li>
       
     </ul>
@@ -325,7 +330,9 @@
       <i class="fa fa-times-circle"></i>
     </span>
     <div class="local-search-input-wrapper">
-      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
     </div>
   </div>
   <div id="local-search-result"></div>
@@ -375,16 +382,16 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://erdong.site/Prometheus/guide/prometheus-comparison-tsdb.html">
+    <link itemprop="mainEntityOfPage" href="https://erdong.site/Prometheus/guide/prometheus-comparison-tsdb.html"/>
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Er Dong">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/myavatar.jpg">
+      <meta itemprop="name" content="Er Dong"/>
+      <meta itemprop="description" content=""/>
+      <meta itemprop="image" content="/images/myavatar.jpg"/>
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Erdong’ Blog">
+      <meta itemprop="name" content="Erdong’ Blog"/>
     </span>
 
     
@@ -474,7 +481,8 @@
 
           
             <span class="post-meta-divider">|</span>
-            <span class="post-meta-item-icon">
+            <span class="post-meta-item-icon"
+            >
             <i class="fa fa-eye"></i>
              阅读次数： 
             <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
@@ -509,8 +517,10 @@
 <p>例如，Graphite / StatsD 存储 api-server 返回值为 500 的 HTTP 请求的数据会像下面一样</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">stats.api-server.tracks.post.500 -&gt; 93</span><br></pre></td></tr></table></figure>
 
+
 <p>在 Prometheus 中，相同的数据会被编码成如下的样子，（假设有三个 api-server 实例）</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">api_server_http_requests_total&#123;method=&quot;POST&quot;,handler=&quot;/tracks&quot;,status=&quot;500&quot;,instance=&quot;&lt;sample1&gt;&quot;&#125; -&gt; 34</span><br><span class="line">api_server_http_requests_total&#123;method=&quot;POST&quot;,handler=&quot;/tracks&quot;,status=&quot;500&quot;,instance=&quot;&lt;sample2&gt;&quot;&#125; -&gt; 28</span><br><span class="line">api_server_http_requests_total&#123;method=&quot;POST&quot;,handler=&quot;/tracks&quot;,status=&quot;500&quot;,instance=&quot;&lt;sample3&gt;&quot;&#125; -&gt; 31</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">api_server_http_requests_total&#123;method&#x3D;&quot;POST&quot;,handler&#x3D;&quot;&#x2F;tracks&quot;,status&#x3D;&quot;500&quot;,instance&#x3D;&quot;&lt;sample1&gt;&quot;&#125; -&gt; 34</span><br><span class="line">api_server_http_requests_total&#123;method&#x3D;&quot;POST&quot;,handler&#x3D;&quot;&#x2F;tracks&quot;,status&#x3D;&quot;500&quot;,instance&#x3D;&quot;&lt;sample2&gt;&quot;&#125; -&gt; 28</span><br><span class="line">api_server_http_requests_total&#123;method&#x3D;&quot;POST&quot;,handler&#x3D;&quot;&#x2F;tracks&quot;,status&#x3D;&quot;500&quot;,instance&#x3D;&quot;&lt;sample3&gt;&quot;&#125; -&gt; 31</span><br></pre></td></tr></table></figure>
+
 
 <h2 id="数据存储"><a href="#数据存储" class="headerlink" title="数据存储"></a>数据存储</h2><p>Graphite 将时间序列数据以 Whisper 格式存储在本地磁盘上，Whisper 格式是一种期望样本定期到达 RRD-style 数据库。<br>每个时间序列都存储在一个单独的文件中，新的采样数据会在一段时间后覆盖旧的采样数据。</p>
 <p>Prometheus 也为每个时间序列数据创建一个本地文件，允许在发生剪贴或规则评估时以任意间隔存储数据。<br>由于新数据只是简单地追加，旧数据可以任意地保持较长时间。<br>Prometheus 也适用于许多短暂的、频繁变化的时间序列。</p>
@@ -581,7 +591,7 @@
     
       <div>
         <div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
-  <img id="wechat_subscriber_qcode" src="/images/erdongxt.jpg" alt="Er Dong wechat" style="width: 200px; max-width: 100%;">
+  <img id="wechat_subscriber_qcode" src="/images/erdongxt.jpg" alt="Er Dong wechat" style="width: 200px; max-width: 100%;"/>
   <div>扫描二维码关注微信公众号</div>
 </div>
 
@@ -602,14 +612,14 @@
 
     
       <div id="wechat" style="display: inline-block">
-        <img id="wechat_qr" src="/images/WeChatPay.png" alt="Er Dong 微信支付">
+        <img id="wechat_qr" src="/images/WeChatPay.png" alt="Er Dong 微信支付"/>
         <p>微信支付</p>
       </div>
     
 
     
       <div id="alipay" style="display: inline-block">
-        <img id="alipay_qr" src="/images/AliPay.png" alt="Er Dong 支付宝">
+        <img id="alipay_qr" src="/images/AliPay.png" alt="Er Dong 支付宝"/>
         <p>支付宝</p>
       </div>
     
@@ -638,10 +648,10 @@
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
     
-    <a href="https://erdong.site/Prometheus/guide/prometheus-comparison-tsdb.html" title="【翻译】时序数据库为什么选 Prometheus">https://erdong.site/Prometheus/guide/prometheus-comparison-tsdb.html</a>
+    <a href="https://erdong.site/Prometheus/guide/prometheus-comparison-tsdb.html" title="【翻译】时序数据库为什么选 Prometheus">https:&#x2F;&#x2F;erdong.site&#x2F;Prometheus&#x2F;guide&#x2F;prometheus-comparison-tsdb.html</a>
   </li>
   <li class="post-copyright-license">
-    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-ND</a> 许可协议。转载请注明出处！</li>
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" rel="noopener" target="_blank">&lt;i class&#x3D;&quot;fa fa-fw fa-creative-commons&quot;&gt;&lt;&#x2F;i&gt;BY-NC-ND</a> 许可协议。转载请注明出处！</li>
 </ul>
 
       </div>
@@ -741,7 +751,9 @@
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
-              <img class="site-author-image" itemprop="image" src="/images/myavatar.jpg" alt="Er Dong">
+              <img class="site-author-image" itemprop="image"
+                src="/images/myavatar.jpg"
+                alt="Er Dong"/>
             
               <p class="site-author-name" itemprop="name">Er Dong</p>
               <p class="site-description motion-element" itemprop="description"></p>
@@ -752,7 +764,7 @@
               
                 <div class="site-state-item site-state-posts">
                 
-                  <a href="/archives/">
+                  <a href="/archives/%20%7C%7C%20archive">
                 
                     <span class="site-state-item-count">114</span>
                     <span class="site-state-item-name">日志</span>
@@ -954,7 +966,7 @@
                   
                     
                   
-                  <a href="https://github.com/erdong" title="GitHub &rarr; https://github.com/erdong" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                  <a href="https://github.com/erdong" title="GitHub &amp;rarr; https:&#x2F;&#x2F;github.com&#x2F;erdong" rel="noopener" target="_blank">&lt;i class&#x3D;&quot;fa fa-fw fa-github&quot;&gt;&lt;&#x2F;i&gt;GitHub</a>
                 </span>
               
                 <span class="links-of-author-item">
@@ -965,7 +977,7 @@
                   
                     
                   
-                  <a href="mailto:erdong@mail.erdong.site" title="E-Mail &rarr; mailto:erdong@mail.erdong.site" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  <a href="mailto:erdong@mail.erdong.site" title="E-Mail &amp;rarr; mailto:erdong@mail.erdong.site" rel="noopener" target="_blank">&lt;i class&#x3D;&quot;fa fa-fw fa-envelope&quot;&gt;&lt;&#x2F;i&gt;E-Mail</a>
                 </span>
               
             </div>
@@ -978,7 +990,7 @@
               
               
               
-              <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-nd.svg" alt="Creative Commons"></a>
+              <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" class="cc-opacity" rel="noopener" target="_blank">&lt;img src&#x3D;&quot;&#x2F;images&#x2F;cc-by-nc-nd.svg&quot; alt&#x3D;&quot;Creative Commons&quot;&#x2F;&gt;</a>
              </div>
           
 
@@ -992,11 +1004,11 @@
               <ul class="links-of-blogroll-list">
                 
                   <li class="links-of-blogroll-item">
-                    <a href="http://www.ruanyifeng.com/blog/" title="http://www.ruanyifeng.com/blog/" rel="noopener" target="_blank">Ruanyifeng</a>
+                    <a href="http://www.ruanyifeng.com/blog/" title="http:&#x2F;&#x2F;www.ruanyifeng.com&#x2F;blog&#x2F;" rel="noopener" target="_blank">Ruanyifeng</a>
                   </li>
                 
                   <li class="links-of-blogroll-item">
-                    <a href="https://coolshell.cn" title="https://coolshell.cn" rel="noopener" target="_blank">左耳朵耗子</a>
+                    <a href="https://coolshell.cn/" title="https:&#x2F;&#x2F;coolshell.cn" rel="noopener" target="_blank">左耳朵耗子</a>
                   </li>
                 
               </ul>
@@ -1061,7 +1073,7 @@
 </div>
 
 
-  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动</div>
 
 
 
@@ -1069,7 +1081,7 @@
 
 
 
-  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a></div>
+  <div class="theme-info">主题 – <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a></div>
 
 
 
