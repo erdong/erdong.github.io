@@ -4493,4 +4493,33 @@
         <tag>Prometheus</tag>
       </tags>
   </entry>
+  <entry>
+    <title>Prometheus 2.20.0 新特性</title>
+    <url>/Prometheus/New-Features/New-Features-in-Prometheus-2-20-0.html</url>
+    <content><![CDATA[<p>Prometheus <a href="https://github.com/prometheus/prometheus/releases/tag/v2.19.0" target="_blank" rel="noopener">2.20.0</a> 现在(2020.07.22)已经发布，在上个月的 <a href="http://erdong.site/Prometheus/New-Features/New-Features-in-Prometheus-2-19-0.html">2.19.0</a> 之后又进行了很多的修复和改进。</p>
+<a id="more"></a>
+<p>现在 Prometheus 会默认启动 WAL 压缩，之前的版本是可以选择是否启动 WAL 压缩。这样可以节省一些磁盘空间和 IOPS，降低因为 IOPS 一个小成本的 CPU。</p>
+<p>WAL压缩将防止在不删除WAL的情况下降级到v2.10或更早版本，如果你需要降级，那么可以通过 <code>--no-storage.tsdb.wal-compression</code> 来关闭压缩</p>
+<p>而且正则表达式的匹配器性能也得到的提高。并且提升了高聚合度label的查询性能</p>
+<p>PromQL 新增了一个<code>group()</code>聚合器，可用于提高某些查询的可读性。</p>
+<p>新增了 2 个服务发现，Docker Swarm和DigitalOcean。Openstack SD现在还可以查询备选端点，EC2有额外的AMI元数据。</p>
+<p>远程读取指标得到了改进，UI的某些方面也得到了改进。</p>
+<p>详细的发行注记可以查看 <a href="https://github.com/prometheus/prometheus/releases/tag/v2.20.0" target="_blank" rel="noopener">release notes</a> 。</p>
+<h1 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h1><ul>
+<li><a href="https://www.robustperception.io/new-features-in-prometheus-2-20-0" target="_blank" rel="noopener">https://www.robustperception.io/new-features-in-prometheus-2-20-0</a> ， By Brian Brazil</li>
+<li><a href="https://github.com/prometheus/prometheus/releases/tag/v2.20.0" target="_blank" rel="noopener">https://github.com/prometheus/prometheus/releases/tag/v2.20.0</a> ，By prombot of GitHub</li>
+</ul>
+<p>======================<br>由于无法及时收到评论内容，所以关闭评论功能。<br>大家有问题欢迎发邮件到 <a href="mailto:erdong@mail.erdong.site">erdong@mail.erdong.site</a> ，或者 <a href="https://github.com/erdong/erdong.github.io/issues" target="_blank" rel="noopener">https://github.com/erdong/erdong.github.io/issues</a> 提 Issue ，我会及时回复。</p>
+<p>======================<br>Erdong, A Linux user !</p>
+]]></content>
+      <categories>
+        <category>Prometheus</category>
+        <category>New-Features</category>
+      </categories>
+      <tags>
+        <tag>Prometheus</tag>
+        <tag>Features</tag>
+        <tag>release</tag>
+      </tags>
+  </entry>
 </search>

@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://erdong.site/Prometheus/New-Features/New-Features-in-Prometheus-2-20-0.html</loc>
+    
+    <lastmod>2020-08-09T15:10:46.648Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://erdong.site/Grafana/grafana-kubernetes-config-persistence.html</loc>
     
     <lastmod>2020-07-25T01:39:39.658Z</lastmod>
