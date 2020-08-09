@@ -389,17 +389,16 @@
       </tags>
   </entry>
   <entry>
-    <title>【翻译】Prometheus 2.4.0 新特性</title>
-    <url>/Prometheus/New-Features/New-Features-in-Prometheus-2-4-0.html</url>
-    <content><![CDATA[<p>Prometheus <a href="https://github.com/prometheus/prometheus/releases/tag/v2.4.0" target="_blank" rel="noopener">2.4.0</a> 现在(2018.9.17)已经发布，在 6 月份的 <a href="http://erdong.site/Prometheus/New-Features/New-Features-in-Prometheus-2-3-0.html">2.3.0</a> 之后又进行了一些修正和改进。</p>
+    <title>【翻译】Prometheus 2.3.0 新特性</title>
+    <url>/Prometheus/New-Features/New-Features-in-Prometheus-2-3-0.html</url>
+    <content><![CDATA[<p>Prometheus <a href="https://github.com/prometheus/prometheus/releases/tag/v2.3.0" target="_blank" rel="noopener">2.3.0</a> 现在(2018.6.11)已经发布，在 3 月份的 <a href="http://erdong.site/Prometheus/New-Features/New-Features-in-Prometheus-2-2-0.html">2.2.0</a> 之后又进行了一些修正和改进。</p>
 <a id="more"></a>
 
-<p>第一个较大的变化是，对于警报中的状态，现在跨重启持久化，因此短暂的重启将不再需要挂起警报从头开始。现在，在向 Alertmanager 发送警报时也有了一些限制，因此不再是在每次评估时发送现有警报，而是最多每分钟发送一次，这减少了 Alertmanager 上的负载。</p>
-<p>这次有一个新的 WAL 实现，这意味着升级到2.4.0以后不能降级。有新的 API target 可以访问来自目标的规则、警报和元数据 metric 。</p>
-<p>这次在服务发现方面有一些改进。如果有相同的 SD 配置，它们将只实例化一次，而不是针对它们的每个实例，这将更加有效和有用。此外还有Consul、EC2和GCE的新元数据字段，Azure获得了VMSS支持。</p>
-<p>这次还有很多的提升、bug fix 和其他的改变，可以查看 <a href="https://github.com/prometheus/prometheus/releases/tag/v2.4.0" target="_blank" rel="noopener">release notes</a> 来获取更多的信息。</p>
+<p>这个版本中最大的变化是与性能相关的。我对PromQL的评估方式进行了重大更改，这可以为常见仪表板查询减少31-64%的CPU和55-99%的内存分配。此外，我更改了用于编码响应的JSON库，节省了40%的CPU。</p>
+<p>如果您正在使用带有无记名令牌的商业Marathon产品，请注意字段名已经更改。从好的方面来说，其他地方可用的所有常用HTTP选项现在都可以用于Marathon SD。EC2和领事SD现在允许使用这些技术的内置过滤，这与重新标记没有什么不同，但是对性能很有用。Kubernetes和GCE SD获得了额外的元数据。任何可以指定基本身份验证密码的地方，现在都可以从文件中读取该密码。</p>
+<p>这次还有很多的提升、bug fix 和其他的改变，可以查看 <a href="https://github.com/prometheus/prometheus/releases/tag/v2.3.0" target="_blank" rel="noopener">release notes</a> 来获取更多的信息。</p>
 <h1 id="原文链接"><a href="#原文链接" class="headerlink" title="原文链接"></a>原文链接</h1><ul>
-<li><a href="https://www.robustperception.io/new-features-in-prometheus-2-4-0" target="_blank" rel="noopener">https://www.robustperception.io/new-features-in-prometheus-2-4-0</a> ， By Brian Brazil</li>
+<li><a href="https://www.robustperception.io/new-features-in-prometheus-2-3-0" target="_blank" rel="noopener">https://www.robustperception.io/new-features-in-prometheus-2-3-0</a> ， By Brian Brazil</li>
 </ul>
 <p>======================<br>Erdong, A Linux user !</p>
 ]]></content>
@@ -414,16 +413,17 @@
       </tags>
   </entry>
   <entry>
-    <title>【翻译】Prometheus 2.3.0 新特性</title>
-    <url>/Prometheus/New-Features/New-Features-in-Prometheus-2-3-0.html</url>
-    <content><![CDATA[<p>Prometheus <a href="https://github.com/prometheus/prometheus/releases/tag/v2.3.0" target="_blank" rel="noopener">2.3.0</a> 现在(2018.6.11)已经发布，在 3 月份的 <a href="http://erdong.site/Prometheus/New-Features/New-Features-in-Prometheus-2-2-0.html">2.2.0</a> 之后又进行了一些修正和改进。</p>
+    <title>【翻译】Prometheus 2.4.0 新特性</title>
+    <url>/Prometheus/New-Features/New-Features-in-Prometheus-2-4-0.html</url>
+    <content><![CDATA[<p>Prometheus <a href="https://github.com/prometheus/prometheus/releases/tag/v2.4.0" target="_blank" rel="noopener">2.4.0</a> 现在(2018.9.17)已经发布，在 6 月份的 <a href="http://erdong.site/Prometheus/New-Features/New-Features-in-Prometheus-2-3-0.html">2.3.0</a> 之后又进行了一些修正和改进。</p>
 <a id="more"></a>
 
-<p>这个版本中最大的变化是与性能相关的。我对PromQL的评估方式进行了重大更改，这可以为常见仪表板查询减少31-64%的CPU和55-99%的内存分配。此外，我更改了用于编码响应的JSON库，节省了40%的CPU。</p>
-<p>如果您正在使用带有无记名令牌的商业Marathon产品，请注意字段名已经更改。从好的方面来说，其他地方可用的所有常用HTTP选项现在都可以用于Marathon SD。EC2和领事SD现在允许使用这些技术的内置过滤，这与重新标记没有什么不同，但是对性能很有用。Kubernetes和GCE SD获得了额外的元数据。任何可以指定基本身份验证密码的地方，现在都可以从文件中读取该密码。</p>
-<p>这次还有很多的提升、bug fix 和其他的改变，可以查看 <a href="https://github.com/prometheus/prometheus/releases/tag/v2.3.0" target="_blank" rel="noopener">release notes</a> 来获取更多的信息。</p>
+<p>第一个较大的变化是，对于警报中的状态，现在跨重启持久化，因此短暂的重启将不再需要挂起警报从头开始。现在，在向 Alertmanager 发送警报时也有了一些限制，因此不再是在每次评估时发送现有警报，而是最多每分钟发送一次，这减少了 Alertmanager 上的负载。</p>
+<p>这次有一个新的 WAL 实现，这意味着升级到2.4.0以后不能降级。有新的 API target 可以访问来自目标的规则、警报和元数据 metric 。</p>
+<p>这次在服务发现方面有一些改进。如果有相同的 SD 配置，它们将只实例化一次，而不是针对它们的每个实例，这将更加有效和有用。此外还有Consul、EC2和GCE的新元数据字段，Azure获得了VMSS支持。</p>
+<p>这次还有很多的提升、bug fix 和其他的改变，可以查看 <a href="https://github.com/prometheus/prometheus/releases/tag/v2.4.0" target="_blank" rel="noopener">release notes</a> 来获取更多的信息。</p>
 <h1 id="原文链接"><a href="#原文链接" class="headerlink" title="原文链接"></a>原文链接</h1><ul>
-<li><a href="https://www.robustperception.io/new-features-in-prometheus-2-3-0" target="_blank" rel="noopener">https://www.robustperception.io/new-features-in-prometheus-2-3-0</a> ， By Brian Brazil</li>
+<li><a href="https://www.robustperception.io/new-features-in-prometheus-2-4-0" target="_blank" rel="noopener">https://www.robustperception.io/new-features-in-prometheus-2-4-0</a> ， By Brian Brazil</li>
 </ul>
 <p>======================<br>Erdong, A Linux user !</p>
 ]]></content>
@@ -756,6 +756,69 @@
       </tags>
   </entry>
   <entry>
+    <title>计算机中遇到的单位该怎么换算</title>
+    <url>/linux/system/computer-unit-conversion.html</url>
+    <content><![CDATA[<p>在计算机行业经常进行单位换算，这些单位到底该怎么换算，通过本文来说明一下。</p>
+<a id="more"></a>
+
+
+<p>** bit **</p>
+<p>bit 是字长，意思是一个字所包含二进制输的位数，一个 bit 存放一位二进制数，即 0 或 1，最小的存储单位，简写为 b 。字长越长，运算速度越快，计算精度越高</p>
+<p>** byte **</p>
+<p>byte 是字节，计算机中处理信息的最小单位，以八位二进制信息，简写为 B 。</p>
+<p>byte 和 bit 之间的换算是 8 ，原因是一个字节需要 8个字长</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">1 byte &#x3D; 8 bit</span><br><span class="line"></span><br><span class="line">或者</span><br><span class="line"></span><br><span class="line">1 B &#x3D; 8 b</span><br></pre></td></tr></table></figure>
+
+<p>** K M G T P E 是什么**</p>
+<p>K M G T P E 等是国际单位制(SI)中所规定的词头(prefix)。词头加在SI单位(非SI单位也可以使用并通常遵循此用法)之前表示10的整数幂次，譬如k表示10^3=1000，M表示10^6=1,000,000，G则表示10^9=1,000,000,000. </p>
+<p>举些例子，1kg=1000g，1km=1000m, 都是大家所熟悉的用法 。</p>
+<p>那我们接下来看这些单位怎么换算。</p>
+<h2 id="CPU-主频单位换算"><a href="#CPU-主频单位换算" class="headerlink" title="CPU 主频单位换算"></a>CPU 主频单位换算</h2><p>在计算机的使用过程中，我们会经常用到 CPU 的主频，那么主频是怎么换算呢？</p>
+<p>所谓CPU的主频，就是说这块CPU的工作频率，也就是说这块CPU是在以哪个频率在进行运算处理。CPU的工作频率单位是以Hz（赫）计量，随着科技发展，CPU的制造工艺越来越先进，其主频也得到大幅度提升。现今，虽然CPU主频的计量单位Hz（赫）没变，但我们往往都会在单位前面加上M，甚至G，也就是我们常说的主频MHz（兆赫）和GHz（吉赫）。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">1 GHz &#x3D; 1000 MHz</span><br></pre></td></tr></table></figure>
+
+<p>对于 CPU 来说，除了主频以外还有更重要的一个参数叫做浮点性能，有单精度和双精度，个别情况下会用到半精度，他们的单位是 FLOPS，那么浮点性能的单位怎么换算呢？</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">1 TFLOPS &#x3D; 1000 GFLOPS</span><br></pre></td></tr></table></figure>
+
+<p>相邻两个单位之间的进制 1000 。</p>
+<h2 id="速率单位换算"><a href="#速率单位换算" class="headerlink" title="速率单位换算"></a>速率单位换算</h2><p>我们在下载文件或者拷贝数据时经常用到一个单位 Mbps 来描述数据拷贝的快慢或者网络带宽的大小，这个 Mbps 的意思是 Mb 每秒，及在一秒内可以传输的数据量为多少 Mb ，p 的 per 的简写。</p>
+<p>我们在一些提供下载功能的软件里经常可以看到下载是数据是 MB/s ，那么这个单位和上边的 Mbps 有什么区别呢？</p>
+<p>区别有两点</p>
+<ul>
+<li>表示方法不统一。也就是说，二者同样的表示方式应该是 Mbps 和 MBps 或者 Mb/s 和 MB/s 。</li>
+<li>b 和 B 的区别。这个我们在最开始的时候说过了，一个是字节一个是字长。</li>
+</ul>
+<p>那么他们应该这么换算呢？</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">1 MB&#x2F;s &#x3D; 8Mb&#x2F;s</span><br><span class="line"></span><br><span class="line">1 GB&#x2F;s &#x3D; 1024MB&#x2F;s &#x3D; 8192 Mb&#x2F;s</span><br><span class="line">1 Gb&#x2F;s &#x3D; 1024Gb&#x2F;s</span><br></pre></td></tr></table></figure>
+
+<p>这样就清楚了，我们一般口头说的网络带宽的单位一般是 Mb/s , 下载文件和拷贝文件的单位一般是 MB/s ， 下次我们就可以自己换算一下了。</p>
+<h2 id="存储单位换算"><a href="#存储单位换算" class="headerlink" title="存储单位换算"></a>存储单位换算</h2><p>我们经常看到的存储单位有 KB、MB、GB、TB、PB 等，这些单位在计算机操作系统内的换算情况是这样的</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">1 PB &#x3D; 1024 TB</span><br><span class="line">1 TB &#x3D; 1024 GB</span><br><span class="line">1 GB &#x3D; 1024 MB</span><br><span class="line">1 MB &#x3D; 1024 KB</span><br><span class="line">1 KB &#x3D; 1024 B</span><br></pre></td></tr></table></figure>
+
+<p>在硬盘厂商的宣传里是这样的</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">1 PB &#x3D; 1000 TB</span><br><span class="line">1 TB &#x3D; 1000 GB</span><br><span class="line">1 GB &#x3D; 1000 MB</span><br><span class="line">1 MB &#x3D; 1000 KB</span><br><span class="line">1 KB &#x3D; 1000 B</span><br></pre></td></tr></table></figure>
+
+<p>造成这种差异的原因是，起先计算机的存储容量低到可怜，几千个 Byte 算是很奢侈的容量，由于计算机的二进制特性，这个容量通常是 2 的整数次幂，用起来不方便。IT工程师们发现 2^10=1024 与 k=10^3 接近，相差不过 2%。于是就有人偷懒以 1kB 表示 2^10B 也就是1024B，初看起来一切都好，2% 的差距并不大，时间长了大家也就接受了。</p>
+<p>但问题在于，随着计算机的存储容量依摩尔定律(Moore’s Law)以指数增长，这个差值会越来越大。1kB与1KiB(稍后解释)相差不过2%，1MB 与 1MiB 相差近 5%，1GB 与 1GiB 相差7%，1TB 和 1TiB 足足差了10%。可以预见，随着硬盘容量的进一步扩大，这个差别会越来越大。</p>
+<p>时至今日，在IT业中已经形成了这种混乱的局面，为了解决这个混乱的局面，还是有人做过努力。早在 1998 年 SI 手册中明确要求 SI 词头不应用于 2 的幂次。而同年国际电工委员会(IEC)推出了一套适用于2进制的词头，并且得到了 IEEE 的批准 (IEEE 1541)——不过这还是一个试用的标准。简单来说就是在 SI 词头后加”i”。比如说 K 就成了 Ki，M 成了 Mi，G 成了 Gi。发音把原来SI词头的第二个音节换成[bi]。譬如Ki念 [kibi]，Mi念[mebi],Gi则是[Gibi]等等依此类推。这样，kMG 之类的的 SI 词头回复原来的含义，表示2幂次重任就交给了 Ki= 2^10=1024，Mi=2^20=1048576，Gi=2^30=1073741824 等等。这么一来，当表述一台电脑是3.15GHz CPU/2GiB内存/320GB硬盘时，G/Gi的含义就不存在歧义。</p>
+<p>很简明易懂的解决方案，然而很不幸似乎买 IEC 帐的着实不多，目前支持IEC词头的软件屈指可数。更糟糕的是 1G=1024M 这种约定俗成的错误观念已经根深蒂固。</p>
+<h2 id="进制的选择依据"><a href="#进制的选择依据" class="headerlink" title="进制的选择依据"></a>进制的选择依据</h2><p>看了上边各项单位的换算，不知道大家有没有发现什么规律。</p>
+<p>在计算机里相邻两个单位之间的换算有 1000 和 1024 ，那么什么时候是1000，什么时候是 1024 ？</p>
+<p>其实，一般的换算按照国际单位制(SI) 的规定，相邻两个单位之间的换算是 1000 。</p>
+<p>那么什么时候用 1024 呢？</p>
+<p>那就是单位里含有 byte 或者 bit 的时候，用 1024 来进行换算。其实按照 IEC 的规定，使用 Mi 和 M 进行区分就不会有这样的歧义和疑惑了。</p>
+<p>======================<br>Erdong, A Linux user !</p>
+]]></content>
+      <categories>
+        <category>linux</category>
+        <category>system</category>
+      </categories>
+      <tags>
+        <tag>unit</tag>
+        <tag>conversion</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>CUDA 10.0 安装包浅析</title>
     <url>/GPU/cuda-introduction.html</url>
     <content><![CDATA[<p>本文基于最新的 CUDA 10.0 CentOS 7 操作系统的 run 文件安装包来进行解压分析，看看里边都有些什么内容。有些可能遇到的问题放在最后的 FAQ 里了。CUDA 9.x 会和10.0 有一些差别，不过大部分还是比较接近的。</p>
@@ -876,163 +939,6 @@
       </tags>
   </entry>
   <entry>
-    <title>计算机中遇到的单位该怎么换算</title>
-    <url>/linux/system/computer-unit-conversion.html</url>
-    <content><![CDATA[<p>在计算机行业经常进行单位换算，这些单位到底该怎么换算，通过本文来说明一下。</p>
-<a id="more"></a>
-
-
-<p>** bit **</p>
-<p>bit 是字长，意思是一个字所包含二进制输的位数，一个 bit 存放一位二进制数，即 0 或 1，最小的存储单位，简写为 b 。字长越长，运算速度越快，计算精度越高</p>
-<p>** byte **</p>
-<p>byte 是字节，计算机中处理信息的最小单位，以八位二进制信息，简写为 B 。</p>
-<p>byte 和 bit 之间的换算是 8 ，原因是一个字节需要 8个字长</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">1 byte &#x3D; 8 bit</span><br><span class="line"></span><br><span class="line">或者</span><br><span class="line"></span><br><span class="line">1 B &#x3D; 8 b</span><br></pre></td></tr></table></figure>
-
-<p>** K M G T P E 是什么**</p>
-<p>K M G T P E 等是国际单位制(SI)中所规定的词头(prefix)。词头加在SI单位(非SI单位也可以使用并通常遵循此用法)之前表示10的整数幂次，譬如k表示10^3=1000，M表示10^6=1,000,000，G则表示10^9=1,000,000,000. </p>
-<p>举些例子，1kg=1000g，1km=1000m, 都是大家所熟悉的用法 。</p>
-<p>那我们接下来看这些单位怎么换算。</p>
-<h2 id="CPU-主频单位换算"><a href="#CPU-主频单位换算" class="headerlink" title="CPU 主频单位换算"></a>CPU 主频单位换算</h2><p>在计算机的使用过程中，我们会经常用到 CPU 的主频，那么主频是怎么换算呢？</p>
-<p>所谓CPU的主频，就是说这块CPU的工作频率，也就是说这块CPU是在以哪个频率在进行运算处理。CPU的工作频率单位是以Hz（赫）计量，随着科技发展，CPU的制造工艺越来越先进，其主频也得到大幅度提升。现今，虽然CPU主频的计量单位Hz（赫）没变，但我们往往都会在单位前面加上M，甚至G，也就是我们常说的主频MHz（兆赫）和GHz（吉赫）。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">1 GHz &#x3D; 1000 MHz</span><br></pre></td></tr></table></figure>
-
-<p>对于 CPU 来说，除了主频以外还有更重要的一个参数叫做浮点性能，有单精度和双精度，个别情况下会用到半精度，他们的单位是 FLOPS，那么浮点性能的单位怎么换算呢？</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">1 TFLOPS &#x3D; 1000 GFLOPS</span><br></pre></td></tr></table></figure>
-
-<p>相邻两个单位之间的进制 1000 。</p>
-<h2 id="速率单位换算"><a href="#速率单位换算" class="headerlink" title="速率单位换算"></a>速率单位换算</h2><p>我们在下载文件或者拷贝数据时经常用到一个单位 Mbps 来描述数据拷贝的快慢或者网络带宽的大小，这个 Mbps 的意思是 Mb 每秒，及在一秒内可以传输的数据量为多少 Mb ，p 的 per 的简写。</p>
-<p>我们在一些提供下载功能的软件里经常可以看到下载是数据是 MB/s ，那么这个单位和上边的 Mbps 有什么区别呢？</p>
-<p>区别有两点</p>
-<ul>
-<li>表示方法不统一。也就是说，二者同样的表示方式应该是 Mbps 和 MBps 或者 Mb/s 和 MB/s 。</li>
-<li>b 和 B 的区别。这个我们在最开始的时候说过了，一个是字节一个是字长。</li>
-</ul>
-<p>那么他们应该这么换算呢？</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">1 MB&#x2F;s &#x3D; 8Mb&#x2F;s</span><br><span class="line"></span><br><span class="line">1 GB&#x2F;s &#x3D; 1024MB&#x2F;s &#x3D; 8192 Mb&#x2F;s</span><br><span class="line">1 Gb&#x2F;s &#x3D; 1024Gb&#x2F;s</span><br></pre></td></tr></table></figure>
-
-<p>这样就清楚了，我们一般口头说的网络带宽的单位一般是 Mb/s , 下载文件和拷贝文件的单位一般是 MB/s ， 下次我们就可以自己换算一下了。</p>
-<h2 id="存储单位换算"><a href="#存储单位换算" class="headerlink" title="存储单位换算"></a>存储单位换算</h2><p>我们经常看到的存储单位有 KB、MB、GB、TB、PB 等，这些单位在计算机操作系统内的换算情况是这样的</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">1 PB &#x3D; 1024 TB</span><br><span class="line">1 TB &#x3D; 1024 GB</span><br><span class="line">1 GB &#x3D; 1024 MB</span><br><span class="line">1 MB &#x3D; 1024 KB</span><br><span class="line">1 KB &#x3D; 1024 B</span><br></pre></td></tr></table></figure>
-
-<p>在硬盘厂商的宣传里是这样的</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">1 PB &#x3D; 1000 TB</span><br><span class="line">1 TB &#x3D; 1000 GB</span><br><span class="line">1 GB &#x3D; 1000 MB</span><br><span class="line">1 MB &#x3D; 1000 KB</span><br><span class="line">1 KB &#x3D; 1000 B</span><br></pre></td></tr></table></figure>
-
-<p>造成这种差异的原因是，起先计算机的存储容量低到可怜，几千个 Byte 算是很奢侈的容量，由于计算机的二进制特性，这个容量通常是 2 的整数次幂，用起来不方便。IT工程师们发现 2^10=1024 与 k=10^3 接近，相差不过 2%。于是就有人偷懒以 1kB 表示 2^10B 也就是1024B，初看起来一切都好，2% 的差距并不大，时间长了大家也就接受了。</p>
-<p>但问题在于，随着计算机的存储容量依摩尔定律(Moore’s Law)以指数增长，这个差值会越来越大。1kB与1KiB(稍后解释)相差不过2%，1MB 与 1MiB 相差近 5%，1GB 与 1GiB 相差7%，1TB 和 1TiB 足足差了10%。可以预见，随着硬盘容量的进一步扩大，这个差别会越来越大。</p>
-<p>时至今日，在IT业中已经形成了这种混乱的局面，为了解决这个混乱的局面，还是有人做过努力。早在 1998 年 SI 手册中明确要求 SI 词头不应用于 2 的幂次。而同年国际电工委员会(IEC)推出了一套适用于2进制的词头，并且得到了 IEEE 的批准 (IEEE 1541)——不过这还是一个试用的标准。简单来说就是在 SI 词头后加”i”。比如说 K 就成了 Ki，M 成了 Mi，G 成了 Gi。发音把原来SI词头的第二个音节换成[bi]。譬如Ki念 [kibi]，Mi念[mebi],Gi则是[Gibi]等等依此类推。这样，kMG 之类的的 SI 词头回复原来的含义，表示2幂次重任就交给了 Ki= 2^10=1024，Mi=2^20=1048576，Gi=2^30=1073741824 等等。这么一来，当表述一台电脑是3.15GHz CPU/2GiB内存/320GB硬盘时，G/Gi的含义就不存在歧义。</p>
-<p>很简明易懂的解决方案，然而很不幸似乎买 IEC 帐的着实不多，目前支持IEC词头的软件屈指可数。更糟糕的是 1G=1024M 这种约定俗成的错误观念已经根深蒂固。</p>
-<h2 id="进制的选择依据"><a href="#进制的选择依据" class="headerlink" title="进制的选择依据"></a>进制的选择依据</h2><p>看了上边各项单位的换算，不知道大家有没有发现什么规律。</p>
-<p>在计算机里相邻两个单位之间的换算有 1000 和 1024 ，那么什么时候是1000，什么时候是 1024 ？</p>
-<p>其实，一般的换算按照国际单位制(SI) 的规定，相邻两个单位之间的换算是 1000 。</p>
-<p>那么什么时候用 1024 呢？</p>
-<p>那就是单位里含有 byte 或者 bit 的时候，用 1024 来进行换算。其实按照 IEC 的规定，使用 Mi 和 M 进行区分就不会有这样的歧义和疑惑了。</p>
-<p>======================<br>Erdong, A Linux user !</p>
-]]></content>
-      <categories>
-        <category>linux</category>
-        <category>system</category>
-      </categories>
-      <tags>
-        <tag>unit</tag>
-        <tag>conversion</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Grafana 重置 admin 密码</title>
-    <url>/Grafana/grafana-admin-password-reset.html</url>
-    <content><![CDATA[<p>Grafana 的使用越来越广泛，在使用过程中经常遇到要重置密码的需求，尤其是 admin 密码，先说常规问题。</p>
-<a id="more"></a>
-
-<h1 id="已知-admin-密码修改新密码"><a href="#已知-admin-密码修改新密码" class="headerlink" title="已知 admin 密码修改新密码"></a>已知 admin 密码修改新密码</h1><h2 id="方法一：常规方法"><a href="#方法一：常规方法" class="headerlink" title="方法一：常规方法"></a>方法一：常规方法</h2><p>使用已知密码登陆系统，在系统页面里进行修改。</p>
-<h2 id="方法二：API-接口"><a href="#方法二：API-接口" class="headerlink" title="方法二：API 接口"></a>方法二：API 接口</h2><p>接口使用方法如下：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">curl -X PUT -H &quot;Content-Type: application&#x2F;json&quot; -d &#39;&#123;</span><br><span class="line">  &quot;oldPassword&quot;: &quot;admin&quot;,</span><br><span class="line">  &quot;newPassword&quot;: &quot;newpass&quot;,</span><br><span class="line">  &quot;confirmNew&quot;: &quot;newpass&quot;</span><br><span class="line">&#125;&#39; http:&#x2F;&#x2F;admin:admin@&lt;your_grafana_host&gt;:3000&#x2F;api&#x2F;user&#x2F;password</span><br></pre></td></tr></table></figure>
-
-
-<h1 id="忘记-admin-密码重置密码"><a href="#忘记-admin-密码重置密码" class="headerlink" title="忘记 admin 密码重置密码"></a>忘记 admin 密码重置密码</h1><p>接下来就是划重点的时候了，经常搭建了一个小环境以后，隔了几周想再看看的时候发现，admin 密码忘记了，没法登陆了。接下来这几个方法都能解决这几个问题，看情况使用。</p>
-<h2 id="方法一：命令行"><a href="#方法一：命令行" class="headerlink" title="方法一：命令行"></a>方法一：命令行</h2><p>该方法基于 Grafana 4.1 以上</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">grafana-cli admin reset-admin-password &lt;new password&gt;</span><br></pre></td></tr></table></figure>
-
-<p>如果上述方法报错：Could not find config defaults, make sure homepath command line parameter is set or working directory is homepath</p>
-<p>那么使用如下 flag 来指定参数</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">grafana-cli admin reset-admin-password --homepath &quot;&#x2F;usr&#x2F;share&#x2F;grafana&quot; newpass</span><br></pre></td></tr></table></figure>
-
-
-<h2 id="方法二：修改数据库"><a href="#方法二：修改数据库" class="headerlink" title="方法二：修改数据库"></a>方法二：修改数据库</h2><p>查看Grafana配置文件，确定Grafana 数据库 grafana.db的路径</p>
-<p>配置文件路径一般为 /etc/grafana/grafana.ini ，如果安装时修改过，请查看对应位置的 grafana.ini  。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[paths]</span><br><span class="line">;data &#x3D; &#x2F;var&#x2F;lib&#x2F;grafana</span><br><span class="line"></span><br><span class="line">[database]</span><br><span class="line"># For &quot;sqlite3&quot; only, path relative to data_path setting</span><br><span class="line">;path &#x3D; grafana.db</span><br></pre></td></tr></table></figure>
-<p>通过配置文件得知grafana.db的完整路径为： /var/lib/grafana/grafana.db</p>
-<p>由于 Grafana 使用 sqlite3 来存储配置数据，所以使用 sqlite3 来进行修改，如果没有请安装。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[root@local]# sqlite3 &#x2F;var&#x2F;lib&#x2F;grafana&#x2F;grafana.db</span><br><span class="line">#查看数据库中包含的表</span><br><span class="line">.tables</span><br><span class="line"></span><br><span class="line">#查看user表内容</span><br><span class="line">select * from user;</span><br><span class="line"></span><br><span class="line">#重置admin用户的密码为默认admin</span><br><span class="line">update user set password &#x3D; &#39;59acf18b94d7eb0694c61e60ce44c110c7a683ac6a8f09580d626f90f4a242000746579358d77dd9e570e83fa24faa88a8a6&#39;, salt &#x3D; &#39;F3FAxVm33R&#39; where login &#x3D; &#39;admin&#39;;</span><br><span class="line"></span><br><span class="line">#退出sqlite3</span><br><span class="line">.exit</span><br></pre></td></tr></table></figure>
-
-<p>使用上述方法，会将 admin 用户的密码重置为 admin ，然后登陆页面进行修改。</p>
-<h2 id="方法三"><a href="#方法三" class="headerlink" title="方法三"></a>方法三</h2><p>一般来说上述方法已经可以满足需求了，如果不方便重置 admin 用户的密码，那么也可以通过修改数据库，将某个用户提权为 admin 权限用户，然后通过这个用户来进行修改。</p>
-<p>提权语句如下：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">udpate user set is_admin &#x3D; 1 where login &#x3D; &#39;xxxx&#39;;</span><br></pre></td></tr></table></figure>
-
-
-<h1 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h1><ul>
-<li><a href="http://docs.grafana.org/administration/cli/#reset-admin-password" target="_blank" rel="noopener">http://docs.grafana.org/administration/cli/#reset-admin-password</a> , By Grafana</li>
-</ul>
-<p>======================<br>Erdong, A Linux user !</p>
-]]></content>
-      <categories>
-        <category>Grafana</category>
-      </categories>
-      <tags>
-        <tag>Grafana</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Hello World</title>
-    <url>/uncategorized/hello-world.html</url>
-    <content><![CDATA[<p>Welcome to <a href="https://erdong.site">Erdong’s blog</a>! This is my first blog. </p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><p>  最近花时间搭建了这个博客，基于 hexo 和 github pages，想把日常遇到的问题和一些学习的知识点记录下来，梳理自己的知识体系，不断提高自己的能力。</p>
-<p>  个人比较喜欢阮一峰的博客，他的文字描述总是简单易懂，容易学习，希望以后也能达到这一目的。</p>
-<p>  人生总是存在各种各样的巧合，好像总和数字2会有关系，像这次发布第一篇博客刚好赶上22号，年份和月份全部是2的整数倍。</p>
-<p>  发现阮一峰有一个关于中文文档编写的规范，会尽量的按照这个来写。<a href="https://github.com/ruanyf/document-style-guide" target="_blank" rel="noopener">document-style-guide</a></p>
-<p>惯例: hello world 输出。一切的开始。</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"><span class="comment">#version: 1.0</span></span><br><span class="line"><span class="comment">#Author: Erdong</span></span><br><span class="line"><span class="built_in">echo</span> Hello World</span><br><span class="line"><span class="built_in">echo</span> 2018-08-22</span><br></pre></td></tr></table></figure>
-]]></content>
-  </entry>
-  <entry>
-    <title>发布一本用 GitBook 编辑的书</title>
-    <url>/gitbook/gitbook-release-book.html</url>
-    <content><![CDATA[<p>在上一篇的文章里，我们已经写好了一本名叫 <code>erdong-first-book</code> 的书，但是在本地浏览很不方便，我们希望放到网络上，可以随时、方便的访问这个书籍。这个需求可以使用多种方式来实现，比如第一种，可以通过 GitBook 官网来发布这本书，GitBook 除了是一个电子书的工具以为，自身也有一个网址，在该网站注册成为会员后，可以发布自己的电子书，并且可以和 GitHub 进行关联。</p>
-<p>除了使用 GitBook 官网以外，可以直接将电子书放在 GitHub 上，通过 GitHub Pages 来发布这本书。</p>
-<a id="more"></a>
-
-<h1 id="使用-GitHub-发布你的书籍"><a href="#使用-GitHub-发布你的书籍" class="headerlink" title="使用 GitHub 发布你的书籍"></a>使用 GitHub 发布你的书籍</h1><p>接下来我们看一下如何使用 GitHub Pages 来发布一本书。</p>
-<p>首先你需要一个 GitHub 的账号，在你的账号下创建一个用来放置你书籍的仓库，这两个步骤在网络上有太多的资料，很容易就可以达成了。</p>
-<p>创建好仓库以后，在仓库中创建一个 docs 文件夹，用来放置 GitBook 生成的静态文件。</p>
-<p>打开 GitHub 仓库的设置页面，找到 GitHub Pages 选项，选择 <code>master branch /docs folder</code> 选项即可。</p>
-<blockquote>
-<p>注意：一定要先在仓库中创建 docs 文件夹，否则无法勾选该选项。</p>
-</blockquote>
-<p><img src="https://image.erdong.site/blog/2019/10/18/githubpagesdocs.jpg" alt="GithubPagesDocs"></p>
-<p>做完上述步骤以后开始使用 Git 上传你写好的内容到 GitHub , 关键点是将 GitBook 生成的静态文件 <code>_book</code> 重命名为 <code>docs</code> 上传替换刚才创建的 docs 文件夹即可。</p>
-<p>这个时候使用浏览器打开  <a href="http://your_github_id.github.io/your_github_gitbook" target="_blank" rel="noopener">http://your_github_id.github.io/your_github_gitbook</a>  这个地址即可。比如我的 GitBook 地址是<br> <a href="http://erdong.github.io/gitbook-notes-samples" target="_blank" rel="noopener">http://erdong.github.io/gitbook-notes-samples</a> ，大家在点击以后发现会自动跳转到 <a href="https://erdong.site/gitbook-notes-samples">https://erdong.site/gitbook-notes-samples</a>  是因为我做了域名绑定。</p>
-<h1 id="本地-GitBook-迁移"><a href="#本地-GitBook-迁移" class="headerlink" title="本地 GitBook 迁移"></a>本地 GitBook 迁移</h1><p>在迁移前可以使用如下命令查看一下曾经使用 npm 安装过什么模块</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">npm list -g --depth 0</span><br></pre></td></tr></table></figure>
-<ul>
-<li>list : 已经安装的 node 包</li>
-<li>-g ： 全局的安装包</li>
-<li>–depth : 包的显示层级，0 代表显示第一级的包，数字越大，显示的越全。</li>
-</ul>
-<p>迁移其实非常简单，你在原来的环境将整本书打包，最好把文件夹里的node_modules 目录也一起打包，这样在新的环境就不需要安装这些组件了。在新的环境按照如下顺序依次进行安装你之前安装过的组件</p>
-<p>&lt; 1.&gt; 安装 npm<br>&lt; 2.&gt; 安装 gitbook<br>&lt; 3.&gt; 拷贝打包好的文件夹<br>&lt; 4.&gt; 减压到新的位置</p>
-<p>这样就完成了你的书的迁移。你在新的位置可以继续进行内容的编写、静态文件的生成，和之前一样，没有任何区别。</p>
-<p>======================<br>由于无法及时收到评论内容，所以关闭评论功能。<br>大家有问题欢迎发邮件到 <a href="mailto:erdong@mail.erdong.site">erdong@mail.erdong.site</a> ，或者 <a href="https://github.com/erdong/erdong.github.io/issues" target="_blank" rel="noopener">https://github.com/erdong/erdong.github.io/issues</a> 提 Issue ，我会及时回复。</p>
-<p>======================<br>Erdong, A Linux user !</p>
-]]></content>
-      <categories>
-        <category>gitbook</category>
-      </categories>
-      <tags>
-        <tag>gitbook</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>常见 DNS 地址</title>
     <url>/linux/system/dns-server-ip.html</url>
     <content><![CDATA[<p>如果您是程序员、系统管理员或任何类型的 IT 工作者，那么您可能有自己最喜欢的用于故障排除的 IP 地址。而且你可能已经用了好几年了。</p>
@@ -1103,6 +1009,127 @@
       <tags>
         <tag>DNS</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>Erdong Notes</title>
+    <url>/article/erdong-notes.html</url>
+    <content><![CDATA[<p>这里记录我的一些学习笔记和一些发布在其他地方的文章。</p>
+<a id="more"></a>
+
+
+<h1 id="Notes"><a href="#Notes" class="headerlink" title="Notes"></a>Notes</h1><h2 id="ACP-Notes"><a href="#ACP-Notes" class="headerlink" title="ACP Notes"></a>ACP Notes</h2><ul>
+<li><a href="https://github.com/erdong/acp-notes" target="_blank" rel="noopener">Github</a></li>
+<li><a href="http://erdong.site/acp-notes/">Gitbook</a></li>
+</ul>
+<h2 id="Ansible-Notes"><a href="#Ansible-Notes" class="headerlink" title="Ansible Notes"></a>Ansible Notes</h2><ul>
+<li><a href="https://github.com/erdong/ansible-notes" target="_blank" rel="noopener">Github</a></li>
+<li><a href="http://erdong.site/ansible-notes/">Gitbook</a></li>
+</ul>
+<h2 id="Prometheus-Notes"><a href="#Prometheus-Notes" class="headerlink" title="Prometheus Notes"></a>Prometheus Notes</h2><ul>
+<li><a href="https://github.com/erdong/prometheus-notes" target="_blank" rel="noopener">Github</a></li>
+<li><a href="http://erdong.site/prometheus-notes/">Gitbook</a></li>
+</ul>
+<h1 id="Article"><a href="#Article" class="headerlink" title="Article"></a>Article</h1><h2 id="CCF-TF-讲稿整理"><a href="#CCF-TF-讲稿整理" class="headerlink" title="CCF TF 讲稿整理"></a>CCF TF 讲稿整理</h2><p>======================<br>Erdong, A Linux user !</p>
+]]></content>
+      <categories>
+        <category>article</category>
+      </categories>
+      <tags>
+        <tag>article</tag>
+        <tag>note</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Grafana 重置 admin 密码</title>
+    <url>/Grafana/grafana-admin-password-reset.html</url>
+    <content><![CDATA[<p>Grafana 的使用越来越广泛，在使用过程中经常遇到要重置密码的需求，尤其是 admin 密码，先说常规问题。</p>
+<a id="more"></a>
+
+<h1 id="已知-admin-密码修改新密码"><a href="#已知-admin-密码修改新密码" class="headerlink" title="已知 admin 密码修改新密码"></a>已知 admin 密码修改新密码</h1><h2 id="方法一：常规方法"><a href="#方法一：常规方法" class="headerlink" title="方法一：常规方法"></a>方法一：常规方法</h2><p>使用已知密码登陆系统，在系统页面里进行修改。</p>
+<h2 id="方法二：API-接口"><a href="#方法二：API-接口" class="headerlink" title="方法二：API 接口"></a>方法二：API 接口</h2><p>接口使用方法如下：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">curl -X PUT -H &quot;Content-Type: application&#x2F;json&quot; -d &#39;&#123;</span><br><span class="line">  &quot;oldPassword&quot;: &quot;admin&quot;,</span><br><span class="line">  &quot;newPassword&quot;: &quot;newpass&quot;,</span><br><span class="line">  &quot;confirmNew&quot;: &quot;newpass&quot;</span><br><span class="line">&#125;&#39; http:&#x2F;&#x2F;admin:admin@&lt;your_grafana_host&gt;:3000&#x2F;api&#x2F;user&#x2F;password</span><br></pre></td></tr></table></figure>
+
+
+<h1 id="忘记-admin-密码重置密码"><a href="#忘记-admin-密码重置密码" class="headerlink" title="忘记 admin 密码重置密码"></a>忘记 admin 密码重置密码</h1><p>接下来就是划重点的时候了，经常搭建了一个小环境以后，隔了几周想再看看的时候发现，admin 密码忘记了，没法登陆了。接下来这几个方法都能解决这几个问题，看情况使用。</p>
+<h2 id="方法一：命令行"><a href="#方法一：命令行" class="headerlink" title="方法一：命令行"></a>方法一：命令行</h2><p>该方法基于 Grafana 4.1 以上</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">grafana-cli admin reset-admin-password &lt;new password&gt;</span><br></pre></td></tr></table></figure>
+
+<p>如果上述方法报错：Could not find config defaults, make sure homepath command line parameter is set or working directory is homepath</p>
+<p>那么使用如下 flag 来指定参数</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">grafana-cli admin reset-admin-password --homepath &quot;&#x2F;usr&#x2F;share&#x2F;grafana&quot; newpass</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="方法二：修改数据库"><a href="#方法二：修改数据库" class="headerlink" title="方法二：修改数据库"></a>方法二：修改数据库</h2><p>查看Grafana配置文件，确定Grafana 数据库 grafana.db的路径</p>
+<p>配置文件路径一般为 /etc/grafana/grafana.ini ，如果安装时修改过，请查看对应位置的 grafana.ini  。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[paths]</span><br><span class="line">;data &#x3D; &#x2F;var&#x2F;lib&#x2F;grafana</span><br><span class="line"></span><br><span class="line">[database]</span><br><span class="line"># For &quot;sqlite3&quot; only, path relative to data_path setting</span><br><span class="line">;path &#x3D; grafana.db</span><br></pre></td></tr></table></figure>
+<p>通过配置文件得知grafana.db的完整路径为： /var/lib/grafana/grafana.db</p>
+<p>由于 Grafana 使用 sqlite3 来存储配置数据，所以使用 sqlite3 来进行修改，如果没有请安装。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[root@local]# sqlite3 &#x2F;var&#x2F;lib&#x2F;grafana&#x2F;grafana.db</span><br><span class="line">#查看数据库中包含的表</span><br><span class="line">.tables</span><br><span class="line"></span><br><span class="line">#查看user表内容</span><br><span class="line">select * from user;</span><br><span class="line"></span><br><span class="line">#重置admin用户的密码为默认admin</span><br><span class="line">update user set password &#x3D; &#39;59acf18b94d7eb0694c61e60ce44c110c7a683ac6a8f09580d626f90f4a242000746579358d77dd9e570e83fa24faa88a8a6&#39;, salt &#x3D; &#39;F3FAxVm33R&#39; where login &#x3D; &#39;admin&#39;;</span><br><span class="line"></span><br><span class="line">#退出sqlite3</span><br><span class="line">.exit</span><br></pre></td></tr></table></figure>
+
+<p>使用上述方法，会将 admin 用户的密码重置为 admin ，然后登陆页面进行修改。</p>
+<h2 id="方法三"><a href="#方法三" class="headerlink" title="方法三"></a>方法三</h2><p>一般来说上述方法已经可以满足需求了，如果不方便重置 admin 用户的密码，那么也可以通过修改数据库，将某个用户提权为 admin 权限用户，然后通过这个用户来进行修改。</p>
+<p>提权语句如下：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">udpate user set is_admin &#x3D; 1 where login &#x3D; &#39;xxxx&#39;;</span><br></pre></td></tr></table></figure>
+
+
+<h1 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h1><ul>
+<li><a href="http://docs.grafana.org/administration/cli/#reset-admin-password" target="_blank" rel="noopener">http://docs.grafana.org/administration/cli/#reset-admin-password</a> , By Grafana</li>
+</ul>
+<p>======================<br>Erdong, A Linux user !</p>
+]]></content>
+      <categories>
+        <category>Grafana</category>
+      </categories>
+      <tags>
+        <tag>Grafana</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>K8S 中的 Grafana 数据持久化</title>
+    <url>/Grafana/grafana-kubernetes-config-persistence.html</url>
+    <content><![CDATA[<p>自从将 Grafana 部署到 K8S 中以后，带来了很多的便利性，但是也有一个问题一直困扰着我，那就是 Grafana 中的数据无法持久化，经常配置好的 Datasource 和 Dashboards 在运行一段时间后就丢失了，有时候刚要排查问题，结果什么都找不到了。我们都知道，Grafana 在启动后，数据会存储到数据库中，包括 datasource 的配置，Dashboards 的配置。要解决 Grafana 的数据持久化可以从 2 个方面来进行思考并且解决。</p>
+<a id="more"></a>
+<p>方案一：</p>
+<p>Grafana 数据存储在数据库中，当前支持 MySQL 、sqlite3、Postgres 这三个，缺省情况下，Grafana 会在本地启动一个 Sqlite3 来存储数据，你也可以在 grafana.ini 配置文件中修改这个配置来切换数据库。</p>
+<p>基于这个方式，第一种方案出来了。 当 Grafana 运行在 K8S 中时，数据库不使用自动启动的 Sqlite3 ，在 K8S 外启动一个关系数据库（可以是 MySQL 、sqlite3、Postgres 中的任何一个），修改 grafana.ini 文件，使得 Grafana 在启动时连接外部的数据库，这样数据就不会丢失了。</p>
+<p>方案二：</p>
+<p>Grafana 在 v5.0 之后引入了 provisioning 功能，可以将 Datasource 、Dashboards 这些内容，通过配置文件的方式在 Grafana 启动的时候加载。把这些文件放在 K8S 的配置映射中，然后挂载到 Grafana 容器中的指定路径即可。这样配置后在 Web UI 修改已经不会生效，只有在对应的配置文件中修改才会生效。</p>
+<p>接下里我们看看方案二的怎么配置使用，我使用的 Grafana 版本是 v6.4.3。</p>
+<p>首先需要在 Grafana 启动时添加相应的参数来打开 provisioning 功能，官方提供的 docker 镜像已经将该功能打开，缺省的路径是 <code>/etc/grafana/provisioning</code> ,这个路径下有 dashboards、datasources、notifiers 三个文件夹，相关的配置会放在这里。如果是自己构建的镜像，请参考文档或者官方的 dockerfile 把该功能打开。</p>
+<p>其次我们需要解决数据源的持久化问题，我们准备 datasources.yaml 文件，用来配置数据源。datasources.yaml 文件内容如下：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># config file version</span><br><span class="line">apiVersion: 1</span><br><span class="line"></span><br><span class="line"># list of datasources that should be deleted from the database</span><br><span class="line">deleteDatasources:</span><br><span class="line">  - name: Prometheus</span><br><span class="line">    orgId: 1</span><br><span class="line"></span><br><span class="line"># list of datasources to insert&#x2F;update depending</span><br><span class="line"># what&#39;s available in the database</span><br><span class="line">datasources:</span><br><span class="line">  # &lt;string, required&gt; name of the datasource. Required</span><br><span class="line">  - name: Prometheus</span><br><span class="line">    # &lt;string, required&gt; datasource type. Required</span><br><span class="line">    type: prometheus</span><br><span class="line">    # &lt;string, required&gt; access mode. proxy or direct (Server or Browser in the UI). Required</span><br><span class="line">    access: proxy</span><br><span class="line">    # &lt;int&gt; org id. will default to orgId 1 if not specified</span><br><span class="line">    orgId: 1</span><br><span class="line">    # &lt;string&gt; custom UID which can be used to reference this datasource in other parts of the configuration, if not specified will be generated automatically</span><br><span class="line">    uid: my_unique_uid</span><br><span class="line">    # &lt;string&gt; url</span><br><span class="line">    url: http:&#x2F;&#x2F;127.0.0.1:9090</span><br><span class="line">    # &lt;string&gt; Deprecated, use secureJsonData.password</span><br><span class="line">    password:</span><br><span class="line">    # &lt;string&gt; database user, if used</span><br><span class="line">    user:</span><br><span class="line">    # &lt;string&gt; database name, if used</span><br><span class="line">    database:</span><br><span class="line">    # &lt;bool&gt; enable&#x2F;disable basic auth</span><br><span class="line">    basicAuth:</span><br><span class="line">    # &lt;string&gt; basic auth username</span><br><span class="line">    basicAuthUser:</span><br><span class="line">    # &lt;string&gt; Deprecated, use secureJsonData.basicAuthPassword</span><br><span class="line">    basicAuthPassword:</span><br><span class="line">    # &lt;bool&gt; enable&#x2F;disable with credentials headers</span><br><span class="line">    withCredentials:</span><br><span class="line">    # &lt;bool&gt; mark as default datasource. Max one per org</span><br><span class="line">    isDefault:</span><br><span class="line">    # &lt;map&gt; fields that will be converted to json and stored in jsonData</span><br><span class="line">    jsonData:</span><br><span class="line">      graphiteVersion: &#39;1.1&#39;</span><br><span class="line">      tlsAuth: false</span><br><span class="line">      tlsAuthWithCACert: false</span><br><span class="line">    # &lt;string&gt; json object of data that will be encrypted.</span><br><span class="line">    secureJsonData:</span><br><span class="line">      tlsCACert: &#39;...&#39;</span><br><span class="line">      tlsClientCert: &#39;...&#39;</span><br><span class="line">      tlsClientKey: &#39;...&#39;</span><br><span class="line">      # &lt;string&gt; database password, if used</span><br><span class="line">      password:</span><br><span class="line">      # &lt;string&gt; basic auth password</span><br><span class="line">      basicAuthPassword:</span><br><span class="line">    version: 1</span><br><span class="line">    # &lt;bool&gt; allow users to edit datasources from the UI.</span><br><span class="line">    editable: false</span><br></pre></td></tr></table></figure>
+
+<p>将该文件放在 K8S 的 config map 中，在容器中时添加数据卷，卷类型选<code>配置映射卷</code> ，选择 config map 中的 datasources.yaml 挂载到容器的 <code>/etc/grafana/provisioning/datasources</code> ,然后重启容器，让容器重新加载配置。</p>
+<p>使用后在 Web UI 的数据源页面进行修改会提示 <code>This datasource was added by config and cannot be modified using the UI. Please contact your server admin to update this datasource.</code> 表示数据源的配置，在 Web UI 修改已经不会生效，只有在 datasources.yaml 文件中修改才会生效。</p>
+<p>接下来解决 dashboards 的持久化问题，准备 <code>dashboards.yaml</code> 文件，用来指定之后的 dashboards 的 json 文件放在哪个目录。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">apiVersion: 1</span><br><span class="line"></span><br><span class="line">providers:</span><br><span class="line">  # &lt;string&gt; an unique provider name. Required</span><br><span class="line">  - name: &#39;a unique provider name&#39;</span><br><span class="line">    # &lt;int&gt; Org id. Default to 1</span><br><span class="line">    orgId: 1</span><br><span class="line">    # &lt;string&gt; name of the dashboard folder.</span><br><span class="line">    folder: &#39;&#39;</span><br><span class="line">    # &lt;string&gt; folder UID. will be automatically generated if not specified</span><br><span class="line">    folderUid: &#39;&#39;</span><br><span class="line">    # &lt;string&gt; provider type. Default to &#39;file&#39;</span><br><span class="line">    type: file</span><br><span class="line">    # &lt;bool&gt; disable dashboard deletion</span><br><span class="line">    disableDeletion: false</span><br><span class="line">    # &lt;bool&gt; enable dashboard editing</span><br><span class="line">    editable: true</span><br><span class="line">    # &lt;int&gt; how often Grafana will scan for changed dashboards</span><br><span class="line">    updateIntervalSeconds: 10</span><br><span class="line">    # &lt;bool&gt; allow updating provisioned dashboards from the UI</span><br><span class="line">    allowUiUpdates: false</span><br><span class="line">    options:</span><br><span class="line">      # &lt;string, required&gt; path to dashboard files on disk. Required when using the &#39;file&#39; type</span><br><span class="line">      path: &#x2F;etc&#x2F;grafana&#x2F;dashboards-files</span><br></pre></td></tr></table></figure>
+
+<p>将该文件放在 K8S 的 config map 中，在容器中时添加数据卷，卷类型选<code>配置映射卷</code> ，选择 config map 中的 dashboards.yaml 挂载到容器的 <code>/etc/grafana/provisioning/dashboards</code> ,然后重启容器，让容器重新加载配置。</p>
+<p>接下来将准备好的 json 格式的 Dashboards 文件放到 <code>/etc/grafana/dashboards-files</code>,  重新加载这些 json 文件即可。</p>
+<h1 id="参考链接："><a href="#参考链接：" class="headerlink" title="参考链接："></a>参考链接：</h1><ul>
+<li><a href="https://grafana.com/docs/grafana/latest/administration/provisioning/#provisioning-grafana" target="_blank" rel="noopener">https://grafana.com/docs/grafana/latest/administration/provisioning/#provisioning-grafana</a> , By Provisioning Grafanan</li>
+</ul>
+<p>======================<br>由于无法及时收到评论内容，所以关闭评论功能。<br>大家有问题欢迎发邮件到 <a href="mailto:erdong@mail.erdong.site">erdong@mail.erdong.site</a> ，或者 <a href="https://github.com/erdong/erdong.github.io/issues" target="_blank" rel="noopener">https://github.com/erdong/erdong.github.io/issues</a> 提 Issue ，我会及时回复。</p>
+<p>======================<br>Erdong, A Linux user !</p>
+]]></content>
+      <categories>
+        <category>Grafana</category>
+      </categories>
+      <tags>
+        <tag>Grafana</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Hello World</title>
+    <url>/uncategorized/hello-world.html</url>
+    <content><![CDATA[<p>Welcome to <a href="https://erdong.site">Erdong’s blog</a>! This is my first blog. </p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><p>  最近花时间搭建了这个博客，基于 hexo 和 github pages，想把日常遇到的问题和一些学习的知识点记录下来，梳理自己的知识体系，不断提高自己的能力。</p>
+<p>  个人比较喜欢阮一峰的博客，他的文字描述总是简单易懂，容易学习，希望以后也能达到这一目的。</p>
+<p>  人生总是存在各种各样的巧合，好像总和数字2会有关系，像这次发布第一篇博客刚好赶上22号，年份和月份全部是2的整数倍。</p>
+<p>  发现阮一峰有一个关于中文文档编写的规范，会尽量的按照这个来写。<a href="https://github.com/ruanyf/document-style-guide" target="_blank" rel="noopener">document-style-guide</a></p>
+<p>惯例: hello world 输出。一切的开始。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"><span class="comment">#version: 1.0</span></span><br><span class="line"><span class="comment">#Author: Erdong</span></span><br><span class="line"><span class="built_in">echo</span> Hello World</span><br><span class="line"><span class="built_in">echo</span> 2018-08-22</span><br></pre></td></tr></table></figure>
+]]></content>
   </entry>
   <entry>
     <title>IB 速率 SDR DDR QDR FDR EDR 缩写介绍</title>
@@ -1232,41 +1259,6 @@
       </categories>
       <tags>
         <tag>Kong</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>K8S 中的 Grafana 数据持久化</title>
-    <url>/Grafana/grafana-kubernetes-config-persistence.html</url>
-    <content><![CDATA[<p>自从将 Grafana 部署到 K8S 中以后，带来了很多的便利性，但是也有一个问题一直困扰着我，那就是 Grafana 中的数据无法持久化，经常配置好的 Datasource 和 Dashboards 在运行一段时间后就丢失了，有时候刚要排查问题，结果什么都找不到了。我们都知道，Grafana 在启动后，数据会存储到数据库中，包括 datasource 的配置，Dashboards 的配置。要解决 Grafana 的数据持久化可以从 2 个方面来进行思考并且解决。</p>
-<a id="more"></a>
-<p>方案一：</p>
-<p>Grafana 数据存储在数据库中，当前支持 MySQL 、sqlite3、Postgres 这三个，缺省情况下，Grafana 会在本地启动一个 Sqlite3 来存储数据，你也可以在 grafana.ini 配置文件中修改这个配置来切换数据库。</p>
-<p>基于这个方式，第一种方案出来了。 当 Grafana 运行在 K8S 中时，数据库不使用自动启动的 Sqlite3 ，在 K8S 外启动一个关系数据库（可以是 MySQL 、sqlite3、Postgres 中的任何一个），修改 grafana.ini 文件，使得 Grafana 在启动时连接外部的数据库，这样数据就不会丢失了。</p>
-<p>方案二：</p>
-<p>Grafana 在 v5.0 之后引入了 provisioning 功能，可以将 Datasource 、Dashboards 这些内容，通过配置文件的方式在 Grafana 启动的时候加载。把这些文件放在 K8S 的配置映射中，然后挂载到 Grafana 容器中的指定路径即可。这样配置后在 Web UI 修改已经不会生效，只有在对应的配置文件中修改才会生效。</p>
-<p>接下里我们看看方案二的怎么配置使用，我使用的 Grafana 版本是 v6.4.3。</p>
-<p>首先需要在 Grafana 启动时添加相应的参数来打开 provisioning 功能，官方提供的 docker 镜像已经将该功能打开，缺省的路径是 <code>/etc/grafana/provisioning</code> ,这个路径下有 dashboards、datasources、notifiers 三个文件夹，相关的配置会放在这里。如果是自己构建的镜像，请参考文档或者官方的 dockerfile 把该功能打开。</p>
-<p>其次我们需要解决数据源的持久化问题，我们准备 datasources.yaml 文件，用来配置数据源。datasources.yaml 文件内容如下：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># config file version</span><br><span class="line">apiVersion: 1</span><br><span class="line"></span><br><span class="line"># list of datasources that should be deleted from the database</span><br><span class="line">deleteDatasources:</span><br><span class="line">  - name: Prometheus</span><br><span class="line">    orgId: 1</span><br><span class="line"></span><br><span class="line"># list of datasources to insert&#x2F;update depending</span><br><span class="line"># what&#39;s available in the database</span><br><span class="line">datasources:</span><br><span class="line">  # &lt;string, required&gt; name of the datasource. Required</span><br><span class="line">  - name: Prometheus</span><br><span class="line">    # &lt;string, required&gt; datasource type. Required</span><br><span class="line">    type: prometheus</span><br><span class="line">    # &lt;string, required&gt; access mode. proxy or direct (Server or Browser in the UI). Required</span><br><span class="line">    access: proxy</span><br><span class="line">    # &lt;int&gt; org id. will default to orgId 1 if not specified</span><br><span class="line">    orgId: 1</span><br><span class="line">    # &lt;string&gt; custom UID which can be used to reference this datasource in other parts of the configuration, if not specified will be generated automatically</span><br><span class="line">    uid: my_unique_uid</span><br><span class="line">    # &lt;string&gt; url</span><br><span class="line">    url: http:&#x2F;&#x2F;127.0.0.1:9090</span><br><span class="line">    # &lt;string&gt; Deprecated, use secureJsonData.password</span><br><span class="line">    password:</span><br><span class="line">    # &lt;string&gt; database user, if used</span><br><span class="line">    user:</span><br><span class="line">    # &lt;string&gt; database name, if used</span><br><span class="line">    database:</span><br><span class="line">    # &lt;bool&gt; enable&#x2F;disable basic auth</span><br><span class="line">    basicAuth:</span><br><span class="line">    # &lt;string&gt; basic auth username</span><br><span class="line">    basicAuthUser:</span><br><span class="line">    # &lt;string&gt; Deprecated, use secureJsonData.basicAuthPassword</span><br><span class="line">    basicAuthPassword:</span><br><span class="line">    # &lt;bool&gt; enable&#x2F;disable with credentials headers</span><br><span class="line">    withCredentials:</span><br><span class="line">    # &lt;bool&gt; mark as default datasource. Max one per org</span><br><span class="line">    isDefault:</span><br><span class="line">    # &lt;map&gt; fields that will be converted to json and stored in jsonData</span><br><span class="line">    jsonData:</span><br><span class="line">      graphiteVersion: &#39;1.1&#39;</span><br><span class="line">      tlsAuth: false</span><br><span class="line">      tlsAuthWithCACert: false</span><br><span class="line">    # &lt;string&gt; json object of data that will be encrypted.</span><br><span class="line">    secureJsonData:</span><br><span class="line">      tlsCACert: &#39;...&#39;</span><br><span class="line">      tlsClientCert: &#39;...&#39;</span><br><span class="line">      tlsClientKey: &#39;...&#39;</span><br><span class="line">      # &lt;string&gt; database password, if used</span><br><span class="line">      password:</span><br><span class="line">      # &lt;string&gt; basic auth password</span><br><span class="line">      basicAuthPassword:</span><br><span class="line">    version: 1</span><br><span class="line">    # &lt;bool&gt; allow users to edit datasources from the UI.</span><br><span class="line">    editable: false</span><br></pre></td></tr></table></figure>
-
-<p>将该文件放在 K8S 的 config map 中，在容器中时添加数据卷，卷类型选<code>配置映射卷</code> ，选择 config map 中的 datasources.yaml 挂载到容器的 <code>/etc/grafana/provisioning/datasources</code> ,然后重启容器，让容器重新加载配置。</p>
-<p>使用后在 Web UI 的数据源页面进行修改会提示 <code>This datasource was added by config and cannot be modified using the UI. Please contact your server admin to update this datasource.</code> 表示数据源的配置，在 Web UI 修改已经不会生效，只有在 datasources.yaml 文件中修改才会生效。</p>
-<p>接下来解决 dashboards 的持久化问题，准备 <code>dashboards.yaml</code> 文件，用来指定之后的 dashboards 的 json 文件放在哪个目录。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">apiVersion: 1</span><br><span class="line"></span><br><span class="line">providers:</span><br><span class="line">  # &lt;string&gt; an unique provider name. Required</span><br><span class="line">  - name: &#39;a unique provider name&#39;</span><br><span class="line">    # &lt;int&gt; Org id. Default to 1</span><br><span class="line">    orgId: 1</span><br><span class="line">    # &lt;string&gt; name of the dashboard folder.</span><br><span class="line">    folder: &#39;&#39;</span><br><span class="line">    # &lt;string&gt; folder UID. will be automatically generated if not specified</span><br><span class="line">    folderUid: &#39;&#39;</span><br><span class="line">    # &lt;string&gt; provider type. Default to &#39;file&#39;</span><br><span class="line">    type: file</span><br><span class="line">    # &lt;bool&gt; disable dashboard deletion</span><br><span class="line">    disableDeletion: false</span><br><span class="line">    # &lt;bool&gt; enable dashboard editing</span><br><span class="line">    editable: true</span><br><span class="line">    # &lt;int&gt; how often Grafana will scan for changed dashboards</span><br><span class="line">    updateIntervalSeconds: 10</span><br><span class="line">    # &lt;bool&gt; allow updating provisioned dashboards from the UI</span><br><span class="line">    allowUiUpdates: false</span><br><span class="line">    options:</span><br><span class="line">      # &lt;string, required&gt; path to dashboard files on disk. Required when using the &#39;file&#39; type</span><br><span class="line">      path: &#x2F;etc&#x2F;grafana&#x2F;dashboards-files</span><br></pre></td></tr></table></figure>
-
-<p>将该文件放在 K8S 的 config map 中，在容器中时添加数据卷，卷类型选<code>配置映射卷</code> ，选择 config map 中的 dashboards.yaml 挂载到容器的 <code>/etc/grafana/provisioning/dashboards</code> ,然后重启容器，让容器重新加载配置。</p>
-<p>接下来将准备好的 json 格式的 Dashboards 文件放到 <code>/etc/grafana/dashboards-files</code>,  重新加载这些 json 文件即可。</p>
-<h1 id="参考链接："><a href="#参考链接：" class="headerlink" title="参考链接："></a>参考链接：</h1><ul>
-<li><a href="https://grafana.com/docs/grafana/latest/administration/provisioning/#provisioning-grafana" target="_blank" rel="noopener">https://grafana.com/docs/grafana/latest/administration/provisioning/#provisioning-grafana</a> , By Provisioning Grafanan</li>
-</ul>
-<p>======================<br>由于无法及时收到评论内容，所以关闭评论功能。<br>大家有问题欢迎发邮件到 <a href="mailto:erdong@mail.erdong.site">erdong@mail.erdong.site</a> ，或者 <a href="https://github.com/erdong/erdong.github.io/issues" target="_blank" rel="noopener">https://github.com/erdong/erdong.github.io/issues</a> 提 Issue ，我会及时回复。</p>
-<p>======================<br>Erdong, A Linux user !</p>
-]]></content>
-      <categories>
-        <category>Grafana</category>
-      </categories>
-      <tags>
-        <tag>Grafana</tag>
       </tags>
   </entry>
   <entry>
@@ -1464,69 +1456,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Kong 的健康检查和监控</title>
-    <url>/Kong/kong-05.html</url>
-    <content><![CDATA[<p>Kong 的健康检查和监控</p>
-<p>您可以让 Kong 代理的 API 使用 ring-balancer ， 通过添加包含一个或多个目标实体的upstream 实体来配置，每个目标指向不同的IP地址(或主机名)和端口。ring-balancer 将在不同的target之间平衡负载，并基于 uptream 配置对目标执行健康检查，使它们成为健康或不健康的，无论它们是否响应，ring-balancer 将只把流量路由到健康的target。</p>
-<a id="more"></a>
-
-<p>Kong 支持两种健康检查方式，可以单独使用，也可以组合使用。</p>
-<ul>
-<li><p>active checks：其中定期请求目标中的特定 HTTP 或 HTTPS 端点，并根据其响应确定目标的健康状态;</p>
-</li>
-<li><p>passive checks： Kong 分析正在代理的通信，并根据目标的行为响应请求来确定目标的健康状况。</p>
-</li>
-</ul>
-<h1 id="健康和不健康的-target"><a href="#健康和不健康的-target" class="headerlink" title="健康和不健康的 target"></a>健康和不健康的 target</h1><p>健康检查功能的目标是为给定的 Kong 节点动态地将 target 标记为健康或不健康。没有集群范围内的健康信息同步，每个 Kong 节点分别确定其 target 的健康状况。这是可以取到的，因为在给定的点上，一个 Kong 节点可能能够成功地连接到一个目标，而另一个节点则无法到达。这样第一个节点将认为它是健康的，而第二个则会将其标记为不健康，并开始将流量路由到upstream 的其他 target。</p>
-<p>无论是主动探测(针对主动健康检查)还是代理请求(针对被动健康检查)，都会生成用于确定目标是否健康的数据。请求可能会产生TCP错误、超时或HTTP状态代码。基于此信息，健康检查器更新了一系列内部计数器:</p>
-<ul>
-<li>如果返回的状态码配置为 “healthy”，则将增加目标的 “Successes” 计数器，并清除其所有其他计数器;</li>
-<li>如果连接失败，将增加目标的 “TCP failure”计数器，并清除 “Successes” 计数器;</li>
-<li>如果超时，将增加目标的 “timeouts” 计数器并清除 “Successes” 计数器;</li>
-<li>如果返回的状态代码配置为 “unhealthy”，它将增加目标的 “HTTP failures” 计数器，并清除 “Successes” 计数器。</li>
-</ul>
-<p>如果任何 “TCP failure”、“HTTP failure” 或 “timeout” 计数器达到其配置的阈值，则target 将被标记为不健康。</p>
-<p>如果 “success” 计数器达到其配置的阈值，则 target 将被标记为健康。<br>如果一个 upstream 的所有 target 都是不健康，Kong 会将 upstream 的请求返回 <code>503 Service Unavailable</code> 。</p>
-<blockquote>
-<ol>
-<li>健康检查只对状态是 active 的 target 执行，不修改 Kong 数据库中目标的活动状态。</li>
-</ol>
-</blockquote>
-<blockquote>
-<ol start="2">
-<li>不健康的 target 不会从 loadbalancer 中删除，因此在使用哈希算法时不会对balancer 布局产生任何影响(只会跳过它们)。</li>
-</ol>
-</blockquote>
-<blockquote>
-<ol start="3">
-<li>DNS警告和 Balancer 警告也适用于健康检查。如果对 target 使用主机名，需要确保DNS服务器始终为完整的 IP地址和名称，并且不限制响应。如果不这样做，可能会导致没有执行健康检查。</li>
-</ol>
-</blockquote>
-<h1 id="健康检查的类型"><a href="#健康检查的类型" class="headerlink" title="健康检查的类型"></a>健康检查的类型</h1><p>健康检查有两种类型，分别是 <code>Active health checks</code> 和 <code>Passive health checks</code></p>
-<h2 id="Active-health-checks"><a href="#Active-health-checks" class="headerlink" title="Active health checks"></a>Active health checks</h2><p>Active health checks 就是主动探测他们的健康状态。当 upstream 实体启用活动健康检查时，Kong 将定期向 upstream 的每个 target 的配置路径发出 HTTP 或 HTTPS 请求。这允许 Kong 根据探测结果自动启用和禁用 balancer 中的 target 。</p>
-<p>Active health checks 的周期性是可以被配置的，当 target 是健康还是不健康。如果其中一个的interval值设置为零，则在相应的场景中禁用检查。如果两者都为零，则完全禁用活动健康检查。</p>
-<h2 id="Passive-health-checks"><a href="#Passive-health-checks" class="headerlink" title="Passive health checks"></a>Passive health checks</h2><p>Passive health checks 是否基于由 Kong 代理的请求(HTTP/HTTPS/TCP)执行检查，而不生成额外的流量。当 target 变得无响应时，被动健康检查器将检测到这一点，并将目标标记为不健康。Ring-balancer 将开始跳过这个 target ，因此不会有更多的流量被路由到它。</p>
-<p>当目标的问题解决，并准备再次接收流量时，Kong管理员可以手动通知health checker目标应该再次启用，通过一个Admin API端点:</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ curl -i -X POST http:&#x2F;&#x2F;localhost:8001&#x2F;upstreams&#x2F;my_upstream&#x2F;targets&#x2F;10.1.2.3:1234&#x2F;healthy</span><br><span class="line">HTTP&#x2F;1.1 204 No Content</span><br></pre></td></tr></table></figure>
-
-<p>这个命令将广播一个集群范围的消息，以便将 “health” 状态传播到整个 Kong 集群。这将导致 Kong 节点重置在 Kong 节点的所有 worker 中运行的健康检查器的健康计数器，从而允许环平衡器再次将流量路由到目标。</p>
-<p>被动健康检查的优点是不会产生额外的流量，但它们不能自动将 target 重新标记为健康状态:“circuit is broken”，需要由系统管理员重新启用目标。</p>
-<h1 id="Kong-的监控"><a href="#Kong-的监控" class="headerlink" title="Kong 的监控"></a>Kong 的监控</h1><p>Kong 支持使用 Prometheus 进行监控数据采集，并且官方提供了采集方式和 Grafana 的Dashboard 模板</p>
-<p>官方的 <a href="https://github.com/Kong/kong-plugin-prometheus" target="_blank" rel="noopener">Kong Plugin Prometheus</a> 会定期更新，看上去比较活跃。</p>
-<p>除了官网以外，有网友也提供了一个监控模板，不过最后一次更新时间是2018 年 5 月 17 日，之后就没有更新了，大家也可以参考。<a href="https://github.com/yciabaud/kong-plugin-prometheus" target="_blank" rel="noopener">kong-prometheus-plugin</a></p>
-<h1 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h1><p>Kong 的健康检查主要介绍了健康检查的类型，这两类的健康检查是可以打开和关闭的，打开和关闭的具体方法请参考官网文档。</p>
-<p>======================<br>由于无法及时收到评论内容，所以关闭评论功能。<br>大家有问题欢迎发邮件到 <a href="mailto:erdong@mail.erdong.site">erdong@mail.erdong.site</a> ，或者 <a href="https://github.com/erdong/erdong.github.io/issues" target="_blank" rel="noopener">https://github.com/erdong/erdong.github.io/issues</a> 提 Issue ，我会及时回复。</p>
-<p>======================<br>Erdong, A Linux user !</p>
-]]></content>
-      <categories>
-        <category>Kong</category>
-      </categories>
-      <tags>
-        <tag>Kong</tag>
-        <tag>Heath Check</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Kong 的集群怎么用</title>
     <url>/Kong/kong-06.html</url>
     <content><![CDATA[<p>Kong 集群允许您通过添加更多的机器来处理更多的传入请求来横向扩展系统。它们将共享相同的配置，因为它们指向相同的数据库。指向相同数据存储的 Kong 节点将属于相同的 Kong 集群。</p>
@@ -1685,185 +1614,6 @@
       <tags>
         <tag>linux</tag>
         <tag>limit</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>用 GitBook 创建一本书</title>
-    <url>/gitbook/gitbook-create-book.html</url>
-    <content><![CDATA[<h1 id="用-GitBook-创建一本书"><a href="#用-GitBook-创建一本书" class="headerlink" title="用 GitBook 创建一本书"></a>用 GitBook 创建一本书</h1><p>gitbook 首先是一个软件，它使用 Git 和 Markdown 来编排书本，如果你没有听过 Git 和 Markdown，那么 gitbook 可能不适合你直接入手，你需要先去学习 Git 和 Markdown。Git 是一个版本控制工具，Markdown 是一个文本编辑语法，基本的使用大概几个小时就可以都学会了，并不复杂。</p>
-<a id="more"></a>
-<p>这是 gitbook 项目主页上对 gitbook 的定义。</p>
-<blockquote>
-<p>Modern book format and toolchain using Git and Markdown .</p>
-</blockquote>
-<h1 id="安装-GitBook"><a href="#安装-GitBook" class="headerlink" title="安装 GitBook"></a>安装 GitBook</h1><p>首先需要安装 nodejs，以便能够使用 npm 来安装 gitbook</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ wget -qO- https:&#x2F;&#x2F;raw.github.com&#x2F;creationix&#x2F;nvm&#x2F;v0.33.11&#x2F;install.sh | sh</span><br><span class="line">&#96;&#96;&#96; </span><br><span class="line"></span><br><span class="line">该命令会安装 nvm 命令，安装好以后会添加 nvm 的环境变量到 &#96;.bashrc&#96; 文件里，接下来退出终端，重新登陆使得 &#96;.bashrc&#96; 文件生效，或者使用其他方法使添加的环境变量生效。</span><br><span class="line">   </span><br><span class="line">接下来使用下列命令来安装 npm </span><br><span class="line"></span><br><span class="line">&#96;&#96;&#96;   </span><br><span class="line">$ nvm install stable</span><br></pre></td></tr></table></figure>
-
-<p>可以使用下列命令来查看 npm 的版本，比如我这次安装的是 6.11.3 版本。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[erdong@testhost ~]$ npm --version</span><br><span class="line">6.11.3</span><br><span class="line">[erdong@testhost ~]$</span><br></pre></td></tr></table></figure>
-
-<p>接下来使用 npm 来安装 gitbook</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ npm install gitbook-cli -g</span><br></pre></td></tr></table></figure>
-
-<h1 id="创建第一本书"><a href="#创建第一本书" class="headerlink" title="创建第一本书"></a>创建第一本书</h1><p>首先新建一个目录，这个目录就是这本书的一个载体，就好比在现实世界里你要先准备一个本子，以后所有的内容会写在这个本子上。在 gitbook，我们以后所有的内容都会存放在这个目录里。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ mkdir erdong-first-book</span><br></pre></td></tr></table></figure>
-
-<p>接下来我们初始化这个目录，就好比你在你准备的本子上做一些基本的工作，</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[erdong@testhost ~]$ cd erdong-first-book</span><br><span class="line">[erdong@testhost erdong-first-book]$ gitbook init</span><br><span class="line">[erdong@testhost erdong-first-book]$ ls</span><br><span class="line">README.md  SUMMARY.md</span><br></pre></td></tr></table></figure>
-<p>初始化过后，在这个文件夹会生成 2 个文件，<code>README.md</code> 和 <code>SUMMARY.md</code> 。</p>
-<ul>
-<li>README.md ： 是书的简单介绍，类似于一本书的序或者前言部分。</li>
-<li>SUMMARY.md ： 是书的目录，程序按照这个文件来生成书的结构。</li>
-</ul>
-<p>初始化结束后，就可以写东西了，</p>
-<p>比如我们现在往这两个文件里写入以下内容，在 README.md 文件中我们写入如下内容：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># Introduction</span><br><span class="line"></span><br><span class="line">This erdong&#39;s first book</span><br><span class="line"></span><br><span class="line">This a samples in GitHub, https:&#x2F;&#x2F;github.com&#x2F;erdong&#x2F;gitbook-notes-samples</span><br></pre></td></tr></table></figure>
-
-<p>在 SUMMARY.md  文件中写入如下内容：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># Summary</span><br><span class="line"></span><br><span class="line">* [Introduction](README.md)</span><br><span class="line"></span><br><span class="line">* [Part I]()</span><br><span class="line">* [Part II]()</span><br><span class="line">* [Part III]()</span><br></pre></td></tr></table></figure>
-
-<p>写入内容后，我们可以通过 <code>gitbook serve</code> 命令来预览我们写的书</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[erdong@testhost erdong-first-book]$ gitbook serve</span><br><span class="line">Live reload server started on port: 35729</span><br><span class="line">Press CTRL+C to quit ...</span><br><span class="line"></span><br><span class="line">info: 7 plugins are installed</span><br><span class="line">info: loading plugin &quot;livereload&quot;... OK</span><br><span class="line">info: loading plugin &quot;highlight&quot;... OK</span><br><span class="line">info: loading plugin &quot;search&quot;... OK</span><br><span class="line">info: loading plugin &quot;lunr&quot;... OK</span><br><span class="line">info: loading plugin &quot;sharing&quot;... OK</span><br><span class="line">info: loading plugin &quot;fontsettings&quot;... OK</span><br><span class="line">info: loading plugin &quot;theme-default&quot;... OK</span><br><span class="line">info: found 1 pages</span><br><span class="line">info: found 0 asset files</span><br><span class="line">info: &gt;&gt; generation finished with success in 0.5s !</span><br><span class="line"></span><br><span class="line">Starting server ...</span><br><span class="line">Serving book on http:&#x2F;&#x2F;localhost:4000</span><br></pre></td></tr></table></figure>
-
-<p>这样会在前台运行一个 web 程序，对外以 4000 端口提供一个可以浏览的页面，浏览的地址是 <a href="http://localhost:4000" target="_blank" rel="noopener">http://localhost:4000</a> ，</p>
-<p>这样我们就可以查看我们写好的书了。如下图所示。</p>
-<p><img src="https://image.erdong.site/blog/2019/10/16/gitbookintroduction.jpg" alt="Gitbook Introduction"></p>
-<p>如果我们不想使用这种方式来预览书籍的话，也可以用 gitbook 生成一份静态的页面，放在 web 服务器或者其他可以提供 web 浏览访问的地方。生成静态页面使用 <code>gitbook build</code> 命令即可，会生成一个 <code>_book</code> 的文件夹，这个目录里放的就是生成好的静态页面，拷贝到对应的目录即可。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[erdong@testhost erdong-first-book]$ gitbook build </span><br><span class="line">info: 7 plugins are installed</span><br><span class="line">info: 6 explicitly listed</span><br><span class="line">info: loading plugin &quot;highlight&quot;... OK</span><br><span class="line">info: loading plugin &quot;search&quot;... OK</span><br><span class="line">info: loading plugin &quot;lunr&quot;... OK</span><br><span class="line">info: loading plugin &quot;sharing&quot;... OK</span><br><span class="line">info: loading plugin &quot;fontsettings&quot;... OK</span><br><span class="line">info: loading plugin &quot;theme-default&quot;... OK</span><br><span class="line">info: found 1 pages</span><br><span class="line">info: found 0 asset files</span><br><span class="line">info: &gt;&gt; generation finished with success in 0.5s !</span><br><span class="line">[erdong@testhost erdong-first-book]$</span><br></pre></td></tr></table></figure>
-
-<h1 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h1><p>这样，我们就通过 GitBook 工具写了一本书，或者一个小册子。</p>
-<p>======================<br>由于无法及时收到评论内容，所以关闭评论功能。<br>大家有问题欢迎发邮件到 <a href="mailto:erdong@mail.erdong.site">erdong@mail.erdong.site</a> ，或者 <a href="https://github.com/erdong/erdong.github.io/issues" target="_blank" rel="noopener">https://github.com/erdong/erdong.github.io/issues</a> 提 Issue ，我会及时回复。</p>
-<p>======================<br>Erdong, A Linux user !</p>
-]]></content>
-      <categories>
-        <category>gitbook</category>
-      </categories>
-      <tags>
-        <tag>gitbook</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>解决 EXT4 使用无法挂载</title>
-    <url>/linux/system/ext4-error-loading-journal.html</url>
-    <content><![CDATA[<h1 id="现象"><a href="#现象" class="headerlink" title="现象"></a>现象</h1><p>使用新版本的操作系统自带的文件系统格式化工具进行分区格式化以后，在较低的操作系统版本上会有提示，提示如下：</p>
-<a id="more"></a>
-
-
-
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[root@localhost ~]# mount -t ext4 &#x2F;dev&#x2F;sdb1 &#x2F;root&#x2F;test</span><br><span class="line">mount: 文件系统类型错误、选项错误、&#x2F;dev&#x2F;sdb1 上有坏超级块、</span><br><span class="line">       缺少代码页或助手程序，或其他错误</span><br><span class="line"></span><br><span class="line">       有些情况下在 syslog 中可以找到一些有用信息- 请尝试</span><br><span class="line">       dmesg | tail  这样的命令看看。</span><br></pre></td></tr></table></figure>
-
-
-<p>按照提示查看日志发现</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Mar 12 01:12:20 localhost kernel: JBD2: Unrecognised features on journal</span><br><span class="line">Mar 12 01:12:20 localhost kernel: EXT4-fs (sdb1): error loading journal</span><br></pre></td></tr></table></figure>
-
-<h1 id="原因分析"><a href="#原因分析" class="headerlink" title="原因分析"></a>原因分析</h1><p>造成上述问题的原因是在新的操作系统上使用系统自带的 mkfs.ext4 对文件系统进行了格式化，默认会使用一些新的的特性，这些新的特性在旧的系统上是无法使用的。</p>
-<p>比如在 Ubuntu 18.04  上进行使用 mkfs.ext4 进行格式化的磁盘，在 CentOS 7.4 1708 上 是可以正常使用的，在 CentOS 7.0 1406 以及以下版本是就是提示上述错误。</p>
-<p>Ubuntu 18.04 的 mkfs 版本是 1.44.1-1 ，CentOS 7.0 1406 的 mkfs 版本是 1.42.9-4。造成了这个差异。CentOS 7.4 1708 的 mkfs 版本是 1.42.9-10 ，Redhat 内部在小版本上新增了这个特性的支持。</p>
-<h1 id="解决办法"><a href="#解决办法" class="headerlink" title="解决办法"></a>解决办法</h1><p>按照日志提示，Unrecognised features on journal  ， 不支持 journal 。</p>
-<p>那么查看文件系统特性：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#tune2fs -l &#x2F;dev&#x2F;sdb1</span><br><span class="line">Filesystem features: has_journal ext_attr resize_inode dir_index filetype extent 64bit flex_bg sparse_super large_file</span><br></pre></td></tr></table></figure>
-
-<p>文件系统含有一个 has_journal 特性，删除这个特性，删除方式如下：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#tune2fs -O ^has_journal &#x2F;dev&#x2F;sdb1 &#x2F;&#x2F; 去除has_journal选项</span><br><span class="line">#tune2fs -O has_journal &#x2F;dev&#x2F;sdb1 &#x2F;&#x2F; add has_journal选项</span><br></pre></td></tr></table></figure>
-
-<p>验证是否删除：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#tune2fs -l &#x2F;dev&#x2F;sdb1</span><br><span class="line">Filesystem features: ext_attr resize_inode dir_index filetype</span><br></pre></td></tr></table></figure>
-
-<p>可以看到已经没有这个特性了，再次尝试挂载，</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[root@localhost ~]# mount -t ext4 &#x2F;dev&#x2F;sdb1 &#x2F;root&#x2F;test</span><br><span class="line">[root@localhost ~]# cd test&#x2F;</span><br><span class="line">[root@localhost test]# ls</span><br><span class="line">lost+found  test_dir  test_file.txt</span><br><span class="line">[root@localhost test]# cat test_file.txt</span><br><span class="line">kkdkdkdkkak</span><br><span class="line">kldkjfalkf</span><br><span class="line">kjfklaf</span><br><span class="line">kjafkdj</span><br><span class="line"></span><br><span class="line">[root@localhost test]#</span><br></pre></td></tr></table></figure>
-<p>可以看到，已经可以正常挂载，挂载后的文件也可以正常显示。</p>
-<h1 id="couldn’t-mount-RDWR"><a href="#couldn’t-mount-RDWR" class="headerlink" title="couldn’t mount RDWR"></a>couldn’t mount RDWR</h1><p>在上述的现象里，如果挂载 ext4 到 CentOS 6.5 等更老一些的系统的时候，也会提示部分不支持的特性，在日志里如果出现了如下提示：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">kernel: EXT4-fs (sdb1): couldn&#39;t mount RDWR because of unsupported optional features (400)</span><br></pre></td></tr></table></figure>
-
-
-<p>这种情况是因为mkfs.ext4的时候制定的参数，旧的内核不支持导致.</p>
-<p>The ext4 feature (400) is the new metadata_csum feature. If this feature is enabled and old tools are used to mount the filesystem they will only be able to mount read-only.</p>
-<p><a href="https://ext4.wiki.kernel.org/index.php/Ext4_Metadata_Checksums" target="_blank" rel="noopener">https://ext4.wiki.kernel.org/index.php/Ext4_Metadata_Checksums</a></p>
-<p>解决办法一样，可以在创建的时候不使用该特性，或者删除该特性后再 CentOS 6.5 上使用。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[root@localhost ~]# tune2fs -O ^metadata_csum &#x2F;dev&#x2F;sdb1</span><br><span class="line">tune2fs 1.43.1 (08-Jun-2016)</span><br><span class="line"></span><br><span class="line">请在这个文件系统上运行 e2fsck.</span><br></pre></td></tr></table></figure>
-
-<p>系统提示需要 运行 e2fsck 进行磁盘检查，那么按照要求进行检查, e2fsck 的参数请大家自己选择。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[root@localhost ~]# e2fsck -f -a -v &#x2F;dev&#x2F;sdb1</span><br><span class="line"></span><br><span class="line">          13 inodes used (0.00%, out of 30531584)</span><br><span class="line">           0 non-contiguous files (0.0%)</span><br><span class="line">           0 non-contiguous directories (0.0%)</span><br><span class="line">             # of inodes with ind&#x2F;dind&#x2F;tind blocks: 0&#x2F;0&#x2F;0</span><br><span class="line">             Extent depth histogram: 4</span><br><span class="line">     1935198 blocks used (1.58%, out of 122096637)</span><br><span class="line">           0 bad blocks</span><br><span class="line">           1 large file</span><br><span class="line"></span><br><span class="line">           1 regular file</span><br><span class="line">           3 directories</span><br><span class="line">           0 character device files</span><br><span class="line">           0 block device files</span><br><span class="line">           0 fifos</span><br><span class="line">           0 links</span><br><span class="line">           0 symbolic links (0 fast symbolic links)</span><br><span class="line">           0 sockets</span><br><span class="line">------------</span><br><span class="line">           4 files</span><br></pre></td></tr></table></figure>
-
-<p>检查完以后，就可以尝试移除这个特性了，期间会询问，请按照实际选择。移除以后挂载就正常了。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[root@localhost ~]# tune2fs -O ^metadata_csum &#x2F;dev&#x2F;sdb1</span><br><span class="line">tune2fs 1.43.1 (08-Jun-2016)</span><br><span class="line">Disabling checksums could take some time.</span><br><span class="line">Proceed anyway (or wait 5 seconds) ? (y,n) y</span><br><span class="line">[root@localhost ~]# mount -t ext4 &#x2F;dev&#x2F;sdb1 &#x2F;root&#x2F;test</span><br><span class="line">[root@localhost ~]# cd test&#x2F;</span><br><span class="line">[root@localhost test]# ls</span><br><span class="line">lost+found  test_dir  test_file.txt</span><br><span class="line">[root@localhost test]#</span><br></pre></td></tr></table></figure>
-
-
-
-<h1 id="tune2fs-版本较低"><a href="#tune2fs-版本较低" class="headerlink" title="tune2fs 版本较低"></a>tune2fs 版本较低</h1><p>执行 tune2fs 如果遇到如下提示：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[root@localhost ~]# tune2fs -O ^has_journal &#x2F;dev&#x2F;sdb1</span><br><span class="line">tune2fs 1.42.9 (28-Dec-2013)</span><br><span class="line">tune2fs: Filesystem has unsupported read-only feature(s) while trying to open &#x2F;dev&#x2F;sdb1</span><br><span class="line">Couldn&#39;t find valid filesystem superblock.</span><br><span class="line">[root@localhost ~]#</span><br></pre></td></tr></table></figure>
-
-
-<p>那么说明 tune2fs 版本较低，不支持 has_journal 特性，需要升级到 1.43.1以上才可以。</p>
-<p>在 CentOS 6.5 中， tune2fs 版本更低，是 1.41.12，也需要升级。</p>
-<h1 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h1><p>如果确认是新旧版本的问题导致的无法挂载，那么上述方法就可以解决了。</p>
-<p>如果不是新旧版本的问题，那么还有一种可能，就是磁盘坏了，在这种情况下可以使用下列命令尝试修复。</p>
-<p>特别提示，磁盘修复请慎重选择。本文不保证数据安全性和完整性，只提供一个可供参考的选择。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[root@localhost ~]# e2fsck -f -c -v &#x2F;dev&#x2F;sdb1</span><br><span class="line">e2fsck 1.42.9 (28-Dec-2013)</span><br><span class="line">&#x2F;dev&#x2F;sdb1 has unsupported feature(s): metadata_csum</span><br><span class="line">e2fsck: Get a newer version of e2fsck!</span><br><span class="line">[root@localhost ~]#</span><br></pre></td></tr></table></figure>
-
-<p>该提示显示 e2fsck 工具不支持 新的特性，meadata_csum , 解决版本是 升级 e2fsck 工具的版本， e2fsck 工具由 e2fsprogs 和 e2fsprogs-libs 两个工具包来提供，升级这两个工具包的版本就可以，最少要升级到 1.43.1 版本以上才可以。</p>
-<p>Ubuntu 可以参考如下链接进行解决。</p>
-<blockquote>
-<p><a href="https://askubuntu.com/questions/1053404/e2fsck-how-to-handle-the-metadata-csum-error-by-advancing-the-e2fsck-version?noredirect=1&amp;lq=1" target="_blank" rel="noopener">https://askubuntu.com/questions/1053404/e2fsck-how-to-handle-the-metadata-csum-error-by-advancing-the-e2fsck-version?noredirect=1&amp;lq=1</a></p>
-</blockquote>
-<p>关于 CentOS 可以去下列地址查找对应的 rpm 包来进行升级。</p>
-<blockquote>
-<p><a href="http://www.rpmfind.net/linux/RPM/index.html" target="_blank" rel="noopener">http://www.rpmfind.net/linux/RPM/index.html</a></p>
-</blockquote>
-<p>更推荐的方法是用源码进行编译。过程如下</p>
-<h3 id="安装-GCC-编译器"><a href="#安装-GCC-编译器" class="headerlink" title="安装 GCC 编译器"></a>安装 GCC 编译器</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">yum install gcc -y</span><br></pre></td></tr></table></figure>
-
-<h3 id="下载源码包，"><a href="#下载源码包，" class="headerlink" title="下载源码包，"></a>下载源码包，</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">wget http:&#x2F;&#x2F;downloads.sourceforge.net&#x2F;project&#x2F;e2fsprogs&#x2F;e2fsprogs&#x2F;v1.43.1&#x2F;e2fsprogs-1.43.1.tar.gz</span><br></pre></td></tr></table></figure>
-
-<h3 id="解压安装包进行编译"><a href="#解压安装包进行编译" class="headerlink" title="解压安装包进行编译"></a>解压安装包进行编译</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">tar -zxf e2fsprogs-1.43.1.tar.gz</span><br><span class="line">cd e2fsprogs-1.43.1</span><br><span class="line">.&#x2F;configure</span><br><span class="line">make</span><br></pre></td></tr></table></figure>
-
-<p>此时已经编译好了，进入 e2fsck 文件夹就可以看到新编译的版本了，</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[root@loaclhost ~]cd e2fsck</span><br><span class="line">[root@localhost ~]# e2fsck -V</span><br><span class="line">e2fsck 1.43.1 (08-Jun-2016)</span><br><span class="line">	Using EXT2FS Library version 1.43.1, 08-Jun-2016</span><br></pre></td></tr></table></figure>
-
-<p>如果希望替换系统的 e2fsck 工具，那么执行 make install 。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cd e2fsprogs-1.43.1</span><br><span class="line">make install</span><br></pre></td></tr></table></figure>
-
-
-
-<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>出现上述问题的主要原因是，新版的操作系统默认支持了很多新的特性，这些新特性在旧版本的操作系统上是不支持的。<br>如果在磁盘使用前就已经知道了磁盘将要使用的操作系统，应该依据操作系统的差别，然后有意的关闭一些参数，使得新旧操作系统的磁盘是兼容的。</p>
-<p>如果无法预知操作系统，那么在实际使用中遇到了问题，可以查找是哪个新的特性导致的该问题，尝试移除这个文件系统的特性，之后就可以正常使用了。但是贸然移除某个特性，可能会导致磁盘上的数据丢失，这个应该做过充分的调研确认以后再操作。</p>
-<p>======================<br>Erdong, A Linux user !</p>
-]]></content>
-      <categories>
-        <category>linux</category>
-        <category>system</category>
-      </categories>
-      <tags>
-        <tag>ext4</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Erdong Notes</title>
-    <url>/article/erdong-notes.html</url>
-    <content><![CDATA[<p>这里记录我的一些学习笔记和一些发布在其他地方的文章。</p>
-<a id="more"></a>
-
-
-<h1 id="Notes"><a href="#Notes" class="headerlink" title="Notes"></a>Notes</h1><h2 id="ACP-Notes"><a href="#ACP-Notes" class="headerlink" title="ACP Notes"></a>ACP Notes</h2><ul>
-<li><a href="https://github.com/erdong/acp-notes" target="_blank" rel="noopener">Github</a></li>
-<li><a href="http://erdong.site/acp-notes/">Gitbook</a></li>
-</ul>
-<h2 id="Ansible-Notes"><a href="#Ansible-Notes" class="headerlink" title="Ansible Notes"></a>Ansible Notes</h2><ul>
-<li><a href="https://github.com/erdong/ansible-notes" target="_blank" rel="noopener">Github</a></li>
-<li><a href="http://erdong.site/ansible-notes/">Gitbook</a></li>
-</ul>
-<h2 id="Prometheus-Notes"><a href="#Prometheus-Notes" class="headerlink" title="Prometheus Notes"></a>Prometheus Notes</h2><ul>
-<li><a href="https://github.com/erdong/prometheus-notes" target="_blank" rel="noopener">Github</a></li>
-<li><a href="http://erdong.site/prometheus-notes/">Gitbook</a></li>
-</ul>
-<h1 id="Article"><a href="#Article" class="headerlink" title="Article"></a>Article</h1><h2 id="CCF-TF-讲稿整理"><a href="#CCF-TF-讲稿整理" class="headerlink" title="CCF TF 讲稿整理"></a>CCF TF 讲稿整理</h2><p>======================<br>Erdong, A Linux user !</p>
-]]></content>
-      <categories>
-        <category>article</category>
-      </categories>
-      <tags>
-        <tag>article</tag>
-        <tag>note</tag>
       </tags>
   </entry>
   <entry>
@@ -2558,87 +2308,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Prometheus 安装</title>
-    <url>/Prometheus/notes/prometheus-install.html</url>
-    <content><![CDATA[<p>Prometheus是一个监控平台，它通过抓取这些目标主机上采集器暴露的指标来展示监控数据。本文介绍如何安装、配置和监控 Prometheus。你需要下载安装 Prometheus 并且安装 Exporter，这些工具采集了主机和对应服务的时间序列数据。我们的第一个 Exporter 是 Prometheus 本身，它提供了关于内存使用、垃圾收集等各种各样的主机级指标。</p>
-<a id="more"></a>
-<h1 id="下载-Prometheus"><a href="#下载-Prometheus" class="headerlink" title="下载 Prometheus"></a>下载 Prometheus</h1><p>首先下载最新版本的 Prometheus 然后解压，下载地址如下：</p>
-<p><a href="https://prometheus.io/download" target="_blank" rel="noopener">https://prometheus.io/download</a></p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">tar xvfz prometheus-*.tar.gz</span><br><span class="line">cd prometheus-*</span><br></pre></td></tr></table></figure>
-
-<p>Prometheus 服务是一个名为 Prometheus( 或Windows系统上的 prometheus.exe)的二进制文件。我们可以运行二进制文件，并通过<code>--help</code> 参数选项来查看帮助，如下所示。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ .&#x2F;prometheus --help</span><br><span class="line">usage: prometheus [&lt;flags&gt;]</span><br><span class="line"></span><br><span class="line">The Prometheus monitoring server</span><br><span class="line"></span><br><span class="line">Flags:</span><br><span class="line">  -h, --help                     Show context-sensitive help (also try --help-long and --help-man).</span><br><span class="line">      --version                  Show application version.</span><br><span class="line">      --config.file&#x3D;&quot;prometheus.yml&quot;</span><br><span class="line">                                 Prometheus configuration file path.</span><br><span class="line">      --web.listen-address&#x3D;&quot;0.0.0.0:9090&quot;</span><br><span class="line">                                 Address to listen on for UI, API, and telemetry.</span><br><span class="line">      --web.read-timeout&#x3D;5m      Maximum duration before timing out read of the request, and closing idle connections.</span><br><span class="line">      --web.max-connections&#x3D;512  Maximum number of simultaneous connections.</span><br><span class="line">      --web.external-url&#x3D;&lt;URL&gt;   The URL under which Prometheus is externally reachable (for example, if Prometheus is served via a reverse</span><br><span class="line">                                 proxy). Used for generating relative and absolute links back to Prometheus itself. If the URL has a path</span><br><span class="line">                                 portion, it will be used to prefix all HTTP endpoints served by Prometheus. If omitted, relevant URL</span><br><span class="line">                                 components will be derived automatically.</span><br><span class="line">      --web.route-prefix&#x3D;&lt;path&gt;  Prefix for the internal routes of web endpoints. Defaults to path of --web.external-url.</span><br><span class="line">      --web.user-assets&#x3D;&lt;path&gt;   Path to static asset directory, available at &#x2F;user.</span><br><span class="line">      --web.enable-lifecycle     Enable shutdown and reload via HTTP request.</span><br><span class="line">      --web.enable-admin-api     Enable API endpoints for admin control actions.</span><br><span class="line">      --web.console.templates&#x3D;&quot;consoles&quot;</span><br><span class="line">                                 Path to the console template directory, available at &#x2F;consoles.</span><br><span class="line">      --web.console.libraries&#x3D;&quot;console_libraries&quot;</span><br><span class="line">                                 Path to the console library directory.</span><br><span class="line">      --web.page-title&#x3D;&quot;Prometheus Time Series Collection and Processing Server&quot;</span><br><span class="line">                                 Document title of Prometheus instance.</span><br><span class="line">      --storage.tsdb.path&#x3D;&quot;data&#x2F;&quot;</span><br><span class="line">                                 Base path for metrics storage.</span><br><span class="line">      --storage.tsdb.retention&#x3D;15d</span><br><span class="line">                                 How long to retain samples in storage.</span><br><span class="line">      --storage.tsdb.no-lockfile</span><br><span class="line">                                 Do not create lockfile in data directory.</span><br><span class="line">      --storage.remote.flush-deadline&#x3D;&lt;duration&gt;</span><br><span class="line">                                 How long to wait flushing sample on shutdown or config reload.</span><br><span class="line">      --storage.remote.read-sample-limit&#x3D;5e7</span><br><span class="line">                                 Maximum overall number of samples to return via the remote read interface, in a single query. 0 means no</span><br><span class="line">                                 limit.</span><br><span class="line">      --storage.remote.read-concurrent-limit&#x3D;10</span><br><span class="line">                                 Maximum number of concurrent remote read calls. 0 means no limit.</span><br><span class="line">      --rules.alert.for-outage-tolerance&#x3D;1h</span><br><span class="line">                                 Max time to tolerate prometheus outage for restoring &#39;for&#39; state of alert.</span><br><span class="line">      --rules.alert.for-grace-period&#x3D;10m</span><br><span class="line">                                 Minimum duration between alert and restored &#39;for&#39; state. This is maintained only for alerts with configured</span><br><span class="line">                                 &#39;for&#39; time greater than grace period.</span><br><span class="line">      --rules.alert.resend-delay&#x3D;1m</span><br><span class="line">                                 Minimum amount of time to wait before resending an alert to Alertmanager.</span><br><span class="line">      --alertmanager.notification-queue-capacity&#x3D;10000</span><br><span class="line">                                 The capacity of the queue for pending Alertmanager notifications.</span><br><span class="line">      --alertmanager.timeout&#x3D;10s</span><br><span class="line">                                 Timeout for sending alerts to Alertmanager.</span><br><span class="line">      --query.lookback-delta&#x3D;5m  The delta difference allowed for retrieving metrics during expression evaluations.</span><br><span class="line">      --query.timeout&#x3D;2m         Maximum time a query may take before being aborted.</span><br><span class="line">      --query.max-concurrency&#x3D;20</span><br><span class="line">                                 Maximum number of queries executed concurrently.</span><br><span class="line">      --query.max-samples&#x3D;50000000</span><br><span class="line">                                 Maximum number of samples a single query can load into memory. Note that queries will fail if they would</span><br><span class="line">                                 load more samples than this into memory, so this also limits the number of samples a query can return.</span><br><span class="line">      --log.level&#x3D;info           Only log messages with the given severity or above. One of: [debug, info, warn, error]</span><br><span class="line">      --log.format&#x3D;logfmt        Output format of log messages. One of: [logfmt, json]</span><br></pre></td></tr></table></figure>
-
-<h1 id="配置-Prometheus"><a href="#配置-Prometheus" class="headerlink" title="配置 Prometheus"></a>配置 Prometheus</h1><p>Prometheus 的配置采用了 YAML 语法描述，Prometheus 下载好以后会有一个示例配置文件，文件名叫 <code>prometheus.yml</code> ，可以先配置这个文件。</p>
-<p>将示例配置文件删除注释和一些高级配置以后，剩下的最基本、最少的配置项如下</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">global:</span><br><span class="line">  scrape_interval:     15s</span><br><span class="line">  evaluation_interval: 15s</span><br><span class="line"></span><br><span class="line">rule_files:</span><br><span class="line">  # - &quot;first.rules&quot;</span><br><span class="line">  # - &quot;second.rules&quot;</span><br><span class="line"></span><br><span class="line">scrape_configs:</span><br><span class="line">  - job_name: prometheus</span><br><span class="line">    static_configs:</span><br><span class="line">      - targets: [&#39;localhost:9090&#39;]</span><br></pre></td></tr></table></figure>
-
-<p>在示例配置文件中有三个配置块：global、rule_files、scrape_configs 。</p>
-<p><code>global</code> 块控制 Prometheus 服务的全局配置，有两个选项。<code>scrape_interval</code> 控制Prometheus 采集数据的频率。你可以为某些指标数据覆盖此选项。默认情况下，全局设置是每15秒采集一次。<code>evaluation_interval</code>选项控制 Prometheus 评估规则的频率。Prometheus 使用规则创建新的时间序列并生成警报。</p>
-<p><code>rule_files</code> 用来指定我们需要加载的规则的配置文件路径，这个配置文件也是 YAML 语法。当前没有配置规则，这部分注释掉不生效。</p>
-<p><code>scrape_configs</code> 控制 Prometheus 监听的资源。由于 Prometheus 还将自己的数据作通过 HTTP 公开出来，因此它可以收集和监控自己的健康状况。在默认配置中有一个名为prometheus 的 job，它抓取 prometheus 服务公开的时间序列数据。该 Job 包含一个静态配置的目标，一般是本地主机的 9090 端口。 Prometheus 希望 Metric 能够在 <code>/metric</code> 的路径上可用。所以默认的 job 可以通过如下 RUEL 来采集，<a href="http://localhost:9090/metrics" target="_blank" rel="noopener">http://localhost:9090/metrics</a> .</p>
-<p>返回的时间序列数据详细描述了 Prometheus 服务的状态和性能。</p>
-<p>对于完整的配置文件，可以查看<a href="https://prometheus.io/docs/prometheus/latest/configuration/configuration/" target="_blank" rel="noopener">官网的文档</a> ， 后续我也会整理出来。</p>
-<h1 id="启动-Prometheus"><a href="#启动-Prometheus" class="headerlink" title="启动 Prometheus"></a>启动 Prometheus</h1><p>使用刚才修改好的配置文件来启动 Prometheus，切换到 Prometheus 二进制文件的目录下，执行如下命令。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">.&#x2F;prometheus --config.file&#x3D;prometheus.yml</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>当二进制文件和配置文件在同一个目录的时候可以直接使用上述命令。如果不在同一个目录，请指定配置文件的绝对路径。</p>
-</blockquote>
-<p>这样 Prometheus 就会启动起来。你可以使用浏览器访问 <a href="http://localhost:9090" target="_blank" rel="noopener">http://localhost:9090</a> 地址可以看到关于它自身的状态页面，Prometheus 在启动 30 秒以后在页面就可以看到数据了。</p>
-<p>你也可以通过访问 <a href="http://localhost:9090/metrics，来验证" target="_blank" rel="noopener">http://localhost:9090/metrics，来验证</a> Prometheus 是否在暴露自己的指标。</p>
-<h1 id="使用浏览器查看"><a href="#使用浏览器查看" class="headerlink" title="使用浏览器查看"></a>使用浏览器查看</h1><p>我们来看一下 Prometheus 收集的一些关于自己的数据。访问 <a href="http://localhost:9090/graph，并在" target="_blank" rel="noopener">http://localhost:9090/graph，并在</a> “graph” 选项卡中选择 “Console” 视图。</p>
-<p>将 <code>promhttp_metric_handler_requests_total</code> (Prometheus 提供的一个Metric 名称) 输入到控制台，这将返回许多不同的时间序列(以及为每个时间序列记录的最新值)，所有这些时间序列的 Metric 名称都是 promhttp_metric_handler_requests_total，但是具有不同的 label 。这些 label 指定不同的请求状态。</p>
-<p>如果想看 HTTP 请求返回码 200 的数据，可以使用下面这条语句:</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">promhttp_metric_handler_requests_total&#123;code&#x3D;&quot;200&quot;&#125;</span><br></pre></td></tr></table></figure>
-<p>如果要计算返回的时间序列的数量，可以使用 count 来查询，后边会写到函数相关的内容:</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">count(promhttp_metric_handler_requests_total)</span><br></pre></td></tr></table></figure>
-
-<h1 id="推荐目录结构"><a href="#推荐目录结构" class="headerlink" title="推荐目录结构"></a>推荐目录结构</h1><p>新安装的 Prometheus 建议使用如下目录结构进行调整。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">.</span><br><span class="line">├── conf</span><br><span class="line">│   └── prometheus.yml</span><br><span class="line">├── current -&gt; deploy&#x2F;prometheus-2.8.1.linux-amd64</span><br><span class="line">├── data</span><br><span class="line">├── deploy</span><br><span class="line">│   └── prometheus-2.8.1.linux-amd64</span><br><span class="line">│       ├── LICENSE</span><br><span class="line">│       ├── NOTICE</span><br><span class="line">│       ├── console_libraries</span><br><span class="line">│       ├── consoles</span><br><span class="line">│       ├── prometheus</span><br><span class="line">│       ├── prometheus.yml</span><br><span class="line">│       └── promtool</span><br><span class="line">├── logs</span><br><span class="line">│   └── prometheus.log</span><br><span class="line">├── run</span><br><span class="line">│   └── prometheus.pid</span><br><span class="line">└── scripts</span><br><span class="line">    └── run.sh</span><br></pre></td></tr></table></figure>
-
-<p><code>conf</code> 目录用来存储 Prometheus 的配置文件，启动的时候指定配置文件。</p>
-<p><code>current</code> 该目录软连接到二进制文件所在的目录</p>
-<p><code>data</code> Prometheus 数据库的数据存储位置，</p>
-<p><code>deploy</code> 放置 Prometheus 的二进制文件，方便 current 进行软连接</p>
-<p><code>logs</code> 存放日志。如果普通用户启动，建议日志放置在这个目录。如果 root 用户启动，日志可以放在这个目录，也可以放在 /var/log/messages </p>
-<p><code>scripts</code> 放置启动脚本。如果普通用户启动 ，放置启动进程的脚本。如果 root 用户启动，可以放置脚本到该目录，或者写成系统服务。</p>
-<p>使用该目录结构可以方便的进行备份、迁移、升级、维护。</p>
-<p>提供一个启动脚本 start.sh 的参考模板</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#!&#x2F;bin&#x2F;bash</span><br><span class="line">BASEPATH&#x3D;&#x2F;opt&#x2F;prometheus</span><br><span class="line">LOG&#x3D;$BASEPATH&#x2F;logs</span><br><span class="line">nohup $BASEPATH&#x2F;current&#x2F;prometheus --config.file&#x3D;$BASEPATH&#x2F;conf&#x2F;prometheus.yml --web.listen-address&#x3D;:9090 --storage.tsdb.path&#x3D;$BASEPATH&#x2F;data&#x2F;  --storage.tsdb.retention&#x3D;31d &gt;&gt; $LOG&#x2F;prometheus.log  2&gt;&amp;1 &amp; echo $! &gt; $BASEPATH&#x2F;run&#x2F;prometheus.pid</span><br><span class="line"></span><br><span class="line">sleep 5</span><br><span class="line">PROC&#x3D;&#96;ps -ef |grep \&#96;cat $BASEPATH&#x2F;run&#x2F;prometheus.pid\&#96; |grep -v grep&#96;</span><br><span class="line"></span><br><span class="line">if  [ ! -n &quot;$PROC&quot; ] ;then</span><br><span class="line">    echo &quot;##########################################&quot;</span><br><span class="line">    echo &quot;Process not found, please check by yourself&quot;</span><br><span class="line">    echo &quot;##########################################&quot;</span><br><span class="line">else</span><br><span class="line">    echo &quot;##########################################&quot;</span><br><span class="line">    echo &quot;Prometheus is running&quot;</span><br><span class="line">    echo &quot;##########################################&quot;</span><br><span class="line">fi</span><br></pre></td></tr></table></figure>
-
-<p>该脚本做了如下内容</p>
-<ul>
-<li>指定配置文件</li>
-<li>指定数据暴露的端口</li>
-<li>指定数据文件存储的路径</li>
-<li>指定数据文件存储的时间（轮询时间）</li>
-<li>指定日志的存储位置（nohup 输出作为日志）</li>
-<li>生成 PID 文件</li>
-</ul>
-<p>CentOS 7 启动脚本可以使用如下模板，</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[Unit]</span><br><span class="line">Description&#x3D;Prometheus Server</span><br><span class="line">After&#x3D;network.target</span><br><span class="line"></span><br><span class="line">[Service]</span><br><span class="line">ExecStart&#x3D;&#x2F;opt&#x2F;prometheus&#x2F;current&#x2F;prometheus --config.file&#x3D;&#x2F;opt&#x2F;prometheus&#x2F;conf&#x2F;prometheus.yml --web.listen-address&#x3D;:9090 --storage.tsdb.path&#x3D;&#x2F;opt&#x2F;prometheus&#x2F;data&#x2F;  --storage.tsdb.retention&#x3D;30d</span><br><span class="line">User&#x3D;root</span><br><span class="line"></span><br><span class="line">[Install]</span><br><span class="line">WantedBy&#x3D;multi-user.target</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>使用 root 用户启动</li>
-<li>日志会存储在 /var/log/messages</li>
-<li>指定配置文件</li>
-<li>指定数据暴露的端口</li>
-<li>指定数据文件存储的路径</li>
-<li>指定数据文件存储的时间（轮询时间）</li>
-</ul>
-<p>大家根据自己需求取用、修改。</p>
-<p>======================<br>Erdong, A Linux user !</p>
-]]></content>
-      <categories>
-        <category>Prometheus</category>
-        <category>notes</category>
-      </categories>
-      <tags>
-        <tag>Prometheus</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Prometheus 简介</title>
     <url>/Prometheus/notes/prometheus-introduction.html</url>
     <content><![CDATA[<p>Prometheus 是一个开源的系统监控和警报工具，最初是在 SoundCloud 上构建的。自2012年启动以来，许多公司和组织都采用了 Prometheus，该项目拥有非常活跃的开发人员和用户社区。它现在是一个独立的开源项目，独立于任何公司进行维护。为了强调这一点，并阐明该项目的治理结构，Prometheus 于2016年加入 CNCF （云原生计算基金会），成为继 Kubernetes 之后的第二个托管项目。2018 年 8 月 9 日，CNCF 宣布开放源代码监控工具 Prometheus 已从孵化状态进入毕业状态。</p>
@@ -3209,6 +2878,193 @@
       </tags>
   </entry>
   <entry>
+    <title>发布一本用 GitBook 编辑的书</title>
+    <url>/gitbook/gitbook-release-book.html</url>
+    <content><![CDATA[<p>在上一篇的文章里，我们已经写好了一本名叫 <code>erdong-first-book</code> 的书，但是在本地浏览很不方便，我们希望放到网络上，可以随时、方便的访问这个书籍。这个需求可以使用多种方式来实现，比如第一种，可以通过 GitBook 官网来发布这本书，GitBook 除了是一个电子书的工具以为，自身也有一个网址，在该网站注册成为会员后，可以发布自己的电子书，并且可以和 GitHub 进行关联。</p>
+<p>除了使用 GitBook 官网以外，可以直接将电子书放在 GitHub 上，通过 GitHub Pages 来发布这本书。</p>
+<a id="more"></a>
+
+<h1 id="使用-GitHub-发布你的书籍"><a href="#使用-GitHub-发布你的书籍" class="headerlink" title="使用 GitHub 发布你的书籍"></a>使用 GitHub 发布你的书籍</h1><p>接下来我们看一下如何使用 GitHub Pages 来发布一本书。</p>
+<p>首先你需要一个 GitHub 的账号，在你的账号下创建一个用来放置你书籍的仓库，这两个步骤在网络上有太多的资料，很容易就可以达成了。</p>
+<p>创建好仓库以后，在仓库中创建一个 docs 文件夹，用来放置 GitBook 生成的静态文件。</p>
+<p>打开 GitHub 仓库的设置页面，找到 GitHub Pages 选项，选择 <code>master branch /docs folder</code> 选项即可。</p>
+<blockquote>
+<p>注意：一定要先在仓库中创建 docs 文件夹，否则无法勾选该选项。</p>
+</blockquote>
+<p><img src="https://image.erdong.site/blog/2019/10/18/githubpagesdocs.jpg" alt="GithubPagesDocs"></p>
+<p>做完上述步骤以后开始使用 Git 上传你写好的内容到 GitHub , 关键点是将 GitBook 生成的静态文件 <code>_book</code> 重命名为 <code>docs</code> 上传替换刚才创建的 docs 文件夹即可。</p>
+<p>这个时候使用浏览器打开  <a href="http://your_github_id.github.io/your_github_gitbook" target="_blank" rel="noopener">http://your_github_id.github.io/your_github_gitbook</a>  这个地址即可。比如我的 GitBook 地址是<br> <a href="http://erdong.github.io/gitbook-notes-samples" target="_blank" rel="noopener">http://erdong.github.io/gitbook-notes-samples</a> ，大家在点击以后发现会自动跳转到 <a href="https://erdong.site/gitbook-notes-samples">https://erdong.site/gitbook-notes-samples</a>  是因为我做了域名绑定。</p>
+<h1 id="本地-GitBook-迁移"><a href="#本地-GitBook-迁移" class="headerlink" title="本地 GitBook 迁移"></a>本地 GitBook 迁移</h1><p>在迁移前可以使用如下命令查看一下曾经使用 npm 安装过什么模块</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">npm list -g --depth 0</span><br></pre></td></tr></table></figure>
+<ul>
+<li>list : 已经安装的 node 包</li>
+<li>-g ： 全局的安装包</li>
+<li>–depth : 包的显示层级，0 代表显示第一级的包，数字越大，显示的越全。</li>
+</ul>
+<p>迁移其实非常简单，你在原来的环境将整本书打包，最好把文件夹里的node_modules 目录也一起打包，这样在新的环境就不需要安装这些组件了。在新的环境按照如下顺序依次进行安装你之前安装过的组件</p>
+<p>&lt; 1.&gt; 安装 npm<br>&lt; 2.&gt; 安装 gitbook<br>&lt; 3.&gt; 拷贝打包好的文件夹<br>&lt; 4.&gt; 减压到新的位置</p>
+<p>这样就完成了你的书的迁移。你在新的位置可以继续进行内容的编写、静态文件的生成，和之前一样，没有任何区别。</p>
+<p>======================<br>由于无法及时收到评论内容，所以关闭评论功能。<br>大家有问题欢迎发邮件到 <a href="mailto:erdong@mail.erdong.site">erdong@mail.erdong.site</a> ，或者 <a href="https://github.com/erdong/erdong.github.io/issues" target="_blank" rel="noopener">https://github.com/erdong/erdong.github.io/issues</a> 提 Issue ，我会及时回复。</p>
+<p>======================<br>Erdong, A Linux user !</p>
+]]></content>
+      <categories>
+        <category>gitbook</category>
+      </categories>
+      <tags>
+        <tag>gitbook</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>用 GitBook 创建一本书</title>
+    <url>/gitbook/gitbook-create-book.html</url>
+    <content><![CDATA[<h1 id="用-GitBook-创建一本书"><a href="#用-GitBook-创建一本书" class="headerlink" title="用 GitBook 创建一本书"></a>用 GitBook 创建一本书</h1><p>gitbook 首先是一个软件，它使用 Git 和 Markdown 来编排书本，如果你没有听过 Git 和 Markdown，那么 gitbook 可能不适合你直接入手，你需要先去学习 Git 和 Markdown。Git 是一个版本控制工具，Markdown 是一个文本编辑语法，基本的使用大概几个小时就可以都学会了，并不复杂。</p>
+<a id="more"></a>
+<p>这是 gitbook 项目主页上对 gitbook 的定义。</p>
+<blockquote>
+<p>Modern book format and toolchain using Git and Markdown .</p>
+</blockquote>
+<h1 id="安装-GitBook"><a href="#安装-GitBook" class="headerlink" title="安装 GitBook"></a>安装 GitBook</h1><p>首先需要安装 nodejs，以便能够使用 npm 来安装 gitbook</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ wget -qO- https:&#x2F;&#x2F;raw.github.com&#x2F;creationix&#x2F;nvm&#x2F;v0.33.11&#x2F;install.sh | sh</span><br><span class="line">&#96;&#96;&#96; </span><br><span class="line"></span><br><span class="line">该命令会安装 nvm 命令，安装好以后会添加 nvm 的环境变量到 &#96;.bashrc&#96; 文件里，接下来退出终端，重新登陆使得 &#96;.bashrc&#96; 文件生效，或者使用其他方法使添加的环境变量生效。</span><br><span class="line">   </span><br><span class="line">接下来使用下列命令来安装 npm </span><br><span class="line"></span><br><span class="line">&#96;&#96;&#96;   </span><br><span class="line">$ nvm install stable</span><br></pre></td></tr></table></figure>
+
+<p>可以使用下列命令来查看 npm 的版本，比如我这次安装的是 6.11.3 版本。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[erdong@testhost ~]$ npm --version</span><br><span class="line">6.11.3</span><br><span class="line">[erdong@testhost ~]$</span><br></pre></td></tr></table></figure>
+
+<p>接下来使用 npm 来安装 gitbook</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ npm install gitbook-cli -g</span><br></pre></td></tr></table></figure>
+
+<h1 id="创建第一本书"><a href="#创建第一本书" class="headerlink" title="创建第一本书"></a>创建第一本书</h1><p>首先新建一个目录，这个目录就是这本书的一个载体，就好比在现实世界里你要先准备一个本子，以后所有的内容会写在这个本子上。在 gitbook，我们以后所有的内容都会存放在这个目录里。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ mkdir erdong-first-book</span><br></pre></td></tr></table></figure>
+
+<p>接下来我们初始化这个目录，就好比你在你准备的本子上做一些基本的工作，</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[erdong@testhost ~]$ cd erdong-first-book</span><br><span class="line">[erdong@testhost erdong-first-book]$ gitbook init</span><br><span class="line">[erdong@testhost erdong-first-book]$ ls</span><br><span class="line">README.md  SUMMARY.md</span><br></pre></td></tr></table></figure>
+<p>初始化过后，在这个文件夹会生成 2 个文件，<code>README.md</code> 和 <code>SUMMARY.md</code> 。</p>
+<ul>
+<li>README.md ： 是书的简单介绍，类似于一本书的序或者前言部分。</li>
+<li>SUMMARY.md ： 是书的目录，程序按照这个文件来生成书的结构。</li>
+</ul>
+<p>初始化结束后，就可以写东西了，</p>
+<p>比如我们现在往这两个文件里写入以下内容，在 README.md 文件中我们写入如下内容：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># Introduction</span><br><span class="line"></span><br><span class="line">This erdong&#39;s first book</span><br><span class="line"></span><br><span class="line">This a samples in GitHub, https:&#x2F;&#x2F;github.com&#x2F;erdong&#x2F;gitbook-notes-samples</span><br></pre></td></tr></table></figure>
+
+<p>在 SUMMARY.md  文件中写入如下内容：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># Summary</span><br><span class="line"></span><br><span class="line">* [Introduction](README.md)</span><br><span class="line"></span><br><span class="line">* [Part I]()</span><br><span class="line">* [Part II]()</span><br><span class="line">* [Part III]()</span><br></pre></td></tr></table></figure>
+
+<p>写入内容后，我们可以通过 <code>gitbook serve</code> 命令来预览我们写的书</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[erdong@testhost erdong-first-book]$ gitbook serve</span><br><span class="line">Live reload server started on port: 35729</span><br><span class="line">Press CTRL+C to quit ...</span><br><span class="line"></span><br><span class="line">info: 7 plugins are installed</span><br><span class="line">info: loading plugin &quot;livereload&quot;... OK</span><br><span class="line">info: loading plugin &quot;highlight&quot;... OK</span><br><span class="line">info: loading plugin &quot;search&quot;... OK</span><br><span class="line">info: loading plugin &quot;lunr&quot;... OK</span><br><span class="line">info: loading plugin &quot;sharing&quot;... OK</span><br><span class="line">info: loading plugin &quot;fontsettings&quot;... OK</span><br><span class="line">info: loading plugin &quot;theme-default&quot;... OK</span><br><span class="line">info: found 1 pages</span><br><span class="line">info: found 0 asset files</span><br><span class="line">info: &gt;&gt; generation finished with success in 0.5s !</span><br><span class="line"></span><br><span class="line">Starting server ...</span><br><span class="line">Serving book on http:&#x2F;&#x2F;localhost:4000</span><br></pre></td></tr></table></figure>
+
+<p>这样会在前台运行一个 web 程序，对外以 4000 端口提供一个可以浏览的页面，浏览的地址是 <a href="http://localhost:4000" target="_blank" rel="noopener">http://localhost:4000</a> ，</p>
+<p>这样我们就可以查看我们写好的书了。如下图所示。</p>
+<p><img src="https://image.erdong.site/blog/2019/10/16/gitbookintroduction.jpg" alt="Gitbook Introduction"></p>
+<p>如果我们不想使用这种方式来预览书籍的话，也可以用 gitbook 生成一份静态的页面，放在 web 服务器或者其他可以提供 web 浏览访问的地方。生成静态页面使用 <code>gitbook build</code> 命令即可，会生成一个 <code>_book</code> 的文件夹，这个目录里放的就是生成好的静态页面，拷贝到对应的目录即可。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[erdong@testhost erdong-first-book]$ gitbook build </span><br><span class="line">info: 7 plugins are installed</span><br><span class="line">info: 6 explicitly listed</span><br><span class="line">info: loading plugin &quot;highlight&quot;... OK</span><br><span class="line">info: loading plugin &quot;search&quot;... OK</span><br><span class="line">info: loading plugin &quot;lunr&quot;... OK</span><br><span class="line">info: loading plugin &quot;sharing&quot;... OK</span><br><span class="line">info: loading plugin &quot;fontsettings&quot;... OK</span><br><span class="line">info: loading plugin &quot;theme-default&quot;... OK</span><br><span class="line">info: found 1 pages</span><br><span class="line">info: found 0 asset files</span><br><span class="line">info: &gt;&gt; generation finished with success in 0.5s !</span><br><span class="line">[erdong@testhost erdong-first-book]$</span><br></pre></td></tr></table></figure>
+
+<h1 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h1><p>这样，我们就通过 GitBook 工具写了一本书，或者一个小册子。</p>
+<p>======================<br>由于无法及时收到评论内容，所以关闭评论功能。<br>大家有问题欢迎发邮件到 <a href="mailto:erdong@mail.erdong.site">erdong@mail.erdong.site</a> ，或者 <a href="https://github.com/erdong/erdong.github.io/issues" target="_blank" rel="noopener">https://github.com/erdong/erdong.github.io/issues</a> 提 Issue ，我会及时回复。</p>
+<p>======================<br>Erdong, A Linux user !</p>
+]]></content>
+      <categories>
+        <category>gitbook</category>
+      </categories>
+      <tags>
+        <tag>gitbook</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>解决 EXT4 使用无法挂载</title>
+    <url>/linux/system/ext4-error-loading-journal.html</url>
+    <content><![CDATA[<h1 id="现象"><a href="#现象" class="headerlink" title="现象"></a>现象</h1><p>使用新版本的操作系统自带的文件系统格式化工具进行分区格式化以后，在较低的操作系统版本上会有提示，提示如下：</p>
+<a id="more"></a>
+
+
+
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[root@localhost ~]# mount -t ext4 &#x2F;dev&#x2F;sdb1 &#x2F;root&#x2F;test</span><br><span class="line">mount: 文件系统类型错误、选项错误、&#x2F;dev&#x2F;sdb1 上有坏超级块、</span><br><span class="line">       缺少代码页或助手程序，或其他错误</span><br><span class="line"></span><br><span class="line">       有些情况下在 syslog 中可以找到一些有用信息- 请尝试</span><br><span class="line">       dmesg | tail  这样的命令看看。</span><br></pre></td></tr></table></figure>
+
+
+<p>按照提示查看日志发现</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Mar 12 01:12:20 localhost kernel: JBD2: Unrecognised features on journal</span><br><span class="line">Mar 12 01:12:20 localhost kernel: EXT4-fs (sdb1): error loading journal</span><br></pre></td></tr></table></figure>
+
+<h1 id="原因分析"><a href="#原因分析" class="headerlink" title="原因分析"></a>原因分析</h1><p>造成上述问题的原因是在新的操作系统上使用系统自带的 mkfs.ext4 对文件系统进行了格式化，默认会使用一些新的的特性，这些新的特性在旧的系统上是无法使用的。</p>
+<p>比如在 Ubuntu 18.04  上进行使用 mkfs.ext4 进行格式化的磁盘，在 CentOS 7.4 1708 上 是可以正常使用的，在 CentOS 7.0 1406 以及以下版本是就是提示上述错误。</p>
+<p>Ubuntu 18.04 的 mkfs 版本是 1.44.1-1 ，CentOS 7.0 1406 的 mkfs 版本是 1.42.9-4。造成了这个差异。CentOS 7.4 1708 的 mkfs 版本是 1.42.9-10 ，Redhat 内部在小版本上新增了这个特性的支持。</p>
+<h1 id="解决办法"><a href="#解决办法" class="headerlink" title="解决办法"></a>解决办法</h1><p>按照日志提示，Unrecognised features on journal  ， 不支持 journal 。</p>
+<p>那么查看文件系统特性：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#tune2fs -l &#x2F;dev&#x2F;sdb1</span><br><span class="line">Filesystem features: has_journal ext_attr resize_inode dir_index filetype extent 64bit flex_bg sparse_super large_file</span><br></pre></td></tr></table></figure>
+
+<p>文件系统含有一个 has_journal 特性，删除这个特性，删除方式如下：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#tune2fs -O ^has_journal &#x2F;dev&#x2F;sdb1 &#x2F;&#x2F; 去除has_journal选项</span><br><span class="line">#tune2fs -O has_journal &#x2F;dev&#x2F;sdb1 &#x2F;&#x2F; add has_journal选项</span><br></pre></td></tr></table></figure>
+
+<p>验证是否删除：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#tune2fs -l &#x2F;dev&#x2F;sdb1</span><br><span class="line">Filesystem features: ext_attr resize_inode dir_index filetype</span><br></pre></td></tr></table></figure>
+
+<p>可以看到已经没有这个特性了，再次尝试挂载，</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[root@localhost ~]# mount -t ext4 &#x2F;dev&#x2F;sdb1 &#x2F;root&#x2F;test</span><br><span class="line">[root@localhost ~]# cd test&#x2F;</span><br><span class="line">[root@localhost test]# ls</span><br><span class="line">lost+found  test_dir  test_file.txt</span><br><span class="line">[root@localhost test]# cat test_file.txt</span><br><span class="line">kkdkdkdkkak</span><br><span class="line">kldkjfalkf</span><br><span class="line">kjfklaf</span><br><span class="line">kjafkdj</span><br><span class="line"></span><br><span class="line">[root@localhost test]#</span><br></pre></td></tr></table></figure>
+<p>可以看到，已经可以正常挂载，挂载后的文件也可以正常显示。</p>
+<h1 id="couldn’t-mount-RDWR"><a href="#couldn’t-mount-RDWR" class="headerlink" title="couldn’t mount RDWR"></a>couldn’t mount RDWR</h1><p>在上述的现象里，如果挂载 ext4 到 CentOS 6.5 等更老一些的系统的时候，也会提示部分不支持的特性，在日志里如果出现了如下提示：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">kernel: EXT4-fs (sdb1): couldn&#39;t mount RDWR because of unsupported optional features (400)</span><br></pre></td></tr></table></figure>
+
+
+<p>这种情况是因为mkfs.ext4的时候制定的参数，旧的内核不支持导致.</p>
+<p>The ext4 feature (400) is the new metadata_csum feature. If this feature is enabled and old tools are used to mount the filesystem they will only be able to mount read-only.</p>
+<p><a href="https://ext4.wiki.kernel.org/index.php/Ext4_Metadata_Checksums" target="_blank" rel="noopener">https://ext4.wiki.kernel.org/index.php/Ext4_Metadata_Checksums</a></p>
+<p>解决办法一样，可以在创建的时候不使用该特性，或者删除该特性后再 CentOS 6.5 上使用。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[root@localhost ~]# tune2fs -O ^metadata_csum &#x2F;dev&#x2F;sdb1</span><br><span class="line">tune2fs 1.43.1 (08-Jun-2016)</span><br><span class="line"></span><br><span class="line">请在这个文件系统上运行 e2fsck.</span><br></pre></td></tr></table></figure>
+
+<p>系统提示需要 运行 e2fsck 进行磁盘检查，那么按照要求进行检查, e2fsck 的参数请大家自己选择。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[root@localhost ~]# e2fsck -f -a -v &#x2F;dev&#x2F;sdb1</span><br><span class="line"></span><br><span class="line">          13 inodes used (0.00%, out of 30531584)</span><br><span class="line">           0 non-contiguous files (0.0%)</span><br><span class="line">           0 non-contiguous directories (0.0%)</span><br><span class="line">             # of inodes with ind&#x2F;dind&#x2F;tind blocks: 0&#x2F;0&#x2F;0</span><br><span class="line">             Extent depth histogram: 4</span><br><span class="line">     1935198 blocks used (1.58%, out of 122096637)</span><br><span class="line">           0 bad blocks</span><br><span class="line">           1 large file</span><br><span class="line"></span><br><span class="line">           1 regular file</span><br><span class="line">           3 directories</span><br><span class="line">           0 character device files</span><br><span class="line">           0 block device files</span><br><span class="line">           0 fifos</span><br><span class="line">           0 links</span><br><span class="line">           0 symbolic links (0 fast symbolic links)</span><br><span class="line">           0 sockets</span><br><span class="line">------------</span><br><span class="line">           4 files</span><br></pre></td></tr></table></figure>
+
+<p>检查完以后，就可以尝试移除这个特性了，期间会询问，请按照实际选择。移除以后挂载就正常了。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[root@localhost ~]# tune2fs -O ^metadata_csum &#x2F;dev&#x2F;sdb1</span><br><span class="line">tune2fs 1.43.1 (08-Jun-2016)</span><br><span class="line">Disabling checksums could take some time.</span><br><span class="line">Proceed anyway (or wait 5 seconds) ? (y,n) y</span><br><span class="line">[root@localhost ~]# mount -t ext4 &#x2F;dev&#x2F;sdb1 &#x2F;root&#x2F;test</span><br><span class="line">[root@localhost ~]# cd test&#x2F;</span><br><span class="line">[root@localhost test]# ls</span><br><span class="line">lost+found  test_dir  test_file.txt</span><br><span class="line">[root@localhost test]#</span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="tune2fs-版本较低"><a href="#tune2fs-版本较低" class="headerlink" title="tune2fs 版本较低"></a>tune2fs 版本较低</h1><p>执行 tune2fs 如果遇到如下提示：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[root@localhost ~]# tune2fs -O ^has_journal &#x2F;dev&#x2F;sdb1</span><br><span class="line">tune2fs 1.42.9 (28-Dec-2013)</span><br><span class="line">tune2fs: Filesystem has unsupported read-only feature(s) while trying to open &#x2F;dev&#x2F;sdb1</span><br><span class="line">Couldn&#39;t find valid filesystem superblock.</span><br><span class="line">[root@localhost ~]#</span><br></pre></td></tr></table></figure>
+
+
+<p>那么说明 tune2fs 版本较低，不支持 has_journal 特性，需要升级到 1.43.1以上才可以。</p>
+<p>在 CentOS 6.5 中， tune2fs 版本更低，是 1.41.12，也需要升级。</p>
+<h1 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h1><p>如果确认是新旧版本的问题导致的无法挂载，那么上述方法就可以解决了。</p>
+<p>如果不是新旧版本的问题，那么还有一种可能，就是磁盘坏了，在这种情况下可以使用下列命令尝试修复。</p>
+<p>特别提示，磁盘修复请慎重选择。本文不保证数据安全性和完整性，只提供一个可供参考的选择。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[root@localhost ~]# e2fsck -f -c -v &#x2F;dev&#x2F;sdb1</span><br><span class="line">e2fsck 1.42.9 (28-Dec-2013)</span><br><span class="line">&#x2F;dev&#x2F;sdb1 has unsupported feature(s): metadata_csum</span><br><span class="line">e2fsck: Get a newer version of e2fsck!</span><br><span class="line">[root@localhost ~]#</span><br></pre></td></tr></table></figure>
+
+<p>该提示显示 e2fsck 工具不支持 新的特性，meadata_csum , 解决版本是 升级 e2fsck 工具的版本， e2fsck 工具由 e2fsprogs 和 e2fsprogs-libs 两个工具包来提供，升级这两个工具包的版本就可以，最少要升级到 1.43.1 版本以上才可以。</p>
+<p>Ubuntu 可以参考如下链接进行解决。</p>
+<blockquote>
+<p><a href="https://askubuntu.com/questions/1053404/e2fsck-how-to-handle-the-metadata-csum-error-by-advancing-the-e2fsck-version?noredirect=1&amp;lq=1" target="_blank" rel="noopener">https://askubuntu.com/questions/1053404/e2fsck-how-to-handle-the-metadata-csum-error-by-advancing-the-e2fsck-version?noredirect=1&amp;lq=1</a></p>
+</blockquote>
+<p>关于 CentOS 可以去下列地址查找对应的 rpm 包来进行升级。</p>
+<blockquote>
+<p><a href="http://www.rpmfind.net/linux/RPM/index.html" target="_blank" rel="noopener">http://www.rpmfind.net/linux/RPM/index.html</a></p>
+</blockquote>
+<p>更推荐的方法是用源码进行编译。过程如下</p>
+<h3 id="安装-GCC-编译器"><a href="#安装-GCC-编译器" class="headerlink" title="安装 GCC 编译器"></a>安装 GCC 编译器</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">yum install gcc -y</span><br></pre></td></tr></table></figure>
+
+<h3 id="下载源码包，"><a href="#下载源码包，" class="headerlink" title="下载源码包，"></a>下载源码包，</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">wget http:&#x2F;&#x2F;downloads.sourceforge.net&#x2F;project&#x2F;e2fsprogs&#x2F;e2fsprogs&#x2F;v1.43.1&#x2F;e2fsprogs-1.43.1.tar.gz</span><br></pre></td></tr></table></figure>
+
+<h3 id="解压安装包进行编译"><a href="#解压安装包进行编译" class="headerlink" title="解压安装包进行编译"></a>解压安装包进行编译</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">tar -zxf e2fsprogs-1.43.1.tar.gz</span><br><span class="line">cd e2fsprogs-1.43.1</span><br><span class="line">.&#x2F;configure</span><br><span class="line">make</span><br></pre></td></tr></table></figure>
+
+<p>此时已经编译好了，进入 e2fsck 文件夹就可以看到新编译的版本了，</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[root@loaclhost ~]cd e2fsck</span><br><span class="line">[root@localhost ~]# e2fsck -V</span><br><span class="line">e2fsck 1.43.1 (08-Jun-2016)</span><br><span class="line">	Using EXT2FS Library version 1.43.1, 08-Jun-2016</span><br></pre></td></tr></table></figure>
+
+<p>如果希望替换系统的 e2fsck 工具，那么执行 make install 。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cd e2fsprogs-1.43.1</span><br><span class="line">make install</span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>出现上述问题的主要原因是，新版的操作系统默认支持了很多新的特性，这些新特性在旧版本的操作系统上是不支持的。<br>如果在磁盘使用前就已经知道了磁盘将要使用的操作系统，应该依据操作系统的差别，然后有意的关闭一些参数，使得新旧操作系统的磁盘是兼容的。</p>
+<p>如果无法预知操作系统，那么在实际使用中遇到了问题，可以查找是哪个新的特性导致的该问题，尝试移除这个文件系统的特性，之后就可以正常使用了。但是贸然移除某个特性，可能会导致磁盘上的数据丢失，这个应该做过充分的调研确认以后再操作。</p>
+<p>======================<br>Erdong, A Linux user !</p>
+]]></content>
+      <categories>
+        <category>linux</category>
+        <category>system</category>
+      </categories>
+      <tags>
+        <tag>ext4</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>使用 vuls 对 CentOS 操作系统安全评估</title>
     <url>/tools/vuls-tool-introduction.html</url>
     <content><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>由于某些安全事件的发生，对于系统安全需要进行进行一步的评估，本次主要使用 vuls 工具对日常主要使用的几个版本操作系统对其进行安全基线的建立和系统安全性的评分。</p>
@@ -3496,6 +3352,69 @@
       <categories>
         <category>weekly</category>
       </categories>
+  </entry>
+  <entry>
+    <title>Kong 的健康检查和监控</title>
+    <url>/Kong/kong-05.html</url>
+    <content><![CDATA[<p>Kong 的健康检查和监控</p>
+<p>您可以让 Kong 代理的 API 使用 ring-balancer ， 通过添加包含一个或多个目标实体的upstream 实体来配置，每个目标指向不同的IP地址(或主机名)和端口。ring-balancer 将在不同的target之间平衡负载，并基于 uptream 配置对目标执行健康检查，使它们成为健康或不健康的，无论它们是否响应，ring-balancer 将只把流量路由到健康的target。</p>
+<a id="more"></a>
+
+<p>Kong 支持两种健康检查方式，可以单独使用，也可以组合使用。</p>
+<ul>
+<li><p>active checks：其中定期请求目标中的特定 HTTP 或 HTTPS 端点，并根据其响应确定目标的健康状态;</p>
+</li>
+<li><p>passive checks： Kong 分析正在代理的通信，并根据目标的行为响应请求来确定目标的健康状况。</p>
+</li>
+</ul>
+<h1 id="健康和不健康的-target"><a href="#健康和不健康的-target" class="headerlink" title="健康和不健康的 target"></a>健康和不健康的 target</h1><p>健康检查功能的目标是为给定的 Kong 节点动态地将 target 标记为健康或不健康。没有集群范围内的健康信息同步，每个 Kong 节点分别确定其 target 的健康状况。这是可以取到的，因为在给定的点上，一个 Kong 节点可能能够成功地连接到一个目标，而另一个节点则无法到达。这样第一个节点将认为它是健康的，而第二个则会将其标记为不健康，并开始将流量路由到upstream 的其他 target。</p>
+<p>无论是主动探测(针对主动健康检查)还是代理请求(针对被动健康检查)，都会生成用于确定目标是否健康的数据。请求可能会产生TCP错误、超时或HTTP状态代码。基于此信息，健康检查器更新了一系列内部计数器:</p>
+<ul>
+<li>如果返回的状态码配置为 “healthy”，则将增加目标的 “Successes” 计数器，并清除其所有其他计数器;</li>
+<li>如果连接失败，将增加目标的 “TCP failure”计数器，并清除 “Successes” 计数器;</li>
+<li>如果超时，将增加目标的 “timeouts” 计数器并清除 “Successes” 计数器;</li>
+<li>如果返回的状态代码配置为 “unhealthy”，它将增加目标的 “HTTP failures” 计数器，并清除 “Successes” 计数器。</li>
+</ul>
+<p>如果任何 “TCP failure”、“HTTP failure” 或 “timeout” 计数器达到其配置的阈值，则target 将被标记为不健康。</p>
+<p>如果 “success” 计数器达到其配置的阈值，则 target 将被标记为健康。<br>如果一个 upstream 的所有 target 都是不健康，Kong 会将 upstream 的请求返回 <code>503 Service Unavailable</code> 。</p>
+<blockquote>
+<ol>
+<li>健康检查只对状态是 active 的 target 执行，不修改 Kong 数据库中目标的活动状态。</li>
+</ol>
+</blockquote>
+<blockquote>
+<ol start="2">
+<li>不健康的 target 不会从 loadbalancer 中删除，因此在使用哈希算法时不会对balancer 布局产生任何影响(只会跳过它们)。</li>
+</ol>
+</blockquote>
+<blockquote>
+<ol start="3">
+<li>DNS警告和 Balancer 警告也适用于健康检查。如果对 target 使用主机名，需要确保DNS服务器始终为完整的 IP地址和名称，并且不限制响应。如果不这样做，可能会导致没有执行健康检查。</li>
+</ol>
+</blockquote>
+<h1 id="健康检查的类型"><a href="#健康检查的类型" class="headerlink" title="健康检查的类型"></a>健康检查的类型</h1><p>健康检查有两种类型，分别是 <code>Active health checks</code> 和 <code>Passive health checks</code></p>
+<h2 id="Active-health-checks"><a href="#Active-health-checks" class="headerlink" title="Active health checks"></a>Active health checks</h2><p>Active health checks 就是主动探测他们的健康状态。当 upstream 实体启用活动健康检查时，Kong 将定期向 upstream 的每个 target 的配置路径发出 HTTP 或 HTTPS 请求。这允许 Kong 根据探测结果自动启用和禁用 balancer 中的 target 。</p>
+<p>Active health checks 的周期性是可以被配置的，当 target 是健康还是不健康。如果其中一个的interval值设置为零，则在相应的场景中禁用检查。如果两者都为零，则完全禁用活动健康检查。</p>
+<h2 id="Passive-health-checks"><a href="#Passive-health-checks" class="headerlink" title="Passive health checks"></a>Passive health checks</h2><p>Passive health checks 是否基于由 Kong 代理的请求(HTTP/HTTPS/TCP)执行检查，而不生成额外的流量。当 target 变得无响应时，被动健康检查器将检测到这一点，并将目标标记为不健康。Ring-balancer 将开始跳过这个 target ，因此不会有更多的流量被路由到它。</p>
+<p>当目标的问题解决，并准备再次接收流量时，Kong管理员可以手动通知health checker目标应该再次启用，通过一个Admin API端点:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ curl -i -X POST http:&#x2F;&#x2F;localhost:8001&#x2F;upstreams&#x2F;my_upstream&#x2F;targets&#x2F;10.1.2.3:1234&#x2F;healthy</span><br><span class="line">HTTP&#x2F;1.1 204 No Content</span><br></pre></td></tr></table></figure>
+
+<p>这个命令将广播一个集群范围的消息，以便将 “health” 状态传播到整个 Kong 集群。这将导致 Kong 节点重置在 Kong 节点的所有 worker 中运行的健康检查器的健康计数器，从而允许环平衡器再次将流量路由到目标。</p>
+<p>被动健康检查的优点是不会产生额外的流量，但它们不能自动将 target 重新标记为健康状态:“circuit is broken”，需要由系统管理员重新启用目标。</p>
+<h1 id="Kong-的监控"><a href="#Kong-的监控" class="headerlink" title="Kong 的监控"></a>Kong 的监控</h1><p>Kong 支持使用 Prometheus 进行监控数据采集，并且官方提供了采集方式和 Grafana 的Dashboard 模板</p>
+<p>官方的 <a href="https://github.com/Kong/kong-plugin-prometheus" target="_blank" rel="noopener">Kong Plugin Prometheus</a> 会定期更新，看上去比较活跃。</p>
+<p>除了官网以外，有网友也提供了一个监控模板，不过最后一次更新时间是2018 年 5 月 17 日，之后就没有更新了，大家也可以参考。<a href="https://github.com/yciabaud/kong-plugin-prometheus" target="_blank" rel="noopener">kong-prometheus-plugin</a></p>
+<h1 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h1><p>Kong 的健康检查主要介绍了健康检查的类型，这两类的健康检查是可以打开和关闭的，打开和关闭的具体方法请参考官网文档。</p>
+<p>======================<br>由于无法及时收到评论内容，所以关闭评论功能。<br>大家有问题欢迎发邮件到 <a href="mailto:erdong@mail.erdong.site">erdong@mail.erdong.site</a> ，或者 <a href="https://github.com/erdong/erdong.github.io/issues" target="_blank" rel="noopener">https://github.com/erdong/erdong.github.io/issues</a> 提 Issue ，我会及时回复。</p>
+<p>======================<br>Erdong, A Linux user !</p>
+]]></content>
+      <categories>
+        <category>Kong</category>
+      </categories>
+      <tags>
+        <tag>Kong</tag>
+        <tag>Heath Check</tag>
+      </tags>
   </entry>
   <entry>
     <title>第03周分享</title>
@@ -3964,16 +3883,16 @@
       </tags>
   </entry>
   <entry>
-    <title>第28周分享</title>
-    <url>/weekly/weekly28.html</url>
+    <title>第25周分享</title>
+    <url>/weekly/weekly25.html</url>
     <content><![CDATA[<p>这里记录过去一周，我看到的值得分享的东西。</p>
 <a id="more"></a>
 
 
 
-<h1 id="新闻"><a href="#新闻" class="headerlink" title="新闻"></a>新闻</h1><h2 id="1-GitHub官方中文文档"><a href="#1-GitHub官方中文文档" class="headerlink" title="1. GitHub官方中文文档"></a>1. <a href="https://help.github.com/cn" target="_blank" rel="noopener">GitHub官方中文文档</a></h2><p>GitHub 正式推出帮助文档中文版，很多不擅长英语的开发者以后可以直接看中文了，省去了网上很多人的二次转发。这也是 GitHub 继英文和日文后支持的第三种语言。 </p>
-<h1 id="工具"><a href="#工具" class="headerlink" title="工具"></a>工具</h1><h2 id="1-cortex"><a href="#1-cortex" class="headerlink" title="1. cortex"></a>1. <a href="https://github.com/cortexproject/cortex" target="_blank" rel="noopener">cortex</a></h2><p>A multitenant, horizontally scalable Prometheus as a Service <a href="https://github.com/cortexproject/cortex" target="_blank" rel="noopener">https://github.com/cortexproject/cortex</a></p>
-<h1 id="资源"><a href="#资源" class="headerlink" title="资源"></a>资源</h1><h2 id="1-如何超过大多数人"><a href="#1-如何超过大多数人" class="headerlink" title="1. 如何超过大多数人"></a>1. <a href="https://coolshell.cn/articles/19464.html" target="_blank" rel="noopener">如何超过大多数人</a></h2><p>左耳朵耗子 陈皓 最近写的一篇文章，很值得阅读，而且值得多次阅读。</p>
+<h1 id="教程"><a href="#教程" class="headerlink" title="教程"></a>教程</h1><h2 id="1-Go-语言最佳实践"><a href="#1-Go-语言最佳实践" class="headerlink" title="1. Go 语言最佳实践"></a>1. <a href="https://github.com/llitfkitfk/go-best-practice" target="_blank" rel="noopener">Go 语言最佳实践</a></h2><p>作者的目标是向大家提供有关编写 Go 代码最佳实践的建议。</p>
+<h1 id="工具"><a href="#工具" class="headerlink" title="工具"></a>工具</h1><h2 id="1-xsec-traffic"><a href="#1-xsec-traffic" class="headerlink" title="1. xsec-traffic"></a>1. <a href="https://github.com/netxfly/xsec-traffic" target="_blank" rel="noopener">xsec-traffic</a></h2><p>xsec-traffic为一款轻量级的恶意流量分析程序，包括传感器sensor和服务端server 2个组件。sensor负责采集流量，然后发到server端，由server来检测是否为恶意流量。server端的功能为接收各sensor采集到的流程并判断是否为恶意流量。</p>
+<h2 id="2-多吉搜索"><a href="#2-多吉搜索" class="headerlink" title="2. 多吉搜索"></a>2. <a href="https://dogedoge.com" target="_blank" rel="noopener">多吉搜索</a></h2><p>一个新的国产搜索引擎，搜索结果比较清爽。</p>
 <p>======================<br>Erdong, A Linux user !</p>
 ]]></content>
       <categories>
@@ -4361,6 +4280,68 @@
       </tags>
   </entry>
   <entry>
+    <title>第28周分享</title>
+    <url>/weekly/weekly28.html</url>
+    <content><![CDATA[<p>这里记录过去一周，我看到的值得分享的东西。</p>
+<a id="more"></a>
+
+
+
+<h1 id="新闻"><a href="#新闻" class="headerlink" title="新闻"></a>新闻</h1><h2 id="1-GitHub官方中文文档"><a href="#1-GitHub官方中文文档" class="headerlink" title="1. GitHub官方中文文档"></a>1. <a href="https://help.github.com/cn" target="_blank" rel="noopener">GitHub官方中文文档</a></h2><p>GitHub 正式推出帮助文档中文版，很多不擅长英语的开发者以后可以直接看中文了，省去了网上很多人的二次转发。这也是 GitHub 继英文和日文后支持的第三种语言。 </p>
+<h1 id="工具"><a href="#工具" class="headerlink" title="工具"></a>工具</h1><h2 id="1-cortex"><a href="#1-cortex" class="headerlink" title="1. cortex"></a>1. <a href="https://github.com/cortexproject/cortex" target="_blank" rel="noopener">cortex</a></h2><p>A multitenant, horizontally scalable Prometheus as a Service <a href="https://github.com/cortexproject/cortex" target="_blank" rel="noopener">https://github.com/cortexproject/cortex</a></p>
+<h1 id="资源"><a href="#资源" class="headerlink" title="资源"></a>资源</h1><h2 id="1-如何超过大多数人"><a href="#1-如何超过大多数人" class="headerlink" title="1. 如何超过大多数人"></a>1. <a href="https://coolshell.cn/articles/19464.html" target="_blank" rel="noopener">如何超过大多数人</a></h2><p>左耳朵耗子 陈皓 最近写的一篇文章，很值得阅读，而且值得多次阅读。</p>
+<p>======================<br>Erdong, A Linux user !</p>
+]]></content>
+      <categories>
+        <category>weekly</category>
+      </categories>
+      <tags>
+        <tag>weekly</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>第26周分享</title>
+    <url>/weekly/weekly26.html</url>
+    <content><![CDATA[<p>这里记录过去一周，我看到的值得分享的东西。</p>
+<a id="more"></a>
+
+
+
+<h1 id="教程"><a href="#教程" class="headerlink" title="教程"></a>教程</h1><h2 id="1-二维码的生成细节和原理"><a href="#1-二维码的生成细节和原理" class="headerlink" title="1. 二维码的生成细节和原理"></a>1. <a href="https://coolshell.cn/articles/10590.html#jtss-tsina" target="_blank" rel="noopener">二维码的生成细节和原理</a></h2><p>2013 年的时候陈皓写的二维码的生成细节和原理，把二维码的生成过程讲的很好。</p>
+<p>======================<br>Erdong, A Linux user !</p>
+]]></content>
+      <categories>
+        <category>weekly</category>
+      </categories>
+      <tags>
+        <tag>weekly</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>第27周分享</title>
+    <url>/weekly/weekly27.html</url>
+    <content><![CDATA[<p>这里记录过去一周，我看到的值得分享的东西。</p>
+<a id="more"></a>
+
+
+
+<h1 id="新闻"><a href="#新闻" class="headerlink" title="新闻"></a>新闻</h1><h2 id="1-阿里云天池发布“最聪明榜单”"><a href="#1-阿里云天池发布“最聪明榜单”" class="headerlink" title="1. 阿里云天池发布“最聪明榜单”"></a>1. <a href="https://yq.aliyun.com/articles/707388" target="_blank" rel="noopener">阿里云天池发布“最聪明榜单”</a></h2><p>7月4日，阿里云天池大赛发布“最聪明榜单”，对历史参赛高校进行排名。数据显示，国内高校中浙大参赛热情最高，新加坡国立大学则荣登海外榜首。</p>
+<p>作为和Kaggle齐名的全球最知名的数据竞赛平台，阿里云天池大赛已经成功举办100场以上高规格数据类竞赛，全球开发者可通过数据和AI算法解决真实的社会问题与挑战。目前已吸引全球30万开发者，其中60%来自高校。</p>
+<p>参加天池大赛已成为全球计算机科学100强高校学霸的共同爱好，如南洋理工大学、卡耐基梅隆大学等高校学生都曾参赛。</p>
+<h1 id="工具"><a href="#工具" class="headerlink" title="工具"></a>工具</h1><h2 id="1-PyRoyale"><a href="#1-PyRoyale" class="headerlink" title="1. PyRoyale"></a>1. <a href="https://github.com/Igoorx/PyRoyale" target="_blank" rel="noopener">PyRoyale</a></h2><p>这是一个开源的马里奥游戏模拟器，支持多人同时在线，可以说是吃鸡版的马里奥。</p>
+<p>他们提供了一个页面来进行体验，地址如下：</p>
+<p><a href="http://77.68.80.27/royale/index.html#" target="_blank" rel="noopener">http://77.68.80.27/royale/index.html#</a></p>
+<h1 id="资源"><a href="#资源" class="headerlink" title="资源"></a>资源</h1><h2 id="1-高性能计算-HPC-技术、方案和行业全面解析"><a href="#1-高性能计算-HPC-技术、方案和行业全面解析" class="headerlink" title="1. 高性能计算(HPC)技术、方案和行业全面解析"></a>1. <a href="http://weidian.com/s/343499232?wfr=c" target="_blank" rel="noopener">高性能计算(HPC)技术、方案和行业全面解析</a></h2><p>“架构师技术联盟”微信公众号整理了 HPC 行业的一些基础架构以及存储的内容，很适合出入 HPC 的人员学习了解 HPC 。该文档需要付费才能获取。</p>
+<p>======================<br>Erdong, A Linux user !</p>
+]]></content>
+      <categories>
+        <category>weekly</category>
+      </categories>
+      <tags>
+        <tag>weekly</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>攻城狮周刊：第45期</title>
     <url>/weekly/weekly45.html</url>
     <content><![CDATA[<p>这里记录过去一周，我看到的值得分享的东西。</p>
@@ -4432,65 +4413,84 @@
       </tags>
   </entry>
   <entry>
-    <title>第26周分享</title>
-    <url>/weekly/weekly26.html</url>
-    <content><![CDATA[<p>这里记录过去一周，我看到的值得分享的东西。</p>
+    <title>Prometheus 安装</title>
+    <url>/Prometheus/notes/prometheus-install.html</url>
+    <content><![CDATA[<p>Prometheus是一个监控平台，它通过抓取这些目标主机上采集器暴露的指标来展示监控数据。本文介绍如何安装、配置和监控 Prometheus。你需要下载安装 Prometheus 并且安装 Exporter，这些工具采集了主机和对应服务的时间序列数据。我们的第一个 Exporter 是 Prometheus 本身，它提供了关于内存使用、垃圾收集等各种各样的主机级指标。</p>
 <a id="more"></a>
+<h1 id="下载-Prometheus"><a href="#下载-Prometheus" class="headerlink" title="下载 Prometheus"></a>下载 Prometheus</h1><p>首先下载最新版本的 Prometheus 然后解压，下载地址如下：</p>
+<p><a href="https://prometheus.io/download" target="_blank" rel="noopener">https://prometheus.io/download</a></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">tar xvfz prometheus-*.tar.gz</span><br><span class="line">cd prometheus-*</span><br></pre></td></tr></table></figure>
 
+<p>Prometheus 服务是一个名为 Prometheus( 或Windows系统上的 prometheus.exe)的二进制文件。我们可以运行二进制文件，并通过<code>--help</code> 参数选项来查看帮助，如下所示。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ .&#x2F;prometheus --help</span><br><span class="line">usage: prometheus [&lt;flags&gt;]</span><br><span class="line"></span><br><span class="line">The Prometheus monitoring server</span><br><span class="line"></span><br><span class="line">Flags:</span><br><span class="line">  -h, --help                     Show context-sensitive help (also try --help-long and --help-man).</span><br><span class="line">      --version                  Show application version.</span><br><span class="line">      --config.file&#x3D;&quot;prometheus.yml&quot;</span><br><span class="line">                                 Prometheus configuration file path.</span><br><span class="line">      --web.listen-address&#x3D;&quot;0.0.0.0:9090&quot;</span><br><span class="line">                                 Address to listen on for UI, API, and telemetry.</span><br><span class="line">      --web.read-timeout&#x3D;5m      Maximum duration before timing out read of the request, and closing idle connections.</span><br><span class="line">      --web.max-connections&#x3D;512  Maximum number of simultaneous connections.</span><br><span class="line">      --web.external-url&#x3D;&lt;URL&gt;   The URL under which Prometheus is externally reachable (for example, if Prometheus is served via a reverse</span><br><span class="line">                                 proxy). Used for generating relative and absolute links back to Prometheus itself. If the URL has a path</span><br><span class="line">                                 portion, it will be used to prefix all HTTP endpoints served by Prometheus. If omitted, relevant URL</span><br><span class="line">                                 components will be derived automatically.</span><br><span class="line">      --web.route-prefix&#x3D;&lt;path&gt;  Prefix for the internal routes of web endpoints. Defaults to path of --web.external-url.</span><br><span class="line">      --web.user-assets&#x3D;&lt;path&gt;   Path to static asset directory, available at &#x2F;user.</span><br><span class="line">      --web.enable-lifecycle     Enable shutdown and reload via HTTP request.</span><br><span class="line">      --web.enable-admin-api     Enable API endpoints for admin control actions.</span><br><span class="line">      --web.console.templates&#x3D;&quot;consoles&quot;</span><br><span class="line">                                 Path to the console template directory, available at &#x2F;consoles.</span><br><span class="line">      --web.console.libraries&#x3D;&quot;console_libraries&quot;</span><br><span class="line">                                 Path to the console library directory.</span><br><span class="line">      --web.page-title&#x3D;&quot;Prometheus Time Series Collection and Processing Server&quot;</span><br><span class="line">                                 Document title of Prometheus instance.</span><br><span class="line">      --storage.tsdb.path&#x3D;&quot;data&#x2F;&quot;</span><br><span class="line">                                 Base path for metrics storage.</span><br><span class="line">      --storage.tsdb.retention&#x3D;15d</span><br><span class="line">                                 How long to retain samples in storage.</span><br><span class="line">      --storage.tsdb.no-lockfile</span><br><span class="line">                                 Do not create lockfile in data directory.</span><br><span class="line">      --storage.remote.flush-deadline&#x3D;&lt;duration&gt;</span><br><span class="line">                                 How long to wait flushing sample on shutdown or config reload.</span><br><span class="line">      --storage.remote.read-sample-limit&#x3D;5e7</span><br><span class="line">                                 Maximum overall number of samples to return via the remote read interface, in a single query. 0 means no</span><br><span class="line">                                 limit.</span><br><span class="line">      --storage.remote.read-concurrent-limit&#x3D;10</span><br><span class="line">                                 Maximum number of concurrent remote read calls. 0 means no limit.</span><br><span class="line">      --rules.alert.for-outage-tolerance&#x3D;1h</span><br><span class="line">                                 Max time to tolerate prometheus outage for restoring &#39;for&#39; state of alert.</span><br><span class="line">      --rules.alert.for-grace-period&#x3D;10m</span><br><span class="line">                                 Minimum duration between alert and restored &#39;for&#39; state. This is maintained only for alerts with configured</span><br><span class="line">                                 &#39;for&#39; time greater than grace period.</span><br><span class="line">      --rules.alert.resend-delay&#x3D;1m</span><br><span class="line">                                 Minimum amount of time to wait before resending an alert to Alertmanager.</span><br><span class="line">      --alertmanager.notification-queue-capacity&#x3D;10000</span><br><span class="line">                                 The capacity of the queue for pending Alertmanager notifications.</span><br><span class="line">      --alertmanager.timeout&#x3D;10s</span><br><span class="line">                                 Timeout for sending alerts to Alertmanager.</span><br><span class="line">      --query.lookback-delta&#x3D;5m  The delta difference allowed for retrieving metrics during expression evaluations.</span><br><span class="line">      --query.timeout&#x3D;2m         Maximum time a query may take before being aborted.</span><br><span class="line">      --query.max-concurrency&#x3D;20</span><br><span class="line">                                 Maximum number of queries executed concurrently.</span><br><span class="line">      --query.max-samples&#x3D;50000000</span><br><span class="line">                                 Maximum number of samples a single query can load into memory. Note that queries will fail if they would</span><br><span class="line">                                 load more samples than this into memory, so this also limits the number of samples a query can return.</span><br><span class="line">      --log.level&#x3D;info           Only log messages with the given severity or above. One of: [debug, info, warn, error]</span><br><span class="line">      --log.format&#x3D;logfmt        Output format of log messages. One of: [logfmt, json]</span><br></pre></td></tr></table></figure>
 
+<h1 id="配置-Prometheus"><a href="#配置-Prometheus" class="headerlink" title="配置 Prometheus"></a>配置 Prometheus</h1><p>Prometheus 的配置采用了 YAML 语法描述，Prometheus 下载好以后会有一个示例配置文件，文件名叫 <code>prometheus.yml</code> ，可以先配置这个文件。</p>
+<p>将示例配置文件删除注释和一些高级配置以后，剩下的最基本、最少的配置项如下</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">global:</span><br><span class="line">  scrape_interval:     15s</span><br><span class="line">  evaluation_interval: 15s</span><br><span class="line"></span><br><span class="line">rule_files:</span><br><span class="line">  # - &quot;first.rules&quot;</span><br><span class="line">  # - &quot;second.rules&quot;</span><br><span class="line"></span><br><span class="line">scrape_configs:</span><br><span class="line">  - job_name: prometheus</span><br><span class="line">    static_configs:</span><br><span class="line">      - targets: [&#39;localhost:9090&#39;]</span><br></pre></td></tr></table></figure>
 
-<h1 id="教程"><a href="#教程" class="headerlink" title="教程"></a>教程</h1><h2 id="1-二维码的生成细节和原理"><a href="#1-二维码的生成细节和原理" class="headerlink" title="1. 二维码的生成细节和原理"></a>1. <a href="https://coolshell.cn/articles/10590.html#jtss-tsina" target="_blank" rel="noopener">二维码的生成细节和原理</a></h2><p>2013 年的时候陈皓写的二维码的生成细节和原理，把二维码的生成过程讲的很好。</p>
+<p>在示例配置文件中有三个配置块：global、rule_files、scrape_configs 。</p>
+<p><code>global</code> 块控制 Prometheus 服务的全局配置，有两个选项。<code>scrape_interval</code> 控制Prometheus 采集数据的频率。你可以为某些指标数据覆盖此选项。默认情况下，全局设置是每15秒采集一次。<code>evaluation_interval</code>选项控制 Prometheus 评估规则的频率。Prometheus 使用规则创建新的时间序列并生成警报。</p>
+<p><code>rule_files</code> 用来指定我们需要加载的规则的配置文件路径，这个配置文件也是 YAML 语法。当前没有配置规则，这部分注释掉不生效。</p>
+<p><code>scrape_configs</code> 控制 Prometheus 监听的资源。由于 Prometheus 还将自己的数据作通过 HTTP 公开出来，因此它可以收集和监控自己的健康状况。在默认配置中有一个名为prometheus 的 job，它抓取 prometheus 服务公开的时间序列数据。该 Job 包含一个静态配置的目标，一般是本地主机的 9090 端口。 Prometheus 希望 Metric 能够在 <code>/metric</code> 的路径上可用。所以默认的 job 可以通过如下 RUEL 来采集，<a href="http://localhost:9090/metrics" target="_blank" rel="noopener">http://localhost:9090/metrics</a> .</p>
+<p>返回的时间序列数据详细描述了 Prometheus 服务的状态和性能。</p>
+<p>对于完整的配置文件，可以查看<a href="https://prometheus.io/docs/prometheus/latest/configuration/configuration/" target="_blank" rel="noopener">官网的文档</a> ， 后续我也会整理出来。</p>
+<h1 id="启动-Prometheus"><a href="#启动-Prometheus" class="headerlink" title="启动 Prometheus"></a>启动 Prometheus</h1><p>使用刚才修改好的配置文件来启动 Prometheus，切换到 Prometheus 二进制文件的目录下，执行如下命令。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">.&#x2F;prometheus --config.file&#x3D;prometheus.yml</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>当二进制文件和配置文件在同一个目录的时候可以直接使用上述命令。如果不在同一个目录，请指定配置文件的绝对路径。</p>
+</blockquote>
+<p>这样 Prometheus 就会启动起来。你可以使用浏览器访问 <a href="http://localhost:9090" target="_blank" rel="noopener">http://localhost:9090</a> 地址可以看到关于它自身的状态页面，Prometheus 在启动 30 秒以后在页面就可以看到数据了。</p>
+<p>你也可以通过访问 <a href="http://localhost:9090/metrics，来验证" target="_blank" rel="noopener">http://localhost:9090/metrics，来验证</a> Prometheus 是否在暴露自己的指标。</p>
+<h1 id="使用浏览器查看"><a href="#使用浏览器查看" class="headerlink" title="使用浏览器查看"></a>使用浏览器查看</h1><p>我们来看一下 Prometheus 收集的一些关于自己的数据。访问 <a href="http://localhost:9090/graph，并在" target="_blank" rel="noopener">http://localhost:9090/graph，并在</a> “graph” 选项卡中选择 “Console” 视图。</p>
+<p>将 <code>promhttp_metric_handler_requests_total</code> (Prometheus 提供的一个Metric 名称) 输入到控制台，这将返回许多不同的时间序列(以及为每个时间序列记录的最新值)，所有这些时间序列的 Metric 名称都是 promhttp_metric_handler_requests_total，但是具有不同的 label 。这些 label 指定不同的请求状态。</p>
+<p>如果想看 HTTP 请求返回码 200 的数据，可以使用下面这条语句:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">promhttp_metric_handler_requests_total&#123;code&#x3D;&quot;200&quot;&#125;</span><br></pre></td></tr></table></figure>
+<p>如果要计算返回的时间序列的数量，可以使用 count 来查询，后边会写到函数相关的内容:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">count(promhttp_metric_handler_requests_total)</span><br></pre></td></tr></table></figure>
+
+<h1 id="推荐目录结构"><a href="#推荐目录结构" class="headerlink" title="推荐目录结构"></a>推荐目录结构</h1><p>新安装的 Prometheus 建议使用如下目录结构进行调整。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">.</span><br><span class="line">├── conf</span><br><span class="line">│   └── prometheus.yml</span><br><span class="line">├── current -&gt; deploy&#x2F;prometheus-2.8.1.linux-amd64</span><br><span class="line">├── data</span><br><span class="line">├── deploy</span><br><span class="line">│   └── prometheus-2.8.1.linux-amd64</span><br><span class="line">│       ├── LICENSE</span><br><span class="line">│       ├── NOTICE</span><br><span class="line">│       ├── console_libraries</span><br><span class="line">│       ├── consoles</span><br><span class="line">│       ├── prometheus</span><br><span class="line">│       ├── prometheus.yml</span><br><span class="line">│       └── promtool</span><br><span class="line">├── logs</span><br><span class="line">│   └── prometheus.log</span><br><span class="line">├── run</span><br><span class="line">│   └── prometheus.pid</span><br><span class="line">└── scripts</span><br><span class="line">    └── run.sh</span><br></pre></td></tr></table></figure>
+
+<p><code>conf</code> 目录用来存储 Prometheus 的配置文件，启动的时候指定配置文件。</p>
+<p><code>current</code> 该目录软连接到二进制文件所在的目录</p>
+<p><code>data</code> Prometheus 数据库的数据存储位置，</p>
+<p><code>deploy</code> 放置 Prometheus 的二进制文件，方便 current 进行软连接</p>
+<p><code>logs</code> 存放日志。如果普通用户启动，建议日志放置在这个目录。如果 root 用户启动，日志可以放在这个目录，也可以放在 /var/log/messages </p>
+<p><code>scripts</code> 放置启动脚本。如果普通用户启动 ，放置启动进程的脚本。如果 root 用户启动，可以放置脚本到该目录，或者写成系统服务。</p>
+<p>使用该目录结构可以方便的进行备份、迁移、升级、维护。</p>
+<p>提供一个启动脚本 start.sh 的参考模板</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#!&#x2F;bin&#x2F;bash</span><br><span class="line">BASEPATH&#x3D;&#x2F;opt&#x2F;prometheus</span><br><span class="line">LOG&#x3D;$BASEPATH&#x2F;logs</span><br><span class="line">nohup $BASEPATH&#x2F;current&#x2F;prometheus --config.file&#x3D;$BASEPATH&#x2F;conf&#x2F;prometheus.yml --web.listen-address&#x3D;:9090 --storage.tsdb.path&#x3D;$BASEPATH&#x2F;data&#x2F;  --storage.tsdb.retention&#x3D;31d &gt;&gt; $LOG&#x2F;prometheus.log  2&gt;&amp;1 &amp; echo $! &gt; $BASEPATH&#x2F;run&#x2F;prometheus.pid</span><br><span class="line"></span><br><span class="line">sleep 5</span><br><span class="line">PROC&#x3D;&#96;ps -ef |grep \&#96;cat $BASEPATH&#x2F;run&#x2F;prometheus.pid\&#96; |grep -v grep&#96;</span><br><span class="line"></span><br><span class="line">if  [ ! -n &quot;$PROC&quot; ] ;then</span><br><span class="line">    echo &quot;##########################################&quot;</span><br><span class="line">    echo &quot;Process not found, please check by yourself&quot;</span><br><span class="line">    echo &quot;##########################################&quot;</span><br><span class="line">else</span><br><span class="line">    echo &quot;##########################################&quot;</span><br><span class="line">    echo &quot;Prometheus is running&quot;</span><br><span class="line">    echo &quot;##########################################&quot;</span><br><span class="line">fi</span><br></pre></td></tr></table></figure>
+
+<p>该脚本做了如下内容</p>
+<ul>
+<li>指定配置文件</li>
+<li>指定数据暴露的端口</li>
+<li>指定数据文件存储的路径</li>
+<li>指定数据文件存储的时间（轮询时间）</li>
+<li>指定日志的存储位置（nohup 输出作为日志）</li>
+<li>生成 PID 文件</li>
+</ul>
+<p>CentOS 7 启动脚本可以使用如下模板，</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[Unit]</span><br><span class="line">Description&#x3D;Prometheus Server</span><br><span class="line">After&#x3D;network.target</span><br><span class="line"></span><br><span class="line">[Service]</span><br><span class="line">ExecStart&#x3D;&#x2F;opt&#x2F;prometheus&#x2F;current&#x2F;prometheus --config.file&#x3D;&#x2F;opt&#x2F;prometheus&#x2F;conf&#x2F;prometheus.yml --web.listen-address&#x3D;:9090 --storage.tsdb.path&#x3D;&#x2F;opt&#x2F;prometheus&#x2F;data&#x2F;  --storage.tsdb.retention&#x3D;30d</span><br><span class="line">User&#x3D;root</span><br><span class="line"></span><br><span class="line">[Install]</span><br><span class="line">WantedBy&#x3D;multi-user.target</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>使用 root 用户启动</li>
+<li>日志会存储在 /var/log/messages</li>
+<li>指定配置文件</li>
+<li>指定数据暴露的端口</li>
+<li>指定数据文件存储的路径</li>
+<li>指定数据文件存储的时间（轮询时间）</li>
+</ul>
+<p>大家根据自己需求取用、修改。</p>
 <p>======================<br>Erdong, A Linux user !</p>
 ]]></content>
       <categories>
-        <category>weekly</category>
+        <category>Prometheus</category>
+        <category>notes</category>
       </categories>
       <tags>
-        <tag>weekly</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>第25周分享</title>
-    <url>/weekly/weekly25.html</url>
-    <content><![CDATA[<p>这里记录过去一周，我看到的值得分享的东西。</p>
-<a id="more"></a>
-
-
-
-<h1 id="教程"><a href="#教程" class="headerlink" title="教程"></a>教程</h1><h2 id="1-Go-语言最佳实践"><a href="#1-Go-语言最佳实践" class="headerlink" title="1. Go 语言最佳实践"></a>1. <a href="https://github.com/llitfkitfk/go-best-practice" target="_blank" rel="noopener">Go 语言最佳实践</a></h2><p>作者的目标是向大家提供有关编写 Go 代码最佳实践的建议。</p>
-<h1 id="工具"><a href="#工具" class="headerlink" title="工具"></a>工具</h1><h2 id="1-xsec-traffic"><a href="#1-xsec-traffic" class="headerlink" title="1. xsec-traffic"></a>1. <a href="https://github.com/netxfly/xsec-traffic" target="_blank" rel="noopener">xsec-traffic</a></h2><p>xsec-traffic为一款轻量级的恶意流量分析程序，包括传感器sensor和服务端server 2个组件。sensor负责采集流量，然后发到server端，由server来检测是否为恶意流量。server端的功能为接收各sensor采集到的流程并判断是否为恶意流量。</p>
-<h2 id="2-多吉搜索"><a href="#2-多吉搜索" class="headerlink" title="2. 多吉搜索"></a>2. <a href="https://dogedoge.com" target="_blank" rel="noopener">多吉搜索</a></h2><p>一个新的国产搜索引擎，搜索结果比较清爽。</p>
-<p>======================<br>Erdong, A Linux user !</p>
-]]></content>
-      <categories>
-        <category>weekly</category>
-      </categories>
-      <tags>
-        <tag>weekly</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>第27周分享</title>
-    <url>/weekly/weekly27.html</url>
-    <content><![CDATA[<p>这里记录过去一周，我看到的值得分享的东西。</p>
-<a id="more"></a>
-
-
-
-<h1 id="新闻"><a href="#新闻" class="headerlink" title="新闻"></a>新闻</h1><h2 id="1-阿里云天池发布“最聪明榜单”"><a href="#1-阿里云天池发布“最聪明榜单”" class="headerlink" title="1. 阿里云天池发布“最聪明榜单”"></a>1. <a href="https://yq.aliyun.com/articles/707388" target="_blank" rel="noopener">阿里云天池发布“最聪明榜单”</a></h2><p>7月4日，阿里云天池大赛发布“最聪明榜单”，对历史参赛高校进行排名。数据显示，国内高校中浙大参赛热情最高，新加坡国立大学则荣登海外榜首。</p>
-<p>作为和Kaggle齐名的全球最知名的数据竞赛平台，阿里云天池大赛已经成功举办100场以上高规格数据类竞赛，全球开发者可通过数据和AI算法解决真实的社会问题与挑战。目前已吸引全球30万开发者，其中60%来自高校。</p>
-<p>参加天池大赛已成为全球计算机科学100强高校学霸的共同爱好，如南洋理工大学、卡耐基梅隆大学等高校学生都曾参赛。</p>
-<h1 id="工具"><a href="#工具" class="headerlink" title="工具"></a>工具</h1><h2 id="1-PyRoyale"><a href="#1-PyRoyale" class="headerlink" title="1. PyRoyale"></a>1. <a href="https://github.com/Igoorx/PyRoyale" target="_blank" rel="noopener">PyRoyale</a></h2><p>这是一个开源的马里奥游戏模拟器，支持多人同时在线，可以说是吃鸡版的马里奥。</p>
-<p>他们提供了一个页面来进行体验，地址如下：</p>
-<p><a href="http://77.68.80.27/royale/index.html#" target="_blank" rel="noopener">http://77.68.80.27/royale/index.html#</a></p>
-<h1 id="资源"><a href="#资源" class="headerlink" title="资源"></a>资源</h1><h2 id="1-高性能计算-HPC-技术、方案和行业全面解析"><a href="#1-高性能计算-HPC-技术、方案和行业全面解析" class="headerlink" title="1. 高性能计算(HPC)技术、方案和行业全面解析"></a>1. <a href="http://weidian.com/s/343499232?wfr=c" target="_blank" rel="noopener">高性能计算(HPC)技术、方案和行业全面解析</a></h2><p>“架构师技术联盟”微信公众号整理了 HPC 行业的一些基础架构以及存储的内容，很适合出入 HPC 的人员学习了解 HPC 。该文档需要付费才能获取。</p>
-<p>======================<br>Erdong, A Linux user !</p>
-]]></content>
-      <categories>
-        <category>weekly</category>
-      </categories>
-      <tags>
-        <tag>weekly</tag>
+        <tag>Prometheus</tag>
       </tags>
   </entry>
 </search>
