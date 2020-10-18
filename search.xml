@@ -134,29 +134,6 @@
       </tags>
   </entry>
   <entry>
-    <title>【翻译】Prometheus 2.12.0 新特性</title>
-    <url>/Prometheus/New-Features/New-Features-in-Prometheus-2-12-0.html</url>
-    <content><![CDATA[<p>Prometheus <a href="https://github.com/prometheus/prometheus/releases/tag/v2.12.0" target="_blank" rel="noopener">2.12.0</a> 现在(2019.08.17)已经发布，在上个月的 <a href="http://erdong.site/Prometheus/New-Features/New-Features-in-Prometheus-2-11-0.html">2.11.0</a> 之后又进行了一些修正和改进。</p>
-<a id="more"></a>
-<p>在当前的 6 周发布周期中，每一个 Prometheus 版本都有比较少的特性，但是发布的更有规律。在这个版本中最引人注目的特性是，如果 Prometheus 在下一次启动时崩溃，它将打印正在运行的 PromQL ，这有助于查找开销过大的查询。</p>
-<p>在内存方面 TSDB 有很多的性能改进，还添加了一个 <code>prometheus_tsdb_retention_limit_bytes</code> 的指标。虽然与用户无关，但 TSDB 存储库已经合并到 GitHub 上的  Prometheus 主存储库中。这将使我们作为开发人员的生活更加轻松。</p>
-<p>还有许多改进、bug修复和其他更改，可以查看 <a href="https://github.com/prometheus/prometheus/releases/tag/v2.12.0" target="_blank" rel="noopener">release notes</a> 来获取更多的信息。</p>
-<h1 id="原文链接"><a href="#原文链接" class="headerlink" title="原文链接"></a>原文链接</h1><ul>
-<li><a href="https://www.robustperception.io/new-features-in-prometheus-2-12-0" target="_blank" rel="noopener">https://www.robustperception.io/new-features-in-prometheus-2-12-0</a> ， By Brian Brazil</li>
-</ul>
-<p>======================<br>Erdong, A Linux user !</p>
-]]></content>
-      <categories>
-        <category>Prometheus</category>
-        <category>New-Features</category>
-      </categories>
-      <tags>
-        <tag>Prometheus</tag>
-        <tag>Features</tag>
-        <tag>release</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Prometheus 2.13.0 新特性</title>
     <url>/Prometheus/New-Features/New-Features-in-Prometheus-2-13-0.html</url>
     <content><![CDATA[<p>Prometheus <a href="https://github.com/prometheus/prometheus/releases/tag/v2.13.0" target="_blank" rel="noopener">2.13.0</a> 现在(2019.10.04)已经发布，在上个月的 <a href="http://erdong.site/Prometheus/New-Features/New-Features-in-Prometheus-2-12-0.html">2.12.0</a> 之后又进行了一些修正和改进。</p>
@@ -171,6 +148,93 @@
 <h1 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h1><ul>
 <li><a href="https://www.robustperception.io/new-features-in-prometheus-2-13-0" target="_blank" rel="noopener">https://www.robustperception.io/new-features-in-prometheus-2-13-0</a> ， By Brian Brazil</li>
 <li><a href="https://github.com/prometheus/prometheus/releases/tag/v2.13.0" target="_blank" rel="noopener">https://github.com/prometheus/prometheus/releases/tag/v2.13.0</a> ，By prombot of GitHub </li>
+</ul>
+<p>======================<br>由于无法及时收到评论内容，所以关闭评论功能。<br>大家有问题欢迎发邮件到 <a href="mailto:erdong@mail.erdong.site">erdong@mail.erdong.site</a> ，或者 <a href="https://github.com/erdong/erdong.github.io/issues" target="_blank" rel="noopener">https://github.com/erdong/erdong.github.io/issues</a> 提 Issue ，我会及时回复。</p>
+<p>======================<br>Erdong, A Linux user !</p>
+]]></content>
+      <categories>
+        <category>Prometheus</category>
+        <category>New-Features</category>
+      </categories>
+      <tags>
+        <tag>Prometheus</tag>
+        <tag>Features</tag>
+        <tag>release</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Prometheus 2.14.0 新特性</title>
+    <url>/Prometheus/New-Features/New-Features-in-Prometheus-2-14-0.html</url>
+    <content><![CDATA[<p>Prometheus <a href="https://github.com/prometheus/prometheus/releases/tag/v2.14.0" target="_blank" rel="noopener">2.14.0</a> 现在(2019.11.11)已经发布，在上个月的 <a href="http://erdong.site/Prometheus/New-Features/New-Features-in-Prometheus-2-13-0.html">2.13.0</a> 之后又进行了一些修正和改进。</p>
+<a id="more"></a>
+<p>这次最大的新功能是基于 React 的新 UI，与现有 UI 大体相同。该 UI 还在持续开发中。现有的 UI 还获得了 head cardinality 统计信息。这次的更新新增了按状态进行的警报过滤。</p>
+<p><img src="https://www.robustperception.io/wp-content/uploads/2019/11/Screenshot_2019-11-11_16-19-27.png" alt="图片来自 robustperception.io"></p>
+<p>修复了压缩后的远程写延迟，在无法发送样本时避免重新分片等多个 BUG。</p>
+<p>WAL 在启动加载时进行了优化。</p>
+<p>新增了 <code>/api/vi/status/runtimeinfo</code> 和 <code>/api/v1/status/buildinfo</code> 两个接口给 React UI 使用。</p>
+<p>详细的发行注记可以查看 <a href="https://github.com/prometheus/prometheus/releases/tag/v2.14.0" target="_blank" rel="noopener">release notes</a> 。</p>
+<h1 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h1><ul>
+<li><a href="https://www.robustperception.io/new-features-in-prometheus-2-14-0" target="_blank" rel="noopener">https://www.robustperception.io/new-features-in-prometheus-2-14-0</a> ， By Brian Brazil</li>
+<li><a href="https://github.com/prometheus/prometheus/releases/tag/v2.14.0" target="_blank" rel="noopener">https://github.com/prometheus/prometheus/releases/tag/v2.14.0</a> ，By prombot of GitHub </li>
+</ul>
+<p>======================<br>由于无法及时收到评论内容，所以关闭评论功能。<br>大家有问题欢迎发邮件到 <a href="mailto:erdong@mail.erdong.site">erdong@mail.erdong.site</a> ，或者 <a href="https://github.com/erdong/erdong.github.io/issues" target="_blank" rel="noopener">https://github.com/erdong/erdong.github.io/issues</a> 提 Issue ，我会及时回复。</p>
+<p>======================<br>Erdong, A Linux user !</p>
+]]></content>
+      <categories>
+        <category>Prometheus</category>
+        <category>New-Features</category>
+      </categories>
+      <tags>
+        <tag>Prometheus</tag>
+        <tag>Features</tag>
+        <tag>release</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Prometheus 2.15.0 新特性</title>
+    <url>/Prometheus/New-Features/New-Features-in-Prometheus-2-15-0.html</url>
+    <content><![CDATA[<p> <a href="https://github.com/prometheus/prometheus/releases/tag/v2.15.0" target="_blank" rel="noopener">2.15.0</a> 现在(2019.12.23)已经发布，在上个月的 <a href="http://erdong.site/Prometheus/New-Features/New-Features-in-Prometheus-2-14-0.html">2.14.0</a> 之后又进行了一些修正和改进。</p>
+<a id="more"></a>
+<p>这个版本最大的改进是对块（block）和内存使用的压缩进行了优化，块不再将所有的 symbol/postings 放在对上，并且压缩过程也不将他们长期放在内存。比较显著的效果是减少了具有高基数/搅动的系统的内存使用量，压缩内存峰值现在基本上应该消失了。因为这是典型的RAM与CPU之间的折衷，所以压缩会慢一些。在WAL replay(即启动时间)方面也有了性能上的改进，并且WAL占用的空间现在可以基于存储空间大小进行保留，删除超出的数据。</p>
+<p>有一个新的 Metric prometheus_sd_kubernetes_cache_* 已经被删除，</p>
+<p>PromQL解析器的性能也得到了一些改进。</p>
+<p>React UI的工作也在继续。实现了一些缺少的页面，比如 /targets , TSDB 的状态页面，以及其他的 fix 修复和性能提升。</p>
+<p>在 API 方面，新增了 /metadata 接口，用来公开 metadata 数据。</p>
+<p>在 v2.15.1 中修正了对相同数据的并发查询竞争的 Bug。<br>在 v2.15.2 中支持 Prometheus v2.1.0 之前的 TSDB block ；修复了 Windows 上的块压缩问题。</p>
+<p>详细的发行注记可以查看 <a href="https://github.com/prometheus/prometheus/releases/tag/v2.15.0" target="_blank" rel="noopener">release notes</a> 。</p>
+<h1 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h1><ul>
+<li><a href="https://www.robustperception.io/new-features-in-prometheus-2-15-0" target="_blank" rel="noopener">https://www.robustperception.io/new-features-in-prometheus-2-15-0</a> ， By Brian Brazil</li>
+<li><a href="https://github.com/prometheus/prometheus/releases/tag/v2.15.0" target="_blank" rel="noopener">https://github.com/prometheus/prometheus/releases/tag/v2.15.0</a> ，By prombot of GitHub  <a href="https://github.com/prometheus/prometheus/releases/tag/v2.14.0" target="_blank" rel="noopener">https://github.com/prometheus/prometheus/releases/tag/v2.14.0</a> ，By prombot of GitHub </li>
+</ul>
+<p>======================<br>由于无法及时收到评论内容，所以关闭评论功能。<br>大家有问题欢迎发邮件到 <a href="mailto:erdong@mail.erdong.site">erdong@mail.erdong.site</a> ，或者 <a href="https://github.com/erdong/erdong.github.io/issues" target="_blank" rel="noopener">https://github.com/erdong/erdong.github.io/issues</a> 提 Issue ，我会及时回复。</p>
+<p>======================<br>Erdong, A Linux user !</p>
+]]></content>
+      <categories>
+        <category>Prometheus</category>
+        <category>New-Features</category>
+      </categories>
+      <tags>
+        <tag>Prometheus</tag>
+        <tag>Features</tag>
+        <tag>release</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Prometheus 2.16.0 新特性</title>
+    <url>/Prometheus/New-Features/New-Features-in-Prometheus-2-16-0.html</url>
+    <content><![CDATA[<p>Prometheus <a href="https://github.com/prometheus/prometheus/releases/tag/v2.16.0" target="_blank" rel="noopener">2.16.0</a> 现在(2020.02.13)已经发布，在上个月的 <a href="http://erdong.site/Prometheus/New-Features/New-Features-in-Prometheus-2-15-0.html">2.15.0</a> 之后又进行了一些修正和改进。</p>
+<a id="more"></a>
+<p>在这个版本中有很多的性能改进，如果你的查询只涉及最近几个小时的数值，会变的非常快，因为 Brian Brazil 删除了一些不必要的排序。在实际使用中，这会使得记录规则在处理 100 万个序列的高基数时快 1 秒。</p>
+<p>现在可以配置 Prometheus 来记录它执行的所有 PromQL 查询。</p>
+<p>PromQL 解析器已经被一个带有改进的错误消息的生成解析器所取代，这也会快一些。 还有一个新的 absent_over_time 函数，在没有任何变化的情况下，重新加载配置和告警规则配置的效率会更高。</p>
+<p>有新的 prometheus_target_metadata_cache_* 来展示元数据占用的内存，还有针对 WAL 写失败的 prometheus_tsdb_wal_writes_failed_total 的指标。</p>
+<p>新的 UI 支持本地时区，可以勾选 local timezone 。新增支持告警规则页面以及“Xs ago” 之前。</p>
+<p>TSDB 提升了查询最近 2 小时内数据的查询性能。<br>promtool 工具支持显示无效规则的行号。</p>
+<p>还有其他一些 BUG 修复。</p>
+<p>详细的发行注记可以查看 <a href="https://github.com/prometheus/prometheus/releases/tag/v2.16.0" target="_blank" rel="noopener">release notes</a> 。</p>
+<h1 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h1><ul>
+<li><a href="https://www.robustperception.io/new-features-in-prometheus-2-16-0" target="_blank" rel="noopener">https://www.robustperception.io/new-features-in-prometheus-2-16-0</a> ， By Brian Brazil</li>
+<li><a href="https://github.com/prometheus/prometheus/releases/tag/v2.16.0" target="_blank" rel="noopener">https://github.com/prometheus/prometheus/releases/tag/v2.16.0</a> ，By prombot of GitHub </li>
 </ul>
 <p>======================<br>由于无法及时收到评论内容，所以关闭评论功能。<br>大家有问题欢迎发邮件到 <a href="mailto:erdong@mail.erdong.site">erdong@mail.erdong.site</a> ，或者 <a href="https://github.com/erdong/erdong.github.io/issues" target="_blank" rel="noopener">https://github.com/erdong/erdong.github.io/issues</a> 提 Issue ，我会及时回复。</p>
 <p>======================<br>Erdong, A Linux user !</p>
@@ -221,19 +285,19 @@
       </tags>
   </entry>
   <entry>
-    <title>Prometheus 2.14.0 新特性</title>
-    <url>/Prometheus/New-Features/New-Features-in-Prometheus-2-14-0.html</url>
-    <content><![CDATA[<p>Prometheus <a href="https://github.com/prometheus/prometheus/releases/tag/v2.14.0" target="_blank" rel="noopener">2.14.0</a> 现在(2019.11.11)已经发布，在上个月的 <a href="http://erdong.site/Prometheus/New-Features/New-Features-in-Prometheus-2-13-0.html">2.13.0</a> 之后又进行了一些修正和改进。</p>
+    <title>Prometheus 2.18.0 新特性</title>
+    <url>/Prometheus/New-Features/New-Features-in-Prometheus-2-18-0.html</url>
+    <content><![CDATA[<p>Prometheus <a href="https://github.com/prometheus/prometheus/releases/tag/v2.18.0" target="_blank" rel="noopener">2.18.0</a> 现在(2020.05.05)已经发布，在上个月的 <a href="http://erdong.site/Prometheus/New-Features/New-Features-in-Prometheus-2-17-0.html">2.17.0</a> 之后又进行了一些修正和改进。</p>
 <a id="more"></a>
-<p>这次最大的新功能是基于 React 的新 UI，与现有 UI 大体相同。该 UI 还在持续开发中。现有的 UI 还获得了 head cardinality 统计信息。这次的更新新增了按状态进行的警报过滤。</p>
-<p><img src="https://www.robustperception.io/wp-content/uploads/2019/11/Screenshot_2019-11-11_16-19-27.png" alt="图片来自 robustperception.io"></p>
-<p>修复了压缩后的远程写延迟，在无法发送样本时避免重新分片等多个 BUG。</p>
-<p>WAL 在启动加载时进行了优化。</p>
-<p>新增了 <code>/api/vi/status/runtimeinfo</code> 和 <code>/api/v1/status/buildinfo</code> 两个接口给 React UI 使用。</p>
-<p>详细的发行注记可以查看 <a href="https://github.com/prometheus/prometheus/releases/tag/v2.14.0" target="_blank" rel="noopener">release notes</a> 。</p>
+<p>这是一个相当轻的版本。最显著的变化是，WAL保存在磁盘上的时间已经减少了一半，从6个小时减少到3个小时，这是我为之前的一篇博客文章所做的研究得出的结论。</p>
+<p>Federation 现在只查询本地TSDB，由于 read_recent 默认为 false，大多数远程读用户应该已经这样做了。</p>
+<p>EC2服务发现现在新增了 architecture 元数据 label。</p>
+<p>修复了一些 UI 和远程写的 BUG。</p>
+<p>在 2020 年 5 月 7 日，发布了 2.18.1 TSDB 修复了一个快照 API 的 BUG。</p>
+<p>详细的发行注记可以查看 <a href="https://github.com/prometheus/prometheus/releases/tag/v2.18.0" target="_blank" rel="noopener">release notes</a> 。</p>
 <h1 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h1><ul>
-<li><a href="https://www.robustperception.io/new-features-in-prometheus-2-14-0" target="_blank" rel="noopener">https://www.robustperception.io/new-features-in-prometheus-2-14-0</a> ， By Brian Brazil</li>
-<li><a href="https://github.com/prometheus/prometheus/releases/tag/v2.14.0" target="_blank" rel="noopener">https://github.com/prometheus/prometheus/releases/tag/v2.14.0</a> ，By prombot of GitHub </li>
+<li><a href="https://www.robustperception.io/new-features-in-prometheus-2-18-0" target="_blank" rel="noopener">https://www.robustperception.io/new-features-in-prometheus-2-18-0</a> ， By Brian Brazil</li>
+<li><a href="https://github.com/prometheus/prometheus/releases/tag/v2.18.0" target="_blank" rel="noopener">https://github.com/prometheus/prometheus/releases/tag/v2.18.0</a> ，By prombot of GitHub</li>
 </ul>
 <p>======================<br>由于无法及时收到评论内容，所以关闭评论功能。<br>大家有问题欢迎发邮件到 <a href="mailto:erdong@mail.erdong.site">erdong@mail.erdong.site</a> ，或者 <a href="https://github.com/erdong/erdong.github.io/issues" target="_blank" rel="noopener">https://github.com/erdong/erdong.github.io/issues</a> 提 Issue ，我会及时回复。</p>
 <p>======================<br>Erdong, A Linux user !</p>
@@ -249,52 +313,21 @@
       </tags>
   </entry>
   <entry>
-    <title>Prometheus 2.16.0 新特性</title>
-    <url>/Prometheus/New-Features/New-Features-in-Prometheus-2-16-0.html</url>
-    <content><![CDATA[<p>Prometheus <a href="https://github.com/prometheus/prometheus/releases/tag/v2.16.0" target="_blank" rel="noopener">2.16.0</a> 现在(2020.02.13)已经发布，在上个月的 <a href="http://erdong.site/Prometheus/New-Features/New-Features-in-Prometheus-2-15-0.html">2.15.0</a> 之后又进行了一些修正和改进。</p>
+    <title>Prometheus 2.19.0 新特性</title>
+    <url>/Prometheus/New-Features/New-Features-in-Prometheus-2-19-0.html</url>
+    <content><![CDATA[<p>Prometheus <a href="https://github.com/prometheus/prometheus/releases/tag/v2.19.0" target="_blank" rel="noopener">2.19.0</a> 现在(2020.06.15)已经发布，在上个月的 <a href="http://erdong.site/Prometheus/New-Features/New-Features-in-Prometheus-2-18-0.html">2.18.0</a> 之后又进行了很多的修复和改进。</p>
 <a id="more"></a>
-<p>在这个版本中有很多的性能改进，如果你的查询只涉及最近几个小时的数值，会变的非常快，因为 Brian Brazil 删除了一些不必要的排序。在实际使用中，这会使得记录规则在处理 100 万个序列的高基数时快 1 秒。</p>
-<p>现在可以配置 Prometheus 来记录它执行的所有 PromQL 查询。</p>
-<p>PromQL 解析器已经被一个带有改进的错误消息的生成解析器所取代，这也会快一些。 还有一个新的 absent_over_time 函数，在没有任何变化的情况下，重新加载配置和告警规则配置的效率会更高。</p>
-<p>有新的 prometheus_target_metadata_cache_* 来展示元数据占用的内存，还有针对 WAL 写失败的 prometheus_tsdb_wal_writes_failed_total 的指标。</p>
-<p>新的 UI 支持本地时区，可以勾选 local timezone 。新增支持告警规则页面以及“Xs ago” 之前。</p>
-<p>TSDB 提升了查询最近 2 小时内数据的查询性能。<br>promtool 工具支持显示无效规则的行号。</p>
-<p>还有其他一些 BUG 修复。</p>
-<p>详细的发行注记可以查看 <a href="https://github.com/prometheus/prometheus/releases/tag/v2.16.0" target="_blank" rel="noopener">release notes</a> 。</p>
+
+<p>最大的一个特性就是 TSDB 的 head block 现在存储在 mmaped 中，而不是存储在  heap 中 。这样就减少了内存的需求，特别是高频的获取采集端的数据场景，而且可以在重启进程的时候可以变的更快。而且在隔离性上也有改进，减少了高负载的争用。</p>
+<p>Triton 服务发现，现在支持全局空间。<br>增加告警重发延迟，可以容忍一些发送失败的场景。<br>增加了一个关于远程读的新的 Metric，<code>prometheus_remote_storage_remote_read_queries_total</code> ，是 count 类型。</p>
+<p>在 API 中添加了 label name 和 label values 的时间范围参数</p>
+<p>修正了TSDB配置远程读取时使用Prometheus时出现的不正确的查询结果的 BUG</p>
+<p>在 2020 年 6 月 18 日，发布了 2.19.1 ，修复了 m-map 文件被截断导致的文件无序的 BUG 。</p>
+<p>详细的发行注记可以查看 <a href="https://github.com/prometheus/prometheus/releases/tag/v2.19.0" target="_blank" rel="noopener">release notes</a> 。</p>
 <h1 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h1><ul>
-<li><a href="https://www.robustperception.io/new-features-in-prometheus-2-16-0" target="_blank" rel="noopener">https://www.robustperception.io/new-features-in-prometheus-2-16-0</a> ， By Brian Brazil</li>
-<li><a href="https://github.com/prometheus/prometheus/releases/tag/v2.16.0" target="_blank" rel="noopener">https://github.com/prometheus/prometheus/releases/tag/v2.16.0</a> ，By prombot of GitHub </li>
+<li><a href="https://www.robustperception.io/new-features-in-prometheus-2-19-0" target="_blank" rel="noopener">https://www.robustperception.io/new-features-in-prometheus-2-19-0</a> ， By Brian Brazil</li>
+<li><h1 id="https-github-com-prometheus-prometheus-releases-tag-v2-19-0-，By-prombot-of-GitHub"><a href="#https-github-com-prometheus-prometheus-releases-tag-v2-19-0-，By-prombot-of-GitHub" class="headerlink" title="https://github.com/prometheus/prometheus/releases/tag/v2.19.0 ，By prombot of GitHub"></a><a href="https://github.com/prometheus/prometheus/releases/tag/v2.19.0" target="_blank" rel="noopener">https://github.com/prometheus/prometheus/releases/tag/v2.19.0</a> ，By prombot of GitHub</h1>由于无法及时收到评论内容，所以关闭评论功能。<br>大家有问题欢迎发邮件到 <a href="mailto:erdong@mail.erdong.site">erdong@mail.erdong.site</a> ，或者 <a href="https://github.com/erdong/erdong.github.io/issues" target="_blank" rel="noopener">https://github.com/erdong/erdong.github.io/issues</a> 提 Issue ，我会及时回复。</li>
 </ul>
-<p>======================<br>由于无法及时收到评论内容，所以关闭评论功能。<br>大家有问题欢迎发邮件到 <a href="mailto:erdong@mail.erdong.site">erdong@mail.erdong.site</a> ，或者 <a href="https://github.com/erdong/erdong.github.io/issues" target="_blank" rel="noopener">https://github.com/erdong/erdong.github.io/issues</a> 提 Issue ，我会及时回复。</p>
-<p>======================<br>Erdong, A Linux user !</p>
-]]></content>
-      <categories>
-        <category>Prometheus</category>
-        <category>New-Features</category>
-      </categories>
-      <tags>
-        <tag>Prometheus</tag>
-        <tag>Features</tag>
-        <tag>release</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Prometheus 2.15.0 新特性</title>
-    <url>/Prometheus/New-Features/New-Features-in-Prometheus-2-15-0.html</url>
-    <content><![CDATA[<p> <a href="https://github.com/prometheus/prometheus/releases/tag/v2.15.0" target="_blank" rel="noopener">2.15.0</a> 现在(2019.12.23)已经发布，在上个月的 <a href="http://erdong.site/Prometheus/New-Features/New-Features-in-Prometheus-2-14-0.html">2.14.0</a> 之后又进行了一些修正和改进。</p>
-<a id="more"></a>
-<p>这个版本最大的改进是对块（block）和内存使用的压缩进行了优化，块不再将所有的 symbol/postings 放在对上，并且压缩过程也不将他们长期放在内存。比较显著的效果是减少了具有高基数/搅动的系统的内存使用量，压缩内存峰值现在基本上应该消失了。因为这是典型的RAM与CPU之间的折衷，所以压缩会慢一些。在WAL replay(即启动时间)方面也有了性能上的改进，并且WAL占用的空间现在可以基于存储空间大小进行保留，删除超出的数据。</p>
-<p>有一个新的 Metric prometheus_sd_kubernetes_cache_* 已经被删除，</p>
-<p>PromQL解析器的性能也得到了一些改进。</p>
-<p>React UI的工作也在继续。实现了一些缺少的页面，比如 /targets , TSDB 的状态页面，以及其他的 fix 修复和性能提升。</p>
-<p>在 API 方面，新增了 /metadata 接口，用来公开 metadata 数据。</p>
-<p>在 v2.15.1 中修正了对相同数据的并发查询竞争的 Bug。<br>在 v2.15.2 中支持 Prometheus v2.1.0 之前的 TSDB block ；修复了 Windows 上的块压缩问题。</p>
-<p>详细的发行注记可以查看 <a href="https://github.com/prometheus/prometheus/releases/tag/v2.15.0" target="_blank" rel="noopener">release notes</a> 。</p>
-<h1 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h1><ul>
-<li><a href="https://www.robustperception.io/new-features-in-prometheus-2-15-0" target="_blank" rel="noopener">https://www.robustperception.io/new-features-in-prometheus-2-15-0</a> ， By Brian Brazil</li>
-<li><a href="https://github.com/prometheus/prometheus/releases/tag/v2.15.0" target="_blank" rel="noopener">https://github.com/prometheus/prometheus/releases/tag/v2.15.0</a> ，By prombot of GitHub  <a href="https://github.com/prometheus/prometheus/releases/tag/v2.14.0" target="_blank" rel="noopener">https://github.com/prometheus/prometheus/releases/tag/v2.14.0</a> ，By prombot of GitHub </li>
-</ul>
-<p>======================<br>由于无法及时收到评论内容，所以关闭评论功能。<br>大家有问题欢迎发邮件到 <a href="mailto:erdong@mail.erdong.site">erdong@mail.erdong.site</a> ，或者 <a href="https://github.com/erdong/erdong.github.io/issues" target="_blank" rel="noopener">https://github.com/erdong/erdong.github.io/issues</a> 提 Issue ，我会及时回复。</p>
 <p>======================<br>Erdong, A Linux user !</p>
 ]]></content>
       <categories>
@@ -333,20 +366,16 @@
       </tags>
   </entry>
   <entry>
-    <title>Prometheus 2.19.0 新特性</title>
-    <url>/Prometheus/New-Features/New-Features-in-Prometheus-2-19-0.html</url>
-    <content><![CDATA[<p>Prometheus <a href="https://github.com/prometheus/prometheus/releases/tag/v2.19.0" target="_blank" rel="noopener">2.19.0</a> 现在(2020.06.15)已经发布，在上个月的 <a href="http://erdong.site/Prometheus/New-Features/New-Features-in-Prometheus-2-18-0.html">2.18.0</a> 之后又进行了很多的修复和改进。</p>
+    <title>【翻译】Prometheus 2.3.0 新特性</title>
+    <url>/Prometheus/New-Features/New-Features-in-Prometheus-2-3-0.html</url>
+    <content><![CDATA[<p>Prometheus <a href="https://github.com/prometheus/prometheus/releases/tag/v2.3.0" target="_blank" rel="noopener">2.3.0</a> 现在(2018.6.11)已经发布，在 3 月份的 <a href="http://erdong.site/Prometheus/New-Features/New-Features-in-Prometheus-2-2-0.html">2.2.0</a> 之后又进行了一些修正和改进。</p>
 <a id="more"></a>
 
-<p>最大的一个特性就是 TSDB 的 head block 现在存储在 mmaped 中，而不是存储在  heap 中 。这样就减少了内存的需求，特别是高频的获取采集端的数据场景，而且可以在重启进程的时候可以变的更快。而且在隔离性上也有改进，减少了高负载的争用。</p>
-<p>Triton 服务发现，现在支持全局空间。<br>增加告警重发延迟，可以容忍一些发送失败的场景。<br>增加了一个关于远程读的新的 Metric，<code>prometheus_remote_storage_remote_read_queries_total</code> ，是 count 类型。</p>
-<p>在 API 中添加了 label name 和 label values 的时间范围参数</p>
-<p>修正了TSDB配置远程读取时使用Prometheus时出现的不正确的查询结果的 BUG</p>
-<p>在 2020 年 6 月 18 日，发布了 2.19.1 ，修复了 m-map 文件被截断导致的文件无序的 BUG 。</p>
-<p>详细的发行注记可以查看 <a href="https://github.com/prometheus/prometheus/releases/tag/v2.19.0" target="_blank" rel="noopener">release notes</a> 。</p>
-<h1 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h1><ul>
-<li><a href="https://www.robustperception.io/new-features-in-prometheus-2-19-0" target="_blank" rel="noopener">https://www.robustperception.io/new-features-in-prometheus-2-19-0</a> ， By Brian Brazil</li>
-<li><h1 id="https-github-com-prometheus-prometheus-releases-tag-v2-19-0-，By-prombot-of-GitHub"><a href="#https-github-com-prometheus-prometheus-releases-tag-v2-19-0-，By-prombot-of-GitHub" class="headerlink" title="https://github.com/prometheus/prometheus/releases/tag/v2.19.0 ，By prombot of GitHub"></a><a href="https://github.com/prometheus/prometheus/releases/tag/v2.19.0" target="_blank" rel="noopener">https://github.com/prometheus/prometheus/releases/tag/v2.19.0</a> ，By prombot of GitHub</h1>由于无法及时收到评论内容，所以关闭评论功能。<br>大家有问题欢迎发邮件到 <a href="mailto:erdong@mail.erdong.site">erdong@mail.erdong.site</a> ，或者 <a href="https://github.com/erdong/erdong.github.io/issues" target="_blank" rel="noopener">https://github.com/erdong/erdong.github.io/issues</a> 提 Issue ，我会及时回复。</li>
+<p>这个版本中最大的变化是与性能相关的。我对PromQL的评估方式进行了重大更改，这可以为常见仪表板查询减少31-64%的CPU和55-99%的内存分配。此外，我更改了用于编码响应的JSON库，节省了40%的CPU。</p>
+<p>如果您正在使用带有无记名令牌的商业Marathon产品，请注意字段名已经更改。从好的方面来说，其他地方可用的所有常用HTTP选项现在都可以用于Marathon SD。EC2和领事SD现在允许使用这些技术的内置过滤，这与重新标记没有什么不同，但是对性能很有用。Kubernetes和GCE SD获得了额外的元数据。任何可以指定基本身份验证密码的地方，现在都可以从文件中读取该密码。</p>
+<p>这次还有很多的提升、bug fix 和其他的改变，可以查看 <a href="https://github.com/prometheus/prometheus/releases/tag/v2.3.0" target="_blank" rel="noopener">release notes</a> 来获取更多的信息。</p>
+<h1 id="原文链接"><a href="#原文链接" class="headerlink" title="原文链接"></a>原文链接</h1><ul>
+<li><a href="https://www.robustperception.io/new-features-in-prometheus-2-3-0" target="_blank" rel="noopener">https://www.robustperception.io/new-features-in-prometheus-2-3-0</a> ， By Brian Brazil</li>
 </ul>
 <p>======================<br>Erdong, A Linux user !</p>
 ]]></content>
@@ -391,58 +420,6 @@
       </tags>
   </entry>
   <entry>
-    <title>【翻译】Prometheus 2.3.0 新特性</title>
-    <url>/Prometheus/New-Features/New-Features-in-Prometheus-2-3-0.html</url>
-    <content><![CDATA[<p>Prometheus <a href="https://github.com/prometheus/prometheus/releases/tag/v2.3.0" target="_blank" rel="noopener">2.3.0</a> 现在(2018.6.11)已经发布，在 3 月份的 <a href="http://erdong.site/Prometheus/New-Features/New-Features-in-Prometheus-2-2-0.html">2.2.0</a> 之后又进行了一些修正和改进。</p>
-<a id="more"></a>
-
-<p>这个版本中最大的变化是与性能相关的。我对PromQL的评估方式进行了重大更改，这可以为常见仪表板查询减少31-64%的CPU和55-99%的内存分配。此外，我更改了用于编码响应的JSON库，节省了40%的CPU。</p>
-<p>如果您正在使用带有无记名令牌的商业Marathon产品，请注意字段名已经更改。从好的方面来说，其他地方可用的所有常用HTTP选项现在都可以用于Marathon SD。EC2和领事SD现在允许使用这些技术的内置过滤，这与重新标记没有什么不同，但是对性能很有用。Kubernetes和GCE SD获得了额外的元数据。任何可以指定基本身份验证密码的地方，现在都可以从文件中读取该密码。</p>
-<p>这次还有很多的提升、bug fix 和其他的改变，可以查看 <a href="https://github.com/prometheus/prometheus/releases/tag/v2.3.0" target="_blank" rel="noopener">release notes</a> 来获取更多的信息。</p>
-<h1 id="原文链接"><a href="#原文链接" class="headerlink" title="原文链接"></a>原文链接</h1><ul>
-<li><a href="https://www.robustperception.io/new-features-in-prometheus-2-3-0" target="_blank" rel="noopener">https://www.robustperception.io/new-features-in-prometheus-2-3-0</a> ， By Brian Brazil</li>
-</ul>
-<p>======================<br>Erdong, A Linux user !</p>
-]]></content>
-      <categories>
-        <category>Prometheus</category>
-        <category>New-Features</category>
-      </categories>
-      <tags>
-        <tag>Prometheus</tag>
-        <tag>Features</tag>
-        <tag>release</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Prometheus 2.18.0 新特性</title>
-    <url>/Prometheus/New-Features/New-Features-in-Prometheus-2-18-0.html</url>
-    <content><![CDATA[<p>Prometheus <a href="https://github.com/prometheus/prometheus/releases/tag/v2.18.0" target="_blank" rel="noopener">2.18.0</a> 现在(2020.05.05)已经发布，在上个月的 <a href="http://erdong.site/Prometheus/New-Features/New-Features-in-Prometheus-2-17-0.html">2.17.0</a> 之后又进行了一些修正和改进。</p>
-<a id="more"></a>
-<p>这是一个相当轻的版本。最显著的变化是，WAL保存在磁盘上的时间已经减少了一半，从6个小时减少到3个小时，这是我为之前的一篇博客文章所做的研究得出的结论。</p>
-<p>Federation 现在只查询本地TSDB，由于 read_recent 默认为 false，大多数远程读用户应该已经这样做了。</p>
-<p>EC2服务发现现在新增了 architecture 元数据 label。</p>
-<p>修复了一些 UI 和远程写的 BUG。</p>
-<p>在 2020 年 5 月 7 日，发布了 2.18.1 TSDB 修复了一个快照 API 的 BUG。</p>
-<p>详细的发行注记可以查看 <a href="https://github.com/prometheus/prometheus/releases/tag/v2.18.0" target="_blank" rel="noopener">release notes</a> 。</p>
-<h1 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h1><ul>
-<li><a href="https://www.robustperception.io/new-features-in-prometheus-2-18-0" target="_blank" rel="noopener">https://www.robustperception.io/new-features-in-prometheus-2-18-0</a> ， By Brian Brazil</li>
-<li><a href="https://github.com/prometheus/prometheus/releases/tag/v2.18.0" target="_blank" rel="noopener">https://github.com/prometheus/prometheus/releases/tag/v2.18.0</a> ，By prombot of GitHub</li>
-</ul>
-<p>======================<br>由于无法及时收到评论内容，所以关闭评论功能。<br>大家有问题欢迎发邮件到 <a href="mailto:erdong@mail.erdong.site">erdong@mail.erdong.site</a> ，或者 <a href="https://github.com/erdong/erdong.github.io/issues" target="_blank" rel="noopener">https://github.com/erdong/erdong.github.io/issues</a> 提 Issue ，我会及时回复。</p>
-<p>======================<br>Erdong, A Linux user !</p>
-]]></content>
-      <categories>
-        <category>Prometheus</category>
-        <category>New-Features</category>
-      </categories>
-      <tags>
-        <tag>Prometheus</tag>
-        <tag>Features</tag>
-        <tag>release</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>【翻译】Prometheus 2.4.0 新特性</title>
     <url>/Prometheus/New-Features/New-Features-in-Prometheus-2-4-0.html</url>
     <content><![CDATA[<p>Prometheus <a href="https://github.com/prometheus/prometheus/releases/tag/v2.4.0" target="_blank" rel="noopener">2.4.0</a> 现在(2018.9.17)已经发布，在 6 月份的 <a href="http://erdong.site/Prometheus/New-Features/New-Features-in-Prometheus-2-3-0.html">2.3.0</a> 之后又进行了一些修正和改进。</p>
@@ -454,6 +431,29 @@
 <p>这次还有很多的提升、bug fix 和其他的改变，可以查看 <a href="https://github.com/prometheus/prometheus/releases/tag/v2.4.0" target="_blank" rel="noopener">release notes</a> 来获取更多的信息。</p>
 <h1 id="原文链接"><a href="#原文链接" class="headerlink" title="原文链接"></a>原文链接</h1><ul>
 <li><a href="https://www.robustperception.io/new-features-in-prometheus-2-4-0" target="_blank" rel="noopener">https://www.robustperception.io/new-features-in-prometheus-2-4-0</a> ， By Brian Brazil</li>
+</ul>
+<p>======================<br>Erdong, A Linux user !</p>
+]]></content>
+      <categories>
+        <category>Prometheus</category>
+        <category>New-Features</category>
+      </categories>
+      <tags>
+        <tag>Prometheus</tag>
+        <tag>Features</tag>
+        <tag>release</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>【翻译】Prometheus 2.12.0 新特性</title>
+    <url>/Prometheus/New-Features/New-Features-in-Prometheus-2-12-0.html</url>
+    <content><![CDATA[<p>Prometheus <a href="https://github.com/prometheus/prometheus/releases/tag/v2.12.0" target="_blank" rel="noopener">2.12.0</a> 现在(2019.08.17)已经发布，在上个月的 <a href="http://erdong.site/Prometheus/New-Features/New-Features-in-Prometheus-2-11-0.html">2.11.0</a> 之后又进行了一些修正和改进。</p>
+<a id="more"></a>
+<p>在当前的 6 周发布周期中，每一个 Prometheus 版本都有比较少的特性，但是发布的更有规律。在这个版本中最引人注目的特性是，如果 Prometheus 在下一次启动时崩溃，它将打印正在运行的 PromQL ，这有助于查找开销过大的查询。</p>
+<p>在内存方面 TSDB 有很多的性能改进，还添加了一个 <code>prometheus_tsdb_retention_limit_bytes</code> 的指标。虽然与用户无关，但 TSDB 存储库已经合并到 GitHub 上的  Prometheus 主存储库中。这将使我们作为开发人员的生活更加轻松。</p>
+<p>还有许多改进、bug修复和其他更改，可以查看 <a href="https://github.com/prometheus/prometheus/releases/tag/v2.12.0" target="_blank" rel="noopener">release notes</a> 来获取更多的信息。</p>
+<h1 id="原文链接"><a href="#原文链接" class="headerlink" title="原文链接"></a>原文链接</h1><ul>
+<li><a href="https://www.robustperception.io/new-features-in-prometheus-2-12-0" target="_blank" rel="noopener">https://www.robustperception.io/new-features-in-prometheus-2-12-0</a> ， By Brian Brazil</li>
 </ul>
 <p>======================<br>Erdong, A Linux user !</p>
 ]]></content>
@@ -520,19 +520,17 @@
       </tags>
   </entry>
   <entry>
-    <title>【翻译】Prometheus 2.7.0 新特性</title>
-    <url>/Prometheus/New-Features/New-Features-in-Prometheus-2-7-0.html</url>
-    <content><![CDATA[<p>Prometheus <a href="https://github.com/prometheus/prometheus/releases/tag/v2.7.0" target="_blank" rel="noopener">2.7.0</a> 现在(2019.01.28)已经发布，在上个月的 <a href="http://erdong.site/Prometheus/New-Features/New-Features-in-Prometheus-2-6-0.html">2.6.0</a> 之后又进行了一些修正和改进。</p>
+    <title>【翻译】Prometheus 2.8.0 新特性</title>
+    <url>/Prometheus/New-Features/New-Features-in-Prometheus-2-8-0.html</url>
+    <content><![CDATA[<p>Prometheus <a href="https://github.com/prometheus/prometheus/releases/tag/v2.8.0" target="_blank" rel="noopener">2.8.0</a> 现在(2019.03.18)已经发布，在上个月的 <a href="http://erdong.site/Prometheus/New-Features/New-Features-in-Prometheus-2-7-0.html">2.7.0</a> 之后又进行了一些修正和改进。</p>
 <a id="more"></a>
 
-<p>首先，在 2.6.0 中对的 Docker 文件更改被还原回 2.5.0 中的设置，因为它产生了意外的影响。如果您已经更新了 2.6.0 更改的设置，那么您可能希望使用 2.7.0 进行恢复。</p>
-<p>TSDB 为 blocks 添加了实验性 size-based 的保留，time-based 的保留也适用。我还对某些选择器进行了性能改进，虽然这并不是普罗米修斯的技术性变化，但 tsdbutil 现在有了一个 analyze 子命令，可以帮助确定哪些内容占用了空间并造成了混乱。</p>
-<p>PromQL 添加了子查询支持，因此对于特殊查询，您不再需要遵循 PromQL 中的组合范围向量函数。除了其他每个规则组指标外，现在还有一个<code>rule_group_rules_loaded</code>指标。</p>
-<p>对于服务发现，Azure现在可以进行托管身份验证，还可以获得租户和订阅ID元数据。OpenStack现在支持应用程序凭据。Consul added service 标记地址元数据 ，Consul gained servic 标记地址元数据 。</p>
-<p>在API/UI方面，现在可以控制允许哪些CORS源。</p>
-<p>还有许多改进、bug修复和其他更改，可以查看 <a href="https://github.com/prometheus/prometheus/releases/tag/v2.7.0" target="_blank" rel="noopener">release notes</a> 来获取更多的信息。</p>
+<p>这个版本中最大的变化是远程写现在通过 WAL 工作，使它更加可靠，资源使用更加可预测。另一个改进是TSDB现在支持压缩重叠块，将来的特性将使用这些重叠块来支持批量导入。</p>
+<p>需要注意的一件事是，如果您指定了–storage.tsdb.retention。那么默认的时间保留将不适用。您还可以指定时间保留，在这种情况下两者都适用。</p>
+<p>还有其他一些小的改进，包括PromQL 多对多匹配出现错误时显示违规的标签，重新加载配置对警报的影响已经减少，现在表达式浏览器度量自动完成有10k的限制，以避免包含标签的度量名称过多，导致浏览器退出。</p>
+<p>还有许多改进、bug修复和其他更改，可以查看 <a href="https://github.com/prometheus/prometheus/releases/tag/v2.8.0" target="_blank" rel="noopener">release notes</a> 来获取更多的信息。</p>
 <h1 id="原文链接"><a href="#原文链接" class="headerlink" title="原文链接"></a>原文链接</h1><ul>
-<li><a href="https://www.robustperception.io/new-features-in-prometheus-2-7-0" target="_blank" rel="noopener">https://www.robustperception.io/new-features-in-prometheus-2-7-0</a> ， By Brian Brazil</li>
+<li><a href="https://www.robustperception.io/new-features-in-prometheus-2-8-0" target="_blank" rel="noopener">https://www.robustperception.io/new-features-in-prometheus-2-8-0</a> ， By Brian Brazil</li>
 </ul>
 <p>======================<br>Erdong, A Linux user !</p>
 ]]></content>
@@ -547,17 +545,19 @@
       </tags>
   </entry>
   <entry>
-    <title>【翻译】Prometheus 2.8.0 新特性</title>
-    <url>/Prometheus/New-Features/New-Features-in-Prometheus-2-8-0.html</url>
-    <content><![CDATA[<p>Prometheus <a href="https://github.com/prometheus/prometheus/releases/tag/v2.8.0" target="_blank" rel="noopener">2.8.0</a> 现在(2019.03.18)已经发布，在上个月的 <a href="http://erdong.site/Prometheus/New-Features/New-Features-in-Prometheus-2-7-0.html">2.7.0</a> 之后又进行了一些修正和改进。</p>
+    <title>【翻译】Prometheus 2.7.0 新特性</title>
+    <url>/Prometheus/New-Features/New-Features-in-Prometheus-2-7-0.html</url>
+    <content><![CDATA[<p>Prometheus <a href="https://github.com/prometheus/prometheus/releases/tag/v2.7.0" target="_blank" rel="noopener">2.7.0</a> 现在(2019.01.28)已经发布，在上个月的 <a href="http://erdong.site/Prometheus/New-Features/New-Features-in-Prometheus-2-6-0.html">2.6.0</a> 之后又进行了一些修正和改进。</p>
 <a id="more"></a>
 
-<p>这个版本中最大的变化是远程写现在通过 WAL 工作，使它更加可靠，资源使用更加可预测。另一个改进是TSDB现在支持压缩重叠块，将来的特性将使用这些重叠块来支持批量导入。</p>
-<p>需要注意的一件事是，如果您指定了–storage.tsdb.retention。那么默认的时间保留将不适用。您还可以指定时间保留，在这种情况下两者都适用。</p>
-<p>还有其他一些小的改进，包括PromQL 多对多匹配出现错误时显示违规的标签，重新加载配置对警报的影响已经减少，现在表达式浏览器度量自动完成有10k的限制，以避免包含标签的度量名称过多，导致浏览器退出。</p>
-<p>还有许多改进、bug修复和其他更改，可以查看 <a href="https://github.com/prometheus/prometheus/releases/tag/v2.8.0" target="_blank" rel="noopener">release notes</a> 来获取更多的信息。</p>
+<p>首先，在 2.6.0 中对的 Docker 文件更改被还原回 2.5.0 中的设置，因为它产生了意外的影响。如果您已经更新了 2.6.0 更改的设置，那么您可能希望使用 2.7.0 进行恢复。</p>
+<p>TSDB 为 blocks 添加了实验性 size-based 的保留，time-based 的保留也适用。我还对某些选择器进行了性能改进，虽然这并不是普罗米修斯的技术性变化，但 tsdbutil 现在有了一个 analyze 子命令，可以帮助确定哪些内容占用了空间并造成了混乱。</p>
+<p>PromQL 添加了子查询支持，因此对于特殊查询，您不再需要遵循 PromQL 中的组合范围向量函数。除了其他每个规则组指标外，现在还有一个<code>rule_group_rules_loaded</code>指标。</p>
+<p>对于服务发现，Azure现在可以进行托管身份验证，还可以获得租户和订阅ID元数据。OpenStack现在支持应用程序凭据。Consul added service 标记地址元数据 ，Consul gained servic 标记地址元数据 。</p>
+<p>在API/UI方面，现在可以控制允许哪些CORS源。</p>
+<p>还有许多改进、bug修复和其他更改，可以查看 <a href="https://github.com/prometheus/prometheus/releases/tag/v2.7.0" target="_blank" rel="noopener">release notes</a> 来获取更多的信息。</p>
 <h1 id="原文链接"><a href="#原文链接" class="headerlink" title="原文链接"></a>原文链接</h1><ul>
-<li><a href="https://www.robustperception.io/new-features-in-prometheus-2-8-0" target="_blank" rel="noopener">https://www.robustperception.io/new-features-in-prometheus-2-8-0</a> ， By Brian Brazil</li>
+<li><a href="https://www.robustperception.io/new-features-in-prometheus-2-7-0" target="_blank" rel="noopener">https://www.robustperception.io/new-features-in-prometheus-2-7-0</a> ， By Brian Brazil</li>
 </ul>
 <p>======================<br>Erdong, A Linux user !</p>
 ]]></content>
@@ -595,6 +595,24 @@
         <tag>Prometheus</tag>
         <tag>Features</tag>
         <tag>release</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>网易博客要关闭了</title>
+    <url>/life/gossip/blog-163-closed.html</url>
+    <content><![CDATA[<p>今天在查找资料时，有一条跳转到了网易的博客，接着就弹出了网易的博客要关闭的提示框，提示公告如下：</p>
+<p><a href="http://blog.163.com/bearer.do" target="_blank" rel="noopener">http://blog.163.com/bearer.do</a></p>
+<p>没想到曾经很大的博客网站就这样要宣布结束了，很是感慨，不知道要说什么。<br> <a id="more"></a> </p>
+<p>2020-07-19 更新</p>
+<p>在阿里云的云栖社区写了一年的博客， 在 2020.06.11 关闭了，要迁移到阿里云开发者社区。</p>
+<p>======================<br>Erdong, A Linux user !</p>
+]]></content>
+      <categories>
+        <category>life</category>
+        <category>gossip</category>
+      </categories>
+      <tags>
+        <tag>blog</tag>
       </tags>
   </entry>
   <entry>
@@ -1023,6 +1041,41 @@
       </tags>
   </entry>
   <entry>
+    <title>K8S 中的 Grafana 数据持久化</title>
+    <url>/Grafana/grafana-kubernetes-config-persistence.html</url>
+    <content><![CDATA[<p>自从将 Grafana 部署到 K8S 中以后，带来了很多的便利性，但是也有一个问题一直困扰着我，那就是 Grafana 中的数据无法持久化，经常配置好的 Datasource 和 Dashboards 在运行一段时间后就丢失了，有时候刚要排查问题，结果什么都找不到了。我们都知道，Grafana 在启动后，数据会存储到数据库中，包括 datasource 的配置，Dashboards 的配置。要解决 Grafana 的数据持久化可以从 2 个方面来进行思考并且解决。</p>
+<a id="more"></a>
+<p>方案一：</p>
+<p>Grafana 数据存储在数据库中，当前支持 MySQL 、sqlite3、Postgres 这三个，缺省情况下，Grafana 会在本地启动一个 Sqlite3 来存储数据，你也可以在 grafana.ini 配置文件中修改这个配置来切换数据库。</p>
+<p>基于这个方式，第一种方案出来了。 当 Grafana 运行在 K8S 中时，数据库不使用自动启动的 Sqlite3 ，在 K8S 外启动一个关系数据库（可以是 MySQL 、sqlite3、Postgres 中的任何一个），修改 grafana.ini 文件，使得 Grafana 在启动时连接外部的数据库，这样数据就不会丢失了。</p>
+<p>方案二：</p>
+<p>Grafana 在 v5.0 之后引入了 provisioning 功能，可以将 Datasource 、Dashboards 这些内容，通过配置文件的方式在 Grafana 启动的时候加载。把这些文件放在 K8S 的配置映射中，然后挂载到 Grafana 容器中的指定路径即可。这样配置后在 Web UI 修改已经不会生效，只有在对应的配置文件中修改才会生效。</p>
+<p>接下里我们看看方案二的怎么配置使用，我使用的 Grafana 版本是 v6.4.3。</p>
+<p>首先需要在 Grafana 启动时添加相应的参数来打开 provisioning 功能，官方提供的 docker 镜像已经将该功能打开，缺省的路径是 <code>/etc/grafana/provisioning</code> ,这个路径下有 dashboards、datasources、notifiers 三个文件夹，相关的配置会放在这里。如果是自己构建的镜像，请参考文档或者官方的 dockerfile 把该功能打开。</p>
+<p>其次我们需要解决数据源的持久化问题，我们准备 datasources.yaml 文件，用来配置数据源。datasources.yaml 文件内容如下：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># config file version</span><br><span class="line">apiVersion: 1</span><br><span class="line"></span><br><span class="line"># list of datasources that should be deleted from the database</span><br><span class="line">deleteDatasources:</span><br><span class="line">  - name: Prometheus</span><br><span class="line">    orgId: 1</span><br><span class="line"></span><br><span class="line"># list of datasources to insert&#x2F;update depending</span><br><span class="line"># what&#39;s available in the database</span><br><span class="line">datasources:</span><br><span class="line">  # &lt;string, required&gt; name of the datasource. Required</span><br><span class="line">  - name: Prometheus</span><br><span class="line">    # &lt;string, required&gt; datasource type. Required</span><br><span class="line">    type: prometheus</span><br><span class="line">    # &lt;string, required&gt; access mode. proxy or direct (Server or Browser in the UI). Required</span><br><span class="line">    access: proxy</span><br><span class="line">    # &lt;int&gt; org id. will default to orgId 1 if not specified</span><br><span class="line">    orgId: 1</span><br><span class="line">    # &lt;string&gt; custom UID which can be used to reference this datasource in other parts of the configuration, if not specified will be generated automatically</span><br><span class="line">    uid: my_unique_uid</span><br><span class="line">    # &lt;string&gt; url</span><br><span class="line">    url: http:&#x2F;&#x2F;127.0.0.1:9090</span><br><span class="line">    # &lt;string&gt; Deprecated, use secureJsonData.password</span><br><span class="line">    password:</span><br><span class="line">    # &lt;string&gt; database user, if used</span><br><span class="line">    user:</span><br><span class="line">    # &lt;string&gt; database name, if used</span><br><span class="line">    database:</span><br><span class="line">    # &lt;bool&gt; enable&#x2F;disable basic auth</span><br><span class="line">    basicAuth:</span><br><span class="line">    # &lt;string&gt; basic auth username</span><br><span class="line">    basicAuthUser:</span><br><span class="line">    # &lt;string&gt; Deprecated, use secureJsonData.basicAuthPassword</span><br><span class="line">    basicAuthPassword:</span><br><span class="line">    # &lt;bool&gt; enable&#x2F;disable with credentials headers</span><br><span class="line">    withCredentials:</span><br><span class="line">    # &lt;bool&gt; mark as default datasource. Max one per org</span><br><span class="line">    isDefault:</span><br><span class="line">    # &lt;map&gt; fields that will be converted to json and stored in jsonData</span><br><span class="line">    jsonData:</span><br><span class="line">      graphiteVersion: &#39;1.1&#39;</span><br><span class="line">      tlsAuth: false</span><br><span class="line">      tlsAuthWithCACert: false</span><br><span class="line">    # &lt;string&gt; json object of data that will be encrypted.</span><br><span class="line">    secureJsonData:</span><br><span class="line">      tlsCACert: &#39;...&#39;</span><br><span class="line">      tlsClientCert: &#39;...&#39;</span><br><span class="line">      tlsClientKey: &#39;...&#39;</span><br><span class="line">      # &lt;string&gt; database password, if used</span><br><span class="line">      password:</span><br><span class="line">      # &lt;string&gt; basic auth password</span><br><span class="line">      basicAuthPassword:</span><br><span class="line">    version: 1</span><br><span class="line">    # &lt;bool&gt; allow users to edit datasources from the UI.</span><br><span class="line">    editable: false</span><br></pre></td></tr></table></figure>
+
+<p>将该文件放在 K8S 的 config map 中，在容器中时添加数据卷，卷类型选<code>配置映射卷</code> ，选择 config map 中的 datasources.yaml 挂载到容器的 <code>/etc/grafana/provisioning/datasources</code> ,然后重启容器，让容器重新加载配置。</p>
+<p>使用后在 Web UI 的数据源页面进行修改会提示 <code>This datasource was added by config and cannot be modified using the UI. Please contact your server admin to update this datasource.</code> 表示数据源的配置，在 Web UI 修改已经不会生效，只有在 datasources.yaml 文件中修改才会生效。</p>
+<p>接下来解决 dashboards 的持久化问题，准备 <code>dashboards.yaml</code> 文件，用来指定之后的 dashboards 的 json 文件放在哪个目录。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">apiVersion: 1</span><br><span class="line"></span><br><span class="line">providers:</span><br><span class="line">  # &lt;string&gt; an unique provider name. Required</span><br><span class="line">  - name: &#39;a unique provider name&#39;</span><br><span class="line">    # &lt;int&gt; Org id. Default to 1</span><br><span class="line">    orgId: 1</span><br><span class="line">    # &lt;string&gt; name of the dashboard folder.</span><br><span class="line">    folder: &#39;&#39;</span><br><span class="line">    # &lt;string&gt; folder UID. will be automatically generated if not specified</span><br><span class="line">    folderUid: &#39;&#39;</span><br><span class="line">    # &lt;string&gt; provider type. Default to &#39;file&#39;</span><br><span class="line">    type: file</span><br><span class="line">    # &lt;bool&gt; disable dashboard deletion</span><br><span class="line">    disableDeletion: false</span><br><span class="line">    # &lt;bool&gt; enable dashboard editing</span><br><span class="line">    editable: true</span><br><span class="line">    # &lt;int&gt; how often Grafana will scan for changed dashboards</span><br><span class="line">    updateIntervalSeconds: 10</span><br><span class="line">    # &lt;bool&gt; allow updating provisioned dashboards from the UI</span><br><span class="line">    allowUiUpdates: false</span><br><span class="line">    options:</span><br><span class="line">      # &lt;string, required&gt; path to dashboard files on disk. Required when using the &#39;file&#39; type</span><br><span class="line">      path: &#x2F;etc&#x2F;grafana&#x2F;dashboards-files</span><br></pre></td></tr></table></figure>
+
+<p>将该文件放在 K8S 的 config map 中，在容器中时添加数据卷，卷类型选<code>配置映射卷</code> ，选择 config map 中的 dashboards.yaml 挂载到容器的 <code>/etc/grafana/provisioning/dashboards</code> ,然后重启容器，让容器重新加载配置。</p>
+<p>接下来将准备好的 json 格式的 Dashboards 文件放到 <code>/etc/grafana/dashboards-files</code>,  重新加载这些 json 文件即可。</p>
+<h1 id="参考链接："><a href="#参考链接：" class="headerlink" title="参考链接："></a>参考链接：</h1><ul>
+<li><a href="https://grafana.com/docs/grafana/latest/administration/provisioning/#provisioning-grafana" target="_blank" rel="noopener">https://grafana.com/docs/grafana/latest/administration/provisioning/#provisioning-grafana</a> , By Provisioning Grafanan</li>
+</ul>
+<p>======================<br>由于无法及时收到评论内容，所以关闭评论功能。<br>大家有问题欢迎发邮件到 <a href="mailto:erdong@mail.erdong.site">erdong@mail.erdong.site</a> ，或者 <a href="https://github.com/erdong/erdong.github.io/issues" target="_blank" rel="noopener">https://github.com/erdong/erdong.github.io/issues</a> 提 Issue ，我会及时回复。</p>
+<p>======================<br>Erdong, A Linux user !</p>
+]]></content>
+      <categories>
+        <category>Grafana</category>
+      </categories>
+      <tags>
+        <tag>Grafana</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Erdong Notes</title>
     <url>/article/erdong-notes.html</url>
     <content><![CDATA[<p>这里记录我的一些学习笔记和一些发布在其他地方的文章。</p>
@@ -1049,24 +1102,6 @@
       <tags>
         <tag>article</tag>
         <tag>note</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>网易博客要关闭了</title>
-    <url>/life/gossip/blog-163-closed.html</url>
-    <content><![CDATA[<p>今天在查找资料时，有一条跳转到了网易的博客，接着就弹出了网易的博客要关闭的提示框，提示公告如下：</p>
-<p><a href="http://blog.163.com/bearer.do" target="_blank" rel="noopener">http://blog.163.com/bearer.do</a></p>
-<p>没想到曾经很大的博客网站就这样要宣布结束了，很是感慨，不知道要说什么。<br> <a id="more"></a> </p>
-<p>2020-07-19 更新</p>
-<p>在阿里云的云栖社区写了一年的博客， 在 2020.06.11 关闭了，要迁移到阿里云开发者社区。</p>
-<p>======================<br>Erdong, A Linux user !</p>
-]]></content>
-      <categories>
-        <category>life</category>
-        <category>gossip</category>
-      </categories>
-      <tags>
-        <tag>blog</tag>
       </tags>
   </entry>
   <entry>
@@ -1115,39 +1150,16 @@
       </tags>
   </entry>
   <entry>
-    <title>K8S 中的 Grafana 数据持久化</title>
-    <url>/Grafana/grafana-kubernetes-config-persistence.html</url>
-    <content><![CDATA[<p>自从将 Grafana 部署到 K8S 中以后，带来了很多的便利性，但是也有一个问题一直困扰着我，那就是 Grafana 中的数据无法持久化，经常配置好的 Datasource 和 Dashboards 在运行一段时间后就丢失了，有时候刚要排查问题，结果什么都找不到了。我们都知道，Grafana 在启动后，数据会存储到数据库中，包括 datasource 的配置，Dashboards 的配置。要解决 Grafana 的数据持久化可以从 2 个方面来进行思考并且解决。</p>
-<a id="more"></a>
-<p>方案一：</p>
-<p>Grafana 数据存储在数据库中，当前支持 MySQL 、sqlite3、Postgres 这三个，缺省情况下，Grafana 会在本地启动一个 Sqlite3 来存储数据，你也可以在 grafana.ini 配置文件中修改这个配置来切换数据库。</p>
-<p>基于这个方式，第一种方案出来了。 当 Grafana 运行在 K8S 中时，数据库不使用自动启动的 Sqlite3 ，在 K8S 外启动一个关系数据库（可以是 MySQL 、sqlite3、Postgres 中的任何一个），修改 grafana.ini 文件，使得 Grafana 在启动时连接外部的数据库，这样数据就不会丢失了。</p>
-<p>方案二：</p>
-<p>Grafana 在 v5.0 之后引入了 provisioning 功能，可以将 Datasource 、Dashboards 这些内容，通过配置文件的方式在 Grafana 启动的时候加载。把这些文件放在 K8S 的配置映射中，然后挂载到 Grafana 容器中的指定路径即可。这样配置后在 Web UI 修改已经不会生效，只有在对应的配置文件中修改才会生效。</p>
-<p>接下里我们看看方案二的怎么配置使用，我使用的 Grafana 版本是 v6.4.3。</p>
-<p>首先需要在 Grafana 启动时添加相应的参数来打开 provisioning 功能，官方提供的 docker 镜像已经将该功能打开，缺省的路径是 <code>/etc/grafana/provisioning</code> ,这个路径下有 dashboards、datasources、notifiers 三个文件夹，相关的配置会放在这里。如果是自己构建的镜像，请参考文档或者官方的 dockerfile 把该功能打开。</p>
-<p>其次我们需要解决数据源的持久化问题，我们准备 datasources.yaml 文件，用来配置数据源。datasources.yaml 文件内容如下：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># config file version</span><br><span class="line">apiVersion: 1</span><br><span class="line"></span><br><span class="line"># list of datasources that should be deleted from the database</span><br><span class="line">deleteDatasources:</span><br><span class="line">  - name: Prometheus</span><br><span class="line">    orgId: 1</span><br><span class="line"></span><br><span class="line"># list of datasources to insert&#x2F;update depending</span><br><span class="line"># what&#39;s available in the database</span><br><span class="line">datasources:</span><br><span class="line">  # &lt;string, required&gt; name of the datasource. Required</span><br><span class="line">  - name: Prometheus</span><br><span class="line">    # &lt;string, required&gt; datasource type. Required</span><br><span class="line">    type: prometheus</span><br><span class="line">    # &lt;string, required&gt; access mode. proxy or direct (Server or Browser in the UI). Required</span><br><span class="line">    access: proxy</span><br><span class="line">    # &lt;int&gt; org id. will default to orgId 1 if not specified</span><br><span class="line">    orgId: 1</span><br><span class="line">    # &lt;string&gt; custom UID which can be used to reference this datasource in other parts of the configuration, if not specified will be generated automatically</span><br><span class="line">    uid: my_unique_uid</span><br><span class="line">    # &lt;string&gt; url</span><br><span class="line">    url: http:&#x2F;&#x2F;127.0.0.1:9090</span><br><span class="line">    # &lt;string&gt; Deprecated, use secureJsonData.password</span><br><span class="line">    password:</span><br><span class="line">    # &lt;string&gt; database user, if used</span><br><span class="line">    user:</span><br><span class="line">    # &lt;string&gt; database name, if used</span><br><span class="line">    database:</span><br><span class="line">    # &lt;bool&gt; enable&#x2F;disable basic auth</span><br><span class="line">    basicAuth:</span><br><span class="line">    # &lt;string&gt; basic auth username</span><br><span class="line">    basicAuthUser:</span><br><span class="line">    # &lt;string&gt; Deprecated, use secureJsonData.basicAuthPassword</span><br><span class="line">    basicAuthPassword:</span><br><span class="line">    # &lt;bool&gt; enable&#x2F;disable with credentials headers</span><br><span class="line">    withCredentials:</span><br><span class="line">    # &lt;bool&gt; mark as default datasource. Max one per org</span><br><span class="line">    isDefault:</span><br><span class="line">    # &lt;map&gt; fields that will be converted to json and stored in jsonData</span><br><span class="line">    jsonData:</span><br><span class="line">      graphiteVersion: &#39;1.1&#39;</span><br><span class="line">      tlsAuth: false</span><br><span class="line">      tlsAuthWithCACert: false</span><br><span class="line">    # &lt;string&gt; json object of data that will be encrypted.</span><br><span class="line">    secureJsonData:</span><br><span class="line">      tlsCACert: &#39;...&#39;</span><br><span class="line">      tlsClientCert: &#39;...&#39;</span><br><span class="line">      tlsClientKey: &#39;...&#39;</span><br><span class="line">      # &lt;string&gt; database password, if used</span><br><span class="line">      password:</span><br><span class="line">      # &lt;string&gt; basic auth password</span><br><span class="line">      basicAuthPassword:</span><br><span class="line">    version: 1</span><br><span class="line">    # &lt;bool&gt; allow users to edit datasources from the UI.</span><br><span class="line">    editable: false</span><br></pre></td></tr></table></figure>
-
-<p>将该文件放在 K8S 的 config map 中，在容器中时添加数据卷，卷类型选<code>配置映射卷</code> ，选择 config map 中的 datasources.yaml 挂载到容器的 <code>/etc/grafana/provisioning/datasources</code> ,然后重启容器，让容器重新加载配置。</p>
-<p>使用后在 Web UI 的数据源页面进行修改会提示 <code>This datasource was added by config and cannot be modified using the UI. Please contact your server admin to update this datasource.</code> 表示数据源的配置，在 Web UI 修改已经不会生效，只有在 datasources.yaml 文件中修改才会生效。</p>
-<p>接下来解决 dashboards 的持久化问题，准备 <code>dashboards.yaml</code> 文件，用来指定之后的 dashboards 的 json 文件放在哪个目录。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">apiVersion: 1</span><br><span class="line"></span><br><span class="line">providers:</span><br><span class="line">  # &lt;string&gt; an unique provider name. Required</span><br><span class="line">  - name: &#39;a unique provider name&#39;</span><br><span class="line">    # &lt;int&gt; Org id. Default to 1</span><br><span class="line">    orgId: 1</span><br><span class="line">    # &lt;string&gt; name of the dashboard folder.</span><br><span class="line">    folder: &#39;&#39;</span><br><span class="line">    # &lt;string&gt; folder UID. will be automatically generated if not specified</span><br><span class="line">    folderUid: &#39;&#39;</span><br><span class="line">    # &lt;string&gt; provider type. Default to &#39;file&#39;</span><br><span class="line">    type: file</span><br><span class="line">    # &lt;bool&gt; disable dashboard deletion</span><br><span class="line">    disableDeletion: false</span><br><span class="line">    # &lt;bool&gt; enable dashboard editing</span><br><span class="line">    editable: true</span><br><span class="line">    # &lt;int&gt; how often Grafana will scan for changed dashboards</span><br><span class="line">    updateIntervalSeconds: 10</span><br><span class="line">    # &lt;bool&gt; allow updating provisioned dashboards from the UI</span><br><span class="line">    allowUiUpdates: false</span><br><span class="line">    options:</span><br><span class="line">      # &lt;string, required&gt; path to dashboard files on disk. Required when using the &#39;file&#39; type</span><br><span class="line">      path: &#x2F;etc&#x2F;grafana&#x2F;dashboards-files</span><br></pre></td></tr></table></figure>
-
-<p>将该文件放在 K8S 的 config map 中，在容器中时添加数据卷，卷类型选<code>配置映射卷</code> ，选择 config map 中的 dashboards.yaml 挂载到容器的 <code>/etc/grafana/provisioning/dashboards</code> ,然后重启容器，让容器重新加载配置。</p>
-<p>接下来将准备好的 json 格式的 Dashboards 文件放到 <code>/etc/grafana/dashboards-files</code>,  重新加载这些 json 文件即可。</p>
-<h1 id="参考链接："><a href="#参考链接：" class="headerlink" title="参考链接："></a>参考链接：</h1><ul>
-<li><a href="https://grafana.com/docs/grafana/latest/administration/provisioning/#provisioning-grafana" target="_blank" rel="noopener">https://grafana.com/docs/grafana/latest/administration/provisioning/#provisioning-grafana</a> , By Provisioning Grafanan</li>
-</ul>
-<p>======================<br>由于无法及时收到评论内容，所以关闭评论功能。<br>大家有问题欢迎发邮件到 <a href="mailto:erdong@mail.erdong.site">erdong@mail.erdong.site</a> ，或者 <a href="https://github.com/erdong/erdong.github.io/issues" target="_blank" rel="noopener">https://github.com/erdong/erdong.github.io/issues</a> 提 Issue ，我会及时回复。</p>
-<p>======================<br>Erdong, A Linux user !</p>
+    <title>Hello World</title>
+    <url>/uncategorized/hello-world.html</url>
+    <content><![CDATA[<p>Welcome to <a href="https://erdong.site">Erdong’s blog</a>! This is my first blog. </p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><p>  最近花时间搭建了这个博客，基于 hexo 和 github pages，想把日常遇到的问题和一些学习的知识点记录下来，梳理自己的知识体系，不断提高自己的能力。</p>
+<p>  个人比较喜欢阮一峰的博客，他的文字描述总是简单易懂，容易学习，希望以后也能达到这一目的。</p>
+<p>  人生总是存在各种各样的巧合，好像总和数字2会有关系，像这次发布第一篇博客刚好赶上22号，年份和月份全部是2的整数倍。</p>
+<p>  发现阮一峰有一个关于中文文档编写的规范，会尽量的按照这个来写。<a href="https://github.com/ruanyf/document-style-guide" target="_blank" rel="noopener">document-style-guide</a></p>
+<p>惯例: hello world 输出。一切的开始。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"><span class="comment">#version: 1.0</span></span><br><span class="line"><span class="comment">#Author: Erdong</span></span><br><span class="line"><span class="built_in">echo</span> Hello World</span><br><span class="line"><span class="built_in">echo</span> 2018-08-22</span><br></pre></td></tr></table></figure>
 ]]></content>
-      <categories>
-        <category>Grafana</category>
-      </categories>
-      <tags>
-        <tag>Grafana</tag>
-      </tags>
   </entry>
   <entry>
     <title>IB 速率 SDR DDR QDR FDR EDR 缩写介绍</title>
@@ -1166,6 +1178,117 @@
       </categories>
       <tags>
         <tag>ib</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Kong 介绍</title>
+    <url>/Kong/kong-01.html</url>
+    <content><![CDATA[<h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><p>Kong 是在客户端和（微）服务间转发API通信的API网关，通过插件扩展功能。</p>
+<p>Kong 的官方网站，<a href="https://konghq.com/kong" target="_blank" rel="noopener">https://konghq.com/kong</a><br>Kong 的官方 Github 站点：<a href="https://github.com/kong/kong" target="_blank" rel="noopener">https://github.com/kong/kong</a><br>Kong 有两个主要组件：</p>
+<p>Kong Server ：基于 nginx 的服务器，用来接收 API 请求。<br>Apache Cassandra ：用来存储操作数据。</p>
+<a id="more"></a>
+<p>Kong 的数据存储支持两个组件，Cassandra 和 PostgreSQL 。</p>
+<p>Kong 官方推荐的 GUI 工具叫 Kong-Dashboard，但是友好度不太好。</p>
+<p>Kong 还有一个 GUI 的工具叫做 KongA，GitHub 地址是  <a href="https://github.com/pantsel/konga" target="_blank" rel="noopener">https://github.com/pantsel/konga</a>  。</p>
+<p>你可以通过增加更多 Kong Server 机器对 Kong 服务进行水平扩展，通过前置的负载均衡器向这些机器分发请求。根据文档描述，两个Cassandra节点就足以支撑绝大多数情况，但如果网络非常拥挤，可以考虑适当增加更多节点。</p>
+<p>对于开源社区来说，Kong 中最诱人的一个特性是可以通过插件扩展已有功能，这些插件在 API 请求响应循环的生命周期中被执行。插件使用 Lua 编写，而且 Kong 还有如下几个基础功能：HTTP 基本认证、密钥认证、CORS（ Cross-origin Resource Sharing，跨域资源共享）、TCP、UDP、文件日志、API 请求限流、请求转发以及 nginx 监控。</p>
+<p>Kong 包可运行在部分的 Linux 发行版（包括CentOS、RHEL、Debian、Ubuntu）、Mac OS X 和 Docker 、Kubernetes、AWS-cloud、Google-Cloud 中，无论是本地机还是云端服务器皆可运行。</p>
+<p>除了免费的开源版本，Mashape 还提供了付费的企业版，其中包括技术支持、使用培训服务以及 API 分析插件。</p>
+<h1 id="基于-rpm-安装"><a href="#基于-rpm-安装" class="headerlink" title="基于 rpm 安装"></a>基于 rpm 安装</h1><p>当前基于 CentOS 7 进行安装。</p>
+<p>下载软件包可以从官方地址下载</p>
+<p><a href="https://konghq.com/install/" target="_blank" rel="noopener">https://konghq.com/install/</a></p>
+<p>CentOS 7 的 rpm 包可以从以下地址找到</p>
+<p><a href="https://kong.bintray.com/kong-rpm/centos/7/" target="_blank" rel="noopener">https://kong.bintray.com/kong-rpm/centos/7/</a></p>
+<p>比如最近发布的 1.4.0 版本</p>
+<p><a href="https://kong.bintray.com/kong-rpm/centos/7/kong-1.4.0.el7.noarch.rpm" target="_blank" rel="noopener">https://kong.bintray.com/kong-rpm/centos/7/kong-1.4.0.el7.noarch.rpm</a></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">yum install kong-1.4.0.el7.noarch.rpm</span><br></pre></td></tr></table></figure>
+
+<h2 id="安装数据存储的数据库"><a href="#安装数据存储的数据库" class="headerlink" title="安装数据存储的数据库"></a>安装数据存储的数据库</h2><p>Kong 在运行过程中可以有数据库，也可以没有数据库。</p>
+<p>如果你要使用数据库，你需要使用 <code>kong.conf</code> 配置文件中去配置启动数据库作为数据存储的方式，以及相应的路由或者 Kong 的代理。</p>
+<p>如果你不需要使用数据数据库，那么你在   <code>kong.conf</code> 文件中指定一个 <code>kong.yml</code>的声明式配置文件来作为数据存储的文件。</p>
+<p>Kong 支持 PostgreSQL 9.5+ 和 Cassandra 3.xx 来作为他的数据存储数据库。</p>
+<p>如果使用数据库：</p>
+<p>如果你使用 PostgreSQL ，需要初始化一个数据库和一个用户，例如：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">CREATE USER kong; CREATE DATABASE kong OWNER kong;</span><br></pre></td></tr></table></figure>
+
+<p>现在 运行 Kong migrations</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">kong migrations bootstrap [-c &#x2F;path&#x2F;to&#x2F;kong.conf]</span><br></pre></td></tr></table></figure>
+
+<p>如果不使用数据库：</p>
+<p>如果要以无db模式运行Kong，应该首先生成声明性配置文件。使用下面的命令在当前的文件夹下，生成一个普通的 <code>kong.yml</code> </p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">kong config init</span><br></pre></td></tr></table></figure>
+
+<p>在生成好 <code>kong.yml</code> 文件后，编辑你的 <code>kong.conf</code> 文件，设置如下参数：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">database &#x3D; off</span><br><span class="line">declarative_config &#x3D; &#x2F;path&#x2F;to&#x2F;kong.yml</span><br></pre></td></tr></table></figure>
+<h2 id="启动-kong"><a href="#启动-kong" class="headerlink" title="启动 kong"></a>启动 kong</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">kong start [-c &#x2F;path&#x2F;to&#x2F;kong.conf]</span><br></pre></td></tr></table></figure>
+
+<p>如果要停止，请使用如下命令来停止</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">kong stop</span><br></pre></td></tr></table></figure>
+
+<p>重载命令是 </p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">kong reload</span><br></pre></td></tr></table></figure>
+
+<h2 id="使用-Kong"><a href="#使用-Kong" class="headerlink" title="使用 Kong"></a>使用 Kong</h2><p>Kong 默认运行在本地的 8001 端口</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">curl -i http:&#x2F;&#x2F;localhost:8001&#x2F;</span><br></pre></td></tr></table></figure>
+
+<h1 id="基于-Docker-安装-Kong"><a href="#基于-Docker-安装-Kong" class="headerlink" title="基于 Docker 安装 Kong"></a>基于 Docker 安装 Kong</h1><h2 id="使用数据库"><a href="#使用数据库" class="headerlink" title="使用数据库"></a>使用数据库</h2><p>接下来可以快速的连接到 Kong 容器以及他的数据库容器。</p>
+<h3 id="创建-Docker-网络"><a href="#创建-Docker-网络" class="headerlink" title="创建 Docker 网络"></a>创建 Docker 网络</h3><p>需要创建一个自定义的网络，运行容器发现并且彼此之间通信，接下来创建一个名称为 <code>kong-net</code> 的网络，也可以使用其他名称。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">docker network create kong-net</span><br></pre></td></tr></table></figure>
+
+<h3 id="启动数据库"><a href="#启动数据库" class="headerlink" title="启动数据库"></a>启动数据库</h3><p>如果你想要使用 Cassandra 容器</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">docker run -d --name kong-database \</span><br><span class="line">              --network&#x3D;kong-net \</span><br><span class="line">              -p 9042:9042 \</span><br><span class="line">              cassandra:3</span><br></pre></td></tr></table></figure>
+
+<p>如果你想要使用 PostgreSQL  容器</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">docker run -d --name kong-database \</span><br><span class="line">              --network&#x3D;kong-net \</span><br><span class="line">              -p 5432:5432 \</span><br><span class="line">              -e &quot;POSTGRES_USER&#x3D;kong&quot; \</span><br><span class="line">              -e &quot;POSTGRES_DB&#x3D;kong&quot; \</span><br><span class="line">              postgres:9.6</span><br></pre></td></tr></table></figure>
+
+
+<h3 id="初始化数据库"><a href="#初始化数据库" class="headerlink" title="初始化数据库"></a>初始化数据库</h3><p>运行 migrations 使用一个短暂的 Kong 容器</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">docker run --rm \</span><br><span class="line">     --network&#x3D;kong-net \</span><br><span class="line">     -e &quot;KONG_DATABASE&#x3D;postgres&quot; \</span><br><span class="line">     -e &quot;KONG_PG_HOST&#x3D;kong-database&quot; \</span><br><span class="line">     -e &quot;KONG_CASSANDRA_CONTACT_POINTS&#x3D;kong-database&quot; \</span><br><span class="line">     kong:latest kong migrations bootstrap</span><br></pre></td></tr></table></figure>
+
+<p>在上边的示例中，需要你自行修改你的 <code>KONG_DATABASE</code> 参数。</p>
+<h3 id="启动-Kong"><a href="#启动-Kong" class="headerlink" title="启动 Kong"></a>启动 Kong</h3><p>当 migration 已经执行，并且数据库已经准备好，启动 Kong 容器来连接数据库容器，比如：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">docker run -d --name kong \</span><br><span class="line">     --network&#x3D;kong-net \</span><br><span class="line">     -e &quot;KONG_DATABASE&#x3D;postgres&quot; \</span><br><span class="line">     -e &quot;KONG_PG_HOST&#x3D;kong-database&quot; \</span><br><span class="line">     -e &quot;KONG_CASSANDRA_CONTACT_POINTS&#x3D;kong-database&quot; \</span><br><span class="line">     -e &quot;KONG_PROXY_ACCESS_LOG&#x3D;&#x2F;dev&#x2F;stdout&quot; \</span><br><span class="line">     -e &quot;KONG_ADMIN_ACCESS_LOG&#x3D;&#x2F;dev&#x2F;stdout&quot; \</span><br><span class="line">     -e &quot;KONG_PROXY_ERROR_LOG&#x3D;&#x2F;dev&#x2F;stderr&quot; \</span><br><span class="line">     -e &quot;KONG_ADMIN_ERROR_LOG&#x3D;&#x2F;dev&#x2F;stderr&quot; \</span><br><span class="line">     -e &quot;KONG_ADMIN_LISTEN&#x3D;0.0.0.0:8001, 0.0.0.0:8444 ssl&quot; \</span><br><span class="line">     -p 8000:8000 \</span><br><span class="line">     -p 8443:8443 \</span><br><span class="line">     -p 8001:8001 \</span><br><span class="line">     -p 8444:8444 \</span><br><span class="line">     kong:latest</span><br></pre></td></tr></table></figure>
+
+<h3 id="使用-Kong-1"><a href="#使用-Kong-1" class="headerlink" title="使用 Kong"></a>使用 Kong</h3><p>Kong 运行在 8001</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">curl -i http:&#x2F;&#x2F;localhost:8001&#x2F;</span><br></pre></td></tr></table></figure>
+
+<h2 id="无数据库模式"><a href="#无数据库模式" class="headerlink" title="无数据库模式"></a>无数据库模式</h2><h3 id="创建-Docker-网络-1"><a href="#创建-Docker-网络-1" class="headerlink" title="创建 Docker 网络"></a>创建 Docker 网络</h3><p>需要创建一个自定义的网络，运行容器发现并且彼此之间通信，接下来创建一个名称为 <code>kong-net</code> 的网络，也可以使用其他名称。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">docker network create kong-net</span><br></pre></td></tr></table></figure>
+<p>在没有数据库的模式下，不一定需要创建一个专用的网络，但是创建以后可以更好的用来添加其他内容，比如 Redis 集群支持的限速插件。</p>
+<h3 id="创建-Docker-卷"><a href="#创建-Docker-卷" class="headerlink" title="创建 Docker 卷"></a>创建 Docker 卷</h3><p>对于本指南的目的，Docker 卷是主机内的一个文件夹。可以将其映射到容器中的文件夹，我们给卷起一个名字，叫 kong-vol</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">docker volume create kong-vol</span><br></pre></td></tr></table></figure>
+
+
+<p>使用 如下命令查看 卷的 挂载点路径</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ docker volume inspect kong-vol</span><br><span class="line">[</span><br><span class="line">    &#123;</span><br><span class="line">        &quot;CreatedAt&quot;: &quot;2019-05-28T12:40:09Z&quot;,</span><br><span class="line">        &quot;Driver&quot;: &quot;local&quot;,</span><br><span class="line">        &quot;Labels&quot;: &#123;&#125;,</span><br><span class="line">        &quot;Mountpoint&quot;: &quot;&#x2F;var&#x2F;lib&#x2F;docker&#x2F;volumes&#x2F;kong-vol&#x2F;_data&quot;,</span><br><span class="line">        &quot;Name&quot;: &quot;kong-vol&quot;,</span><br><span class="line">        &quot;Options&quot;: &#123;&#125;,</span><br><span class="line">        &quot;Scope&quot;: &quot;local&quot;</span><br><span class="line">    &#125;</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+
+<p>记录 MountPoint 的路径，下边会用到。</p>
+<h3 id="初始化配置文件"><a href="#初始化配置文件" class="headerlink" title="初始化配置文件"></a>初始化配置文件</h3><p>按照声明是配置文件的规范进行修改配置文件，添加必要的配置项，比如 serveice、route、plugins、consumer 等等，保存配置文件在 MountPoint 的路径下，本文会放在 <code>/var/lib/docker/volumes/kong-vol/_data/kong.yml</code></p>
+<h3 id="在无数据库模式下启动-Kong"><a href="#在无数据库模式下启动-Kong" class="headerlink" title="在无数据库模式下启动 Kong"></a>在无数据库模式下启动 Kong</h3><p>使用如下命令启动 Kong ，并且使用 <code>-v</code> 参数挂载数据卷，使用 <code>-e</code> 参数指定必须的环境变量。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ docker run -d --name kong \</span><br><span class="line">     --network&#x3D;kong-net \</span><br><span class="line">     -v &quot;kong-vol:&#x2F;usr&#x2F;local&#x2F;kong&#x2F;declarative&quot; \</span><br><span class="line">     -e &quot;KONG_DATABASE&#x3D;off&quot; \</span><br><span class="line">     -e &quot;KONG_DECLARATIVE_CONFIG&#x3D;&#x2F;usr&#x2F;local&#x2F;kong&#x2F;declarative&#x2F;kong.yml&quot; \</span><br><span class="line">     -e &quot;KONG_PROXY_ACCESS_LOG&#x3D;&#x2F;dev&#x2F;stdout&quot; \</span><br><span class="line">     -e &quot;KONG_ADMIN_ACCESS_LOG&#x3D;&#x2F;dev&#x2F;stdout&quot; \</span><br><span class="line">     -e &quot;KONG_PROXY_ERROR_LOG&#x3D;&#x2F;dev&#x2F;stderr&quot; \</span><br><span class="line">     -e &quot;KONG_ADMIN_ERROR_LOG&#x3D;&#x2F;dev&#x2F;stderr&quot; \</span><br><span class="line">     -e &quot;KONG_ADMIN_LISTEN&#x3D;0.0.0.0:8001, 0.0.0.0:8444 ssl&quot; \</span><br><span class="line">     -p 8000:8000 \</span><br><span class="line">     -p 8443:8443 \</span><br><span class="line">     -p 8001:8001 \</span><br><span class="line">     -p 8444:8444 \</span><br><span class="line">     kong:latest</span><br></pre></td></tr></table></figure>
+
+<h3 id="使用-Kong-2"><a href="#使用-Kong-2" class="headerlink" title="使用 Kong"></a>使用 Kong</h3><p>Kong 启动后，就可以使用了，可以使用如下方式来访问 Kong</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">curl -i http:&#x2F;&#x2F;localhost:8001&#x2F;</span><br></pre></td></tr></table></figure>
+
+<p>比如，获取一个service 的列表</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">curl -i http:&#x2F;&#x2F;localhost:8001&#x2F;services</span><br></pre></td></tr></table></figure>
+
+<h1 id="Kong-的默认端口"><a href="#Kong-的默认端口" class="headerlink" title="Kong 的默认端口"></a>Kong 的默认端口</h1><p>Kong 一切正常，启动以后会默认监听如下端口</p>
+<ul>
+<li><code>:8000</code> Kong 监听来自客户端的传入 HTTP 请求，并将其转发到上游服务。</li>
+<li><code>:8443</code> Kong 监听来自 HTTPS 流量，这个端口的行为类似于 <code>:8000</code>，只是用来监控 HTTPS 的请求，没有转发功能，这个端口可以在配置文件里关闭。</li>
+<li><code>:8001</code> Admin API 接口用来对 Kong 的监听服务进行配置。</li>
+<li><code>:8444</code> Admin API 监听 HTTPS 的流量。</li>
+</ul>
+<h1 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h1><p>本文描述了 Kong 是什么，以及如何在 CentOS 下和 Docker 下进行安装。Kong 是 OpenResty 的一个应用组件，如果要从源码安装 Kong 的话，需要先安装 OpenResty，具体参考 <a href="https://docs.konghq.com/install/source/?_ga=2.5871988.63313777.1569377530-595520565.1569377530" target="_blank" rel="noopener">Compile Source</a></p>
+<p>======================<br>由于无法及时收到评论内容，所以关闭评论功能。<br>大家有问题欢迎发邮件到 <a href="mailto:erdong@mail.erdong.site">erdong@mail.erdong.site</a> ，或者 <a href="https://github.com/erdong/erdong.github.io/issues" target="_blank" rel="noopener">https://github.com/erdong/erdong.github.io/issues</a> 提 Issue ，我会及时回复。</p>
+<p>======================<br>Erdong, A Linux user !</p>
+]]></content>
+      <categories>
+        <category>Kong</category>
+      </categories>
+      <tags>
+        <tag>Kong</tag>
       </tags>
   </entry>
   <entry>
@@ -1220,18 +1343,6 @@
         <tag>Kong</tag>
         <tag>KongA</tag>
       </tags>
-  </entry>
-  <entry>
-    <title>Hello World</title>
-    <url>/uncategorized/hello-world.html</url>
-    <content><![CDATA[<p>Welcome to <a href="https://erdong.site">Erdong’s blog</a>! This is my first blog. </p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><p>  最近花时间搭建了这个博客，基于 hexo 和 github pages，想把日常遇到的问题和一些学习的知识点记录下来，梳理自己的知识体系，不断提高自己的能力。</p>
-<p>  个人比较喜欢阮一峰的博客，他的文字描述总是简单易懂，容易学习，希望以后也能达到这一目的。</p>
-<p>  人生总是存在各种各样的巧合，好像总和数字2会有关系，像这次发布第一篇博客刚好赶上22号，年份和月份全部是2的整数倍。</p>
-<p>  发现阮一峰有一个关于中文文档编写的规范，会尽量的按照这个来写。<a href="https://github.com/ruanyf/document-style-guide" target="_blank" rel="noopener">document-style-guide</a></p>
-<p>惯例: hello world 输出。一切的开始。</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"><span class="comment">#version: 1.0</span></span><br><span class="line"><span class="comment">#Author: Erdong</span></span><br><span class="line"><span class="built_in">echo</span> Hello World</span><br><span class="line"><span class="built_in">echo</span> 2018-08-22</span><br></pre></td></tr></table></figure>
-]]></content>
   </entry>
   <entry>
     <title>Kong 四大参考说明</title>
@@ -1329,6 +1440,43 @@
       </categories>
       <tags>
         <tag>Kong</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>发布一本用 GitBook 编辑的书</title>
+    <url>/gitbook/gitbook-release-book.html</url>
+    <content><![CDATA[<p>在上一篇的文章里，我们已经写好了一本名叫 <code>erdong-first-book</code> 的书，但是在本地浏览很不方便，我们希望放到网络上，可以随时、方便的访问这个书籍。这个需求可以使用多种方式来实现，比如第一种，可以通过 GitBook 官网来发布这本书，GitBook 除了是一个电子书的工具以为，自身也有一个网址，在该网站注册成为会员后，可以发布自己的电子书，并且可以和 GitHub 进行关联。</p>
+<p>除了使用 GitBook 官网以外，可以直接将电子书放在 GitHub 上，通过 GitHub Pages 来发布这本书。</p>
+<a id="more"></a>
+
+<h1 id="使用-GitHub-发布你的书籍"><a href="#使用-GitHub-发布你的书籍" class="headerlink" title="使用 GitHub 发布你的书籍"></a>使用 GitHub 发布你的书籍</h1><p>接下来我们看一下如何使用 GitHub Pages 来发布一本书。</p>
+<p>首先你需要一个 GitHub 的账号，在你的账号下创建一个用来放置你书籍的仓库，这两个步骤在网络上有太多的资料，很容易就可以达成了。</p>
+<p>创建好仓库以后，在仓库中创建一个 docs 文件夹，用来放置 GitBook 生成的静态文件。</p>
+<p>打开 GitHub 仓库的设置页面，找到 GitHub Pages 选项，选择 <code>master branch /docs folder</code> 选项即可。</p>
+<blockquote>
+<p>注意：一定要先在仓库中创建 docs 文件夹，否则无法勾选该选项。</p>
+</blockquote>
+<p><img src="https://image.erdong.site/blog/2019/10/18/githubpagesdocs.jpg" alt="GithubPagesDocs"></p>
+<p>做完上述步骤以后开始使用 Git 上传你写好的内容到 GitHub , 关键点是将 GitBook 生成的静态文件 <code>_book</code> 重命名为 <code>docs</code> 上传替换刚才创建的 docs 文件夹即可。</p>
+<p>这个时候使用浏览器打开  <a href="http://your_github_id.github.io/your_github_gitbook" target="_blank" rel="noopener">http://your_github_id.github.io/your_github_gitbook</a>  这个地址即可。比如我的 GitBook 地址是<br> <a href="http://erdong.github.io/gitbook-notes-samples" target="_blank" rel="noopener">http://erdong.github.io/gitbook-notes-samples</a> ，大家在点击以后发现会自动跳转到 <a href="https://erdong.site/gitbook-notes-samples">https://erdong.site/gitbook-notes-samples</a>  是因为我做了域名绑定。</p>
+<h1 id="本地-GitBook-迁移"><a href="#本地-GitBook-迁移" class="headerlink" title="本地 GitBook 迁移"></a>本地 GitBook 迁移</h1><p>在迁移前可以使用如下命令查看一下曾经使用 npm 安装过什么模块</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">npm list -g --depth 0</span><br></pre></td></tr></table></figure>
+<ul>
+<li>list : 已经安装的 node 包</li>
+<li>-g ： 全局的安装包</li>
+<li>–depth : 包的显示层级，0 代表显示第一级的包，数字越大，显示的越全。</li>
+</ul>
+<p>迁移其实非常简单，你在原来的环境将整本书打包，最好把文件夹里的node_modules 目录也一起打包，这样在新的环境就不需要安装这些组件了。在新的环境按照如下顺序依次进行安装你之前安装过的组件</p>
+<p>&lt; 1.&gt; 安装 npm<br>&lt; 2.&gt; 安装 gitbook<br>&lt; 3.&gt; 拷贝打包好的文件夹<br>&lt; 4.&gt; 减压到新的位置</p>
+<p>这样就完成了你的书的迁移。你在新的位置可以继续进行内容的编写、静态文件的生成，和之前一样，没有任何区别。</p>
+<p>======================<br>由于无法及时收到评论内容，所以关闭评论功能。<br>大家有问题欢迎发邮件到 <a href="mailto:erdong@mail.erdong.site">erdong@mail.erdong.site</a> ，或者 <a href="https://github.com/erdong/erdong.github.io/issues" target="_blank" rel="noopener">https://github.com/erdong/erdong.github.io/issues</a> 提 Issue ，我会及时回复。</p>
+<p>======================<br>Erdong, A Linux user !</p>
+]]></content>
+      <categories>
+        <category>gitbook</category>
+      </categories>
+      <tags>
+        <tag>gitbook</tag>
       </tags>
   </entry>
   <entry>
@@ -1525,43 +1673,6 @@
       </tags>
   </entry>
   <entry>
-    <title>发布一本用 GitBook 编辑的书</title>
-    <url>/gitbook/gitbook-release-book.html</url>
-    <content><![CDATA[<p>在上一篇的文章里，我们已经写好了一本名叫 <code>erdong-first-book</code> 的书，但是在本地浏览很不方便，我们希望放到网络上，可以随时、方便的访问这个书籍。这个需求可以使用多种方式来实现，比如第一种，可以通过 GitBook 官网来发布这本书，GitBook 除了是一个电子书的工具以为，自身也有一个网址，在该网站注册成为会员后，可以发布自己的电子书，并且可以和 GitHub 进行关联。</p>
-<p>除了使用 GitBook 官网以外，可以直接将电子书放在 GitHub 上，通过 GitHub Pages 来发布这本书。</p>
-<a id="more"></a>
-
-<h1 id="使用-GitHub-发布你的书籍"><a href="#使用-GitHub-发布你的书籍" class="headerlink" title="使用 GitHub 发布你的书籍"></a>使用 GitHub 发布你的书籍</h1><p>接下来我们看一下如何使用 GitHub Pages 来发布一本书。</p>
-<p>首先你需要一个 GitHub 的账号，在你的账号下创建一个用来放置你书籍的仓库，这两个步骤在网络上有太多的资料，很容易就可以达成了。</p>
-<p>创建好仓库以后，在仓库中创建一个 docs 文件夹，用来放置 GitBook 生成的静态文件。</p>
-<p>打开 GitHub 仓库的设置页面，找到 GitHub Pages 选项，选择 <code>master branch /docs folder</code> 选项即可。</p>
-<blockquote>
-<p>注意：一定要先在仓库中创建 docs 文件夹，否则无法勾选该选项。</p>
-</blockquote>
-<p><img src="https://image.erdong.site/blog/2019/10/18/githubpagesdocs.jpg" alt="GithubPagesDocs"></p>
-<p>做完上述步骤以后开始使用 Git 上传你写好的内容到 GitHub , 关键点是将 GitBook 生成的静态文件 <code>_book</code> 重命名为 <code>docs</code> 上传替换刚才创建的 docs 文件夹即可。</p>
-<p>这个时候使用浏览器打开  <a href="http://your_github_id.github.io/your_github_gitbook" target="_blank" rel="noopener">http://your_github_id.github.io/your_github_gitbook</a>  这个地址即可。比如我的 GitBook 地址是<br> <a href="http://erdong.github.io/gitbook-notes-samples" target="_blank" rel="noopener">http://erdong.github.io/gitbook-notes-samples</a> ，大家在点击以后发现会自动跳转到 <a href="https://erdong.site/gitbook-notes-samples">https://erdong.site/gitbook-notes-samples</a>  是因为我做了域名绑定。</p>
-<h1 id="本地-GitBook-迁移"><a href="#本地-GitBook-迁移" class="headerlink" title="本地 GitBook 迁移"></a>本地 GitBook 迁移</h1><p>在迁移前可以使用如下命令查看一下曾经使用 npm 安装过什么模块</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">npm list -g --depth 0</span><br></pre></td></tr></table></figure>
-<ul>
-<li>list : 已经安装的 node 包</li>
-<li>-g ： 全局的安装包</li>
-<li>–depth : 包的显示层级，0 代表显示第一级的包，数字越大，显示的越全。</li>
-</ul>
-<p>迁移其实非常简单，你在原来的环境将整本书打包，最好把文件夹里的node_modules 目录也一起打包，这样在新的环境就不需要安装这些组件了。在新的环境按照如下顺序依次进行安装你之前安装过的组件</p>
-<p>&lt; 1.&gt; 安装 npm<br>&lt; 2.&gt; 安装 gitbook<br>&lt; 3.&gt; 拷贝打包好的文件夹<br>&lt; 4.&gt; 减压到新的位置</p>
-<p>这样就完成了你的书的迁移。你在新的位置可以继续进行内容的编写、静态文件的生成，和之前一样，没有任何区别。</p>
-<p>======================<br>由于无法及时收到评论内容，所以关闭评论功能。<br>大家有问题欢迎发邮件到 <a href="mailto:erdong@mail.erdong.site">erdong@mail.erdong.site</a> ，或者 <a href="https://github.com/erdong/erdong.github.io/issues" target="_blank" rel="noopener">https://github.com/erdong/erdong.github.io/issues</a> 提 Issue ，我会及时回复。</p>
-<p>======================<br>Erdong, A Linux user !</p>
-]]></content>
-      <categories>
-        <category>gitbook</category>
-      </categories>
-      <tags>
-        <tag>gitbook</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Kong 的健康检查和监控</title>
     <url>/Kong/kong-05.html</url>
     <content><![CDATA[<p>Kong 的健康检查和监控</p>
@@ -1625,161 +1736,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Kong 介绍</title>
-    <url>/Kong/kong-01.html</url>
-    <content><![CDATA[<h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><p>Kong 是在客户端和（微）服务间转发API通信的API网关，通过插件扩展功能。</p>
-<p>Kong 的官方网站，<a href="https://konghq.com/kong" target="_blank" rel="noopener">https://konghq.com/kong</a><br>Kong 的官方 Github 站点：<a href="https://github.com/kong/kong" target="_blank" rel="noopener">https://github.com/kong/kong</a><br>Kong 有两个主要组件：</p>
-<p>Kong Server ：基于 nginx 的服务器，用来接收 API 请求。<br>Apache Cassandra ：用来存储操作数据。</p>
-<a id="more"></a>
-<p>Kong 的数据存储支持两个组件，Cassandra 和 PostgreSQL 。</p>
-<p>Kong 官方推荐的 GUI 工具叫 Kong-Dashboard，但是友好度不太好。</p>
-<p>Kong 还有一个 GUI 的工具叫做 KongA，GitHub 地址是  <a href="https://github.com/pantsel/konga" target="_blank" rel="noopener">https://github.com/pantsel/konga</a>  。</p>
-<p>你可以通过增加更多 Kong Server 机器对 Kong 服务进行水平扩展，通过前置的负载均衡器向这些机器分发请求。根据文档描述，两个Cassandra节点就足以支撑绝大多数情况，但如果网络非常拥挤，可以考虑适当增加更多节点。</p>
-<p>对于开源社区来说，Kong 中最诱人的一个特性是可以通过插件扩展已有功能，这些插件在 API 请求响应循环的生命周期中被执行。插件使用 Lua 编写，而且 Kong 还有如下几个基础功能：HTTP 基本认证、密钥认证、CORS（ Cross-origin Resource Sharing，跨域资源共享）、TCP、UDP、文件日志、API 请求限流、请求转发以及 nginx 监控。</p>
-<p>Kong 包可运行在部分的 Linux 发行版（包括CentOS、RHEL、Debian、Ubuntu）、Mac OS X 和 Docker 、Kubernetes、AWS-cloud、Google-Cloud 中，无论是本地机还是云端服务器皆可运行。</p>
-<p>除了免费的开源版本，Mashape 还提供了付费的企业版，其中包括技术支持、使用培训服务以及 API 分析插件。</p>
-<h1 id="基于-rpm-安装"><a href="#基于-rpm-安装" class="headerlink" title="基于 rpm 安装"></a>基于 rpm 安装</h1><p>当前基于 CentOS 7 进行安装。</p>
-<p>下载软件包可以从官方地址下载</p>
-<p><a href="https://konghq.com/install/" target="_blank" rel="noopener">https://konghq.com/install/</a></p>
-<p>CentOS 7 的 rpm 包可以从以下地址找到</p>
-<p><a href="https://kong.bintray.com/kong-rpm/centos/7/" target="_blank" rel="noopener">https://kong.bintray.com/kong-rpm/centos/7/</a></p>
-<p>比如最近发布的 1.4.0 版本</p>
-<p><a href="https://kong.bintray.com/kong-rpm/centos/7/kong-1.4.0.el7.noarch.rpm" target="_blank" rel="noopener">https://kong.bintray.com/kong-rpm/centos/7/kong-1.4.0.el7.noarch.rpm</a></p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">yum install kong-1.4.0.el7.noarch.rpm</span><br></pre></td></tr></table></figure>
-
-<h2 id="安装数据存储的数据库"><a href="#安装数据存储的数据库" class="headerlink" title="安装数据存储的数据库"></a>安装数据存储的数据库</h2><p>Kong 在运行过程中可以有数据库，也可以没有数据库。</p>
-<p>如果你要使用数据库，你需要使用 <code>kong.conf</code> 配置文件中去配置启动数据库作为数据存储的方式，以及相应的路由或者 Kong 的代理。</p>
-<p>如果你不需要使用数据数据库，那么你在   <code>kong.conf</code> 文件中指定一个 <code>kong.yml</code>的声明式配置文件来作为数据存储的文件。</p>
-<p>Kong 支持 PostgreSQL 9.5+ 和 Cassandra 3.xx 来作为他的数据存储数据库。</p>
-<p>如果使用数据库：</p>
-<p>如果你使用 PostgreSQL ，需要初始化一个数据库和一个用户，例如：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">CREATE USER kong; CREATE DATABASE kong OWNER kong;</span><br></pre></td></tr></table></figure>
-
-<p>现在 运行 Kong migrations</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">kong migrations bootstrap [-c &#x2F;path&#x2F;to&#x2F;kong.conf]</span><br></pre></td></tr></table></figure>
-
-<p>如果不使用数据库：</p>
-<p>如果要以无db模式运行Kong，应该首先生成声明性配置文件。使用下面的命令在当前的文件夹下，生成一个普通的 <code>kong.yml</code> </p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">kong config init</span><br></pre></td></tr></table></figure>
-
-<p>在生成好 <code>kong.yml</code> 文件后，编辑你的 <code>kong.conf</code> 文件，设置如下参数：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">database &#x3D; off</span><br><span class="line">declarative_config &#x3D; &#x2F;path&#x2F;to&#x2F;kong.yml</span><br></pre></td></tr></table></figure>
-<h2 id="启动-kong"><a href="#启动-kong" class="headerlink" title="启动 kong"></a>启动 kong</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">kong start [-c &#x2F;path&#x2F;to&#x2F;kong.conf]</span><br></pre></td></tr></table></figure>
-
-<p>如果要停止，请使用如下命令来停止</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">kong stop</span><br></pre></td></tr></table></figure>
-
-<p>重载命令是 </p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">kong reload</span><br></pre></td></tr></table></figure>
-
-<h2 id="使用-Kong"><a href="#使用-Kong" class="headerlink" title="使用 Kong"></a>使用 Kong</h2><p>Kong 默认运行在本地的 8001 端口</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">curl -i http:&#x2F;&#x2F;localhost:8001&#x2F;</span><br></pre></td></tr></table></figure>
-
-<h1 id="基于-Docker-安装-Kong"><a href="#基于-Docker-安装-Kong" class="headerlink" title="基于 Docker 安装 Kong"></a>基于 Docker 安装 Kong</h1><h2 id="使用数据库"><a href="#使用数据库" class="headerlink" title="使用数据库"></a>使用数据库</h2><p>接下来可以快速的连接到 Kong 容器以及他的数据库容器。</p>
-<h3 id="创建-Docker-网络"><a href="#创建-Docker-网络" class="headerlink" title="创建 Docker 网络"></a>创建 Docker 网络</h3><p>需要创建一个自定义的网络，运行容器发现并且彼此之间通信，接下来创建一个名称为 <code>kong-net</code> 的网络，也可以使用其他名称。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">docker network create kong-net</span><br></pre></td></tr></table></figure>
-
-<h3 id="启动数据库"><a href="#启动数据库" class="headerlink" title="启动数据库"></a>启动数据库</h3><p>如果你想要使用 Cassandra 容器</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">docker run -d --name kong-database \</span><br><span class="line">              --network&#x3D;kong-net \</span><br><span class="line">              -p 9042:9042 \</span><br><span class="line">              cassandra:3</span><br></pre></td></tr></table></figure>
-
-<p>如果你想要使用 PostgreSQL  容器</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">docker run -d --name kong-database \</span><br><span class="line">              --network&#x3D;kong-net \</span><br><span class="line">              -p 5432:5432 \</span><br><span class="line">              -e &quot;POSTGRES_USER&#x3D;kong&quot; \</span><br><span class="line">              -e &quot;POSTGRES_DB&#x3D;kong&quot; \</span><br><span class="line">              postgres:9.6</span><br></pre></td></tr></table></figure>
-
-
-<h3 id="初始化数据库"><a href="#初始化数据库" class="headerlink" title="初始化数据库"></a>初始化数据库</h3><p>运行 migrations 使用一个短暂的 Kong 容器</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">docker run --rm \</span><br><span class="line">     --network&#x3D;kong-net \</span><br><span class="line">     -e &quot;KONG_DATABASE&#x3D;postgres&quot; \</span><br><span class="line">     -e &quot;KONG_PG_HOST&#x3D;kong-database&quot; \</span><br><span class="line">     -e &quot;KONG_CASSANDRA_CONTACT_POINTS&#x3D;kong-database&quot; \</span><br><span class="line">     kong:latest kong migrations bootstrap</span><br></pre></td></tr></table></figure>
-
-<p>在上边的示例中，需要你自行修改你的 <code>KONG_DATABASE</code> 参数。</p>
-<h3 id="启动-Kong"><a href="#启动-Kong" class="headerlink" title="启动 Kong"></a>启动 Kong</h3><p>当 migration 已经执行，并且数据库已经准备好，启动 Kong 容器来连接数据库容器，比如：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">docker run -d --name kong \</span><br><span class="line">     --network&#x3D;kong-net \</span><br><span class="line">     -e &quot;KONG_DATABASE&#x3D;postgres&quot; \</span><br><span class="line">     -e &quot;KONG_PG_HOST&#x3D;kong-database&quot; \</span><br><span class="line">     -e &quot;KONG_CASSANDRA_CONTACT_POINTS&#x3D;kong-database&quot; \</span><br><span class="line">     -e &quot;KONG_PROXY_ACCESS_LOG&#x3D;&#x2F;dev&#x2F;stdout&quot; \</span><br><span class="line">     -e &quot;KONG_ADMIN_ACCESS_LOG&#x3D;&#x2F;dev&#x2F;stdout&quot; \</span><br><span class="line">     -e &quot;KONG_PROXY_ERROR_LOG&#x3D;&#x2F;dev&#x2F;stderr&quot; \</span><br><span class="line">     -e &quot;KONG_ADMIN_ERROR_LOG&#x3D;&#x2F;dev&#x2F;stderr&quot; \</span><br><span class="line">     -e &quot;KONG_ADMIN_LISTEN&#x3D;0.0.0.0:8001, 0.0.0.0:8444 ssl&quot; \</span><br><span class="line">     -p 8000:8000 \</span><br><span class="line">     -p 8443:8443 \</span><br><span class="line">     -p 8001:8001 \</span><br><span class="line">     -p 8444:8444 \</span><br><span class="line">     kong:latest</span><br></pre></td></tr></table></figure>
-
-<h3 id="使用-Kong-1"><a href="#使用-Kong-1" class="headerlink" title="使用 Kong"></a>使用 Kong</h3><p>Kong 运行在 8001</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">curl -i http:&#x2F;&#x2F;localhost:8001&#x2F;</span><br></pre></td></tr></table></figure>
-
-<h2 id="无数据库模式"><a href="#无数据库模式" class="headerlink" title="无数据库模式"></a>无数据库模式</h2><h3 id="创建-Docker-网络-1"><a href="#创建-Docker-网络-1" class="headerlink" title="创建 Docker 网络"></a>创建 Docker 网络</h3><p>需要创建一个自定义的网络，运行容器发现并且彼此之间通信，接下来创建一个名称为 <code>kong-net</code> 的网络，也可以使用其他名称。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">docker network create kong-net</span><br></pre></td></tr></table></figure>
-<p>在没有数据库的模式下，不一定需要创建一个专用的网络，但是创建以后可以更好的用来添加其他内容，比如 Redis 集群支持的限速插件。</p>
-<h3 id="创建-Docker-卷"><a href="#创建-Docker-卷" class="headerlink" title="创建 Docker 卷"></a>创建 Docker 卷</h3><p>对于本指南的目的，Docker 卷是主机内的一个文件夹。可以将其映射到容器中的文件夹，我们给卷起一个名字，叫 kong-vol</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">docker volume create kong-vol</span><br></pre></td></tr></table></figure>
-
-
-<p>使用 如下命令查看 卷的 挂载点路径</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ docker volume inspect kong-vol</span><br><span class="line">[</span><br><span class="line">    &#123;</span><br><span class="line">        &quot;CreatedAt&quot;: &quot;2019-05-28T12:40:09Z&quot;,</span><br><span class="line">        &quot;Driver&quot;: &quot;local&quot;,</span><br><span class="line">        &quot;Labels&quot;: &#123;&#125;,</span><br><span class="line">        &quot;Mountpoint&quot;: &quot;&#x2F;var&#x2F;lib&#x2F;docker&#x2F;volumes&#x2F;kong-vol&#x2F;_data&quot;,</span><br><span class="line">        &quot;Name&quot;: &quot;kong-vol&quot;,</span><br><span class="line">        &quot;Options&quot;: &#123;&#125;,</span><br><span class="line">        &quot;Scope&quot;: &quot;local&quot;</span><br><span class="line">    &#125;</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
-
-<p>记录 MountPoint 的路径，下边会用到。</p>
-<h3 id="初始化配置文件"><a href="#初始化配置文件" class="headerlink" title="初始化配置文件"></a>初始化配置文件</h3><p>按照声明是配置文件的规范进行修改配置文件，添加必要的配置项，比如 serveice、route、plugins、consumer 等等，保存配置文件在 MountPoint 的路径下，本文会放在 <code>/var/lib/docker/volumes/kong-vol/_data/kong.yml</code></p>
-<h3 id="在无数据库模式下启动-Kong"><a href="#在无数据库模式下启动-Kong" class="headerlink" title="在无数据库模式下启动 Kong"></a>在无数据库模式下启动 Kong</h3><p>使用如下命令启动 Kong ，并且使用 <code>-v</code> 参数挂载数据卷，使用 <code>-e</code> 参数指定必须的环境变量。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ docker run -d --name kong \</span><br><span class="line">     --network&#x3D;kong-net \</span><br><span class="line">     -v &quot;kong-vol:&#x2F;usr&#x2F;local&#x2F;kong&#x2F;declarative&quot; \</span><br><span class="line">     -e &quot;KONG_DATABASE&#x3D;off&quot; \</span><br><span class="line">     -e &quot;KONG_DECLARATIVE_CONFIG&#x3D;&#x2F;usr&#x2F;local&#x2F;kong&#x2F;declarative&#x2F;kong.yml&quot; \</span><br><span class="line">     -e &quot;KONG_PROXY_ACCESS_LOG&#x3D;&#x2F;dev&#x2F;stdout&quot; \</span><br><span class="line">     -e &quot;KONG_ADMIN_ACCESS_LOG&#x3D;&#x2F;dev&#x2F;stdout&quot; \</span><br><span class="line">     -e &quot;KONG_PROXY_ERROR_LOG&#x3D;&#x2F;dev&#x2F;stderr&quot; \</span><br><span class="line">     -e &quot;KONG_ADMIN_ERROR_LOG&#x3D;&#x2F;dev&#x2F;stderr&quot; \</span><br><span class="line">     -e &quot;KONG_ADMIN_LISTEN&#x3D;0.0.0.0:8001, 0.0.0.0:8444 ssl&quot; \</span><br><span class="line">     -p 8000:8000 \</span><br><span class="line">     -p 8443:8443 \</span><br><span class="line">     -p 8001:8001 \</span><br><span class="line">     -p 8444:8444 \</span><br><span class="line">     kong:latest</span><br></pre></td></tr></table></figure>
-
-<h3 id="使用-Kong-2"><a href="#使用-Kong-2" class="headerlink" title="使用 Kong"></a>使用 Kong</h3><p>Kong 启动后，就可以使用了，可以使用如下方式来访问 Kong</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">curl -i http:&#x2F;&#x2F;localhost:8001&#x2F;</span><br></pre></td></tr></table></figure>
-
-<p>比如，获取一个service 的列表</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">curl -i http:&#x2F;&#x2F;localhost:8001&#x2F;services</span><br></pre></td></tr></table></figure>
-
-<h1 id="Kong-的默认端口"><a href="#Kong-的默认端口" class="headerlink" title="Kong 的默认端口"></a>Kong 的默认端口</h1><p>Kong 一切正常，启动以后会默认监听如下端口</p>
-<ul>
-<li><code>:8000</code> Kong 监听来自客户端的传入 HTTP 请求，并将其转发到上游服务。</li>
-<li><code>:8443</code> Kong 监听来自 HTTPS 流量，这个端口的行为类似于 <code>:8000</code>，只是用来监控 HTTPS 的请求，没有转发功能，这个端口可以在配置文件里关闭。</li>
-<li><code>:8001</code> Admin API 接口用来对 Kong 的监听服务进行配置。</li>
-<li><code>:8444</code> Admin API 监听 HTTPS 的流量。</li>
-</ul>
-<h1 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h1><p>本文描述了 Kong 是什么，以及如何在 CentOS 下和 Docker 下进行安装。Kong 是 OpenResty 的一个应用组件，如果要从源码安装 Kong 的话，需要先安装 OpenResty，具体参考 <a href="https://docs.konghq.com/install/source/?_ga=2.5871988.63313777.1569377530-595520565.1569377530" target="_blank" rel="noopener">Compile Source</a></p>
-<p>======================<br>由于无法及时收到评论内容，所以关闭评论功能。<br>大家有问题欢迎发邮件到 <a href="mailto:erdong@mail.erdong.site">erdong@mail.erdong.site</a> ，或者 <a href="https://github.com/erdong/erdong.github.io/issues" target="_blank" rel="noopener">https://github.com/erdong/erdong.github.io/issues</a> 提 Issue ，我会及时回复。</p>
-<p>======================<br>Erdong, A Linux user !</p>
-]]></content>
-      <categories>
-        <category>Kong</category>
-      </categories>
-      <tags>
-        <tag>Kong</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>MAC OS 下 HomeBrew 使用</title>
-    <url>/macos/macos-homebrew-introduction.html</url>
-    <content><![CDATA[<p>Homebrew 是一个很方便的包管理器，主要用来管理 mac 操作系统的软件包，现在也支持 linux 操作系统的包管理以及 Windows 10 Subsystem for Linux。官网是 <a href="https://brew.sh" target="_blank" rel="noopener">https://brew.sh</a>  。</p>
-<a id="more"></a>
-<p>Homebrew 通过 Tap 方式定义源，官方默认提供了 brew、homebrew-core 、homebrew-cask 、homebrew-bottles 四个常用的源（仓库），用户也可以通过 Tap 定义自己的源。</p>
-<p>在安装 brew 和使用 brew install 安装软件的过程中，经常会遇到安装缓慢、卡死的情况，这大多是由于 Homebrew 的默认安装源位于国外，国内访问速度慢造成的，解决这个问题的方法是将安装源替换为国内镜像，常用的国内镜像源可以使用中科大 LUG 源、清华 Tuna 源等。</p>
-<h1 id="Brew-安装"><a href="#Brew-安装" class="headerlink" title="Brew 安装"></a>Brew 安装</h1><p>网上提供的安装方式都是之前的旧的安装方式，里边提到的都是使用 Ruby 脚本来安装的。现在 Brew 已经可以使用 Bash 来进行安装了，这是在 Github 的仓库 <a href="https://github.com/Homebrew/install" target="_blank" rel="noopener">Homebrew Install</a> 。</p>
-<p>安装方式为 </p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;bin&#x2F;bash -c &quot;$(curl -fsSL https:&#x2F;&#x2F;raw.githubusercontent.com&#x2F;Homebrew&#x2F;install&#x2F;master&#x2F;install.sh)&quot;</span><br></pre></td></tr></table></figure>
-
-<p>这个脚本脚本中使用了 Brew 的默认源，源在国外，安装过程会非常缓慢，这个时候可以单独把 install.sh 脚本下载下来，修改其中的默认源为 中科大 LUG 源或者清华 Tuna 源。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#默认源</span><br><span class="line">BREW_REPO&#x3D;&quot;https:&#x2F;&#x2F;github.com&#x2F;Homebrew&#x2F;brew&quot;</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># 中科大 LUG 源</span><br><span class="line">BREW_REPO&#x3D;&quot;https:&#x2F;&#x2F;mirrors.ustc.edu.cn&#x2F;brew.git&quot;</span><br><span class="line"># 清华 Tuna 源</span><br><span class="line">BREW_REPO&#x3D;&quot;https:&#x2F;&#x2F;mirrors.tuna.tsinghua.edu.cn&#x2F;git&#x2F;homebrew&#x2F;brew.git&quot;</span><br></pre></td></tr></table></figure>
-
-<p>替换好以后，执行 <code>/bin/bash install.sh</code> 即可，速度会快很多。</p>
-<p>如果需要卸载可以使用 </p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;bin&#x2F;bash -c &quot;$(curl -fsSL https:&#x2F;&#x2F;raw.githubusercontent.com&#x2F;Homebrew&#x2F;install&#x2F;master&#x2F;uninstall.sh)&quot;</span><br></pre></td></tr></table></figure>
-<h1 id="Brew-替换源"><a href="#Brew-替换源" class="headerlink" title="Brew 替换源"></a>Brew 替换源</h1><p>Homebrew 安装好以后，就可以使用 brew install 来安装软件了，这个时候会可以通过更换国内源的方式来加速安装。Brew 常用的是 4 个源，分别是 brew、<br>homebrew-core、homebrew-cask、homebrew-bottles 。<br>本文的编写目的是简单的介绍四个常用的源（源），以及如何更换为国内镜像实现快速安装软件。</p>
-<h2 id="brew"><a href="#brew" class="headerlink" title="brew"></a>brew</h2><p>说明：Homebrew 源代码仓库。<br>默认地址：<a href="https://github.com/Homebrew/brew.git" target="_blank" rel="noopener">https://github.com/Homebrew/brew.git</a></p>
-<h2 id="homebrew-core"><a href="#homebrew-core" class="headerlink" title="homebrew-core"></a>homebrew-core</h2><p>说明：Homebrew 核心源（仓库），它是 brew install 的默认安装源（仓库）。<br>默认地址：<a href="https://github.com/Homebrew/homebrew-core.git" target="_blank" rel="noopener">https://github.com/Homebrew/homebrew-core.git</a></p>
-<h2 id="homebrew-cask"><a href="#homebrew-cask" class="headerlink" title="homebrew-cask"></a>homebrew-cask</h2><p>说明：homebrew-cask 源（仓库），提供 macOS 应用和大型二进制文件的安装。通常我们在 mac 操作系统上安装图形用户界面软件，系统都会提示“若要安装，请拖动此图标…”。homebrew-cask 扩展了Homebrew，为安装和管理 Atom 和 Google Chrome 之类的图形用户界面应用程序带来了优雅、简单和速度。</p>
-<p>默认地址：<a href="https://github.com/Homebrew/homebrew-cask.git" target="_blank" rel="noopener">https://github.com/Homebrew/homebrew-cask.git</a></p>
-<h2 id="homebrew-bottles"><a href="#homebrew-bottles" class="headerlink" title="homebrew-bottles"></a>homebrew-bottles</h2><p>说明：Homebrew 预编译二进制软件包。<br>默认地址：<a href="https://bintray.com/homebrew/bottles" target="_blank" rel="noopener">https://bintray.com/homebrew/bottles</a></p>
-<p>了解了这个 4 个源以后，我们就可以对他们进行更新，主要是中科大 LUG 源、清华 Tuna 源，这样在其中一个故障的时候切换另外一个来正常使用。</p>
-<p>替换中科大的默认源<br><a href="http://mirrors.ustc.edu.cn/help/homebrew-core.git.html" target="_blank" rel="noopener">http://mirrors.ustc.edu.cn/help/homebrew-core.git.html</a></p>
-<p>替换中科大的 bottles<br><a href="http://mirrors.ustc.edu.cn/help/homebrew-bottles.html" target="_blank" rel="noopener">http://mirrors.ustc.edu.cn/help/homebrew-bottles.html</a></p>
-<p>替换清华的默认源</p>
-<p><a href="https://mirrors.tuna.tsinghua.edu.cn/help/homebrew/" target="_blank" rel="noopener">https://mirrors.tuna.tsinghua.edu.cn/help/homebrew/</a></p>
-<p>替换清华的 bottles</p>
-<p><a href="https://mirrors.tuna.tsinghua.edu.cn/help/homebrew-bottles/" target="_blank" rel="noopener">https://mirrors.tuna.tsinghua.edu.cn/help/homebrew-bottles/</a></p>
-<p>替换 bottles 源的时候，如果你使用了 Zsh 等其他解释器，请更新对应的配置文件。</p>
-<p>参考<br><a href="https://lug.ustc.edu.cn/wiki/mirrors/help/brew.git" target="_blank" rel="noopener">https://lug.ustc.edu.cn/wiki/mirrors/help/brew.git</a><br><a href="https://lug.ustc.edu.cn/wiki/mirrors/help/homebrew-bottles" target="_blank" rel="noopener">https://lug.ustc.edu.cn/wiki/mirrors/help/homebrew-bottles</a></p>
-<p>======================<br>由于无法及时收到评论内容，所以关闭评论功能。<br>大家有问题欢迎发邮件到 <a href="mailto:erdong@mail.erdong.site">erdong@mail.erdong.site</a> ，或者 <a href="https://github.com/erdong/erdong.github.io/issues" target="_blank" rel="noopener">https://github.com/erdong/erdong.github.io/issues</a> 提 Issue ，我会及时回复。</p>
-<p>======================<br>Erdong, A Linux user !</p>
-]]></content>
-      <categories>
-        <category>macos</category>
-      </categories>
-      <tags>
-        <tag>macos</tag>
-        <tag>brew</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Kong 的集群怎么用</title>
     <url>/Kong/kong-06.html</url>
     <content><![CDATA[<p>Kong 集群允许您通过添加更多的机器来处理更多的传入请求来横向扩展系统。它们将共享相同的配置，因为它们指向相同的数据库。指向相同数据存储的 Kong 节点将属于相同的 Kong 集群。</p>
@@ -1833,29 +1789,6 @@
       <tags>
         <tag>Kong</tag>
         <tag>cluster</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>linux 的下载工具</title>
-    <url>/tools/linux-download-tool.html</url>
-    <content><![CDATA[<p>有时候在 linux 下需要下载一些镜像，但是文件较大，使用 wget 要下载很长时间，这个时候如果有 BT 种子文件可以加速下载。</p>
-<a id="more"></a>
-
-<p>要用到的工具 transmission ，使用它的客户端在 linux 下载。</p>
-<h2 id="1-下载-torrent-文件"><a href="#1-下载-torrent-文件" class="headerlink" title="1. 下载 torrent 文件"></a>1. 下载 torrent 文件</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">wget http://vault.centos.org/7.2.1511/isos/x86_64/CentOS-7-x86_64-DVD-1511.torrent</span><br></pre></td></tr></table></figure>
-<h2 id="2-安装-transmission-客户端"><a href="#2-安装-transmission-客户端" class="headerlink" title="2. 安装 transmission 客户端"></a>2. 安装 transmission 客户端</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">yum install transmission-cli</span><br></pre></td></tr></table></figure>
-<h2 id="3-下载"><a href="#3-下载" class="headerlink" title="3. 下载"></a>3. 下载</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">transmission-cli CentOS-7-x86_64-DVD-1511.torrent</span><br></pre></td></tr></table></figure>
-
-<h1 id="有价值的连接"><a href="#有价值的连接" class="headerlink" title="有价值的连接"></a>有价值的连接</h1><p>其他人的介绍<br><a href="https://blog.csdn.net/jiyuanyi1992/article/details/44250943" target="_blank" rel="noopener">https://blog.csdn.net/jiyuanyi1992/article/details/44250943</a></p>
-<p>其他5种 BT 下载工具<br><a href="https://blog.csdn.net/s464036801/article/details/8168157" target="_blank" rel="noopener">https://blog.csdn.net/s464036801/article/details/8168157</a></p>
-<p>10种下载工具的简单说明<br><a href="https://linux.cn/article-7369-1.html" target="_blank" rel="noopener">https://linux.cn/article-7369-1.html</a></p>
-<p>======================<br>Erdong, A Linux user !</p>
-]]></content>
-      <categories>
-        <category>tools</category>
-      </categories>
-      <tags>
-        <tag>torrent</tag>
       </tags>
   </entry>
   <entry>
@@ -1964,6 +1897,120 @@
       </tags>
   </entry>
   <entry>
+    <title>linux 的下载工具</title>
+    <url>/tools/linux-download-tool.html</url>
+    <content><![CDATA[<p>有时候在 linux 下需要下载一些镜像，但是文件较大，使用 wget 要下载很长时间，这个时候如果有 BT 种子文件可以加速下载。</p>
+<a id="more"></a>
+
+<p>要用到的工具 transmission ，使用它的客户端在 linux 下载。</p>
+<h2 id="1-下载-torrent-文件"><a href="#1-下载-torrent-文件" class="headerlink" title="1. 下载 torrent 文件"></a>1. 下载 torrent 文件</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">wget http://vault.centos.org/7.2.1511/isos/x86_64/CentOS-7-x86_64-DVD-1511.torrent</span><br></pre></td></tr></table></figure>
+<h2 id="2-安装-transmission-客户端"><a href="#2-安装-transmission-客户端" class="headerlink" title="2. 安装 transmission 客户端"></a>2. 安装 transmission 客户端</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">yum install transmission-cli</span><br></pre></td></tr></table></figure>
+<h2 id="3-下载"><a href="#3-下载" class="headerlink" title="3. 下载"></a>3. 下载</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">transmission-cli CentOS-7-x86_64-DVD-1511.torrent</span><br></pre></td></tr></table></figure>
+
+<h1 id="有价值的连接"><a href="#有价值的连接" class="headerlink" title="有价值的连接"></a>有价值的连接</h1><p>其他人的介绍<br><a href="https://blog.csdn.net/jiyuanyi1992/article/details/44250943" target="_blank" rel="noopener">https://blog.csdn.net/jiyuanyi1992/article/details/44250943</a></p>
+<p>其他5种 BT 下载工具<br><a href="https://blog.csdn.net/s464036801/article/details/8168157" target="_blank" rel="noopener">https://blog.csdn.net/s464036801/article/details/8168157</a></p>
+<p>10种下载工具的简单说明<br><a href="https://linux.cn/article-7369-1.html" target="_blank" rel="noopener">https://linux.cn/article-7369-1.html</a></p>
+<p>======================<br>Erdong, A Linux user !</p>
+]]></content>
+      <categories>
+        <category>tools</category>
+      </categories>
+      <tags>
+        <tag>torrent</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>MAC OS 下 HomeBrew 使用</title>
+    <url>/macos/macos-homebrew-introduction.html</url>
+    <content><![CDATA[<p>Homebrew 是一个很方便的包管理器，主要用来管理 mac 操作系统的软件包，现在也支持 linux 操作系统的包管理以及 Windows 10 Subsystem for Linux。官网是 <a href="https://brew.sh" target="_blank" rel="noopener">https://brew.sh</a>  。</p>
+<a id="more"></a>
+<p>Homebrew 通过 Tap 方式定义源，官方默认提供了 brew、homebrew-core 、homebrew-cask 、homebrew-bottles 四个常用的源（仓库），用户也可以通过 Tap 定义自己的源。</p>
+<p>在安装 brew 和使用 brew install 安装软件的过程中，经常会遇到安装缓慢、卡死的情况，这大多是由于 Homebrew 的默认安装源位于国外，国内访问速度慢造成的，解决这个问题的方法是将安装源替换为国内镜像，常用的国内镜像源可以使用中科大 LUG 源、清华 Tuna 源等。</p>
+<h1 id="Brew-安装"><a href="#Brew-安装" class="headerlink" title="Brew 安装"></a>Brew 安装</h1><p>网上提供的安装方式都是之前的旧的安装方式，里边提到的都是使用 Ruby 脚本来安装的。现在 Brew 已经可以使用 Bash 来进行安装了，这是在 Github 的仓库 <a href="https://github.com/Homebrew/install" target="_blank" rel="noopener">Homebrew Install</a> 。</p>
+<p>安装方式为 </p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;bin&#x2F;bash -c &quot;$(curl -fsSL https:&#x2F;&#x2F;raw.githubusercontent.com&#x2F;Homebrew&#x2F;install&#x2F;master&#x2F;install.sh)&quot;</span><br></pre></td></tr></table></figure>
+
+<p>这个脚本脚本中使用了 Brew 的默认源，源在国外，安装过程会非常缓慢，这个时候可以单独把 install.sh 脚本下载下来，修改其中的默认源为 中科大 LUG 源或者清华 Tuna 源。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#默认源</span><br><span class="line">BREW_REPO&#x3D;&quot;https:&#x2F;&#x2F;github.com&#x2F;Homebrew&#x2F;brew&quot;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># 中科大 LUG 源</span><br><span class="line">BREW_REPO&#x3D;&quot;https:&#x2F;&#x2F;mirrors.ustc.edu.cn&#x2F;brew.git&quot;</span><br><span class="line"># 清华 Tuna 源</span><br><span class="line">BREW_REPO&#x3D;&quot;https:&#x2F;&#x2F;mirrors.tuna.tsinghua.edu.cn&#x2F;git&#x2F;homebrew&#x2F;brew.git&quot;</span><br></pre></td></tr></table></figure>
+
+<p>替换好以后，执行 <code>/bin/bash install.sh</code> 即可，速度会快很多。</p>
+<p>如果需要卸载可以使用 </p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;bin&#x2F;bash -c &quot;$(curl -fsSL https:&#x2F;&#x2F;raw.githubusercontent.com&#x2F;Homebrew&#x2F;install&#x2F;master&#x2F;uninstall.sh)&quot;</span><br></pre></td></tr></table></figure>
+<h1 id="Brew-替换源"><a href="#Brew-替换源" class="headerlink" title="Brew 替换源"></a>Brew 替换源</h1><p>Homebrew 安装好以后，就可以使用 brew install 来安装软件了，这个时候会可以通过更换国内源的方式来加速安装。Brew 常用的是 4 个源，分别是 brew、<br>homebrew-core、homebrew-cask、homebrew-bottles 。<br>本文的编写目的是简单的介绍四个常用的源（源），以及如何更换为国内镜像实现快速安装软件。</p>
+<h2 id="brew"><a href="#brew" class="headerlink" title="brew"></a>brew</h2><p>说明：Homebrew 源代码仓库。<br>默认地址：<a href="https://github.com/Homebrew/brew.git" target="_blank" rel="noopener">https://github.com/Homebrew/brew.git</a></p>
+<h2 id="homebrew-core"><a href="#homebrew-core" class="headerlink" title="homebrew-core"></a>homebrew-core</h2><p>说明：Homebrew 核心源（仓库），它是 brew install 的默认安装源（仓库）。<br>默认地址：<a href="https://github.com/Homebrew/homebrew-core.git" target="_blank" rel="noopener">https://github.com/Homebrew/homebrew-core.git</a></p>
+<h2 id="homebrew-cask"><a href="#homebrew-cask" class="headerlink" title="homebrew-cask"></a>homebrew-cask</h2><p>说明：homebrew-cask 源（仓库），提供 macOS 应用和大型二进制文件的安装。通常我们在 mac 操作系统上安装图形用户界面软件，系统都会提示“若要安装，请拖动此图标…”。homebrew-cask 扩展了Homebrew，为安装和管理 Atom 和 Google Chrome 之类的图形用户界面应用程序带来了优雅、简单和速度。</p>
+<p>默认地址：<a href="https://github.com/Homebrew/homebrew-cask.git" target="_blank" rel="noopener">https://github.com/Homebrew/homebrew-cask.git</a></p>
+<h2 id="homebrew-bottles"><a href="#homebrew-bottles" class="headerlink" title="homebrew-bottles"></a>homebrew-bottles</h2><p>说明：Homebrew 预编译二进制软件包。<br>默认地址：<a href="https://bintray.com/homebrew/bottles" target="_blank" rel="noopener">https://bintray.com/homebrew/bottles</a></p>
+<p>了解了这个 4 个源以后，我们就可以对他们进行更新，主要是中科大 LUG 源、清华 Tuna 源，这样在其中一个故障的时候切换另外一个来正常使用。</p>
+<p>替换中科大的默认源<br><a href="http://mirrors.ustc.edu.cn/help/homebrew-core.git.html" target="_blank" rel="noopener">http://mirrors.ustc.edu.cn/help/homebrew-core.git.html</a></p>
+<p>替换中科大的 bottles<br><a href="http://mirrors.ustc.edu.cn/help/homebrew-bottles.html" target="_blank" rel="noopener">http://mirrors.ustc.edu.cn/help/homebrew-bottles.html</a></p>
+<p>替换清华的默认源</p>
+<p><a href="https://mirrors.tuna.tsinghua.edu.cn/help/homebrew/" target="_blank" rel="noopener">https://mirrors.tuna.tsinghua.edu.cn/help/homebrew/</a></p>
+<p>替换清华的 bottles</p>
+<p><a href="https://mirrors.tuna.tsinghua.edu.cn/help/homebrew-bottles/" target="_blank" rel="noopener">https://mirrors.tuna.tsinghua.edu.cn/help/homebrew-bottles/</a></p>
+<p>替换 bottles 源的时候，如果你使用了 Zsh 等其他解释器，请更新对应的配置文件。</p>
+<p>参考<br><a href="https://lug.ustc.edu.cn/wiki/mirrors/help/brew.git" target="_blank" rel="noopener">https://lug.ustc.edu.cn/wiki/mirrors/help/brew.git</a><br><a href="https://lug.ustc.edu.cn/wiki/mirrors/help/homebrew-bottles" target="_blank" rel="noopener">https://lug.ustc.edu.cn/wiki/mirrors/help/homebrew-bottles</a></p>
+<p>======================<br>由于无法及时收到评论内容，所以关闭评论功能。<br>大家有问题欢迎发邮件到 <a href="mailto:erdong@mail.erdong.site">erdong@mail.erdong.site</a> ，或者 <a href="https://github.com/erdong/erdong.github.io/issues" target="_blank" rel="noopener">https://github.com/erdong/erdong.github.io/issues</a> 提 Issue ，我会及时回复。</p>
+<p>======================<br>Erdong, A Linux user !</p>
+]]></content>
+      <categories>
+        <category>macos</category>
+      </categories>
+      <tags>
+        <tag>macos</tag>
+        <tag>brew</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>MinIO 分布式集群搭建</title>
+    <url>/minio/minio-cluster.html</url>
+    <content><![CDATA[<h1 id="MinIO-分布式集群搭建"><a href="#MinIO-分布式集群搭建" class="headerlink" title="MinIO 分布式集群搭建"></a>MinIO 分布式集群搭建</h1><p>分布式 Minio 可以让你将多块硬盘（甚至在不同的机器上）组成一个对象存储服务。由于硬盘分布在不同的节点上，分布式 Minio 避免了单点故障。</p>
+<p>Minio 分布式模式可以搭建一个高可用的对象存储服务，你可以使用这些存储设备，而不用考虑其真实物理位置。</p>
+<a id="more"></a>
+
+<p><strong>（1）数据保护</strong></p>
+<p>分布式 Minio 采用纠删码（erasure code）来防范多个节点宕机和位衰减（bit rot）。</p>
+<p>分布式 Minio 至少需要 4 个节点，使用分布式 Minio 就自动引入了纠删码功能。</p>
+<p>纠删码是一种恢复丢失和损坏数据的数学算法， Minio 采用 Reed-Solomon code 将对象拆分成 N/2 数据和 N/2 奇偶校验块。 这就意味着如果是 12 块盘，一个对象会被分成 6 个数据块、6 个奇偶校验块，你可以丢失任意 6 块盘（不管其是存放的数据块还是奇偶校验块），你仍可以从剩下的盘中的数据进行恢复。</p>
+<p>纠删码的工作原理和 RAID 或者复制不同，像 RAID6 可以在损失两块盘的情况下不丢数据，而 Minio 纠删码可以在丢失一半的盘的情况下，仍可以保证数据安全。 而且 Minio 纠删码是作用在对象级别，可以一次恢复一个对象，而RAID 是作用在卷级别，数据恢复时间很长。 Minio 对每个对象单独编码，存储服务一经部署，通常情况下是不需要更换硬盘或者修复。Minio 纠删码的设计目标是为了性能和尽可能的使用硬件加速。</p>
+<p>位衰减又被称为数据腐化 Data Rot、无声数据损坏 Silent Data Corruption ，是目前硬盘数据的一种严重数据丢失问题。硬盘上的数据可能会神不知鬼不觉就损坏了，也没有什么错误日志。 所以 Minio 纠删码采用了高速 HighwayHash 基于哈希的校验和来防范位衰减。</p>
+<p><strong>（2）高可用</strong></p>
+<p>单机 Minio 服务存在单点故障，相反，如果是一个 N 节点的分布式 Minio ,只要有 N/2 节点在线，你的数据就是安全的。不过你需要至少有 N/2+1 个节点来创建新的对象。</p>
+<p>例如，一个 8 节点的 Minio 集群，每个节点一块盘，就算 4 个节点宕机，这个集群仍然是可读的，不过你需要 5 个节点才能写数据。</p>
+<p><strong>（3）限制</strong></p>
+<p>分布式 Minio 单租户存在最少 4 个盘最多 16 个盘的限制（受限于纠删码）。这种限制确保了 Minio 的简洁，同时仍拥有伸缩性。如果你需要搭建一个多租户环境，你可以轻松的使用编排工具（Kubernetes）来管理多个Minio实例。</p>
+<p>注意，只要遵守分布式 Minio 的限制，你可以组合不同的节点和每个节点几块盘。比如，你可以使用 2 个节点，每个节点 4 块盘，也可以使用 4 个节点，每个节点两块盘，诸如此类。</p>
+<p><strong>（4）一致性</strong><br>Minio 在分布式和单机模式下，所有读写操作都严格遵守 read-after-write 一致性模型。</p>
+<h1 id="搭建分布式集群"><a href="#搭建分布式集群" class="headerlink" title="搭建分布式集群"></a>搭建分布式集群</h1><p>启动一个分布式 Minio 实例，你只需要把硬盘位置做为参数传给 minio server 命令即可，然后，你需要在所有其它节点运行同样的命令。</p>
+<p>注意</p>
+<ul>
+<li>分布式 Minio 里所有的节点需要有同样的 access 秘钥和 secret 秘钥，这样这些节点才能建立联接。为了实现这个，你需要在执行 minio server 命令之前，先将 access 秘钥和 secret 秘钥 export 成环境变量。</li>
+<li>分布式 Minio 使用的磁盘里必须是干净的，里面没有数据。</li>
+<li>下面示例里的 IP 仅供示例参考，你需要改成你真实用到的 IP 和文件夹路径。</li>
+<li>分布式 Minio 里的节点时间差不能超过 3 秒，你可以使用 NTP 来保证时间一致。</li>
+<li>在 Windows 下运行分布式 Minio 处于实验阶段，不建议用于生产环境。</li>
+</ul>
+<h2 id="示例1"><a href="#示例1" class="headerlink" title="示例1:"></a>示例1:</h2><p>启动分布式Minio实例，8个节点，每节点1块盘，需要在8个节点上都运行下面的命令。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">export MINIO_ACCESS_KEY&#x3D;&lt;ACCESS_KEY&gt;</span><br><span class="line">export MINIO_SECRET_KEY&#x3D;&lt;SECRET_KEY&gt;</span><br><span class="line">minio server http:&#x2F;&#x2F;192.168.1.1&#x2F;disk1 http:&#x2F;&#x2F;192.168.1.2&#x2F;disk2 \</span><br><span class="line">               http:&#x2F;&#x2F;192.168.1.3&#x2F;disk3 http:&#x2F;&#x2F;192.168.1.4&#x2F;disk4 \</span><br><span class="line">               http:&#x2F;&#x2F;192.168.1.5&#x2F;disk5 http:&#x2F;&#x2F;192.168.1.6&#x2F;disk6 \</span><br><span class="line">               http:&#x2F;&#x2F;192.168.1.7&#x2F;disk7 http:&#x2F;&#x2F;192.168.1.8&#x2F;disk8</span><br></pre></td></tr></table></figure>
+
+<h2 id="示例2"><a href="#示例2" class="headerlink" title="示例2:"></a>示例2:</h2><p>启动分布式Minio实例，4节点，每节点4块盘，需要在4个节点上都运行下面的命令。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">export MINIO_ACCESS_KEY&#x3D;&lt;ACCESS_KEY&gt;</span><br><span class="line">export MINIO_SECRET_KEY&#x3D;&lt;SECRET_KEY&gt;</span><br><span class="line">minio server http:&#x2F;&#x2F;192.168.1.1&#x2F;disk11 http:&#x2F;&#x2F;192.168.1.1&#x2F;disk2 \</span><br><span class="line">               http:&#x2F;&#x2F;192.168.1.1&#x2F;disk13 http:&#x2F;&#x2F;192.168.1.1&#x2F;disk4 \</span><br><span class="line">               http:&#x2F;&#x2F;192.168.1.2&#x2F;disk21 http:&#x2F;&#x2F;192.168.1.2&#x2F;disk2 \</span><br><span class="line">               http:&#x2F;&#x2F;192.168.1.2&#x2F;disk23 http:&#x2F;&#x2F;192.168.1.2&#x2F;disk4 \</span><br><span class="line">               http:&#x2F;&#x2F;192.168.1.3&#x2F;disk31 http:&#x2F;&#x2F;192.168.1.3&#x2F;disk2 \</span><br><span class="line">               http:&#x2F;&#x2F;192.168.1.3&#x2F;disk33 http:&#x2F;&#x2F;192.168.1.3&#x2F;disk4 \</span><br><span class="line">               http:&#x2F;&#x2F;192.168.1.4&#x2F;disk41 http:&#x2F;&#x2F;192.168.1.4&#x2F;disk2 \</span><br><span class="line">               http:&#x2F;&#x2F;192.168.1.4&#x2F;disk43 http:&#x2F;&#x2F;192.168.1.4&#x2F;disk4</span><br></pre></td></tr></table></figure>
+
+<h2 id="验证"><a href="#验证" class="headerlink" title="验证"></a>验证</h2><p>验证是否部署成功，使用浏览器访问 Minio 服务或者使用 mc。多个节点的存储容量和就是分布式Minio的存储容量。</p>
+<p>======================<br>由于无法及时收到评论内容，所以关闭评论功能。<br>大家有问题欢迎发邮件到 <a href="mailto:erdong@mail.erdong.site">erdong@mail.erdong.site</a> ，或者 <a href="https://github.com/erdong/erdong.github.io/issues" target="_blank" rel="noopener">https://github.com/erdong/erdong.github.io/issues</a> 提 Issue ，我会及时回复。</p>
+<p>======================<br>Erdong, A Linux user !</p>
+]]></content>
+      <categories>
+        <category>minio</category>
+      </categories>
+      <tags>
+        <tag>cluster</tag>
+        <tag>minio</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>MinIO 简介和搭建</title>
     <url>/minio/minio-introduction.html</url>
     <content><![CDATA[<h1 id="MinIO-搭建"><a href="#MinIO-搭建" class="headerlink" title="MinIO 搭建"></a>MinIO 搭建</h1><p>MinIO 是一个基于 Apache License v2.0 开源协议的对象存储服务。它兼容亚马逊 S3 云存储服务接口，非常适合于存储大容量非结构化的数据，例如图片、视频、日志文件、备份数据和容器/虚拟机镜像等，而一个对象文件可以是任意大小，从几 kb 到最大 5T 不等。</p>
@@ -2054,28 +2101,108 @@
       </tags>
   </entry>
   <entry>
-    <title>公告-20190809</title>
-    <url>/notice/notice-20190809.html</url>
-    <content><![CDATA[<p> 最近有一些事情和大家说一下，大概也就是 2 点吧。</p>
-<p>1、请假：最近事情有点多，weekly 的每周分享停更几周。目前最新的更新是 第 29 周分享，我请假到第 35 周吧，第 36 周开始正常更新。</p>
-<p>2、关于评论：我之前写文章聊过微信公众号的留言评论功能，最近我在业余时间翻看了我之前的文章，发现有读者给我在我的文章下留言了，但是我使用的留言系统没有给我任何提示，错过了和大家交流的机会。我仔细思考了这个流程发现，当前使用的评论系统可能是存在一些问题，所以我决定先关闭评论功能，等以后找到合适的工具了再开启。这段时间大家有问题可以给我发邮件或者在 GitHub 上留言，感谢大家的支持。</p>
-<h2 id="致歉"><a href="#致歉" class="headerlink" title="致歉"></a>致歉</h2><p>向所有在我的博客下留言的读者致歉，我没有及时回复您的留言。如果您还有问题您可以发邮件给我，我们一起讨论交流。</p>
-<a id="more"></a>
+    <title>OpenVPN linux 客户端安装使用</title>
+    <url>/tools/openvpn-client-use.html</url>
+    <content><![CDATA[<h1 id="openVPN-linux-客户端安装使用"><a href="#openVPN-linux-客户端安装使用" class="headerlink" title="openVPN linux 客户端安装使用"></a>openVPN linux 客户端安装使用</h1><a id="more"></a>
+
+<h1 id="安装软件"><a href="#安装软件" class="headerlink" title="安装软件"></a>安装软件</h1><p>安装openssl和lzo，lzo用于压缩通讯数据加快传输速度</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">yum -y install openssl openssl-devel</span><br><span class="line">yum -y install lzo</span><br></pre></td></tr></table></figure>
+
+<p>安装 epel 第三方源，使得可以安装 openvpn ，CentOS 官方源内不含 openvpn 。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">yum -y install epel-release</span><br><span class="line">yum -y install openvpn</span><br></pre></td></tr></table></figure>
+
+<p>将下面证书和密钥添加到 /etc/openvpn 下，新建一个 test-client 文件夹存放。client.ovpn 文件中的 .crt 以及 .key 等文件需要写绝对路径。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ca.crt  client1.crt  client1.key  client.ovpn  ta.key</span><br></pre></td></tr></table></figure>
+
+<p>启动客户端服务</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[root@hulk ~]# openvpn --config &#x2F;etc&#x2F;openvpn&#x2F;test-client&#x2F;client.ovpn</span><br><span class="line">Mon Feb 25 15:55:56 2019 OpenVPN 2.4.6 x86_64-redhat-linux-gnu [Fedora EPEL patched] [SSL (OpenSSL)] [LZO] [LZ4] [EPOLL] [PKCS11] [MH&#x2F;PKTINFO] [AEAD] built on Apr 26 2018</span><br><span class="line">Mon Feb 25 15:55:56 2019 library versions: OpenSSL 1.0.2k-fips  26 Jan 2017, LZO 2.06</span><br><span class="line">Mon Feb 25 15:55:56 2019 WARNING: No server certificate verification method has been enabled.  See http:&#x2F;&#x2F;openvpn.net&#x2F;howto.html#mitm for more info.</span><br><span class="line">Mon Feb 25 15:55:56 2019 Outgoing Control Channel Authentication: Using 160 bit message hash &#39;SHA1&#39; for HMAC authentication</span><br><span class="line">Mon Feb 25 15:55:56 2019 Incoming Control Channel Authentication: Using 160 bit message hash &#39;SHA1&#39; for HMAC authentication</span><br><span class="line">Mon Feb 25 15:55:56 2019 TCP&#x2F;UDP: Preserving recently used remote address: [AF_INET]59.172.178.16:1194</span><br><span class="line">Mon Feb 25 15:55:56 2019 Socket Buffers: R&#x3D;[212992-&gt;212992] S&#x3D;[212992-&gt;212992]</span><br><span class="line">Mon Feb 25 15:55:56 2019 UDP link local: (not bound)</span><br><span class="line">Mon Feb 25 15:55:56 2019 UDP link remote: [AF_INET]55.12.18.19:1194</span><br><span class="line">Mon Feb 25 15:55:56 2019 TLS: Initial packet from [AF_INET]55.12.18.19:1194, sid&#x3D;602b3fe8 336d7976</span><br><span class="line">Mon Feb 25 15:55:56 2019 Control Channel: TLSv1.2, cipher TLSv1&#x2F;SSLv3 DHE-RSA-AES256-GCM-SHA384, 2048 bit RSA</span><br><span class="line">Mon Feb 25 15:55:56 2019 [server] Peer Connection Initiated with [AF_INET]55.12.18.19:1194</span><br><span class="line">Mon Feb 25 15:55:57 2019 SENT CONTROL [server]: &#39;PUSH_REQUEST&#39; (status&#x3D;1)</span><br><span class="line">Mon Feb 25 15:55:57 2019 PUSH: Received control message: &#39;PUSH_REPLY,route 202.114.96.0 255.255.255.0,route 10.0.0.0 255.0.0.0,route 172.29.0.1,topology net30,ping 10,ping-restart 120,ifconfig 172.29.2.170 172.29.2.169&#39;</span><br><span class="line">Mon Feb 25 15:55:57 2019 OPTIONS IMPORT: timers and&#x2F;or timeouts modified</span><br><span class="line">Mon Feb 25 15:55:57 2019 OPTIONS IMPORT: --ifconfig&#x2F;up options modified</span><br><span class="line">Mon Feb 25 15:55:57 2019 OPTIONS IMPORT: route options modified</span><br><span class="line">Mon Feb 25 15:55:57 2019 Outgoing Data Channel: Cipher &#39;BF-CBC&#39; initialized with 128 bit key</span><br><span class="line">Mon Feb 25 15:55:57 2019 WARNING: INSECURE cipher with block size less than 128 bit (64 bit).  This allows attacks like SWEET32.  Mitigate by using a --cipher with a larger block size (e.g. AES-256-CBC).</span><br><span class="line">Mon Feb 25 15:55:57 2019 Outgoing Data Channel: Using 160 bit message hash &#39;SHA1&#39; for HMAC authentication</span><br><span class="line">Mon Feb 25 15:55:57 2019 Incoming Data Channel: Cipher &#39;BF-CBC&#39; initialized with 128 bit key</span><br><span class="line">Mon Feb 25 15:55:57 2019 WARNING: INSECURE cipher with block size less than 128 bit (64 bit).  This allows attacks like SWEET32.  Mitigate by using a --cipher with a larger block size (e.g. AES-256-CBC).</span><br><span class="line">Mon Feb 25 15:55:57 2019 Incoming Data Channel: Using 160 bit message hash &#39;SHA1&#39; for HMAC authentication</span><br><span class="line">Mon Feb 25 15:55:57 2019 WARNING: cipher with small block size in use, reducing reneg-bytes to 64MB to mitigate SWEET32 attacks.</span><br><span class="line">Mon Feb 25 15:55:57 2019 ROUTE_GATEWAY 172.18.0.1&#x2F;255.255.240.0 IFACE&#x3D;eth0 HWADDR&#x3D;fa:23:62:87:31:00</span><br><span class="line">Mon Feb 25 15:55:57 2019 TUN&#x2F;TAP device tun0 opened</span><br><span class="line">Mon Feb 25 15:55:57 2019 TUN&#x2F;TAP TX queue length set to 100</span><br><span class="line">Mon Feb 25 15:55:57 2019 do_ifconfig, tt-&gt;did_ifconfig_ipv6_setup&#x3D;0</span><br><span class="line">Mon Feb 25 15:55:57 2019 &#x2F;sbin&#x2F;ip link set dev tun0 up mtu 1500</span><br><span class="line">Mon Feb 25 15:55:57 2019 &#x2F;sbin&#x2F;ip addr add dev tun0 local 172.29.2.170 peer 172.29.2.169</span><br><span class="line">Mon Feb 25 15:55:57 2019 &#x2F;sbin&#x2F;ip route add 202.114.96.0&#x2F;24 via 172.29.2.169</span><br><span class="line">Mon Feb 25 15:55:57 2019 &#x2F;sbin&#x2F;ip route add 10.0.0.0&#x2F;8 via 172.29.2.169</span><br><span class="line">Mon Feb 25 15:55:57 2019 &#x2F;sbin&#x2F;ip route add 172.29.0.1&#x2F;32 via 172.29.2.169</span><br><span class="line">Mon Feb 25 15:55:57 2019 WARNING: this configuration may cache passwords in memory -- use the auth-nocache option to prevent this</span><br><span class="line">Mon Feb 25 15:55:57 2019 Initialization Sequence Completed</span><br></pre></td></tr></table></figure>
 
 
+<p>ifconfig 查看网卡，会多出一块 tun0 的网卡，ping 对端的机器，可以 ping 通。</p>
+<p>按 crtl + C 中断前台进程，即可退出 VPN 。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">^@^CMon Feb 25 15:58:37 2019 event_wait : Interrupted system call (code&#x3D;4)</span><br><span class="line">Mon Feb 25 15:58:37 2019 &#x2F;sbin&#x2F;ip route del 202.114.96.0&#x2F;24</span><br><span class="line">Mon Feb 25 15:58:37 2019 &#x2F;sbin&#x2F;ip route del 10.0.0.0&#x2F;8</span><br><span class="line">Mon Feb 25 15:58:37 2019 &#x2F;sbin&#x2F;ip route del 172.29.0.1&#x2F;32</span><br><span class="line">Mon Feb 25 15:58:37 2019 Closing TUN&#x2F;TAP interface</span><br><span class="line">Mon Feb 25 15:58:37 2019 &#x2F;sbin&#x2F;ip addr del dev tun0 local 172.29.2.170 peer 172.29.2.169</span><br><span class="line">Mon Feb 25 15:58:37 2019 SIGINT[hard,] received, process exiting</span><br><span class="line">[root@hulk ~]#</span><br></pre></td></tr></table></figure>
 
-
-
-
-
-<p>======================<br>由于无法及时收到评论内容，所以关闭评论功能。<br>大家有问题欢迎发邮件到 <a href="mailto:erdong@mail.erdong.site">erdong@mail.erdong.site</a> ，或者 <a href="https://github.com/erdong/erdong.github.io/issues" target="_blank" rel="noopener">https://github.com/erdong/erdong.github.io/issues</a> 提 Issue ，我会及时回复。</p>
+<p>为了使用简单，可以把该进程放在后台运行，或者使用 supervisor 来进行守护，增加易用性和可靠性。</p>
 <p>======================<br>Erdong, A Linux user !</p>
 ]]></content>
       <categories>
-        <category>notice</category>
+        <category>tools</category>
       </categories>
       <tags>
-        <tag>notice</tag>
+        <tag>openvpn</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Parted 创建 GPT 分区</title>
+    <url>/tools/parted-create-gpt-partition.html</url>
+    <content><![CDATA[<p>对于磁盘的分区表 MBR与GPT区别。<br>MBR：MBR分区表(即主引导记录)大家都很熟悉，是过去我们使用windows时常用的。<br>所支持的最大卷：2T，而且对分区有限制：最多4个主分区或3个主分区加一个扩展分区</p>
+<p>GPT： GPT（即GUID分区表）。是源自EFI标准的一种较新的磁盘分区表结构的标准，是未来磁盘分区的主要形式。与MBR分区方式相比，具有如下优点。</p>
+<a id="more"></a>
+
+<p>突破MBR 4个主分区限制，每个磁盘最多支持128个分区。支持大于2T的分区，最大卷可达18EB。</p>
+<p>对于 GPT 的分区，建议使用 parted 工具进行分区，fdisk 在 GPT 这块不是很好。</p>
+<h1 id="Parted-介绍"><a href="#Parted-介绍" class="headerlink" title="Parted 介绍"></a>Parted 介绍</h1><p>Parted 命令分为两种模式：命令行模式和交互模式。</p>
+<h2 id="命令行模式"><a href="#命令行模式" class="headerlink" title="命令行模式"></a>命令行模式</h2><p>parted [option] device [command] ,该模式可以直接在命令行下对磁盘进行分区操作，比较适合编程应用。如：</p>
+<p>显示磁盘/dev/sdb分区。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">parted &#x2F;dev&#x2F;sdb print</span><br></pre></td></tr></table></figure>
+
+<h2 id="交互模式"><a href="#交互模式" class="headerlink" title="交互模式"></a>交互模式</h2><p>parted [option] device 进入交互模式。尤其是对 parted 命令不是很熟悉的情况下建议使用交互模式。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">parted &#x2F;dev&#x2F;sdb</span><br></pre></td></tr></table></figure>
+
+<h1 id="parted命令常用选项"><a href="#parted命令常用选项" class="headerlink" title="parted命令常用选项"></a>parted命令常用选项</h1><p>进入 交互模式下， 输入 <code>help</code> 可以看到如下提示，本文基于 Parted 3.2 进行说明。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">test@test01:~$ sudo parted &#x2F;dev&#x2F;sdb</span><br><span class="line">GNU Parted 3.2</span><br><span class="line">使用 &#x2F;dev&#x2F;sdb</span><br><span class="line">欢迎使用 GNU Parted! 输入 &#39;help&#39;可获得命令列表.</span><br><span class="line">(parted) help</span><br><span class="line">  align-check TYPE N                        check partition N for TYPE(min|opt) alignment</span><br><span class="line">  help [COMMAND]                           print general help, or help on COMMAND</span><br><span class="line">  mklabel,mktable LABEL-TYPE               create a new disklabel (partition table)</span><br><span class="line">  mkpart 分区类型 [文件系统类型] 起始点 终止点      创建一个分区</span><br><span class="line">  name NUMBER 名称               将编号为NUMBER 的分区命名为“名称”</span><br><span class="line">  print [devices|free|list,all|NUMBER]     display the partition table, available devices, free space,</span><br><span class="line">        all found partitions, or a particular partition</span><br><span class="line">  quit                          退出程序</span><br><span class="line">  rescue 起始点 终止点  挽救临近“起始点”、“终止点”的遗失的分区</span><br><span class="line">  resizepart NUMBER END                    resize partition NUMBER</span><br><span class="line">  rm MINOR                      删除编号为 MINOR 的分区</span><br><span class="line">  选择设备  选择要编辑的设备</span><br><span class="line">  disk_set FLAG STATE                      change the FLAG on selected device</span><br><span class="line">  disk_toggle [FLAG]                       toggle the state of FLAG on selected device</span><br><span class="line">  set NUMBER FLAG STATE                    change the FLAG on partition NUMBER</span><br><span class="line">  toggle [NUMBER [FLAG]]                   切换分区 NUMBER 的 FLAG 标记</span><br><span class="line">  unit UNIT                                set the default unit to UNIT</span><br><span class="line">  version                                  display the version number and copyright information of GNU</span><br><span class="line">        Parted</span><br><span class="line">(parted)</span><br></pre></td></tr></table></figure>
+
+<p>比较常用的几个选项是</p>
+<ul>
+<li>help 打印帮助信息</li>
+<li>print 输出分区信息</li>
+<li>mklabel 创建分区表， 即是使用msdos（MBR）还是使用gpt，或者是其他方式分区表</li>
+<li>mkpart 创建新分区<br>格式：mkpart PART-TYPE  START END<br>PART-TYPE类型主要有primary（主分区）, extended（扩展分区）, logical（逻辑区）. 扩展分区和逻辑分区只对msdos。</li>
+<li>rm  删除一个分区</li>
+<li>resizepart 调整指定的分区的大小</li>
+<li>quit 退出该交互界面</li>
+</ul>
+<h1 id="对磁盘进行分区"><a href="#对磁盘进行分区" class="headerlink" title="对磁盘进行分区"></a>对磁盘进行分区</h1><p>首先对于容量较大的磁盘使用 fdisk 工具会得到如下提示：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">test@test01:~$ sudo fdisk &#x2F;dev&#x2F;sdb</span><br><span class="line"></span><br><span class="line">欢迎使用 fdisk (util-linux 2.31.1)。</span><br><span class="line">更改将停留在内存中，直到您决定将更改写入磁盘。</span><br><span class="line">使用写入命令前请三思。</span><br><span class="line"></span><br><span class="line">设备不包含可识别的分区表。</span><br><span class="line">The size of this disk is 3.7 TiB (4000787030016 bytes). DOS partition table format cannot be used on drives for volumes larger than 2199023255040 bytes for 512-byte sectors. Use GUID partition table format (GPT).</span><br><span class="line"></span><br><span class="line">创建了一个磁盘标识符为 0x9f682389 的新 DOS 磁盘标签。</span><br><span class="line"></span><br><span class="line">命令(输入 m 获取帮助)：</span><br></pre></td></tr></table></figure>
+
+<p>这个时候我们就需要更新 parted 来对磁盘进行分区。</p>
+<h2 id="更改分区表"><a href="#更改分区表" class="headerlink" title="更改分区表"></a>更改分区表</h2><p>操作如下：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">(parted) mklabel gpt</span><br><span class="line">(parted) print</span><br><span class="line">Model: ATA ST4000DM004-2CV1 (scsi)</span><br><span class="line">磁盘 &#x2F;dev&#x2F;sdb: 4001GB</span><br><span class="line">Sector size (logical&#x2F;physical): 512B&#x2F;4096B</span><br><span class="line">分区表：gpt</span><br><span class="line">Disk Flags:</span><br><span class="line"></span><br><span class="line">数字  开始：  End  大小  文件系统  Name  标志</span><br><span class="line"></span><br><span class="line">(parted)</span><br></pre></td></tr></table></figure>
+
+<h2 id="创建分区"><a href="#创建分区" class="headerlink" title="创建分区"></a>创建分区</h2><p>使用 mkpart 创建自己需要的大小的分区</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">(parted) mkpart primary 0 4TB</span><br><span class="line">(parted) p</span><br><span class="line">Model: ATA ST4000DM004-2CV1 (scsi)</span><br><span class="line">磁盘 &#x2F;dev&#x2F;sdb: 4001GB</span><br><span class="line">Sector size (logical&#x2F;physical): 512B&#x2F;4096B</span><br><span class="line">分区表：gpt</span><br><span class="line">Disk Flags:</span><br><span class="line"></span><br><span class="line">数字  开始：  End     大小    文件系统  Name     标志</span><br><span class="line"> 1    1049kB  4001GB  4001GB            primary</span><br><span class="line"></span><br><span class="line">(parted)</span><br></pre></td></tr></table></figure>
+<p>创建好以后退出。</p>
+<blockquote>
+<p>parted 的每一个操作都是即时生效，和 fdisk 不同，fdisk 只有在最后使用 <code>w</code> 进行保存以后才会生效 。</p>
+</blockquote>
+<h2 id="格式化分区"><a href="#格式化分区" class="headerlink" title="格式化分区"></a>格式化分区</h2><p>格式化成你需要的文件系统。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">mkfs.ext4 &#x2F;dev&#x2F;sdb1</span><br></pre></td></tr></table></figure>
+
+<p>整个分区创建过程就结束了。</p>
+<h1 id="对齐分区以得到最优性能"><a href="#对齐分区以得到最优性能" class="headerlink" title="对齐分区以得到最优性能"></a>对齐分区以得到最优性能</h1><p>当分区不对齐时，parted 会提示如下</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">警告: The resulting partition is not properly aligned for best performance.</span><br><span class="line">忽略&#x2F;Ignore&#x2F;放弃&#x2F;Cancel?</span><br></pre></td></tr></table></figure>
+
+<p>对于这个提示，只要分区对齐就好。如果你的设计，就是要不对齐，那么可以忽略这个提示。</p>
+<p>对齐分区有两个方法，</p>
+<p>方法一，使用百分比来表示要分区的的空间大小，那么到100%的时候自然是对齐的。示例如下：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">(parted) mkpart primary 0% 100%</span><br><span class="line">(parted) p</span><br><span class="line">Model: ATA ST4000DM004-2CV1 (scsi)</span><br><span class="line">磁盘 &#x2F;dev&#x2F;sdb: 4001GB</span><br><span class="line">Sector size (logical&#x2F;physical): 512B&#x2F;4096B</span><br><span class="line">分区表：gpt</span><br><span class="line">Disk Flags:</span><br><span class="line"></span><br><span class="line">数字  开始：  End     大小    文件系统  Name     标志</span><br><span class="line"> 1    1049kB  4001GB  4001GB            primary</span><br><span class="line"></span><br><span class="line">(parted)</span><br></pre></td></tr></table></figure>
+
+<p>方法二，如果是使用容量来进行空间大小的话，那么 <code>-1</code> 这个值代表的是最后的位置。示例如下：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">(parted) mkpart primary 0TB -1</span><br><span class="line">(parted) p</span><br><span class="line">Model: ATA ST4000DM004-2CV1 (scsi)</span><br><span class="line">磁盘 &#x2F;dev&#x2F;sdb: 4001GB</span><br><span class="line">Sector size (logical&#x2F;physical): 512B&#x2F;4096B</span><br><span class="line">分区表：gpt</span><br><span class="line">Disk Flags:</span><br><span class="line"></span><br><span class="line">数字  开始：  End     大小    文件系统  Name     标志</span><br><span class="line"> 1    1049kB  4001GB  4001GB            primary</span><br><span class="line"></span><br><span class="line">(parted)</span><br></pre></td></tr></table></figure>
+
+<p>方法三，手动进行计算。</p>
+<p>下边这篇博客的作者描述了如何计算磁盘的扇区来保证分区对齐。</p>
+<p><a href="https://rainbow.chard.org/2013/01/30/how-to-align-partitions-for-best-performance-using-parted/" target="_blank" rel="noopener">https://rainbow.chard.org/2013/01/30/how-to-align-partitions-for-best-performance-using-parted/</a></p>
+<p>======================<br>Erdong, A Linux user !</p>
+]]></content>
+      <categories>
+        <category>tools</category>
+      </categories>
+      <tags>
+        <tag>parted</tag>
+        <tag>fdisk</tag>
+        <tag>GPT</tag>
+        <tag>MBR</tag>
       </tags>
   </entry>
   <entry>
@@ -2234,207 +2361,28 @@
       </tags>
   </entry>
   <entry>
-    <title>MinIO 分布式集群搭建</title>
-    <url>/minio/minio-cluster.html</url>
-    <content><![CDATA[<h1 id="MinIO-分布式集群搭建"><a href="#MinIO-分布式集群搭建" class="headerlink" title="MinIO 分布式集群搭建"></a>MinIO 分布式集群搭建</h1><p>分布式 Minio 可以让你将多块硬盘（甚至在不同的机器上）组成一个对象存储服务。由于硬盘分布在不同的节点上，分布式 Minio 避免了单点故障。</p>
-<p>Minio 分布式模式可以搭建一个高可用的对象存储服务，你可以使用这些存储设备，而不用考虑其真实物理位置。</p>
+    <title>公告-20190809</title>
+    <url>/notice/notice-20190809.html</url>
+    <content><![CDATA[<p> 最近有一些事情和大家说一下，大概也就是 2 点吧。</p>
+<p>1、请假：最近事情有点多，weekly 的每周分享停更几周。目前最新的更新是 第 29 周分享，我请假到第 35 周吧，第 36 周开始正常更新。</p>
+<p>2、关于评论：我之前写文章聊过微信公众号的留言评论功能，最近我在业余时间翻看了我之前的文章，发现有读者给我在我的文章下留言了，但是我使用的留言系统没有给我任何提示，错过了和大家交流的机会。我仔细思考了这个流程发现，当前使用的评论系统可能是存在一些问题，所以我决定先关闭评论功能，等以后找到合适的工具了再开启。这段时间大家有问题可以给我发邮件或者在 GitHub 上留言，感谢大家的支持。</p>
+<h2 id="致歉"><a href="#致歉" class="headerlink" title="致歉"></a>致歉</h2><p>向所有在我的博客下留言的读者致歉，我没有及时回复您的留言。如果您还有问题您可以发邮件给我，我们一起讨论交流。</p>
 <a id="more"></a>
 
-<p><strong>（1）数据保护</strong></p>
-<p>分布式 Minio 采用纠删码（erasure code）来防范多个节点宕机和位衰减（bit rot）。</p>
-<p>分布式 Minio 至少需要 4 个节点，使用分布式 Minio 就自动引入了纠删码功能。</p>
-<p>纠删码是一种恢复丢失和损坏数据的数学算法， Minio 采用 Reed-Solomon code 将对象拆分成 N/2 数据和 N/2 奇偶校验块。 这就意味着如果是 12 块盘，一个对象会被分成 6 个数据块、6 个奇偶校验块，你可以丢失任意 6 块盘（不管其是存放的数据块还是奇偶校验块），你仍可以从剩下的盘中的数据进行恢复。</p>
-<p>纠删码的工作原理和 RAID 或者复制不同，像 RAID6 可以在损失两块盘的情况下不丢数据，而 Minio 纠删码可以在丢失一半的盘的情况下，仍可以保证数据安全。 而且 Minio 纠删码是作用在对象级别，可以一次恢复一个对象，而RAID 是作用在卷级别，数据恢复时间很长。 Minio 对每个对象单独编码，存储服务一经部署，通常情况下是不需要更换硬盘或者修复。Minio 纠删码的设计目标是为了性能和尽可能的使用硬件加速。</p>
-<p>位衰减又被称为数据腐化 Data Rot、无声数据损坏 Silent Data Corruption ，是目前硬盘数据的一种严重数据丢失问题。硬盘上的数据可能会神不知鬼不觉就损坏了，也没有什么错误日志。 所以 Minio 纠删码采用了高速 HighwayHash 基于哈希的校验和来防范位衰减。</p>
-<p><strong>（2）高可用</strong></p>
-<p>单机 Minio 服务存在单点故障，相反，如果是一个 N 节点的分布式 Minio ,只要有 N/2 节点在线，你的数据就是安全的。不过你需要至少有 N/2+1 个节点来创建新的对象。</p>
-<p>例如，一个 8 节点的 Minio 集群，每个节点一块盘，就算 4 个节点宕机，这个集群仍然是可读的，不过你需要 5 个节点才能写数据。</p>
-<p><strong>（3）限制</strong></p>
-<p>分布式 Minio 单租户存在最少 4 个盘最多 16 个盘的限制（受限于纠删码）。这种限制确保了 Minio 的简洁，同时仍拥有伸缩性。如果你需要搭建一个多租户环境，你可以轻松的使用编排工具（Kubernetes）来管理多个Minio实例。</p>
-<p>注意，只要遵守分布式 Minio 的限制，你可以组合不同的节点和每个节点几块盘。比如，你可以使用 2 个节点，每个节点 4 块盘，也可以使用 4 个节点，每个节点两块盘，诸如此类。</p>
-<p><strong>（4）一致性</strong><br>Minio 在分布式和单机模式下，所有读写操作都严格遵守 read-after-write 一致性模型。</p>
-<h1 id="搭建分布式集群"><a href="#搭建分布式集群" class="headerlink" title="搭建分布式集群"></a>搭建分布式集群</h1><p>启动一个分布式 Minio 实例，你只需要把硬盘位置做为参数传给 minio server 命令即可，然后，你需要在所有其它节点运行同样的命令。</p>
-<p>注意</p>
-<ul>
-<li>分布式 Minio 里所有的节点需要有同样的 access 秘钥和 secret 秘钥，这样这些节点才能建立联接。为了实现这个，你需要在执行 minio server 命令之前，先将 access 秘钥和 secret 秘钥 export 成环境变量。</li>
-<li>分布式 Minio 使用的磁盘里必须是干净的，里面没有数据。</li>
-<li>下面示例里的 IP 仅供示例参考，你需要改成你真实用到的 IP 和文件夹路径。</li>
-<li>分布式 Minio 里的节点时间差不能超过 3 秒，你可以使用 NTP 来保证时间一致。</li>
-<li>在 Windows 下运行分布式 Minio 处于实验阶段，不建议用于生产环境。</li>
-</ul>
-<h2 id="示例1"><a href="#示例1" class="headerlink" title="示例1:"></a>示例1:</h2><p>启动分布式Minio实例，8个节点，每节点1块盘，需要在8个节点上都运行下面的命令。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">export MINIO_ACCESS_KEY&#x3D;&lt;ACCESS_KEY&gt;</span><br><span class="line">export MINIO_SECRET_KEY&#x3D;&lt;SECRET_KEY&gt;</span><br><span class="line">minio server http:&#x2F;&#x2F;192.168.1.1&#x2F;disk1 http:&#x2F;&#x2F;192.168.1.2&#x2F;disk2 \</span><br><span class="line">               http:&#x2F;&#x2F;192.168.1.3&#x2F;disk3 http:&#x2F;&#x2F;192.168.1.4&#x2F;disk4 \</span><br><span class="line">               http:&#x2F;&#x2F;192.168.1.5&#x2F;disk5 http:&#x2F;&#x2F;192.168.1.6&#x2F;disk6 \</span><br><span class="line">               http:&#x2F;&#x2F;192.168.1.7&#x2F;disk7 http:&#x2F;&#x2F;192.168.1.8&#x2F;disk8</span><br></pre></td></tr></table></figure>
 
-<h2 id="示例2"><a href="#示例2" class="headerlink" title="示例2:"></a>示例2:</h2><p>启动分布式Minio实例，4节点，每节点4块盘，需要在4个节点上都运行下面的命令。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">export MINIO_ACCESS_KEY&#x3D;&lt;ACCESS_KEY&gt;</span><br><span class="line">export MINIO_SECRET_KEY&#x3D;&lt;SECRET_KEY&gt;</span><br><span class="line">minio server http:&#x2F;&#x2F;192.168.1.1&#x2F;disk11 http:&#x2F;&#x2F;192.168.1.1&#x2F;disk2 \</span><br><span class="line">               http:&#x2F;&#x2F;192.168.1.1&#x2F;disk13 http:&#x2F;&#x2F;192.168.1.1&#x2F;disk4 \</span><br><span class="line">               http:&#x2F;&#x2F;192.168.1.2&#x2F;disk21 http:&#x2F;&#x2F;192.168.1.2&#x2F;disk2 \</span><br><span class="line">               http:&#x2F;&#x2F;192.168.1.2&#x2F;disk23 http:&#x2F;&#x2F;192.168.1.2&#x2F;disk4 \</span><br><span class="line">               http:&#x2F;&#x2F;192.168.1.3&#x2F;disk31 http:&#x2F;&#x2F;192.168.1.3&#x2F;disk2 \</span><br><span class="line">               http:&#x2F;&#x2F;192.168.1.3&#x2F;disk33 http:&#x2F;&#x2F;192.168.1.3&#x2F;disk4 \</span><br><span class="line">               http:&#x2F;&#x2F;192.168.1.4&#x2F;disk41 http:&#x2F;&#x2F;192.168.1.4&#x2F;disk2 \</span><br><span class="line">               http:&#x2F;&#x2F;192.168.1.4&#x2F;disk43 http:&#x2F;&#x2F;192.168.1.4&#x2F;disk4</span><br></pre></td></tr></table></figure>
 
-<h2 id="验证"><a href="#验证" class="headerlink" title="验证"></a>验证</h2><p>验证是否部署成功，使用浏览器访问 Minio 服务或者使用 mc。多个节点的存储容量和就是分布式Minio的存储容量。</p>
+
+
+
+
 <p>======================<br>由于无法及时收到评论内容，所以关闭评论功能。<br>大家有问题欢迎发邮件到 <a href="mailto:erdong@mail.erdong.site">erdong@mail.erdong.site</a> ，或者 <a href="https://github.com/erdong/erdong.github.io/issues" target="_blank" rel="noopener">https://github.com/erdong/erdong.github.io/issues</a> 提 Issue ，我会及时回复。</p>
 <p>======================<br>Erdong, A Linux user !</p>
 ]]></content>
       <categories>
-        <category>minio</category>
+        <category>notice</category>
       </categories>
       <tags>
-        <tag>cluster</tag>
-        <tag>minio</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>OpenVPN linux 客户端安装使用</title>
-    <url>/tools/openvpn-client-use.html</url>
-    <content><![CDATA[<h1 id="openVPN-linux-客户端安装使用"><a href="#openVPN-linux-客户端安装使用" class="headerlink" title="openVPN linux 客户端安装使用"></a>openVPN linux 客户端安装使用</h1><a id="more"></a>
-
-<h1 id="安装软件"><a href="#安装软件" class="headerlink" title="安装软件"></a>安装软件</h1><p>安装openssl和lzo，lzo用于压缩通讯数据加快传输速度</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">yum -y install openssl openssl-devel</span><br><span class="line">yum -y install lzo</span><br></pre></td></tr></table></figure>
-
-<p>安装 epel 第三方源，使得可以安装 openvpn ，CentOS 官方源内不含 openvpn 。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">yum -y install epel-release</span><br><span class="line">yum -y install openvpn</span><br></pre></td></tr></table></figure>
-
-<p>将下面证书和密钥添加到 /etc/openvpn 下，新建一个 test-client 文件夹存放。client.ovpn 文件中的 .crt 以及 .key 等文件需要写绝对路径。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ca.crt  client1.crt  client1.key  client.ovpn  ta.key</span><br></pre></td></tr></table></figure>
-
-<p>启动客户端服务</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[root@hulk ~]# openvpn --config &#x2F;etc&#x2F;openvpn&#x2F;test-client&#x2F;client.ovpn</span><br><span class="line">Mon Feb 25 15:55:56 2019 OpenVPN 2.4.6 x86_64-redhat-linux-gnu [Fedora EPEL patched] [SSL (OpenSSL)] [LZO] [LZ4] [EPOLL] [PKCS11] [MH&#x2F;PKTINFO] [AEAD] built on Apr 26 2018</span><br><span class="line">Mon Feb 25 15:55:56 2019 library versions: OpenSSL 1.0.2k-fips  26 Jan 2017, LZO 2.06</span><br><span class="line">Mon Feb 25 15:55:56 2019 WARNING: No server certificate verification method has been enabled.  See http:&#x2F;&#x2F;openvpn.net&#x2F;howto.html#mitm for more info.</span><br><span class="line">Mon Feb 25 15:55:56 2019 Outgoing Control Channel Authentication: Using 160 bit message hash &#39;SHA1&#39; for HMAC authentication</span><br><span class="line">Mon Feb 25 15:55:56 2019 Incoming Control Channel Authentication: Using 160 bit message hash &#39;SHA1&#39; for HMAC authentication</span><br><span class="line">Mon Feb 25 15:55:56 2019 TCP&#x2F;UDP: Preserving recently used remote address: [AF_INET]59.172.178.16:1194</span><br><span class="line">Mon Feb 25 15:55:56 2019 Socket Buffers: R&#x3D;[212992-&gt;212992] S&#x3D;[212992-&gt;212992]</span><br><span class="line">Mon Feb 25 15:55:56 2019 UDP link local: (not bound)</span><br><span class="line">Mon Feb 25 15:55:56 2019 UDP link remote: [AF_INET]55.12.18.19:1194</span><br><span class="line">Mon Feb 25 15:55:56 2019 TLS: Initial packet from [AF_INET]55.12.18.19:1194, sid&#x3D;602b3fe8 336d7976</span><br><span class="line">Mon Feb 25 15:55:56 2019 Control Channel: TLSv1.2, cipher TLSv1&#x2F;SSLv3 DHE-RSA-AES256-GCM-SHA384, 2048 bit RSA</span><br><span class="line">Mon Feb 25 15:55:56 2019 [server] Peer Connection Initiated with [AF_INET]55.12.18.19:1194</span><br><span class="line">Mon Feb 25 15:55:57 2019 SENT CONTROL [server]: &#39;PUSH_REQUEST&#39; (status&#x3D;1)</span><br><span class="line">Mon Feb 25 15:55:57 2019 PUSH: Received control message: &#39;PUSH_REPLY,route 202.114.96.0 255.255.255.0,route 10.0.0.0 255.0.0.0,route 172.29.0.1,topology net30,ping 10,ping-restart 120,ifconfig 172.29.2.170 172.29.2.169&#39;</span><br><span class="line">Mon Feb 25 15:55:57 2019 OPTIONS IMPORT: timers and&#x2F;or timeouts modified</span><br><span class="line">Mon Feb 25 15:55:57 2019 OPTIONS IMPORT: --ifconfig&#x2F;up options modified</span><br><span class="line">Mon Feb 25 15:55:57 2019 OPTIONS IMPORT: route options modified</span><br><span class="line">Mon Feb 25 15:55:57 2019 Outgoing Data Channel: Cipher &#39;BF-CBC&#39; initialized with 128 bit key</span><br><span class="line">Mon Feb 25 15:55:57 2019 WARNING: INSECURE cipher with block size less than 128 bit (64 bit).  This allows attacks like SWEET32.  Mitigate by using a --cipher with a larger block size (e.g. AES-256-CBC).</span><br><span class="line">Mon Feb 25 15:55:57 2019 Outgoing Data Channel: Using 160 bit message hash &#39;SHA1&#39; for HMAC authentication</span><br><span class="line">Mon Feb 25 15:55:57 2019 Incoming Data Channel: Cipher &#39;BF-CBC&#39; initialized with 128 bit key</span><br><span class="line">Mon Feb 25 15:55:57 2019 WARNING: INSECURE cipher with block size less than 128 bit (64 bit).  This allows attacks like SWEET32.  Mitigate by using a --cipher with a larger block size (e.g. AES-256-CBC).</span><br><span class="line">Mon Feb 25 15:55:57 2019 Incoming Data Channel: Using 160 bit message hash &#39;SHA1&#39; for HMAC authentication</span><br><span class="line">Mon Feb 25 15:55:57 2019 WARNING: cipher with small block size in use, reducing reneg-bytes to 64MB to mitigate SWEET32 attacks.</span><br><span class="line">Mon Feb 25 15:55:57 2019 ROUTE_GATEWAY 172.18.0.1&#x2F;255.255.240.0 IFACE&#x3D;eth0 HWADDR&#x3D;fa:23:62:87:31:00</span><br><span class="line">Mon Feb 25 15:55:57 2019 TUN&#x2F;TAP device tun0 opened</span><br><span class="line">Mon Feb 25 15:55:57 2019 TUN&#x2F;TAP TX queue length set to 100</span><br><span class="line">Mon Feb 25 15:55:57 2019 do_ifconfig, tt-&gt;did_ifconfig_ipv6_setup&#x3D;0</span><br><span class="line">Mon Feb 25 15:55:57 2019 &#x2F;sbin&#x2F;ip link set dev tun0 up mtu 1500</span><br><span class="line">Mon Feb 25 15:55:57 2019 &#x2F;sbin&#x2F;ip addr add dev tun0 local 172.29.2.170 peer 172.29.2.169</span><br><span class="line">Mon Feb 25 15:55:57 2019 &#x2F;sbin&#x2F;ip route add 202.114.96.0&#x2F;24 via 172.29.2.169</span><br><span class="line">Mon Feb 25 15:55:57 2019 &#x2F;sbin&#x2F;ip route add 10.0.0.0&#x2F;8 via 172.29.2.169</span><br><span class="line">Mon Feb 25 15:55:57 2019 &#x2F;sbin&#x2F;ip route add 172.29.0.1&#x2F;32 via 172.29.2.169</span><br><span class="line">Mon Feb 25 15:55:57 2019 WARNING: this configuration may cache passwords in memory -- use the auth-nocache option to prevent this</span><br><span class="line">Mon Feb 25 15:55:57 2019 Initialization Sequence Completed</span><br></pre></td></tr></table></figure>
-
-
-<p>ifconfig 查看网卡，会多出一块 tun0 的网卡，ping 对端的机器，可以 ping 通。</p>
-<p>按 crtl + C 中断前台进程，即可退出 VPN 。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">^@^CMon Feb 25 15:58:37 2019 event_wait : Interrupted system call (code&#x3D;4)</span><br><span class="line">Mon Feb 25 15:58:37 2019 &#x2F;sbin&#x2F;ip route del 202.114.96.0&#x2F;24</span><br><span class="line">Mon Feb 25 15:58:37 2019 &#x2F;sbin&#x2F;ip route del 10.0.0.0&#x2F;8</span><br><span class="line">Mon Feb 25 15:58:37 2019 &#x2F;sbin&#x2F;ip route del 172.29.0.1&#x2F;32</span><br><span class="line">Mon Feb 25 15:58:37 2019 Closing TUN&#x2F;TAP interface</span><br><span class="line">Mon Feb 25 15:58:37 2019 &#x2F;sbin&#x2F;ip addr del dev tun0 local 172.29.2.170 peer 172.29.2.169</span><br><span class="line">Mon Feb 25 15:58:37 2019 SIGINT[hard,] received, process exiting</span><br><span class="line">[root@hulk ~]#</span><br></pre></td></tr></table></figure>
-
-<p>为了使用简单，可以把该进程放在后台运行，或者使用 supervisor 来进行守护，增加易用性和可靠性。</p>
-<p>======================<br>Erdong, A Linux user !</p>
-]]></content>
-      <categories>
-        <category>tools</category>
-      </categories>
-      <tags>
-        <tag>openvpn</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Prometheus 删除指定 Metric</title>
-    <url>/prometheus/prometheus-delete-metrics.html</url>
-    <content><![CDATA[<p>Prometheus 发布以后，很长的一段时间里，是无法删除指定的 Metric 。如果你在某次测试中，有一些 Metric 的名称或者值有问题，那么你没有任何办法及时处理，只能等待数据的时间到了以后自动删除。我一度以为直到现在也是这样，最近在翻看 Prometheus 的官方文档的时候发现，Prometheus 在 2.0 版本以后已经提供了一个简单的管理接口，可以用来删除这些坏 Metric 数据。</p>
-<a id="more"></a>
-<p>下面我们来一起看一下 Prometheus 的管理 API 接口，官方到现在一共提供了三个接口，对应的分别是快照功能、数据删除功能、数据清理功能，想要使用 API 需要先添加启动参数 <code>--web.enable-admin-api</code> 打开这个接口，默认这个接口是关闭的。</p>
-<p>快速启动 Prometheus 可以使用如下命令 ，详细规范的启动方式可以参考之前的文章。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">.&#x2F;prometheus --web.enable-admin-api</span><br></pre></td></tr></table></figure>
-
-<h1 id="数据删除"><a href="#数据删除" class="headerlink" title="数据删除"></a>数据删除</h1><p>使用数据删除接口可以删除一定时间范围内的 Metric 数据。实际的数据仍然存在于磁盘上，并在将来的压缩中清除，也可以通过数据清理接口显式地清除。</p>
-<p>如果删除成功，会返回 204 。接口如下：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">POST &#x2F;api&#x2F;v1&#x2F;admin&#x2F;tsdb&#x2F;delete_series</span><br><span class="line">PUT &#x2F;api&#x2F;v1&#x2F;admin&#x2F;tsdb&#x2F;delete_series</span><br></pre></td></tr></table></figure>
-
-<p>这个接口可以使用 3 个参数，分别如下：</p>
-<ul>
-<li>match[]=<series_selector> : Metric 的名称</li>
-<li>start=&lt;rfc3339 | unix_timestamp&gt; : 开始的时间戳</li>
-<li>end=&lt;rfc3339 | unix_timestamp&gt;  : 结束的时间戳</li>
-</ul>
-<p>如果没有指定开始和结束时间将清除数据库中匹配的所有数据。</p>
-<p>接下来举几个例子</p>
-<p> 删除指定 Metric 名称的全部数据</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">curl -X POST -g &#39;http:&#x2F;&#x2F;127.0.0.1:9090&#x2F;api&#x2F;v1&#x2F;admin&#x2F;tsdb&#x2F;delete_series?match[]&#x3D;node_cpu_seconds_total&#39;</span><br></pre></td></tr></table></figure>
-<p>删除指定 Metric 名称和特定 label 名称的全部数据</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">curl -X POST -g &#39;http:&#x2F;&#x2F;127.0.0.1:9090&#x2F;api&#x2F;v1&#x2F;admin&#x2F;tsdb&#x2F;delete_series?match[]&#x3D;node_cpu_seconds_total&#123;mode&#x3D;&quot;idle&quot;&#125;&#39;</span><br></pre></td></tr></table></figure>
-<p>删除指定时间范围内的 Metric 数据</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">curl -X POST -g &#39;http:&#x2F;&#x2F;127.0.0.1:9090&#x2F;api&#x2F;v1&#x2F;admin&#x2F;tsdb&#x2F;delete_series?start&#x3D;1578301194&amp;end&#x3D;1578301694&amp;match[]&#x3D;node_cpu_seconds_total&#123;mode&#x3D;&quot;idle&quot;&#125;&#39;</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>linux 可以使用 <code>date  +%s</code> 获得当前的时间戳，可以使用 <code>date -d &quot;2019-12-22 00:00:00&quot; +%s</code> 将指定的日期转成时间戳。</p>
-</blockquote>
-<h1 id="数据清理"><a href="#数据清理" class="headerlink" title="数据清理"></a>数据清理</h1><p>数据清理会从磁盘删除已经被 <code>delete_series</code> 接口删除的数据，并清理现有的 tombstones。可以在使用 <code>delete_series</code> 接口删除数据之后使用它来释放空间。</p>
-<p>如果清理成功，会返回 204 。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">POST &#x2F;api&#x2F;v1&#x2F;admin&#x2F;tsdb&#x2F;clean_tombstones</span><br><span class="line">PUT &#x2F;api&#x2F;v1&#x2F;admin&#x2F;tsdb&#x2F;clean_tombstones</span><br></pre></td></tr></table></figure>
-
-
-<p>示例</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">curl -X POST http:&#x2F;&#x2F;127.0.0.1:9090&#x2F;api&#x2F;v1&#x2F;admin&#x2F;tsdb&#x2F;clean_tombstones</span><br></pre></td></tr></table></figure>
-<p>这个接口不需要参数。</p>
-<h1 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h1><ul>
-<li><a href="https://prometheus.io/docs/prometheus/latest/querying/api/#tsdb-admin-apis" target="_blank" rel="noopener">https://prometheus.io/docs/prometheus/latest/querying/api/#tsdb-admin-apis</a></li>
-</ul>
-<p>======================<br>由于无法及时收到评论内容，所以关闭评论功能。<br>大家有问题欢迎发邮件到 <a href="mailto:erdong@mail.erdong.site">erdong@mail.erdong.site</a> ，或者 <a href="https://github.com/erdong/erdong.github.io/issues" target="_blank" rel="noopener">https://github.com/erdong/erdong.github.io/issues</a> 提 Issue ，我会及时回复。</p>
-<p>======================<br>Erdong, A Linux user !</p>
-]]></content>
-      <categories>
-        <category>prometheus</category>
-      </categories>
-      <tags>
-        <tag>prometheus</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Parted 创建 GPT 分区</title>
-    <url>/tools/parted-create-gpt-partition.html</url>
-    <content><![CDATA[<p>对于磁盘的分区表 MBR与GPT区别。<br>MBR：MBR分区表(即主引导记录)大家都很熟悉，是过去我们使用windows时常用的。<br>所支持的最大卷：2T，而且对分区有限制：最多4个主分区或3个主分区加一个扩展分区</p>
-<p>GPT： GPT（即GUID分区表）。是源自EFI标准的一种较新的磁盘分区表结构的标准，是未来磁盘分区的主要形式。与MBR分区方式相比，具有如下优点。</p>
-<a id="more"></a>
-
-<p>突破MBR 4个主分区限制，每个磁盘最多支持128个分区。支持大于2T的分区，最大卷可达18EB。</p>
-<p>对于 GPT 的分区，建议使用 parted 工具进行分区，fdisk 在 GPT 这块不是很好。</p>
-<h1 id="Parted-介绍"><a href="#Parted-介绍" class="headerlink" title="Parted 介绍"></a>Parted 介绍</h1><p>Parted 命令分为两种模式：命令行模式和交互模式。</p>
-<h2 id="命令行模式"><a href="#命令行模式" class="headerlink" title="命令行模式"></a>命令行模式</h2><p>parted [option] device [command] ,该模式可以直接在命令行下对磁盘进行分区操作，比较适合编程应用。如：</p>
-<p>显示磁盘/dev/sdb分区。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">parted &#x2F;dev&#x2F;sdb print</span><br></pre></td></tr></table></figure>
-
-<h2 id="交互模式"><a href="#交互模式" class="headerlink" title="交互模式"></a>交互模式</h2><p>parted [option] device 进入交互模式。尤其是对 parted 命令不是很熟悉的情况下建议使用交互模式。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">parted &#x2F;dev&#x2F;sdb</span><br></pre></td></tr></table></figure>
-
-<h1 id="parted命令常用选项"><a href="#parted命令常用选项" class="headerlink" title="parted命令常用选项"></a>parted命令常用选项</h1><p>进入 交互模式下， 输入 <code>help</code> 可以看到如下提示，本文基于 Parted 3.2 进行说明。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">test@test01:~$ sudo parted &#x2F;dev&#x2F;sdb</span><br><span class="line">GNU Parted 3.2</span><br><span class="line">使用 &#x2F;dev&#x2F;sdb</span><br><span class="line">欢迎使用 GNU Parted! 输入 &#39;help&#39;可获得命令列表.</span><br><span class="line">(parted) help</span><br><span class="line">  align-check TYPE N                        check partition N for TYPE(min|opt) alignment</span><br><span class="line">  help [COMMAND]                           print general help, or help on COMMAND</span><br><span class="line">  mklabel,mktable LABEL-TYPE               create a new disklabel (partition table)</span><br><span class="line">  mkpart 分区类型 [文件系统类型] 起始点 终止点      创建一个分区</span><br><span class="line">  name NUMBER 名称               将编号为NUMBER 的分区命名为“名称”</span><br><span class="line">  print [devices|free|list,all|NUMBER]     display the partition table, available devices, free space,</span><br><span class="line">        all found partitions, or a particular partition</span><br><span class="line">  quit                          退出程序</span><br><span class="line">  rescue 起始点 终止点  挽救临近“起始点”、“终止点”的遗失的分区</span><br><span class="line">  resizepart NUMBER END                    resize partition NUMBER</span><br><span class="line">  rm MINOR                      删除编号为 MINOR 的分区</span><br><span class="line">  选择设备  选择要编辑的设备</span><br><span class="line">  disk_set FLAG STATE                      change the FLAG on selected device</span><br><span class="line">  disk_toggle [FLAG]                       toggle the state of FLAG on selected device</span><br><span class="line">  set NUMBER FLAG STATE                    change the FLAG on partition NUMBER</span><br><span class="line">  toggle [NUMBER [FLAG]]                   切换分区 NUMBER 的 FLAG 标记</span><br><span class="line">  unit UNIT                                set the default unit to UNIT</span><br><span class="line">  version                                  display the version number and copyright information of GNU</span><br><span class="line">        Parted</span><br><span class="line">(parted)</span><br></pre></td></tr></table></figure>
-
-<p>比较常用的几个选项是</p>
-<ul>
-<li>help 打印帮助信息</li>
-<li>print 输出分区信息</li>
-<li>mklabel 创建分区表， 即是使用msdos（MBR）还是使用gpt，或者是其他方式分区表</li>
-<li>mkpart 创建新分区<br>格式：mkpart PART-TYPE  START END<br>PART-TYPE类型主要有primary（主分区）, extended（扩展分区）, logical（逻辑区）. 扩展分区和逻辑分区只对msdos。</li>
-<li>rm  删除一个分区</li>
-<li>resizepart 调整指定的分区的大小</li>
-<li>quit 退出该交互界面</li>
-</ul>
-<h1 id="对磁盘进行分区"><a href="#对磁盘进行分区" class="headerlink" title="对磁盘进行分区"></a>对磁盘进行分区</h1><p>首先对于容量较大的磁盘使用 fdisk 工具会得到如下提示：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">test@test01:~$ sudo fdisk &#x2F;dev&#x2F;sdb</span><br><span class="line"></span><br><span class="line">欢迎使用 fdisk (util-linux 2.31.1)。</span><br><span class="line">更改将停留在内存中，直到您决定将更改写入磁盘。</span><br><span class="line">使用写入命令前请三思。</span><br><span class="line"></span><br><span class="line">设备不包含可识别的分区表。</span><br><span class="line">The size of this disk is 3.7 TiB (4000787030016 bytes). DOS partition table format cannot be used on drives for volumes larger than 2199023255040 bytes for 512-byte sectors. Use GUID partition table format (GPT).</span><br><span class="line"></span><br><span class="line">创建了一个磁盘标识符为 0x9f682389 的新 DOS 磁盘标签。</span><br><span class="line"></span><br><span class="line">命令(输入 m 获取帮助)：</span><br></pre></td></tr></table></figure>
-
-<p>这个时候我们就需要更新 parted 来对磁盘进行分区。</p>
-<h2 id="更改分区表"><a href="#更改分区表" class="headerlink" title="更改分区表"></a>更改分区表</h2><p>操作如下：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">(parted) mklabel gpt</span><br><span class="line">(parted) print</span><br><span class="line">Model: ATA ST4000DM004-2CV1 (scsi)</span><br><span class="line">磁盘 &#x2F;dev&#x2F;sdb: 4001GB</span><br><span class="line">Sector size (logical&#x2F;physical): 512B&#x2F;4096B</span><br><span class="line">分区表：gpt</span><br><span class="line">Disk Flags:</span><br><span class="line"></span><br><span class="line">数字  开始：  End  大小  文件系统  Name  标志</span><br><span class="line"></span><br><span class="line">(parted)</span><br></pre></td></tr></table></figure>
-
-<h2 id="创建分区"><a href="#创建分区" class="headerlink" title="创建分区"></a>创建分区</h2><p>使用 mkpart 创建自己需要的大小的分区</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">(parted) mkpart primary 0 4TB</span><br><span class="line">(parted) p</span><br><span class="line">Model: ATA ST4000DM004-2CV1 (scsi)</span><br><span class="line">磁盘 &#x2F;dev&#x2F;sdb: 4001GB</span><br><span class="line">Sector size (logical&#x2F;physical): 512B&#x2F;4096B</span><br><span class="line">分区表：gpt</span><br><span class="line">Disk Flags:</span><br><span class="line"></span><br><span class="line">数字  开始：  End     大小    文件系统  Name     标志</span><br><span class="line"> 1    1049kB  4001GB  4001GB            primary</span><br><span class="line"></span><br><span class="line">(parted)</span><br></pre></td></tr></table></figure>
-<p>创建好以后退出。</p>
-<blockquote>
-<p>parted 的每一个操作都是即时生效，和 fdisk 不同，fdisk 只有在最后使用 <code>w</code> 进行保存以后才会生效 。</p>
-</blockquote>
-<h2 id="格式化分区"><a href="#格式化分区" class="headerlink" title="格式化分区"></a>格式化分区</h2><p>格式化成你需要的文件系统。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">mkfs.ext4 &#x2F;dev&#x2F;sdb1</span><br></pre></td></tr></table></figure>
-
-<p>整个分区创建过程就结束了。</p>
-<h1 id="对齐分区以得到最优性能"><a href="#对齐分区以得到最优性能" class="headerlink" title="对齐分区以得到最优性能"></a>对齐分区以得到最优性能</h1><p>当分区不对齐时，parted 会提示如下</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">警告: The resulting partition is not properly aligned for best performance.</span><br><span class="line">忽略&#x2F;Ignore&#x2F;放弃&#x2F;Cancel?</span><br></pre></td></tr></table></figure>
-
-<p>对于这个提示，只要分区对齐就好。如果你的设计，就是要不对齐，那么可以忽略这个提示。</p>
-<p>对齐分区有两个方法，</p>
-<p>方法一，使用百分比来表示要分区的的空间大小，那么到100%的时候自然是对齐的。示例如下：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">(parted) mkpart primary 0% 100%</span><br><span class="line">(parted) p</span><br><span class="line">Model: ATA ST4000DM004-2CV1 (scsi)</span><br><span class="line">磁盘 &#x2F;dev&#x2F;sdb: 4001GB</span><br><span class="line">Sector size (logical&#x2F;physical): 512B&#x2F;4096B</span><br><span class="line">分区表：gpt</span><br><span class="line">Disk Flags:</span><br><span class="line"></span><br><span class="line">数字  开始：  End     大小    文件系统  Name     标志</span><br><span class="line"> 1    1049kB  4001GB  4001GB            primary</span><br><span class="line"></span><br><span class="line">(parted)</span><br></pre></td></tr></table></figure>
-
-<p>方法二，如果是使用容量来进行空间大小的话，那么 <code>-1</code> 这个值代表的是最后的位置。示例如下：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">(parted) mkpart primary 0TB -1</span><br><span class="line">(parted) p</span><br><span class="line">Model: ATA ST4000DM004-2CV1 (scsi)</span><br><span class="line">磁盘 &#x2F;dev&#x2F;sdb: 4001GB</span><br><span class="line">Sector size (logical&#x2F;physical): 512B&#x2F;4096B</span><br><span class="line">分区表：gpt</span><br><span class="line">Disk Flags:</span><br><span class="line"></span><br><span class="line">数字  开始：  End     大小    文件系统  Name     标志</span><br><span class="line"> 1    1049kB  4001GB  4001GB            primary</span><br><span class="line"></span><br><span class="line">(parted)</span><br></pre></td></tr></table></figure>
-
-<p>方法三，手动进行计算。</p>
-<p>下边这篇博客的作者描述了如何计算磁盘的扇区来保证分区对齐。</p>
-<p><a href="https://rainbow.chard.org/2013/01/30/how-to-align-partitions-for-best-performance-using-parted/" target="_blank" rel="noopener">https://rainbow.chard.org/2013/01/30/how-to-align-partitions-for-best-performance-using-parted/</a></p>
-<p>======================<br>Erdong, A Linux user !</p>
-]]></content>
-      <categories>
-        <category>tools</category>
-      </categories>
-      <tags>
-        <tag>parted</tag>
-        <tag>fdisk</tag>
-        <tag>GPT</tag>
-        <tag>MBR</tag>
+        <tag>notice</tag>
       </tags>
   </entry>
   <entry>
@@ -2527,6 +2475,119 @@
       </tags>
   </entry>
   <entry>
+    <title>【转载】Prometheus 不完全避坑指南</title>
+    <url>/Prometheus/guide/prometheus-incomplete-guide.html</url>
+    <content><![CDATA[<p>Prometheus 是一个开源监控系统，它本身已经成为了云原生中指标监控的事实标准，几乎所有 k8s 的核心组件以及其它云原生系统都以 Prometheus 的指标格式输出自己的运行时监控信息。我在工作中也比较深入地使用过 Prometheus，最大的感受就是它非常容易维护，突出一个简单省心成本低。当然，这当中也免不了踩过一些坑，下面就总结一下。</p>
+<blockquote>
+<p>假如你没有用过 Prometheus，建议先看一遍 官方文档</p>
+</blockquote>
+<a id="more"></a>
+
+
+<h1 id="接受准确性与可靠性的权衡"><a href="#接受准确性与可靠性的权衡" class="headerlink" title="接受准确性与可靠性的权衡"></a>接受准确性与可靠性的权衡</h1><p>Prometheus 作为一个基于指标(Metric)的监控系统，在设计上就放弃了一部分数据准确性：</p>
+<ul>
+<li>比如在两次采样的间隔中，内存用量有一个瞬时小尖峰，那么这次小尖峰我们是观察不到的；</li>
+<li>再比如 QPS、RT、P95、P99 这些值都只能估算，无法和日志系统一样做到 100% 准确，下面也会讲一个相关的坑；</li>
+</ul>
+<p>放弃一点准确性得到的是更高的可靠性，这里的可靠性体现为架构简单、数据简单、运维简单。假如你维护过 ELK 或其它日志架构的话，就会发现相比于指标，日志系统想要稳定地跑下去需要付出几十倍的机器成本与人力成本。既然是权衡，那就没有好或不好，只有适合不适合，我推荐在应用 Prometheus 之初就要先考虑清楚这个问题，并且将这个权衡明确地告诉使用方。</p>
+<h1 id="首先做好自监控"><a href="#首先做好自监控" class="headerlink" title="首先做好自监控"></a>首先做好自监控</h1><p>不知道你有没有考虑过一个问题，其它系统都用 Prometheus 监控起来了，报警规则也设置好了，那 Prometheus 本身由谁来监控？</p>
+<p>答案是”另一个监控系统”，而这个监控系统可以是另一个 Prometheus。按照官方的 quickstart 或 helm 部署的 Prometheus 单实例自己监控自己的，我们当然不能指望一个系统挂掉之后自己发现自己挂了。因此我强烈建议在上生产环境之前，一定要确保至少有两个独立的 Prometheus 实例互相做交叉监控。交叉监控的配置也很简单，每台 Prometheus 都拉取其余所有 Prometheus 的指标即可。</p>
+<p>还有一个点是警报系统(Alertmanager)，我们再考虑一下警报系统挂掉的情况：这时候 Prometheus 可以监控到警报系统挂了，但是因为警报挂掉了，所以警报自然就发不出来，这也是应用 Prometheus 之前必须搞定的问题。这个问题可以通过给警报系统做 HA 来应对。除此之外还有一个经典的兜底措施叫做 “Dead man’s switch”: 定义一条永远会触发的告警，不断通知，假如哪天这条通知停了，那么说明报警链路出问题了。</p>
+<h1 id="不要使用-NFS-做存储"><a href="#不要使用-NFS-做存储" class="headerlink" title="不要使用 NFS 做存储"></a>不要使用 NFS 做存储</h1><p>如题，Prometheus 维护者也在 <a href="https://github.com/prometheus/prometheus/issues/3534" target="_blank" rel="noopener">issue 中表示过不支持 NFS </a>。这点我们有血泪教训（我们曾经有一台 Prometheus 存储文件发生损坏丢失了历史数据）。</p>
+<h1 id="尽早干掉维度-Cardinality-过高的指标"><a href="#尽早干掉维度-Cardinality-过高的指标" class="headerlink" title="尽早干掉维度(Cardinality)过高的指标"></a>尽早干掉维度(Cardinality)过高的指标</h1><p>根据我们的经验，Prometheus 里有 50% 以上的存储空间和 80% 以上的计算资源(CPU、内存)都是被那么两三个维度超高的指标用掉的。而且这类维度超高的指标由于数据量很大，稍微查得野一点就会 OOM 搞死 Prometheus 实例。</p>
+<p>首先要明确这类指标是对 Prometheus 的滥用，类似需求完全应该放到日志流或数仓里去算。但是指标的接入方关注的往往是业务上够不够方便，假如足够方便的话什么都可以往 label 里塞。这就需要我们防患于未然，一个有效的办法是用警报规则找出维度过高的坏指标，然后在 Scrape 配置里 Drop 掉导致维度过高的 label。</p>
+<p>警报规则的例子：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># 统计每个指标的时间序列数，超出 10000 的报警</span><br><span class="line">count by (__name__)(&#123;__name__&#x3D;~&quot;.+&quot;&#125;) &gt; 10000</span><br></pre></td></tr></table></figure>
+
+
+<p>“坏指标”报警出来之后，就可以用 metric_relabel_config 的 drop 操作删掉有问题的 label（比如 userId、email 这些一看就是问题户），这里的配置方式可以查阅文档</p>
+<p>对了，这条的关键词是尽早，最好就是部署完就搞上这条规则，否则等哪天 Prometheus 容量满了再去找业务方说要删 label，那业务方可能就要忍不住扇你了……</p>
+<h1 id="Rate-类函数-Recording-Rule-的坑"><a href="#Rate-类函数-Recording-Rule-的坑" class="headerlink" title="Rate 类函数 + Recording Rule 的坑"></a>Rate 类函数 + Recording Rule 的坑</h1><p>可能你已经知道了 PromQL 里要先 rate() 再 sum()，不能 sum() 完再 rate()（不知道也没事，马上讲）。但当 rate() 已经同类型的函数如 increase() 和 recording rule 碰到一起时，可能就会不小心掉到坑里去。</p>
+<p>当时，我们已经有了一个维度很高的指标（只能继续维护了，因为没有尽早干掉），为了让大家查询得更快一点，我们设计了一个 Recording Rule，用 sum() 来去掉维度过高的 bad_label，得到一个新指标。那么只要不涉及到 bad_label，大家就可以用新指标进行查询，Recording Rule 如下：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sum(old_metric) without (bad_label)</span><br></pre></td></tr></table></figure>
+
+<p>用了一段时候后，大家发现 new_metric 做 rate() 得到的 QPS 趋势图里经常有奇怪的尖峰，但 old_metric 就不会出现。这时我们恍然大悟：绕了个弯踩进了 rate() 的坑里。</p>
+<p>这背后与 rate() 的实现方式有关，rate() 在设计上假定对应的指标是一个 Counter，也就是只有 incr(增加) 和 reset(归0) 两种行为。而做了 sum() 或其他聚合之后，得到的就不再是一个 Counter 了，举个例子，比如 sum() 的计算对象中有一个归0了，那整体的和会下降，而不是归零，这会影响 rate() 中判断 reset(归0) 的逻辑，从而导致错误的结果。写 PromQL 时这个坑容易避免，但碰到 Recording Rule 就不那么容易了，因为不去看配置的话大家也想不到 new_metric 是怎么来的。</p>
+<p>要完全规避这个坑，可以遵守一个原则：Recording Rule 一步到位，直接算出需要的值，避免算出一个中间结果再拿去做聚合。</p>
+<h1 id="警报和历史趋势图未必-Match"><a href="#警报和历史趋势图未必-Match" class="headerlink" title="警报和历史趋势图未必 Match"></a>警报和历史趋势图未必 Match</h1><p>最近半年常常被问两个问题：</p>
+<ul>
+<li>我的历史趋势图看上去超过水位线了，警报为什么没报？</li>
+<li>我的历史趋势图看上去挺正常的，警报为什么报了？</li>
+</ul>
+<p>这其中有一个原因是：趋势图上每个采样点的采样时间和警报规则每次的计算时间不是严格一致的。当时间区间拉得比较大的时候，采样点非常稀疏，不如警报计算的间隔来得密集，这个现象尤为明显，比如时序图采样了 0秒，60秒，120秒三个点。而警报在15秒，30秒，45秒连续计算出了异常，那在图上就看不出来。另外，经过越多的聚合以及函数操作，不同时间点的数据差异会来得越明显，有时确实容易混淆。</p>
+<p>这个其实不是问题，碰到时将趋势图的采样间隔拉到最小，仔细比对一下，就能验证警报的准确性。而对于聚合很复杂的警报，可以先写一条 Recording Rule, 再针对 Recording Rule 产生的新指标来建警报。这种范式也能帮助我们更高效地去建分级警报（超过不同阈值对应不同的紧急程度）</p>
+<h1 id="Alertmanager-的-group-interval-会影响-resolved-通知"><a href="#Alertmanager-的-group-interval-会影响-resolved-通知" class="headerlink" title="Alertmanager 的 group_interval 会影响 resolved 通知"></a>Alertmanager 的 group_interval 会影响 resolved 通知</h1><p>Alertmanager 里有一个叫 group_interval 的配置，用于控制同一个 group 内的警报最快多久通知一次。这里有一个问题是 firing(激活) 和 resolved(已消除) 的警报通知是共享同一个 group 的。也就是说，假设我们的 group_interval 是默认的 5 分钟，那么一条警报激活十几秒后立马就消除了，它的消除通知会在报警通知的 5 分钟之后才到，因为在发完报警通知之后，这个 Group 需要等待 5 分钟的 group_interval 才能进行下一次通知。</p>
+<p>这个设计让”警报消除就立马发送消除通知”变得几乎不可能，因为假如把 group_interval 变得很小的话，警报通知就会过于频繁，而调大的话，就会拖累到消除通知。</p>
+<p>这个问题修改一点源码即可解决，不过无伤大雅，不修也完全没问题。</p>
+<h1 id="最后一条：不要忘记因何而来"><a href="#最后一条：不要忘记因何而来" class="headerlink" title="最后一条：不要忘记因何而来"></a>最后一条：不要忘记因何而来</h1><p>最后一条撒点鸡汤：监控的核心目标还是护航业务稳定，保障业务的快速迭代，永远不要忘记因何而来</p>
+<p>曾经有一端时间，我们追求”监控的覆盖率”，所有系统所有层面，一定要有指标，而且具体信息 label 分得越细越好，最后搞出几千个监控项，不仅搞得眼花缭乱还让 Prometheus 变慢了；</p>
+<p>还有一段时间，我们追求”警报的覆盖率”，事无巨细必有要有警报，人人有责全体收警报（有些警报会发送给几十个人）。最后当然你也能预想到了，告警风暴让大家都对警报疲劳了；</p>
+<p>这些事情乍看起来都是在努力工作，但其实一开始的方向就错了，监控的目标绝对不是为了达到 xxx 个指标，xxx 条警报规则，这些东西有什么意义？依我看，负责监控的开发就算不是 SRE 也要有 SRE 的心态和视野，不要为监控系统的功能或覆盖面负责（这样很可让导致开发在监控里堆砌功能和内容，变得越来越臃肿越来越不可靠），而要为整个业务的稳定性负责，同时站在稳定性的投入产出比角度去考虑每件事情的性质和意义，不要忘记我们因何而来。</p>
+<p>作者： 吴叶磊</p>
+<p>原文链接： <a href="https://aleiwu.com/post/prometheus-bp/" target="_blank" rel="noopener">https://aleiwu.com/post/prometheus-bp/</a></p>
+<p>======================<br>Erdong, A Linux user !</p>
+]]></content>
+      <categories>
+        <category>Prometheus</category>
+        <category>guide</category>
+      </categories>
+      <tags>
+        <tag>Prometheus</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Prometheus 删除指定 Metric</title>
+    <url>/prometheus/prometheus-delete-metrics.html</url>
+    <content><![CDATA[<p>Prometheus 发布以后，很长的一段时间里，是无法删除指定的 Metric 。如果你在某次测试中，有一些 Metric 的名称或者值有问题，那么你没有任何办法及时处理，只能等待数据的时间到了以后自动删除。我一度以为直到现在也是这样，最近在翻看 Prometheus 的官方文档的时候发现，Prometheus 在 2.0 版本以后已经提供了一个简单的管理接口，可以用来删除这些坏 Metric 数据。</p>
+<a id="more"></a>
+<p>下面我们来一起看一下 Prometheus 的管理 API 接口，官方到现在一共提供了三个接口，对应的分别是快照功能、数据删除功能、数据清理功能，想要使用 API 需要先添加启动参数 <code>--web.enable-admin-api</code> 打开这个接口，默认这个接口是关闭的。</p>
+<p>快速启动 Prometheus 可以使用如下命令 ，详细规范的启动方式可以参考之前的文章。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">.&#x2F;prometheus --web.enable-admin-api</span><br></pre></td></tr></table></figure>
+
+<h1 id="数据删除"><a href="#数据删除" class="headerlink" title="数据删除"></a>数据删除</h1><p>使用数据删除接口可以删除一定时间范围内的 Metric 数据。实际的数据仍然存在于磁盘上，并在将来的压缩中清除，也可以通过数据清理接口显式地清除。</p>
+<p>如果删除成功，会返回 204 。接口如下：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">POST &#x2F;api&#x2F;v1&#x2F;admin&#x2F;tsdb&#x2F;delete_series</span><br><span class="line">PUT &#x2F;api&#x2F;v1&#x2F;admin&#x2F;tsdb&#x2F;delete_series</span><br></pre></td></tr></table></figure>
+
+<p>这个接口可以使用 3 个参数，分别如下：</p>
+<ul>
+<li>match[]=<series_selector> : Metric 的名称</li>
+<li>start=&lt;rfc3339 | unix_timestamp&gt; : 开始的时间戳</li>
+<li>end=&lt;rfc3339 | unix_timestamp&gt;  : 结束的时间戳</li>
+</ul>
+<p>如果没有指定开始和结束时间将清除数据库中匹配的所有数据。</p>
+<p>接下来举几个例子</p>
+<p> 删除指定 Metric 名称的全部数据</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">curl -X POST -g &#39;http:&#x2F;&#x2F;127.0.0.1:9090&#x2F;api&#x2F;v1&#x2F;admin&#x2F;tsdb&#x2F;delete_series?match[]&#x3D;node_cpu_seconds_total&#39;</span><br></pre></td></tr></table></figure>
+<p>删除指定 Metric 名称和特定 label 名称的全部数据</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">curl -X POST -g &#39;http:&#x2F;&#x2F;127.0.0.1:9090&#x2F;api&#x2F;v1&#x2F;admin&#x2F;tsdb&#x2F;delete_series?match[]&#x3D;node_cpu_seconds_total&#123;mode&#x3D;&quot;idle&quot;&#125;&#39;</span><br></pre></td></tr></table></figure>
+<p>删除指定时间范围内的 Metric 数据</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">curl -X POST -g &#39;http:&#x2F;&#x2F;127.0.0.1:9090&#x2F;api&#x2F;v1&#x2F;admin&#x2F;tsdb&#x2F;delete_series?start&#x3D;1578301194&amp;end&#x3D;1578301694&amp;match[]&#x3D;node_cpu_seconds_total&#123;mode&#x3D;&quot;idle&quot;&#125;&#39;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>linux 可以使用 <code>date  +%s</code> 获得当前的时间戳，可以使用 <code>date -d &quot;2019-12-22 00:00:00&quot; +%s</code> 将指定的日期转成时间戳。</p>
+</blockquote>
+<h1 id="数据清理"><a href="#数据清理" class="headerlink" title="数据清理"></a>数据清理</h1><p>数据清理会从磁盘删除已经被 <code>delete_series</code> 接口删除的数据，并清理现有的 tombstones。可以在使用 <code>delete_series</code> 接口删除数据之后使用它来释放空间。</p>
+<p>如果清理成功，会返回 204 。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">POST &#x2F;api&#x2F;v1&#x2F;admin&#x2F;tsdb&#x2F;clean_tombstones</span><br><span class="line">PUT &#x2F;api&#x2F;v1&#x2F;admin&#x2F;tsdb&#x2F;clean_tombstones</span><br></pre></td></tr></table></figure>
+
+
+<p>示例</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">curl -X POST http:&#x2F;&#x2F;127.0.0.1:9090&#x2F;api&#x2F;v1&#x2F;admin&#x2F;tsdb&#x2F;clean_tombstones</span><br></pre></td></tr></table></figure>
+<p>这个接口不需要参数。</p>
+<h1 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h1><ul>
+<li><a href="https://prometheus.io/docs/prometheus/latest/querying/api/#tsdb-admin-apis" target="_blank" rel="noopener">https://prometheus.io/docs/prometheus/latest/querying/api/#tsdb-admin-apis</a></li>
+</ul>
+<p>======================<br>由于无法及时收到评论内容，所以关闭评论功能。<br>大家有问题欢迎发邮件到 <a href="mailto:erdong@mail.erdong.site">erdong@mail.erdong.site</a> ，或者 <a href="https://github.com/erdong/erdong.github.io/issues" target="_blank" rel="noopener">https://github.com/erdong/erdong.github.io/issues</a> 提 Issue ，我会及时回复。</p>
+<p>======================<br>Erdong, A Linux user !</p>
+]]></content>
+      <categories>
+        <category>prometheus</category>
+      </categories>
+      <tags>
+        <tag>prometheus</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Prometheus 安装</title>
     <url>/Prometheus/notes/prometheus-install.html</url>
     <content><![CDATA[<p>Prometheus是一个监控平台，它通过抓取这些目标主机上采集器暴露的指标来展示监控数据。本文介绍如何安装、配置和监控 Prometheus。你需要下载安装 Prometheus 并且安装 Exporter，这些工具采集了主机和对应服务的时间序列数据。我们的第一个 Exporter 是 Prometheus 本身，它提供了关于内存使用、垃圾收集等各种各样的主机级指标。</p>
@@ -2602,67 +2663,6 @@
       <categories>
         <category>Prometheus</category>
         <category>notes</category>
-      </categories>
-      <tags>
-        <tag>Prometheus</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>【转载】Prometheus 不完全避坑指南</title>
-    <url>/Prometheus/guide/prometheus-incomplete-guide.html</url>
-    <content><![CDATA[<p>Prometheus 是一个开源监控系统，它本身已经成为了云原生中指标监控的事实标准，几乎所有 k8s 的核心组件以及其它云原生系统都以 Prometheus 的指标格式输出自己的运行时监控信息。我在工作中也比较深入地使用过 Prometheus，最大的感受就是它非常容易维护，突出一个简单省心成本低。当然，这当中也免不了踩过一些坑，下面就总结一下。</p>
-<blockquote>
-<p>假如你没有用过 Prometheus，建议先看一遍 官方文档</p>
-</blockquote>
-<a id="more"></a>
-
-
-<h1 id="接受准确性与可靠性的权衡"><a href="#接受准确性与可靠性的权衡" class="headerlink" title="接受准确性与可靠性的权衡"></a>接受准确性与可靠性的权衡</h1><p>Prometheus 作为一个基于指标(Metric)的监控系统，在设计上就放弃了一部分数据准确性：</p>
-<ul>
-<li>比如在两次采样的间隔中，内存用量有一个瞬时小尖峰，那么这次小尖峰我们是观察不到的；</li>
-<li>再比如 QPS、RT、P95、P99 这些值都只能估算，无法和日志系统一样做到 100% 准确，下面也会讲一个相关的坑；</li>
-</ul>
-<p>放弃一点准确性得到的是更高的可靠性，这里的可靠性体现为架构简单、数据简单、运维简单。假如你维护过 ELK 或其它日志架构的话，就会发现相比于指标，日志系统想要稳定地跑下去需要付出几十倍的机器成本与人力成本。既然是权衡，那就没有好或不好，只有适合不适合，我推荐在应用 Prometheus 之初就要先考虑清楚这个问题，并且将这个权衡明确地告诉使用方。</p>
-<h1 id="首先做好自监控"><a href="#首先做好自监控" class="headerlink" title="首先做好自监控"></a>首先做好自监控</h1><p>不知道你有没有考虑过一个问题，其它系统都用 Prometheus 监控起来了，报警规则也设置好了，那 Prometheus 本身由谁来监控？</p>
-<p>答案是”另一个监控系统”，而这个监控系统可以是另一个 Prometheus。按照官方的 quickstart 或 helm 部署的 Prometheus 单实例自己监控自己的，我们当然不能指望一个系统挂掉之后自己发现自己挂了。因此我强烈建议在上生产环境之前，一定要确保至少有两个独立的 Prometheus 实例互相做交叉监控。交叉监控的配置也很简单，每台 Prometheus 都拉取其余所有 Prometheus 的指标即可。</p>
-<p>还有一个点是警报系统(Alertmanager)，我们再考虑一下警报系统挂掉的情况：这时候 Prometheus 可以监控到警报系统挂了，但是因为警报挂掉了，所以警报自然就发不出来，这也是应用 Prometheus 之前必须搞定的问题。这个问题可以通过给警报系统做 HA 来应对。除此之外还有一个经典的兜底措施叫做 “Dead man’s switch”: 定义一条永远会触发的告警，不断通知，假如哪天这条通知停了，那么说明报警链路出问题了。</p>
-<h1 id="不要使用-NFS-做存储"><a href="#不要使用-NFS-做存储" class="headerlink" title="不要使用 NFS 做存储"></a>不要使用 NFS 做存储</h1><p>如题，Prometheus 维护者也在 <a href="https://github.com/prometheus/prometheus/issues/3534" target="_blank" rel="noopener">issue 中表示过不支持 NFS </a>。这点我们有血泪教训（我们曾经有一台 Prometheus 存储文件发生损坏丢失了历史数据）。</p>
-<h1 id="尽早干掉维度-Cardinality-过高的指标"><a href="#尽早干掉维度-Cardinality-过高的指标" class="headerlink" title="尽早干掉维度(Cardinality)过高的指标"></a>尽早干掉维度(Cardinality)过高的指标</h1><p>根据我们的经验，Prometheus 里有 50% 以上的存储空间和 80% 以上的计算资源(CPU、内存)都是被那么两三个维度超高的指标用掉的。而且这类维度超高的指标由于数据量很大，稍微查得野一点就会 OOM 搞死 Prometheus 实例。</p>
-<p>首先要明确这类指标是对 Prometheus 的滥用，类似需求完全应该放到日志流或数仓里去算。但是指标的接入方关注的往往是业务上够不够方便，假如足够方便的话什么都可以往 label 里塞。这就需要我们防患于未然，一个有效的办法是用警报规则找出维度过高的坏指标，然后在 Scrape 配置里 Drop 掉导致维度过高的 label。</p>
-<p>警报规则的例子：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># 统计每个指标的时间序列数，超出 10000 的报警</span><br><span class="line">count by (__name__)(&#123;__name__&#x3D;~&quot;.+&quot;&#125;) &gt; 10000</span><br></pre></td></tr></table></figure>
-
-
-<p>“坏指标”报警出来之后，就可以用 metric_relabel_config 的 drop 操作删掉有问题的 label（比如 userId、email 这些一看就是问题户），这里的配置方式可以查阅文档</p>
-<p>对了，这条的关键词是尽早，最好就是部署完就搞上这条规则，否则等哪天 Prometheus 容量满了再去找业务方说要删 label，那业务方可能就要忍不住扇你了……</p>
-<h1 id="Rate-类函数-Recording-Rule-的坑"><a href="#Rate-类函数-Recording-Rule-的坑" class="headerlink" title="Rate 类函数 + Recording Rule 的坑"></a>Rate 类函数 + Recording Rule 的坑</h1><p>可能你已经知道了 PromQL 里要先 rate() 再 sum()，不能 sum() 完再 rate()（不知道也没事，马上讲）。但当 rate() 已经同类型的函数如 increase() 和 recording rule 碰到一起时，可能就会不小心掉到坑里去。</p>
-<p>当时，我们已经有了一个维度很高的指标（只能继续维护了，因为没有尽早干掉），为了让大家查询得更快一点，我们设计了一个 Recording Rule，用 sum() 来去掉维度过高的 bad_label，得到一个新指标。那么只要不涉及到 bad_label，大家就可以用新指标进行查询，Recording Rule 如下：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sum(old_metric) without (bad_label)</span><br></pre></td></tr></table></figure>
-
-<p>用了一段时候后，大家发现 new_metric 做 rate() 得到的 QPS 趋势图里经常有奇怪的尖峰，但 old_metric 就不会出现。这时我们恍然大悟：绕了个弯踩进了 rate() 的坑里。</p>
-<p>这背后与 rate() 的实现方式有关，rate() 在设计上假定对应的指标是一个 Counter，也就是只有 incr(增加) 和 reset(归0) 两种行为。而做了 sum() 或其他聚合之后，得到的就不再是一个 Counter 了，举个例子，比如 sum() 的计算对象中有一个归0了，那整体的和会下降，而不是归零，这会影响 rate() 中判断 reset(归0) 的逻辑，从而导致错误的结果。写 PromQL 时这个坑容易避免，但碰到 Recording Rule 就不那么容易了，因为不去看配置的话大家也想不到 new_metric 是怎么来的。</p>
-<p>要完全规避这个坑，可以遵守一个原则：Recording Rule 一步到位，直接算出需要的值，避免算出一个中间结果再拿去做聚合。</p>
-<h1 id="警报和历史趋势图未必-Match"><a href="#警报和历史趋势图未必-Match" class="headerlink" title="警报和历史趋势图未必 Match"></a>警报和历史趋势图未必 Match</h1><p>最近半年常常被问两个问题：</p>
-<ul>
-<li>我的历史趋势图看上去超过水位线了，警报为什么没报？</li>
-<li>我的历史趋势图看上去挺正常的，警报为什么报了？</li>
-</ul>
-<p>这其中有一个原因是：趋势图上每个采样点的采样时间和警报规则每次的计算时间不是严格一致的。当时间区间拉得比较大的时候，采样点非常稀疏，不如警报计算的间隔来得密集，这个现象尤为明显，比如时序图采样了 0秒，60秒，120秒三个点。而警报在15秒，30秒，45秒连续计算出了异常，那在图上就看不出来。另外，经过越多的聚合以及函数操作，不同时间点的数据差异会来得越明显，有时确实容易混淆。</p>
-<p>这个其实不是问题，碰到时将趋势图的采样间隔拉到最小，仔细比对一下，就能验证警报的准确性。而对于聚合很复杂的警报，可以先写一条 Recording Rule, 再针对 Recording Rule 产生的新指标来建警报。这种范式也能帮助我们更高效地去建分级警报（超过不同阈值对应不同的紧急程度）</p>
-<h1 id="Alertmanager-的-group-interval-会影响-resolved-通知"><a href="#Alertmanager-的-group-interval-会影响-resolved-通知" class="headerlink" title="Alertmanager 的 group_interval 会影响 resolved 通知"></a>Alertmanager 的 group_interval 会影响 resolved 通知</h1><p>Alertmanager 里有一个叫 group_interval 的配置，用于控制同一个 group 内的警报最快多久通知一次。这里有一个问题是 firing(激活) 和 resolved(已消除) 的警报通知是共享同一个 group 的。也就是说，假设我们的 group_interval 是默认的 5 分钟，那么一条警报激活十几秒后立马就消除了，它的消除通知会在报警通知的 5 分钟之后才到，因为在发完报警通知之后，这个 Group 需要等待 5 分钟的 group_interval 才能进行下一次通知。</p>
-<p>这个设计让”警报消除就立马发送消除通知”变得几乎不可能，因为假如把 group_interval 变得很小的话，警报通知就会过于频繁，而调大的话，就会拖累到消除通知。</p>
-<p>这个问题修改一点源码即可解决，不过无伤大雅，不修也完全没问题。</p>
-<h1 id="最后一条：不要忘记因何而来"><a href="#最后一条：不要忘记因何而来" class="headerlink" title="最后一条：不要忘记因何而来"></a>最后一条：不要忘记因何而来</h1><p>最后一条撒点鸡汤：监控的核心目标还是护航业务稳定，保障业务的快速迭代，永远不要忘记因何而来</p>
-<p>曾经有一端时间，我们追求”监控的覆盖率”，所有系统所有层面，一定要有指标，而且具体信息 label 分得越细越好，最后搞出几千个监控项，不仅搞得眼花缭乱还让 Prometheus 变慢了；</p>
-<p>还有一段时间，我们追求”警报的覆盖率”，事无巨细必有要有警报，人人有责全体收警报（有些警报会发送给几十个人）。最后当然你也能预想到了，告警风暴让大家都对警报疲劳了；</p>
-<p>这些事情乍看起来都是在努力工作，但其实一开始的方向就错了，监控的目标绝对不是为了达到 xxx 个指标，xxx 条警报规则，这些东西有什么意义？依我看，负责监控的开发就算不是 SRE 也要有 SRE 的心态和视野，不要为监控系统的功能或覆盖面负责（这样很可让导致开发在监控里堆砌功能和内容，变得越来越臃肿越来越不可靠），而要为整个业务的稳定性负责，同时站在稳定性的投入产出比角度去考虑每件事情的性质和意义，不要忘记我们因何而来。</p>
-<p>作者： 吴叶磊</p>
-<p>原文链接： <a href="https://aleiwu.com/post/prometheus-bp/" target="_blank" rel="noopener">https://aleiwu.com/post/prometheus-bp/</a></p>
-<p>======================<br>Erdong, A Linux user !</p>
-]]></content>
-      <categories>
-        <category>Prometheus</category>
-        <category>guide</category>
       </categories>
       <tags>
         <tag>Prometheus</tag>
@@ -3958,6 +3958,42 @@
       </tags>
   </entry>
   <entry>
+    <title>第23周分享</title>
+    <url>/weekly/weekly23.html</url>
+    <content><![CDATA[<p>这里记录过去一周，我看到的值得分享的东西。</p>
+<a id="more"></a>
+
+
+
+<h1 id="资源"><a href="#资源" class="headerlink" title="资源"></a>资源</h1><h2 id="1-MongoDB-教程"><a href="#1-MongoDB-教程" class="headerlink" title="1. MongoDB 教程"></a>1. <a href="https://www.runoob.com/mongodb/mongodb-tutorial.html" target="_blank" rel="noopener">MongoDB 教程</a></h2><p>初次使用 MongoDB 可以使用该教程快速查询了解。</p>
+<p>======================<br>Erdong, A Linux user !</p>
+]]></content>
+      <categories>
+        <category>weekly</category>
+      </categories>
+      <tags>
+        <tag>weekly</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>第24周分享</title>
+    <url>/weekly/weekly24.html</url>
+    <content><![CDATA[<p>这里记录过去一周，我看到的值得分享的东西。</p>
+<a id="more"></a>
+
+
+
+<h1 id="教程"><a href="#教程" class="headerlink" title="教程"></a>教程</h1><h2 id="1-illustrations"><a href="#1-illustrations" class="headerlink" title="1. illustrations"></a>1. <a href="https://undraw.co/illustrations" target="_blank" rel="noopener">illustrations</a></h2><p>一个插画网站，可以方便的下载该风格的插画，可以自定义颜色，网站会定期更新，用来做 PPT 或者文章插图和合适。</p>
+<p>======================<br>Erdong, A Linux user !</p>
+]]></content>
+      <categories>
+        <category>weekly</category>
+      </categories>
+      <tags>
+        <tag>weekly</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>第25周分享</title>
     <url>/weekly/weekly25.html</url>
     <content><![CDATA[<p>这里记录过去一周，我看到的值得分享的东西。</p>
@@ -3968,6 +4004,28 @@
 <h1 id="教程"><a href="#教程" class="headerlink" title="教程"></a>教程</h1><h2 id="1-Go-语言最佳实践"><a href="#1-Go-语言最佳实践" class="headerlink" title="1. Go 语言最佳实践"></a>1. <a href="https://github.com/llitfkitfk/go-best-practice" target="_blank" rel="noopener">Go 语言最佳实践</a></h2><p>作者的目标是向大家提供有关编写 Go 代码最佳实践的建议。</p>
 <h1 id="工具"><a href="#工具" class="headerlink" title="工具"></a>工具</h1><h2 id="1-xsec-traffic"><a href="#1-xsec-traffic" class="headerlink" title="1. xsec-traffic"></a>1. <a href="https://github.com/netxfly/xsec-traffic" target="_blank" rel="noopener">xsec-traffic</a></h2><p>xsec-traffic为一款轻量级的恶意流量分析程序，包括传感器sensor和服务端server 2个组件。sensor负责采集流量，然后发到server端，由server来检测是否为恶意流量。server端的功能为接收各sensor采集到的流程并判断是否为恶意流量。</p>
 <h2 id="2-多吉搜索"><a href="#2-多吉搜索" class="headerlink" title="2. 多吉搜索"></a>2. <a href="https://dogedoge.com" target="_blank" rel="noopener">多吉搜索</a></h2><p>一个新的国产搜索引擎，搜索结果比较清爽。</p>
+<p>======================<br>Erdong, A Linux user !</p>
+]]></content>
+      <categories>
+        <category>weekly</category>
+      </categories>
+      <tags>
+        <tag>weekly</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>第29周分享</title>
+    <url>/weekly/weekly29.html</url>
+    <content><![CDATA[<p>这里记录过去一周，我看到的值得分享的东西。</p>
+<a id="more"></a>
+
+
+
+<h1 id="工具"><a href="#工具" class="headerlink" title="工具"></a>工具</h1><h2 id="1-DownGit"><a href="#1-DownGit" class="headerlink" title="1. DownGit"></a>1. <a href="https://minhaskamal.github.io/DownGit/#/home" target="_blank" rel="noopener">DownGit</a></h2><p>一个小工具用来在 GitHub 上下载某个文件夹或者文件，还可以创建下载链接给其他人。</p>
+<p>Github中并不提供单个文件夹下载, 每当下载仓库中某个文件夹时,只能克隆整个仓库, 浪费硬盘空间不说,浪费时间不说,每次克隆仓库时候,看到这下下载速度简直不能忍受，使用这个工具就好了。 </p>
+<h2 id="2-阮一峰的免费招聘服务"><a href="#2-阮一峰的免费招聘服务" class="headerlink" title="2. 阮一峰的免费招聘服务"></a>2. <a href="https://github.com/ruanyf/weekly/issues/692" target="_blank" rel="noopener">阮一峰的免费招聘服务</a></h2><p>官方介绍：<br>这个帖子是周刊的免费招聘服务。如果你们公司正在招人，欢迎把招聘信息发在这个帖子里面。请简要描述，岗位名称、工作地点、岗位要求、公司简介、联系方式等等。</p>
+<p>如果希望把信息发到正式的周刊上面，推送到所有读者，请与我联系（Email: <a href="mailto:yifeng.ruan@gmail.com">yifeng.ruan@gmail.com</a>），价格是人民币 250元/条。</p>
+<p>读者可以咨询，但请不要发布与招聘无关的内容，禁止对公司或岗位进行评论或抱怨。如果有意应聘，请直接与发贴人联系。</p>
 <p>======================<br>Erdong, A Linux user !</p>
 ]]></content>
       <categories>
@@ -4132,32 +4190,21 @@
       </tags>
   </entry>
   <entry>
-    <title>第23周分享</title>
-    <url>/weekly/weekly23.html</url>
+    <title>攻城狮周刊：第38期</title>
+    <url>/weekly/weekly38.html</url>
     <content><![CDATA[<p>这里记录过去一周，我看到的值得分享的东西。</p>
 <a id="more"></a>
 
-
-
-<h1 id="资源"><a href="#资源" class="headerlink" title="资源"></a>资源</h1><h2 id="1-MongoDB-教程"><a href="#1-MongoDB-教程" class="headerlink" title="1. MongoDB 教程"></a>1. <a href="https://www.runoob.com/mongodb/mongodb-tutorial.html" target="_blank" rel="noopener">MongoDB 教程</a></h2><p>初次使用 MongoDB 可以使用该教程快速查询了解。</p>
-<p>======================<br>Erdong, A Linux user !</p>
-]]></content>
-      <categories>
-        <category>weekly</category>
-      </categories>
-      <tags>
-        <tag>weekly</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>第24周分享</title>
-    <url>/weekly/weekly24.html</url>
-    <content><![CDATA[<p>这里记录过去一周，我看到的值得分享的东西。</p>
-<a id="more"></a>
-
-
-
-<h1 id="教程"><a href="#教程" class="headerlink" title="教程"></a>教程</h1><h2 id="1-illustrations"><a href="#1-illustrations" class="headerlink" title="1. illustrations"></a>1. <a href="https://undraw.co/illustrations" target="_blank" rel="noopener">illustrations</a></h2><p>一个插画网站，可以方便的下载该风格的插画，可以自定义颜色，网站会定期更新，用来做 PPT 或者文章插图和合适。</p>
+<h1 id="新闻"><a href="#新闻" class="headerlink" title="新闻"></a>新闻</h1><h2 id="1-IPv4地址耗尽"><a href="#1-IPv4地址耗尽" class="headerlink" title="1. IPv4地址耗尽"></a>1. <a href="http://cn.chinadaily.com.cn/a/201911/29/WS5de0d9d8a31099ab995eecc7.html" target="_blank" rel="noopener">IPv4地址耗尽</a></h2><p>就在 2019/11/25 UTC+1 15:35 时，一封来自欧洲 RIPE  NCC 的邮件中得到确认：全球的IPv4地址已经彻底耗尽。</p>
+<h1 id="工具"><a href="#工具" class="headerlink" title="工具"></a>工具</h1><h2 id="1-Apollo-分布式配置中心"><a href="#1-Apollo-分布式配置中心" class="headerlink" title="1. Apollo 分布式配置中心"></a>1. <a href="https://github.com/ctripcorp/apollo" target="_blank" rel="noopener">Apollo 分布式配置中心</a></h2><p>携程开发的分布式配置中心。能够集中化管理应用不同环境、不同集群的配置，配置修改后能够实时推送到应用端，并且具备规范的权限、流程治理等特性，适用于微服务配置管理场景。</p>
+<p>已经有很多人在用了很久了，最近使用了几个月，感受很好。</p>
+<h2 id="2-Dragonwell"><a href="#2-Dragonwell" class="headerlink" title="2. Dragonwell"></a>2. <a href="https://github.com/alibaba/dragonwell8" target="_blank" rel="noopener">Dragonwell</a></h2><p>阿里巴巴的免费OpenJDK发行版.</p>
+<ul>
+<li>2019-03, 项目开源，8.0 preview版本 </li>
+<li>2019-07, 8.0.0-GA版本, JWarmUp, JFR, RAS </li>
+<li>2019-09, 8.0.1 版本, ElasticHeap<h1 id="资源"><a href="#资源" class="headerlink" title="资源"></a>资源</h1></li>
+</ul>
+<h2 id="1-《Go语言高级编程》"><a href="#1-《Go语言高级编程》" class="headerlink" title="1. 《Go语言高级编程》"></a>1. <a href="https://github.com/chai2010/advanced-go-programming-book" target="_blank" rel="noopener">《Go语言高级编程》</a></h2><p>《Go语言高级编程》开源图书，涵盖CGO、Go汇编语言、RPC实现、Protobuf插件实现、Web框架实现、分布式系统等高阶主题</p>
 <p>======================<br>Erdong, A Linux user !</p>
 ]]></content>
       <categories>
@@ -4196,28 +4243,6 @@
 <li>今天给这个周更的内容起了个名字，叫攻城狮周刊。“攻城狮” 谐音 “工程师”，计算机从业者基本都是各种工程师，SRE 工程师在这里向大家问好。</li>
 </ul>
 <p>======================<br>由于无法及时收到评论内容，所以关闭评论功能。<br>大家有问题欢迎发邮件到 <a href="mailto:erdong@mail.erdong.site">erdong@mail.erdong.site</a> ，或者 <a href="https://github.com/erdong/erdong.github.io/issues" target="_blank" rel="noopener">https://github.com/erdong/erdong.github.io/issues</a> 提 Issue ，我会及时回复。</p>
-<p>======================<br>Erdong, A Linux user !</p>
-]]></content>
-      <categories>
-        <category>weekly</category>
-      </categories>
-      <tags>
-        <tag>weekly</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>第29周分享</title>
-    <url>/weekly/weekly29.html</url>
-    <content><![CDATA[<p>这里记录过去一周，我看到的值得分享的东西。</p>
-<a id="more"></a>
-
-
-
-<h1 id="工具"><a href="#工具" class="headerlink" title="工具"></a>工具</h1><h2 id="1-DownGit"><a href="#1-DownGit" class="headerlink" title="1. DownGit"></a>1. <a href="https://minhaskamal.github.io/DownGit/#/home" target="_blank" rel="noopener">DownGit</a></h2><p>一个小工具用来在 GitHub 上下载某个文件夹或者文件，还可以创建下载链接给其他人。</p>
-<p>Github中并不提供单个文件夹下载, 每当下载仓库中某个文件夹时,只能克隆整个仓库, 浪费硬盘空间不说,浪费时间不说,每次克隆仓库时候,看到这下下载速度简直不能忍受，使用这个工具就好了。 </p>
-<h2 id="2-阮一峰的免费招聘服务"><a href="#2-阮一峰的免费招聘服务" class="headerlink" title="2. 阮一峰的免费招聘服务"></a>2. <a href="https://github.com/ruanyf/weekly/issues/692" target="_blank" rel="noopener">阮一峰的免费招聘服务</a></h2><p>官方介绍：<br>这个帖子是周刊的免费招聘服务。如果你们公司正在招人，欢迎把招聘信息发在这个帖子里面。请简要描述，岗位名称、工作地点、岗位要求、公司简介、联系方式等等。</p>
-<p>如果希望把信息发到正式的周刊上面，推送到所有读者，请与我联系（Email: <a href="mailto:yifeng.ruan@gmail.com">yifeng.ruan@gmail.com</a>），价格是人民币 250元/条。</p>
-<p>读者可以咨询，但请不要发布与招聘无关的内容，禁止对公司或岗位进行评论或抱怨。如果有意应聘，请直接与发贴人联系。</p>
 <p>======================<br>Erdong, A Linux user !</p>
 ]]></content>
       <categories>
@@ -4291,22 +4316,13 @@
       </tags>
   </entry>
   <entry>
-    <title>攻城狮周刊：第38期</title>
-    <url>/weekly/weekly38.html</url>
+    <title>攻城狮周刊：第42期</title>
+    <url>/weekly/weekly42.html</url>
     <content><![CDATA[<p>这里记录过去一周，我看到的值得分享的东西。</p>
 <a id="more"></a>
 
-<h1 id="新闻"><a href="#新闻" class="headerlink" title="新闻"></a>新闻</h1><h2 id="1-IPv4地址耗尽"><a href="#1-IPv4地址耗尽" class="headerlink" title="1. IPv4地址耗尽"></a>1. <a href="http://cn.chinadaily.com.cn/a/201911/29/WS5de0d9d8a31099ab995eecc7.html" target="_blank" rel="noopener">IPv4地址耗尽</a></h2><p>就在 2019/11/25 UTC+1 15:35 时，一封来自欧洲 RIPE  NCC 的邮件中得到确认：全球的IPv4地址已经彻底耗尽。</p>
-<h1 id="工具"><a href="#工具" class="headerlink" title="工具"></a>工具</h1><h2 id="1-Apollo-分布式配置中心"><a href="#1-Apollo-分布式配置中心" class="headerlink" title="1. Apollo 分布式配置中心"></a>1. <a href="https://github.com/ctripcorp/apollo" target="_blank" rel="noopener">Apollo 分布式配置中心</a></h2><p>携程开发的分布式配置中心。能够集中化管理应用不同环境、不同集群的配置，配置修改后能够实时推送到应用端，并且具备规范的权限、流程治理等特性，适用于微服务配置管理场景。</p>
-<p>已经有很多人在用了很久了，最近使用了几个月，感受很好。</p>
-<h2 id="2-Dragonwell"><a href="#2-Dragonwell" class="headerlink" title="2. Dragonwell"></a>2. <a href="https://github.com/alibaba/dragonwell8" target="_blank" rel="noopener">Dragonwell</a></h2><p>阿里巴巴的免费OpenJDK发行版.</p>
-<ul>
-<li>2019-03, 项目开源，8.0 preview版本 </li>
-<li>2019-07, 8.0.0-GA版本, JWarmUp, JFR, RAS </li>
-<li>2019-09, 8.0.1 版本, ElasticHeap<h1 id="资源"><a href="#资源" class="headerlink" title="资源"></a>资源</h1></li>
-</ul>
-<h2 id="1-《Go语言高级编程》"><a href="#1-《Go语言高级编程》" class="headerlink" title="1. 《Go语言高级编程》"></a>1. <a href="https://github.com/chai2010/advanced-go-programming-book" target="_blank" rel="noopener">《Go语言高级编程》</a></h2><p>《Go语言高级编程》开源图书，涵盖CGO、Go汇编语言、RPC实现、Protobuf插件实现、Web框架实现、分布式系统等高阶主题</p>
-<p>======================<br>Erdong, A Linux user !</p>
+<h1 id="新闻"><a href="#新闻" class="headerlink" title="新闻"></a>新闻</h1><h1 id="资源"><a href="#资源" class="headerlink" title="资源"></a>资源</h1><h2 id="1-chinese-poetry"><a href="#1-chinese-poetry" class="headerlink" title="1. chinese poetry"></a>1. <a href="https://github.com/chinese-poetry/chinese-poetry" target="_blank" rel="noopener">chinese poetry</a></h2><p>中文古诗的一个仓库，据作者介绍，唐宋两朝近一万四千古诗人, 接近5.5万首唐诗加26万宋诗. 两宋时期1564位词人，21050首词。 </p>
+<h1 id="这么全的话用来做深度学习可能不错。"><a href="#这么全的话用来做深度学习可能不错。" class="headerlink" title="这么全的话用来做深度学习可能不错。"></a>这么全的话用来做深度学习可能不错。</h1><p>Erdong, A Linux user !</p>
 ]]></content>
       <categories>
         <category>weekly</category>
@@ -4333,54 +4349,14 @@
       </tags>
   </entry>
   <entry>
-    <title>攻城狮周刊：第42期</title>
-    <url>/weekly/weekly42.html</url>
+    <title>攻城狮周刊：第46期</title>
+    <url>/weekly/weekly46.html</url>
     <content><![CDATA[<p>这里记录过去一周，我看到的值得分享的东西。</p>
 <a id="more"></a>
 
-<h1 id="新闻"><a href="#新闻" class="headerlink" title="新闻"></a>新闻</h1><h1 id="资源"><a href="#资源" class="headerlink" title="资源"></a>资源</h1><h2 id="1-chinese-poetry"><a href="#1-chinese-poetry" class="headerlink" title="1. chinese poetry"></a>1. <a href="https://github.com/chinese-poetry/chinese-poetry" target="_blank" rel="noopener">chinese poetry</a></h2><p>中文古诗的一个仓库，据作者介绍，唐宋两朝近一万四千古诗人, 接近5.5万首唐诗加26万宋诗. 两宋时期1564位词人，21050首词。 </p>
-<h1 id="这么全的话用来做深度学习可能不错。"><a href="#这么全的话用来做深度学习可能不错。" class="headerlink" title="这么全的话用来做深度学习可能不错。"></a>这么全的话用来做深度学习可能不错。</h1><p>Erdong, A Linux user !</p>
-]]></content>
-      <categories>
-        <category>weekly</category>
-      </categories>
-      <tags>
-        <tag>weekly</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>攻城狮周刊：第43期</title>
-    <url>/weekly/weekly43.html</url>
-    <content><![CDATA[<p>这里记录过去一周，我看到的值得分享的东西。</p>
-<a id="more"></a>
-
-
-<h1 id="工具"><a href="#工具" class="headerlink" title="工具"></a>工具</h1><h2 id="1-dockerfile-lint"><a href="#1-dockerfile-lint" class="headerlink" title="1. dockerfile_lint"></a>1. <a href="https://github.com/projectatomic/dockerfile_lint" target="_blank" rel="noopener">dockerfile_lint</a></h2><p>截止到2019年12月底，社区比较出色的dockerfile扫描工具有：hadolint、dockerlint和红帽推出的dockerfile_lint。总体上来说这三个工具其实都不完善，基本上处于alpha之前的状态。</p>
-<p>hadolint是目前为止成熟最高的一个工具，一共支持60多条的自带规则。而且hadolint还支持对Run命令中带的shell命令进行审计。这一点功能是目前其他竞品不具备的。不过hadolint使用Haskell语言编写，且目前不支持规则文件导入。<br>如果有新的规则需要编程实现。<br>dockerlint 使用coffee_script语言编写，自带规则数量小于hadolint；也不支持规则文件导入功能。<br>dockerfile_lint 红帽发布，使用node.js编写的一个dockerfile扫描工具。支持的规则数量小于hadolint，但是支持通过yaml文件方式导入用户自定义规则。</p>
-<p>从以上分析来看，我认为dockerfile_lint其实更具潜力，因为dockerfile扫描规则其实是不固定的。每个用户都可以有自己的dockerfile扫描规范，所以通过脚本添加规则其实是一种刚需。 hadolint和dockerlint恰恰不具备这个能力，所以我最终选择了dockerfile_lint作为扫描工具。</p>
-<p>======================<br>Erdong, A Linux user !</p>
-]]></content>
-      <categories>
-        <category>weekly</category>
-      </categories>
-      <tags>
-        <tag>weekly</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>攻城狮周刊：第44期</title>
-    <url>/weekly/weekly44.html</url>
-    <content><![CDATA[<p>这里记录过去一周，我看到的值得分享的东西。</p>
-<a id="more"></a>
-
-
-<h1 id="新闻"><a href="#新闻" class="headerlink" title="新闻"></a>新闻</h1><h2 id="1-CentOS-8-1-1911"><a href="#1-CentOS-8-1-1911" class="headerlink" title="1. CentOS 8.1 1911"></a>1. <a href="https://www.oschina.net/news/112846/centos-8-1-1911-released" target="_blank" rel="noopener">CentOS 8.1 1911</a></h2><p>CentOS 8.1 版本已经发布了。</p>
-<h1 id="教程"><a href="#教程" class="headerlink" title="教程"></a>教程</h1><h2 id="1-leetcode-前-300-题"><a href="#1-leetcode-前-300-题" class="headerlink" title="1. leetcode 前 300 题"></a>1. <a href="https://leetcode.wang" target="_blank" rel="noopener">leetcode 前 300 题</a></h2><p>Leetcode 前 300 题，作者 wind-liang 对每道都进行了详细通俗的分析，并且提供多种思路解法.</p>
-<h2 id="2-Go-语言示例教程"><a href="#2-Go-语言示例教程" class="headerlink" title="2. Go 语言示例教程"></a>2. <a href="https://github.com/inancgumus/learngo" target="_blank" rel="noopener">Go 语言示例教程</a></h2><p>该仓库是一个 Go 语言初学者教程的示例库，收集了1000多个示例、练习和问题。</p>
-<h1 id="工具"><a href="#工具" class="headerlink" title="工具"></a>工具</h1><h2 id="1-spug"><a href="#1-spug" class="headerlink" title="1. spug"></a>1. <a href="https://github.com/openspug/spug" target="_blank" rel="noopener">spug</a></h2><p>开源运维平台：面向中小型企业设计的轻量级无Agent的自动化运维平台，整合了主机管理、主机批量执行、主机在线终端、应用发布部署、在线任务计划、配置中心、监控、报警等一系列功能。 <a href="https://spug.dev" target="_blank" rel="noopener">https://spug.dev</a></p>
-<h2 id="2-NGINX-Config"><a href="#2-NGINX-Config" class="headerlink" title="2. NGINX Config"></a>2. <a href="https://www.digitalocean.com/community/tools/nginx" target="_blank" rel="noopener">NGINX Config</a></h2><p>Nginx 的图形配置界面，点几下鼠标，自动生成配置文件，可以上传到服务器。</p>
-<h1 id="资源"><a href="#资源" class="headerlink" title="资源"></a>资源</h1><h2 id="1-阿里云云原生应用"><a href="#1-阿里云云原生应用" class="headerlink" title="1. 阿里云云原生应用"></a>1. <a href="https://github.com/cloudnativeapp" target="_blank" rel="noopener">阿里云云原生应用</a></h2><p>该组织是阿里云开发者社区维护的，有部分内容由阿里云提供。有一些参考价值。</p>
-<h1 id="杂谈"><a href="#杂谈" class="headerlink" title="杂谈"></a>杂谈</h1><h2 id="1-开源程序员主题相声"><a href="#1-开源程序员主题相声" class="headerlink" title="1. 开源程序员主题相声"></a>1. <a href="https://github.com/koolob/programmer-crosstalk" target="_blank" rel="noopener">开源程序员主题相声</a></h2><p>有点意思，无聊的时候可以看看，或者表演节目的时候可以用上。</p>
+<h1 id="工具"><a href="#工具" class="headerlink" title="工具"></a>工具</h1><h2 id="1-windows-exporter"><a href="#1-windows-exporter" class="headerlink" title="1. windows_exporter"></a>1. <a href="https://github.com/prometheus-community/windows_exporter" target="_blank" rel="noopener">windows_exporter</a></h2><p>在 Windows 上运行的采集系统上基础信息提供给 Prometheus 的 exporter ，还没有使用过，在合适的场景感受一下。</p>
+<h2 id="2-pap-er"><a href="#2-pap-er" class="headerlink" title="2.pap.er"></a>2.<a href="https://paper.meiyuan.in" target="_blank" rel="noopener">pap.er</a></h2><p>pap.er 是专为 Mac 设计的壁纸应用，可以一键设置图片为壁纸，有 2K 和 4K 壁纸可供选择。</p>
+<h1 id="资源"><a href="#资源" class="headerlink" title="资源"></a>资源</h1><h2 id="1-Kubernetes-工具"><a href="#1-Kubernetes-工具" class="headerlink" title="1. Kubernetes 工具"></a>1. <a href="https://zhuanlan.zhihu.com/p/88340421" target="_blank" rel="noopener">Kubernetes 工具</a></h2><p>50 多种 Kubernetes 集群部署、监控、安全及测试等相关工具，在知乎发表的文章。</p>
 <p>======================<br>由于无法及时收到评论内容，所以关闭评论功能。<br>大家有问题欢迎发邮件到 <a href="mailto:erdong@mail.erdong.site">erdong@mail.erdong.site</a> ，或者 <a href="https://github.com/erdong/erdong.github.io/issues" target="_blank" rel="noopener">https://github.com/erdong/erdong.github.io/issues</a> 提 Issue ，我会及时回复&gt;。<br>======================<br>Erdong, A Linux user !</p>
 ]]></content>
       <categories>
@@ -4414,15 +4390,39 @@
       </tags>
   </entry>
   <entry>
-    <title>攻城狮周刊：第46期</title>
-    <url>/weekly/weekly46.html</url>
+    <title>攻城狮周刊：第44期</title>
+    <url>/weekly/weekly44.html</url>
     <content><![CDATA[<p>这里记录过去一周，我看到的值得分享的东西。</p>
 <a id="more"></a>
 
-<h1 id="工具"><a href="#工具" class="headerlink" title="工具"></a>工具</h1><h2 id="1-windows-exporter"><a href="#1-windows-exporter" class="headerlink" title="1. windows_exporter"></a>1. <a href="https://github.com/prometheus-community/windows_exporter" target="_blank" rel="noopener">windows_exporter</a></h2><p>在 Windows 上运行的采集系统上基础信息提供给 Prometheus 的 exporter ，还没有使用过，在合适的场景感受一下。</p>
-<h2 id="2-pap-er"><a href="#2-pap-er" class="headerlink" title="2.pap.er"></a>2.<a href="https://paper.meiyuan.in" target="_blank" rel="noopener">pap.er</a></h2><p>pap.er 是专为 Mac 设计的壁纸应用，可以一键设置图片为壁纸，有 2K 和 4K 壁纸可供选择。</p>
-<h1 id="资源"><a href="#资源" class="headerlink" title="资源"></a>资源</h1><h2 id="1-Kubernetes-工具"><a href="#1-Kubernetes-工具" class="headerlink" title="1. Kubernetes 工具"></a>1. <a href="https://zhuanlan.zhihu.com/p/88340421" target="_blank" rel="noopener">Kubernetes 工具</a></h2><p>50 多种 Kubernetes 集群部署、监控、安全及测试等相关工具，在知乎发表的文章。</p>
+
+<h1 id="新闻"><a href="#新闻" class="headerlink" title="新闻"></a>新闻</h1><h2 id="1-CentOS-8-1-1911"><a href="#1-CentOS-8-1-1911" class="headerlink" title="1. CentOS 8.1 1911"></a>1. <a href="https://www.oschina.net/news/112846/centos-8-1-1911-released" target="_blank" rel="noopener">CentOS 8.1 1911</a></h2><p>CentOS 8.1 版本已经发布了。</p>
+<h1 id="教程"><a href="#教程" class="headerlink" title="教程"></a>教程</h1><h2 id="1-leetcode-前-300-题"><a href="#1-leetcode-前-300-题" class="headerlink" title="1. leetcode 前 300 题"></a>1. <a href="https://leetcode.wang" target="_blank" rel="noopener">leetcode 前 300 题</a></h2><p>Leetcode 前 300 题，作者 wind-liang 对每道都进行了详细通俗的分析，并且提供多种思路解法.</p>
+<h2 id="2-Go-语言示例教程"><a href="#2-Go-语言示例教程" class="headerlink" title="2. Go 语言示例教程"></a>2. <a href="https://github.com/inancgumus/learngo" target="_blank" rel="noopener">Go 语言示例教程</a></h2><p>该仓库是一个 Go 语言初学者教程的示例库，收集了1000多个示例、练习和问题。</p>
+<h1 id="工具"><a href="#工具" class="headerlink" title="工具"></a>工具</h1><h2 id="1-spug"><a href="#1-spug" class="headerlink" title="1. spug"></a>1. <a href="https://github.com/openspug/spug" target="_blank" rel="noopener">spug</a></h2><p>开源运维平台：面向中小型企业设计的轻量级无Agent的自动化运维平台，整合了主机管理、主机批量执行、主机在线终端、应用发布部署、在线任务计划、配置中心、监控、报警等一系列功能。 <a href="https://spug.dev" target="_blank" rel="noopener">https://spug.dev</a></p>
+<h2 id="2-NGINX-Config"><a href="#2-NGINX-Config" class="headerlink" title="2. NGINX Config"></a>2. <a href="https://www.digitalocean.com/community/tools/nginx" target="_blank" rel="noopener">NGINX Config</a></h2><p>Nginx 的图形配置界面，点几下鼠标，自动生成配置文件，可以上传到服务器。</p>
+<h1 id="资源"><a href="#资源" class="headerlink" title="资源"></a>资源</h1><h2 id="1-阿里云云原生应用"><a href="#1-阿里云云原生应用" class="headerlink" title="1. 阿里云云原生应用"></a>1. <a href="https://github.com/cloudnativeapp" target="_blank" rel="noopener">阿里云云原生应用</a></h2><p>该组织是阿里云开发者社区维护的，有部分内容由阿里云提供。有一些参考价值。</p>
+<h1 id="杂谈"><a href="#杂谈" class="headerlink" title="杂谈"></a>杂谈</h1><h2 id="1-开源程序员主题相声"><a href="#1-开源程序员主题相声" class="headerlink" title="1. 开源程序员主题相声"></a>1. <a href="https://github.com/koolob/programmer-crosstalk" target="_blank" rel="noopener">开源程序员主题相声</a></h2><p>有点意思，无聊的时候可以看看，或者表演节目的时候可以用上。</p>
 <p>======================<br>由于无法及时收到评论内容，所以关闭评论功能。<br>大家有问题欢迎发邮件到 <a href="mailto:erdong@mail.erdong.site">erdong@mail.erdong.site</a> ，或者 <a href="https://github.com/erdong/erdong.github.io/issues" target="_blank" rel="noopener">https://github.com/erdong/erdong.github.io/issues</a> 提 Issue ，我会及时回复&gt;。<br>======================<br>Erdong, A Linux user !</p>
+]]></content>
+      <categories>
+        <category>weekly</category>
+      </categories>
+      <tags>
+        <tag>weekly</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>攻城狮周刊：第43期</title>
+    <url>/weekly/weekly43.html</url>
+    <content><![CDATA[<p>这里记录过去一周，我看到的值得分享的东西。</p>
+<a id="more"></a>
+
+
+<h1 id="工具"><a href="#工具" class="headerlink" title="工具"></a>工具</h1><h2 id="1-dockerfile-lint"><a href="#1-dockerfile-lint" class="headerlink" title="1. dockerfile_lint"></a>1. <a href="https://github.com/projectatomic/dockerfile_lint" target="_blank" rel="noopener">dockerfile_lint</a></h2><p>截止到2019年12月底，社区比较出色的dockerfile扫描工具有：hadolint、dockerlint和红帽推出的dockerfile_lint。总体上来说这三个工具其实都不完善，基本上处于alpha之前的状态。</p>
+<p>hadolint是目前为止成熟最高的一个工具，一共支持60多条的自带规则。而且hadolint还支持对Run命令中带的shell命令进行审计。这一点功能是目前其他竞品不具备的。不过hadolint使用Haskell语言编写，且目前不支持规则文件导入。<br>如果有新的规则需要编程实现。<br>dockerlint 使用coffee_script语言编写，自带规则数量小于hadolint；也不支持规则文件导入功能。<br>dockerfile_lint 红帽发布，使用node.js编写的一个dockerfile扫描工具。支持的规则数量小于hadolint，但是支持通过yaml文件方式导入用户自定义规则。</p>
+<p>从以上分析来看，我认为dockerfile_lint其实更具潜力，因为dockerfile扫描规则其实是不固定的。每个用户都可以有自己的dockerfile扫描规范，所以通过脚本添加规则其实是一种刚需。 hadolint和dockerlint恰恰不具备这个能力，所以我最终选择了dockerfile_lint作为扫描工具。</p>
+<p>======================<br>Erdong, A Linux user !</p>
 ]]></content>
       <categories>
         <category>weekly</category>
@@ -4462,6 +4462,26 @@
       </tags>
   </entry>
   <entry>
+    <title>第28周分享</title>
+    <url>/weekly/weekly28.html</url>
+    <content><![CDATA[<p>这里记录过去一周，我看到的值得分享的东西。</p>
+<a id="more"></a>
+
+
+
+<h1 id="新闻"><a href="#新闻" class="headerlink" title="新闻"></a>新闻</h1><h2 id="1-GitHub官方中文文档"><a href="#1-GitHub官方中文文档" class="headerlink" title="1. GitHub官方中文文档"></a>1. <a href="https://help.github.com/cn" target="_blank" rel="noopener">GitHub官方中文文档</a></h2><p>GitHub 正式推出帮助文档中文版，很多不擅长英语的开发者以后可以直接看中文了，省去了网上很多人的二次转发。这也是 GitHub 继英文和日文后支持的第三种语言。 </p>
+<h1 id="工具"><a href="#工具" class="headerlink" title="工具"></a>工具</h1><h2 id="1-cortex"><a href="#1-cortex" class="headerlink" title="1. cortex"></a>1. <a href="https://github.com/cortexproject/cortex" target="_blank" rel="noopener">cortex</a></h2><p>A multitenant, horizontally scalable Prometheus as a Service <a href="https://github.com/cortexproject/cortex" target="_blank" rel="noopener">https://github.com/cortexproject/cortex</a></p>
+<h1 id="资源"><a href="#资源" class="headerlink" title="资源"></a>资源</h1><h2 id="1-如何超过大多数人"><a href="#1-如何超过大多数人" class="headerlink" title="1. 如何超过大多数人"></a>1. <a href="https://coolshell.cn/articles/19464.html" target="_blank" rel="noopener">如何超过大多数人</a></h2><p>左耳朵耗子 陈皓 最近写的一篇文章，很值得阅读，而且值得多次阅读。</p>
+<p>======================<br>Erdong, A Linux user !</p>
+]]></content>
+      <categories>
+        <category>weekly</category>
+      </categories>
+      <tags>
+        <tag>weekly</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>第27周分享</title>
     <url>/weekly/weekly27.html</url>
     <content><![CDATA[<p>这里记录过去一周，我看到的值得分享的东西。</p>
@@ -4476,26 +4496,6 @@
 <p>他们提供了一个页面来进行体验，地址如下：</p>
 <p><a href="http://77.68.80.27/royale/index.html#" target="_blank" rel="noopener">http://77.68.80.27/royale/index.html#</a></p>
 <h1 id="资源"><a href="#资源" class="headerlink" title="资源"></a>资源</h1><h2 id="1-高性能计算-HPC-技术、方案和行业全面解析"><a href="#1-高性能计算-HPC-技术、方案和行业全面解析" class="headerlink" title="1. 高性能计算(HPC)技术、方案和行业全面解析"></a>1. <a href="http://weidian.com/s/343499232?wfr=c" target="_blank" rel="noopener">高性能计算(HPC)技术、方案和行业全面解析</a></h2><p>“架构师技术联盟”微信公众号整理了 HPC 行业的一些基础架构以及存储的内容，很适合出入 HPC 的人员学习了解 HPC 。该文档需要付费才能获取。</p>
-<p>======================<br>Erdong, A Linux user !</p>
-]]></content>
-      <categories>
-        <category>weekly</category>
-      </categories>
-      <tags>
-        <tag>weekly</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>第28周分享</title>
-    <url>/weekly/weekly28.html</url>
-    <content><![CDATA[<p>这里记录过去一周，我看到的值得分享的东西。</p>
-<a id="more"></a>
-
-
-
-<h1 id="新闻"><a href="#新闻" class="headerlink" title="新闻"></a>新闻</h1><h2 id="1-GitHub官方中文文档"><a href="#1-GitHub官方中文文档" class="headerlink" title="1. GitHub官方中文文档"></a>1. <a href="https://help.github.com/cn" target="_blank" rel="noopener">GitHub官方中文文档</a></h2><p>GitHub 正式推出帮助文档中文版，很多不擅长英语的开发者以后可以直接看中文了，省去了网上很多人的二次转发。这也是 GitHub 继英文和日文后支持的第三种语言。 </p>
-<h1 id="工具"><a href="#工具" class="headerlink" title="工具"></a>工具</h1><h2 id="1-cortex"><a href="#1-cortex" class="headerlink" title="1. cortex"></a>1. <a href="https://github.com/cortexproject/cortex" target="_blank" rel="noopener">cortex</a></h2><p>A multitenant, horizontally scalable Prometheus as a Service <a href="https://github.com/cortexproject/cortex" target="_blank" rel="noopener">https://github.com/cortexproject/cortex</a></p>
-<h1 id="资源"><a href="#资源" class="headerlink" title="资源"></a>资源</h1><h2 id="1-如何超过大多数人"><a href="#1-如何超过大多数人" class="headerlink" title="1. 如何超过大多数人"></a>1. <a href="https://coolshell.cn/articles/19464.html" target="_blank" rel="noopener">如何超过大多数人</a></h2><p>左耳朵耗子 陈皓 最近写的一篇文章，很值得阅读，而且值得多次阅读。</p>
 <p>======================<br>Erdong, A Linux user !</p>
 ]]></content>
       <categories>
