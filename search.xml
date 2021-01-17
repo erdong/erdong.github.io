@@ -109,6 +109,31 @@
       </tags>
   </entry>
   <entry>
+    <title>【翻译】Prometheus 2.11.0 新特性</title>
+    <url>/Prometheus/New-Features/New-Features-in-Prometheus-2-11-0.html</url>
+    <content><![CDATA[<p>Prometheus <a href="https://github.com/prometheus/prometheus/releases/tag/v2.11.0" target="_blank" rel="noopener">2.11.0</a> 现在(2019.07.9)已经发布，在5月的 <a href="http://erdong.site/Prometheus/New-Features/New-Features-in-Prometheus-2-10-0.html">2.10.0</a> 之后又进行了一些修正和改进。</p>
+<a id="more"></a>
+
+<p>从TSDB开始，记录逻辑有了更多的性能改进。特别需要注意的是，如果您有一个像 <code>a|b</code> 这样的正则表达式(例如 Grafana 为选择多个变量的表达式)，那么它现在被评估为查找而不是正则表达式扫描，因此 <code>x=~&quot;a&quot;</code> 现在和 <code>x=&quot;a&quot;</code>一样高效。</p>
+<p>对于 WAL 的 “unknown series references” 现在已经完全修复。每次头部压缩时都会启动一个新的段，这对于在低容量实例上减少磁盘空间很有用，对于现在应该完全修复的WAL“未知系列引用”，在每次头部压缩时都会启动一个新的段，这对于在低卷实例上减少磁盘空间很有用，并且还有 还有一个选择进入 <code>--storage.tsdb.wal-compression</code>的标志来压缩 WAL 。</p>
+<p>在 Prometheus 中，PromQL和远程写都有性能改进。现在可以像在 <code>prometheus.yml</code> 中一样，将 globs 用于单元测试的规则文件。还有一个配置选项可以通过 Alertmanager 的 v2 API 接口来获取。</p>
+<p>还有许多改进、bug修复和其他更改，可以查看 <a href="https://github.com/prometheus/prometheus/releases/tag/v2.11.0" target="_blank" rel="noopener">release notes</a> 来获取更多的信息。</p>
+<h1 id="原文链接"><a href="#原文链接" class="headerlink" title="原文链接"></a>原文链接</h1><ul>
+<li><a href="https://www.robustperception.io/new-features-in-prometheus-2-11-0" target="_blank" rel="noopener">https://www.robustperception.io/new-features-in-prometheus-2-11-0</a> ， By Brian Brazil</li>
+</ul>
+<p>======================<br>Erdong, A Linux user !</p>
+]]></content>
+      <categories>
+        <category>Prometheus</category>
+        <category>New-Features</category>
+      </categories>
+      <tags>
+        <tag>Prometheus</tag>
+        <tag>Features</tag>
+        <tag>release</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>【翻译】Prometheus 2.12.0 新特性</title>
     <url>/Prometheus/New-Features/New-Features-in-Prometheus-2-12-0.html</url>
     <content><![CDATA[<p>Prometheus <a href="https://github.com/prometheus/prometheus/releases/tag/v2.12.0" target="_blank" rel="noopener">2.12.0</a> 现在(2019.08.17)已经发布，在上个月的 <a href="http://erdong.site/Prometheus/New-Features/New-Features-in-Prometheus-2-11-0.html">2.11.0</a> 之后又进行了一些修正和改进。</p>
@@ -132,18 +157,50 @@
       </tags>
   </entry>
   <entry>
-    <title>【翻译】Prometheus 2.11.0 新特性</title>
-    <url>/Prometheus/New-Features/New-Features-in-Prometheus-2-11-0.html</url>
-    <content><![CDATA[<p>Prometheus <a href="https://github.com/prometheus/prometheus/releases/tag/v2.11.0" target="_blank" rel="noopener">2.11.0</a> 现在(2019.07.9)已经发布，在5月的 <a href="http://erdong.site/Prometheus/New-Features/New-Features-in-Prometheus-2-10-0.html">2.10.0</a> 之后又进行了一些修正和改进。</p>
+    <title>Prometheus 2.13.0 新特性</title>
+    <url>/Prometheus/New-Features/New-Features-in-Prometheus-2-13-0.html</url>
+    <content><![CDATA[<p>Prometheus <a href="https://github.com/prometheus/prometheus/releases/tag/v2.13.0" target="_blank" rel="noopener">2.13.0</a> 现在(2019.10.04)已经发布，在上个月的 <a href="http://erdong.site/Prometheus/New-Features/New-Features-in-Prometheus-2-12-0.html">2.12.0</a> 之后又进行了一些修正和改进。</p>
 <a id="more"></a>
-
-<p>从TSDB开始，记录逻辑有了更多的性能改进。特别需要注意的是，如果您有一个像 <code>a|b</code> 这样的正则表达式(例如 Grafana 为选择多个变量的表达式)，那么它现在被评估为查找而不是正则表达式扫描，因此 <code>x=~&quot;a&quot;</code> 现在和 <code>x=&quot;a&quot;</code>一样高效。</p>
-<p>对于 WAL 的 “unknown series references” 现在已经完全修复。每次头部压缩时都会启动一个新的段，这对于在低容量实例上减少磁盘空间很有用，对于现在应该完全修复的WAL“未知系列引用”，在每次头部压缩时都会启动一个新的段，这对于在低卷实例上减少磁盘空间很有用，并且还有 还有一个选择进入 <code>--storage.tsdb.wal-compression</code>的标志来压缩 WAL 。</p>
-<p>在 Prometheus 中，PromQL和远程写都有性能改进。现在可以像在 <code>prometheus.yml</code> 中一样，将 globs 用于单元测试的规则文件。还有一个配置选项可以通过 Alertmanager 的 v2 API 接口来获取。</p>
-<p>还有许多改进、bug修复和其他更改，可以查看 <a href="https://github.com/prometheus/prometheus/releases/tag/v2.11.0" target="_blank" rel="noopener">release notes</a> 来获取更多的信息。</p>
-<h1 id="原文链接"><a href="#原文链接" class="headerlink" title="原文链接"></a>原文链接</h1><ul>
-<li><a href="https://www.robustperception.io/new-features-in-prometheus-2-11-0" target="_blank" rel="noopener">https://www.robustperception.io/new-features-in-prometheus-2-11-0</a> ， By Brian Brazil</li>
+<p>这个版本的变化相对较小。tsdb 工具已经包含在这个版本中了，但是请注意，它很可能会在2.14.0的时候被包含到 promtool 中。</p>
+<p>counter 类型的 <code>prometheus_sd_configs_failed_total</code> 已经被 gauge 类型的 <code>prometheus_sd_failed_configs</code> 替换。</p>
+<p>远程读写的性能有了改进。远程读取的改进主要针对使用 Thanos 的用户，因为它们允许提取整个块而不是一个样本一个样本。远程写还为其队列管理器提供了一些新的指标。</p>
+<p>表达式浏览器现在将显示它从查询API接收到的警告。Promtool指标linting有一些新的警告，并改进了坏规则的错误消息。</p>
+<p>有一个安全更新，修复了一个 Stored DOM XSS 的带有历史查询的漏洞，CVE 编号是 CVE-2019-10215 。</p>
+<p>针对 Kubernetes ，新增了一个节点地址类型用于服务发现方面。</p>
+<p>详细的发行注记可以查看 <a href="https://github.com/prometheus/prometheus/releases/tag/v2.13.0" target="_blank" rel="noopener">release notes</a> 。</p>
+<h1 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h1><ul>
+<li><a href="https://www.robustperception.io/new-features-in-prometheus-2-13-0" target="_blank" rel="noopener">https://www.robustperception.io/new-features-in-prometheus-2-13-0</a> ， By Brian Brazil</li>
+<li><a href="https://github.com/prometheus/prometheus/releases/tag/v2.13.0" target="_blank" rel="noopener">https://github.com/prometheus/prometheus/releases/tag/v2.13.0</a> ，By prombot of GitHub </li>
 </ul>
+<p>======================<br>由于无法及时收到评论内容，所以关闭评论功能。<br>大家有问题欢迎发邮件到 <a href="mailto:erdong@mail.erdong.site">erdong@mail.erdong.site</a> ，或者 <a href="https://github.com/erdong/erdong.github.io/issues" target="_blank" rel="noopener">https://github.com/erdong/erdong.github.io/issues</a> 提 Issue ，我会及时回复。</p>
+<p>======================<br>Erdong, A Linux user !</p>
+]]></content>
+      <categories>
+        <category>Prometheus</category>
+        <category>New-Features</category>
+      </categories>
+      <tags>
+        <tag>Prometheus</tag>
+        <tag>Features</tag>
+        <tag>release</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Prometheus 2.14.0 新特性</title>
+    <url>/Prometheus/New-Features/New-Features-in-Prometheus-2-14-0.html</url>
+    <content><![CDATA[<p>Prometheus <a href="https://github.com/prometheus/prometheus/releases/tag/v2.14.0" target="_blank" rel="noopener">2.14.0</a> 现在(2019.11.11)已经发布，在上个月的 <a href="http://erdong.site/Prometheus/New-Features/New-Features-in-Prometheus-2-13-0.html">2.13.0</a> 之后又进行了一些修正和改进。</p>
+<a id="more"></a>
+<p>这次最大的新功能是基于 React 的新 UI，与现有 UI 大体相同。该 UI 还在持续开发中。现有的 UI 还获得了 head cardinality 统计信息。这次的更新新增了按状态进行的警报过滤。</p>
+<p><img src="https://www.robustperception.io/wp-content/uploads/2019/11/Screenshot_2019-11-11_16-19-27.png" alt="图片来自 robustperception.io"></p>
+<p>修复了压缩后的远程写延迟，在无法发送样本时避免重新分片等多个 BUG。</p>
+<p>WAL 在启动加载时进行了优化。</p>
+<p>新增了 <code>/api/vi/status/runtimeinfo</code> 和 <code>/api/v1/status/buildinfo</code> 两个接口给 React UI 使用。</p>
+<p>详细的发行注记可以查看 <a href="https://github.com/prometheus/prometheus/releases/tag/v2.14.0" target="_blank" rel="noopener">release notes</a> 。</p>
+<h1 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h1><ul>
+<li><a href="https://www.robustperception.io/new-features-in-prometheus-2-14-0" target="_blank" rel="noopener">https://www.robustperception.io/new-features-in-prometheus-2-14-0</a> ， By Brian Brazil</li>
+<li><a href="https://github.com/prometheus/prometheus/releases/tag/v2.14.0" target="_blank" rel="noopener">https://github.com/prometheus/prometheus/releases/tag/v2.14.0</a> ，By prombot of GitHub </li>
+</ul>
+<p>======================<br>由于无法及时收到评论内容，所以关闭评论功能。<br>大家有问题欢迎发邮件到 <a href="mailto:erdong@mail.erdong.site">erdong@mail.erdong.site</a> ，或者 <a href="https://github.com/erdong/erdong.github.io/issues" target="_blank" rel="noopener">https://github.com/erdong/erdong.github.io/issues</a> 提 Issue ，我会及时回复。</p>
 <p>======================<br>Erdong, A Linux user !</p>
 ]]></content>
       <categories>
@@ -279,88 +336,6 @@
       </tags>
   </entry>
   <entry>
-    <title>【翻译】Prometheus 2.2.0 新特性</title>
-    <url>/Prometheus/New-Features/New-Features-in-Prometheus-2-2-0.html</url>
-    <content><![CDATA[<p>Prometheus <a href="https://github.com/prometheus/prometheus/releases/tag/v2.2.0" target="_blank" rel="noopener">2.2.0</a> 现在(2018.3.12)已经发布，在 1 月份的 <a href="http://erdong.site/Prometheus/New-Features/New-Features-in-Prometheus-2-1-0.html">2.1.0</a> 之后又进行了一些修正和改进。</p>
-<a id="more"></a>
-
-<p>这个版本的存储格式发生了变化，所以一旦升级到2.2.0，就不可能降级回去。由于 2.2.0 的存储中有 BUG ，不建议继续使用该版本。</p>
-<p>有各种各样的改进可以简化管理。警报状态页面可以显示注释，更好的规则格式，运行时页面包含更多信息和 flag，dropped target 和 dropped alertmanager 也可以从API中获得。</p>
-<p>本次对联邦和服务发现的性能做了提升。无记名令牌中的更改不再需要重新加载配置文件。在2.1.0中添加的prometheus_sd_file_timestamp metric 现在有了改进的名称 prometheus_sd_file_mtime_seconds 。Azure SD中添加了元数据。</p>
-<p>这次还有很多的提升、bug fix 和其他的改变，可以查看 <a href="https://github.com/prometheus/prometheus/releases/tag/v2.2.0" target="_blank" rel="noopener">release notes</a> 来获取更多的信息</p>
-<h1 id="原文链接"><a href="#原文链接" class="headerlink" title="原文链接"></a>原文链接</h1><ul>
-<li><a href="https://www.robustperception.io/new-features-in-prometheus-2-2-0" target="_blank" rel="noopener">https://www.robustperception.io/new-features-in-prometheus-2-2-0</a> ， By Brian Brazil</li>
-</ul>
-<p>======================<br>Erdong, A Linux user !</p>
-]]></content>
-      <categories>
-        <category>Prometheus</category>
-        <category>New-Features</category>
-      </categories>
-      <tags>
-        <tag>Prometheus</tag>
-        <tag>Features</tag>
-        <tag>release</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Prometheus 2.14.0 新特性</title>
-    <url>/Prometheus/New-Features/New-Features-in-Prometheus-2-14-0.html</url>
-    <content><![CDATA[<p>Prometheus <a href="https://github.com/prometheus/prometheus/releases/tag/v2.14.0" target="_blank" rel="noopener">2.14.0</a> 现在(2019.11.11)已经发布，在上个月的 <a href="http://erdong.site/Prometheus/New-Features/New-Features-in-Prometheus-2-13-0.html">2.13.0</a> 之后又进行了一些修正和改进。</p>
-<a id="more"></a>
-<p>这次最大的新功能是基于 React 的新 UI，与现有 UI 大体相同。该 UI 还在持续开发中。现有的 UI 还获得了 head cardinality 统计信息。这次的更新新增了按状态进行的警报过滤。</p>
-<p><img src="https://www.robustperception.io/wp-content/uploads/2019/11/Screenshot_2019-11-11_16-19-27.png" alt="图片来自 robustperception.io"></p>
-<p>修复了压缩后的远程写延迟，在无法发送样本时避免重新分片等多个 BUG。</p>
-<p>WAL 在启动加载时进行了优化。</p>
-<p>新增了 <code>/api/vi/status/runtimeinfo</code> 和 <code>/api/v1/status/buildinfo</code> 两个接口给 React UI 使用。</p>
-<p>详细的发行注记可以查看 <a href="https://github.com/prometheus/prometheus/releases/tag/v2.14.0" target="_blank" rel="noopener">release notes</a> 。</p>
-<h1 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h1><ul>
-<li><a href="https://www.robustperception.io/new-features-in-prometheus-2-14-0" target="_blank" rel="noopener">https://www.robustperception.io/new-features-in-prometheus-2-14-0</a> ， By Brian Brazil</li>
-<li><a href="https://github.com/prometheus/prometheus/releases/tag/v2.14.0" target="_blank" rel="noopener">https://github.com/prometheus/prometheus/releases/tag/v2.14.0</a> ，By prombot of GitHub </li>
-</ul>
-<p>======================<br>由于无法及时收到评论内容，所以关闭评论功能。<br>大家有问题欢迎发邮件到 <a href="mailto:erdong@mail.erdong.site">erdong@mail.erdong.site</a> ，或者 <a href="https://github.com/erdong/erdong.github.io/issues" target="_blank" rel="noopener">https://github.com/erdong/erdong.github.io/issues</a> 提 Issue ，我会及时回复。</p>
-<p>======================<br>Erdong, A Linux user !</p>
-]]></content>
-      <categories>
-        <category>Prometheus</category>
-        <category>New-Features</category>
-      </categories>
-      <tags>
-        <tag>Prometheus</tag>
-        <tag>Features</tag>
-        <tag>release</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Prometheus 2.13.0 新特性</title>
-    <url>/Prometheus/New-Features/New-Features-in-Prometheus-2-13-0.html</url>
-    <content><![CDATA[<p>Prometheus <a href="https://github.com/prometheus/prometheus/releases/tag/v2.13.0" target="_blank" rel="noopener">2.13.0</a> 现在(2019.10.04)已经发布，在上个月的 <a href="http://erdong.site/Prometheus/New-Features/New-Features-in-Prometheus-2-12-0.html">2.12.0</a> 之后又进行了一些修正和改进。</p>
-<a id="more"></a>
-<p>这个版本的变化相对较小。tsdb 工具已经包含在这个版本中了，但是请注意，它很可能会在2.14.0的时候被包含到 promtool 中。</p>
-<p>counter 类型的 <code>prometheus_sd_configs_failed_total</code> 已经被 gauge 类型的 <code>prometheus_sd_failed_configs</code> 替换。</p>
-<p>远程读写的性能有了改进。远程读取的改进主要针对使用 Thanos 的用户，因为它们允许提取整个块而不是一个样本一个样本。远程写还为其队列管理器提供了一些新的指标。</p>
-<p>表达式浏览器现在将显示它从查询API接收到的警告。Promtool指标linting有一些新的警告，并改进了坏规则的错误消息。</p>
-<p>有一个安全更新，修复了一个 Stored DOM XSS 的带有历史查询的漏洞，CVE 编号是 CVE-2019-10215 。</p>
-<p>针对 Kubernetes ，新增了一个节点地址类型用于服务发现方面。</p>
-<p>详细的发行注记可以查看 <a href="https://github.com/prometheus/prometheus/releases/tag/v2.13.0" target="_blank" rel="noopener">release notes</a> 。</p>
-<h1 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h1><ul>
-<li><a href="https://www.robustperception.io/new-features-in-prometheus-2-13-0" target="_blank" rel="noopener">https://www.robustperception.io/new-features-in-prometheus-2-13-0</a> ， By Brian Brazil</li>
-<li><a href="https://github.com/prometheus/prometheus/releases/tag/v2.13.0" target="_blank" rel="noopener">https://github.com/prometheus/prometheus/releases/tag/v2.13.0</a> ，By prombot of GitHub </li>
-</ul>
-<p>======================<br>由于无法及时收到评论内容，所以关闭评论功能。<br>大家有问题欢迎发邮件到 <a href="mailto:erdong@mail.erdong.site">erdong@mail.erdong.site</a> ，或者 <a href="https://github.com/erdong/erdong.github.io/issues" target="_blank" rel="noopener">https://github.com/erdong/erdong.github.io/issues</a> 提 Issue ，我会及时回复。</p>
-<p>======================<br>Erdong, A Linux user !</p>
-]]></content>
-      <categories>
-        <category>Prometheus</category>
-        <category>New-Features</category>
-      </categories>
-      <tags>
-        <tag>Prometheus</tag>
-        <tag>Features</tag>
-        <tag>release</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Prometheus 2.19.0 新特性</title>
     <url>/Prometheus/New-Features/New-Features-in-Prometheus-2-19-0.html</url>
     <content><![CDATA[<p>Prometheus <a href="https://github.com/prometheus/prometheus/releases/tag/v2.19.0" target="_blank" rel="noopener">2.19.0</a> 现在(2020.06.15)已经发布，在上个月的 <a href="http://erdong.site/Prometheus/New-Features/New-Features-in-Prometheus-2-18-0.html">2.18.0</a> 之后又进行了很多的修复和改进。</p>
@@ -375,6 +350,31 @@
 <h1 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h1><ul>
 <li><a href="https://www.robustperception.io/new-features-in-prometheus-2-19-0" target="_blank" rel="noopener">https://www.robustperception.io/new-features-in-prometheus-2-19-0</a> ， By Brian Brazil</li>
 <li><h1 id="https-github-com-prometheus-prometheus-releases-tag-v2-19-0-，By-prombot-of-GitHub"><a href="#https-github-com-prometheus-prometheus-releases-tag-v2-19-0-，By-prombot-of-GitHub" class="headerlink" title="https://github.com/prometheus/prometheus/releases/tag/v2.19.0 ，By prombot of GitHub"></a><a href="https://github.com/prometheus/prometheus/releases/tag/v2.19.0" target="_blank" rel="noopener">https://github.com/prometheus/prometheus/releases/tag/v2.19.0</a> ，By prombot of GitHub</h1>由于无法及时收到评论内容，所以关闭评论功能。<br>大家有问题欢迎发邮件到 <a href="mailto:erdong@mail.erdong.site">erdong@mail.erdong.site</a> ，或者 <a href="https://github.com/erdong/erdong.github.io/issues" target="_blank" rel="noopener">https://github.com/erdong/erdong.github.io/issues</a> 提 Issue ，我会及时回复。</li>
+</ul>
+<p>======================<br>Erdong, A Linux user !</p>
+]]></content>
+      <categories>
+        <category>Prometheus</category>
+        <category>New-Features</category>
+      </categories>
+      <tags>
+        <tag>Prometheus</tag>
+        <tag>Features</tag>
+        <tag>release</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>【翻译】Prometheus 2.2.0 新特性</title>
+    <url>/Prometheus/New-Features/New-Features-in-Prometheus-2-2-0.html</url>
+    <content><![CDATA[<p>Prometheus <a href="https://github.com/prometheus/prometheus/releases/tag/v2.2.0" target="_blank" rel="noopener">2.2.0</a> 现在(2018.3.12)已经发布，在 1 月份的 <a href="http://erdong.site/Prometheus/New-Features/New-Features-in-Prometheus-2-1-0.html">2.1.0</a> 之后又进行了一些修正和改进。</p>
+<a id="more"></a>
+
+<p>这个版本的存储格式发生了变化，所以一旦升级到2.2.0，就不可能降级回去。由于 2.2.0 的存储中有 BUG ，不建议继续使用该版本。</p>
+<p>有各种各样的改进可以简化管理。警报状态页面可以显示注释，更好的规则格式，运行时页面包含更多信息和 flag，dropped target 和 dropped alertmanager 也可以从API中获得。</p>
+<p>本次对联邦和服务发现的性能做了提升。无记名令牌中的更改不再需要重新加载配置文件。在2.1.0中添加的prometheus_sd_file_timestamp metric 现在有了改进的名称 prometheus_sd_file_mtime_seconds 。Azure SD中添加了元数据。</p>
+<p>这次还有很多的提升、bug fix 和其他的改变，可以查看 <a href="https://github.com/prometheus/prometheus/releases/tag/v2.2.0" target="_blank" rel="noopener">release notes</a> 来获取更多的信息</p>
+<h1 id="原文链接"><a href="#原文链接" class="headerlink" title="原文链接"></a>原文链接</h1><ul>
+<li><a href="https://www.robustperception.io/new-features-in-prometheus-2-2-0" target="_blank" rel="noopener">https://www.robustperception.io/new-features-in-prometheus-2-2-0</a> ， By Brian Brazil</li>
 </ul>
 <p>======================<br>Erdong, A Linux user !</p>
 ]]></content>
@@ -429,6 +429,31 @@
 <p>这次还有很多的提升、bug fix 和其他的改变，可以查看 <a href="https://github.com/prometheus/prometheus/releases/tag/v2.3.0" target="_blank" rel="noopener">release notes</a> 来获取更多的信息。</p>
 <h1 id="原文链接"><a href="#原文链接" class="headerlink" title="原文链接"></a>原文链接</h1><ul>
 <li><a href="https://www.robustperception.io/new-features-in-prometheus-2-3-0" target="_blank" rel="noopener">https://www.robustperception.io/new-features-in-prometheus-2-3-0</a> ， By Brian Brazil</li>
+</ul>
+<p>======================<br>Erdong, A Linux user !</p>
+]]></content>
+      <categories>
+        <category>Prometheus</category>
+        <category>New-Features</category>
+      </categories>
+      <tags>
+        <tag>Prometheus</tag>
+        <tag>Features</tag>
+        <tag>release</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>【翻译】Prometheus 2.4.0 新特性</title>
+    <url>/Prometheus/New-Features/New-Features-in-Prometheus-2-4-0.html</url>
+    <content><![CDATA[<p>Prometheus <a href="https://github.com/prometheus/prometheus/releases/tag/v2.4.0" target="_blank" rel="noopener">2.4.0</a> 现在(2018.9.17)已经发布，在 6 月份的 <a href="http://erdong.site/Prometheus/New-Features/New-Features-in-Prometheus-2-3-0.html">2.3.0</a> 之后又进行了一些修正和改进。</p>
+<a id="more"></a>
+
+<p>第一个较大的变化是，对于警报中的状态，现在跨重启持久化，因此短暂的重启将不再需要挂起警报从头开始。现在，在向 Alertmanager 发送警报时也有了一些限制，因此不再是在每次评估时发送现有警报，而是最多每分钟发送一次，这减少了 Alertmanager 上的负载。</p>
+<p>这次有一个新的 WAL 实现，这意味着升级到2.4.0以后不能降级。有新的 API target 可以访问来自目标的规则、警报和元数据 metric 。</p>
+<p>这次在服务发现方面有一些改进。如果有相同的 SD 配置，它们将只实例化一次，而不是针对它们的每个实例，这将更加有效和有用。此外还有Consul、EC2和GCE的新元数据字段，Azure获得了VMSS支持。</p>
+<p>这次还有很多的提升、bug fix 和其他的改变，可以查看 <a href="https://github.com/prometheus/prometheus/releases/tag/v2.4.0" target="_blank" rel="noopener">release notes</a> 来获取更多的信息。</p>
+<h1 id="原文链接"><a href="#原文链接" class="headerlink" title="原文链接"></a>原文链接</h1><ul>
+<li><a href="https://www.robustperception.io/new-features-in-prometheus-2-4-0" target="_blank" rel="noopener">https://www.robustperception.io/new-features-in-prometheus-2-4-0</a> ， By Brian Brazil</li>
 </ul>
 <p>======================<br>Erdong, A Linux user !</p>
 ]]></content>
@@ -508,31 +533,6 @@
 <p>还有许多改进、bug修复和其他更改，可以查看 <a href="https://github.com/prometheus/prometheus/releases/tag/v2.7.0" target="_blank" rel="noopener">release notes</a> 来获取更多的信息。</p>
 <h1 id="原文链接"><a href="#原文链接" class="headerlink" title="原文链接"></a>原文链接</h1><ul>
 <li><a href="https://www.robustperception.io/new-features-in-prometheus-2-7-0" target="_blank" rel="noopener">https://www.robustperception.io/new-features-in-prometheus-2-7-0</a> ， By Brian Brazil</li>
-</ul>
-<p>======================<br>Erdong, A Linux user !</p>
-]]></content>
-      <categories>
-        <category>Prometheus</category>
-        <category>New-Features</category>
-      </categories>
-      <tags>
-        <tag>Prometheus</tag>
-        <tag>Features</tag>
-        <tag>release</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>【翻译】Prometheus 2.4.0 新特性</title>
-    <url>/Prometheus/New-Features/New-Features-in-Prometheus-2-4-0.html</url>
-    <content><![CDATA[<p>Prometheus <a href="https://github.com/prometheus/prometheus/releases/tag/v2.4.0" target="_blank" rel="noopener">2.4.0</a> 现在(2018.9.17)已经发布，在 6 月份的 <a href="http://erdong.site/Prometheus/New-Features/New-Features-in-Prometheus-2-3-0.html">2.3.0</a> 之后又进行了一些修正和改进。</p>
-<a id="more"></a>
-
-<p>第一个较大的变化是，对于警报中的状态，现在跨重启持久化，因此短暂的重启将不再需要挂起警报从头开始。现在，在向 Alertmanager 发送警报时也有了一些限制，因此不再是在每次评估时发送现有警报，而是最多每分钟发送一次，这减少了 Alertmanager 上的负载。</p>
-<p>这次有一个新的 WAL 实现，这意味着升级到2.4.0以后不能降级。有新的 API target 可以访问来自目标的规则、警报和元数据 metric 。</p>
-<p>这次在服务发现方面有一些改进。如果有相同的 SD 配置，它们将只实例化一次，而不是针对它们的每个实例，这将更加有效和有用。此外还有Consul、EC2和GCE的新元数据字段，Azure获得了VMSS支持。</p>
-<p>这次还有很多的提升、bug fix 和其他的改变，可以查看 <a href="https://github.com/prometheus/prometheus/releases/tag/v2.4.0" target="_blank" rel="noopener">release notes</a> 来获取更多的信息。</p>
-<h1 id="原文链接"><a href="#原文链接" class="headerlink" title="原文链接"></a>原文链接</h1><ul>
-<li><a href="https://www.robustperception.io/new-features-in-prometheus-2-4-0" target="_blank" rel="noopener">https://www.robustperception.io/new-features-in-prometheus-2-4-0</a> ， By Brian Brazil</li>
 </ul>
 <p>======================<br>Erdong, A Linux user !</p>
 ]]></content>
@@ -786,114 +786,6 @@
       </tags>
   </entry>
   <entry>
-    <title>计算机中遇到的单位该怎么换算</title>
-    <url>/linux/system/computer-unit-conversion.html</url>
-    <content><![CDATA[<p>在计算机行业经常进行单位换算，这些单位到底该怎么换算，通过本文来说明一下。</p>
-<a id="more"></a>
-
-
-<p>** bit **</p>
-<p>bit 是字长，意思是一个字所包含二进制输的位数，一个 bit 存放一位二进制数，即 0 或 1，最小的存储单位，简写为 b 。字长越长，运算速度越快，计算精度越高</p>
-<p>** byte **</p>
-<p>byte 是字节，计算机中处理信息的最小单位，以八位二进制信息，简写为 B 。</p>
-<p>byte 和 bit 之间的换算是 8 ，原因是一个字节需要 8个字长</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">1 byte &#x3D; 8 bit</span><br><span class="line"></span><br><span class="line">或者</span><br><span class="line"></span><br><span class="line">1 B &#x3D; 8 b</span><br></pre></td></tr></table></figure>
-
-<p>** K M G T P E 是什么**</p>
-<p>K M G T P E 等是国际单位制(SI)中所规定的词头(prefix)。词头加在SI单位(非SI单位也可以使用并通常遵循此用法)之前表示10的整数幂次，譬如k表示10^3=1000，M表示10^6=1,000,000，G则表示10^9=1,000,000,000. </p>
-<p>举些例子，1kg=1000g，1km=1000m, 都是大家所熟悉的用法 。</p>
-<p>那我们接下来看这些单位怎么换算。</p>
-<h2 id="CPU-主频单位换算"><a href="#CPU-主频单位换算" class="headerlink" title="CPU 主频单位换算"></a>CPU 主频单位换算</h2><p>在计算机的使用过程中，我们会经常用到 CPU 的主频，那么主频是怎么换算呢？</p>
-<p>所谓CPU的主频，就是说这块CPU的工作频率，也就是说这块CPU是在以哪个频率在进行运算处理。CPU的工作频率单位是以Hz（赫）计量，随着科技发展，CPU的制造工艺越来越先进，其主频也得到大幅度提升。现今，虽然CPU主频的计量单位Hz（赫）没变，但我们往往都会在单位前面加上M，甚至G，也就是我们常说的主频MHz（兆赫）和GHz（吉赫）。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">1 GHz &#x3D; 1000 MHz</span><br></pre></td></tr></table></figure>
-
-<p>对于 CPU 来说，除了主频以外还有更重要的一个参数叫做浮点性能，有单精度和双精度，个别情况下会用到半精度，他们的单位是 FLOPS，那么浮点性能的单位怎么换算呢？</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">1 TFLOPS &#x3D; 1000 GFLOPS</span><br></pre></td></tr></table></figure>
-
-<p>相邻两个单位之间的进制 1000 。</p>
-<h2 id="速率单位换算"><a href="#速率单位换算" class="headerlink" title="速率单位换算"></a>速率单位换算</h2><p>我们在下载文件或者拷贝数据时经常用到一个单位 Mbps 来描述数据拷贝的快慢或者网络带宽的大小，这个 Mbps 的意思是 Mb 每秒，及在一秒内可以传输的数据量为多少 Mb ，p 的 per 的简写。</p>
-<p>我们在一些提供下载功能的软件里经常可以看到下载是数据是 MB/s ，那么这个单位和上边的 Mbps 有什么区别呢？</p>
-<p>区别有两点</p>
-<ul>
-<li>表示方法不统一。也就是说，二者同样的表示方式应该是 Mbps 和 MBps 或者 Mb/s 和 MB/s 。</li>
-<li>b 和 B 的区别。这个我们在最开始的时候说过了，一个是字节一个是字长。</li>
-</ul>
-<p>那么他们应该这么换算呢？</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">1 MB&#x2F;s &#x3D; 8Mb&#x2F;s</span><br><span class="line"></span><br><span class="line">1 GB&#x2F;s &#x3D; 1024MB&#x2F;s &#x3D; 8192 Mb&#x2F;s</span><br><span class="line">1 Gb&#x2F;s &#x3D; 1024Gb&#x2F;s</span><br></pre></td></tr></table></figure>
-
-<p>这样就清楚了，我们一般口头说的网络带宽的单位一般是 Mb/s , 下载文件和拷贝文件的单位一般是 MB/s ， 下次我们就可以自己换算一下了。</p>
-<h2 id="存储单位换算"><a href="#存储单位换算" class="headerlink" title="存储单位换算"></a>存储单位换算</h2><p>我们经常看到的存储单位有 KB、MB、GB、TB、PB 等，这些单位在计算机操作系统内的换算情况是这样的</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">1 PB &#x3D; 1024 TB</span><br><span class="line">1 TB &#x3D; 1024 GB</span><br><span class="line">1 GB &#x3D; 1024 MB</span><br><span class="line">1 MB &#x3D; 1024 KB</span><br><span class="line">1 KB &#x3D; 1024 B</span><br></pre></td></tr></table></figure>
-
-<p>在硬盘厂商的宣传里是这样的</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">1 PB &#x3D; 1000 TB</span><br><span class="line">1 TB &#x3D; 1000 GB</span><br><span class="line">1 GB &#x3D; 1000 MB</span><br><span class="line">1 MB &#x3D; 1000 KB</span><br><span class="line">1 KB &#x3D; 1000 B</span><br></pre></td></tr></table></figure>
-
-<p>造成这种差异的原因是，起先计算机的存储容量低到可怜，几千个 Byte 算是很奢侈的容量，由于计算机的二进制特性，这个容量通常是 2 的整数次幂，用起来不方便。IT工程师们发现 2^10=1024 与 k=10^3 接近，相差不过 2%。于是就有人偷懒以 1kB 表示 2^10B 也就是1024B，初看起来一切都好，2% 的差距并不大，时间长了大家也就接受了。</p>
-<p>但问题在于，随着计算机的存储容量依摩尔定律(Moore’s Law)以指数增长，这个差值会越来越大。1kB与1KiB(稍后解释)相差不过2%，1MB 与 1MiB 相差近 5%，1GB 与 1GiB 相差7%，1TB 和 1TiB 足足差了10%。可以预见，随着硬盘容量的进一步扩大，这个差别会越来越大。</p>
-<p>时至今日，在IT业中已经形成了这种混乱的局面，为了解决这个混乱的局面，还是有人做过努力。早在 1998 年 SI 手册中明确要求 SI 词头不应用于 2 的幂次。而同年国际电工委员会(IEC)推出了一套适用于2进制的词头，并且得到了 IEEE 的批准 (IEEE 1541)——不过这还是一个试用的标准。简单来说就是在 SI 词头后加”i”。比如说 K 就成了 Ki，M 成了 Mi，G 成了 Gi。发音把原来SI词头的第二个音节换成[bi]。譬如Ki念 [kibi]，Mi念[mebi],Gi则是[Gibi]等等依此类推。这样，kMG 之类的的 SI 词头回复原来的含义，表示2幂次重任就交给了 Ki= 2^10=1024，Mi=2^20=1048576，Gi=2^30=1073741824 等等。这么一来，当表述一台电脑是3.15GHz CPU/2GiB内存/320GB硬盘时，G/Gi的含义就不存在歧义。</p>
-<p>很简明易懂的解决方案，然而很不幸似乎买 IEC 帐的着实不多，目前支持IEC词头的软件屈指可数。更糟糕的是 1G=1024M 这种约定俗成的错误观念已经根深蒂固。</p>
-<h2 id="进制的选择依据"><a href="#进制的选择依据" class="headerlink" title="进制的选择依据"></a>进制的选择依据</h2><p>看了上边各项单位的换算，不知道大家有没有发现什么规律。</p>
-<p>在计算机里相邻两个单位之间的换算有 1000 和 1024 ，那么什么时候是1000，什么时候是 1024 ？</p>
-<p>其实，一般的换算按照国际单位制(SI) 的规定，相邻两个单位之间的换算是 1000 。</p>
-<p>那么什么时候用 1024 呢？</p>
-<p>那就是单位里含有 byte 或者 bit 的时候，用 1024 来进行换算。其实按照 IEC 的规定，使用 Mi 和 M 进行区分就不会有这样的歧义和疑惑了。</p>
-<p>======================<br>Erdong, A Linux user !</p>
-]]></content>
-      <categories>
-        <category>linux</category>
-        <category>system</category>
-      </categories>
-      <tags>
-        <tag>unit</tag>
-        <tag>conversion</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Grafana 重置 admin 密码</title>
-    <url>/Grafana/grafana-admin-password-reset.html</url>
-    <content><![CDATA[<p>Grafana 的使用越来越广泛，在使用过程中经常遇到要重置密码的需求，尤其是 admin 密码，先说常规问题。</p>
-<a id="more"></a>
-
-<h1 id="已知-admin-密码修改新密码"><a href="#已知-admin-密码修改新密码" class="headerlink" title="已知 admin 密码修改新密码"></a>已知 admin 密码修改新密码</h1><h2 id="方法一：常规方法"><a href="#方法一：常规方法" class="headerlink" title="方法一：常规方法"></a>方法一：常规方法</h2><p>使用已知密码登陆系统，在系统页面里进行修改。</p>
-<h2 id="方法二：API-接口"><a href="#方法二：API-接口" class="headerlink" title="方法二：API 接口"></a>方法二：API 接口</h2><p>接口使用方法如下：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">curl -X PUT -H &quot;Content-Type: application&#x2F;json&quot; -d &#39;&#123;</span><br><span class="line">  &quot;oldPassword&quot;: &quot;admin&quot;,</span><br><span class="line">  &quot;newPassword&quot;: &quot;newpass&quot;,</span><br><span class="line">  &quot;confirmNew&quot;: &quot;newpass&quot;</span><br><span class="line">&#125;&#39; http:&#x2F;&#x2F;admin:admin@&lt;your_grafana_host&gt;:3000&#x2F;api&#x2F;user&#x2F;password</span><br></pre></td></tr></table></figure>
-
-
-<h1 id="忘记-admin-密码重置密码"><a href="#忘记-admin-密码重置密码" class="headerlink" title="忘记 admin 密码重置密码"></a>忘记 admin 密码重置密码</h1><p>接下来就是划重点的时候了，经常搭建了一个小环境以后，隔了几周想再看看的时候发现，admin 密码忘记了，没法登陆了。接下来这几个方法都能解决这几个问题，看情况使用。</p>
-<h2 id="方法一：命令行"><a href="#方法一：命令行" class="headerlink" title="方法一：命令行"></a>方法一：命令行</h2><p>该方法基于 Grafana 4.1 以上</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">grafana-cli admin reset-admin-password &lt;new password&gt;</span><br></pre></td></tr></table></figure>
-
-<p>如果上述方法报错：Could not find config defaults, make sure homepath command line parameter is set or working directory is homepath</p>
-<p>那么使用如下 flag 来指定参数</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">grafana-cli admin reset-admin-password --homepath &quot;&#x2F;usr&#x2F;share&#x2F;grafana&quot; newpass</span><br></pre></td></tr></table></figure>
-
-
-<h2 id="方法二：修改数据库"><a href="#方法二：修改数据库" class="headerlink" title="方法二：修改数据库"></a>方法二：修改数据库</h2><p>查看Grafana配置文件，确定Grafana 数据库 grafana.db的路径</p>
-<p>配置文件路径一般为 /etc/grafana/grafana.ini ，如果安装时修改过，请查看对应位置的 grafana.ini  。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[paths]</span><br><span class="line">;data &#x3D; &#x2F;var&#x2F;lib&#x2F;grafana</span><br><span class="line"></span><br><span class="line">[database]</span><br><span class="line"># For &quot;sqlite3&quot; only, path relative to data_path setting</span><br><span class="line">;path &#x3D; grafana.db</span><br></pre></td></tr></table></figure>
-<p>通过配置文件得知grafana.db的完整路径为： /var/lib/grafana/grafana.db</p>
-<p>由于 Grafana 使用 sqlite3 来存储配置数据，所以使用 sqlite3 来进行修改，如果没有请安装。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[root@local]# sqlite3 &#x2F;var&#x2F;lib&#x2F;grafana&#x2F;grafana.db</span><br><span class="line">#查看数据库中包含的表</span><br><span class="line">.tables</span><br><span class="line"></span><br><span class="line">#查看user表内容</span><br><span class="line">select * from user;</span><br><span class="line"></span><br><span class="line">#重置admin用户的密码为默认admin</span><br><span class="line">update user set password &#x3D; &#39;59acf18b94d7eb0694c61e60ce44c110c7a683ac6a8f09580d626f90f4a242000746579358d77dd9e570e83fa24faa88a8a6&#39;, salt &#x3D; &#39;F3FAxVm33R&#39; where login &#x3D; &#39;admin&#39;;</span><br><span class="line"></span><br><span class="line">#退出sqlite3</span><br><span class="line">.exit</span><br></pre></td></tr></table></figure>
-
-<p>使用上述方法，会将 admin 用户的密码重置为 admin ，然后登陆页面进行修改。</p>
-<h2 id="方法三"><a href="#方法三" class="headerlink" title="方法三"></a>方法三</h2><p>一般来说上述方法已经可以满足需求了，如果不方便重置 admin 用户的密码，那么也可以通过修改数据库，将某个用户提权为 admin 权限用户，然后通过这个用户来进行修改。</p>
-<p>提权语句如下：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">udpate user set is_admin &#x3D; 1 where login &#x3D; &#39;xxxx&#39;;</span><br></pre></td></tr></table></figure>
-
-
-<h1 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h1><ul>
-<li><a href="http://docs.grafana.org/administration/cli/#reset-admin-password" target="_blank" rel="noopener">http://docs.grafana.org/administration/cli/#reset-admin-password</a> , By Grafana</li>
-</ul>
-<p>======================<br>Erdong, A Linux user !</p>
-]]></content>
-      <categories>
-        <category>Grafana</category>
-      </categories>
-      <tags>
-        <tag>Grafana</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Erdong Notes</title>
     <url>/article/erdong-notes.html</url>
     <content><![CDATA[<p>这里记录我的一些学习笔记和一些发布在其他地方的文章。</p>
@@ -920,41 +812,6 @@
       <tags>
         <tag>article</tag>
         <tag>note</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>K8S 中的 Grafana 数据持久化</title>
-    <url>/Grafana/grafana-kubernetes-config-persistence.html</url>
-    <content><![CDATA[<p>自从将 Grafana 部署到 K8S 中以后，带来了很多的便利性，但是也有一个问题一直困扰着我，那就是 Grafana 中的数据无法持久化，经常配置好的 Datasource 和 Dashboards 在运行一段时间后就丢失了，有时候刚要排查问题，结果什么都找不到了。我们都知道，Grafana 在启动后，数据会存储到数据库中，包括 datasource 的配置，Dashboards 的配置。要解决 Grafana 的数据持久化可以从 2 个方面来进行思考并且解决。</p>
-<a id="more"></a>
-<p>方案一：</p>
-<p>Grafana 数据存储在数据库中，当前支持 MySQL 、sqlite3、Postgres 这三个，缺省情况下，Grafana 会在本地启动一个 Sqlite3 来存储数据，你也可以在 grafana.ini 配置文件中修改这个配置来切换数据库。</p>
-<p>基于这个方式，第一种方案出来了。 当 Grafana 运行在 K8S 中时，数据库不使用自动启动的 Sqlite3 ，在 K8S 外启动一个关系数据库（可以是 MySQL 、sqlite3、Postgres 中的任何一个），修改 grafana.ini 文件，使得 Grafana 在启动时连接外部的数据库，这样数据就不会丢失了。</p>
-<p>方案二：</p>
-<p>Grafana 在 v5.0 之后引入了 provisioning 功能，可以将 Datasource 、Dashboards 这些内容，通过配置文件的方式在 Grafana 启动的时候加载。把这些文件放在 K8S 的配置映射中，然后挂载到 Grafana 容器中的指定路径即可。这样配置后在 Web UI 修改已经不会生效，只有在对应的配置文件中修改才会生效。</p>
-<p>接下里我们看看方案二的怎么配置使用，我使用的 Grafana 版本是 v6.4.3。</p>
-<p>首先需要在 Grafana 启动时添加相应的参数来打开 provisioning 功能，官方提供的 docker 镜像已经将该功能打开，缺省的路径是 <code>/etc/grafana/provisioning</code> ,这个路径下有 dashboards、datasources、notifiers 三个文件夹，相关的配置会放在这里。如果是自己构建的镜像，请参考文档或者官方的 dockerfile 把该功能打开。</p>
-<p>其次我们需要解决数据源的持久化问题，我们准备 datasources.yaml 文件，用来配置数据源。datasources.yaml 文件内容如下：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># config file version</span><br><span class="line">apiVersion: 1</span><br><span class="line"></span><br><span class="line"># list of datasources that should be deleted from the database</span><br><span class="line">deleteDatasources:</span><br><span class="line">  - name: Prometheus</span><br><span class="line">    orgId: 1</span><br><span class="line"></span><br><span class="line"># list of datasources to insert&#x2F;update depending</span><br><span class="line"># what&#39;s available in the database</span><br><span class="line">datasources:</span><br><span class="line">  # &lt;string, required&gt; name of the datasource. Required</span><br><span class="line">  - name: Prometheus</span><br><span class="line">    # &lt;string, required&gt; datasource type. Required</span><br><span class="line">    type: prometheus</span><br><span class="line">    # &lt;string, required&gt; access mode. proxy or direct (Server or Browser in the UI). Required</span><br><span class="line">    access: proxy</span><br><span class="line">    # &lt;int&gt; org id. will default to orgId 1 if not specified</span><br><span class="line">    orgId: 1</span><br><span class="line">    # &lt;string&gt; custom UID which can be used to reference this datasource in other parts of the configuration, if not specified will be generated automatically</span><br><span class="line">    uid: my_unique_uid</span><br><span class="line">    # &lt;string&gt; url</span><br><span class="line">    url: http:&#x2F;&#x2F;127.0.0.1:9090</span><br><span class="line">    # &lt;string&gt; Deprecated, use secureJsonData.password</span><br><span class="line">    password:</span><br><span class="line">    # &lt;string&gt; database user, if used</span><br><span class="line">    user:</span><br><span class="line">    # &lt;string&gt; database name, if used</span><br><span class="line">    database:</span><br><span class="line">    # &lt;bool&gt; enable&#x2F;disable basic auth</span><br><span class="line">    basicAuth:</span><br><span class="line">    # &lt;string&gt; basic auth username</span><br><span class="line">    basicAuthUser:</span><br><span class="line">    # &lt;string&gt; Deprecated, use secureJsonData.basicAuthPassword</span><br><span class="line">    basicAuthPassword:</span><br><span class="line">    # &lt;bool&gt; enable&#x2F;disable with credentials headers</span><br><span class="line">    withCredentials:</span><br><span class="line">    # &lt;bool&gt; mark as default datasource. Max one per org</span><br><span class="line">    isDefault:</span><br><span class="line">    # &lt;map&gt; fields that will be converted to json and stored in jsonData</span><br><span class="line">    jsonData:</span><br><span class="line">      graphiteVersion: &#39;1.1&#39;</span><br><span class="line">      tlsAuth: false</span><br><span class="line">      tlsAuthWithCACert: false</span><br><span class="line">    # &lt;string&gt; json object of data that will be encrypted.</span><br><span class="line">    secureJsonData:</span><br><span class="line">      tlsCACert: &#39;...&#39;</span><br><span class="line">      tlsClientCert: &#39;...&#39;</span><br><span class="line">      tlsClientKey: &#39;...&#39;</span><br><span class="line">      # &lt;string&gt; database password, if used</span><br><span class="line">      password:</span><br><span class="line">      # &lt;string&gt; basic auth password</span><br><span class="line">      basicAuthPassword:</span><br><span class="line">    version: 1</span><br><span class="line">    # &lt;bool&gt; allow users to edit datasources from the UI.</span><br><span class="line">    editable: false</span><br></pre></td></tr></table></figure>
-
-<p>将该文件放在 K8S 的 config map 中，在容器中时添加数据卷，卷类型选<code>配置映射卷</code> ，选择 config map 中的 datasources.yaml 挂载到容器的 <code>/etc/grafana/provisioning/datasources</code> ,然后重启容器，让容器重新加载配置。</p>
-<p>使用后在 Web UI 的数据源页面进行修改会提示 <code>This datasource was added by config and cannot be modified using the UI. Please contact your server admin to update this datasource.</code> 表示数据源的配置，在 Web UI 修改已经不会生效，只有在 datasources.yaml 文件中修改才会生效。</p>
-<p>接下来解决 dashboards 的持久化问题，准备 <code>dashboards.yaml</code> 文件，用来指定之后的 dashboards 的 json 文件放在哪个目录。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">apiVersion: 1</span><br><span class="line"></span><br><span class="line">providers:</span><br><span class="line">  # &lt;string&gt; an unique provider name. Required</span><br><span class="line">  - name: &#39;a unique provider name&#39;</span><br><span class="line">    # &lt;int&gt; Org id. Default to 1</span><br><span class="line">    orgId: 1</span><br><span class="line">    # &lt;string&gt; name of the dashboard folder.</span><br><span class="line">    folder: &#39;&#39;</span><br><span class="line">    # &lt;string&gt; folder UID. will be automatically generated if not specified</span><br><span class="line">    folderUid: &#39;&#39;</span><br><span class="line">    # &lt;string&gt; provider type. Default to &#39;file&#39;</span><br><span class="line">    type: file</span><br><span class="line">    # &lt;bool&gt; disable dashboard deletion</span><br><span class="line">    disableDeletion: false</span><br><span class="line">    # &lt;bool&gt; enable dashboard editing</span><br><span class="line">    editable: true</span><br><span class="line">    # &lt;int&gt; how often Grafana will scan for changed dashboards</span><br><span class="line">    updateIntervalSeconds: 10</span><br><span class="line">    # &lt;bool&gt; allow updating provisioned dashboards from the UI</span><br><span class="line">    allowUiUpdates: false</span><br><span class="line">    options:</span><br><span class="line">      # &lt;string, required&gt; path to dashboard files on disk. Required when using the &#39;file&#39; type</span><br><span class="line">      path: &#x2F;etc&#x2F;grafana&#x2F;dashboards-files</span><br></pre></td></tr></table></figure>
-
-<p>将该文件放在 K8S 的 config map 中，在容器中时添加数据卷，卷类型选<code>配置映射卷</code> ，选择 config map 中的 dashboards.yaml 挂载到容器的 <code>/etc/grafana/provisioning/dashboards</code> ,然后重启容器，让容器重新加载配置。</p>
-<p>接下来将准备好的 json 格式的 Dashboards 文件放到 <code>/etc/grafana/dashboards-files</code>,  重新加载这些 json 文件即可。</p>
-<h1 id="参考链接："><a href="#参考链接：" class="headerlink" title="参考链接："></a>参考链接：</h1><ul>
-<li><a href="https://grafana.com/docs/grafana/latest/administration/provisioning/#provisioning-grafana" target="_blank" rel="noopener">https://grafana.com/docs/grafana/latest/administration/provisioning/#provisioning-grafana</a> , By Provisioning Grafanan</li>
-</ul>
-<p>======================<br>由于无法及时收到评论内容，所以关闭评论功能。<br>大家有问题欢迎发邮件到 <a href="mailto:erdong@mail.erdong.site">erdong@mail.erdong.site</a> ，或者 <a href="https://github.com/erdong/erdong.github.io/issues" target="_blank" rel="noopener">https://github.com/erdong/erdong.github.io/issues</a> 提 Issue ，我会及时回复。</p>
-<p>======================<br>Erdong, A Linux user !</p>
-]]></content>
-      <categories>
-        <category>Grafana</category>
-      </categories>
-      <tags>
-        <tag>Grafana</tag>
       </tags>
   </entry>
   <entry>
@@ -1078,6 +935,72 @@
       </tags>
   </entry>
   <entry>
+    <title>K8S 中的 Grafana 数据持久化</title>
+    <url>/Grafana/grafana-kubernetes-config-persistence.html</url>
+    <content><![CDATA[<p>自从将 Grafana 部署到 K8S 中以后，带来了很多的便利性，但是也有一个问题一直困扰着我，那就是 Grafana 中的数据无法持久化，经常配置好的 Datasource 和 Dashboards 在运行一段时间后就丢失了，有时候刚要排查问题，结果什么都找不到了。我们都知道，Grafana 在启动后，数据会存储到数据库中，包括 datasource 的配置，Dashboards 的配置。要解决 Grafana 的数据持久化可以从 2 个方面来进行思考并且解决。</p>
+<a id="more"></a>
+<p>方案一：</p>
+<p>Grafana 数据存储在数据库中，当前支持 MySQL 、sqlite3、Postgres 这三个，缺省情况下，Grafana 会在本地启动一个 Sqlite3 来存储数据，你也可以在 grafana.ini 配置文件中修改这个配置来切换数据库。</p>
+<p>基于这个方式，第一种方案出来了。 当 Grafana 运行在 K8S 中时，数据库不使用自动启动的 Sqlite3 ，在 K8S 外启动一个关系数据库（可以是 MySQL 、sqlite3、Postgres 中的任何一个），修改 grafana.ini 文件，使得 Grafana 在启动时连接外部的数据库，这样数据就不会丢失了。</p>
+<p>方案二：</p>
+<p>Grafana 在 v5.0 之后引入了 provisioning 功能，可以将 Datasource 、Dashboards 这些内容，通过配置文件的方式在 Grafana 启动的时候加载。把这些文件放在 K8S 的配置映射中，然后挂载到 Grafana 容器中的指定路径即可。这样配置后在 Web UI 修改已经不会生效，只有在对应的配置文件中修改才会生效。</p>
+<p>接下里我们看看方案二的怎么配置使用，我使用的 Grafana 版本是 v6.4.3。</p>
+<p>首先需要在 Grafana 启动时添加相应的参数来打开 provisioning 功能，官方提供的 docker 镜像已经将该功能打开，缺省的路径是 <code>/etc/grafana/provisioning</code> ,这个路径下有 dashboards、datasources、notifiers 三个文件夹，相关的配置会放在这里。如果是自己构建的镜像，请参考文档或者官方的 dockerfile 把该功能打开。</p>
+<p>其次我们需要解决数据源的持久化问题，我们准备 datasources.yaml 文件，用来配置数据源。datasources.yaml 文件内容如下：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># config file version</span><br><span class="line">apiVersion: 1</span><br><span class="line"></span><br><span class="line"># list of datasources that should be deleted from the database</span><br><span class="line">deleteDatasources:</span><br><span class="line">  - name: Prometheus</span><br><span class="line">    orgId: 1</span><br><span class="line"></span><br><span class="line"># list of datasources to insert&#x2F;update depending</span><br><span class="line"># what&#39;s available in the database</span><br><span class="line">datasources:</span><br><span class="line">  # &lt;string, required&gt; name of the datasource. Required</span><br><span class="line">  - name: Prometheus</span><br><span class="line">    # &lt;string, required&gt; datasource type. Required</span><br><span class="line">    type: prometheus</span><br><span class="line">    # &lt;string, required&gt; access mode. proxy or direct (Server or Browser in the UI). Required</span><br><span class="line">    access: proxy</span><br><span class="line">    # &lt;int&gt; org id. will default to orgId 1 if not specified</span><br><span class="line">    orgId: 1</span><br><span class="line">    # &lt;string&gt; custom UID which can be used to reference this datasource in other parts of the configuration, if not specified will be generated automatically</span><br><span class="line">    uid: my_unique_uid</span><br><span class="line">    # &lt;string&gt; url</span><br><span class="line">    url: http:&#x2F;&#x2F;127.0.0.1:9090</span><br><span class="line">    # &lt;string&gt; Deprecated, use secureJsonData.password</span><br><span class="line">    password:</span><br><span class="line">    # &lt;string&gt; database user, if used</span><br><span class="line">    user:</span><br><span class="line">    # &lt;string&gt; database name, if used</span><br><span class="line">    database:</span><br><span class="line">    # &lt;bool&gt; enable&#x2F;disable basic auth</span><br><span class="line">    basicAuth:</span><br><span class="line">    # &lt;string&gt; basic auth username</span><br><span class="line">    basicAuthUser:</span><br><span class="line">    # &lt;string&gt; Deprecated, use secureJsonData.basicAuthPassword</span><br><span class="line">    basicAuthPassword:</span><br><span class="line">    # &lt;bool&gt; enable&#x2F;disable with credentials headers</span><br><span class="line">    withCredentials:</span><br><span class="line">    # &lt;bool&gt; mark as default datasource. Max one per org</span><br><span class="line">    isDefault:</span><br><span class="line">    # &lt;map&gt; fields that will be converted to json and stored in jsonData</span><br><span class="line">    jsonData:</span><br><span class="line">      graphiteVersion: &#39;1.1&#39;</span><br><span class="line">      tlsAuth: false</span><br><span class="line">      tlsAuthWithCACert: false</span><br><span class="line">    # &lt;string&gt; json object of data that will be encrypted.</span><br><span class="line">    secureJsonData:</span><br><span class="line">      tlsCACert: &#39;...&#39;</span><br><span class="line">      tlsClientCert: &#39;...&#39;</span><br><span class="line">      tlsClientKey: &#39;...&#39;</span><br><span class="line">      # &lt;string&gt; database password, if used</span><br><span class="line">      password:</span><br><span class="line">      # &lt;string&gt; basic auth password</span><br><span class="line">      basicAuthPassword:</span><br><span class="line">    version: 1</span><br><span class="line">    # &lt;bool&gt; allow users to edit datasources from the UI.</span><br><span class="line">    editable: false</span><br></pre></td></tr></table></figure>
+
+<p>将该文件放在 K8S 的 config map 中，在容器中时添加数据卷，卷类型选<code>配置映射卷</code> ，选择 config map 中的 datasources.yaml 挂载到容器的 <code>/etc/grafana/provisioning/datasources</code> ,然后重启容器，让容器重新加载配置。</p>
+<p>使用后在 Web UI 的数据源页面进行修改会提示 <code>This datasource was added by config and cannot be modified using the UI. Please contact your server admin to update this datasource.</code> 表示数据源的配置，在 Web UI 修改已经不会生效，只有在 datasources.yaml 文件中修改才会生效。</p>
+<p>接下来解决 dashboards 的持久化问题，准备 <code>dashboards.yaml</code> 文件，用来指定之后的 dashboards 的 json 文件放在哪个目录。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">apiVersion: 1</span><br><span class="line"></span><br><span class="line">providers:</span><br><span class="line">  # &lt;string&gt; an unique provider name. Required</span><br><span class="line">  - name: &#39;a unique provider name&#39;</span><br><span class="line">    # &lt;int&gt; Org id. Default to 1</span><br><span class="line">    orgId: 1</span><br><span class="line">    # &lt;string&gt; name of the dashboard folder.</span><br><span class="line">    folder: &#39;&#39;</span><br><span class="line">    # &lt;string&gt; folder UID. will be automatically generated if not specified</span><br><span class="line">    folderUid: &#39;&#39;</span><br><span class="line">    # &lt;string&gt; provider type. Default to &#39;file&#39;</span><br><span class="line">    type: file</span><br><span class="line">    # &lt;bool&gt; disable dashboard deletion</span><br><span class="line">    disableDeletion: false</span><br><span class="line">    # &lt;bool&gt; enable dashboard editing</span><br><span class="line">    editable: true</span><br><span class="line">    # &lt;int&gt; how often Grafana will scan for changed dashboards</span><br><span class="line">    updateIntervalSeconds: 10</span><br><span class="line">    # &lt;bool&gt; allow updating provisioned dashboards from the UI</span><br><span class="line">    allowUiUpdates: false</span><br><span class="line">    options:</span><br><span class="line">      # &lt;string, required&gt; path to dashboard files on disk. Required when using the &#39;file&#39; type</span><br><span class="line">      path: &#x2F;etc&#x2F;grafana&#x2F;dashboards-files</span><br></pre></td></tr></table></figure>
+
+<p>将该文件放在 K8S 的 config map 中，在容器中时添加数据卷，卷类型选<code>配置映射卷</code> ，选择 config map 中的 dashboards.yaml 挂载到容器的 <code>/etc/grafana/provisioning/dashboards</code> ,然后重启容器，让容器重新加载配置。</p>
+<p>接下来将准备好的 json 格式的 Dashboards 文件放到 <code>/etc/grafana/dashboards-files</code>,  重新加载这些 json 文件即可。</p>
+<h1 id="参考链接："><a href="#参考链接：" class="headerlink" title="参考链接："></a>参考链接：</h1><ul>
+<li><a href="https://grafana.com/docs/grafana/latest/administration/provisioning/#provisioning-grafana" target="_blank" rel="noopener">https://grafana.com/docs/grafana/latest/administration/provisioning/#provisioning-grafana</a> , By Provisioning Grafanan</li>
+</ul>
+<p>======================<br>由于无法及时收到评论内容，所以关闭评论功能。<br>大家有问题欢迎发邮件到 <a href="mailto:erdong@mail.erdong.site">erdong@mail.erdong.site</a> ，或者 <a href="https://github.com/erdong/erdong.github.io/issues" target="_blank" rel="noopener">https://github.com/erdong/erdong.github.io/issues</a> 提 Issue ，我会及时回复。</p>
+<p>======================<br>Erdong, A Linux user !</p>
+]]></content>
+      <categories>
+        <category>Grafana</category>
+      </categories>
+      <tags>
+        <tag>Grafana</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Hello World</title>
+    <url>/uncategorized/hello-world.html</url>
+    <content><![CDATA[<p>Welcome to <a href="https://erdong.site">Erdong’s blog</a>! This is my first blog. </p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><p>  最近花时间搭建了这个博客，基于 hexo 和 github pages，想把日常遇到的问题和一些学习的知识点记录下来，梳理自己的知识体系，不断提高自己的能力。</p>
+<p>  个人比较喜欢阮一峰的博客，他的文字描述总是简单易懂，容易学习，希望以后也能达到这一目的。</p>
+<p>  人生总是存在各种各样的巧合，好像总和数字2会有关系，像这次发布第一篇博客刚好赶上22号，年份和月份全部是2的整数倍。</p>
+<p>  发现阮一峰有一个关于中文文档编写的规范，会尽量的按照这个来写。<a href="https://github.com/ruanyf/document-style-guide" target="_blank" rel="noopener">document-style-guide</a></p>
+<p>惯例: hello world 输出。一切的开始。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"><span class="comment">#version: 1.0</span></span><br><span class="line"><span class="comment">#Author: Erdong</span></span><br><span class="line"><span class="built_in">echo</span> Hello World</span><br><span class="line"><span class="built_in">echo</span> 2018-08-22</span><br></pre></td></tr></table></figure>
+]]></content>
+  </entry>
+  <entry>
+    <title>IB 速率 SDR DDR QDR FDR EDR 缩写介绍</title>
+    <url>/tools/ib-speed.html</url>
+    <content><![CDATA[<p>InfiniBand（直译为“无限带宽”技术，缩写为IB）是一个用于高性能计算的计算机网络通信标准，它具有极高的吞吐量和极低的延迟，用于计算机与计算机之间的数据互连。InfiniBand也用作服务器与存储系统之间的直接或交换互连，以及存储系统之间的互连。</p>
+<a id="more"></a>
+
+<p>Link Speed<br>SDR – Single Data Rate - 2.5Gb/s per lane (10Gb/s for 4x)<br>DDR – Double Data Rate - 5Gb/s per lane (20Gb/s for 4x)<br>QDR – Quad Data Rate - 10Gb/s per lane (40Gb/s for 4x)<br>FDR – Fourteen Data Rate - 14Gb/s per lane (56Gb/s for 4x)<br>EDR – Enhanced Data rate - 25Gb/s per lane (100Gb/s for 4x)</p>
+<p>关于 IB 的介绍可以查看该文档 </p>
+<p><a href="https://hpc.uiowa.edu/sites/hpc.uiowa.edu/files/Infiniband%20Overview.pdf" target="_blank" rel="noopener">Infiniband Overview</a></p>
+<p><a href="https://mp.weixin.qq.com/s/6ifysnYjZptorr3RBv9ASw" target="_blank" rel="noopener">一文掌握InfiniBand技术和架构</a></p>
+<p>======================<br>Erdong, A Linux user !</p>
+]]></content>
+      <categories>
+        <category>tools</category>
+      </categories>
+      <tags>
+        <tag>ib</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>常见 DNS 地址</title>
     <url>/linux/system/dns-server-ip.html</url>
     <content><![CDATA[<p>如果您是程序员、系统管理员或任何类型的 IT 工作者，那么您可能有自己最喜欢的用于故障排除的 IP 地址。而且你可能已经用了好几年了。</p>
@@ -1150,75 +1073,111 @@
       </tags>
   </entry>
   <entry>
-    <title>IB 速率 SDR DDR QDR FDR EDR 缩写介绍</title>
-    <url>/tools/ib-speed.html</url>
-    <content><![CDATA[<p>InfiniBand（直译为“无限带宽”技术，缩写为IB）是一个用于高性能计算的计算机网络通信标准，它具有极高的吞吐量和极低的延迟，用于计算机与计算机之间的数据互连。InfiniBand也用作服务器与存储系统之间的直接或交换互连，以及存储系统之间的互连。</p>
+    <title>计算机中遇到的单位该怎么换算</title>
+    <url>/linux/system/computer-unit-conversion.html</url>
+    <content><![CDATA[<p>在计算机行业经常进行单位换算，这些单位到底该怎么换算，通过本文来说明一下。</p>
 <a id="more"></a>
 
-<p>Link Speed<br>SDR – Single Data Rate - 2.5Gb/s per lane (10Gb/s for 4x)<br>DDR – Double Data Rate - 5Gb/s per lane (20Gb/s for 4x)<br>QDR – Quad Data Rate - 10Gb/s per lane (40Gb/s for 4x)<br>FDR – Fourteen Data Rate - 14Gb/s per lane (56Gb/s for 4x)<br>EDR – Enhanced Data rate - 25Gb/s per lane (100Gb/s for 4x)</p>
-<p>关于 IB 的介绍可以查看该文档 </p>
-<p><a href="https://hpc.uiowa.edu/sites/hpc.uiowa.edu/files/Infiniband%20Overview.pdf" target="_blank" rel="noopener">Infiniband Overview</a></p>
-<p><a href="https://mp.weixin.qq.com/s/6ifysnYjZptorr3RBv9ASw" target="_blank" rel="noopener">一文掌握InfiniBand技术和架构</a></p>
+
+<p>** bit **</p>
+<p>bit 是字长，意思是一个字所包含二进制输的位数，一个 bit 存放一位二进制数，即 0 或 1，最小的存储单位，简写为 b 。字长越长，运算速度越快，计算精度越高</p>
+<p>** byte **</p>
+<p>byte 是字节，计算机中处理信息的最小单位，以八位二进制信息，简写为 B 。</p>
+<p>byte 和 bit 之间的换算是 8 ，原因是一个字节需要 8个字长</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">1 byte &#x3D; 8 bit</span><br><span class="line"></span><br><span class="line">或者</span><br><span class="line"></span><br><span class="line">1 B &#x3D; 8 b</span><br></pre></td></tr></table></figure>
+
+<p>** K M G T P E 是什么**</p>
+<p>K M G T P E 等是国际单位制(SI)中所规定的词头(prefix)。词头加在SI单位(非SI单位也可以使用并通常遵循此用法)之前表示10的整数幂次，譬如k表示10^3=1000，M表示10^6=1,000,000，G则表示10^9=1,000,000,000. </p>
+<p>举些例子，1kg=1000g，1km=1000m, 都是大家所熟悉的用法 。</p>
+<p>那我们接下来看这些单位怎么换算。</p>
+<h2 id="CPU-主频单位换算"><a href="#CPU-主频单位换算" class="headerlink" title="CPU 主频单位换算"></a>CPU 主频单位换算</h2><p>在计算机的使用过程中，我们会经常用到 CPU 的主频，那么主频是怎么换算呢？</p>
+<p>所谓CPU的主频，就是说这块CPU的工作频率，也就是说这块CPU是在以哪个频率在进行运算处理。CPU的工作频率单位是以Hz（赫）计量，随着科技发展，CPU的制造工艺越来越先进，其主频也得到大幅度提升。现今，虽然CPU主频的计量单位Hz（赫）没变，但我们往往都会在单位前面加上M，甚至G，也就是我们常说的主频MHz（兆赫）和GHz（吉赫）。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">1 GHz &#x3D; 1000 MHz</span><br></pre></td></tr></table></figure>
+
+<p>对于 CPU 来说，除了主频以外还有更重要的一个参数叫做浮点性能，有单精度和双精度，个别情况下会用到半精度，他们的单位是 FLOPS，那么浮点性能的单位怎么换算呢？</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">1 TFLOPS &#x3D; 1000 GFLOPS</span><br></pre></td></tr></table></figure>
+
+<p>相邻两个单位之间的进制 1000 。</p>
+<h2 id="速率单位换算"><a href="#速率单位换算" class="headerlink" title="速率单位换算"></a>速率单位换算</h2><p>我们在下载文件或者拷贝数据时经常用到一个单位 Mbps 来描述数据拷贝的快慢或者网络带宽的大小，这个 Mbps 的意思是 Mb 每秒，及在一秒内可以传输的数据量为多少 Mb ，p 的 per 的简写。</p>
+<p>我们在一些提供下载功能的软件里经常可以看到下载是数据是 MB/s ，那么这个单位和上边的 Mbps 有什么区别呢？</p>
+<p>区别有两点</p>
+<ul>
+<li>表示方法不统一。也就是说，二者同样的表示方式应该是 Mbps 和 MBps 或者 Mb/s 和 MB/s 。</li>
+<li>b 和 B 的区别。这个我们在最开始的时候说过了，一个是字节一个是字长。</li>
+</ul>
+<p>那么他们应该这么换算呢？</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">1 MB&#x2F;s &#x3D; 8Mb&#x2F;s</span><br><span class="line"></span><br><span class="line">1 GB&#x2F;s &#x3D; 1024MB&#x2F;s &#x3D; 8192 Mb&#x2F;s</span><br><span class="line">1 Gb&#x2F;s &#x3D; 1024Gb&#x2F;s</span><br></pre></td></tr></table></figure>
+
+<p>这样就清楚了，我们一般口头说的网络带宽的单位一般是 Mb/s , 下载文件和拷贝文件的单位一般是 MB/s ， 下次我们就可以自己换算一下了。</p>
+<h2 id="存储单位换算"><a href="#存储单位换算" class="headerlink" title="存储单位换算"></a>存储单位换算</h2><p>我们经常看到的存储单位有 KB、MB、GB、TB、PB 等，这些单位在计算机操作系统内的换算情况是这样的</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">1 PB &#x3D; 1024 TB</span><br><span class="line">1 TB &#x3D; 1024 GB</span><br><span class="line">1 GB &#x3D; 1024 MB</span><br><span class="line">1 MB &#x3D; 1024 KB</span><br><span class="line">1 KB &#x3D; 1024 B</span><br></pre></td></tr></table></figure>
+
+<p>在硬盘厂商的宣传里是这样的</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">1 PB &#x3D; 1000 TB</span><br><span class="line">1 TB &#x3D; 1000 GB</span><br><span class="line">1 GB &#x3D; 1000 MB</span><br><span class="line">1 MB &#x3D; 1000 KB</span><br><span class="line">1 KB &#x3D; 1000 B</span><br></pre></td></tr></table></figure>
+
+<p>造成这种差异的原因是，起先计算机的存储容量低到可怜，几千个 Byte 算是很奢侈的容量，由于计算机的二进制特性，这个容量通常是 2 的整数次幂，用起来不方便。IT工程师们发现 2^10=1024 与 k=10^3 接近，相差不过 2%。于是就有人偷懒以 1kB 表示 2^10B 也就是1024B，初看起来一切都好，2% 的差距并不大，时间长了大家也就接受了。</p>
+<p>但问题在于，随着计算机的存储容量依摩尔定律(Moore’s Law)以指数增长，这个差值会越来越大。1kB与1KiB(稍后解释)相差不过2%，1MB 与 1MiB 相差近 5%，1GB 与 1GiB 相差7%，1TB 和 1TiB 足足差了10%。可以预见，随着硬盘容量的进一步扩大，这个差别会越来越大。</p>
+<p>时至今日，在IT业中已经形成了这种混乱的局面，为了解决这个混乱的局面，还是有人做过努力。早在 1998 年 SI 手册中明确要求 SI 词头不应用于 2 的幂次。而同年国际电工委员会(IEC)推出了一套适用于2进制的词头，并且得到了 IEEE 的批准 (IEEE 1541)——不过这还是一个试用的标准。简单来说就是在 SI 词头后加”i”。比如说 K 就成了 Ki，M 成了 Mi，G 成了 Gi。发音把原来SI词头的第二个音节换成[bi]。譬如Ki念 [kibi]，Mi念[mebi],Gi则是[Gibi]等等依此类推。这样，kMG 之类的的 SI 词头回复原来的含义，表示2幂次重任就交给了 Ki= 2^10=1024，Mi=2^20=1048576，Gi=2^30=1073741824 等等。这么一来，当表述一台电脑是3.15GHz CPU/2GiB内存/320GB硬盘时，G/Gi的含义就不存在歧义。</p>
+<p>很简明易懂的解决方案，然而很不幸似乎买 IEC 帐的着实不多，目前支持IEC词头的软件屈指可数。更糟糕的是 1G=1024M 这种约定俗成的错误观念已经根深蒂固。</p>
+<h2 id="进制的选择依据"><a href="#进制的选择依据" class="headerlink" title="进制的选择依据"></a>进制的选择依据</h2><p>看了上边各项单位的换算，不知道大家有没有发现什么规律。</p>
+<p>在计算机里相邻两个单位之间的换算有 1000 和 1024 ，那么什么时候是1000，什么时候是 1024 ？</p>
+<p>其实，一般的换算按照国际单位制(SI) 的规定，相邻两个单位之间的换算是 1000 。</p>
+<p>那么什么时候用 1024 呢？</p>
+<p>那就是单位里含有 byte 或者 bit 的时候，用 1024 来进行换算。其实按照 IEC 的规定，使用 Mi 和 M 进行区分就不会有这样的歧义和疑惑了。</p>
 <p>======================<br>Erdong, A Linux user !</p>
 ]]></content>
       <categories>
-        <category>tools</category>
+        <category>linux</category>
+        <category>system</category>
       </categories>
       <tags>
-        <tag>ib</tag>
+        <tag>unit</tag>
+        <tag>conversion</tag>
       </tags>
   </entry>
   <entry>
-    <title>KongA 介绍</title>
-    <url>/Kong/kong-02.html</url>
-    <content><![CDATA[<p>KongA 是 Kong 的一个 GUI 工具。GitHub 地址是 <a href="https://github.com/pantsel/konga" target="_blank" rel="noopener">https://github.com/pantsel/konga</a> 。</p>
+    <title>Grafana 重置 admin 密码</title>
+    <url>/Grafana/grafana-admin-password-reset.html</url>
+    <content><![CDATA[<p>Grafana 的使用越来越广泛，在使用过程中经常遇到要重置密码的需求，尤其是 admin 密码，先说常规问题。</p>
 <a id="more"></a>
 
-<h1 id="KongA-概述"><a href="#KongA-概述" class="headerlink" title="KongA 概述"></a>KongA 概述</h1><p>KongA 带来的一个最大的便利就是可以很好地通过UI观察到现在 Kong 的所有的配置，并且可以对于管理 Kong 节点情况进行查看、监控和预警，KongA 主要特性如下：</p>
-<ul>
-<li>多用户管理</li>
-<li>管理多个 Kong 节点</li>
-<li>电子邮件异常信息通知</li>
-<li>管理所有Kong Admin API</li>
-<li>使用快照备份，还原和迁移Kong节点</li>
-<li>使用运行状况检查监控节点和API状态</li>
-<li>轻松的数据库集成（MySQL，postgresSQL，MongoDB）</li>
-</ul>
-<p>KongA 当前最新版本是 v0.14.1（update：2019.01.28），KongA 从 v0.14.0 开始，只支持 Kong 大于 v1.0.0 的版本。如果 Kong 的版本低于 v1.0.0 ，需要使用 konga:legacy 分支去构建发布版本。</p>
-<p>KongA 的使用依赖如下内容：</p>
-<ul>
-<li>一个安装好，处于运行状态的 Kong</li>
-<li>Nodejs &gt;= 8 （推荐使用 8.11.3 LTS 版本）</li>
-<li>Npm</li>
-</ul>
-<p>KongA 的安装参考它在 GitHub 上的 <a href="https://github.com/pantsel/konga#installation" target="_blank" rel="noopener">Installation</a> 即可。</p>
-<p>如果使用 Docker 进行安装的话，使用 Kong 创建的 Docker 网络，启动命令如下：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">docker run -p 1337:1337 \</span><br><span class="line">             --network kong-net \</span><br><span class="line">             --name konga \</span><br><span class="line">             -e &quot;NODE_ENV&#x3D;production&quot; \</span><br><span class="line">             pantsel&#x2F;konga:0.14.1</span><br></pre></td></tr></table></figure>
+<h1 id="已知-admin-密码修改新密码"><a href="#已知-admin-密码修改新密码" class="headerlink" title="已知 admin 密码修改新密码"></a>已知 admin 密码修改新密码</h1><h2 id="方法一：常规方法"><a href="#方法一：常规方法" class="headerlink" title="方法一：常规方法"></a>方法一：常规方法</h2><p>使用已知密码登陆系统，在系统页面里进行修改。</p>
+<h2 id="方法二：API-接口"><a href="#方法二：API-接口" class="headerlink" title="方法二：API 接口"></a>方法二：API 接口</h2><p>接口使用方法如下：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">curl -X PUT -H &quot;Content-Type: application&#x2F;json&quot; -d &#39;&#123;</span><br><span class="line">  &quot;oldPassword&quot;: &quot;admin&quot;,</span><br><span class="line">  &quot;newPassword&quot;: &quot;newpass&quot;,</span><br><span class="line">  &quot;confirmNew&quot;: &quot;newpass&quot;</span><br><span class="line">&#125;&#39; http:&#x2F;&#x2F;admin:admin@&lt;your_grafana_host&gt;:3000&#x2F;api&#x2F;user&#x2F;password</span><br></pre></td></tr></table></figure>
 
-<p>启动后访问 1337 端口 即可访问 KongA 首页，并且可以注册自己的 KongA 账号。</p>
-<p>这样启动的 KongA 可以快速使用，但是如果重新部署数据就丢失了，KongA 和 Kong 一样都可以使用外部数据库来做到数据持久化存储。在启动 KongA 的时候连接数据库，并且设置好数据库连接参数。</p>
-<h1 id="KongA-基本使用"><a href="#KongA-基本使用" class="headerlink" title="KongA 基本使用"></a>KongA 基本使用</h1><h2 id="创建用户"><a href="#创建用户" class="headerlink" title="创建用户"></a>创建用户</h2><p>启动 KongA 以后，首先注册账户，如图所示：<br><img src="https://image.erdong.site/blog/2019/10/16/15694939314024.png" alt="KongA login"></p>
-<h2 id="添加-Kong"><a href="#添加-Kong" class="headerlink" title="添加 Kong"></a>添加 Kong</h2><p>在 KongA 里需要先添加 Kong 才能使用。</p>
-<p>KongA 左侧的菜单栏分为两大类，分别是 API GATEWAY 和 APPLICATION。在 APPLICATION 下有一个 CONNECTIONS 选项，在这个选项里新建一个 Kong 的连接，点击<code>NEW CONNECTION</code> 后选择认证类型，认证类型可以选择DEFAULT、KEY AUTH、JWT AUTH ，如果选择 DEFAULT 填入如下信息：</p>
-<ul>
-<li>NAME ：Kong 的名称，用来标识不同的 Kong。</li>
-<li>KONG ADMIN URL ：填入 Kong 的 admin url，用来连接 Kong。</li>
+
+<h1 id="忘记-admin-密码重置密码"><a href="#忘记-admin-密码重置密码" class="headerlink" title="忘记 admin 密码重置密码"></a>忘记 admin 密码重置密码</h1><p>接下来就是划重点的时候了，经常搭建了一个小环境以后，隔了几周想再看看的时候发现，admin 密码忘记了，没法登陆了。接下来这几个方法都能解决这几个问题，看情况使用。</p>
+<h2 id="方法一：命令行"><a href="#方法一：命令行" class="headerlink" title="方法一：命令行"></a>方法一：命令行</h2><p>该方法基于 Grafana 4.1 以上</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">grafana-cli admin reset-admin-password &lt;new password&gt;</span><br></pre></td></tr></table></figure>
+
+<p>如果上述方法报错：Could not find config defaults, make sure homepath command line parameter is set or working directory is homepath</p>
+<p>那么使用如下 flag 来指定参数</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">grafana-cli admin reset-admin-password --homepath &quot;&#x2F;usr&#x2F;share&#x2F;grafana&quot; newpass</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="方法二：修改数据库"><a href="#方法二：修改数据库" class="headerlink" title="方法二：修改数据库"></a>方法二：修改数据库</h2><p>查看Grafana配置文件，确定Grafana 数据库 grafana.db的路径</p>
+<p>配置文件路径一般为 /etc/grafana/grafana.ini ，如果安装时修改过，请查看对应位置的 grafana.ini  。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[paths]</span><br><span class="line">;data &#x3D; &#x2F;var&#x2F;lib&#x2F;grafana</span><br><span class="line"></span><br><span class="line">[database]</span><br><span class="line"># For &quot;sqlite3&quot; only, path relative to data_path setting</span><br><span class="line">;path &#x3D; grafana.db</span><br></pre></td></tr></table></figure>
+<p>通过配置文件得知grafana.db的完整路径为： /var/lib/grafana/grafana.db</p>
+<p>由于 Grafana 使用 sqlite3 来存储配置数据，所以使用 sqlite3 来进行修改，如果没有请安装。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[root@local]# sqlite3 &#x2F;var&#x2F;lib&#x2F;grafana&#x2F;grafana.db</span><br><span class="line">#查看数据库中包含的表</span><br><span class="line">.tables</span><br><span class="line"></span><br><span class="line">#查看user表内容</span><br><span class="line">select * from user;</span><br><span class="line"></span><br><span class="line">#重置admin用户的密码为默认admin</span><br><span class="line">update user set password &#x3D; &#39;59acf18b94d7eb0694c61e60ce44c110c7a683ac6a8f09580d626f90f4a242000746579358d77dd9e570e83fa24faa88a8a6&#39;, salt &#x3D; &#39;F3FAxVm33R&#39; where login &#x3D; &#39;admin&#39;;</span><br><span class="line"></span><br><span class="line">#退出sqlite3</span><br><span class="line">.exit</span><br></pre></td></tr></table></figure>
+
+<p>使用上述方法，会将 admin 用户的密码重置为 admin ，然后登陆页面进行修改。</p>
+<h2 id="方法三"><a href="#方法三" class="headerlink" title="方法三"></a>方法三</h2><p>一般来说上述方法已经可以满足需求了，如果不方便重置 admin 用户的密码，那么也可以通过修改数据库，将某个用户提权为 admin 权限用户，然后通过这个用户来进行修改。</p>
+<p>提权语句如下：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">udpate user set is_admin &#x3D; 1 where login &#x3D; &#39;xxxx&#39;;</span><br></pre></td></tr></table></figure>
+
+
+<h1 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h1><ul>
+<li><a href="http://docs.grafana.org/administration/cli/#reset-admin-password" target="_blank" rel="noopener">http://docs.grafana.org/administration/cli/#reset-admin-password</a> , By Grafana</li>
 </ul>
-<p>填好以后点击 <code>CREATE CONNECTION</code> 来创建 Kong。</p>
-<h2 id="KongA-的配置。"><a href="#KongA-的配置。" class="headerlink" title="KongA 的配置。"></a>KongA 的配置。</h2><p>KongA 连接好 Kong 以后，剩下的就是管理 Kong 了，主要需要配置 Services 、Routes、Upstream 三个部分。</p>
-<p>Services 主要是配置 upstream 的地址，</p>
-<p>Routes 主要配置请求到来之后不同的 path 路径按照不同的路由转发</p>
-<p>Upstream 主要配置 url 的代理最后转发到的机器上，可以是一个，也可以是多个按照权重进行分配。除了转发以为，还可以配置健康检查。</p>
-<h1 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h1><p>本文主要讲解了 KongA 的简单使用。</p>
-<p>======================<br>由于无法及时收到评论内容，所以关闭评论功能。<br>大家有问题欢迎发邮件到 <a href="mailto:erdong@mail.erdong.site">erdong@mail.erdong.site</a> ，或者 <a href="https://github.com/erdong/erdong.github.io/issues" target="_blank" rel="noopener">https://github.com/erdong/erdong.github.io/issues</a> 提 Issue ，我会及时回复。</p>
 <p>======================<br>Erdong, A Linux user !</p>
 ]]></content>
       <categories>
-        <category>Kong</category>
+        <category>Grafana</category>
       </categories>
       <tags>
-        <tag>Kong</tag>
-        <tag>KongA</tag>
+        <tag>Grafana</tag>
       </tags>
   </entry>
   <entry>
@@ -1330,6 +1289,59 @@
       </categories>
       <tags>
         <tag>Kong</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>KongA 介绍</title>
+    <url>/Kong/kong-02.html</url>
+    <content><![CDATA[<p>KongA 是 Kong 的一个 GUI 工具。GitHub 地址是 <a href="https://github.com/pantsel/konga" target="_blank" rel="noopener">https://github.com/pantsel/konga</a> 。</p>
+<a id="more"></a>
+
+<h1 id="KongA-概述"><a href="#KongA-概述" class="headerlink" title="KongA 概述"></a>KongA 概述</h1><p>KongA 带来的一个最大的便利就是可以很好地通过UI观察到现在 Kong 的所有的配置，并且可以对于管理 Kong 节点情况进行查看、监控和预警，KongA 主要特性如下：</p>
+<ul>
+<li>多用户管理</li>
+<li>管理多个 Kong 节点</li>
+<li>电子邮件异常信息通知</li>
+<li>管理所有Kong Admin API</li>
+<li>使用快照备份，还原和迁移Kong节点</li>
+<li>使用运行状况检查监控节点和API状态</li>
+<li>轻松的数据库集成（MySQL，postgresSQL，MongoDB）</li>
+</ul>
+<p>KongA 当前最新版本是 v0.14.1（update：2019.01.28），KongA 从 v0.14.0 开始，只支持 Kong 大于 v1.0.0 的版本。如果 Kong 的版本低于 v1.0.0 ，需要使用 konga:legacy 分支去构建发布版本。</p>
+<p>KongA 的使用依赖如下内容：</p>
+<ul>
+<li>一个安装好，处于运行状态的 Kong</li>
+<li>Nodejs &gt;= 8 （推荐使用 8.11.3 LTS 版本）</li>
+<li>Npm</li>
+</ul>
+<p>KongA 的安装参考它在 GitHub 上的 <a href="https://github.com/pantsel/konga#installation" target="_blank" rel="noopener">Installation</a> 即可。</p>
+<p>如果使用 Docker 进行安装的话，使用 Kong 创建的 Docker 网络，启动命令如下：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">docker run -p 1337:1337 \</span><br><span class="line">             --network kong-net \</span><br><span class="line">             --name konga \</span><br><span class="line">             -e &quot;NODE_ENV&#x3D;production&quot; \</span><br><span class="line">             pantsel&#x2F;konga:0.14.1</span><br></pre></td></tr></table></figure>
+
+<p>启动后访问 1337 端口 即可访问 KongA 首页，并且可以注册自己的 KongA 账号。</p>
+<p>这样启动的 KongA 可以快速使用，但是如果重新部署数据就丢失了，KongA 和 Kong 一样都可以使用外部数据库来做到数据持久化存储。在启动 KongA 的时候连接数据库，并且设置好数据库连接参数。</p>
+<h1 id="KongA-基本使用"><a href="#KongA-基本使用" class="headerlink" title="KongA 基本使用"></a>KongA 基本使用</h1><h2 id="创建用户"><a href="#创建用户" class="headerlink" title="创建用户"></a>创建用户</h2><p>启动 KongA 以后，首先注册账户，如图所示：<br><img src="https://image.erdong.site/blog/2019/10/16/15694939314024.png" alt="KongA login"></p>
+<h2 id="添加-Kong"><a href="#添加-Kong" class="headerlink" title="添加 Kong"></a>添加 Kong</h2><p>在 KongA 里需要先添加 Kong 才能使用。</p>
+<p>KongA 左侧的菜单栏分为两大类，分别是 API GATEWAY 和 APPLICATION。在 APPLICATION 下有一个 CONNECTIONS 选项，在这个选项里新建一个 Kong 的连接，点击<code>NEW CONNECTION</code> 后选择认证类型，认证类型可以选择DEFAULT、KEY AUTH、JWT AUTH ，如果选择 DEFAULT 填入如下信息：</p>
+<ul>
+<li>NAME ：Kong 的名称，用来标识不同的 Kong。</li>
+<li>KONG ADMIN URL ：填入 Kong 的 admin url，用来连接 Kong。</li>
+</ul>
+<p>填好以后点击 <code>CREATE CONNECTION</code> 来创建 Kong。</p>
+<h2 id="KongA-的配置。"><a href="#KongA-的配置。" class="headerlink" title="KongA 的配置。"></a>KongA 的配置。</h2><p>KongA 连接好 Kong 以后，剩下的就是管理 Kong 了，主要需要配置 Services 、Routes、Upstream 三个部分。</p>
+<p>Services 主要是配置 upstream 的地址，</p>
+<p>Routes 主要配置请求到来之后不同的 path 路径按照不同的路由转发</p>
+<p>Upstream 主要配置 url 的代理最后转发到的机器上，可以是一个，也可以是多个按照权重进行分配。除了转发以为，还可以配置健康检查。</p>
+<h1 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h1><p>本文主要讲解了 KongA 的简单使用。</p>
+<p>======================<br>由于无法及时收到评论内容，所以关闭评论功能。<br>大家有问题欢迎发邮件到 <a href="mailto:erdong@mail.erdong.site">erdong@mail.erdong.site</a> ，或者 <a href="https://github.com/erdong/erdong.github.io/issues" target="_blank" rel="noopener">https://github.com/erdong/erdong.github.io/issues</a> 提 Issue ，我会及时回复。</p>
+<p>======================<br>Erdong, A Linux user !</p>
+]]></content>
+      <categories>
+        <category>Kong</category>
+      </categories>
+      <tags>
+        <tag>Kong</tag>
+        <tag>KongA</tag>
       </tags>
   </entry>
   <entry>
@@ -1698,18 +1710,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Hello World</title>
-    <url>/uncategorized/hello-world.html</url>
-    <content><![CDATA[<p>Welcome to <a href="https://erdong.site">Erdong’s blog</a>! This is my first blog. </p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><p>  最近花时间搭建了这个博客，基于 hexo 和 github pages，想把日常遇到的问题和一些学习的知识点记录下来，梳理自己的知识体系，不断提高自己的能力。</p>
-<p>  个人比较喜欢阮一峰的博客，他的文字描述总是简单易懂，容易学习，希望以后也能达到这一目的。</p>
-<p>  人生总是存在各种各样的巧合，好像总和数字2会有关系，像这次发布第一篇博客刚好赶上22号，年份和月份全部是2的整数倍。</p>
-<p>  发现阮一峰有一个关于中文文档编写的规范，会尽量的按照这个来写。<a href="https://github.com/ruanyf/document-style-guide" target="_blank" rel="noopener">document-style-guide</a></p>
-<p>惯例: hello world 输出。一切的开始。</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"><span class="comment">#version: 1.0</span></span><br><span class="line"><span class="comment">#Author: Erdong</span></span><br><span class="line"><span class="built_in">echo</span> Hello World</span><br><span class="line"><span class="built_in">echo</span> 2018-08-22</span><br></pre></td></tr></table></figure>
-]]></content>
-  </entry>
-  <entry>
     <title>linux 的下载工具</title>
     <url>/tools/linux-download-tool.html</url>
     <content><![CDATA[<p>有时候在 linux 下需要下载一些镜像，但是文件较大，使用 wget 要下载很长时间，这个时候如果有 BT 种子文件可以加速下载。</p>
@@ -1777,6 +1777,138 @@
       </tags>
   </entry>
   <entry>
+    <title>发布一本用 GitBook 编辑的书</title>
+    <url>/gitbook/gitbook-release-book.html</url>
+    <content><![CDATA[<p>在上一篇的文章里，我们已经写好了一本名叫 <code>erdong-first-book</code> 的书，但是在本地浏览很不方便，我们希望放到网络上，可以随时、方便的访问这个书籍。这个需求可以使用多种方式来实现，比如第一种，可以通过 GitBook 官网来发布这本书，GitBook 除了是一个电子书的工具以为，自身也有一个网址，在该网站注册成为会员后，可以发布自己的电子书，并且可以和 GitHub 进行关联。</p>
+<p>除了使用 GitBook 官网以外，可以直接将电子书放在 GitHub 上，通过 GitHub Pages 来发布这本书。</p>
+<a id="more"></a>
+
+<h1 id="使用-GitHub-发布你的书籍"><a href="#使用-GitHub-发布你的书籍" class="headerlink" title="使用 GitHub 发布你的书籍"></a>使用 GitHub 发布你的书籍</h1><p>接下来我们看一下如何使用 GitHub Pages 来发布一本书。</p>
+<p>首先你需要一个 GitHub 的账号，在你的账号下创建一个用来放置你书籍的仓库，这两个步骤在网络上有太多的资料，很容易就可以达成了。</p>
+<p>创建好仓库以后，在仓库中创建一个 docs 文件夹，用来放置 GitBook 生成的静态文件。</p>
+<p>打开 GitHub 仓库的设置页面，找到 GitHub Pages 选项，选择 <code>master branch /docs folder</code> 选项即可。</p>
+<blockquote>
+<p>注意：一定要先在仓库中创建 docs 文件夹，否则无法勾选该选项。</p>
+</blockquote>
+<p><img src="https://image.erdong.site/blog/2019/10/18/githubpagesdocs.jpg" alt="GithubPagesDocs"></p>
+<p>做完上述步骤以后开始使用 Git 上传你写好的内容到 GitHub , 关键点是将 GitBook 生成的静态文件 <code>_book</code> 重命名为 <code>docs</code> 上传替换刚才创建的 docs 文件夹即可。</p>
+<p>这个时候使用浏览器打开  <a href="http://your_github_id.github.io/your_github_gitbook" target="_blank" rel="noopener">http://your_github_id.github.io/your_github_gitbook</a>  这个地址即可。比如我的 GitBook 地址是<br> <a href="http://erdong.github.io/gitbook-notes-samples" target="_blank" rel="noopener">http://erdong.github.io/gitbook-notes-samples</a> ，大家在点击以后发现会自动跳转到 <a href="https://erdong.site/gitbook-notes-samples">https://erdong.site/gitbook-notes-samples</a>  是因为我做了域名绑定。</p>
+<h1 id="本地-GitBook-迁移"><a href="#本地-GitBook-迁移" class="headerlink" title="本地 GitBook 迁移"></a>本地 GitBook 迁移</h1><p>在迁移前可以使用如下命令查看一下曾经使用 npm 安装过什么模块</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">npm list -g --depth 0</span><br></pre></td></tr></table></figure>
+<ul>
+<li>list : 已经安装的 node 包</li>
+<li>-g ： 全局的安装包</li>
+<li>–depth : 包的显示层级，0 代表显示第一级的包，数字越大，显示的越全。</li>
+</ul>
+<p>迁移其实非常简单，你在原来的环境将整本书打包，最好把文件夹里的node_modules 目录也一起打包，这样在新的环境就不需要安装这些组件了。在新的环境按照如下顺序依次进行安装你之前安装过的组件</p>
+<p>&lt; 1.&gt; 安装 npm<br>&lt; 2.&gt; 安装 gitbook<br>&lt; 3.&gt; 拷贝打包好的文件夹<br>&lt; 4.&gt; 减压到新的位置</p>
+<p>这样就完成了你的书的迁移。你在新的位置可以继续进行内容的编写、静态文件的生成，和之前一样，没有任何区别。</p>
+<p>======================<br>由于无法及时收到评论内容，所以关闭评论功能。<br>大家有问题欢迎发邮件到 <a href="mailto:erdong@mail.erdong.site">erdong@mail.erdong.site</a> ，或者 <a href="https://github.com/erdong/erdong.github.io/issues" target="_blank" rel="noopener">https://github.com/erdong/erdong.github.io/issues</a> 提 Issue ，我会及时回复。</p>
+<p>======================<br>Erdong, A Linux user !</p>
+]]></content>
+      <categories>
+        <category>gitbook</category>
+      </categories>
+      <tags>
+        <tag>gitbook</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>解决 EXT4 使用无法挂载</title>
+    <url>/linux/system/ext4-error-loading-journal.html</url>
+    <content><![CDATA[<h1 id="现象"><a href="#现象" class="headerlink" title="现象"></a>现象</h1><p>使用新版本的操作系统自带的文件系统格式化工具进行分区格式化以后，在较低的操作系统版本上会有提示，提示如下：</p>
+<a id="more"></a>
+
+
+
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[root@localhost ~]# mount -t ext4 &#x2F;dev&#x2F;sdb1 &#x2F;root&#x2F;test</span><br><span class="line">mount: 文件系统类型错误、选项错误、&#x2F;dev&#x2F;sdb1 上有坏超级块、</span><br><span class="line">       缺少代码页或助手程序，或其他错误</span><br><span class="line"></span><br><span class="line">       有些情况下在 syslog 中可以找到一些有用信息- 请尝试</span><br><span class="line">       dmesg | tail  这样的命令看看。</span><br></pre></td></tr></table></figure>
+
+
+<p>按照提示查看日志发现</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Mar 12 01:12:20 localhost kernel: JBD2: Unrecognised features on journal</span><br><span class="line">Mar 12 01:12:20 localhost kernel: EXT4-fs (sdb1): error loading journal</span><br></pre></td></tr></table></figure>
+
+<h1 id="原因分析"><a href="#原因分析" class="headerlink" title="原因分析"></a>原因分析</h1><p>造成上述问题的原因是在新的操作系统上使用系统自带的 mkfs.ext4 对文件系统进行了格式化，默认会使用一些新的的特性，这些新的特性在旧的系统上是无法使用的。</p>
+<p>比如在 Ubuntu 18.04  上进行使用 mkfs.ext4 进行格式化的磁盘，在 CentOS 7.4 1708 上 是可以正常使用的，在 CentOS 7.0 1406 以及以下版本是就是提示上述错误。</p>
+<p>Ubuntu 18.04 的 mkfs 版本是 1.44.1-1 ，CentOS 7.0 1406 的 mkfs 版本是 1.42.9-4。造成了这个差异。CentOS 7.4 1708 的 mkfs 版本是 1.42.9-10 ，Redhat 内部在小版本上新增了这个特性的支持。</p>
+<h1 id="解决办法"><a href="#解决办法" class="headerlink" title="解决办法"></a>解决办法</h1><p>按照日志提示，Unrecognised features on journal  ， 不支持 journal 。</p>
+<p>那么查看文件系统特性：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#tune2fs -l &#x2F;dev&#x2F;sdb1</span><br><span class="line">Filesystem features: has_journal ext_attr resize_inode dir_index filetype extent 64bit flex_bg sparse_super large_file</span><br></pre></td></tr></table></figure>
+
+<p>文件系统含有一个 has_journal 特性，删除这个特性，删除方式如下：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#tune2fs -O ^has_journal &#x2F;dev&#x2F;sdb1 &#x2F;&#x2F; 去除has_journal选项</span><br><span class="line">#tune2fs -O has_journal &#x2F;dev&#x2F;sdb1 &#x2F;&#x2F; add has_journal选项</span><br></pre></td></tr></table></figure>
+
+<p>验证是否删除：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#tune2fs -l &#x2F;dev&#x2F;sdb1</span><br><span class="line">Filesystem features: ext_attr resize_inode dir_index filetype</span><br></pre></td></tr></table></figure>
+
+<p>可以看到已经没有这个特性了，再次尝试挂载，</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[root@localhost ~]# mount -t ext4 &#x2F;dev&#x2F;sdb1 &#x2F;root&#x2F;test</span><br><span class="line">[root@localhost ~]# cd test&#x2F;</span><br><span class="line">[root@localhost test]# ls</span><br><span class="line">lost+found  test_dir  test_file.txt</span><br><span class="line">[root@localhost test]# cat test_file.txt</span><br><span class="line">kkdkdkdkkak</span><br><span class="line">kldkjfalkf</span><br><span class="line">kjfklaf</span><br><span class="line">kjafkdj</span><br><span class="line"></span><br><span class="line">[root@localhost test]#</span><br></pre></td></tr></table></figure>
+<p>可以看到，已经可以正常挂载，挂载后的文件也可以正常显示。</p>
+<h1 id="couldn’t-mount-RDWR"><a href="#couldn’t-mount-RDWR" class="headerlink" title="couldn’t mount RDWR"></a>couldn’t mount RDWR</h1><p>在上述的现象里，如果挂载 ext4 到 CentOS 6.5 等更老一些的系统的时候，也会提示部分不支持的特性，在日志里如果出现了如下提示：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">kernel: EXT4-fs (sdb1): couldn&#39;t mount RDWR because of unsupported optional features (400)</span><br></pre></td></tr></table></figure>
+
+
+<p>这种情况是因为mkfs.ext4的时候制定的参数，旧的内核不支持导致.</p>
+<p>The ext4 feature (400) is the new metadata_csum feature. If this feature is enabled and old tools are used to mount the filesystem they will only be able to mount read-only.</p>
+<p><a href="https://ext4.wiki.kernel.org/index.php/Ext4_Metadata_Checksums" target="_blank" rel="noopener">https://ext4.wiki.kernel.org/index.php/Ext4_Metadata_Checksums</a></p>
+<p>解决办法一样，可以在创建的时候不使用该特性，或者删除该特性后再 CentOS 6.5 上使用。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[root@localhost ~]# tune2fs -O ^metadata_csum &#x2F;dev&#x2F;sdb1</span><br><span class="line">tune2fs 1.43.1 (08-Jun-2016)</span><br><span class="line"></span><br><span class="line">请在这个文件系统上运行 e2fsck.</span><br></pre></td></tr></table></figure>
+
+<p>系统提示需要 运行 e2fsck 进行磁盘检查，那么按照要求进行检查, e2fsck 的参数请大家自己选择。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[root@localhost ~]# e2fsck -f -a -v &#x2F;dev&#x2F;sdb1</span><br><span class="line"></span><br><span class="line">          13 inodes used (0.00%, out of 30531584)</span><br><span class="line">           0 non-contiguous files (0.0%)</span><br><span class="line">           0 non-contiguous directories (0.0%)</span><br><span class="line">             # of inodes with ind&#x2F;dind&#x2F;tind blocks: 0&#x2F;0&#x2F;0</span><br><span class="line">             Extent depth histogram: 4</span><br><span class="line">     1935198 blocks used (1.58%, out of 122096637)</span><br><span class="line">           0 bad blocks</span><br><span class="line">           1 large file</span><br><span class="line"></span><br><span class="line">           1 regular file</span><br><span class="line">           3 directories</span><br><span class="line">           0 character device files</span><br><span class="line">           0 block device files</span><br><span class="line">           0 fifos</span><br><span class="line">           0 links</span><br><span class="line">           0 symbolic links (0 fast symbolic links)</span><br><span class="line">           0 sockets</span><br><span class="line">------------</span><br><span class="line">           4 files</span><br></pre></td></tr></table></figure>
+
+<p>检查完以后，就可以尝试移除这个特性了，期间会询问，请按照实际选择。移除以后挂载就正常了。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[root@localhost ~]# tune2fs -O ^metadata_csum &#x2F;dev&#x2F;sdb1</span><br><span class="line">tune2fs 1.43.1 (08-Jun-2016)</span><br><span class="line">Disabling checksums could take some time.</span><br><span class="line">Proceed anyway (or wait 5 seconds) ? (y,n) y</span><br><span class="line">[root@localhost ~]# mount -t ext4 &#x2F;dev&#x2F;sdb1 &#x2F;root&#x2F;test</span><br><span class="line">[root@localhost ~]# cd test&#x2F;</span><br><span class="line">[root@localhost test]# ls</span><br><span class="line">lost+found  test_dir  test_file.txt</span><br><span class="line">[root@localhost test]#</span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="tune2fs-版本较低"><a href="#tune2fs-版本较低" class="headerlink" title="tune2fs 版本较低"></a>tune2fs 版本较低</h1><p>执行 tune2fs 如果遇到如下提示：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[root@localhost ~]# tune2fs -O ^has_journal &#x2F;dev&#x2F;sdb1</span><br><span class="line">tune2fs 1.42.9 (28-Dec-2013)</span><br><span class="line">tune2fs: Filesystem has unsupported read-only feature(s) while trying to open &#x2F;dev&#x2F;sdb1</span><br><span class="line">Couldn&#39;t find valid filesystem superblock.</span><br><span class="line">[root@localhost ~]#</span><br></pre></td></tr></table></figure>
+
+
+<p>那么说明 tune2fs 版本较低，不支持 has_journal 特性，需要升级到 1.43.1以上才可以。</p>
+<p>在 CentOS 6.5 中， tune2fs 版本更低，是 1.41.12，也需要升级。</p>
+<h1 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h1><p>如果确认是新旧版本的问题导致的无法挂载，那么上述方法就可以解决了。</p>
+<p>如果不是新旧版本的问题，那么还有一种可能，就是磁盘坏了，在这种情况下可以使用下列命令尝试修复。</p>
+<p>特别提示，磁盘修复请慎重选择。本文不保证数据安全性和完整性，只提供一个可供参考的选择。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[root@localhost ~]# e2fsck -f -c -v &#x2F;dev&#x2F;sdb1</span><br><span class="line">e2fsck 1.42.9 (28-Dec-2013)</span><br><span class="line">&#x2F;dev&#x2F;sdb1 has unsupported feature(s): metadata_csum</span><br><span class="line">e2fsck: Get a newer version of e2fsck!</span><br><span class="line">[root@localhost ~]#</span><br></pre></td></tr></table></figure>
+
+<p>该提示显示 e2fsck 工具不支持 新的特性，meadata_csum , 解决版本是 升级 e2fsck 工具的版本， e2fsck 工具由 e2fsprogs 和 e2fsprogs-libs 两个工具包来提供，升级这两个工具包的版本就可以，最少要升级到 1.43.1 版本以上才可以。</p>
+<p>Ubuntu 可以参考如下链接进行解决。</p>
+<blockquote>
+<p><a href="https://askubuntu.com/questions/1053404/e2fsck-how-to-handle-the-metadata-csum-error-by-advancing-the-e2fsck-version?noredirect=1&amp;lq=1" target="_blank" rel="noopener">https://askubuntu.com/questions/1053404/e2fsck-how-to-handle-the-metadata-csum-error-by-advancing-the-e2fsck-version?noredirect=1&amp;lq=1</a></p>
+</blockquote>
+<p>关于 CentOS 可以去下列地址查找对应的 rpm 包来进行升级。</p>
+<blockquote>
+<p><a href="http://www.rpmfind.net/linux/RPM/index.html" target="_blank" rel="noopener">http://www.rpmfind.net/linux/RPM/index.html</a></p>
+</blockquote>
+<p>更推荐的方法是用源码进行编译。过程如下</p>
+<h3 id="安装-GCC-编译器"><a href="#安装-GCC-编译器" class="headerlink" title="安装 GCC 编译器"></a>安装 GCC 编译器</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">yum install gcc -y</span><br></pre></td></tr></table></figure>
+
+<h3 id="下载源码包，"><a href="#下载源码包，" class="headerlink" title="下载源码包，"></a>下载源码包，</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">wget http:&#x2F;&#x2F;downloads.sourceforge.net&#x2F;project&#x2F;e2fsprogs&#x2F;e2fsprogs&#x2F;v1.43.1&#x2F;e2fsprogs-1.43.1.tar.gz</span><br></pre></td></tr></table></figure>
+
+<h3 id="解压安装包进行编译"><a href="#解压安装包进行编译" class="headerlink" title="解压安装包进行编译"></a>解压安装包进行编译</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">tar -zxf e2fsprogs-1.43.1.tar.gz</span><br><span class="line">cd e2fsprogs-1.43.1</span><br><span class="line">.&#x2F;configure</span><br><span class="line">make</span><br></pre></td></tr></table></figure>
+
+<p>此时已经编译好了，进入 e2fsck 文件夹就可以看到新编译的版本了，</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[root@loaclhost ~]cd e2fsck</span><br><span class="line">[root@localhost ~]# e2fsck -V</span><br><span class="line">e2fsck 1.43.1 (08-Jun-2016)</span><br><span class="line">	Using EXT2FS Library version 1.43.1, 08-Jun-2016</span><br></pre></td></tr></table></figure>
+
+<p>如果希望替换系统的 e2fsck 工具，那么执行 make install 。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cd e2fsprogs-1.43.1</span><br><span class="line">make install</span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>出现上述问题的主要原因是，新版的操作系统默认支持了很多新的特性，这些新特性在旧版本的操作系统上是不支持的。<br>如果在磁盘使用前就已经知道了磁盘将要使用的操作系统，应该依据操作系统的差别，然后有意的关闭一些参数，使得新旧操作系统的磁盘是兼容的。</p>
+<p>如果无法预知操作系统，那么在实际使用中遇到了问题，可以查找是哪个新的特性导致的该问题，尝试移除这个文件系统的特性，之后就可以正常使用了。但是贸然移除某个特性，可能会导致磁盘上的数据丢失，这个应该做过充分的调研确认以后再操作。</p>
+<p>======================<br>Erdong, A Linux user !</p>
+]]></content>
+      <categories>
+        <category>linux</category>
+        <category>system</category>
+      </categories>
+      <tags>
+        <tag>ext4</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>MinIO 分布式集群搭建</title>
     <url>/minio/minio-cluster.html</url>
     <content><![CDATA[<h1 id="MinIO-分布式集群搭建"><a href="#MinIO-分布式集群搭建" class="headerlink" title="MinIO 分布式集群搭建"></a>MinIO 分布式集群搭建</h1><p>分布式 Minio 可以让你将多块硬盘（甚至在不同的机器上）组成一个对象存储服务。由于硬盘分布在不同的节点上，分布式 Minio 避免了单点故障。</p>
@@ -1820,6 +1952,216 @@
       </categories>
       <tags>
         <tag>cluster</tag>
+        <tag>minio</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>用 GitBook 创建一本书</title>
+    <url>/gitbook/gitbook-create-book.html</url>
+    <content><![CDATA[<h1 id="用-GitBook-创建一本书"><a href="#用-GitBook-创建一本书" class="headerlink" title="用 GitBook 创建一本书"></a>用 GitBook 创建一本书</h1><p>gitbook 首先是一个软件，它使用 Git 和 Markdown 来编排书本，如果你没有听过 Git 和 Markdown，那么 gitbook 可能不适合你直接入手，你需要先去学习 Git 和 Markdown。Git 是一个版本控制工具，Markdown 是一个文本编辑语法，基本的使用大概几个小时就可以都学会了，并不复杂。</p>
+<a id="more"></a>
+<p>这是 gitbook 项目主页上对 gitbook 的定义。</p>
+<blockquote>
+<p>Modern book format and toolchain using Git and Markdown .</p>
+</blockquote>
+<h1 id="安装-GitBook"><a href="#安装-GitBook" class="headerlink" title="安装 GitBook"></a>安装 GitBook</h1><p>首先需要安装 nodejs，以便能够使用 npm 来安装 gitbook</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ wget -qO- https:&#x2F;&#x2F;raw.github.com&#x2F;creationix&#x2F;nvm&#x2F;v0.33.11&#x2F;install.sh | sh</span><br><span class="line">&#96;&#96;&#96; </span><br><span class="line"></span><br><span class="line">该命令会安装 nvm 命令，安装好以后会添加 nvm 的环境变量到 &#96;.bashrc&#96; 文件里，接下来退出终端，重新登陆使得 &#96;.bashrc&#96; 文件生效，或者使用其他方法使添加的环境变量生效。</span><br><span class="line">   </span><br><span class="line">接下来使用下列命令来安装 npm </span><br><span class="line"></span><br><span class="line">&#96;&#96;&#96;   </span><br><span class="line">$ nvm install stable</span><br></pre></td></tr></table></figure>
+
+<p>可以使用下列命令来查看 npm 的版本，比如我这次安装的是 6.11.3 版本。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[erdong@testhost ~]$ npm --version</span><br><span class="line">6.11.3</span><br><span class="line">[erdong@testhost ~]$</span><br></pre></td></tr></table></figure>
+
+<p>接下来使用 npm 来安装 gitbook</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ npm install gitbook-cli -g</span><br></pre></td></tr></table></figure>
+
+<h1 id="创建第一本书"><a href="#创建第一本书" class="headerlink" title="创建第一本书"></a>创建第一本书</h1><p>首先新建一个目录，这个目录就是这本书的一个载体，就好比在现实世界里你要先准备一个本子，以后所有的内容会写在这个本子上。在 gitbook，我们以后所有的内容都会存放在这个目录里。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ mkdir erdong-first-book</span><br></pre></td></tr></table></figure>
+
+<p>接下来我们初始化这个目录，就好比你在你准备的本子上做一些基本的工作，</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[erdong@testhost ~]$ cd erdong-first-book</span><br><span class="line">[erdong@testhost erdong-first-book]$ gitbook init</span><br><span class="line">[erdong@testhost erdong-first-book]$ ls</span><br><span class="line">README.md  SUMMARY.md</span><br></pre></td></tr></table></figure>
+<p>初始化过后，在这个文件夹会生成 2 个文件，<code>README.md</code> 和 <code>SUMMARY.md</code> 。</p>
+<ul>
+<li>README.md ： 是书的简单介绍，类似于一本书的序或者前言部分。</li>
+<li>SUMMARY.md ： 是书的目录，程序按照这个文件来生成书的结构。</li>
+</ul>
+<p>初始化结束后，就可以写东西了，</p>
+<p>比如我们现在往这两个文件里写入以下内容，在 README.md 文件中我们写入如下内容：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># Introduction</span><br><span class="line"></span><br><span class="line">This erdong&#39;s first book</span><br><span class="line"></span><br><span class="line">This a samples in GitHub, https:&#x2F;&#x2F;github.com&#x2F;erdong&#x2F;gitbook-notes-samples</span><br></pre></td></tr></table></figure>
+
+<p>在 SUMMARY.md  文件中写入如下内容：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># Summary</span><br><span class="line"></span><br><span class="line">* [Introduction](README.md)</span><br><span class="line"></span><br><span class="line">* [Part I]()</span><br><span class="line">* [Part II]()</span><br><span class="line">* [Part III]()</span><br></pre></td></tr></table></figure>
+
+<p>写入内容后，我们可以通过 <code>gitbook serve</code> 命令来预览我们写的书</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[erdong@testhost erdong-first-book]$ gitbook serve</span><br><span class="line">Live reload server started on port: 35729</span><br><span class="line">Press CTRL+C to quit ...</span><br><span class="line"></span><br><span class="line">info: 7 plugins are installed</span><br><span class="line">info: loading plugin &quot;livereload&quot;... OK</span><br><span class="line">info: loading plugin &quot;highlight&quot;... OK</span><br><span class="line">info: loading plugin &quot;search&quot;... OK</span><br><span class="line">info: loading plugin &quot;lunr&quot;... OK</span><br><span class="line">info: loading plugin &quot;sharing&quot;... OK</span><br><span class="line">info: loading plugin &quot;fontsettings&quot;... OK</span><br><span class="line">info: loading plugin &quot;theme-default&quot;... OK</span><br><span class="line">info: found 1 pages</span><br><span class="line">info: found 0 asset files</span><br><span class="line">info: &gt;&gt; generation finished with success in 0.5s !</span><br><span class="line"></span><br><span class="line">Starting server ...</span><br><span class="line">Serving book on http:&#x2F;&#x2F;localhost:4000</span><br></pre></td></tr></table></figure>
+
+<p>这样会在前台运行一个 web 程序，对外以 4000 端口提供一个可以浏览的页面，浏览的地址是 <a href="http://localhost:4000" target="_blank" rel="noopener">http://localhost:4000</a> ，</p>
+<p>这样我们就可以查看我们写好的书了。如下图所示。</p>
+<p><img src="https://image.erdong.site/blog/2019/10/16/gitbookintroduction.jpg" alt="Gitbook Introduction"></p>
+<p>如果我们不想使用这种方式来预览书籍的话，也可以用 gitbook 生成一份静态的页面，放在 web 服务器或者其他可以提供 web 浏览访问的地方。生成静态页面使用 <code>gitbook build</code> 命令即可，会生成一个 <code>_book</code> 的文件夹，这个目录里放的就是生成好的静态页面，拷贝到对应的目录即可。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[erdong@testhost erdong-first-book]$ gitbook build </span><br><span class="line">info: 7 plugins are installed</span><br><span class="line">info: 6 explicitly listed</span><br><span class="line">info: loading plugin &quot;highlight&quot;... OK</span><br><span class="line">info: loading plugin &quot;search&quot;... OK</span><br><span class="line">info: loading plugin &quot;lunr&quot;... OK</span><br><span class="line">info: loading plugin &quot;sharing&quot;... OK</span><br><span class="line">info: loading plugin &quot;fontsettings&quot;... OK</span><br><span class="line">info: loading plugin &quot;theme-default&quot;... OK</span><br><span class="line">info: found 1 pages</span><br><span class="line">info: found 0 asset files</span><br><span class="line">info: &gt;&gt; generation finished with success in 0.5s !</span><br><span class="line">[erdong@testhost erdong-first-book]$</span><br></pre></td></tr></table></figure>
+
+<h1 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h1><p>这样，我们就通过 GitBook 工具写了一本书，或者一个小册子。</p>
+<p>======================<br>由于无法及时收到评论内容，所以关闭评论功能。<br>大家有问题欢迎发邮件到 <a href="mailto:erdong@mail.erdong.site">erdong@mail.erdong.site</a> ，或者 <a href="https://github.com/erdong/erdong.github.io/issues" target="_blank" rel="noopener">https://github.com/erdong/erdong.github.io/issues</a> 提 Issue ，我会及时回复。</p>
+<p>======================<br>Erdong, A Linux user !</p>
+]]></content>
+      <categories>
+        <category>gitbook</category>
+      </categories>
+      <tags>
+        <tag>gitbook</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>MinIO 参数解析与限制</title>
+    <url>/minio/minio-parameter-and-limit.html</url>
+    <content><![CDATA[<h1 id="MinIO-参数解析与限制"><a href="#MinIO-参数解析与限制" class="headerlink" title="MinIO 参数解析与限制"></a>MinIO 参数解析与限制</h1><p>MinIO server 在默认情况下会将所有配置信息存到 <code>${HOME}/.minio/config.json</code> 文件中。 以下部分提供每个字段的详细说明以及如何自定义它们。一个完整的 config.json 在 <a href="https://raw.githubusercontent.com/minio/minio/master/docs/config/config.sample.json" target="_blank" rel="noopener">这里</a></p>
+<a id="more"></a>
+<p>默认的配置目录是 <code>${HOME}/.minio</code>，你可以使用 <code>--config-dir</code> 选项指定新的路径覆盖默认的路径。MinIO server 在首次启动时会生成一个新的 config.json ，里面带有自动生成的访问凭据。</p>
+<p>TLS 证书存在 <code>${HOME}/.minio/certs</code> 目录下，你需要将证书放在该目录下来启用 HTTPS 。</p>
+<p>以下是一个带来TLS证书的MinIO server的目录结构。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ tree ~&#x2F;.minio</span><br><span class="line">&#x2F;home&#x2F;user1&#x2F;.minio</span><br><span class="line">├── certs</span><br><span class="line">│   ├── CAs</span><br><span class="line">│   ├── private.key</span><br><span class="line">│   └── public.crt</span><br><span class="line">└── config.json</span><br></pre></td></tr></table></figure>
+
+
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>version</td>
+<td>string</td>
+<td>version决定了配置文件的格式，任何老版本都会在启动时自动迁移到新版本中。 [请勿手动修改]</td>
+</tr>
+<tr>
+<td>credential</td>
+<td></td>
+<td>对象存储和Web访问的验证凭据。</td>
+</tr>
+<tr>
+<td>credential.accessKey</td>
+<td>string</td>
+<td>Access key长度最小是5个字符，你可以通过 MINIO_ACCESS_KEY环境变量进行修改</td>
+</tr>
+<tr>
+<td>credential.secretKey</td>
+<td>string</td>
+<td>Secret key长度最小是8个字符，你可以通过MINIO_SECRET_KEY环境变量进行修改</td>
+</tr>
+<tr>
+<td>region</td>
+<td>string</td>
+<td>region描述的是服务器的物理位置，默认是us-east-1（美国东区1）,这也是亚马逊S3的默认区域。你可以通过MINIO_REGION_NAME 环境变量进行修改。如果不了解这块，建议不要随意修改</td>
+</tr>
+<tr>
+<td>browser</td>
+<td>string</td>
+<td>开启或关闭浏览器访问，默认是开启的，你可以通过 MINIO_BROWSER 环境变量进行修改</td>
+</tr>
+</tbody></table>
+<p>示例</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">export MINIO_BROWSER&#x3D;off</span><br><span class="line">minio server &#x2F;data</span><br></pre></td></tr></table></figure>
+
+<h1 id="MinIO-服务限制"><a href="#MinIO-服务限制" class="headerlink" title="MinIO 服务限制"></a>MinIO 服务限制</h1><p>由于纠删码的原因，MinIO 有如下限制</p>
+<table>
+<thead>
+<tr>
+<th>项目</th>
+<th>参数</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>最大驱动器数量</td>
+<td>16</td>
+</tr>
+<tr>
+<td>最小驱动器数量</td>
+<td>4</td>
+</tr>
+<tr>
+<td>读仲裁</td>
+<td>N/2</td>
+</tr>
+<tr>
+<td>写仲裁</td>
+<td>N/2+1</td>
+</tr>
+</tbody></table>
+<p>通过浏览器访问 MinIO ，由于浏览器的限制，上传文件的大小限制为 5GB。</p>
+<p>S3 API 的限制</p>
+<table>
+<thead>
+<tr>
+<th>项目</th>
+<th>参数</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>最大桶数</td>
+<td>无限额</td>
+</tr>
+<tr>
+<td>每桶最大对象数</td>
+<td>无限额</td>
+</tr>
+<tr>
+<td>最大对象大小</td>
+<td>5TB</td>
+</tr>
+<tr>
+<td>最小对象大小</td>
+<td>0</td>
+</tr>
+<tr>
+<td>每次 PUT 操作的最大对象大小</td>
+<td>5GB</td>
+</tr>
+<tr>
+<td>每次上传的最大 Part 数量</td>
+<td>10000</td>
+</tr>
+<tr>
+<td>Part 大小</td>
+<td>5MB到5GB. 最后一个part可以从0B到5GB</td>
+</tr>
+<tr>
+<td>每次list parts请求可返回的part最大数量</td>
+<td>1000</td>
+</tr>
+<tr>
+<td>每次list objects请求可返回的object最大数量</td>
+<td>1000</td>
+</tr>
+<tr>
+<td>每次list multipart uploads请求可返回的multipart uploads最大数量</td>
+<td>1000</td>
+</tr>
+</tbody></table>
+<p>Minio 不支持的 Amazon S3 Bucket API</p>
+<ul>
+<li>BucketACL (可以用 bucket policies)</li>
+<li>BucketCORS (所有HTTP方法的所有存储桶都默认启用CORS)</li>
+<li>BucketLifecycle (Minio纠删码不需要)</li>
+<li>BucketReplication (可以用 mc mirror)</li>
+<li>BucketVersions, BucketVersioning (可以用 s3git)</li>
+<li>BucketWebsite (可以用 caddy or nginx)</li>
+<li>BucketAnalytics, BucketMetrics, BucketLogging (可以用 bucket notification APIs)</li>
+<li>BucketRequestPayment</li>
+<li>BucketTagging</li>
+</ul>
+<p>Minio不支持的Amazon S3 Object API.</p>
+<ul>
+<li>ObjectACL (可以用 bucket policies)</li>
+<li>ObjectTorrent</li>
+</ul>
+<p>======================<br>由于无法及时收到评论内容，所以关闭评论功能。<br>大家有问题欢迎发邮件到 <a href="mailto:erdong@mail.erdong.site">erdong@mail.erdong.site</a> ，或者 <a href="https://github.com/erdong/erdong.github.io/issues" target="_blank" rel="noopener">https://github.com/erdong/erdong.github.io/issues</a> 提 Issue ，我会及时回复。</p>
+<p>======================<br>Erdong, A Linux user !</p>
+]]></content>
+      <categories>
+        <category>minio</category>
+      </categories>
+      <tags>
         <tag>minio</tag>
       </tags>
   </entry>
@@ -1914,98 +2256,6 @@
       </tags>
   </entry>
   <entry>
-    <title>用 GitBook 创建一本书</title>
-    <url>/gitbook/gitbook-create-book.html</url>
-    <content><![CDATA[<h1 id="用-GitBook-创建一本书"><a href="#用-GitBook-创建一本书" class="headerlink" title="用 GitBook 创建一本书"></a>用 GitBook 创建一本书</h1><p>gitbook 首先是一个软件，它使用 Git 和 Markdown 来编排书本，如果你没有听过 Git 和 Markdown，那么 gitbook 可能不适合你直接入手，你需要先去学习 Git 和 Markdown。Git 是一个版本控制工具，Markdown 是一个文本编辑语法，基本的使用大概几个小时就可以都学会了，并不复杂。</p>
-<a id="more"></a>
-<p>这是 gitbook 项目主页上对 gitbook 的定义。</p>
-<blockquote>
-<p>Modern book format and toolchain using Git and Markdown .</p>
-</blockquote>
-<h1 id="安装-GitBook"><a href="#安装-GitBook" class="headerlink" title="安装 GitBook"></a>安装 GitBook</h1><p>首先需要安装 nodejs，以便能够使用 npm 来安装 gitbook</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ wget -qO- https:&#x2F;&#x2F;raw.github.com&#x2F;creationix&#x2F;nvm&#x2F;v0.33.11&#x2F;install.sh | sh</span><br><span class="line">&#96;&#96;&#96; </span><br><span class="line"></span><br><span class="line">该命令会安装 nvm 命令，安装好以后会添加 nvm 的环境变量到 &#96;.bashrc&#96; 文件里，接下来退出终端，重新登陆使得 &#96;.bashrc&#96; 文件生效，或者使用其他方法使添加的环境变量生效。</span><br><span class="line">   </span><br><span class="line">接下来使用下列命令来安装 npm </span><br><span class="line"></span><br><span class="line">&#96;&#96;&#96;   </span><br><span class="line">$ nvm install stable</span><br></pre></td></tr></table></figure>
-
-<p>可以使用下列命令来查看 npm 的版本，比如我这次安装的是 6.11.3 版本。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[erdong@testhost ~]$ npm --version</span><br><span class="line">6.11.3</span><br><span class="line">[erdong@testhost ~]$</span><br></pre></td></tr></table></figure>
-
-<p>接下来使用 npm 来安装 gitbook</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ npm install gitbook-cli -g</span><br></pre></td></tr></table></figure>
-
-<h1 id="创建第一本书"><a href="#创建第一本书" class="headerlink" title="创建第一本书"></a>创建第一本书</h1><p>首先新建一个目录，这个目录就是这本书的一个载体，就好比在现实世界里你要先准备一个本子，以后所有的内容会写在这个本子上。在 gitbook，我们以后所有的内容都会存放在这个目录里。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ mkdir erdong-first-book</span><br></pre></td></tr></table></figure>
-
-<p>接下来我们初始化这个目录，就好比你在你准备的本子上做一些基本的工作，</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[erdong@testhost ~]$ cd erdong-first-book</span><br><span class="line">[erdong@testhost erdong-first-book]$ gitbook init</span><br><span class="line">[erdong@testhost erdong-first-book]$ ls</span><br><span class="line">README.md  SUMMARY.md</span><br></pre></td></tr></table></figure>
-<p>初始化过后，在这个文件夹会生成 2 个文件，<code>README.md</code> 和 <code>SUMMARY.md</code> 。</p>
-<ul>
-<li>README.md ： 是书的简单介绍，类似于一本书的序或者前言部分。</li>
-<li>SUMMARY.md ： 是书的目录，程序按照这个文件来生成书的结构。</li>
-</ul>
-<p>初始化结束后，就可以写东西了，</p>
-<p>比如我们现在往这两个文件里写入以下内容，在 README.md 文件中我们写入如下内容：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># Introduction</span><br><span class="line"></span><br><span class="line">This erdong&#39;s first book</span><br><span class="line"></span><br><span class="line">This a samples in GitHub, https:&#x2F;&#x2F;github.com&#x2F;erdong&#x2F;gitbook-notes-samples</span><br></pre></td></tr></table></figure>
-
-<p>在 SUMMARY.md  文件中写入如下内容：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># Summary</span><br><span class="line"></span><br><span class="line">* [Introduction](README.md)</span><br><span class="line"></span><br><span class="line">* [Part I]()</span><br><span class="line">* [Part II]()</span><br><span class="line">* [Part III]()</span><br></pre></td></tr></table></figure>
-
-<p>写入内容后，我们可以通过 <code>gitbook serve</code> 命令来预览我们写的书</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[erdong@testhost erdong-first-book]$ gitbook serve</span><br><span class="line">Live reload server started on port: 35729</span><br><span class="line">Press CTRL+C to quit ...</span><br><span class="line"></span><br><span class="line">info: 7 plugins are installed</span><br><span class="line">info: loading plugin &quot;livereload&quot;... OK</span><br><span class="line">info: loading plugin &quot;highlight&quot;... OK</span><br><span class="line">info: loading plugin &quot;search&quot;... OK</span><br><span class="line">info: loading plugin &quot;lunr&quot;... OK</span><br><span class="line">info: loading plugin &quot;sharing&quot;... OK</span><br><span class="line">info: loading plugin &quot;fontsettings&quot;... OK</span><br><span class="line">info: loading plugin &quot;theme-default&quot;... OK</span><br><span class="line">info: found 1 pages</span><br><span class="line">info: found 0 asset files</span><br><span class="line">info: &gt;&gt; generation finished with success in 0.5s !</span><br><span class="line"></span><br><span class="line">Starting server ...</span><br><span class="line">Serving book on http:&#x2F;&#x2F;localhost:4000</span><br></pre></td></tr></table></figure>
-
-<p>这样会在前台运行一个 web 程序，对外以 4000 端口提供一个可以浏览的页面，浏览的地址是 <a href="http://localhost:4000" target="_blank" rel="noopener">http://localhost:4000</a> ，</p>
-<p>这样我们就可以查看我们写好的书了。如下图所示。</p>
-<p><img src="https://image.erdong.site/blog/2019/10/16/gitbookintroduction.jpg" alt="Gitbook Introduction"></p>
-<p>如果我们不想使用这种方式来预览书籍的话，也可以用 gitbook 生成一份静态的页面，放在 web 服务器或者其他可以提供 web 浏览访问的地方。生成静态页面使用 <code>gitbook build</code> 命令即可，会生成一个 <code>_book</code> 的文件夹，这个目录里放的就是生成好的静态页面，拷贝到对应的目录即可。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[erdong@testhost erdong-first-book]$ gitbook build </span><br><span class="line">info: 7 plugins are installed</span><br><span class="line">info: 6 explicitly listed</span><br><span class="line">info: loading plugin &quot;highlight&quot;... OK</span><br><span class="line">info: loading plugin &quot;search&quot;... OK</span><br><span class="line">info: loading plugin &quot;lunr&quot;... OK</span><br><span class="line">info: loading plugin &quot;sharing&quot;... OK</span><br><span class="line">info: loading plugin &quot;fontsettings&quot;... OK</span><br><span class="line">info: loading plugin &quot;theme-default&quot;... OK</span><br><span class="line">info: found 1 pages</span><br><span class="line">info: found 0 asset files</span><br><span class="line">info: &gt;&gt; generation finished with success in 0.5s !</span><br><span class="line">[erdong@testhost erdong-first-book]$</span><br></pre></td></tr></table></figure>
-
-<h1 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h1><p>这样，我们就通过 GitBook 工具写了一本书，或者一个小册子。</p>
-<p>======================<br>由于无法及时收到评论内容，所以关闭评论功能。<br>大家有问题欢迎发邮件到 <a href="mailto:erdong@mail.erdong.site">erdong@mail.erdong.site</a> ，或者 <a href="https://github.com/erdong/erdong.github.io/issues" target="_blank" rel="noopener">https://github.com/erdong/erdong.github.io/issues</a> 提 Issue ，我会及时回复。</p>
-<p>======================<br>Erdong, A Linux user !</p>
-]]></content>
-      <categories>
-        <category>gitbook</category>
-      </categories>
-      <tags>
-        <tag>gitbook</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>发布一本用 GitBook 编辑的书</title>
-    <url>/gitbook/gitbook-release-book.html</url>
-    <content><![CDATA[<p>在上一篇的文章里，我们已经写好了一本名叫 <code>erdong-first-book</code> 的书，但是在本地浏览很不方便，我们希望放到网络上，可以随时、方便的访问这个书籍。这个需求可以使用多种方式来实现，比如第一种，可以通过 GitBook 官网来发布这本书，GitBook 除了是一个电子书的工具以为，自身也有一个网址，在该网站注册成为会员后，可以发布自己的电子书，并且可以和 GitHub 进行关联。</p>
-<p>除了使用 GitBook 官网以外，可以直接将电子书放在 GitHub 上，通过 GitHub Pages 来发布这本书。</p>
-<a id="more"></a>
-
-<h1 id="使用-GitHub-发布你的书籍"><a href="#使用-GitHub-发布你的书籍" class="headerlink" title="使用 GitHub 发布你的书籍"></a>使用 GitHub 发布你的书籍</h1><p>接下来我们看一下如何使用 GitHub Pages 来发布一本书。</p>
-<p>首先你需要一个 GitHub 的账号，在你的账号下创建一个用来放置你书籍的仓库，这两个步骤在网络上有太多的资料，很容易就可以达成了。</p>
-<p>创建好仓库以后，在仓库中创建一个 docs 文件夹，用来放置 GitBook 生成的静态文件。</p>
-<p>打开 GitHub 仓库的设置页面，找到 GitHub Pages 选项，选择 <code>master branch /docs folder</code> 选项即可。</p>
-<blockquote>
-<p>注意：一定要先在仓库中创建 docs 文件夹，否则无法勾选该选项。</p>
-</blockquote>
-<p><img src="https://image.erdong.site/blog/2019/10/18/githubpagesdocs.jpg" alt="GithubPagesDocs"></p>
-<p>做完上述步骤以后开始使用 Git 上传你写好的内容到 GitHub , 关键点是将 GitBook 生成的静态文件 <code>_book</code> 重命名为 <code>docs</code> 上传替换刚才创建的 docs 文件夹即可。</p>
-<p>这个时候使用浏览器打开  <a href="http://your_github_id.github.io/your_github_gitbook" target="_blank" rel="noopener">http://your_github_id.github.io/your_github_gitbook</a>  这个地址即可。比如我的 GitBook 地址是<br> <a href="http://erdong.github.io/gitbook-notes-samples" target="_blank" rel="noopener">http://erdong.github.io/gitbook-notes-samples</a> ，大家在点击以后发现会自动跳转到 <a href="https://erdong.site/gitbook-notes-samples">https://erdong.site/gitbook-notes-samples</a>  是因为我做了域名绑定。</p>
-<h1 id="本地-GitBook-迁移"><a href="#本地-GitBook-迁移" class="headerlink" title="本地 GitBook 迁移"></a>本地 GitBook 迁移</h1><p>在迁移前可以使用如下命令查看一下曾经使用 npm 安装过什么模块</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">npm list -g --depth 0</span><br></pre></td></tr></table></figure>
-<ul>
-<li>list : 已经安装的 node 包</li>
-<li>-g ： 全局的安装包</li>
-<li>–depth : 包的显示层级，0 代表显示第一级的包，数字越大，显示的越全。</li>
-</ul>
-<p>迁移其实非常简单，你在原来的环境将整本书打包，最好把文件夹里的node_modules 目录也一起打包，这样在新的环境就不需要安装这些组件了。在新的环境按照如下顺序依次进行安装你之前安装过的组件</p>
-<p>&lt; 1.&gt; 安装 npm<br>&lt; 2.&gt; 安装 gitbook<br>&lt; 3.&gt; 拷贝打包好的文件夹<br>&lt; 4.&gt; 减压到新的位置</p>
-<p>这样就完成了你的书的迁移。你在新的位置可以继续进行内容的编写、静态文件的生成，和之前一样，没有任何区别。</p>
-<p>======================<br>由于无法及时收到评论内容，所以关闭评论功能。<br>大家有问题欢迎发邮件到 <a href="mailto:erdong@mail.erdong.site">erdong@mail.erdong.site</a> ，或者 <a href="https://github.com/erdong/erdong.github.io/issues" target="_blank" rel="noopener">https://github.com/erdong/erdong.github.io/issues</a> 提 Issue ，我会及时回复。</p>
-<p>======================<br>Erdong, A Linux user !</p>
-]]></content>
-      <categories>
-        <category>gitbook</category>
-      </categories>
-      <tags>
-        <tag>gitbook</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>公告-20190809</title>
     <url>/notice/notice-20190809.html</url>
     <content><![CDATA[<p> 最近有一些事情和大家说一下，大概也就是 2 点吧。</p>
@@ -2060,6 +2310,79 @@
       </categories>
       <tags>
         <tag>openvpn</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Parted 创建 GPT 分区</title>
+    <url>/tools/parted-create-gpt-partition.html</url>
+    <content><![CDATA[<p>对于磁盘的分区表 MBR与GPT区别。<br>MBR：MBR分区表(即主引导记录)大家都很熟悉，是过去我们使用windows时常用的。<br>所支持的最大卷：2T，而且对分区有限制：最多4个主分区或3个主分区加一个扩展分区</p>
+<p>GPT： GPT（即GUID分区表）。是源自EFI标准的一种较新的磁盘分区表结构的标准，是未来磁盘分区的主要形式。与MBR分区方式相比，具有如下优点。</p>
+<a id="more"></a>
+
+<p>突破MBR 4个主分区限制，每个磁盘最多支持128个分区。支持大于2T的分区，最大卷可达18EB。</p>
+<p>对于 GPT 的分区，建议使用 parted 工具进行分区，fdisk 在 GPT 这块不是很好。</p>
+<h1 id="Parted-介绍"><a href="#Parted-介绍" class="headerlink" title="Parted 介绍"></a>Parted 介绍</h1><p>Parted 命令分为两种模式：命令行模式和交互模式。</p>
+<h2 id="命令行模式"><a href="#命令行模式" class="headerlink" title="命令行模式"></a>命令行模式</h2><p>parted [option] device [command] ,该模式可以直接在命令行下对磁盘进行分区操作，比较适合编程应用。如：</p>
+<p>显示磁盘/dev/sdb分区。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">parted &#x2F;dev&#x2F;sdb print</span><br></pre></td></tr></table></figure>
+
+<h2 id="交互模式"><a href="#交互模式" class="headerlink" title="交互模式"></a>交互模式</h2><p>parted [option] device 进入交互模式。尤其是对 parted 命令不是很熟悉的情况下建议使用交互模式。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">parted &#x2F;dev&#x2F;sdb</span><br></pre></td></tr></table></figure>
+
+<h1 id="parted命令常用选项"><a href="#parted命令常用选项" class="headerlink" title="parted命令常用选项"></a>parted命令常用选项</h1><p>进入 交互模式下， 输入 <code>help</code> 可以看到如下提示，本文基于 Parted 3.2 进行说明。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">test@test01:~$ sudo parted &#x2F;dev&#x2F;sdb</span><br><span class="line">GNU Parted 3.2</span><br><span class="line">使用 &#x2F;dev&#x2F;sdb</span><br><span class="line">欢迎使用 GNU Parted! 输入 &#39;help&#39;可获得命令列表.</span><br><span class="line">(parted) help</span><br><span class="line">  align-check TYPE N                        check partition N for TYPE(min|opt) alignment</span><br><span class="line">  help [COMMAND]                           print general help, or help on COMMAND</span><br><span class="line">  mklabel,mktable LABEL-TYPE               create a new disklabel (partition table)</span><br><span class="line">  mkpart 分区类型 [文件系统类型] 起始点 终止点      创建一个分区</span><br><span class="line">  name NUMBER 名称               将编号为NUMBER 的分区命名为“名称”</span><br><span class="line">  print [devices|free|list,all|NUMBER]     display the partition table, available devices, free space,</span><br><span class="line">        all found partitions, or a particular partition</span><br><span class="line">  quit                          退出程序</span><br><span class="line">  rescue 起始点 终止点  挽救临近“起始点”、“终止点”的遗失的分区</span><br><span class="line">  resizepart NUMBER END                    resize partition NUMBER</span><br><span class="line">  rm MINOR                      删除编号为 MINOR 的分区</span><br><span class="line">  选择设备  选择要编辑的设备</span><br><span class="line">  disk_set FLAG STATE                      change the FLAG on selected device</span><br><span class="line">  disk_toggle [FLAG]                       toggle the state of FLAG on selected device</span><br><span class="line">  set NUMBER FLAG STATE                    change the FLAG on partition NUMBER</span><br><span class="line">  toggle [NUMBER [FLAG]]                   切换分区 NUMBER 的 FLAG 标记</span><br><span class="line">  unit UNIT                                set the default unit to UNIT</span><br><span class="line">  version                                  display the version number and copyright information of GNU</span><br><span class="line">        Parted</span><br><span class="line">(parted)</span><br></pre></td></tr></table></figure>
+
+<p>比较常用的几个选项是</p>
+<ul>
+<li>help 打印帮助信息</li>
+<li>print 输出分区信息</li>
+<li>mklabel 创建分区表， 即是使用msdos（MBR）还是使用gpt，或者是其他方式分区表</li>
+<li>mkpart 创建新分区<br>格式：mkpart PART-TYPE  START END<br>PART-TYPE类型主要有primary（主分区）, extended（扩展分区）, logical（逻辑区）. 扩展分区和逻辑分区只对msdos。</li>
+<li>rm  删除一个分区</li>
+<li>resizepart 调整指定的分区的大小</li>
+<li>quit 退出该交互界面</li>
+</ul>
+<h1 id="对磁盘进行分区"><a href="#对磁盘进行分区" class="headerlink" title="对磁盘进行分区"></a>对磁盘进行分区</h1><p>首先对于容量较大的磁盘使用 fdisk 工具会得到如下提示：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">test@test01:~$ sudo fdisk &#x2F;dev&#x2F;sdb</span><br><span class="line"></span><br><span class="line">欢迎使用 fdisk (util-linux 2.31.1)。</span><br><span class="line">更改将停留在内存中，直到您决定将更改写入磁盘。</span><br><span class="line">使用写入命令前请三思。</span><br><span class="line"></span><br><span class="line">设备不包含可识别的分区表。</span><br><span class="line">The size of this disk is 3.7 TiB (4000787030016 bytes). DOS partition table format cannot be used on drives for volumes larger than 2199023255040 bytes for 512-byte sectors. Use GUID partition table format (GPT).</span><br><span class="line"></span><br><span class="line">创建了一个磁盘标识符为 0x9f682389 的新 DOS 磁盘标签。</span><br><span class="line"></span><br><span class="line">命令(输入 m 获取帮助)：</span><br></pre></td></tr></table></figure>
+
+<p>这个时候我们就需要更新 parted 来对磁盘进行分区。</p>
+<h2 id="更改分区表"><a href="#更改分区表" class="headerlink" title="更改分区表"></a>更改分区表</h2><p>操作如下：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">(parted) mklabel gpt</span><br><span class="line">(parted) print</span><br><span class="line">Model: ATA ST4000DM004-2CV1 (scsi)</span><br><span class="line">磁盘 &#x2F;dev&#x2F;sdb: 4001GB</span><br><span class="line">Sector size (logical&#x2F;physical): 512B&#x2F;4096B</span><br><span class="line">分区表：gpt</span><br><span class="line">Disk Flags:</span><br><span class="line"></span><br><span class="line">数字  开始：  End  大小  文件系统  Name  标志</span><br><span class="line"></span><br><span class="line">(parted)</span><br></pre></td></tr></table></figure>
+
+<h2 id="创建分区"><a href="#创建分区" class="headerlink" title="创建分区"></a>创建分区</h2><p>使用 mkpart 创建自己需要的大小的分区</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">(parted) mkpart primary 0 4TB</span><br><span class="line">(parted) p</span><br><span class="line">Model: ATA ST4000DM004-2CV1 (scsi)</span><br><span class="line">磁盘 &#x2F;dev&#x2F;sdb: 4001GB</span><br><span class="line">Sector size (logical&#x2F;physical): 512B&#x2F;4096B</span><br><span class="line">分区表：gpt</span><br><span class="line">Disk Flags:</span><br><span class="line"></span><br><span class="line">数字  开始：  End     大小    文件系统  Name     标志</span><br><span class="line"> 1    1049kB  4001GB  4001GB            primary</span><br><span class="line"></span><br><span class="line">(parted)</span><br></pre></td></tr></table></figure>
+<p>创建好以后退出。</p>
+<blockquote>
+<p>parted 的每一个操作都是即时生效，和 fdisk 不同，fdisk 只有在最后使用 <code>w</code> 进行保存以后才会生效 。</p>
+</blockquote>
+<h2 id="格式化分区"><a href="#格式化分区" class="headerlink" title="格式化分区"></a>格式化分区</h2><p>格式化成你需要的文件系统。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">mkfs.ext4 &#x2F;dev&#x2F;sdb1</span><br></pre></td></tr></table></figure>
+
+<p>整个分区创建过程就结束了。</p>
+<h1 id="对齐分区以得到最优性能"><a href="#对齐分区以得到最优性能" class="headerlink" title="对齐分区以得到最优性能"></a>对齐分区以得到最优性能</h1><p>当分区不对齐时，parted 会提示如下</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">警告: The resulting partition is not properly aligned for best performance.</span><br><span class="line">忽略&#x2F;Ignore&#x2F;放弃&#x2F;Cancel?</span><br></pre></td></tr></table></figure>
+
+<p>对于这个提示，只要分区对齐就好。如果你的设计，就是要不对齐，那么可以忽略这个提示。</p>
+<p>对齐分区有两个方法，</p>
+<p>方法一，使用百分比来表示要分区的的空间大小，那么到100%的时候自然是对齐的。示例如下：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">(parted) mkpart primary 0% 100%</span><br><span class="line">(parted) p</span><br><span class="line">Model: ATA ST4000DM004-2CV1 (scsi)</span><br><span class="line">磁盘 &#x2F;dev&#x2F;sdb: 4001GB</span><br><span class="line">Sector size (logical&#x2F;physical): 512B&#x2F;4096B</span><br><span class="line">分区表：gpt</span><br><span class="line">Disk Flags:</span><br><span class="line"></span><br><span class="line">数字  开始：  End     大小    文件系统  Name     标志</span><br><span class="line"> 1    1049kB  4001GB  4001GB            primary</span><br><span class="line"></span><br><span class="line">(parted)</span><br></pre></td></tr></table></figure>
+
+<p>方法二，如果是使用容量来进行空间大小的话，那么 <code>-1</code> 这个值代表的是最后的位置。示例如下：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">(parted) mkpart primary 0TB -1</span><br><span class="line">(parted) p</span><br><span class="line">Model: ATA ST4000DM004-2CV1 (scsi)</span><br><span class="line">磁盘 &#x2F;dev&#x2F;sdb: 4001GB</span><br><span class="line">Sector size (logical&#x2F;physical): 512B&#x2F;4096B</span><br><span class="line">分区表：gpt</span><br><span class="line">Disk Flags:</span><br><span class="line"></span><br><span class="line">数字  开始：  End     大小    文件系统  Name     标志</span><br><span class="line"> 1    1049kB  4001GB  4001GB            primary</span><br><span class="line"></span><br><span class="line">(parted)</span><br></pre></td></tr></table></figure>
+
+<p>方法三，手动进行计算。</p>
+<p>下边这篇博客的作者描述了如何计算磁盘的扇区来保证分区对齐。</p>
+<p><a href="https://rainbow.chard.org/2013/01/30/how-to-align-partitions-for-best-performance-using-parted/" target="_blank" rel="noopener">https://rainbow.chard.org/2013/01/30/how-to-align-partitions-for-best-performance-using-parted/</a></p>
+<p>======================<br>Erdong, A Linux user !</p>
+]]></content>
+      <categories>
+        <category>tools</category>
+      </categories>
+      <tags>
+        <tag>parted</tag>
+        <tag>fdisk</tag>
+        <tag>GPT</tag>
+        <tag>MBR</tag>
       </tags>
   </entry>
   <entry>
@@ -2379,79 +2702,6 @@
       </categories>
       <tags>
         <tag>Prometheus</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Parted 创建 GPT 分区</title>
-    <url>/tools/parted-create-gpt-partition.html</url>
-    <content><![CDATA[<p>对于磁盘的分区表 MBR与GPT区别。<br>MBR：MBR分区表(即主引导记录)大家都很熟悉，是过去我们使用windows时常用的。<br>所支持的最大卷：2T，而且对分区有限制：最多4个主分区或3个主分区加一个扩展分区</p>
-<p>GPT： GPT（即GUID分区表）。是源自EFI标准的一种较新的磁盘分区表结构的标准，是未来磁盘分区的主要形式。与MBR分区方式相比，具有如下优点。</p>
-<a id="more"></a>
-
-<p>突破MBR 4个主分区限制，每个磁盘最多支持128个分区。支持大于2T的分区，最大卷可达18EB。</p>
-<p>对于 GPT 的分区，建议使用 parted 工具进行分区，fdisk 在 GPT 这块不是很好。</p>
-<h1 id="Parted-介绍"><a href="#Parted-介绍" class="headerlink" title="Parted 介绍"></a>Parted 介绍</h1><p>Parted 命令分为两种模式：命令行模式和交互模式。</p>
-<h2 id="命令行模式"><a href="#命令行模式" class="headerlink" title="命令行模式"></a>命令行模式</h2><p>parted [option] device [command] ,该模式可以直接在命令行下对磁盘进行分区操作，比较适合编程应用。如：</p>
-<p>显示磁盘/dev/sdb分区。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">parted &#x2F;dev&#x2F;sdb print</span><br></pre></td></tr></table></figure>
-
-<h2 id="交互模式"><a href="#交互模式" class="headerlink" title="交互模式"></a>交互模式</h2><p>parted [option] device 进入交互模式。尤其是对 parted 命令不是很熟悉的情况下建议使用交互模式。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">parted &#x2F;dev&#x2F;sdb</span><br></pre></td></tr></table></figure>
-
-<h1 id="parted命令常用选项"><a href="#parted命令常用选项" class="headerlink" title="parted命令常用选项"></a>parted命令常用选项</h1><p>进入 交互模式下， 输入 <code>help</code> 可以看到如下提示，本文基于 Parted 3.2 进行说明。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">test@test01:~$ sudo parted &#x2F;dev&#x2F;sdb</span><br><span class="line">GNU Parted 3.2</span><br><span class="line">使用 &#x2F;dev&#x2F;sdb</span><br><span class="line">欢迎使用 GNU Parted! 输入 &#39;help&#39;可获得命令列表.</span><br><span class="line">(parted) help</span><br><span class="line">  align-check TYPE N                        check partition N for TYPE(min|opt) alignment</span><br><span class="line">  help [COMMAND]                           print general help, or help on COMMAND</span><br><span class="line">  mklabel,mktable LABEL-TYPE               create a new disklabel (partition table)</span><br><span class="line">  mkpart 分区类型 [文件系统类型] 起始点 终止点      创建一个分区</span><br><span class="line">  name NUMBER 名称               将编号为NUMBER 的分区命名为“名称”</span><br><span class="line">  print [devices|free|list,all|NUMBER]     display the partition table, available devices, free space,</span><br><span class="line">        all found partitions, or a particular partition</span><br><span class="line">  quit                          退出程序</span><br><span class="line">  rescue 起始点 终止点  挽救临近“起始点”、“终止点”的遗失的分区</span><br><span class="line">  resizepart NUMBER END                    resize partition NUMBER</span><br><span class="line">  rm MINOR                      删除编号为 MINOR 的分区</span><br><span class="line">  选择设备  选择要编辑的设备</span><br><span class="line">  disk_set FLAG STATE                      change the FLAG on selected device</span><br><span class="line">  disk_toggle [FLAG]                       toggle the state of FLAG on selected device</span><br><span class="line">  set NUMBER FLAG STATE                    change the FLAG on partition NUMBER</span><br><span class="line">  toggle [NUMBER [FLAG]]                   切换分区 NUMBER 的 FLAG 标记</span><br><span class="line">  unit UNIT                                set the default unit to UNIT</span><br><span class="line">  version                                  display the version number and copyright information of GNU</span><br><span class="line">        Parted</span><br><span class="line">(parted)</span><br></pre></td></tr></table></figure>
-
-<p>比较常用的几个选项是</p>
-<ul>
-<li>help 打印帮助信息</li>
-<li>print 输出分区信息</li>
-<li>mklabel 创建分区表， 即是使用msdos（MBR）还是使用gpt，或者是其他方式分区表</li>
-<li>mkpart 创建新分区<br>格式：mkpart PART-TYPE  START END<br>PART-TYPE类型主要有primary（主分区）, extended（扩展分区）, logical（逻辑区）. 扩展分区和逻辑分区只对msdos。</li>
-<li>rm  删除一个分区</li>
-<li>resizepart 调整指定的分区的大小</li>
-<li>quit 退出该交互界面</li>
-</ul>
-<h1 id="对磁盘进行分区"><a href="#对磁盘进行分区" class="headerlink" title="对磁盘进行分区"></a>对磁盘进行分区</h1><p>首先对于容量较大的磁盘使用 fdisk 工具会得到如下提示：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">test@test01:~$ sudo fdisk &#x2F;dev&#x2F;sdb</span><br><span class="line"></span><br><span class="line">欢迎使用 fdisk (util-linux 2.31.1)。</span><br><span class="line">更改将停留在内存中，直到您决定将更改写入磁盘。</span><br><span class="line">使用写入命令前请三思。</span><br><span class="line"></span><br><span class="line">设备不包含可识别的分区表。</span><br><span class="line">The size of this disk is 3.7 TiB (4000787030016 bytes). DOS partition table format cannot be used on drives for volumes larger than 2199023255040 bytes for 512-byte sectors. Use GUID partition table format (GPT).</span><br><span class="line"></span><br><span class="line">创建了一个磁盘标识符为 0x9f682389 的新 DOS 磁盘标签。</span><br><span class="line"></span><br><span class="line">命令(输入 m 获取帮助)：</span><br></pre></td></tr></table></figure>
-
-<p>这个时候我们就需要更新 parted 来对磁盘进行分区。</p>
-<h2 id="更改分区表"><a href="#更改分区表" class="headerlink" title="更改分区表"></a>更改分区表</h2><p>操作如下：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">(parted) mklabel gpt</span><br><span class="line">(parted) print</span><br><span class="line">Model: ATA ST4000DM004-2CV1 (scsi)</span><br><span class="line">磁盘 &#x2F;dev&#x2F;sdb: 4001GB</span><br><span class="line">Sector size (logical&#x2F;physical): 512B&#x2F;4096B</span><br><span class="line">分区表：gpt</span><br><span class="line">Disk Flags:</span><br><span class="line"></span><br><span class="line">数字  开始：  End  大小  文件系统  Name  标志</span><br><span class="line"></span><br><span class="line">(parted)</span><br></pre></td></tr></table></figure>
-
-<h2 id="创建分区"><a href="#创建分区" class="headerlink" title="创建分区"></a>创建分区</h2><p>使用 mkpart 创建自己需要的大小的分区</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">(parted) mkpart primary 0 4TB</span><br><span class="line">(parted) p</span><br><span class="line">Model: ATA ST4000DM004-2CV1 (scsi)</span><br><span class="line">磁盘 &#x2F;dev&#x2F;sdb: 4001GB</span><br><span class="line">Sector size (logical&#x2F;physical): 512B&#x2F;4096B</span><br><span class="line">分区表：gpt</span><br><span class="line">Disk Flags:</span><br><span class="line"></span><br><span class="line">数字  开始：  End     大小    文件系统  Name     标志</span><br><span class="line"> 1    1049kB  4001GB  4001GB            primary</span><br><span class="line"></span><br><span class="line">(parted)</span><br></pre></td></tr></table></figure>
-<p>创建好以后退出。</p>
-<blockquote>
-<p>parted 的每一个操作都是即时生效，和 fdisk 不同，fdisk 只有在最后使用 <code>w</code> 进行保存以后才会生效 。</p>
-</blockquote>
-<h2 id="格式化分区"><a href="#格式化分区" class="headerlink" title="格式化分区"></a>格式化分区</h2><p>格式化成你需要的文件系统。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">mkfs.ext4 &#x2F;dev&#x2F;sdb1</span><br></pre></td></tr></table></figure>
-
-<p>整个分区创建过程就结束了。</p>
-<h1 id="对齐分区以得到最优性能"><a href="#对齐分区以得到最优性能" class="headerlink" title="对齐分区以得到最优性能"></a>对齐分区以得到最优性能</h1><p>当分区不对齐时，parted 会提示如下</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">警告: The resulting partition is not properly aligned for best performance.</span><br><span class="line">忽略&#x2F;Ignore&#x2F;放弃&#x2F;Cancel?</span><br></pre></td></tr></table></figure>
-
-<p>对于这个提示，只要分区对齐就好。如果你的设计，就是要不对齐，那么可以忽略这个提示。</p>
-<p>对齐分区有两个方法，</p>
-<p>方法一，使用百分比来表示要分区的的空间大小，那么到100%的时候自然是对齐的。示例如下：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">(parted) mkpart primary 0% 100%</span><br><span class="line">(parted) p</span><br><span class="line">Model: ATA ST4000DM004-2CV1 (scsi)</span><br><span class="line">磁盘 &#x2F;dev&#x2F;sdb: 4001GB</span><br><span class="line">Sector size (logical&#x2F;physical): 512B&#x2F;4096B</span><br><span class="line">分区表：gpt</span><br><span class="line">Disk Flags:</span><br><span class="line"></span><br><span class="line">数字  开始：  End     大小    文件系统  Name     标志</span><br><span class="line"> 1    1049kB  4001GB  4001GB            primary</span><br><span class="line"></span><br><span class="line">(parted)</span><br></pre></td></tr></table></figure>
-
-<p>方法二，如果是使用容量来进行空间大小的话，那么 <code>-1</code> 这个值代表的是最后的位置。示例如下：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">(parted) mkpart primary 0TB -1</span><br><span class="line">(parted) p</span><br><span class="line">Model: ATA ST4000DM004-2CV1 (scsi)</span><br><span class="line">磁盘 &#x2F;dev&#x2F;sdb: 4001GB</span><br><span class="line">Sector size (logical&#x2F;physical): 512B&#x2F;4096B</span><br><span class="line">分区表：gpt</span><br><span class="line">Disk Flags:</span><br><span class="line"></span><br><span class="line">数字  开始：  End     大小    文件系统  Name     标志</span><br><span class="line"> 1    1049kB  4001GB  4001GB            primary</span><br><span class="line"></span><br><span class="line">(parted)</span><br></pre></td></tr></table></figure>
-
-<p>方法三，手动进行计算。</p>
-<p>下边这篇博客的作者描述了如何计算磁盘的扇区来保证分区对齐。</p>
-<p><a href="https://rainbow.chard.org/2013/01/30/how-to-align-partitions-for-best-performance-using-parted/" target="_blank" rel="noopener">https://rainbow.chard.org/2013/01/30/how-to-align-partitions-for-best-performance-using-parted/</a></p>
-<p>======================<br>Erdong, A Linux user !</p>
-]]></content>
-      <categories>
-        <category>tools</category>
-      </categories>
-      <tags>
-        <tag>parted</tag>
-        <tag>fdisk</tag>
-        <tag>GPT</tag>
-        <tag>MBR</tag>
       </tags>
   </entry>
   <entry>
@@ -3151,256 +3401,6 @@
       </tags>
   </entry>
   <entry>
-    <title>解决 EXT4 使用无法挂载</title>
-    <url>/linux/system/ext4-error-loading-journal.html</url>
-    <content><![CDATA[<h1 id="现象"><a href="#现象" class="headerlink" title="现象"></a>现象</h1><p>使用新版本的操作系统自带的文件系统格式化工具进行分区格式化以后，在较低的操作系统版本上会有提示，提示如下：</p>
-<a id="more"></a>
-
-
-
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[root@localhost ~]# mount -t ext4 &#x2F;dev&#x2F;sdb1 &#x2F;root&#x2F;test</span><br><span class="line">mount: 文件系统类型错误、选项错误、&#x2F;dev&#x2F;sdb1 上有坏超级块、</span><br><span class="line">       缺少代码页或助手程序，或其他错误</span><br><span class="line"></span><br><span class="line">       有些情况下在 syslog 中可以找到一些有用信息- 请尝试</span><br><span class="line">       dmesg | tail  这样的命令看看。</span><br></pre></td></tr></table></figure>
-
-
-<p>按照提示查看日志发现</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Mar 12 01:12:20 localhost kernel: JBD2: Unrecognised features on journal</span><br><span class="line">Mar 12 01:12:20 localhost kernel: EXT4-fs (sdb1): error loading journal</span><br></pre></td></tr></table></figure>
-
-<h1 id="原因分析"><a href="#原因分析" class="headerlink" title="原因分析"></a>原因分析</h1><p>造成上述问题的原因是在新的操作系统上使用系统自带的 mkfs.ext4 对文件系统进行了格式化，默认会使用一些新的的特性，这些新的特性在旧的系统上是无法使用的。</p>
-<p>比如在 Ubuntu 18.04  上进行使用 mkfs.ext4 进行格式化的磁盘，在 CentOS 7.4 1708 上 是可以正常使用的，在 CentOS 7.0 1406 以及以下版本是就是提示上述错误。</p>
-<p>Ubuntu 18.04 的 mkfs 版本是 1.44.1-1 ，CentOS 7.0 1406 的 mkfs 版本是 1.42.9-4。造成了这个差异。CentOS 7.4 1708 的 mkfs 版本是 1.42.9-10 ，Redhat 内部在小版本上新增了这个特性的支持。</p>
-<h1 id="解决办法"><a href="#解决办法" class="headerlink" title="解决办法"></a>解决办法</h1><p>按照日志提示，Unrecognised features on journal  ， 不支持 journal 。</p>
-<p>那么查看文件系统特性：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#tune2fs -l &#x2F;dev&#x2F;sdb1</span><br><span class="line">Filesystem features: has_journal ext_attr resize_inode dir_index filetype extent 64bit flex_bg sparse_super large_file</span><br></pre></td></tr></table></figure>
-
-<p>文件系统含有一个 has_journal 特性，删除这个特性，删除方式如下：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#tune2fs -O ^has_journal &#x2F;dev&#x2F;sdb1 &#x2F;&#x2F; 去除has_journal选项</span><br><span class="line">#tune2fs -O has_journal &#x2F;dev&#x2F;sdb1 &#x2F;&#x2F; add has_journal选项</span><br></pre></td></tr></table></figure>
-
-<p>验证是否删除：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#tune2fs -l &#x2F;dev&#x2F;sdb1</span><br><span class="line">Filesystem features: ext_attr resize_inode dir_index filetype</span><br></pre></td></tr></table></figure>
-
-<p>可以看到已经没有这个特性了，再次尝试挂载，</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[root@localhost ~]# mount -t ext4 &#x2F;dev&#x2F;sdb1 &#x2F;root&#x2F;test</span><br><span class="line">[root@localhost ~]# cd test&#x2F;</span><br><span class="line">[root@localhost test]# ls</span><br><span class="line">lost+found  test_dir  test_file.txt</span><br><span class="line">[root@localhost test]# cat test_file.txt</span><br><span class="line">kkdkdkdkkak</span><br><span class="line">kldkjfalkf</span><br><span class="line">kjfklaf</span><br><span class="line">kjafkdj</span><br><span class="line"></span><br><span class="line">[root@localhost test]#</span><br></pre></td></tr></table></figure>
-<p>可以看到，已经可以正常挂载，挂载后的文件也可以正常显示。</p>
-<h1 id="couldn’t-mount-RDWR"><a href="#couldn’t-mount-RDWR" class="headerlink" title="couldn’t mount RDWR"></a>couldn’t mount RDWR</h1><p>在上述的现象里，如果挂载 ext4 到 CentOS 6.5 等更老一些的系统的时候，也会提示部分不支持的特性，在日志里如果出现了如下提示：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">kernel: EXT4-fs (sdb1): couldn&#39;t mount RDWR because of unsupported optional features (400)</span><br></pre></td></tr></table></figure>
-
-
-<p>这种情况是因为mkfs.ext4的时候制定的参数，旧的内核不支持导致.</p>
-<p>The ext4 feature (400) is the new metadata_csum feature. If this feature is enabled and old tools are used to mount the filesystem they will only be able to mount read-only.</p>
-<p><a href="https://ext4.wiki.kernel.org/index.php/Ext4_Metadata_Checksums" target="_blank" rel="noopener">https://ext4.wiki.kernel.org/index.php/Ext4_Metadata_Checksums</a></p>
-<p>解决办法一样，可以在创建的时候不使用该特性，或者删除该特性后再 CentOS 6.5 上使用。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[root@localhost ~]# tune2fs -O ^metadata_csum &#x2F;dev&#x2F;sdb1</span><br><span class="line">tune2fs 1.43.1 (08-Jun-2016)</span><br><span class="line"></span><br><span class="line">请在这个文件系统上运行 e2fsck.</span><br></pre></td></tr></table></figure>
-
-<p>系统提示需要 运行 e2fsck 进行磁盘检查，那么按照要求进行检查, e2fsck 的参数请大家自己选择。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[root@localhost ~]# e2fsck -f -a -v &#x2F;dev&#x2F;sdb1</span><br><span class="line"></span><br><span class="line">          13 inodes used (0.00%, out of 30531584)</span><br><span class="line">           0 non-contiguous files (0.0%)</span><br><span class="line">           0 non-contiguous directories (0.0%)</span><br><span class="line">             # of inodes with ind&#x2F;dind&#x2F;tind blocks: 0&#x2F;0&#x2F;0</span><br><span class="line">             Extent depth histogram: 4</span><br><span class="line">     1935198 blocks used (1.58%, out of 122096637)</span><br><span class="line">           0 bad blocks</span><br><span class="line">           1 large file</span><br><span class="line"></span><br><span class="line">           1 regular file</span><br><span class="line">           3 directories</span><br><span class="line">           0 character device files</span><br><span class="line">           0 block device files</span><br><span class="line">           0 fifos</span><br><span class="line">           0 links</span><br><span class="line">           0 symbolic links (0 fast symbolic links)</span><br><span class="line">           0 sockets</span><br><span class="line">------------</span><br><span class="line">           4 files</span><br></pre></td></tr></table></figure>
-
-<p>检查完以后，就可以尝试移除这个特性了，期间会询问，请按照实际选择。移除以后挂载就正常了。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[root@localhost ~]# tune2fs -O ^metadata_csum &#x2F;dev&#x2F;sdb1</span><br><span class="line">tune2fs 1.43.1 (08-Jun-2016)</span><br><span class="line">Disabling checksums could take some time.</span><br><span class="line">Proceed anyway (or wait 5 seconds) ? (y,n) y</span><br><span class="line">[root@localhost ~]# mount -t ext4 &#x2F;dev&#x2F;sdb1 &#x2F;root&#x2F;test</span><br><span class="line">[root@localhost ~]# cd test&#x2F;</span><br><span class="line">[root@localhost test]# ls</span><br><span class="line">lost+found  test_dir  test_file.txt</span><br><span class="line">[root@localhost test]#</span><br></pre></td></tr></table></figure>
-
-
-
-<h1 id="tune2fs-版本较低"><a href="#tune2fs-版本较低" class="headerlink" title="tune2fs 版本较低"></a>tune2fs 版本较低</h1><p>执行 tune2fs 如果遇到如下提示：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[root@localhost ~]# tune2fs -O ^has_journal &#x2F;dev&#x2F;sdb1</span><br><span class="line">tune2fs 1.42.9 (28-Dec-2013)</span><br><span class="line">tune2fs: Filesystem has unsupported read-only feature(s) while trying to open &#x2F;dev&#x2F;sdb1</span><br><span class="line">Couldn&#39;t find valid filesystem superblock.</span><br><span class="line">[root@localhost ~]#</span><br></pre></td></tr></table></figure>
-
-
-<p>那么说明 tune2fs 版本较低，不支持 has_journal 特性，需要升级到 1.43.1以上才可以。</p>
-<p>在 CentOS 6.5 中， tune2fs 版本更低，是 1.41.12，也需要升级。</p>
-<h1 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h1><p>如果确认是新旧版本的问题导致的无法挂载，那么上述方法就可以解决了。</p>
-<p>如果不是新旧版本的问题，那么还有一种可能，就是磁盘坏了，在这种情况下可以使用下列命令尝试修复。</p>
-<p>特别提示，磁盘修复请慎重选择。本文不保证数据安全性和完整性，只提供一个可供参考的选择。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[root@localhost ~]# e2fsck -f -c -v &#x2F;dev&#x2F;sdb1</span><br><span class="line">e2fsck 1.42.9 (28-Dec-2013)</span><br><span class="line">&#x2F;dev&#x2F;sdb1 has unsupported feature(s): metadata_csum</span><br><span class="line">e2fsck: Get a newer version of e2fsck!</span><br><span class="line">[root@localhost ~]#</span><br></pre></td></tr></table></figure>
-
-<p>该提示显示 e2fsck 工具不支持 新的特性，meadata_csum , 解决版本是 升级 e2fsck 工具的版本， e2fsck 工具由 e2fsprogs 和 e2fsprogs-libs 两个工具包来提供，升级这两个工具包的版本就可以，最少要升级到 1.43.1 版本以上才可以。</p>
-<p>Ubuntu 可以参考如下链接进行解决。</p>
-<blockquote>
-<p><a href="https://askubuntu.com/questions/1053404/e2fsck-how-to-handle-the-metadata-csum-error-by-advancing-the-e2fsck-version?noredirect=1&amp;lq=1" target="_blank" rel="noopener">https://askubuntu.com/questions/1053404/e2fsck-how-to-handle-the-metadata-csum-error-by-advancing-the-e2fsck-version?noredirect=1&amp;lq=1</a></p>
-</blockquote>
-<p>关于 CentOS 可以去下列地址查找对应的 rpm 包来进行升级。</p>
-<blockquote>
-<p><a href="http://www.rpmfind.net/linux/RPM/index.html" target="_blank" rel="noopener">http://www.rpmfind.net/linux/RPM/index.html</a></p>
-</blockquote>
-<p>更推荐的方法是用源码进行编译。过程如下</p>
-<h3 id="安装-GCC-编译器"><a href="#安装-GCC-编译器" class="headerlink" title="安装 GCC 编译器"></a>安装 GCC 编译器</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">yum install gcc -y</span><br></pre></td></tr></table></figure>
-
-<h3 id="下载源码包，"><a href="#下载源码包，" class="headerlink" title="下载源码包，"></a>下载源码包，</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">wget http:&#x2F;&#x2F;downloads.sourceforge.net&#x2F;project&#x2F;e2fsprogs&#x2F;e2fsprogs&#x2F;v1.43.1&#x2F;e2fsprogs-1.43.1.tar.gz</span><br></pre></td></tr></table></figure>
-
-<h3 id="解压安装包进行编译"><a href="#解压安装包进行编译" class="headerlink" title="解压安装包进行编译"></a>解压安装包进行编译</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">tar -zxf e2fsprogs-1.43.1.tar.gz</span><br><span class="line">cd e2fsprogs-1.43.1</span><br><span class="line">.&#x2F;configure</span><br><span class="line">make</span><br></pre></td></tr></table></figure>
-
-<p>此时已经编译好了，进入 e2fsck 文件夹就可以看到新编译的版本了，</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[root@loaclhost ~]cd e2fsck</span><br><span class="line">[root@localhost ~]# e2fsck -V</span><br><span class="line">e2fsck 1.43.1 (08-Jun-2016)</span><br><span class="line">	Using EXT2FS Library version 1.43.1, 08-Jun-2016</span><br></pre></td></tr></table></figure>
-
-<p>如果希望替换系统的 e2fsck 工具，那么执行 make install 。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cd e2fsprogs-1.43.1</span><br><span class="line">make install</span><br></pre></td></tr></table></figure>
-
-
-
-<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>出现上述问题的主要原因是，新版的操作系统默认支持了很多新的特性，这些新特性在旧版本的操作系统上是不支持的。<br>如果在磁盘使用前就已经知道了磁盘将要使用的操作系统，应该依据操作系统的差别，然后有意的关闭一些参数，使得新旧操作系统的磁盘是兼容的。</p>
-<p>如果无法预知操作系统，那么在实际使用中遇到了问题，可以查找是哪个新的特性导致的该问题，尝试移除这个文件系统的特性，之后就可以正常使用了。但是贸然移除某个特性，可能会导致磁盘上的数据丢失，这个应该做过充分的调研确认以后再操作。</p>
-<p>======================<br>Erdong, A Linux user !</p>
-]]></content>
-      <categories>
-        <category>linux</category>
-        <category>system</category>
-      </categories>
-      <tags>
-        <tag>ext4</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>MinIO 参数解析与限制</title>
-    <url>/minio/minio-parameter-and-limit.html</url>
-    <content><![CDATA[<h1 id="MinIO-参数解析与限制"><a href="#MinIO-参数解析与限制" class="headerlink" title="MinIO 参数解析与限制"></a>MinIO 参数解析与限制</h1><p>MinIO server 在默认情况下会将所有配置信息存到 <code>${HOME}/.minio/config.json</code> 文件中。 以下部分提供每个字段的详细说明以及如何自定义它们。一个完整的 config.json 在 <a href="https://raw.githubusercontent.com/minio/minio/master/docs/config/config.sample.json" target="_blank" rel="noopener">这里</a></p>
-<a id="more"></a>
-<p>默认的配置目录是 <code>${HOME}/.minio</code>，你可以使用 <code>--config-dir</code> 选项指定新的路径覆盖默认的路径。MinIO server 在首次启动时会生成一个新的 config.json ，里面带有自动生成的访问凭据。</p>
-<p>TLS 证书存在 <code>${HOME}/.minio/certs</code> 目录下，你需要将证书放在该目录下来启用 HTTPS 。</p>
-<p>以下是一个带来TLS证书的MinIO server的目录结构。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ tree ~&#x2F;.minio</span><br><span class="line">&#x2F;home&#x2F;user1&#x2F;.minio</span><br><span class="line">├── certs</span><br><span class="line">│   ├── CAs</span><br><span class="line">│   ├── private.key</span><br><span class="line">│   └── public.crt</span><br><span class="line">└── config.json</span><br></pre></td></tr></table></figure>
-
-
-<table>
-<thead>
-<tr>
-<th>参数</th>
-<th>类型</th>
-<th>描述</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>version</td>
-<td>string</td>
-<td>version决定了配置文件的格式，任何老版本都会在启动时自动迁移到新版本中。 [请勿手动修改]</td>
-</tr>
-<tr>
-<td>credential</td>
-<td></td>
-<td>对象存储和Web访问的验证凭据。</td>
-</tr>
-<tr>
-<td>credential.accessKey</td>
-<td>string</td>
-<td>Access key长度最小是5个字符，你可以通过 MINIO_ACCESS_KEY环境变量进行修改</td>
-</tr>
-<tr>
-<td>credential.secretKey</td>
-<td>string</td>
-<td>Secret key长度最小是8个字符，你可以通过MINIO_SECRET_KEY环境变量进行修改</td>
-</tr>
-<tr>
-<td>region</td>
-<td>string</td>
-<td>region描述的是服务器的物理位置，默认是us-east-1（美国东区1）,这也是亚马逊S3的默认区域。你可以通过MINIO_REGION_NAME 环境变量进行修改。如果不了解这块，建议不要随意修改</td>
-</tr>
-<tr>
-<td>browser</td>
-<td>string</td>
-<td>开启或关闭浏览器访问，默认是开启的，你可以通过 MINIO_BROWSER 环境变量进行修改</td>
-</tr>
-</tbody></table>
-<p>示例</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">export MINIO_BROWSER&#x3D;off</span><br><span class="line">minio server &#x2F;data</span><br></pre></td></tr></table></figure>
-
-<h1 id="MinIO-服务限制"><a href="#MinIO-服务限制" class="headerlink" title="MinIO 服务限制"></a>MinIO 服务限制</h1><p>由于纠删码的原因，MinIO 有如下限制</p>
-<table>
-<thead>
-<tr>
-<th>项目</th>
-<th>参数</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>最大驱动器数量</td>
-<td>16</td>
-</tr>
-<tr>
-<td>最小驱动器数量</td>
-<td>4</td>
-</tr>
-<tr>
-<td>读仲裁</td>
-<td>N/2</td>
-</tr>
-<tr>
-<td>写仲裁</td>
-<td>N/2+1</td>
-</tr>
-</tbody></table>
-<p>通过浏览器访问 MinIO ，由于浏览器的限制，上传文件的大小限制为 5GB。</p>
-<p>S3 API 的限制</p>
-<table>
-<thead>
-<tr>
-<th>项目</th>
-<th>参数</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>最大桶数</td>
-<td>无限额</td>
-</tr>
-<tr>
-<td>每桶最大对象数</td>
-<td>无限额</td>
-</tr>
-<tr>
-<td>最大对象大小</td>
-<td>5TB</td>
-</tr>
-<tr>
-<td>最小对象大小</td>
-<td>0</td>
-</tr>
-<tr>
-<td>每次 PUT 操作的最大对象大小</td>
-<td>5GB</td>
-</tr>
-<tr>
-<td>每次上传的最大 Part 数量</td>
-<td>10000</td>
-</tr>
-<tr>
-<td>Part 大小</td>
-<td>5MB到5GB. 最后一个part可以从0B到5GB</td>
-</tr>
-<tr>
-<td>每次list parts请求可返回的part最大数量</td>
-<td>1000</td>
-</tr>
-<tr>
-<td>每次list objects请求可返回的object最大数量</td>
-<td>1000</td>
-</tr>
-<tr>
-<td>每次list multipart uploads请求可返回的multipart uploads最大数量</td>
-<td>1000</td>
-</tr>
-</tbody></table>
-<p>Minio 不支持的 Amazon S3 Bucket API</p>
-<ul>
-<li>BucketACL (可以用 bucket policies)</li>
-<li>BucketCORS (所有HTTP方法的所有存储桶都默认启用CORS)</li>
-<li>BucketLifecycle (Minio纠删码不需要)</li>
-<li>BucketReplication (可以用 mc mirror)</li>
-<li>BucketVersions, BucketVersioning (可以用 s3git)</li>
-<li>BucketWebsite (可以用 caddy or nginx)</li>
-<li>BucketAnalytics, BucketMetrics, BucketLogging (可以用 bucket notification APIs)</li>
-<li>BucketRequestPayment</li>
-<li>BucketTagging</li>
-</ul>
-<p>Minio不支持的Amazon S3 Object API.</p>
-<ul>
-<li>ObjectACL (可以用 bucket policies)</li>
-<li>ObjectTorrent</li>
-</ul>
-<p>======================<br>由于无法及时收到评论内容，所以关闭评论功能。<br>大家有问题欢迎发邮件到 <a href="mailto:erdong@mail.erdong.site">erdong@mail.erdong.site</a> ，或者 <a href="https://github.com/erdong/erdong.github.io/issues" target="_blank" rel="noopener">https://github.com/erdong/erdong.github.io/issues</a> 提 Issue ，我会及时回复。</p>
-<p>======================<br>Erdong, A Linux user !</p>
-]]></content>
-      <categories>
-        <category>minio</category>
-      </categories>
-      <tags>
-        <tag>minio</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>微信公众号如何创建赞赏账户</title>
     <url>/article/wechat-appreciates.html</url>
     <content><![CDATA[<p>开始写微信公众号有一段时间了，经常看到别人的公众号内可以给作者赞赏。如果作者的文章可以收到赞赏也是对作者能力的一种认可。</p>
@@ -3609,22 +3609,6 @@
       </tags>
   </entry>
   <entry>
-    <title>第07周分享</title>
-    <url>/weekly/weekly07.html</url>
-    <content><![CDATA[<p>这里记录过去一周，我看到的值得分享的东西。</p>
-<a id="more"></a>
-
-<h1 id="资源"><a href="#资源" class="headerlink" title="资源"></a>资源</h1><h2 id="1-代码整洁之道"><a href="#1-代码整洁之道" class="headerlink" title="1. 代码整洁之道"></a>1. <a href="https://book.douban.com/subject/4199741/" target="_blank" rel="noopener">代码整洁之道</a></h2><p>中文书名：代码整洁之道<br>英文书名：The Clean Coder – A Handbook of Agile Software Craftmanship<br>出版社：人民邮电出版社<br>作者：[美] Robert C. Martin<br>译者：韩磊</p>
-<h2 id="2-代码整洁之道-程序员的职业素养"><a href="#2-代码整洁之道-程序员的职业素养" class="headerlink" title="2. 代码整洁之道:程序员的职业素养"></a>2. <a href="https://book.douban.com/subject/26919457/" target="_blank" rel="noopener">代码整洁之道:程序员的职业素养</a></h2><p>中文书名：代码整洁之道–程序员的职业素养<br>英文书名：The Clean Coder – A Code of Conduct for Professional Programmers<br>出版社：中国工信出版集团  人民邮电出版社<br>作者：[美] Robert C. Martin<br>译者：余晟 彰显洲</p>
-<h2 id="3-架构整洁之道"><a href="#3-架构整洁之道" class="headerlink" title="3. 架构整洁之道"></a>3. <a href="https://book.douban.com/subject/30333919/" target="_blank" rel="noopener">架构整洁之道</a></h2><p>中文书名：架构整洁之道<br>英文书名：Clean Architecture<br>出版社：中国工信出版集团  人民邮电出版社<br>作者：[美] Robert C. Martin<br>译者：孙宇聪</p>
-<p>三本书都是创造 “Clean神话” 的 Bob 大叔撰写，推荐大家阅读。</p>
-<p>======================<br>Erdong, A Linux user !</p>
-]]></content>
-      <categories>
-        <category>weekly</category>
-      </categories>
-  </entry>
-  <entry>
     <title>第06周分享</title>
     <url>/weekly/weekly06.html</url>
     <content><![CDATA[<p>这里记录过去一周，我看到的值得分享的东西。</p>
@@ -3646,6 +3630,22 @@
 <p>HTTP3 中文 gitbook ：<a href="https://http3-explained.haxx.se/zh/" target="_blank" rel="noopener">https://http3-explained.haxx.se/zh/</a></p>
 <p>HTTP2 中文 gitbook ：<a href="https://http2-explained.haxx.se/content/zh/" target="_blank" rel="noopener">https://http2-explained.haxx.se/content/zh/</a></p>
 <p>Curl 作者 Daniel Stenberg 出品</p>
+<p>======================<br>Erdong, A Linux user !</p>
+]]></content>
+      <categories>
+        <category>weekly</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>第07周分享</title>
+    <url>/weekly/weekly07.html</url>
+    <content><![CDATA[<p>这里记录过去一周，我看到的值得分享的东西。</p>
+<a id="more"></a>
+
+<h1 id="资源"><a href="#资源" class="headerlink" title="资源"></a>资源</h1><h2 id="1-代码整洁之道"><a href="#1-代码整洁之道" class="headerlink" title="1. 代码整洁之道"></a>1. <a href="https://book.douban.com/subject/4199741/" target="_blank" rel="noopener">代码整洁之道</a></h2><p>中文书名：代码整洁之道<br>英文书名：The Clean Coder – A Handbook of Agile Software Craftmanship<br>出版社：人民邮电出版社<br>作者：[美] Robert C. Martin<br>译者：韩磊</p>
+<h2 id="2-代码整洁之道-程序员的职业素养"><a href="#2-代码整洁之道-程序员的职业素养" class="headerlink" title="2. 代码整洁之道:程序员的职业素养"></a>2. <a href="https://book.douban.com/subject/26919457/" target="_blank" rel="noopener">代码整洁之道:程序员的职业素养</a></h2><p>中文书名：代码整洁之道–程序员的职业素养<br>英文书名：The Clean Coder – A Code of Conduct for Professional Programmers<br>出版社：中国工信出版集团  人民邮电出版社<br>作者：[美] Robert C. Martin<br>译者：余晟 彰显洲</p>
+<h2 id="3-架构整洁之道"><a href="#3-架构整洁之道" class="headerlink" title="3. 架构整洁之道"></a>3. <a href="https://book.douban.com/subject/30333919/" target="_blank" rel="noopener">架构整洁之道</a></h2><p>中文书名：架构整洁之道<br>英文书名：Clean Architecture<br>出版社：中国工信出版集团  人民邮电出版社<br>作者：[美] Robert C. Martin<br>译者：孙宇聪</p>
+<p>三本书都是创造 “Clean神话” 的 Bob 大叔撰写，推荐大家阅读。</p>
 <p>======================<br>Erdong, A Linux user !</p>
 ]]></content>
       <categories>
@@ -3803,26 +3803,6 @@
       </tags>
   </entry>
   <entry>
-    <title>第18周分享</title>
-    <url>/weekly/weekly18.html</url>
-    <content><![CDATA[<p>这里记录过去一周，我看到的值得分享的东西。</p>
-<a id="more"></a>
-
-<h1 id="工具"><a href="#工具" class="headerlink" title="工具"></a>工具</h1><h2 id="1-github-rank"><a href="#1-github-rank" class="headerlink" title="1. github-rank"></a>1. <a href="https://github.com/jaywcjlove/github-rank" target="_blank" rel="noopener">github-rank</a></h2><p>Github 仓库、用户排名。</p>
-<p>比如 <a href="https://github.com/jaywcjlove/github-rank" target="_blank" rel="noopener">Github China User Ranking</a></p>
-<h1 id="资源"><a href="#资源" class="headerlink" title="资源"></a>资源</h1><h2 id="1-Open-source-jobs"><a href="#1-Open-source-jobs" class="headerlink" title="1. Open source jobs"></a>1. <a href="https://oo.t9t.io/jobs" target="_blank" rel="noopener">Open source jobs</a></h2><p>该网站收集了一份提供工作机会的开源项目列表，网站 slogan 是 “Working on open source and get paid” ，这个网站本身也是开源的: <a href="https://github.com/t9tio/open-source-jobs" target="_blank" rel="noopener">https://github.com/t9tio/open-source-jobs</a> 。</p>
-<h2 id="2-外文期刊检索与下载"><a href="#2-外文期刊检索与下载" class="headerlink" title="2. 外文期刊检索与下载"></a>2. <a href="http://www.6453.net/" target="_blank" rel="noopener">外文期刊检索与下载</a></h2><p>偶然发现的一个外文期刊检索与下载的网站，里面集合了很多可以下载外文期刊的链接。</p>
-<p>还有一个相似的网站 ：  <a href="http://www.4243.net/" target="_blank" rel="noopener">http://www.4243.net/</a> 。</p>
-<p>======================<br>Erdong, A Linux user !</p>
-]]></content>
-      <categories>
-        <category>weekly</category>
-      </categories>
-      <tags>
-        <tag>weekly</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>第16周分享</title>
     <url>/weekly/weekly16.html</url>
     <content><![CDATA[<p>这里记录过去一周，我看到的值得分享的东西。</p>
@@ -3853,6 +3833,26 @@
 <h2 id="2-浙江大学课程攻略共享计划"><a href="#2-浙江大学课程攻略共享计划" class="headerlink" title="2. 浙江大学课程攻略共享计划"></a>2. <a href="https://github.com/QSCTech/zju-icicles" target="_blank" rel="noopener">浙江大学课程攻略共享计划</a></h2><p>浙江大学课程共享，目前主要以计算机为主，也有英语、马克思、物理、化学等课程。</p>
 <h2 id="3-传承-amp-交大"><a href="#3-传承-amp-交大" class="headerlink" title="3. 传承&amp;交大"></a>3. <a href="http://share.sjtu.edu.cn" target="_blank" rel="noopener">传承&amp;交大</a></h2><p>上海交大传承团队出品的课程，可以找到很多上海交大的课程资料。</p>
 <h2 id="4-广东工业大学计算机学院课程"><a href="#4-广东工业大学计算机学院课程" class="headerlink" title="4. 广东工业大学计算机学院课程"></a>4. <a href="https://github.com/brenner8023/gdut-course" target="_blank" rel="noopener">广东工业大学计算机学院课程</a></h2><p>该仓库收集该校从大一到大四各门课程的资料。</p>
+<p>======================<br>Erdong, A Linux user !</p>
+]]></content>
+      <categories>
+        <category>weekly</category>
+      </categories>
+      <tags>
+        <tag>weekly</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>第18周分享</title>
+    <url>/weekly/weekly18.html</url>
+    <content><![CDATA[<p>这里记录过去一周，我看到的值得分享的东西。</p>
+<a id="more"></a>
+
+<h1 id="工具"><a href="#工具" class="headerlink" title="工具"></a>工具</h1><h2 id="1-github-rank"><a href="#1-github-rank" class="headerlink" title="1. github-rank"></a>1. <a href="https://github.com/jaywcjlove/github-rank" target="_blank" rel="noopener">github-rank</a></h2><p>Github 仓库、用户排名。</p>
+<p>比如 <a href="https://github.com/jaywcjlove/github-rank" target="_blank" rel="noopener">Github China User Ranking</a></p>
+<h1 id="资源"><a href="#资源" class="headerlink" title="资源"></a>资源</h1><h2 id="1-Open-source-jobs"><a href="#1-Open-source-jobs" class="headerlink" title="1. Open source jobs"></a>1. <a href="https://oo.t9t.io/jobs" target="_blank" rel="noopener">Open source jobs</a></h2><p>该网站收集了一份提供工作机会的开源项目列表，网站 slogan 是 “Working on open source and get paid” ，这个网站本身也是开源的: <a href="https://github.com/t9tio/open-source-jobs" target="_blank" rel="noopener">https://github.com/t9tio/open-source-jobs</a> 。</p>
+<h2 id="2-外文期刊检索与下载"><a href="#2-外文期刊检索与下载" class="headerlink" title="2. 外文期刊检索与下载"></a>2. <a href="http://www.6453.net/" target="_blank" rel="noopener">外文期刊检索与下载</a></h2><p>偶然发现的一个外文期刊检索与下载的网站，里面集合了很多可以下载外文期刊的链接。</p>
+<p>还有一个相似的网站 ：  <a href="http://www.4243.net/" target="_blank" rel="noopener">http://www.4243.net/</a> 。</p>
 <p>======================<br>Erdong, A Linux user !</p>
 ]]></content>
       <categories>
@@ -4146,6 +4146,27 @@
       </tags>
   </entry>
   <entry>
+    <title>第34周分享</title>
+    <url>/weekly/weekly34.html</url>
+    <content><![CDATA[<p>这里记录过去一周，我看到的值得分享的东西。</p>
+<a id="more"></a>
+
+<h1 id="新闻"><a href="#新闻" class="headerlink" title="新闻"></a>新闻</h1><h2 id="1-Jimmy-Song"><a href="#1-Jimmy-Song" class="headerlink" title="1. Jimmy Song"></a>1. <a href="https://jimmysong.io" target="_blank" rel="noopener">Jimmy Song</a></h2><p>宋净超（Jimmy Song），蚂蚁金服云原生布道师和 CNCF Ambassador。ServiceMesher 社区联合创始人。</p>
+<h1 id="资源"><a href="#资源" class="headerlink" title="资源"></a>资源</h1><h2 id="1-Go-入门指南"><a href="#1-Go-入门指南" class="headerlink" title="1. Go 入门指南"></a>1. <a href="https://github.com/unknwon/the-way-to-go_ZH_CN" target="_blank" rel="noopener">Go 入门指南</a></h2><p>英文版 《The Way to Go》的 中文译本，中文正式名《Go 入门指南》，</p>
+<p>本书的英文版作者是 Ivo Balbaert 。中文版由社区进行翻译。</p>
+<h2 id="2-Kubernetes-Handbook"><a href="#2-Kubernetes-Handbook" class="headerlink" title="2. Kubernetes Handbook"></a>2. <a href="https://jimmysong.io/kubernetes-handbook/" target="_blank" rel="noopener">Kubernetes Handbook</a></h2><p>Kubernetes Handbook——Kubernetes中文指南/云原生应用架构实践手册</p>
+<p>Kubernetes是Google基于Borg开源的容器编排调度引擎，作为CNCF（Cloud Native Computing Foundation）最重要的组件之一，它的目标不仅仅是一个编排系统，而是提供一个规范，可以让你来描述集群的架构，定义服务的最终状态，Kubernetes可以帮你将系统自动地达到和维持在这个状态。Kubernetes作为云原生应用的基石，相当于一个云操作系统，其重要性不言而喻。</p>
+<p>======================<br>由于无法及时收到评论内容，所以关闭评论功能。<br>大家有问题欢迎发邮件到 <a href="mailto:erdong@mail.erdong.site">erdong@mail.erdong.site</a> ，或者 <a href="https://github.com/erdong/erdong.github.io/issues" target="_blank" rel="noopener">https://github.com/erdong/erdong.github.io/issues</a> 提 Issue ，我会及时回复。</p>
+<p>======================<br>Erdong, A Linux user !</p>
+]]></content>
+      <categories>
+        <category>weekly</category>
+      </categories>
+      <tags>
+        <tag>weekly</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>第35周分享</title>
     <url>/weekly/weekly35.html</url>
     <content><![CDATA[<p>这里记录过去一周，我看到的值得分享的东西。</p>
@@ -4158,27 +4179,6 @@
 <p>文档在线地址(Gitbook)：<a href="https://jasper-zhang1.gitbooks.io/influxdb/content/" target="_blank" rel="noopener">https://jasper-zhang1.gitbooks.io/influxdb/content/</a></p>
 <p>作者博客：<a href="http://www.opscoder.info" target="_blank" rel="noopener">http://www.opscoder.info</a></p>
 <h2 id="2-吴叶磊的博客"><a href="#2-吴叶磊的博客" class="headerlink" title="2. 吴叶磊的博客"></a>2. <a href="https://aleiwu.com" target="_blank" rel="noopener">吴叶磊的博客</a></h2><p>吴叶磊的博客，记录了一些有用的知识，值得去查看。</p>
-<p>======================<br>由于无法及时收到评论内容，所以关闭评论功能。<br>大家有问题欢迎发邮件到 <a href="mailto:erdong@mail.erdong.site">erdong@mail.erdong.site</a> ，或者 <a href="https://github.com/erdong/erdong.github.io/issues" target="_blank" rel="noopener">https://github.com/erdong/erdong.github.io/issues</a> 提 Issue ，我会及时回复。</p>
-<p>======================<br>Erdong, A Linux user !</p>
-]]></content>
-      <categories>
-        <category>weekly</category>
-      </categories>
-      <tags>
-        <tag>weekly</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>第34周分享</title>
-    <url>/weekly/weekly34.html</url>
-    <content><![CDATA[<p>这里记录过去一周，我看到的值得分享的东西。</p>
-<a id="more"></a>
-
-<h1 id="新闻"><a href="#新闻" class="headerlink" title="新闻"></a>新闻</h1><h2 id="1-Jimmy-Song"><a href="#1-Jimmy-Song" class="headerlink" title="1. Jimmy Song"></a>1. <a href="https://jimmysong.io" target="_blank" rel="noopener">Jimmy Song</a></h2><p>宋净超（Jimmy Song），蚂蚁金服云原生布道师和 CNCF Ambassador。ServiceMesher 社区联合创始人。</p>
-<h1 id="资源"><a href="#资源" class="headerlink" title="资源"></a>资源</h1><h2 id="1-Go-入门指南"><a href="#1-Go-入门指南" class="headerlink" title="1. Go 入门指南"></a>1. <a href="https://github.com/unknwon/the-way-to-go_ZH_CN" target="_blank" rel="noopener">Go 入门指南</a></h2><p>英文版 《The Way to Go》的 中文译本，中文正式名《Go 入门指南》，</p>
-<p>本书的英文版作者是 Ivo Balbaert 。中文版由社区进行翻译。</p>
-<h2 id="2-Kubernetes-Handbook"><a href="#2-Kubernetes-Handbook" class="headerlink" title="2. Kubernetes Handbook"></a>2. <a href="https://jimmysong.io/kubernetes-handbook/" target="_blank" rel="noopener">Kubernetes Handbook</a></h2><p>Kubernetes Handbook——Kubernetes中文指南/云原生应用架构实践手册</p>
-<p>Kubernetes是Google基于Borg开源的容器编排调度引擎，作为CNCF（Cloud Native Computing Foundation）最重要的组件之一，它的目标不仅仅是一个编排系统，而是提供一个规范，可以让你来描述集群的架构，定义服务的最终状态，Kubernetes可以帮你将系统自动地达到和维持在这个状态。Kubernetes作为云原生应用的基石，相当于一个云操作系统，其重要性不言而喻。</p>
 <p>======================<br>由于无法及时收到评论内容，所以关闭评论功能。<br>大家有问题欢迎发邮件到 <a href="mailto:erdong@mail.erdong.site">erdong@mail.erdong.site</a> ，或者 <a href="https://github.com/erdong/erdong.github.io/issues" target="_blank" rel="noopener">https://github.com/erdong/erdong.github.io/issues</a> 提 Issue ，我会及时回复。</p>
 <p>======================<br>Erdong, A Linux user !</p>
 ]]></content>
@@ -4228,6 +4228,26 @@
       </tags>
   </entry>
   <entry>
+    <title>攻城狮周刊：第37期</title>
+    <url>/weekly/weekly37.html</url>
+    <content><![CDATA[<p>这里记录过去一周，我看到的值得分享的东西。</p>
+<a id="more"></a>
+
+<h1 id="新闻"><a href="#新闻" class="headerlink" title="新闻"></a>新闻</h1><h2 id="1-国务院办公厅关于2020年部分节假日安排的通知"><a href="#1-国务院办公厅关于2020年部分节假日安排的通知" class="headerlink" title="1. 国务院办公厅关于2020年部分节假日安排的通知"></a>1. <a href="http://www.gov.cn/zhengce/content/2019-11/21/content_5454164.htm" target="_blank" rel="noopener">国务院办公厅关于2020年部分节假日安排的通知</a></h2><p>2020 年的假期安排已经发布，祝大家每个假期都开心快乐，收获满满。</p>
+<h1 id="工具"><a href="#工具" class="headerlink" title="工具"></a>工具</h1><h2 id="1-法信"><a href="#1-法信" class="headerlink" title="1. 法信"></a>1. <a href="http://www.faxin.cn/keyword/index.aspx" target="_blank" rel="noopener">法信</a></h2><p>一个法律仓库，可以在线搜索国内的各种法律。</p>
+<h1 id="资源"><a href="#资源" class="headerlink" title="资源"></a>资源</h1><h2 id="1-《高性能-Go-代码工坊》中译"><a href="#1-《高性能-Go-代码工坊》中译" class="headerlink" title="1. 《高性能 Go 代码工坊》中译"></a>1. <a href="https://www.yuque.com/ksco/uiondt" target="_blank" rel="noopener">《高性能 Go 代码工坊》中译</a></h2><p><a href="https://dave.cheney.net/high-performance-go-workshop/dotgo-paris.html" target="_blank" rel="noopener">原文</a>是深入研究 Go 应用性能提升的英语系列文章，这里是中译。</p>
+<h2 id="2-容错、高可用、灾备"><a href="#2-容错、高可用、灾备" class="headerlink" title="2. 容错、高可用、灾备"></a>2. <a href="http://www.ruanyifeng.com/blog/2019/11/fault-tolerance.html" target="_blank" rel="noopener">容错、高可用、灾备</a></h2><p>简单明了的说明了这三种方式有什么区别。</p>
+<h2 id="3-IBM-Developer"><a href="#3-IBM-Developer" class="headerlink" title="3. IBM Developer"></a>3. <a href="https://www.ibm.com/developerworks/cn/" target="_blank" rel="noopener">IBM Developer</a></h2><p>曾经叫做 developerWorks ，现在叫 IBM Developer ，是 IBM 公司提供的一个知识社区，里边有很多文章条理清晰、阅读体验良好。很适合学一写东西。</p>
+<p>======================<br>Erdong, A Linux user !</p>
+]]></content>
+      <categories>
+        <category>weekly</category>
+      </categories>
+      <tags>
+        <tag>weekly</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>攻城狮周刊：第38期</title>
     <url>/weekly/weekly38.html</url>
     <content><![CDATA[<p>这里记录过去一周，我看到的值得分享的东西。</p>
@@ -4243,26 +4263,6 @@
 <li>2019-09, 8.0.1 版本, ElasticHeap<h1 id="资源"><a href="#资源" class="headerlink" title="资源"></a>资源</h1></li>
 </ul>
 <h2 id="1-《Go语言高级编程》"><a href="#1-《Go语言高级编程》" class="headerlink" title="1. 《Go语言高级编程》"></a>1. <a href="https://github.com/chai2010/advanced-go-programming-book" target="_blank" rel="noopener">《Go语言高级编程》</a></h2><p>《Go语言高级编程》开源图书，涵盖CGO、Go汇编语言、RPC实现、Protobuf插件实现、Web框架实现、分布式系统等高阶主题</p>
-<p>======================<br>Erdong, A Linux user !</p>
-]]></content>
-      <categories>
-        <category>weekly</category>
-      </categories>
-      <tags>
-        <tag>weekly</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>攻城狮周刊：第37期</title>
-    <url>/weekly/weekly37.html</url>
-    <content><![CDATA[<p>这里记录过去一周，我看到的值得分享的东西。</p>
-<a id="more"></a>
-
-<h1 id="新闻"><a href="#新闻" class="headerlink" title="新闻"></a>新闻</h1><h2 id="1-国务院办公厅关于2020年部分节假日安排的通知"><a href="#1-国务院办公厅关于2020年部分节假日安排的通知" class="headerlink" title="1. 国务院办公厅关于2020年部分节假日安排的通知"></a>1. <a href="http://www.gov.cn/zhengce/content/2019-11/21/content_5454164.htm" target="_blank" rel="noopener">国务院办公厅关于2020年部分节假日安排的通知</a></h2><p>2020 年的假期安排已经发布，祝大家每个假期都开心快乐，收获满满。</p>
-<h1 id="工具"><a href="#工具" class="headerlink" title="工具"></a>工具</h1><h2 id="1-法信"><a href="#1-法信" class="headerlink" title="1. 法信"></a>1. <a href="http://www.faxin.cn/keyword/index.aspx" target="_blank" rel="noopener">法信</a></h2><p>一个法律仓库，可以在线搜索国内的各种法律。</p>
-<h1 id="资源"><a href="#资源" class="headerlink" title="资源"></a>资源</h1><h2 id="1-《高性能-Go-代码工坊》中译"><a href="#1-《高性能-Go-代码工坊》中译" class="headerlink" title="1. 《高性能 Go 代码工坊》中译"></a>1. <a href="https://www.yuque.com/ksco/uiondt" target="_blank" rel="noopener">《高性能 Go 代码工坊》中译</a></h2><p><a href="https://dave.cheney.net/high-performance-go-workshop/dotgo-paris.html" target="_blank" rel="noopener">原文</a>是深入研究 Go 应用性能提升的英语系列文章，这里是中译。</p>
-<h2 id="2-容错、高可用、灾备"><a href="#2-容错、高可用、灾备" class="headerlink" title="2. 容错、高可用、灾备"></a>2. <a href="http://www.ruanyifeng.com/blog/2019/11/fault-tolerance.html" target="_blank" rel="noopener">容错、高可用、灾备</a></h2><p>简单明了的说明了这三种方式有什么区别。</p>
-<h2 id="3-IBM-Developer"><a href="#3-IBM-Developer" class="headerlink" title="3. IBM Developer"></a>3. <a href="https://www.ibm.com/developerworks/cn/" target="_blank" rel="noopener">IBM Developer</a></h2><p>曾经叫做 developerWorks ，现在叫 IBM Developer ，是 IBM 公司提供的一个知识社区，里边有很多文章条理清晰、阅读体验良好。很适合学一写东西。</p>
 <p>======================<br>Erdong, A Linux user !</p>
 ]]></content>
       <categories>
@@ -4333,6 +4333,22 @@
       </tags>
   </entry>
   <entry>
+    <title>攻城狮周刊：第42期</title>
+    <url>/weekly/weekly42.html</url>
+    <content><![CDATA[<p>这里记录过去一周，我看到的值得分享的东西。</p>
+<a id="more"></a>
+
+<h1 id="新闻"><a href="#新闻" class="headerlink" title="新闻"></a>新闻</h1><h1 id="资源"><a href="#资源" class="headerlink" title="资源"></a>资源</h1><h2 id="1-chinese-poetry"><a href="#1-chinese-poetry" class="headerlink" title="1. chinese poetry"></a>1. <a href="https://github.com/chinese-poetry/chinese-poetry" target="_blank" rel="noopener">chinese poetry</a></h2><p>中文古诗的一个仓库，据作者介绍，唐宋两朝近一万四千古诗人, 接近5.5万首唐诗加26万宋诗. 两宋时期1564位词人，21050首词。 </p>
+<h1 id="这么全的话用来做深度学习可能不错。"><a href="#这么全的话用来做深度学习可能不错。" class="headerlink" title="这么全的话用来做深度学习可能不错。"></a>这么全的话用来做深度学习可能不错。</h1><p>Erdong, A Linux user !</p>
+]]></content>
+      <categories>
+        <category>weekly</category>
+      </categories>
+      <tags>
+        <tag>weekly</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>攻城狮周刊：第43期</title>
     <url>/weekly/weekly43.html</url>
     <content><![CDATA[<p>这里记录过去一周，我看到的值得分享的东西。</p>
@@ -4343,6 +4359,52 @@
 <p>hadolint是目前为止成熟最高的一个工具，一共支持60多条的自带规则。而且hadolint还支持对Run命令中带的shell命令进行审计。这一点功能是目前其他竞品不具备的。不过hadolint使用Haskell语言编写，且目前不支持规则文件导入。<br>如果有新的规则需要编程实现。<br>dockerlint 使用coffee_script语言编写，自带规则数量小于hadolint；也不支持规则文件导入功能。<br>dockerfile_lint 红帽发布，使用node.js编写的一个dockerfile扫描工具。支持的规则数量小于hadolint，但是支持通过yaml文件方式导入用户自定义规则。</p>
 <p>从以上分析来看，我认为dockerfile_lint其实更具潜力，因为dockerfile扫描规则其实是不固定的。每个用户都可以有自己的dockerfile扫描规范，所以通过脚本添加规则其实是一种刚需。 hadolint和dockerlint恰恰不具备这个能力，所以我最终选择了dockerfile_lint作为扫描工具。</p>
 <p>======================<br>Erdong, A Linux user !</p>
+]]></content>
+      <categories>
+        <category>weekly</category>
+      </categories>
+      <tags>
+        <tag>weekly</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>攻城狮周刊：第44期</title>
+    <url>/weekly/weekly44.html</url>
+    <content><![CDATA[<p>这里记录过去一周，我看到的值得分享的东西。</p>
+<a id="more"></a>
+
+
+<h1 id="新闻"><a href="#新闻" class="headerlink" title="新闻"></a>新闻</h1><h2 id="1-CentOS-8-1-1911"><a href="#1-CentOS-8-1-1911" class="headerlink" title="1. CentOS 8.1 1911"></a>1. <a href="https://www.oschina.net/news/112846/centos-8-1-1911-released" target="_blank" rel="noopener">CentOS 8.1 1911</a></h2><p>CentOS 8.1 版本已经发布了。</p>
+<h1 id="教程"><a href="#教程" class="headerlink" title="教程"></a>教程</h1><h2 id="1-leetcode-前-300-题"><a href="#1-leetcode-前-300-题" class="headerlink" title="1. leetcode 前 300 题"></a>1. <a href="https://leetcode.wang" target="_blank" rel="noopener">leetcode 前 300 题</a></h2><p>Leetcode 前 300 题，作者 wind-liang 对每道都进行了详细通俗的分析，并且提供多种思路解法.</p>
+<h2 id="2-Go-语言示例教程"><a href="#2-Go-语言示例教程" class="headerlink" title="2. Go 语言示例教程"></a>2. <a href="https://github.com/inancgumus/learngo" target="_blank" rel="noopener">Go 语言示例教程</a></h2><p>该仓库是一个 Go 语言初学者教程的示例库，收集了1000多个示例、练习和问题。</p>
+<h1 id="工具"><a href="#工具" class="headerlink" title="工具"></a>工具</h1><h2 id="1-spug"><a href="#1-spug" class="headerlink" title="1. spug"></a>1. <a href="https://github.com/openspug/spug" target="_blank" rel="noopener">spug</a></h2><p>开源运维平台：面向中小型企业设计的轻量级无Agent的自动化运维平台，整合了主机管理、主机批量执行、主机在线终端、应用发布部署、在线任务计划、配置中心、监控、报警等一系列功能。 <a href="https://spug.dev" target="_blank" rel="noopener">https://spug.dev</a></p>
+<h2 id="2-NGINX-Config"><a href="#2-NGINX-Config" class="headerlink" title="2. NGINX Config"></a>2. <a href="https://www.digitalocean.com/community/tools/nginx" target="_blank" rel="noopener">NGINX Config</a></h2><p>Nginx 的图形配置界面，点几下鼠标，自动生成配置文件，可以上传到服务器。</p>
+<h1 id="资源"><a href="#资源" class="headerlink" title="资源"></a>资源</h1><h2 id="1-阿里云云原生应用"><a href="#1-阿里云云原生应用" class="headerlink" title="1. 阿里云云原生应用"></a>1. <a href="https://github.com/cloudnativeapp" target="_blank" rel="noopener">阿里云云原生应用</a></h2><p>该组织是阿里云开发者社区维护的，有部分内容由阿里云提供。有一些参考价值。</p>
+<h1 id="杂谈"><a href="#杂谈" class="headerlink" title="杂谈"></a>杂谈</h1><h2 id="1-开源程序员主题相声"><a href="#1-开源程序员主题相声" class="headerlink" title="1. 开源程序员主题相声"></a>1. <a href="https://github.com/koolob/programmer-crosstalk" target="_blank" rel="noopener">开源程序员主题相声</a></h2><p>有点意思，无聊的时候可以看看，或者表演节目的时候可以用上。</p>
+<p>======================<br>由于无法及时收到评论内容，所以关闭评论功能。<br>大家有问题欢迎发邮件到 <a href="mailto:erdong@mail.erdong.site">erdong@mail.erdong.site</a> ，或者 <a href="https://github.com/erdong/erdong.github.io/issues" target="_blank" rel="noopener">https://github.com/erdong/erdong.github.io/issues</a> 提 Issue ，我会及时回复&gt;。<br>======================<br>Erdong, A Linux user !</p>
+]]></content>
+      <categories>
+        <category>weekly</category>
+      </categories>
+      <tags>
+        <tag>weekly</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>攻城狮周刊：第45期</title>
+    <url>/weekly/weekly45.html</url>
+    <content><![CDATA[<p>这里记录过去一周，我看到的值得分享的东西。</p>
+<a id="more"></a>
+
+
+
+
+<h1 id="教程"><a href="#教程" class="headerlink" title="教程"></a>教程</h1><h2 id="1"><a href="#1" class="headerlink" title="1. "></a>1. <a href="https://www.nginx.com/blog/help-the-world-by-healing-your-nginx-configuration/" target="_blank" rel="noopener"></a></h2><p>NGINX 官方的博客文章，教大家五个小技巧，通过改进配置来节省带宽、提高性能。</p>
+<h1 id="工具"><a href="#工具" class="headerlink" title="工具"></a>工具</h1><h2 id="1-Consul-template"><a href="#1-Consul-template" class="headerlink" title="1. Consul-template"></a>1. <a href="https://github.com/hashicorp/consul-template" target="_blank" rel="noopener">Consul-template</a></h2><p>Consul template 是 Consul 周边的一个配置渲染的工具，和 confd 类似，可以从 Consul 的 kv 存储里读取数据，渲染成各种格式的文件来让 Prometheus、Nginx等等工具来读取。使用的文档可以参考：<br><a href="https://www.bookstack.cn/read/consul-guide/11_consul_template.md#使用" target="_blank" rel="noopener">https://www.bookstack.cn/read/consul-guide/11_consul_template.md#使用</a></p>
+<h2 id="2-Confd"><a href="#2-Confd" class="headerlink" title="2. Confd"></a>2. <a href="https://github.com/kelseyhightower/confd" target="_blank" rel="noopener">Confd</a></h2><p>Confd 是一个使用模板来管理本地应用配置文件，可以从 consul 和 etcd 读取数据，和 consul-template 类似，使用模板渲染好配置文件后，也可以通过命令来重启或重载应用，使配置文件生效。但是该项目在 2018 年 7 月 16 日以后就没有新的代码提交。当前最新的版本是 v0.16.0 ，发布于 2018 年 5 月 5 日。</p>
+<h2 id="3-Gossip"><a href="#3-Gossip" class="headerlink" title="3. Gossip"></a>3. <a href="https://pearmini.gitee.io/gossip/" target="_blank" rel="noopener">Gossip</a></h2><p>一个制作幻灯片的在线工具，只需要少量拖拽和对齐操作，就可以生成通过浏览器播放的幻灯片,比较炫酷。</p>
+<h2 id="4-javaagent"><a href="#4-javaagent" class="headerlink" title="4. javaagent"></a>4. <a href="https://github.com/dingjs/javaagent" target="_blank" rel="noopener">javaagent</a></h2><p>基于javaagent开发的APM工具，收集方法的执行次数和执行时间，定时输出成json格式的日志。</p>
+<h1 id="资源"><a href="#资源" class="headerlink" title="资源"></a>资源</h1><h2 id="1-阿里云藏经阁"><a href="#1-阿里云藏经阁" class="headerlink" title="1. 阿里云藏经阁"></a>1. <a href="https://developer.aliyun.com/topic/ebook" target="_blank" rel="noopener">阿里云藏经阁</a></h2><h1 id="阿里云开发者社区——藏经阁系列电子书，汇聚了一线大厂的技术沉淀精华，爆款不断。"><a href="#阿里云开发者社区——藏经阁系列电子书，汇聚了一线大厂的技术沉淀精华，爆款不断。" class="headerlink" title="阿里云开发者社区——藏经阁系列电子书，汇聚了一线大厂的技术沉淀精华，爆款不断。"></a>阿里云开发者社区——藏经阁系列电子书，汇聚了一线大厂的技术沉淀精华，爆款不断。</h1><p>由于无法及时收到评论内容，所以关闭评论功能。<br>大家有问题欢迎发邮件到 <a href="mailto:erdong@mail.erdong.site">erdong@mail.erdong.site</a> ，或者 <a href="https://github.com/erdong/erdong.github.io/issues" target="_blank" rel="noopener">https://github.com/erdong/erdong.github.io/issues</a> 提 Issue ，我会及时回复&gt;。<br>======================<br>Erdong, A Linux user !</p>
 ]]></content>
       <categories>
         <category>weekly</category>
@@ -4423,68 +4485,6 @@
       </tags>
   </entry>
   <entry>
-    <title>攻城狮周刊：第45期</title>
-    <url>/weekly/weekly45.html</url>
-    <content><![CDATA[<p>这里记录过去一周，我看到的值得分享的东西。</p>
-<a id="more"></a>
-
-
-
-
-<h1 id="教程"><a href="#教程" class="headerlink" title="教程"></a>教程</h1><h2 id="1"><a href="#1" class="headerlink" title="1. "></a>1. <a href="https://www.nginx.com/blog/help-the-world-by-healing-your-nginx-configuration/" target="_blank" rel="noopener"></a></h2><p>NGINX 官方的博客文章，教大家五个小技巧，通过改进配置来节省带宽、提高性能。</p>
-<h1 id="工具"><a href="#工具" class="headerlink" title="工具"></a>工具</h1><h2 id="1-Consul-template"><a href="#1-Consul-template" class="headerlink" title="1. Consul-template"></a>1. <a href="https://github.com/hashicorp/consul-template" target="_blank" rel="noopener">Consul-template</a></h2><p>Consul template 是 Consul 周边的一个配置渲染的工具，和 confd 类似，可以从 Consul 的 kv 存储里读取数据，渲染成各种格式的文件来让 Prometheus、Nginx等等工具来读取。使用的文档可以参考：<br><a href="https://www.bookstack.cn/read/consul-guide/11_consul_template.md#使用" target="_blank" rel="noopener">https://www.bookstack.cn/read/consul-guide/11_consul_template.md#使用</a></p>
-<h2 id="2-Confd"><a href="#2-Confd" class="headerlink" title="2. Confd"></a>2. <a href="https://github.com/kelseyhightower/confd" target="_blank" rel="noopener">Confd</a></h2><p>Confd 是一个使用模板来管理本地应用配置文件，可以从 consul 和 etcd 读取数据，和 consul-template 类似，使用模板渲染好配置文件后，也可以通过命令来重启或重载应用，使配置文件生效。但是该项目在 2018 年 7 月 16 日以后就没有新的代码提交。当前最新的版本是 v0.16.0 ，发布于 2018 年 5 月 5 日。</p>
-<h2 id="3-Gossip"><a href="#3-Gossip" class="headerlink" title="3. Gossip"></a>3. <a href="https://pearmini.gitee.io/gossip/" target="_blank" rel="noopener">Gossip</a></h2><p>一个制作幻灯片的在线工具，只需要少量拖拽和对齐操作，就可以生成通过浏览器播放的幻灯片,比较炫酷。</p>
-<h2 id="4-javaagent"><a href="#4-javaagent" class="headerlink" title="4. javaagent"></a>4. <a href="https://github.com/dingjs/javaagent" target="_blank" rel="noopener">javaagent</a></h2><p>基于javaagent开发的APM工具，收集方法的执行次数和执行时间，定时输出成json格式的日志。</p>
-<h1 id="资源"><a href="#资源" class="headerlink" title="资源"></a>资源</h1><h2 id="1-阿里云藏经阁"><a href="#1-阿里云藏经阁" class="headerlink" title="1. 阿里云藏经阁"></a>1. <a href="https://developer.aliyun.com/topic/ebook" target="_blank" rel="noopener">阿里云藏经阁</a></h2><h1 id="阿里云开发者社区——藏经阁系列电子书，汇聚了一线大厂的技术沉淀精华，爆款不断。"><a href="#阿里云开发者社区——藏经阁系列电子书，汇聚了一线大厂的技术沉淀精华，爆款不断。" class="headerlink" title="阿里云开发者社区——藏经阁系列电子书，汇聚了一线大厂的技术沉淀精华，爆款不断。"></a>阿里云开发者社区——藏经阁系列电子书，汇聚了一线大厂的技术沉淀精华，爆款不断。</h1><p>由于无法及时收到评论内容，所以关闭评论功能。<br>大家有问题欢迎发邮件到 <a href="mailto:erdong@mail.erdong.site">erdong@mail.erdong.site</a> ，或者 <a href="https://github.com/erdong/erdong.github.io/issues" target="_blank" rel="noopener">https://github.com/erdong/erdong.github.io/issues</a> 提 Issue ，我会及时回复&gt;。<br>======================<br>Erdong, A Linux user !</p>
-]]></content>
-      <categories>
-        <category>weekly</category>
-      </categories>
-      <tags>
-        <tag>weekly</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>攻城狮周刊：第44期</title>
-    <url>/weekly/weekly44.html</url>
-    <content><![CDATA[<p>这里记录过去一周，我看到的值得分享的东西。</p>
-<a id="more"></a>
-
-
-<h1 id="新闻"><a href="#新闻" class="headerlink" title="新闻"></a>新闻</h1><h2 id="1-CentOS-8-1-1911"><a href="#1-CentOS-8-1-1911" class="headerlink" title="1. CentOS 8.1 1911"></a>1. <a href="https://www.oschina.net/news/112846/centos-8-1-1911-released" target="_blank" rel="noopener">CentOS 8.1 1911</a></h2><p>CentOS 8.1 版本已经发布了。</p>
-<h1 id="教程"><a href="#教程" class="headerlink" title="教程"></a>教程</h1><h2 id="1-leetcode-前-300-题"><a href="#1-leetcode-前-300-题" class="headerlink" title="1. leetcode 前 300 题"></a>1. <a href="https://leetcode.wang" target="_blank" rel="noopener">leetcode 前 300 题</a></h2><p>Leetcode 前 300 题，作者 wind-liang 对每道都进行了详细通俗的分析，并且提供多种思路解法.</p>
-<h2 id="2-Go-语言示例教程"><a href="#2-Go-语言示例教程" class="headerlink" title="2. Go 语言示例教程"></a>2. <a href="https://github.com/inancgumus/learngo" target="_blank" rel="noopener">Go 语言示例教程</a></h2><p>该仓库是一个 Go 语言初学者教程的示例库，收集了1000多个示例、练习和问题。</p>
-<h1 id="工具"><a href="#工具" class="headerlink" title="工具"></a>工具</h1><h2 id="1-spug"><a href="#1-spug" class="headerlink" title="1. spug"></a>1. <a href="https://github.com/openspug/spug" target="_blank" rel="noopener">spug</a></h2><p>开源运维平台：面向中小型企业设计的轻量级无Agent的自动化运维平台，整合了主机管理、主机批量执行、主机在线终端、应用发布部署、在线任务计划、配置中心、监控、报警等一系列功能。 <a href="https://spug.dev" target="_blank" rel="noopener">https://spug.dev</a></p>
-<h2 id="2-NGINX-Config"><a href="#2-NGINX-Config" class="headerlink" title="2. NGINX Config"></a>2. <a href="https://www.digitalocean.com/community/tools/nginx" target="_blank" rel="noopener">NGINX Config</a></h2><p>Nginx 的图形配置界面，点几下鼠标，自动生成配置文件，可以上传到服务器。</p>
-<h1 id="资源"><a href="#资源" class="headerlink" title="资源"></a>资源</h1><h2 id="1-阿里云云原生应用"><a href="#1-阿里云云原生应用" class="headerlink" title="1. 阿里云云原生应用"></a>1. <a href="https://github.com/cloudnativeapp" target="_blank" rel="noopener">阿里云云原生应用</a></h2><p>该组织是阿里云开发者社区维护的，有部分内容由阿里云提供。有一些参考价值。</p>
-<h1 id="杂谈"><a href="#杂谈" class="headerlink" title="杂谈"></a>杂谈</h1><h2 id="1-开源程序员主题相声"><a href="#1-开源程序员主题相声" class="headerlink" title="1. 开源程序员主题相声"></a>1. <a href="https://github.com/koolob/programmer-crosstalk" target="_blank" rel="noopener">开源程序员主题相声</a></h2><p>有点意思，无聊的时候可以看看，或者表演节目的时候可以用上。</p>
-<p>======================<br>由于无法及时收到评论内容，所以关闭评论功能。<br>大家有问题欢迎发邮件到 <a href="mailto:erdong@mail.erdong.site">erdong@mail.erdong.site</a> ，或者 <a href="https://github.com/erdong/erdong.github.io/issues" target="_blank" rel="noopener">https://github.com/erdong/erdong.github.io/issues</a> 提 Issue ，我会及时回复&gt;。<br>======================<br>Erdong, A Linux user !</p>
-]]></content>
-      <categories>
-        <category>weekly</category>
-      </categories>
-      <tags>
-        <tag>weekly</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>攻城狮周刊：第42期</title>
-    <url>/weekly/weekly42.html</url>
-    <content><![CDATA[<p>这里记录过去一周，我看到的值得分享的东西。</p>
-<a id="more"></a>
-
-<h1 id="新闻"><a href="#新闻" class="headerlink" title="新闻"></a>新闻</h1><h1 id="资源"><a href="#资源" class="headerlink" title="资源"></a>资源</h1><h2 id="1-chinese-poetry"><a href="#1-chinese-poetry" class="headerlink" title="1. chinese poetry"></a>1. <a href="https://github.com/chinese-poetry/chinese-poetry" target="_blank" rel="noopener">chinese poetry</a></h2><p>中文古诗的一个仓库，据作者介绍，唐宋两朝近一万四千古诗人, 接近5.5万首唐诗加26万宋诗. 两宋时期1564位词人，21050首词。 </p>
-<h1 id="这么全的话用来做深度学习可能不错。"><a href="#这么全的话用来做深度学习可能不错。" class="headerlink" title="这么全的话用来做深度学习可能不错。"></a>这么全的话用来做深度学习可能不错。</h1><p>Erdong, A Linux user !</p>
-]]></content>
-      <categories>
-        <category>weekly</category>
-      </categories>
-      <tags>
-        <tag>weekly</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>阿里云云栖社区博客相关问题</title>
     <url>/life/gossip/yunqi-blog.html</url>
     <content><![CDATA[<p>最近在阿里云的云栖社区内发表了多篇博客，发现一些奇怪的问题。比如，博客发布以后，会处于审核中的状态，这个审核要多久，都审核什么，一直是处于未知状态。经过几天的摸索，对于几个问题有了一些答案，记录在这里，和大家分享一下。</p>
@@ -4512,6 +4512,26 @@
       </categories>
       <tags>
         <tag>博客</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>第28周分享</title>
+    <url>/weekly/weekly28.html</url>
+    <content><![CDATA[<p>这里记录过去一周，我看到的值得分享的东西。</p>
+<a id="more"></a>
+
+
+
+<h1 id="新闻"><a href="#新闻" class="headerlink" title="新闻"></a>新闻</h1><h2 id="1-GitHub官方中文文档"><a href="#1-GitHub官方中文文档" class="headerlink" title="1. GitHub官方中文文档"></a>1. <a href="https://help.github.com/cn" target="_blank" rel="noopener">GitHub官方中文文档</a></h2><p>GitHub 正式推出帮助文档中文版，很多不擅长英语的开发者以后可以直接看中文了，省去了网上很多人的二次转发。这也是 GitHub 继英文和日文后支持的第三种语言。 </p>
+<h1 id="工具"><a href="#工具" class="headerlink" title="工具"></a>工具</h1><h2 id="1-cortex"><a href="#1-cortex" class="headerlink" title="1. cortex"></a>1. <a href="https://github.com/cortexproject/cortex" target="_blank" rel="noopener">cortex</a></h2><p>A multitenant, horizontally scalable Prometheus as a Service <a href="https://github.com/cortexproject/cortex" target="_blank" rel="noopener">https://github.com/cortexproject/cortex</a></p>
+<h1 id="资源"><a href="#资源" class="headerlink" title="资源"></a>资源</h1><h2 id="1-如何超过大多数人"><a href="#1-如何超过大多数人" class="headerlink" title="1. 如何超过大多数人"></a>1. <a href="https://coolshell.cn/articles/19464.html" target="_blank" rel="noopener">如何超过大多数人</a></h2><p>左耳朵耗子 陈皓 最近写的一篇文章，很值得阅读，而且值得多次阅读。</p>
+<p>======================<br>Erdong, A Linux user !</p>
+]]></content>
+      <categories>
+        <category>weekly</category>
+      </categories>
+      <tags>
+        <tag>weekly</tag>
       </tags>
   </entry>
   <entry>
@@ -4547,26 +4567,6 @@
 
 
 <h1 id="教程"><a href="#教程" class="headerlink" title="教程"></a>教程</h1><h2 id="1-二维码的生成细节和原理"><a href="#1-二维码的生成细节和原理" class="headerlink" title="1. 二维码的生成细节和原理"></a>1. <a href="https://coolshell.cn/articles/10590.html#jtss-tsina" target="_blank" rel="noopener">二维码的生成细节和原理</a></h2><p>2013 年的时候陈皓写的二维码的生成细节和原理，把二维码的生成过程讲的很好。</p>
-<p>======================<br>Erdong, A Linux user !</p>
-]]></content>
-      <categories>
-        <category>weekly</category>
-      </categories>
-      <tags>
-        <tag>weekly</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>第28周分享</title>
-    <url>/weekly/weekly28.html</url>
-    <content><![CDATA[<p>这里记录过去一周，我看到的值得分享的东西。</p>
-<a id="more"></a>
-
-
-
-<h1 id="新闻"><a href="#新闻" class="headerlink" title="新闻"></a>新闻</h1><h2 id="1-GitHub官方中文文档"><a href="#1-GitHub官方中文文档" class="headerlink" title="1. GitHub官方中文文档"></a>1. <a href="https://help.github.com/cn" target="_blank" rel="noopener">GitHub官方中文文档</a></h2><p>GitHub 正式推出帮助文档中文版，很多不擅长英语的开发者以后可以直接看中文了，省去了网上很多人的二次转发。这也是 GitHub 继英文和日文后支持的第三种语言。 </p>
-<h1 id="工具"><a href="#工具" class="headerlink" title="工具"></a>工具</h1><h2 id="1-cortex"><a href="#1-cortex" class="headerlink" title="1. cortex"></a>1. <a href="https://github.com/cortexproject/cortex" target="_blank" rel="noopener">cortex</a></h2><p>A multitenant, horizontally scalable Prometheus as a Service <a href="https://github.com/cortexproject/cortex" target="_blank" rel="noopener">https://github.com/cortexproject/cortex</a></p>
-<h1 id="资源"><a href="#资源" class="headerlink" title="资源"></a>资源</h1><h2 id="1-如何超过大多数人"><a href="#1-如何超过大多数人" class="headerlink" title="1. 如何超过大多数人"></a>1. <a href="https://coolshell.cn/articles/19464.html" target="_blank" rel="noopener">如何超过大多数人</a></h2><p>左耳朵耗子 陈皓 最近写的一篇文章，很值得阅读，而且值得多次阅读。</p>
 <p>======================<br>Erdong, A Linux user !</p>
 ]]></content>
       <categories>
