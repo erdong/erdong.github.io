@@ -4524,17 +4524,9 @@
       </tags>
   </entry>
   <entry>
-    <title>weekly48</title>
-    <url>/uncategorized/weekly48.html</url>
-    <content><![CDATA[<h1 id="weekly48"><a href="#weekly48" class="headerlink" title="weekly48"></a>weekly48</h1><hr>
-<p>title: 攻城狮周刊：第48期<br>comments: false<br>categories:</p>
-<ul>
-<li>weekly<br>tags:</li>
-<li>weekly<br>keywords:</li>
-<li>Newsletter<br>date: 2021-01-17 23:50:59</li>
-</ul>
-<hr>
-<p>这里记录过去一周，我看到的值得分享的东西。</p>
+    <title>攻城狮周刊：第48期</title>
+    <url>/weekly/weekly48.html</url>
+    <content><![CDATA[<p>这里记录过去一周，我看到的值得分享的东西。</p>
 <h1 id="新闻"><a href="#新闻" class="headerlink" title="新闻"></a>新闻</h1><h2 id="1-尼康显微镜大赛"><a href="#1-尼康显微镜大赛" class="headerlink" title="1. 尼康显微镜大赛"></a>1. <a href="https://www.nikonsmallworld.com/galleries/photomicrography-competition" target="_blank" rel="noopener">尼康显微镜大赛</a></h2><h1 id="工具"><a href="#工具" class="headerlink" title="工具"></a>工具</h1><h2 id="1-fanyi"><a href="#1-fanyi" class="headerlink" title="1. fanyi"></a>1. <a href="https://github.com/afc163/fanyi" target="_blank" rel="noopener">fanyi</a></h2><p>一个命令行的中英文翻译工具，翻译数据来自 iciba.com 和 fanyi.youdao.com</p>
 <h2 id="2-阿禅的公众号排版工具"><a href="#2-阿禅的公众号排版工具" class="headerlink" title="2. 阿禅的公众号排版工具"></a>2. <a href="https://knb.im/mp/" target="_blank" rel="noopener">阿禅的公众号排版工具</a></h2><p>这个排版器适合写长文的人使用，适合先用 Markdown 把文章一气呵成写完，然后一键转换格式的人来使用。</p>
 <p>原本，这是阿禅自己用的排版器。</p>
@@ -4550,19 +4542,17 @@
 <p>斯坦福教授、Tcl 语言发明者 John Ousterhout 的著作《A Philosophy of Software Design》，自出版以来，好评如潮。按照 IT 图书出版的惯例，如果冠名为“实践”，书中内容关注的是某项技术的细节和技巧；冠名为“艺术”，内容可能是记录一件优秀作品的设计过程和经验；而冠名为“哲学”，则是一些通用的原则和方法论，这些原则方法论串起来，能够形成一个体系。正如”知行合一”、“世界是由原子构成的”、“我思故我在”，这些耳熟能详的句子能够一定程度上代表背后的人物和思想。用一句话概括《A Philosophy of Software Design》，软件设计的核心在于降低复杂性。</p>
 <p>======================<br>由于无法及时收到评论内容，所以关闭评论功能。<br>大家有问题欢迎发邮件到 <a href="mailto:erdong@mail.erdong.site">erdong@mail.erdong.site</a> ，或者 <a href="https://github.com/erdong/erdong.github.io/issues" target="_blank" rel="noopener">https://github.com/erdong/erdong.github.io/issues</a> 提 Issue ，我会及时回复&gt;。<br>======================<br>Erdong, A Linux user !</p>
 ]]></content>
+      <categories>
+        <category>weekly</category>
+      </categories>
+      <tags>
+        <tag>weekly</tag>
+      </tags>
   </entry>
   <entry>
-    <title>weekly47</title>
-    <url>/uncategorized/weekly47.html</url>
-    <content><![CDATA[<h1 id="weekly47"><a href="#weekly47" class="headerlink" title="weekly47"></a>weekly47</h1><hr>
-<p>title: 攻城狮周刊：第47期<br>comments: false<br>categories:</p>
-<ul>
-<li>weekly<br>tags:</li>
-<li>weekly<br>keywords:</li>
-<li>Newsletter<br>date: 2020-01-17 23:50:59</li>
-</ul>
-<hr>
-<p>这里记录过去一周，我看到的值得分享的东西。</p>
+    <title>攻城狮周刊：第47期</title>
+    <url>/weekly/weekly47.html</url>
+    <content><![CDATA[<p>这里记录过去一周，我看到的值得分享的东西。</p>
 <h1 id="工具"><a href="#工具" class="headerlink" title="工具"></a>工具</h1><h2 id="1-ZoomEye"><a href="#1-ZoomEye" class="headerlink" title="1. ZoomEye"></a>1. <a href="https://www.zoomeye.org" target="_blank" rel="noopener">ZoomEye</a></h2><p>钟馗之眼，<br>互联网安全厂商知道创宇开放了他们的海量数据库，对之前沉淀的数据进行了整合、整理，打造了一个名符其实的网络空间搜索引擎ZoomEye 。作为安全从业人员应当了解该搜索引擎。</p>
 <h2 id="2-shodan"><a href="#2-shodan" class="headerlink" title="2. shodan"></a>2. <a href="https://www.shodan.io" target="_blank" rel="noopener">shodan</a></h2><p>在2009年举办的黑客大会DEFCON会上，一位名叫约翰·马瑟利的黑客发布了一款名为“Shodan”的搜索引擎。其名字取自风靡一时的电脑游戏System Shock中的邪恶主机 。<br>谷歌、百度等搜索引擎通过引用返回的内容进行检索，而Shodan则通过来自各种设备的HTTP header以及其它标志性信息进行检索。</p>
 <p>Shodan可以收集这些设备的信息，并根据其所属国家、操作系统、品牌以及许多其它属性进行分类。可以大致把谷歌、百度看做是网站内容搜索，而把Shodan看做是网络设备搜索。</p>
@@ -4574,5 +4564,11 @@
 <h1 id="杂谈"><a href="#杂谈" class="headerlink" title="杂谈"></a>杂谈</h1><h2 id=""><a href="#" class="headerlink" title=""></a></h2><p>2020 年后半年总是忙于各种事务，博客更新有些慢了。变成了一个咕咕星人。哈哈</p>
 <p>======================<br>由于无法及时收到评论内容，所以关闭评论功能。<br>大家有问题欢迎发邮件到 <a href="mailto:erdong@mail.erdong.site">erdong@mail.erdong.site</a> ，或者 <a href="https://github.com/erdong/erdong.github.io/issues" target="_blank" rel="noopener">https://github.com/erdong/erdong.github.io/issues</a> 提 Issue ，我会及时回复&gt;。<br>======================<br>Erdong, A Linux user !</p>
 ]]></content>
+      <categories>
+        <category>weekly</category>
+      </categories>
+      <tags>
+        <tag>weekly</tag>
+      </tags>
   </entry>
 </search>
