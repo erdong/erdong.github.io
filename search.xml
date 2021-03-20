@@ -4576,4 +4576,36 @@
         <tag>weekly</tag>
       </tags>
   </entry>
+  <entry>
+    <title>攻城狮周刊：第49期</title>
+    <url>/weekly/weekly49.html</url>
+    <content><![CDATA[<p>这里记录过去一周，我看到的值得分享的东西。</p>
+<a id="more"></a>
+
+<h1 id="工具"><a href="#工具" class="headerlink" title="工具"></a>工具</h1><h2 id="1-MobaXterm"><a href="#1-MobaXterm" class="headerlink" title="1. MobaXterm"></a>1. <a href="https://mobaxterm.mobatek.net/" target="_blank" rel="noopener">MobaXterm</a></h2><p>MobaXterm是一款多功能远程控制工具，支持创建SSH,Telnet,Rsh,Xdmc,RDP,VNC,FTP,SFTP,串口(Serial COM),本地Shell,Mosh,Aws,WSL(微软子系统)等超多连接功能。MobaXterm 提供了人性化的操作界面，支持与主流的操作系统连接进行控制和管理操作，功能十分强大。</p>
+<p>secureCRT其实也是一款很强大的终端工具，但是它是收费软件，<br>而Putty，它非常小巧，而且免费，在我们公司大量使用。但是良许不喜欢它的原因是它真的不好用，不支持标签，开多个会话的话就需要开多个窗口，窗口切换也很不方便，因此良许就使用了一两个月后就放弃它了。</p>
+<h2 id="2-Goland-使用教程"><a href="#2-Goland-使用教程" class="headerlink" title="2.Goland 使用教程"></a>2.<a href="https://www.jetbrains.com/help/go/2020.3/quick-start-guide-goland.html" target="_blank" rel="noopener">Goland 使用教程</a></h2><p>Goland 是 jebrains 推出的 Golang IDE ，该教程是官方的使用教程。</p>
+<h2 id="3-filebrowser"><a href="#3-filebrowser" class="headerlink" title="3. filebrowser"></a>3. <a href="https://filebrowser.org/" target="_blank" rel="noopener">filebrowser</a></h2><p>文件共享软件，可以部署在多个平台上提供文件下载功能，支持多用户和权限控制。比较简单，可以满足小型的文件共享需求。</p>
+<h2 id="4-GitHub-镜像网站"><a href="#4-GitHub-镜像网站" class="headerlink" title="4. GitHub 镜像网站"></a>4. <a href="">GitHub 镜像网站</a></h2><p>GitHub 镜像网站，<br><a href="https://github.com.cnpmjs.org">https://github.com.cnpmjs.org</a><br><a href="https://hub.fastgit.org" target="_blank" rel="noopener">https://hub.fastgit.org</a></p>
+<p>当 GitHub 无法访问的时候，可以临时方法镜像网站来查资料。</p>
+<h2 id="5-GitHub520"><a href="#5-GitHub520" class="headerlink" title="5. GitHub520"></a>5. <a href="https://github.com/521xueweihan/GitHub520" target="_blank" rel="noopener">GitHub520</a></h2><p>本项目无需安装任何程序，通过修改本地 hosts 文件，试图解决：</p>
+<p>GitHub 访问速度慢的问题<br>GitHub 项目中的图片显示不出的问题<br>花 5 分钟时间，让你”爱”上 GitHub。</p>
+<p>仓库列出了 GitHub 域名的 IP 地址，每 2 个小时更新一次 Hosts 文件列表。可以手动更新，也可以通过 SwitchHosts 工具来自动更新。</p>
+<h1 id="资源"><a href="#资源" class="headerlink" title="资源"></a>资源</h1><h2 id="1-Awesome-Profile-README-templates"><a href="#1-Awesome-Profile-README-templates" class="headerlink" title="1. Awesome-Profile-README-templates"></a>1. <a href="https://github.com/kautukkundan/Awesome-Profile-README-templates" target="_blank" rel="noopener">Awesome-Profile-README-templates</a></h2><p>Awesome-Profile-README-templates 收录了全世界有意思的 README，如果你要只做你的专属 GitHub 简介，不妨参考下。</p>
+<h2 id="2-GitHub-Readme-Stats"><a href="#2-GitHub-Readme-Stats" class="headerlink" title="2. GitHub Readme Stats"></a>2. <a href="https://github.com/anuraghazra/github-readme-stats" target="_blank" rel="noopener">GitHub Readme Stats</a></h2><p>GitHub Readme Stats 是一个可在你的 README 中获取动态生成的 GitHub 统计信息的小工具。目前支持 dark、radical、merko、gruvbox、tokyonight、onedark、cobalt, synthwave、highcontrast、dracula 等多个主题。</p>
+<p>用法很简单将这行代码复制到你的 markdown 文件中，简单如此！更改 ?username= 的值为你的 GitHub 用户名。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[![Anurag&#39;s github stats](https:&#x2F;&#x2F;github-readme-stats.vercel.app&#x2F;api?username&#x3D;anuraghazra &quot;![Anurag&#39;s github stats&quot;)](https:&#x2F;&#x2F;github.com&#x2F;anuraghazra&#x2F;github-readme-stats)</span><br></pre></td></tr></table></figure>
+
+<h2 id="3-emoji-表情查询网址"><a href="#3-emoji-表情查询网址" class="headerlink" title="3. emoji 表情查询网址"></a>3. <a href="https://www.emojiall.com/en/zh" target="_blank" rel="noopener">emoji 表情查询网址</a></h2><p>有很多的表情可供选择，可以让文章或者互动变的更有趣。</p>
+<h1 id="文章"><a href="#文章" class="headerlink" title="文章"></a>文章</h1><h2 id="1-The-right-way-to-turn-off-your-old-APIs"><a href="#1-The-right-way-to-turn-off-your-old-APIs" class="headerlink" title="1. The right way to turn off your old APIs"></a>1. <a href="https://httptoolkit.tech/blog/how-to-turn-off-your-old-apis/" target="_blank" rel="noopener">The right way to turn off your old APIs</a></h2><p>本文讲述如何将一个老旧的 API 下线。</p>
+<h2 id="2-在-GitHub-上构建一个看上去正规的-Golang-项目"><a href="#2-在-GitHub-上构建一个看上去正规的-Golang-项目" class="headerlink" title="2. 在 GitHub 上构建一个看上去正规的 Golang 项目"></a>2. <a href="https://developer.aliyun.com/article/710165" target="_blank" rel="noopener">在 GitHub 上构建一个看上去正规的 Golang 项目</a></h2><p>在 GitHub 上开源 Golang 语言的仓库的一个基础知识点教学，简单介绍了 Goland 的配置、Travis CI 的使用、GoReleaser 用来进行 release 的发布。</p>
+<p>======================<br>由于无法及时收到评论内容，所以关闭评论功能。<br>大家有问题欢迎发邮件到 <a href="mailto:erdong@mail.erdong.site">erdong@mail.erdong.site</a> ，或者 <a href="https://github.com/erdong/erdong.github.io/issues" target="_blank" rel="noopener">https://github.com/erdong/erdong.github.io/issues</a> 提 Issue ，我会及时回复&gt;。<br>======================<br>Erdong, A Linux user !</p>
+]]></content>
+      <categories>
+        <category>weekly</category>
+      </categories>
+      <tags>
+        <tag>weekly</tag>
+      </tags>
+  </entry>
 </search>
