@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://erdong.site/"/>
-  <updated>2021-03-21T00:10:08.502Z</updated>
+  <updated>2021-11-20T15:50:46.579Z</updated>
   <id>https://erdong.site/</id>
   
   <author>
@@ -15,6 +15,180 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Prometheus 2.31.0 新特性</title>
+    <link href="https://erdong.site/Prometheus/New-Features/New-Features-in-Prometheus-2-31-0.html"/>
+    <id>https://erdong.site/Prometheus/New-Features/New-Features-in-Prometheus-2-31-0.html</id>
+    <published>2021-11-13T12:17:11.000Z</published>
+    <updated>2021-11-20T15:50:46.579Z</updated>
+    
+    <content type="html"><![CDATA[<p>Prometheus <a href="https://github.com/prometheus/prometheus/releases/tag/v2.31.0" target="_blank" rel="noopener">2.31.0</a> 现在(2021.11.02)已经发布，在上个月的 <a href="http://erdong.site/Prometheus/New-Features/New-Features-in-Prometheus-2-30-0.html">2.30.0</a> 之后又进行了很多的修复和改进。</p><a id="more"></a><p>这次更新新增了很多的特性，并且修复一些 BUG 。</p><p>对于 UI 方面，删除了标准的 PromQL 编辑器，该用基于 codemirror 的编辑器。这个我还没有试用，用过了看看到底是个什么样子。UI 这次更新取消时间范围设置更改。UI 修复了一个 BUG，对所有的告警类型使用同样的页边距。</p><p>对于 PromQL 增加了三角函数，并且新增了 <code>atan2</code> 的二进制操作符。atan2是一个函数，在 C 语言里返回的是指方位角，C 语言中 atan2 的函数原型为 double atan2(double y, double x) ，返回以弧度表示的 y/x 的反正切。y 和 x 的值的符号决定了正确的象限。也可以理解为计算复数 x+yi 的辐角，计算时atan2 比 atan 稳定。文档还没更新这些新函数的用法，等等吧。</p><p>对于服务发现，这次新增了 PuppetDB 和 Uyuni 的服务发现。并且 Azure 服务发现和 Kubernetes 服务发现也有了更新，Azure 服务发现增加了 <code>proxy_url</code>， <code>follow_redirects</code>， <code>tls_config</code>，Kubernetes 服务发现如果终端数量超过限制，警告用户。对于服务发现新增了一个实验性的服务发现管理器，以避免重新加载时重新启动，默认是关闭的，需要使用 <code>--enable-feature=new-service-discovery-manager</code> 参数来打开。</p><p>对于远程写 ，在远程写接收方端点中添加对 exemplar 的支持。</p><p>对于 HTTP 来说重新打开了 <code>HTTP/2</code> ， 并且在 Web 页面支持 <code>security-related</code> 的 HTTP header 。</p><p>在 Promtool 工具中有一项改进，在 <code>promtool create-blocks-from</code> 规则中添加 <code>--max-block-duration</code>。</p><p>对于身份认证的 OAuth2 ，在请求的 Token 中添加了 TLS 的配置 。</p><p>这次更新还修复了一些 BUG，一个是解决了多个导出的标签前缀之间的冲突 。另外当 <code>__scrape_interval__</code> 被更改时重新启动获取数据的循环。</p><p>最重要的是这次修改了 TSDB 样例删除时遇到的内存泄漏问题。</p><p>详细的发行注记可以查看 <a href="https://github.com/prometheus/prometheus/releases/tag/v2.31.0" target="_blank" rel="noopener">release notes</a> 。</p><h1 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h1><ul><li><a href="https://github.com/prometheus/prometheus/releases/tag/v2.31.0" target="_blank" rel="noopener">https://github.com/prometheus/prometheus/releases/tag/v2.31.0</a> ，By prombot of GitHub</li></ul><p>======================<br>由于无法及时收到评论内容，所以关闭评论功能。<br>大家有问题欢迎发邮件到 <a href="mailto:erdong@mail.erdong.site">erdong@mail.erdong.site</a> ，或者 <a href="https://github.com/erdong/erdong.github.io/issues" target="_blank" rel="noopener">https://github.com/erdong/erdong.github.io/issues</a> 提 Issue ，我会及时回复。</p><p>======================<br>Erdong, A Linux user !</p><p><img src="https://erdong.site/images/erdongxtnew.jpg" alt="微信公众号"></p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Prometheus &lt;a href=&quot;https://github.com/prometheus/prometheus/releases/tag/v2.31.0&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;2.31.0&lt;/a&gt; 现在(2021.11.02)已经发布，在上个月的 &lt;a href=&quot;http://erdong.site/Prometheus/New-Features/New-Features-in-Prometheus-2-30-0.html&quot;&gt;2.30.0&lt;/a&gt; 之后又进行了很多的修复和改进。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="Prometheus" scheme="https://erdong.site/categories/Prometheus/"/>
+    
+      <category term="New-Features" scheme="https://erdong.site/categories/Prometheus/New-Features/"/>
+    
+    
+      <category term="Prometheus" scheme="https://erdong.site/tags/Prometheus/"/>
+    
+      <category term="Features" scheme="https://erdong.site/tags/Features/"/>
+    
+      <category term="release" scheme="https://erdong.site/tags/release/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Prometheus 2.30.0 新特性</title>
+    <link href="https://erdong.site/Prometheus/New-Features/New-Features-in-Prometheus-2-30-0.html"/>
+    <id>https://erdong.site/Prometheus/New-Features/New-Features-in-Prometheus-2-30-0.html</id>
+    <published>2021-09-25T12:17:11.000Z</published>
+    <updated>2021-11-20T15:49:59.705Z</updated>
+    
+    <content type="html"><![CDATA[<p>Prometheus <a href="https://github.com/prometheus/prometheus/releases/tag/v2.30.0" target="_blank" rel="noopener">2.30.0</a> 现在(2021.09.14)已经发布，在上个月的 <a href="http://erdong.site/Prometheus/New-Features/New-Features-in-Prometheus-2-29-0.html">2.29.0</a> 之后又进行了很多的修复和改进。</p><a id="more"></a><p>本次 Prometheus 针对时序数据库 TSDB 新增了一个实验性质的特性，使用 <code>--enable-feature=memory-snapshot-on-shutdown</code> 在关闭时对内存块进行快照，以更快地重新启动 Prometheus 。还有就是对于 Scrape 也新增了一个实验性的特性，<code>__scrape_interval__</code> 和 <code>__scrape_timeout__</code> ，使用这两个label 进行重新标记，配置指标采集时间和采集超时。</p><p>另外对于获取指标 scrape 新增了 <code>scrape_timeout_seconds</code> 和<code>scrape_sample_limit</code> 两个指标，使用 <code>--enable-feature=extra-scrape-metrics</code> 参数可以在默认情况下避免额外的基数。</p><p>对于 scrape 进行了优化， 当使用 <code>--scrape.adjust-timestamps</code> 启动时，使用 <code>-scrape.timestamp-tolerance</code> 来调整scrape 时间戳的公差。另外在 在解析指标时减少分配。</p><p>对于 docker 的服务发现，这次开始支持 host 的网络模式。</p><p>这次增对远程写进行了优化，提高发送示例时的吞吐量。</p><p>对于时序数据库 TSDB 进行了一些改进，通过移除额外的 map 和缓存来优化 WAL 文件的加载。</p><p>对于 promtool 工具也进行了优化，会加速检查重复的规则。</p><p>接下来是一些 BUG 的修复</p><p>对于 exemplars 调整示例存储从 0 到非 0 变化引起的问题。<br>对于 时序数据库 TSDB ，当追加没有样本，正确减少prometheus_tsdb_head_active_appenders。<br>对于 promtool 工具的 rules backfill ，如果 backfill 不成功，返回1。并且避免了创建重叠块。</p><p>对于 config，修复了用空的重标签操作重新加载配置时的问题。</p><p>详细的发行注记可以查看 <a href="https://github.com/prometheus/prometheus/releases/tag/v2.30.0" target="_blank" rel="noopener">release notes</a> 。</p><h1 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h1><ul><li><a href="https://github.com/prometheus/prometheus/releases/tag/v2.30.0" target="_blank" rel="noopener">https://github.com/prometheus/prometheus/releases/tag/v2.30.0</a> ，By prombot of GitHub</li></ul><p>======================<br>由于无法及时收到评论内容，所以关闭评论功能。<br>大家有问题欢迎发邮件到 <a href="mailto:erdong@mail.erdong.site">erdong@mail.erdong.site</a> ，或者 <a href="https://github.com/erdong/erdong.github.io/issues" target="_blank" rel="noopener">https://github.com/erdong/erdong.github.io/issues</a> 提 Issue ，我会及时回复。</p><p>======================<br>Erdong, A Linux user !</p><p><img src="https://erdong.site/images/erdongxtnew.jpg" alt="微信公众号"></p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Prometheus &lt;a href=&quot;https://github.com/prometheus/prometheus/releases/tag/v2.30.0&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;2.30.0&lt;/a&gt; 现在(2021.09.14)已经发布，在上个月的 &lt;a href=&quot;http://erdong.site/Prometheus/New-Features/New-Features-in-Prometheus-2-29-0.html&quot;&gt;2.29.0&lt;/a&gt; 之后又进行了很多的修复和改进。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="Prometheus" scheme="https://erdong.site/categories/Prometheus/"/>
+    
+      <category term="New-Features" scheme="https://erdong.site/categories/Prometheus/New-Features/"/>
+    
+    
+      <category term="Prometheus" scheme="https://erdong.site/tags/Prometheus/"/>
+    
+      <category term="Features" scheme="https://erdong.site/tags/Features/"/>
+    
+      <category term="release" scheme="https://erdong.site/tags/release/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Prometheus 2.29.0 新特性</title>
+    <link href="https://erdong.site/Prometheus/New-Features/New-Features-in-Prometheus-2-29-0.html"/>
+    <id>https://erdong.site/Prometheus/New-Features/New-Features-in-Prometheus-2-29-0.html</id>
+    <published>2021-08-21T12:17:11.000Z</published>
+    <updated>2021-11-20T15:49:13.421Z</updated>
+    
+    <content type="html"><![CDATA[<p>Prometheus <a href="https://github.com/prometheus/prometheus/releases/tag/v2.29.0" target="_blank" rel="noopener">2.29.0</a> 现在(2021.08.11)已经发布，在上个月的 <a href="http://erdong.site/Prometheus/New-Features/New-Features-in-Prometheus-2-28-0.html">2.28.0</a> 之后又进行了很多的修复和改进。</p><a id="more"></a><p>这次感觉更新了很多内容。<br>macOS用户需要注意一下: 由于即将发布的 Go 1.17的变化，这是支持macOS 10.12 Sierra 的最后一个 Prometheus 版本。</p><p>Prometheus 的 <code>--storage.tsdb.allow-overlapping-blocks</code> 和 <code>--storage.tsdb.retention.size</code> 的 tag 从 experimental 变成了 stable，</p><p>对于服务发现，这次新增了 Kuma 的服务发现，另外 GCE 的服务发现新增了 一个 <code>__meta_gce_interface_ipv4_&lt;name&gt;</code> 的 元数据 label，EC2 的服务发现新增了一个 <code>__meta_ec2_availability_zone_id</code> 元数据 label ，Azure 服务发现新增了一个 <code>__meta_azure_machine_computer_name</code> 元数据 label ，Hetzner  服务发现新增了一个 <code>__meta_hetzner_hcloud_labelpresent_&lt;labelname&gt;</code> 元数据 label 。</p><p>PromQL 增加了 <code>present_over_time</code> 函数功能。</p><p>Prometheus 允许通过文件配置示例存储，并使其可重新加载。这次更新提高了 write-ahead-log 的解码性能。另外 Prometheus 通过减少互斥锁的使用来提高 TSDB 的追加性能。允许配置 <code>max_samples_per_send</code> 用于远程写元数据。</p><p>对于 UI 方面，这次更新以后允许鼠标拖动选择时间范围，在 flags 页面中添加排序和过滤功能，另外优化提高了警报页面的呈现性能。</p><p>另外 Promtool 工具这次也更新了一些功能，首先新增了一个 <code>--enable-feature</code> 用来添加一些特性。其次支持添加 file_sd 文件验证。另外优化了 promtool tsdb分析报告的压缩效率。允许通过 <code>--max-block-duration</code> 标志配置最大阻塞持续时间</p><p>接下来是一个 BUG 修复，Prometheus 当总的 symbol 大小超过 2^32 bytes 时会导致压缩失败，并跳过压缩并且记录日志。<br>修正 <code>target_limit</code> 重新加载 0 值的错误。</p><p>修复了 head GC 和 pending reader 竞争条件。 </p><p>修复了 OpenMetrics 解析器中的时间戳处理问题。 </p><p>修复指定多个匹配器时 <code>/federate</code> 端点中可能存在的重复指标 </p><p>修复服务器配置和通过客户端证书验证的验证</p><p>详细的发行注记可以查看 <a href="https://github.com/prometheus/prometheus/releases/tag/v2.29.0" target="_blank" rel="noopener">release notes</a> 。</p><h1 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h1><ul><li><a href="https://github.com/prometheus/prometheus/releases/tag/v2.29.0" target="_blank" rel="noopener">https://github.com/prometheus/prometheus/releases/tag/v2.29.0</a> ，By prombot of GitHub</li></ul><p>======================<br>由于无法及时收到评论内容，所以关闭评论功能。<br>大家有问题欢迎发邮件到 <a href="mailto:erdong@mail.erdong.site">erdong@mail.erdong.site</a> ，或者 <a href="https://github.com/erdong/erdong.github.io/issues" target="_blank" rel="noopener">https://github.com/erdong/erdong.github.io/issues</a> 提 Issue ，我会及时回复。</p><p>======================<br>Erdong, A Linux user !</p><p><img src="https://erdong.site/images/erdongxtnew.jpg" alt="微信公众号"></p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Prometheus &lt;a href=&quot;https://github.com/prometheus/prometheus/releases/tag/v2.29.0&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;2.29.0&lt;/a&gt; 现在(2021.08.11)已经发布，在上个月的 &lt;a href=&quot;http://erdong.site/Prometheus/New-Features/New-Features-in-Prometheus-2-28-0.html&quot;&gt;2.28.0&lt;/a&gt; 之后又进行了很多的修复和改进。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="Prometheus" scheme="https://erdong.site/categories/Prometheus/"/>
+    
+      <category term="New-Features" scheme="https://erdong.site/categories/Prometheus/New-Features/"/>
+    
+    
+      <category term="Prometheus" scheme="https://erdong.site/tags/Prometheus/"/>
+    
+      <category term="Features" scheme="https://erdong.site/tags/Features/"/>
+    
+      <category term="release" scheme="https://erdong.site/tags/release/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Prometheus 2.28.0 新特性</title>
+    <link href="https://erdong.site/Prometheus/New-Features/New-Features-in-Prometheus-2-28-0.html"/>
+    <id>https://erdong.site/Prometheus/New-Features/New-Features-in-Prometheus-2-28-0.html</id>
+    <published>2021-07-01T12:17:11.000Z</published>
+    <updated>2021-11-20T15:48:22.364Z</updated>
+    
+    <content type="html"><![CDATA[<p>Prometheus <a href="https://github.com/prometheus/prometheus/releases/tag/v2.28.0" target="_blank" rel="noopener">2.28.0</a> 现在(2021.06.21)已经发布，在上个月的 <a href="http://erdong.site/Prometheus/New-Features/New-Features-in-Prometheus-2-27-0.html">2.27.0</a> 之后又进行了很多的修复和改进。</p><a id="more"></a><p>本次更新主要集中在 UI 、服务发现和时序数据库方面，其他方面的更新内容较少。</p><p>对于 UI 这次更新将新的实验性 PromQL 编辑器设为了默认编辑器。这次也在图形界面中添加范例显示支持。这次的 UI 还有一个优化的点，我觉得很友好，当你重启 Prometheus 但是数据库还在加载数据没有准备好的时候，以前访问 UI 页面会报错，这次会有一个带有进度条的启动页面，这样可以知道大概还有多久能好。这次的 UI 修复了一个 BUG，在实验性的PromQL编辑器中，修复了特殊浮点值的自动完成和解析，并改进了系列元数据获取。</p><p>对于服务发现这次新增了 Linode 服务发现，也新增了基于 HTTP 的服务发现。对于 Kubernetes 的服务发现，现在允许通过 kubecconfig 文件配置 API Server 访问，添加了 ingress 类名称 label 标签用于 ingress 发现。对于 Consul  服务发现，为Consul Enterprise添加命名空间支持，另外还支持从文件中读取 TOKEN。</p><p>针对服务发现，修复了使用多个服务发现时 <code>prometheus_sd_discovered_targets</code> 度量的计算问题。另外添加目标创建失败计数器 <code>prometheus_target_sync_failed_total</code>，改进目标创建失败的处理。</p><p>对于时序数据库 TSDB ，改进范例标签集长度的验证。添加一个<code>prometheus_tsdb_clean_start</code> 指标，表示上一次运行的 TSDB 锁文件在启动时是否仍然存在。当 TSDB 合并块时，如果结果块包含超过120个样本，则拆分。</p><p>对于 Promtool 工具有一处改进，这个版本开始允许在 导入/ 回填数据时静默输出。</p><p>对于告警的规则添加一个新的 <code>.ExternalURL</code> 警告字段模板变量，包含Prometheus Server 的 external URL。</p><p>详细的发行注记可以查看 <a href="https://github.com/prometheus/prometheus/releases/tag/v2.28.0" target="_blank" rel="noopener">release notes</a> 。</p><h1 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h1><ul><li><a href="https://github.com/prometheus/prometheus/releases/tag/v2.28.0" target="_blank" rel="noopener">https://github.com/prometheus/prometheus/releases/tag/v2.28.0</a> ，By prombot of GitHub</li></ul><p>======================<br>由于无法及时收到评论内容，所以关闭评论功能。<br>大家有问题欢迎发邮件到 <a href="mailto:erdong@mail.erdong.site">erdong@mail.erdong.site</a> ，或者 <a href="https://github.com/erdong/erdong.github.io/issues" target="_blank" rel="noopener">https://github.com/erdong/erdong.github.io/issues</a> 提 Issue ，我会及时回复。</p><p>======================<br>Erdong, A Linux user !</p><p><img src="https://erdong.site/images/erdongxtnew.jpg" alt="微信公众号"></p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Prometheus &lt;a href=&quot;https://github.com/prometheus/prometheus/releases/tag/v2.28.0&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;2.28.0&lt;/a&gt; 现在(2021.06.21)已经发布，在上个月的 &lt;a href=&quot;http://erdong.site/Prometheus/New-Features/New-Features-in-Prometheus-2-27-0.html&quot;&gt;2.27.0&lt;/a&gt; 之后又进行了很多的修复和改进。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="Prometheus" scheme="https://erdong.site/categories/Prometheus/"/>
+    
+      <category term="New-Features" scheme="https://erdong.site/categories/Prometheus/New-Features/"/>
+    
+    
+      <category term="Prometheus" scheme="https://erdong.site/tags/Prometheus/"/>
+    
+      <category term="Features" scheme="https://erdong.site/tags/Features/"/>
+    
+      <category term="release" scheme="https://erdong.site/tags/release/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Prometheus 2.27.0 新特性</title>
+    <link href="https://erdong.site/Prometheus/New-Features/New-Features-in-Prometheus-2-27-0.html"/>
+    <id>https://erdong.site/Prometheus/New-Features/New-Features-in-Prometheus-2-27-0.html</id>
+    <published>2021-05-22T12:17:11.000Z</published>
+    <updated>2021-11-20T15:47:31.620Z</updated>
+    
+    <content type="html"><![CDATA[<p>Prometheus <a href="https://github.com/prometheus/prometheus/releases/tag/v2.27.0" target="_blank" rel="noopener">2.27.0</a> 现在(2021.05.12)已经发布，在上个月的 <a href="http://erdong.site/Prometheus/New-Features/New-Features-in-Prometheus-2-26-0.html">2.26.0</a> 之后又进行了很多的修复和改进。</p><a id="more"></a><p>本次更新对于 Promtool 新增了追溯性规则评估功能。</p><p>对于 Prometheus 的配置新增了外部标签的环境变量扩展，使用 <code>--enable-feature = expand-external-labels</code> 标签就可以了。</p><p>针对时序数据库 TSDB 本次新增了 1 个新功能和 2 个 BUG 修复。新增了一个 控制参数 <code>--storage.tsdb.max-block-chunk-segment-size</code> 来控制小的Prometheus 实例的块文件 chunk file 最大文件的大小。两个 BUG 修复分别是 针对写大数据量的内容到 WAL 时防止日志出现 <code>panic: snappy: decoded block is too large</code> 。 以及在文件关闭后使用 mmap 内存时不要 </p><p>对于 UI 方面，在这个版本新增了黑暗主题，当前有白色和黑色两个主题，并且可以设置跟随时间来进行自动切换。另外有一处优化的地方，页面增加了 16w 和 26w 时间范围步骤。另外就是在 TSDB 的状态页提供错误而不是空白页。</p><p>本次更新在服务发现方面变化挺多的，首先新增了 AWS Lightsail 的服务发现，其次增加了 Docker Service 的服务发现。对于 Digital Ocean 新增了 <code>__meta_digitalocean_vpc</code> 的 label 标签。对于 Scaleway 服务发现优化了从文件中读取 Scaleway secret 的方式。对于 Consul 服务发现，配置更新没有目标后不再需要重新启动 。</p><p>对于 OAuth 允许在任何使用 HTTP 客户端的地方使用 OAuth 2.0。</p><p>详细的发行注记可以查看 <a href="https://github.com/prometheus/prometheus/releases/tag/v2.27.0" target="_blank" rel="noopener">release notes</a> 。</p><h1 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h1><ul><li><a href="https://github.com/prometheus/prometheus/releases/tag/v2.27.0" target="_blank" rel="noopener">https://github.com/prometheus/prometheus/releases/tag/v2.27.0</a> ，By prombot of GitHub</li></ul><p>======================<br>由于无法及时收到评论内容，所以关闭评论功能。<br>大家有问题欢迎发邮件到 <a href="mailto:erdong@mail.erdong.site">erdong@mail.erdong.site</a> ，或者 <a href="https://github.com/erdong/erdong.github.io/issues" target="_blank" rel="noopener">https://github.com/erdong/erdong.github.io/issues</a> 提 Issue ，我会及时回复。</p><p>======================<br>Erdong, A Linux user !</p><p><img src="https://erdong.site/images/erdongxtnew.jpg" alt="微信公众号"></p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Prometheus &lt;a href=&quot;https://github.com/prometheus/prometheus/releases/tag/v2.27.0&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;2.27.0&lt;/a&gt; 现在(2021.05.12)已经发布，在上个月的 &lt;a href=&quot;http://erdong.site/Prometheus/New-Features/New-Features-in-Prometheus-2-26-0.html&quot;&gt;2.26.0&lt;/a&gt; 之后又进行了很多的修复和改进。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="Prometheus" scheme="https://erdong.site/categories/Prometheus/"/>
+    
+      <category term="New-Features" scheme="https://erdong.site/categories/Prometheus/New-Features/"/>
+    
+    
+      <category term="Prometheus" scheme="https://erdong.site/tags/Prometheus/"/>
+    
+      <category term="Features" scheme="https://erdong.site/tags/Features/"/>
+    
+      <category term="release" scheme="https://erdong.site/tags/release/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Prometheus 2.26.0 新特性</title>
+    <link href="https://erdong.site/Prometheus/New-Features/New-Features-in-Prometheus-2-26-0.html"/>
+    <id>https://erdong.site/Prometheus/New-Features/New-Features-in-Prometheus-2-26-0.html</id>
+    <published>2021-04-10T12:17:11.000Z</published>
+    <updated>2021-11-20T15:46:44.934Z</updated>
+    
+    <content type="html"><![CDATA[<p>Prometheus <a href="https://github.com/prometheus/prometheus/releases/tag/v2.26.0" target="_blank" rel="noopener">2.26.0</a> 现在(2021.03.31)已经发布，在上个月的 <a href="http://erdong.site/Prometheus/New-Features/New-Features-in-Prometheus-2-25-0.html">2.25.0</a> 之后又进行了很多的修复和改进。</p><a id="more"></a><p>Prometheus 现在已经构建并支持 Go 1.16 版本。这将恢复Go 1.12中添加的内存释放模式。这使得常见的 RSS 使用指标能够更准确的显示 Prometheus 使用的实际内存。</p><p>注意，在这个版本中，Prometheus 默认使用 Alertmanager v2 版本。</p><p>现在的 Prometheus 和 Promtool  二进制文件打印帮助信息和使用信息时会输出到 stdout，而不是 stderr ，这个结果是在开发峰会上达成一致的。</p><p>当使用 <code>--enable-feature=exemplar-storage</code> 参数以后会在内存中存储样本数据。</p><p>对于远程部分，对 <code>remote_writ</code> 增加了 AWS SigV4 认证方法的支持。 允许对<code>remote_write</code> 的 HTTP 429 响应代码进行重试，但是重试这个动作在默认情况下禁用。另外允许为 <code>remote_read</code> 配置自定义 header 头。有这些变更的详细信息，请参阅配置文档。</p><p>这次新增了基于 Scaleway 的服务发现 ，Scaleway 的口号是 “The Cloud that makes sense” 。</p><p>对于之前的 Digital Ocean 服务发现，新增了一个 label <code>__meta_digitalocean_image</code>。</p><p>对于 PromQL 语法，在使用 <code>--enable-feature=promql-negative-offset</code> 参数以后允许数据发送负偏移。另外这次版本新增了 <code>last_over_time</code>, <code>sgn</code>, <code>clamp</code> 函数 ，并且解析器支持特殊字符，比如 <code>炬</code> 等等。</p><p>对于 UI 方面，这次更新以后在页面输入查询语句的时候可以实现自动完成，语法高亮和检测。 而且每按一次回车键就会触发一次新的查询。对于页面上 <code>/rules</code> 和 <code>/targets</code> 的长规则和名称也进行了一次优化，可以更好的查询，点击 <code>/targets</code> 下的 <code>Collapse All</code> 可以折叠所有的 Target 点击 <code>Expand All</code> 可以展开所有的 Target。</p><p>对于时序数据库 TSDB ，每次压缩时都都会快速删除可删除的块，这样可以节省磁盘的空间使用。</p><p>详细的发行注记可以查看 <a href="https://github.com/prometheus/prometheus/releases/tag/v2.26.0" target="_blank" rel="noopener">release notes</a> 。</p><h1 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h1><ul><li><a href="https://github.com/prometheus/prometheus/releases/tag/v2.26.0" target="_blank" rel="noopener">https://github.com/prometheus/prometheus/releases/tag/v2.26.0</a> ，By prombot of GitHub</li></ul><p>======================<br>由于无法及时收到评论内容，所以关闭评论功能。<br>大家有问题欢迎发邮件到 <a href="mailto:erdong@mail.erdong.site">erdong@mail.erdong.site</a> ，或者 <a href="https://github.com/erdong/erdong.github.io/issues" target="_blank" rel="noopener">https://github.com/erdong/erdong.github.io/issues</a> 提 Issue ，我会及时回复。</p><p>======================<br>Erdong, A Linux user !</p><p><img src="https://erdong.site/images/erdongxtnew.jpg" alt="微信公众号"></p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Prometheus &lt;a href=&quot;https://github.com/prometheus/prometheus/releases/tag/v2.26.0&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;2.26.0&lt;/a&gt; 现在(2021.03.31)已经发布，在上个月的 &lt;a href=&quot;http://erdong.site/Prometheus/New-Features/New-Features-in-Prometheus-2-25-0.html&quot;&gt;2.25.0&lt;/a&gt; 之后又进行了很多的修复和改进。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="Prometheus" scheme="https://erdong.site/categories/Prometheus/"/>
+    
+      <category term="New-Features" scheme="https://erdong.site/categories/Prometheus/New-Features/"/>
+    
+    
+      <category term="Prometheus" scheme="https://erdong.site/tags/Prometheus/"/>
+    
+      <category term="Features" scheme="https://erdong.site/tags/Features/"/>
+    
+      <category term="release" scheme="https://erdong.site/tags/release/"/>
+    
+  </entry>
   
   <entry>
     <title>攻城狮周刊：第49期</title>
@@ -36,6 +210,35 @@
     
     
       <category term="weekly" scheme="https://erdong.site/tags/weekly/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Prometheus 2.25.0 新特性</title>
+    <link href="https://erdong.site/Prometheus/New-Features/New-Features-in-Prometheus-2-25-0.html"/>
+    <id>https://erdong.site/Prometheus/New-Features/New-Features-in-Prometheus-2-25-0.html</id>
+    <published>2021-02-27T12:17:11.000Z</published>
+    <updated>2021-11-20T15:45:42.651Z</updated>
+    
+    <content type="html"><![CDATA[<p>Prometheus <a href="https://github.com/prometheus/prometheus/releases/tag/v2.25.0" target="_blank" rel="noopener">2.25.0</a> 现在(2021.02.17)已经发布，在上个月的 <a href="http://erdong.site/Prometheus/New-Features/New-Features-in-Prometheus-2-24-0.html">2.24.0</a> 之后又进行了很多的修复和改进。</p><a id="more"></a><p>这个版本包含了一个新的参数 <code>--enable-feature=</code> 来启用实验功能，而这些特性在未来可能会被更改或删除。</p><p>在下一个小版本(2.26)中，Prometheus 将使用 Alertmanager API v2。它将通过默认的 <code>alertmanager_config.api_version</code> 来启动 v2 版本。Alertmanager API v2 接口在 Alertmanager v0.16.0(1月份发布)中发布已经发布过了，使用 AlertManager 0.16 版本以上即可，建议使用最新版本。</p><p>对于 UI 方面 ，在 TSDB 统计页面的头部显示标签对的数量。另外修复了 <code>/targets</code> 页面上重复的键，修复了 label 名称泄漏到 class 名称的问题。</p><p>对于远程 remote 方面，这次更新允许传递自定义的 <code>remote_write</code> HTTP 报头。这次更新还有 2 个 BUG 修复，分别是修复远程写中删除的系列的垃圾收集和将可恢复的远程写错误记录为警告。</p><p>对于时序数据库 TSDB 来说，这次增加了压缩持续时间的桶的数量的监控指标。另外每分钟重新加载块，以检测新的块并更频繁地执行保留策略。这次修复了一个 BUG，在启动时移除2.21之前版本产生的临时块，及<code>xxx.tmp</code>文件，可以节约本地的存储空间。</p><p>对于 API 方面，这次新增了一个实验 API，可以接受 remote_write 请求，<code>--enable-feature=remote-write-receiver</code> 参数后的值可以被接受使用。另外修复了一个 BUG，修复外部地址没有端口时会变成全局 URL 的问题。</p><p>对于 Kubernetes 服务发现，新增了 endpoint 标签的元数据。</p><p>另外这次更新在图形页面的 React 面板中添加警告。</p><p>详细的发行注记可以查看 <a href="https://github.com/prometheus/prometheus/releases/tag/v2.25.0" target="_blank" rel="noopener">release notes</a> 。</p><p>Brian Brazil 大佬的博客（<a href="https://www.robustperception.io）最近不更新了。最后一次更新时间是" target="_blank" rel="noopener">https://www.robustperception.io）最近不更新了。最后一次更新时间是</a> 2020.12.28 。最后一篇文章是 《Monitoring is a means, not an end》，确实，监控是一种手段，不是目的，也不是终点。共勉。</p><h1 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h1><ul><li><a href="https://github.com/prometheus/prometheus/releases/tag/v2.25.0" target="_blank" rel="noopener">https://github.com/prometheus/prometheus/releases/tag/v2.25.0</a> ，By prombot of GitHub</li></ul><p>======================<br>由于无法及时收到评论内容，所以关闭评论功能。<br>大家有问题欢迎发邮件到 <a href="mailto:erdong@mail.erdong.site">erdong@mail.erdong.site</a> ，或者 <a href="https://github.com/erdong/erdong.github.io/issues" target="_blank" rel="noopener">https://github.com/erdong/erdong.github.io/issues</a> 提 Issue ，我会及时回复。</p><p>======================<br>Erdong, A Linux user !</p><p><img src="https://erdong.site/images/erdongxtnew.jpg" alt="微信公众号"></p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Prometheus &lt;a href=&quot;https://github.com/prometheus/prometheus/releases/tag/v2.25.0&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;2.25.0&lt;/a&gt; 现在(2021.02.17)已经发布，在上个月的 &lt;a href=&quot;http://erdong.site/Prometheus/New-Features/New-Features-in-Prometheus-2-24-0.html&quot;&gt;2.24.0&lt;/a&gt; 之后又进行了很多的修复和改进。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="Prometheus" scheme="https://erdong.site/categories/Prometheus/"/>
+    
+      <category term="New-Features" scheme="https://erdong.site/categories/Prometheus/New-Features/"/>
+    
+    
+      <category term="Prometheus" scheme="https://erdong.site/tags/Prometheus/"/>
+    
+      <category term="Features" scheme="https://erdong.site/tags/Features/"/>
+    
+      <category term="release" scheme="https://erdong.site/tags/release/"/>
     
   </entry>
   
@@ -82,6 +285,122 @@
     
     
       <category term="weekly" scheme="https://erdong.site/tags/weekly/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Prometheus 2.24.0 新特性</title>
+    <link href="https://erdong.site/Prometheus/New-Features/New-Features-in-Prometheus-2-24-0.html"/>
+    <id>https://erdong.site/Prometheus/New-Features/New-Features-in-Prometheus-2-24-0.html</id>
+    <published>2021-01-16T12:17:11.000Z</published>
+    <updated>2021-11-20T15:44:58.099Z</updated>
+    
+    <content type="html"><![CDATA[<p>Prometheus <a href="https://github.com/prometheus/prometheus/releases/tag/v2.24.0" target="_blank" rel="noopener">2.24.0</a> 现在(2021.01.06)已经发布，在上个月的 <a href="http://erdong.site/Prometheus/New-Features/New-Features-in-Prometheus-2-23-0.html">2.23.0</a> 之后又进行了很多的修复和改进。</p><a id="more"></a><p>promtool 这个工具在这个版本增加 <code>check web-config</code> 子命令，用来检查 web 配置文件。另外新增了添加 <code>tsdb create-blocks-from openmetrics</code> 子命令，从 <code>OpenMetrics</code> 文件中回填度量数据。在命令行上，增加URL方案检查和测试功能。</p><p>在这个版本，Prometheus 在 HTTP API 中添加了 TLS 和基本的认证功能。通过 HTTP API 访问匹配器为空的时候会快速失败，这样可以提高用户体验。HTTP API 支持标签 API 的匹配器。HTTP API 这次有一个修改，避免了通过 HTTP 多次退出时双关闭通道的问题。</p><p>对于时序数据库 TSDB 这次更新以后避免了压缩后运行不必要的GC。还有就是当压缩时间超过块时间范围时增加日志记录。</p><p>对于服务发现，EC2 的服务发现里新增了一个 IPv6 的 label，而且会重用 EC2 的客户端，减少请求证书的频率。</p><p>对于 DNS  的服务发现，会忽略无效的 CNAME 记录 以避免虚假的 <code>Invalid SRV record</code> 告警。<br>另外这个版本避免了 Kubernetes SD中由有效标签选择器触发的配置错误</p><p>详细的发行注记可以查看 <a href="https://github.com/prometheus/prometheus/releases/tag/v2.24.0" target="_blank" rel="noopener">release notes</a> 。</p><p>Brian Brazil 大佬的博客（<a href="https://www.robustperception.io）最近不更新了。最后一次更新时间是" target="_blank" rel="noopener">https://www.robustperception.io）最近不更新了。最后一次更新时间是</a> 2020.12.28 。最后一篇文章是 《Monitoring is a means, not an end》，确实，监控是一种手段，不是目的，也不是终点。共勉。</p><h1 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h1><ul><li><a href="https://github.com/prometheus/prometheus/releases/tag/v2.24.0" target="_blank" rel="noopener">https://github.com/prometheus/prometheus/releases/tag/v2.24.0</a> ，By prombot of GitHub</li></ul><p>======================<br>由于无法及时收到评论内容，所以关闭评论功能。<br>大家有问题欢迎发邮件到 <a href="mailto:erdong@mail.erdong.site">erdong@mail.erdong.site</a> ，或者 <a href="https://github.com/erdong/erdong.github.io/issues" target="_blank" rel="noopener">https://github.com/erdong/erdong.github.io/issues</a> 提 Issue ，我会及时回复。</p><p>======================<br>Erdong, A Linux user !</p><p><img src="https://erdong.site/images/erdongxtnew.jpg" alt="微信公众号"></p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Prometheus &lt;a href=&quot;https://github.com/prometheus/prometheus/releases/tag/v2.24.0&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;2.24.0&lt;/a&gt; 现在(2021.01.06)已经发布，在上个月的 &lt;a href=&quot;http://erdong.site/Prometheus/New-Features/New-Features-in-Prometheus-2-23-0.html&quot;&gt;2.23.0&lt;/a&gt; 之后又进行了很多的修复和改进。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="Prometheus" scheme="https://erdong.site/categories/Prometheus/"/>
+    
+      <category term="New-Features" scheme="https://erdong.site/categories/Prometheus/New-Features/"/>
+    
+    
+      <category term="Prometheus" scheme="https://erdong.site/tags/Prometheus/"/>
+    
+      <category term="Features" scheme="https://erdong.site/tags/Features/"/>
+    
+      <category term="release" scheme="https://erdong.site/tags/release/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Prometheus 2.23.0 新特性</title>
+    <link href="https://erdong.site/Prometheus/New-Features/New-Features-in-Prometheus-2-23-0.html"/>
+    <id>https://erdong.site/Prometheus/New-Features/New-Features-in-Prometheus-2-23-0.html</id>
+    <published>2020-12-06T12:17:11.000Z</published>
+    <updated>2021-11-20T15:44:05.849Z</updated>
+    
+    <content type="html"><![CDATA[<p>Prometheus <a href="https://github.com/prometheus/prometheus/releases/tag/v2.23.0" target="_blank" rel="noopener">2.23.0</a> 现在(2020.11.26)已经发布，在上个月的 <a href="http://erdong.site/Prometheus/New-Features/New-Features-in-Prometheus-2-22-0.html">2.22.0</a> 之后又进行了很多的修复和改进。</p><a id="more"></a><p>React UI 作为 Web 的默认页面，老的页面仅会维持处于可用状态。</p><p>对 TSDB 进行了各种性能改进。在压缩过程中添加序列时缓存标签名称和最后值，这样压缩速度会更快，在 Prometheus 停止运行一段时间后重新启动后只会有一个检查点，并且 API 不再加载任何数据块。</p><p>PromQL 提高了哈希方法的性能，使查询速度更快。修正括号内向量选择器的timestamp()方法。在 PromQL 解析错误中不包含渲染表达式。</p><p>Promtool 现在可以列出 tsdb 块的大小，在每次执行 test 的时候会计算最大最小值。</p><p>修复了调用 <code>/-/quit/</code> 的时候执行 2 次 <code>close()</code> 的问题。</p><p>远程写现在可以发送元数据。这是一种有限的权宜之计，仅够实现指标元数据API，因为没有办法将特定的示例链接到它的元数据。对于Prometheus本身在/metrics上公开的远程写度量，也有无数的更改。</p><p>在远程写中删除/重命名了以下指标</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">prometheus_remote_storage_succeeded_samples_total  被移除了 prometheus_remote_storage_samples_total 介绍了所有发送的指标</span><br><span class="line"></span><br><span class="line">prometheus_remote_storage_sent_bytes_total 被移除了， 被 prometheus_remote_storage_samples_bytes_total 和 prometheus_remote_storage_metadata_bytes_total 替换了。</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">prometheus_remote_storage_failed_samples_total -&gt; prometheus_remote_storage_samples_failed_total .</span><br><span class="line">prometheus_remote_storage_retried_samples_total -&gt; prometheus_remote_storage_samples_retried_total.</span><br><span class="line">prometheus_remote_storage_dropped_samples_total -&gt; prometheus_remote_storage_samples_dropped_total.</span><br><span class="line">prometheus_remote_storage_pending_samples -&gt; prometheus_remote_storage_samples_pending.</span><br></pre></td></tr></table></figure><p>本次更新，引入了如下指标</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">prometheus_remote_storage_metadata_total</span><br><span class="line">prometheus_remote_storage_metadata_failed_total</span><br><span class="line">prometheus_remote_storage_metadata_retried_total prometheus_remote_storage_metadata_bytes_total</span><br><span class="line">prometheus_remote_storage_max_samples_per_send</span><br></pre></td></tr></table></figure><p>详细的发行注记可以查看 <a href="https://github.com/prometheus/prometheus/releases/tag/v2.23.0" target="_blank" rel="noopener">release notes</a> 。</p><h1 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h1><ul><li><a href="https://www.robustperception.io/new-features-in-prometheus-2-23-0" target="_blank" rel="noopener">https://www.robustperception.io/new-features-in-prometheus-2-23-0</a> ， By Brian Brazil</li><li><a href="https://github.com/prometheus/prometheus/releases/tag/v2.23.0" target="_blank" rel="noopener">https://github.com/prometheus/prometheus/releases/tag/v2.23.0</a> ，By prombot of GitHub</li></ul><p>======================<br>由于无法及时收到评论内容，所以关闭评论功能。<br>大家有问题欢迎发邮件到 <a href="mailto:erdong@mail.erdong.site">erdong@mail.erdong.site</a> ，或者 <a href="https://github.com/erdong/erdong.github.io/issues" target="_blank" rel="noopener">https://github.com/erdong/erdong.github.io/issues</a> 提 Issue ，我会及时回复。</p><p>======================<br>Erdong, A Linux user !</p><p><img src="https://erdong.site/images/erdongxtnew.jpg" alt="微信公众号"></p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Prometheus &lt;a href=&quot;https://github.com/prometheus/prometheus/releases/tag/v2.23.0&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;2.23.0&lt;/a&gt; 现在(2020.11.26)已经发布，在上个月的 &lt;a href=&quot;http://erdong.site/Prometheus/New-Features/New-Features-in-Prometheus-2-22-0.html&quot;&gt;2.22.0&lt;/a&gt; 之后又进行了很多的修复和改进。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="Prometheus" scheme="https://erdong.site/categories/Prometheus/"/>
+    
+      <category term="New-Features" scheme="https://erdong.site/categories/Prometheus/New-Features/"/>
+    
+    
+      <category term="Prometheus" scheme="https://erdong.site/tags/Prometheus/"/>
+    
+      <category term="Features" scheme="https://erdong.site/tags/Features/"/>
+    
+      <category term="release" scheme="https://erdong.site/tags/release/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Prometheus 2.22.0 新特性</title>
+    <link href="https://erdong.site/Prometheus/New-Features/New-Features-in-Prometheus-2-22-0.html"/>
+    <id>https://erdong.site/Prometheus/New-Features/New-Features-in-Prometheus-2-22-0.html</id>
+    <published>2020-10-25T12:17:11.000Z</published>
+    <updated>2021-11-20T15:41:45.326Z</updated>
+    
+    <content type="html"><![CDATA[<p>Prometheus <a href="https://github.com/prometheus/prometheus/releases/tag/v2.22.0" target="_blank" rel="noopener">2.22.0</a> 现在(2020.10.15)已经发布，在上个月的 <a href="http://erdong.site/Prometheus/New-Features/New-Features-in-Prometheus-2-21-0.html">2.21.0</a> 之后又进行了很多的修复和改进。</p><a id="more"></a><p>有两个新的度量，<code>rule_group_last_evaluation_samples</code> 将帮助您跟踪规则组，<code>prometheus_tsdb_data_replay_duration_seconds</code> 将提供WAL在启动时重放的时间。</p><p>正如 2.21.0 发布说明中所宣布的，实验性的 gRPC API v2 已经移除，主要是因为 gRPC 导致维护问题。如果您正在使用它，那么您可以切换到 v1 API。</p><p>警报和目标页面的新UI有了改进，使当前的视图设置更明显，并允许崩溃的刮擦配置分别。</p><p>classic UI 模式下，在进行范围查询时会运行即时查询。</p><p>Prometheus 2.18切换到Go 1.14，其中包括对块大小有显著影响的性能回归。在这个版本中添加了一个临时的解决方案，这涉及到使刮擦时间戳稍微不那么准确。</p><p>这一个版本更新的内容相对较少，只有 12 个 ，有 5 个 BUG Fix ，还有 6 个 优化，下一个版本将会有更大的变化。</p><p>详细的发行注记可以查看 <a href="https://github.com/prometheus/prometheus/releases/tag/v2.22.0" target="_blank" rel="noopener">release notes</a> 。</p><h1 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h1><ul><li><a href="https://www.robustperception.io/new-features-in-prometheus-2-22-0" target="_blank" rel="noopener">https://www.robustperception.io/new-features-in-prometheus-2-22-0</a> ， By Brian Brazil</li><li><a href="https://github.com/prometheus/prometheus/releases/tag/v2.22.0" target="_blank" rel="noopener">https://github.com/prometheus/prometheus/releases/tag/v2.22.0</a> ，By prombot of GitHub</li></ul><p>======================<br>由于无法及时收到评论内容，所以关闭评论功能。<br>大家有问题欢迎发邮件到 <a href="mailto:erdong@mail.erdong.site">erdong@mail.erdong.site</a> ，或者 <a href="https://github.com/erdong/erdong.github.io/issues" target="_blank" rel="noopener">https://github.com/erdong/erdong.github.io/issues</a> 提 Issue ，我会及时回复。</p><p>======================<br>Erdong, A Linux user !</p><p><img src="https://erdong.site/images/erdongxtnew.jpg" alt="微信公众号"></p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Prometheus &lt;a href=&quot;https://github.com/prometheus/prometheus/releases/tag/v2.22.0&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;2.22.0&lt;/a&gt; 现在(2020.10.15)已经发布，在上个月的 &lt;a href=&quot;http://erdong.site/Prometheus/New-Features/New-Features-in-Prometheus-2-21-0.html&quot;&gt;2.21.0&lt;/a&gt; 之后又进行了很多的修复和改进。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="Prometheus" scheme="https://erdong.site/categories/Prometheus/"/>
+    
+      <category term="New-Features" scheme="https://erdong.site/categories/Prometheus/New-Features/"/>
+    
+    
+      <category term="Prometheus" scheme="https://erdong.site/tags/Prometheus/"/>
+    
+      <category term="Features" scheme="https://erdong.site/tags/Features/"/>
+    
+      <category term="release" scheme="https://erdong.site/tags/release/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Prometheus 2.21.0 新特性</title>
+    <link href="https://erdong.site/Prometheus/New-Features/New-Features-in-Prometheus-2-21-0.html"/>
+    <id>https://erdong.site/Prometheus/New-Features/New-Features-in-Prometheus-2-21-0.html</id>
+    <published>2020-10-23T12:17:11.000Z</published>
+    <updated>2021-11-20T15:40:26.023Z</updated>
+    
+    <content type="html"><![CDATA[<p>Prometheus <a href="https://github.com/prometheus/prometheus/releases/tag/v2.21.0" target="_blank" rel="noopener">2.21.0</a> 现在(2020.09.11)已经发布，在上个月的 <a href="http://erdong.site/Prometheus/New-Features/New-Features-in-Prometheus-2-20-0.html">2.20.0</a> 之后又进行了很多的修复和改进。</p><a id="more"></a><p>这个版本使用了 Go 1.15 进行编译，不赞成在TLS证书验证中使用 X.509 CommonName 。</p><p>如果你正在使用 gRPC API v2(仅限于 TSDB 管理命令)，请注意，我们将在下一个次要版本2.22中删除这个实验API。</p><p>现在可以在PromQL、配置文件和命令行中使用 1m30s 这样的标识来表示持续时间。<code>target_limit</code> 是一个新的紧急安全阈值，如果一个刮擦配置有更多的目标，那么他们的刮擦将失败。</p><p>有两个新的服务发现，Eureka 和 Hetzner。Kubernetes SD现在支持EndpointSlices, Docker Swarm SD 支持 task &amp;services 而不需要发布端口，DNS SD 有更多 SRV 记录的元数据。</p><p>以前分离的tsdb命令行工具现在是promtool的一部分，您还可以指定何时由promtool评估即时查询。</p><p><code>query_log_file</code> 路径现在可以在配置文件中进行配置。</p><p>详细的发行注记可以查看 <a href="https://github.com/prometheus/prometheus/releases/tag/v2.21.0" target="_blank" rel="noopener">release notes</a> 。</p><p>如果和 Thanos 搭配使用，要求 Thanos 版本不得低于 v0.16.0 ，建议使用最新版本。</p><h1 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h1><ul><li><a href="https://www.robustperception.io/new-features-in-prometheus-2-21-0" target="_blank" rel="noopener">https://www.robustperception.io/new-features-in-prometheus-2-21-0</a> ， By Brian Brazil</li><li><a href="https://github.com/prometheus/prometheus/releases/tag/v2.21.0" target="_blank" rel="noopener">https://github.com/prometheus/prometheus/releases/tag/v2.21.0</a> ，By prombot of GitHub</li></ul><p>======================<br>由于无法及时收到评论内容，所以关闭评论功能。<br>大家有问题欢迎发邮件到 <a href="mailto:erdong@mail.erdong.site">erdong@mail.erdong.site</a> ，或者 <a href="https://github.com/erdong/erdong.github.io/issues" target="_blank" rel="noopener">https://github.com/erdong/erdong.github.io/issues</a> 提 Issue ，我会及时回复。</p><p>======================<br>Erdong, A Linux user !</p><p><img src="https://erdong.site/images/erdongxtnew.jpg" alt="微信公众号"></p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Prometheus &lt;a href=&quot;https://github.com/prometheus/prometheus/releases/tag/v2.21.0&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;2.21.0&lt;/a&gt; 现在(2020.09.11)已经发布，在上个月的 &lt;a href=&quot;http://erdong.site/Prometheus/New-Features/New-Features-in-Prometheus-2-20-0.html&quot;&gt;2.20.0&lt;/a&gt; 之后又进行了很多的修复和改进。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="Prometheus" scheme="https://erdong.site/categories/Prometheus/"/>
+    
+      <category term="New-Features" scheme="https://erdong.site/categories/Prometheus/New-Features/"/>
+    
+    
+      <category term="Prometheus" scheme="https://erdong.site/tags/Prometheus/"/>
+    
+      <category term="Features" scheme="https://erdong.site/tags/Features/"/>
+    
+      <category term="release" scheme="https://erdong.site/tags/release/"/>
     
   </entry>
   
@@ -165,9 +484,9 @@
     <link href="https://erdong.site/Prometheus/New-Features/New-Features-in-Prometheus-2-19-0.html"/>
     <id>https://erdong.site/Prometheus/New-Features/New-Features-in-Prometheus-2-19-0.html</id>
     <published>2020-06-21T15:17:11.000Z</published>
-    <updated>2020-06-21T15:26:44.581Z</updated>
+    <updated>2021-09-01T11:52:03.901Z</updated>
     
-    <content type="html"><![CDATA[<p>Prometheus <a href="https://github.com/prometheus/prometheus/releases/tag/v2.19.0" target="_blank" rel="noopener">2.19.0</a> 现在(2020.06.15)已经发布，在上个月的 <a href="http://erdong.site/Prometheus/New-Features/New-Features-in-Prometheus-2-18-0.html">2.18.0</a> 之后又进行了很多的修复和改进。</p><a id="more"></a><p>最大的一个特性就是 TSDB 的 head block 现在存储在 mmaped 中，而不是存储在  heap 中 。这样就减少了内存的需求，特别是高频的获取采集端的数据场景，而且可以在重启进程的时候可以变的更快。而且在隔离性上也有改进，减少了高负载的争用。</p><p>Triton 服务发现，现在支持全局空间。<br>增加告警重发延迟，可以容忍一些发送失败的场景。<br>增加了一个关于远程读的新的 Metric，<code>prometheus_remote_storage_remote_read_queries_total</code> ，是 count 类型。</p><p>在 API 中添加了 label name 和 label values 的时间范围参数</p><p>修正了TSDB配置远程读取时使用Prometheus时出现的不正确的查询结果的 BUG</p><p>在 2020 年 6 月 18 日，发布了 2.19.1 ，修复了 m-map 文件被截断导致的文件无序的 BUG 。</p><p>详细的发行注记可以查看 <a href="https://github.com/prometheus/prometheus/releases/tag/v2.19.0" target="_blank" rel="noopener">release notes</a> 。</p><h1 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h1><ul><li><a href="https://www.robustperception.io/new-features-in-prometheus-2-19-0" target="_blank" rel="noopener">https://www.robustperception.io/new-features-in-prometheus-2-19-0</a> ， By Brian Brazil</li><li><h1 id="https-github-com-prometheus-prometheus-releases-tag-v2-19-0-，By-prombot-of-GitHub"><a href="#https-github-com-prometheus-prometheus-releases-tag-v2-19-0-，By-prombot-of-GitHub" class="headerlink" title="https://github.com/prometheus/prometheus/releases/tag/v2.19.0 ，By prombot of GitHub"></a><a href="https://github.com/prometheus/prometheus/releases/tag/v2.19.0" target="_blank" rel="noopener">https://github.com/prometheus/prometheus/releases/tag/v2.19.0</a> ，By prombot of GitHub</h1>由于无法及时收到评论内容，所以关闭评论功能。<br>大家有问题欢迎发邮件到 <a href="mailto:erdong@mail.erdong.site">erdong@mail.erdong.site</a> ，或者 <a href="https://github.com/erdong/erdong.github.io/issues" target="_blank" rel="noopener">https://github.com/erdong/erdong.github.io/issues</a> 提 Issue ，我会及时回复。</li></ul><p>======================<br>Erdong, A Linux user !</p>]]></content>
+    <content type="html"><![CDATA[<p>Prometheus <a href="https://github.com/prometheus/prometheus/releases/tag/v2.19.0" target="_blank" rel="noopener">2.19.0</a> 现在(2020.06.15)已经发布，在上个月的 <a href="http://erdong.site/Prometheus/New-Features/New-Features-in-Prometheus-2-18-0.html">2.18.0</a> 之后又进行了很多的修复和改进。</p><a id="more"></a><p>最大的一个特性就是 TSDB 的 head block 现在存储在 mmaped 中，而不是存储在  heap 中 。这样就减少了内存的需求，特别是高频的获取采集端的数据场景，而且可以在重启进程的时候可以变的更快。而且在隔离性上也有改进，减少了高负载的争用。</p><p>Triton 服务发现，现在支持全局空间。<br>增加告警重发延迟，可以容忍一些发送失败的场景。<br>增加了一个关于远程读的新的 Metric，<code>prometheus_remote_storage_remote_read_queries_total</code> ，是 count 类型。</p><p>在 API 中添加了 label name 和 label values 的时间范围参数</p><p>修正了TSDB配置远程读取时使用Prometheus时出现的不正确的查询结果的 BUG</p><p>在 2020 年 6 月 18 日，发布了 2.19.1 ，修复了 m-map 文件被截断导致的文件无序的 BUG 。</p><p>详细的发行注记可以查看 <a href="https://github.com/prometheus/prometheus/releases/tag/v2.19.0" target="_blank" rel="noopener">release notes</a> 。</p><h1 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h1><ul><li><p><a href="https://www.robustperception.io/new-features-in-prometheus-2-19-0" target="_blank" rel="noopener">https://www.robustperception.io/new-features-in-prometheus-2-19-0</a> ， By Brian Brazil</p></li><li><p><a href="https://github.com/prometheus/prometheus/releases/tag/v2.19.0" target="_blank" rel="noopener">https://github.com/prometheus/prometheus/releases/tag/v2.19.0</a> ，By prombot of GitHub</p></li></ul><p>======================<br>由于无法及时收到评论内容，所以关闭评论功能。<br>大家有问题欢迎发邮件到 <a href="mailto:erdong@mail.erdong.site">erdong@mail.erdong.site</a> ，或者 <a href="https://github.com/erdong/erdong.github.io/issues" target="_blank" rel="noopener">https://github.com/erdong/erdong.github.io/issues</a> 提 Issue ，我会及时回复。</p><p>======================<br>Erdong, A Linux user !</p>]]></content>
     
     <summary type="html">
     
@@ -2153,9 +2472,9 @@
     <link href="https://erdong.site/QDS/qds02.html"/>
     <id>https://erdong.site/QDS/qds02.html</id>
     <published>2019-02-20T12:19:47.000Z</published>
-    <updated>2019-10-14T11:12:12.217Z</updated>
+    <updated>2021-10-22T09:59:44.906Z</updated>
     
-    <content type="html"><![CDATA[<p>QDS （Quick Deployment Series）快速的部署一个软件。这次我们来部署 Docker 。</p><a id="more"></a><h1 id="系统要求"><a href="#系统要求" class="headerlink" title="系统要求"></a>系统要求</h1><p>对于 CentOS 系统要安装 Docker CE，您需要一个 CentOS 7 的维护版本。不支持测试版本和存档版本。</p><p>必须启用 centos-extras 源。默认情况下，这个源是启用的，但是如果您禁用了它，则需要重新启用它。</p><p>建议使用 overlay2 存储驱动程序。</p><h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">yum install -y yum-utils  device-mapper-persistent-data  lvm2</span><br><span class="line">yum-config-manager --add-repo http:&#x2F;&#x2F;mirrors.aliyun.com&#x2F;docker-ce&#x2F;linux&#x2F;centos&#x2F;docker-ce.repo</span><br><span class="line">yum install -y docker-ce</span><br></pre></td></tr></table></figure><p>说明：</p><ul><li>yum-utils 提供了 yum-config-manager 命令</li><li>device-mapper-persistent-data 和 lvm2 是 devicemapper 存储设备需要的。</li><li>命令中使用了阿里云的 yum 源，建议使用这个。如果一定要用官方的，地址为 <a href="https://download.docker.com/linux/centos/docker-ce.repo" target="_blank" rel="noopener">https://download.docker.com/linux/centos/docker-ce.repo</a></li></ul><h1 id="启动"><a href="#启动" class="headerlink" title="启动"></a>启动</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl start docker</span><br></pre></td></tr></table></figure><h1 id="验证"><a href="#验证" class="headerlink" title="验证"></a>验证</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@promtail01 ~]# docker --version</span><br><span class="line">Docker version 18.09.2, build 6247962</span><br><span class="line">[root@promtail01 ~]#</span><br></pre></td></tr></table></figure><p>======================<br>Erdong, A Linux user !</p>]]></content>
+    <content type="html"><![CDATA[<p>QDS （Quick Deployment Series）快速的部署一个软件。这次我们来部署 Docker 。</p><a id="more"></a><h1 id="系统要求"><a href="#系统要求" class="headerlink" title="系统要求"></a>系统要求</h1><p>对于 CentOS 系统要安装 Docker CE，您需要一个 CentOS 7 的维护版本。不支持测试版本和存档版本。</p><p>必须启用 centos-extras 源。默认情况下，这个源是启用的，但是如果您禁用了它，则需要重新启用它。</p><p>建议使用 overlay2 存储驱动程序。</p><h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">yum install -y yum-utils  device-mapper-persistent-data  lvm2</span><br><span class="line">yum-config-manager --add-repo http:&#x2F;&#x2F;mirrors.aliyun.com&#x2F;docker-ce&#x2F;linux&#x2F;centos&#x2F;docker-ce.repo</span><br><span class="line">yum install -y docker-ce</span><br></pre></td></tr></table></figure><p>说明：</p><ul><li>yum-utils 提供了 yum-config-manager 命令</li><li>device-mapper-persistent-data 和 lvm2 是 devicemapper 存储设备需要的。</li><li>命令中使用了阿里云的 yum 源，建议使用这个。如果一定要用官方的，地址为 <a href="https://download.docker.com/linux/centos/docker-ce.repo" target="_blank" rel="noopener">https://download.docker.com/linux/centos/docker-ce.repo</a></li></ul><h1 id="启动"><a href="#启动" class="headerlink" title="启动"></a>启动</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl start docker</span><br></pre></td></tr></table></figure><h1 id="验证"><a href="#验证" class="headerlink" title="验证"></a>验证</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@promtail01 ~]# docker --version</span><br><span class="line">Docker version 20.10.9, build 6247962</span><br><span class="line">[root@promtail01 ~]#</span><br></pre></td></tr></table></figure><p>======================<br>Erdong, A Linux user !</p>]]></content>
     
     <summary type="html">
     
