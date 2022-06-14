@@ -20,15 +20,22 @@
     var CONFIG = {"hostname":"erdong.site","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":true},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":true,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Erdong’ Blog">
-<meta property="og:url" content="https://erdong.site/tags/MBR/index.html">
+  <meta name="description" content="Prometheus 2.32.0 现在(2021.12.09)已经发布，在上个月的 2.31.0 之后又进行了很多的修复和改进。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Prometheus 2.32.0 新特性">
+<meta property="og:url" content="https://erdong.site/Prometheus/New-Features/New-Features-in-Prometheus-2-32-0.html">
 <meta property="og:site_name" content="Erdong’ Blog">
+<meta property="og:description" content="Prometheus 2.32.0 现在(2021.12.09)已经发布，在上个月的 2.31.0 之后又进行了很多的修复和改进。">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://erdong.site/images/erdongxtnew.jpg">
+<meta property="article:published_time" content="2021-12-25T12:17:11.000Z">
+<meta property="article:modified_time" content="2021-12-24T03:26:10.387Z">
 <meta property="article:author" content="Er Dong">
+<meta property="article:tag" content="Prometheus">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://erdong.site/images/erdongxtnew.jpg">
 
-<link rel="canonical" href="https://erdong.site/tags/MBR/">
+<link rel="canonical" href="https://erdong.site/Prometheus/New-Features/New-Features-in-Prometheus-2-32-0.html">
 
 
 <script id="page-configurations">
@@ -36,12 +43,12 @@
   CONFIG.page = {
     sidebar: "",
     isHome : false,
-    isPost : false,
+    isPost : true,
     lang   : 'zh-CN'
   };
 </script>
 
-  <title>标签: MBR | Erdong’ Blog</title>
+  <title>Prometheus 2.32.0 新特性 | Erdong’ Blog</title>
   
 
 
@@ -197,51 +204,170 @@
         <div class="content-wrap">
           
 
-          <div class="content tag">
+          <div class="content post posts-expand">
             
 
+    
   
   
-  
-  <div class="post-block">
-    <div class="posts-collapse">
-      <div class="collection-title">
-        <h2 class="collection-header">MBR
-          <small>标签</small>
-        </h2>
-      </div>
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://erdong.site/Prometheus/New-Features/New-Features-in-Prometheus-2-32-0.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/myavatar.jpg">
+      <meta itemprop="name" content="Er Dong">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Erdong’ Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Prometheus 2.32.0 新特性
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-12-25 20:17:11" itemprop="dateCreated datePublished" datetime="2021-12-25T20:17:11+08:00">2021-12-25</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-12-24 11:26:10" itemprop="dateModified" datetime="2021-12-24T11:26:10+08:00">2021-12-24</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Prometheus/" itemprop="url" rel="index"><span itemprop="name">Prometheus</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Prometheus/New-Features/" itemprop="url" rel="index"><span itemprop="name">New-Features</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span><br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>1.3k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>1 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-    <div class="collection-year">
-      <span class="collection-header">2019</span>
-    </div>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2019-02-27T19:44:34+08:00"
-              content="2019-02-27">
-          02-27
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/tools/parted-create-gpt-partition.html" itemprop="url">
-            <span itemprop="name">Parted 创建 GPT 分区</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
+        <p>Prometheus <a href="https://github.com/prometheus/prometheus/releases/tag/v2.32.0" target="_blank" rel="noopener">2.32.0</a> 现在(2021.12.09)已经发布，在上个月的 <a href="http://erdong.site/Prometheus/New-Features/New-Features-in-Prometheus-2-31-0.html">2.31.0</a> 之后又进行了很多的修复和改进。</p>
+<a id="more"></a>
+<p>这次更新新增了很多的特性，并且修复一些 BUG 。</p>
+<p>该版本引入了 Prometheus Agent，这是 Prometheus 的一种新的操作模式，专为远程写场景而优化。在这种模式下，Prometheus 不会在本地文件系统上生成块，也不能在本地进行查询。使用 <code>--enable-feature=agent</code> 参数可以打开这个功能，关于 Prometheus Agent 后边找时间我专门聊一下。</p>
+<p>对于远程写这块，<code>remote write</code> 将最大重试时间从 100ms 修改成 5s ，并且对重用内存进行了编组。</p>
+<p>对于 Promtool 工具，之前只有配置文件和告警规则的检查，这次添加了检查服务发现的命令 <code>promtool check service-discovery</code>。另外也可以提高测试输出的可读性，可以展示更多人类可读的 <code>got/exp</code> 输出。Promtool 可以使用 kahan 求和来获取更好的数值稳定性，另外修复了 <code>authorization.credentials_file</code> 和 <code>bearer_token_file</code> 的检查。</p>
+<p>对于 UI 界面来说，这次在指标下拉菜单中新增了搜索功能，修复了展现包含 <code>Zone ID</code> 的IPv6地址的目标的链接的问题。在自动完成的 rate 比 rad, delta 比 deg, and count 比 cos 。</p>
+<p>对于 Templates 在模板函数中 添加了 parseDuration ，另外支持 int 和 uint 作为模板格式化的数据类型</p>
+<p>对于获取数据，使用 <code>--enable-feature=extra-scrape-metrics</code> 参数以后添加了 <code>scrape_body_size_bytes</code> 指标。</p>
+<p>对于 PromQL 查询语句，修复了 deriv() 为常量序列返回零值。<br>对于 Prometheus TSDB ，这些有增强了 2 项功能，修复了多个 BUG 。首先增强了对 Windows arm64 的支持，通过跳过TSDB中不需要的排序来优化查询。这次修复了 4 个 BUG，第一个是在索引中写入单独的部分时增加更多的大小检查，第二个是修复了检查点目录为空时的恐慌，第三个是修复了 WAL 重放时的告警，，第四个是修复快照重播失败后的查询。</p>
+<p>对于服务发现，这次增强了 Linode 的服务发现，并且对 Uyni 服务发现进行了故障修复，修复初始化过程中的空指针异常。</p>
+<p>详细的发行注记可以查看 <a href="https://github.com/prometheus/prometheus/releases/tag/v2.32.0" target="_blank" rel="noopener">release notes</a> 。</p>
+<h1 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h1><ul>
+<li><h1 id="https-github-com-prometheus-prometheus-releases-tag-v2-32-0-，By-prombot-of-GitHub"><a href="#https-github-com-prometheus-prometheus-releases-tag-v2-32-0-，By-prombot-of-GitHub" class="headerlink" title="https://github.com/prometheus/prometheus/releases/tag/v2.32.0 ，By prombot of GitHub"></a><a href="https://github.com/prometheus/prometheus/releases/tag/v2.32.0" target="_blank" rel="noopener">https://github.com/prometheus/prometheus/releases/tag/v2.32.0</a> ，By prombot of GitHub</h1>由于无法及时收到评论内容，所以关闭评论功能。<br>大家有问题欢迎发邮件到 <a href="mailto:erdong@mail.erdong.site">erdong@mail.erdong.site</a> ，或者 <a href="https://github.com/erdong/erdong.github.io/issues" target="_blank" rel="noopener">https://github.com/erdong/erdong.github.io/issues</a> 提 Issue ，我会及时回复。</li>
+</ul>
+<p>======================<br>Erdong, A Linux user !</p>
+<p><img src="https://erdong.site/images/erdongxtnew.jpg" alt="微信公众号"></p>
 
     </div>
+
+    
+    
+    
+        <div class="reward-container">
+  <div>坚持原创技术分享， 您的支持将鼓励我继续创作!</div>
+  <button onclick="var qr = document.getElementById('qr'); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+      
+      <div style="display: inline-block;">
+        <img src="/images/WeChatPay.jpg" alt="Er Dong 微信支付">
+        <p>微信支付</p>
+      </div>
+
   </div>
-  
-  
-  
+</div>
 
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>Er Dong
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://erdong.site/Prometheus/New-Features/New-Features-in-Prometheus-2-32-0.html" title="Prometheus 2.32.0 新特性">https://erdong.site/Prometheus/New-Features/New-Features-in-Prometheus-2-32-0.html</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/zh-Hans" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-ND</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Prometheus/" rel="tag"># Prometheus</a>
+              <a href="/tags/Features/" rel="tag"># Features</a>
+              <a href="/tags/release/" rel="tag"># release</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/Prometheus/New-Features/New-Features-in-Prometheus-2-31-0.html" rel="prev" title="Prometheus 2.31.0 新特性">
+      <i class="fa fa-chevron-left"></i> Prometheus 2.31.0 新特性
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
   
 
 
@@ -294,6 +420,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#参考链接"><span class="nav-number">1.</span> <span class="nav-text">参考链接</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#https-github-com-prometheus-prometheus-releases-tag-v2-32-0-，By-prombot-of-GitHub"><span class="nav-number">2.</span> <span class="nav-text">https:&#x2F;&#x2F;github.com&#x2F;prometheus&#x2F;prometheus&#x2F;releases&#x2F;tag&#x2F;v2.32.0 ，By prombot of GitHub</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 

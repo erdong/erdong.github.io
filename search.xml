@@ -600,7 +600,7 @@
 <ul>
 <li>自行下载 rpm 安装</li>
 </ul>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">wget http://dl.fedoraproject.org/pub/epel/7/x86_64/Packages/e/epel-release-7-11.noarch.rpm</span><br><span class="line">rpm -ivh epel-release-7-11.noarch.rpm</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">wget http://dl.fedoraproject.org/pub/epel/7/x86_64/Packages/e/epel-release-7-14.noarch.rpm</span><br><span class="line">rpm -ivh epel-release-7-14.noarch.rpm</span><br></pre></td></tr></table></figure>
 
 <p>当前的 epel 源的 rpm 包连接是有效的，如果版本更新了以后，请到对应的连接下寻找新的版本下载。</p>
 <ul>
@@ -4959,6 +4959,37 @@
 <li><a href="https://github.com/prometheus/prometheus/releases/tag/v2.21.0" target="_blank" rel="noopener">https://github.com/prometheus/prometheus/releases/tag/v2.21.0</a> ，By prombot of GitHub</li>
 </ul>
 <p>======================<br>由于无法及时收到评论内容，所以关闭评论功能。<br>大家有问题欢迎发邮件到 <a href="mailto:erdong@mail.erdong.site">erdong@mail.erdong.site</a> ，或者 <a href="https://github.com/erdong/erdong.github.io/issues" target="_blank" rel="noopener">https://github.com/erdong/erdong.github.io/issues</a> 提 Issue ，我会及时回复。</p>
+<p>======================<br>Erdong, A Linux user !</p>
+<p><img src="https://erdong.site/images/erdongxtnew.jpg" alt="微信公众号"></p>
+]]></content>
+      <categories>
+        <category>Prometheus</category>
+        <category>New-Features</category>
+      </categories>
+      <tags>
+        <tag>Prometheus</tag>
+        <tag>Features</tag>
+        <tag>release</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Prometheus 2.32.0 新特性</title>
+    <url>/Prometheus/New-Features/New-Features-in-Prometheus-2-32-0.html</url>
+    <content><![CDATA[<p>Prometheus <a href="https://github.com/prometheus/prometheus/releases/tag/v2.32.0" target="_blank" rel="noopener">2.32.0</a> 现在(2021.12.09)已经发布，在上个月的 <a href="http://erdong.site/Prometheus/New-Features/New-Features-in-Prometheus-2-31-0.html">2.31.0</a> 之后又进行了很多的修复和改进。</p>
+<a id="more"></a>
+<p>这次更新新增了很多的特性，并且修复一些 BUG 。</p>
+<p>该版本引入了 Prometheus Agent，这是 Prometheus 的一种新的操作模式，专为远程写场景而优化。在这种模式下，Prometheus 不会在本地文件系统上生成块，也不能在本地进行查询。使用 <code>--enable-feature=agent</code> 参数可以打开这个功能，关于 Prometheus Agent 后边找时间我专门聊一下。</p>
+<p>对于远程写这块，<code>remote write</code> 将最大重试时间从 100ms 修改成 5s ，并且对重用内存进行了编组。</p>
+<p>对于 Promtool 工具，之前只有配置文件和告警规则的检查，这次添加了检查服务发现的命令 <code>promtool check service-discovery</code>。另外也可以提高测试输出的可读性，可以展示更多人类可读的 <code>got/exp</code> 输出。Promtool 可以使用 kahan 求和来获取更好的数值稳定性，另外修复了 <code>authorization.credentials_file</code> 和 <code>bearer_token_file</code> 的检查。</p>
+<p>对于 UI 界面来说，这次在指标下拉菜单中新增了搜索功能，修复了展现包含 <code>Zone ID</code> 的IPv6地址的目标的链接的问题。在自动完成的 rate 比 rad, delta 比 deg, and count 比 cos 。</p>
+<p>对于 Templates 在模板函数中 添加了 parseDuration ，另外支持 int 和 uint 作为模板格式化的数据类型</p>
+<p>对于获取数据，使用 <code>--enable-feature=extra-scrape-metrics</code> 参数以后添加了 <code>scrape_body_size_bytes</code> 指标。</p>
+<p>对于 PromQL 查询语句，修复了 deriv() 为常量序列返回零值。<br>对于 Prometheus TSDB ，这些有增强了 2 项功能，修复了多个 BUG 。首先增强了对 Windows arm64 的支持，通过跳过TSDB中不需要的排序来优化查询。这次修复了 4 个 BUG，第一个是在索引中写入单独的部分时增加更多的大小检查，第二个是修复了检查点目录为空时的恐慌，第三个是修复了 WAL 重放时的告警，，第四个是修复快照重播失败后的查询。</p>
+<p>对于服务发现，这次增强了 Linode 的服务发现，并且对 Uyni 服务发现进行了故障修复，修复初始化过程中的空指针异常。</p>
+<p>详细的发行注记可以查看 <a href="https://github.com/prometheus/prometheus/releases/tag/v2.32.0" target="_blank" rel="noopener">release notes</a> 。</p>
+<h1 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h1><ul>
+<li><h1 id="https-github-com-prometheus-prometheus-releases-tag-v2-32-0-，By-prombot-of-GitHub"><a href="#https-github-com-prometheus-prometheus-releases-tag-v2-32-0-，By-prombot-of-GitHub" class="headerlink" title="https://github.com/prometheus/prometheus/releases/tag/v2.32.0 ，By prombot of GitHub"></a><a href="https://github.com/prometheus/prometheus/releases/tag/v2.32.0" target="_blank" rel="noopener">https://github.com/prometheus/prometheus/releases/tag/v2.32.0</a> ，By prombot of GitHub</h1>由于无法及时收到评论内容，所以关闭评论功能。<br>大家有问题欢迎发邮件到 <a href="mailto:erdong@mail.erdong.site">erdong@mail.erdong.site</a> ，或者 <a href="https://github.com/erdong/erdong.github.io/issues" target="_blank" rel="noopener">https://github.com/erdong/erdong.github.io/issues</a> 提 Issue ，我会及时回复。</li>
+</ul>
 <p>======================<br>Erdong, A Linux user !</p>
 <p><img src="https://erdong.site/images/erdongxtnew.jpg" alt="微信公众号"></p>
 ]]></content>
