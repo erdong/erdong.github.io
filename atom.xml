@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://erdong.site/"/>
-  <updated>2021-12-24T03:26:10.387Z</updated>
+  <updated>2022-06-22T01:41:16.049Z</updated>
   <id>https://erdong.site/</id>
   
   <author>
@@ -15,6 +15,155 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>漫谈公网网络延迟</title>
+    <link href="https://erdong.site/Linux/public-network-latency.html"/>
+    <id>https://erdong.site/Linux/public-network-latency.html</id>
+    <published>2022-06-25T15:44:49.000Z</published>
+    <updated>2022-06-22T01:41:16.049Z</updated>
+    
+    <content type="html"><![CDATA[<p>互联网发展至今，网络可以说是基础，所有的数据、内容都跑在网络上，今天和同事在沟通工作的过程中，发现很多人对公网的网络延迟是没有概念的。</p><a id="more"></a><p>我们知道网络延迟是指数据在传输介质中传输所用的时间，即从报文开始进入网络到它开始离开网络之间的时间。针对这个延迟我们可以使用 Ping 命令基于 ICMP 协议来进行测试。比如我们 Ping 百度的域名。</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">Erdong@Erdong-Test # ping baidu.com            </span><br><span class="line">PING baidu.com (220.181.38.251): 56 data bytes</span><br><span class="line">64 bytes from 220.181.38.251: icmp_seq&#x3D;0 ttl&#x3D;50 time&#x3D;12.563 ms</span><br><span class="line">64 bytes from 220.181.38.251: icmp_seq&#x3D;1 ttl&#x3D;50 time&#x3D;9.514 ms</span><br><span class="line">64 bytes from 220.181.38.251: icmp_seq&#x3D;2 ttl&#x3D;50 time&#x3D;9.023 ms</span><br><span class="line">64 bytes from 220.181.38.251: icmp_seq&#x3D;3 ttl&#x3D;50 time&#x3D;9.192 ms</span><br><span class="line">64 bytes from 220.181.38.251: icmp_seq&#x3D;4 ttl&#x3D;50 time&#x3D;17.045 ms</span><br><span class="line">64 bytes from 220.181.38.251: icmp_seq&#x3D;5 ttl&#x3D;50 time&#x3D;11.408 ms</span><br><span class="line">64 bytes from 220.181.38.251: icmp_seq&#x3D;6 ttl&#x3D;50 time&#x3D;13.894 ms</span><br><span class="line">64 bytes from 220.181.38.251: icmp_seq&#x3D;7 ttl&#x3D;50 time&#x3D;10.504 ms</span><br><span class="line">64 bytes from 220.181.38.251: icmp_seq&#x3D;8 ttl&#x3D;50 time&#x3D;10.980 ms</span><br><span class="line">64 bytes from 220.181.38.251: icmp_seq&#x3D;9 ttl&#x3D;50 time&#x3D;15.370 ms</span><br><span class="line">64 bytes from 220.181.38.251: icmp_seq&#x3D;10 ttl&#x3D;50 time&#x3D;10.628 ms</span><br><span class="line">^C</span><br><span class="line">--- baidu.com ping statistics ---</span><br><span class="line">11 packets transmitted, 11 packets received, 0.0% packet loss</span><br><span class="line">round-trip min&#x2F;avg&#x2F;max&#x2F;stddev &#x3D; 9.023&#x2F;11.829&#x2F;17.045&#x2F;2.501 ms</span><br></pre></td></tr></table></figure><p>上边显示整个过程发送了 11 个数据包，平均延迟是 11.829ms ，这个就是我当前电脑本地到百度最近的服务的延迟，这个延迟相对来说是很好的了。</p><p>对于公网来说，网络延迟是和地理位置强相关的一个指标。假设我们在北京部署了一个站点，从深圳访问的时候，这个延迟大概要 40ms ，基本不会低于 30ms。那么这延迟是怎么来的，为什么是这个数值，能不能减少呢？</p><p>我们都知道，网络传输是通过传输介质来进行的，常见的传输介质就是双绞网线和光纤，另外还有其他类型的线材。短距离一般是双绞网线，普通场景下的网络延迟基本可以忽略不计，长距离和超长距离一般是光纤光缆，这个时候迟延就非常明显。</p><p>我们已知光在真空中传播，折射率为 1，其光速约为 c=30 万公里/秒，当光在其他介质里来面传播，其介质折射自率为 n,光在其中的速度就降为 v=c/n，光纤的材料是二氧化硅，其折射率 n 为 1.44 左右，计算延迟的时候，可以近似认为 1.5，我们通过计算可以得出光纤中的光传输速度近似为 v=c/1.5= 20 万公里/秒。</p><p>以北京和深圳为例，直线距离 1920 公里，接近 2000 公里，传输介质如果使用光纤光缆，那么延迟时间 t=L/v = 0.2 万公里/20 万公里/秒=10ms ，也就是说从北京到深圳拉一根 2000 公里的光缆，单纯的距离延迟就要 10ms ，实际上是没有这么长的光缆的，中间是需要通过基站来进行中继，并且当光功率损耗到一定值以后，需要通过转换器加强功率以后继续传输，这个中转也是要消耗时间的。另外数据包在网络中长距离传输的时候是会经过多次的封包和拆包，这个也会消耗时间。</p><p>综合考虑各种情况以后，以北京到深圳为例，总的公网延迟大约在 40ms 左右，北京到上海的公网延迟大约在 30ms ，同城的情况下，公网延迟大约在 10ms ~ 15ms ，基本维持在 20ms 以内。如果数据出国的话，延迟会更大，比如中国到美国，延迟一般在 150ms ~ 200ms 左右，因为要经过太平洋的海底光缆过去的。</p><p>现在我们对于公网的延迟有了一个基本的概念，也理解了为什么自己附近的网站打开会快一些，越远的网站打开会越慢。那么回到开头 Ping 百度域名的例子里，有没有人想过为什么 Ping 百度的域名总是很快，好像全国各地差别并不大？</p><p>这个其实是百度在全国很多城市都有放置服务器，我们每个人访问的百度都是离自己最近的服务器，并不会出现，人在北京，访问了一台深圳的服务器的情况。所以访问会快很多。</p><p>好了，今天就聊这么多。</p><p>======================<br>由于无法及时收到评论内容，所以关闭评论功能。<br>大家有问题欢迎发邮件到 <a href="mailto:erdong@mail.erdong.site">erdong@mail.erdong.site</a> ，或者 <a href="https://github.com/erdong/erdong.github.io/issues" target="_blank" rel="noopener">https://github.com/erdong/erdong.github.io/issues</a> 提 Issue ，我会及时回复。</p><p>======================<br>Erdong, A Linux user !</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;互联网发展至今，网络可以说是基础，所有的数据、内容都跑在网络上，今天和同事在沟通工作的过程中，发现很多人对公网的网络延迟是没有概念的。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="Linux" scheme="https://erdong.site/categories/Linux/"/>
+    
+    
+      <category term="Network" scheme="https://erdong.site/tags/Network/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Prometheus 2.33.0 新特性</title>
+    <link href="https://erdong.site/Prometheus/New-Features/New-Features-in-Prometheus-2-33-0.html"/>
+    <id>https://erdong.site/Prometheus/New-Features/New-Features-in-Prometheus-2-33-0.html</id>
+    <published>2022-06-25T12:17:11.000Z</published>
+    <updated>2022-06-26T09:36:13.668Z</updated>
+    
+    <content type="html"><![CDATA[<p>Prometheus <a href="https://github.com/prometheus/prometheus/releases/tag/v2.33.0" target="_blank" rel="noopener">2.33.0</a> 现在(2022.01.29)已经发布，在上个月的 <a href="http://erdong.site/Prometheus/New-Features/New-Features-in-Prometheus-2-32-0.html">2.32.0</a> 之后又进行了很多的修复和改进。</p><a id="more"></a><p>这次更新新增了很多的特性，并且修复一些 BUG 。</p><h1 id="PromQL-amp-Promtool"><a href="#PromQL-amp-Promtool" class="headerlink" title="PromQL &amp; Promtool"></a>PromQL &amp; Promtool</h1><p>这次的更新 PromQL 查询语句中为了稳定性，增加了负方向的便宜和 @ 的修饰。在 Promtool 工具中新增了通过基数分析来检查指标的功能，这个功能需要使用 <code>--extended</code> 参数来开启。另外 Promtool 工具修复了 2 个 BUG，一个是统一执行后的退出码，另外一个是修复检测 rule 规则的一个漏洞。</p><h1 id="Web"><a href="#Web" class="headerlink" title="Web"></a>Web</h1><p>针对 Web 这块这次将 <code>remote-write-receiver</code> 升级的了稳定状态。<br>Web 这次新增了一个功能，在 rule 规则 API 中添加了一个限制字段，可以限制返回的最大指标数量，防止大查询违反服务器端 URL 字符限制。</p><h1 id="UI"><a href="#UI" class="headerlink" title="UI"></a>UI</h1><p>这次针对 UI 界面有 2 点优化，第一个是在服务发现页面增加了搜索栏，第二额是在 Target 页面增加了搜索栏，这样就可以进行搜索了。</p><p>另外 这次修复了 3 个 BUG 。第一个是当表达式为空的时候自动补全的问题，第二个是在 Target 页面的不健康状态的过滤器，实际上只显示不健康的 Target 。第三个是修复了告警状态复选框上点击目标重叠的问题。</p><h1 id="TSDB"><a href="#TSDB" class="headerlink" title="TSDB"></a>TSDB</h1><p>对于时序数据库，这次修复 3 个 BUG，并且进行了 4 处优化。</p><p>首先使用更简单的映射键来提高范例摄取性能，其次提高了 label 的匹配性能，第三是使 chunk 写入的时候不阻塞，避免远程写入中的延迟峰值。</p><p>时序数据库修复了 GC 和写入同时发生的死锁问题，修复了范例日志存储的容量大小问题，修复了压缩块元数据应该在重叠块产生正确的最大最小值。</p><h1 id="Remote-write"><a href="#Remote-write" class="headerlink" title="Remote-write"></a>Remote-write</h1><p>远程写这次优化了通过具体结构而不是接口来避免分配，而且优化了记录远程写入接收器中无序样本的时间序列细节日志，并且当积压时更多地分片。</p><p>这次修复了当写不可恢复失败时更新<code>prometheus_remote_storage_queue_highest_sent_timestamp_seconds</code> 这个指标的值。</p><h1 id="SD"><a href="#SD" class="headerlink" title="SD"></a>SD</h1><p>服务发现这次新增了 2 个功能点，一个是在 K8s 的命名空间中支持开启 Target 的发现。另外是 K8s 的服务发现提供了 label 的 ID。</p><h1 id="Other"><a href="#Other" class="headerlink" title="Other"></a>Other</h1><p>在 Config 中增加了 stripPort 的模板功能。</p><h1 id="后续"><a href="#后续" class="headerlink" title="后续"></a>后续</h1><p>在 2.33.1 中修复了 1 个 BUG：<br>在 K8s 的服务发现中，修复了当没有运行在 K8s 里的时候出现的 <code>no such file or directory</code> 问题。</p><p>在 2.33.2 修复了 2 个 BUG：<br>Azure 的服务发现中修复了 IP 地址未设置的问题。<br>远程写中修复了停止分片时的死锁问题。</p><p>在 2.33.3 中修复了 1 个 BUG：<br>Azure 的服务发现中修复了公共 IP 地址未设置时的回归问题。</p><p>在 2.33.4 中修复了 1 个 BUG：<br>时序数据库修复 m-mapping head 块到磁盘的问题。</p><p>在 2.33.5 中修复了 1 个 BUG：<br>与本版本一起发布的二进制文件是使用 Go1.17.8 构建的，以避免 CVE-2022-24921 的安全问题。另外远程写修复添加队列和获取批处理之间的死锁。</p><p>这大概是目前 Prometheus 版本里发小版本数量最多的一次，出到了第 5 个版本，共计修复了 6 个功能 BUG，1 个安全 BUG。</p><p>详细的发行注记可以查看 <a href="https://github.com/prometheus/prometheus/releases/tag/v2.33.0" target="_blank" rel="noopener">release notes</a> 。</p><h1 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h1><ul><li><a href="https://github.com/prometheus/prometheus/releases/tag/v2.33.0" target="_blank" rel="noopener">https://github.com/prometheus/prometheus/releases/tag/v2.33.0</a> ，By prombot of GitHub</li></ul><p>======================<br>由于无法及时收到评论内容，所以关闭评论功能。<br>大家有问题欢迎发邮件到 <a href="mailto:erdong@mail.erdong.site">erdong@mail.erdong.site</a> ，或者 <a href="https://github.com/erdong/erdong.github.io/issues" target="_blank" rel="noopener">https://github.com/erdong/erdong.github.io/issues</a> 提 Issue ，我会及时回复。</p><p>======================<br>Erdong, A Linux user !</p><p><img src="https://erdong.site/images/erdongxtnew.jpg" alt="微信公众号"></p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Prometheus &lt;a href=&quot;https://github.com/prometheus/prometheus/releases/tag/v2.33.0&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;2.33.0&lt;/a&gt; 现在(2022.01.29)已经发布，在上个月的 &lt;a href=&quot;http://erdong.site/Prometheus/New-Features/New-Features-in-Prometheus-2-32-0.html&quot;&gt;2.32.0&lt;/a&gt; 之后又进行了很多的修复和改进。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="Prometheus" scheme="https://erdong.site/categories/Prometheus/"/>
+    
+      <category term="New-Features" scheme="https://erdong.site/categories/Prometheus/New-Features/"/>
+    
+    
+      <category term="Prometheus" scheme="https://erdong.site/tags/Prometheus/"/>
+    
+      <category term="Features" scheme="https://erdong.site/tags/Features/"/>
+    
+      <category term="release" scheme="https://erdong.site/tags/release/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Prometheus 2.34.0 新特性</title>
+    <link href="https://erdong.site/Prometheus/New-Features/New-Features-in-Prometheus-2-34-0.html"/>
+    <id>https://erdong.site/Prometheus/New-Features/New-Features-in-Prometheus-2-34-0.html</id>
+    <published>2022-06-25T12:17:11.000Z</published>
+    <updated>2022-06-26T09:36:55.309Z</updated>
+    
+    <content type="html"><![CDATA[<p>Prometheus <a href="https://github.com/prometheus/prometheus/releases/tag/v2.34.0" target="_blank" rel="noopener">2.34.0</a> 现在(2022.03.15)已经发布，在上个月的 <a href="http://erdong.site/Prometheus/New-Features/New-Features-in-Prometheus-2-33-0.html">2.33.0</a> 之后又进行了很多的修复和改进。</p><a id="more"></a><p>这次更新新增了很多的特性，并且修复一些 BUG 。</p><h1 id="UI"><a href="#UI" class="headerlink" title="UI"></a>UI</h1><p>Prometheus 这次的版本更新把之前的旧的 UI 界面移除了，只剩下了新的 UI 界面。这次优化了告警页面并且添加了一个搜索栏。优化了一些不太容易观察到的图形的颜色。<br>修复了将输入范围设置为分辨率的BUG。</p><h1 id="PromQL"><a href="#PromQL" class="headerlink" title="PromQL"></a>PromQL</h1><p>PromQL 查询语句这次修复了一次 BUG，当指标具有相同的标签集时会正确地从 histogram_quantile 返回错误信息。</p><h1 id="TSDB"><a href="#TSDB" class="headerlink" title="TSDB"></a>TSDB</h1><p>时序数据库这次在默认情况下禁用了块写入队列，并允许使用参数  <code>--storage.tsdb.head-chunks-write-queue-size</code> 来进行配置，这个参数是实验性的参数。</p><h1 id="SD"><a href="#SD" class="headerlink" title="SD"></a>SD</h1><p>对于服务发现，这次 HTTP 服务发现新增了一个记录失败信息的计数器。Azure 服务发现可以在请求的时候设置 Prometheus User-agent  。 Uyuni 服务发现减少了登陆 Uyuni 的次数。</p><h1 id="Scrape"><a href="#Scrape" class="headerlink" title="Scrape"></a>Scrape</h1><p>对于 Prometheus 从 Exporter 拉取数据的时候如果遇到无效的 media 类型时会记录日志，另外 <code>application/openmetrics-text</code> 除了接收 0.0.1 版本以外也接收 1.0.0 版本。另外修复了一个 BUG，修复了 label 限制更改不生效的问题。</p><h1 id="Remote-read"><a href="#Remote-read" class="headerlink" title="Remote-read"></a>Remote-read</h1><p>远程读添加了一个不使用外部标签作为远程读取选择器的选项。</p><h1 id="Other"><a href="#Other" class="headerlink" title="Other"></a>Other</h1><p>Parser修复了在元数据解析器错误中指定类型的问题。</p><p>配置方面当使用带有外部标签的环境变量时，允许使用 <code>$</code> 或者 <code>$$</code> 转义。</p><p>Tracing 方面有一个变化，从 Jaeger 迁移到 OpenTelemetry 的跟踪，</p><p>详细的发行注记可以查看 <a href="https://github.com/prometheus/prometheus/releases/tag/v2.34.0" target="_blank" rel="noopener">release notes</a> 。</p><h1 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h1><ul><li><a href="https://github.com/prometheus/prometheus/releases/tag/v2.34.0" target="_blank" rel="noopener">https://github.com/prometheus/prometheus/releases/tag/v2.34.0</a> ，By prombot of GitHub</li></ul><p>======================<br>由于无法及时收到评论内容，所以关闭评论功能。<br>大家有问题欢迎发邮件到 <a href="mailto:erdong@mail.erdong.site">erdong@mail.erdong.site</a> ，或者 <a href="https://github.com/erdong/erdong.github.io/issues" target="_blank" rel="noopener">https://github.com/erdong/erdong.github.io/issues</a> 提 Issue ，我会及时回复。</p><p>======================<br>Erdong, A Linux user !</p><p><img src="https://erdong.site/images/erdongxtnew.jpg" alt="微信公众号"></p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Prometheus &lt;a href=&quot;https://github.com/prometheus/prometheus/releases/tag/v2.34.0&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;2.34.0&lt;/a&gt; 现在(2022.03.15)已经发布，在上个月的 &lt;a href=&quot;http://erdong.site/Prometheus/New-Features/New-Features-in-Prometheus-2-33-0.html&quot;&gt;2.33.0&lt;/a&gt; 之后又进行了很多的修复和改进。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="Prometheus" scheme="https://erdong.site/categories/Prometheus/"/>
+    
+      <category term="New-Features" scheme="https://erdong.site/categories/Prometheus/New-Features/"/>
+    
+    
+      <category term="Prometheus" scheme="https://erdong.site/tags/Prometheus/"/>
+    
+      <category term="Features" scheme="https://erdong.site/tags/Features/"/>
+    
+      <category term="release" scheme="https://erdong.site/tags/release/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Prometheus 2.33.0 新特性</title>
+    <link href="https://erdong.site/Prometheus/New-Features/New-Features-in-Prometheus-2-35-0.html"/>
+    <id>https://erdong.site/Prometheus/New-Features/New-Features-in-Prometheus-2-35-0.html</id>
+    <published>2022-06-25T12:17:11.000Z</published>
+    <updated>2022-06-26T09:35:20.531Z</updated>
+    
+    <content type="html"><![CDATA[<a id="more"></a><p>======================<br>由于无法及时收到评论内容，所以关闭评论功能。<br>大家有问题欢迎发邮件到 <a href="mailto:erdong@mail.erdong.site">erdong@mail.erdong.site</a> ，或者 <a href="https://github.com/erdong/erdong.github.io/issues" target="_blank" rel="noopener">https://github.com/erdong/erdong.github.io/issues</a> 提 Issue ，我会及时回复。</p><p>======================<br>Erdong, A Linux user !</p><p><img src="https://erdong.site/images/erdongxtnew.jpg" alt="微信公众号"></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
+
+&lt;p&gt;======================&lt;br&gt;由于无法及时收到评论内容，所以关闭评论功能。&lt;br&gt;大家有问题欢迎发邮件到 &lt;a href=&quot;mailto:erdong@mail.erdong.site&quot;&gt;erdong@mail.e
+      
+    
+    </summary>
+    
+    
+      <category term="Prometheus" scheme="https://erdong.site/categories/Prometheus/"/>
+    
+      <category term="New-Features" scheme="https://erdong.site/categories/Prometheus/New-Features/"/>
+    
+    
+      <category term="Prometheus" scheme="https://erdong.site/tags/Prometheus/"/>
+    
+      <category term="Features" scheme="https://erdong.site/tags/Features/"/>
+    
+      <category term="release" scheme="https://erdong.site/tags/release/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Prometheus 2.33.0 新特性</title>
+    <link href="https://erdong.site/Prometheus/New-Features/New-Features-in-Prometheus-2-36-0.html"/>
+    <id>https://erdong.site/Prometheus/New-Features/New-Features-in-Prometheus-2-36-0.html</id>
+    <published>2022-06-25T12:17:11.000Z</published>
+    <updated>2022-06-26T09:35:23.927Z</updated>
+    
+    <content type="html"><![CDATA[<a id="more"></a><p>======================<br>由于无法及时收到评论内容，所以关闭评论功能。<br>大家有问题欢迎发邮件到 <a href="mailto:erdong@mail.erdong.site">erdong@mail.erdong.site</a> ，或者 <a href="https://github.com/erdong/erdong.github.io/issues" target="_blank" rel="noopener">https://github.com/erdong/erdong.github.io/issues</a> 提 Issue ，我会及时回复。</p><p>======================<br>Erdong, A Linux user !</p><p><img src="https://erdong.site/images/erdongxtnew.jpg" alt="微信公众号"></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
+
+&lt;p&gt;======================&lt;br&gt;由于无法及时收到评论内容，所以关闭评论功能。&lt;br&gt;大家有问题欢迎发邮件到 &lt;a href=&quot;mailto:erdong@mail.erdong.site&quot;&gt;erdong@mail.e
+      
+    
+    </summary>
+    
+    
+      <category term="Prometheus" scheme="https://erdong.site/categories/Prometheus/"/>
+    
+      <category term="New-Features" scheme="https://erdong.site/categories/Prometheus/New-Features/"/>
+    
+    
+      <category term="Prometheus" scheme="https://erdong.site/tags/Prometheus/"/>
+    
+      <category term="Features" scheme="https://erdong.site/tags/Features/"/>
+    
+      <category term="release" scheme="https://erdong.site/tags/release/"/>
+    
+  </entry>
   
   <entry>
     <title>Prometheus 2.32.0 新特性</title>
