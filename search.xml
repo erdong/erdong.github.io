@@ -2,7 +2,7 @@
 <search>
   <entry>
     <title>IB 工具安装</title>
-    <url>/tools/IB-tool-install.html</url>
+    <url>/uncategorized/IB-tool-install.html</url>
     <content><![CDATA[<p>IB 网卡在安装在机器上以后，需要有对应的驱动才可以正常使用。</p>
 <p>一般情况下，内核就可以驱动 IB 网卡，如果为了性能或者其他考虑可以安装原厂的驱动。</p>
 <p>现在简单记录一下，内核驱动 IB 以后如何快速上手使用。</p>
@@ -19,17 +19,10 @@
 
 <p>======================<br>Erdong, A Linux user !</p>
 ]]></content>
-      <categories>
-        <category>tools</category>
-      </categories>
-      <tags>
-        <tag>linux</tag>
-        <tag>ib</tag>
-      </tags>
   </entry>
   <entry>
     <title>【翻译】Prometheus 2.0.0 新特性</title>
-    <url>/Prometheus/New-Features/New-Features-in-Prometheus-2-0-0.html</url>
+    <url>/uncategorized/New-Features-in-Prometheus-2-0-0.html</url>
     <content><![CDATA[<p>Prometheus <a href="https://github.com/prometheus/prometheus/releases/tag/v2.0.0" target="_blank" rel="noopener">2.0.0</a> 现在(2017.11.8)已经发布，从上个月的 <a href="https://www.robustperception.io/new-features-in-prometheus-1-8-0" target="_blank" rel="noopener">1.8.0</a> 到 2.0.0 有显著的改进。</p>
 <a id="more"></a>
 
@@ -47,19 +40,10 @@
 </ul>
 <p>======================<br>Erdong, A Linux user !</p>
 ]]></content>
-      <categories>
-        <category>Prometheus</category>
-        <category>New-Features</category>
-      </categories>
-      <tags>
-        <tag>Prometheus</tag>
-        <tag>Features</tag>
-        <tag>release</tag>
-      </tags>
   </entry>
   <entry>
     <title>【翻译】Prometheus 2.1.0 新特性</title>
-    <url>/Prometheus/New-Features/New-Features-in-Prometheus-2-1-0.html</url>
+    <url>/uncategorized/New-Features-in-Prometheus-2-1-0.html</url>
     <content><![CDATA[<p>Prometheus <a href="https://github.com/prometheus/prometheus/releases/tag/v2.1.0" target="_blank" rel="noopener">2.1.0</a> 现在(2018.01.22)已经发布，从上个月的 <a href="http://erdong.site/Prometheus/New-Features/New-Features-in-Prometheus-2-0-0.html">2.0.0</a> 到 2.1.0 有一些修改和提升。</p>
 <a id="more"></a>
 
@@ -73,19 +57,10 @@
 </ul>
 <p>======================<br>Erdong, A Linux user !</p>
 ]]></content>
-      <categories>
-        <category>Prometheus</category>
-        <category>New-Features</category>
-      </categories>
-      <tags>
-        <tag>Prometheus</tag>
-        <tag>Features</tag>
-        <tag>release</tag>
-      </tags>
   </entry>
   <entry>
     <title>【翻译】Prometheus 2.10.0 新特性</title>
-    <url>/Prometheus/New-Features/New-Features-in-Prometheus-2-10-0.html</url>
+    <url>/uncategorized/New-Features-in-Prometheus-2-10-0.html</url>
     <content><![CDATA[<p>Prometheus <a href="https://github.com/prometheus/prometheus/releases/tag/v2.10.0" target="_blank" rel="noopener">2.10.0</a> 现在(2019.05.25)已经发布，在上个月的 <a href="http://erdong.site/Prometheus/New-Features/New-Features-in-Prometheus-2-9-0.html">2.9.0</a> 之后又进行了一些修正和改进。</p>
 <a id="more"></a>
 
@@ -98,19 +73,10 @@
 </ul>
 <p>======================<br>Erdong, A Linux user !</p>
 ]]></content>
-      <categories>
-        <category>Prometheus</category>
-        <category>New-Features</category>
-      </categories>
-      <tags>
-        <tag>Prometheus</tag>
-        <tag>Features</tag>
-        <tag>release</tag>
-      </tags>
   </entry>
   <entry>
     <title>【翻译】Prometheus 2.11.0 新特性</title>
-    <url>/Prometheus/New-Features/New-Features-in-Prometheus-2-11-0.html</url>
+    <url>/uncategorized/New-Features-in-Prometheus-2-11-0.html</url>
     <content><![CDATA[<p>Prometheus <a href="https://github.com/prometheus/prometheus/releases/tag/v2.11.0" target="_blank" rel="noopener">2.11.0</a> 现在(2019.07.9)已经发布，在5月的 <a href="http://erdong.site/Prometheus/New-Features/New-Features-in-Prometheus-2-10-0.html">2.10.0</a> 之后又进行了一些修正和改进。</p>
 <a id="more"></a>
 
@@ -123,19 +89,10 @@
 </ul>
 <p>======================<br>Erdong, A Linux user !</p>
 ]]></content>
-      <categories>
-        <category>Prometheus</category>
-        <category>New-Features</category>
-      </categories>
-      <tags>
-        <tag>Prometheus</tag>
-        <tag>Features</tag>
-        <tag>release</tag>
-      </tags>
   </entry>
   <entry>
     <title>【翻译】Prometheus 2.12.0 新特性</title>
-    <url>/Prometheus/New-Features/New-Features-in-Prometheus-2-12-0.html</url>
+    <url>/uncategorized/New-Features-in-Prometheus-2-12-0.html</url>
     <content><![CDATA[<p>Prometheus <a href="https://github.com/prometheus/prometheus/releases/tag/v2.12.0" target="_blank" rel="noopener">2.12.0</a> 现在(2019.08.17)已经发布，在上个月的 <a href="http://erdong.site/Prometheus/New-Features/New-Features-in-Prometheus-2-11-0.html">2.11.0</a> 之后又进行了一些修正和改进。</p>
 <a id="more"></a>
 <p>在当前的 6 周发布周期中，每一个 Prometheus 版本都有比较少的特性，但是发布的更有规律。在这个版本中最引人注目的特性是，如果 Prometheus 在下一次启动时崩溃，它将打印正在运行的 PromQL ，这有助于查找开销过大的查询。</p>
@@ -146,19 +103,10 @@
 </ul>
 <p>======================<br>Erdong, A Linux user !</p>
 ]]></content>
-      <categories>
-        <category>Prometheus</category>
-        <category>New-Features</category>
-      </categories>
-      <tags>
-        <tag>Prometheus</tag>
-        <tag>Features</tag>
-        <tag>release</tag>
-      </tags>
   </entry>
   <entry>
     <title>Prometheus 2.13.0 新特性</title>
-    <url>/Prometheus/New-Features/New-Features-in-Prometheus-2-13-0.html</url>
+    <url>/uncategorized/New-Features-in-Prometheus-2-13-0.html</url>
     <content><![CDATA[<p>Prometheus <a href="https://github.com/prometheus/prometheus/releases/tag/v2.13.0" target="_blank" rel="noopener">2.13.0</a> 现在(2019.10.04)已经发布，在上个月的 <a href="http://erdong.site/Prometheus/New-Features/New-Features-in-Prometheus-2-12-0.html">2.12.0</a> 之后又进行了一些修正和改进。</p>
 <a id="more"></a>
 <p>这个版本的变化相对较小。tsdb 工具已经包含在这个版本中了，但是请注意，它很可能会在2.14.0的时候被包含到 promtool 中。</p>
@@ -175,19 +123,10 @@
 <p>======================<br>由于无法及时收到评论内容，所以关闭评论功能。<br>大家有问题欢迎发邮件到 <a href="mailto:erdong@mail.erdong.site">erdong@mail.erdong.site</a> ，或者 <a href="https://github.com/erdong/erdong.github.io/issues" target="_blank" rel="noopener">https://github.com/erdong/erdong.github.io/issues</a> 提 Issue ，我会及时回复。</p>
 <p>======================<br>Erdong, A Linux user !</p>
 ]]></content>
-      <categories>
-        <category>Prometheus</category>
-        <category>New-Features</category>
-      </categories>
-      <tags>
-        <tag>Prometheus</tag>
-        <tag>Features</tag>
-        <tag>release</tag>
-      </tags>
   </entry>
   <entry>
     <title>Prometheus 2.14.0 新特性</title>
-    <url>/Prometheus/New-Features/New-Features-in-Prometheus-2-14-0.html</url>
+    <url>/uncategorized/New-Features-in-Prometheus-2-14-0.html</url>
     <content><![CDATA[<p>Prometheus <a href="https://github.com/prometheus/prometheus/releases/tag/v2.14.0" target="_blank" rel="noopener">2.14.0</a> 现在(2019.11.11)已经发布，在上个月的 <a href="http://erdong.site/Prometheus/New-Features/New-Features-in-Prometheus-2-13-0.html">2.13.0</a> 之后又进行了一些修正和改进。</p>
 <a id="more"></a>
 <p>这次最大的新功能是基于 React 的新 UI，与现有 UI 大体相同。该 UI 还在持续开发中。现有的 UI 还获得了 head cardinality 统计信息。这次的更新新增了按状态进行的警报过滤。</p>
@@ -203,19 +142,10 @@
 <p>======================<br>由于无法及时收到评论内容，所以关闭评论功能。<br>大家有问题欢迎发邮件到 <a href="mailto:erdong@mail.erdong.site">erdong@mail.erdong.site</a> ，或者 <a href="https://github.com/erdong/erdong.github.io/issues" target="_blank" rel="noopener">https://github.com/erdong/erdong.github.io/issues</a> 提 Issue ，我会及时回复。</p>
 <p>======================<br>Erdong, A Linux user !</p>
 ]]></content>
-      <categories>
-        <category>Prometheus</category>
-        <category>New-Features</category>
-      </categories>
-      <tags>
-        <tag>Prometheus</tag>
-        <tag>Features</tag>
-        <tag>release</tag>
-      </tags>
   </entry>
   <entry>
     <title>Prometheus 2.15.0 新特性</title>
-    <url>/Prometheus/New-Features/New-Features-in-Prometheus-2-15-0.html</url>
+    <url>/uncategorized/New-Features-in-Prometheus-2-15-0.html</url>
     <content><![CDATA[<p> <a href="https://github.com/prometheus/prometheus/releases/tag/v2.15.0" target="_blank" rel="noopener">2.15.0</a> 现在(2019.12.23)已经发布，在上个月的 <a href="http://erdong.site/Prometheus/New-Features/New-Features-in-Prometheus-2-14-0.html">2.14.0</a> 之后又进行了一些修正和改进。</p>
 <a id="more"></a>
 <p>这个版本最大的改进是对块（block）和内存使用的压缩进行了优化，块不再将所有的 symbol/postings 放在对上，并且压缩过程也不将他们长期放在内存。比较显著的效果是减少了具有高基数/搅动的系统的内存使用量，压缩内存峰值现在基本上应该消失了。因为这是典型的RAM与CPU之间的折衷，所以压缩会慢一些。在WAL replay(即启动时间)方面也有了性能上的改进，并且WAL占用的空间现在可以基于存储空间大小进行保留，删除超出的数据。</p>
@@ -232,19 +162,10 @@
 <p>======================<br>由于无法及时收到评论内容，所以关闭评论功能。<br>大家有问题欢迎发邮件到 <a href="mailto:erdong@mail.erdong.site">erdong@mail.erdong.site</a> ，或者 <a href="https://github.com/erdong/erdong.github.io/issues" target="_blank" rel="noopener">https://github.com/erdong/erdong.github.io/issues</a> 提 Issue ，我会及时回复。</p>
 <p>======================<br>Erdong, A Linux user !</p>
 ]]></content>
-      <categories>
-        <category>Prometheus</category>
-        <category>New-Features</category>
-      </categories>
-      <tags>
-        <tag>Prometheus</tag>
-        <tag>Features</tag>
-        <tag>release</tag>
-      </tags>
   </entry>
   <entry>
     <title>Prometheus 2.16.0 新特性</title>
-    <url>/Prometheus/New-Features/New-Features-in-Prometheus-2-16-0.html</url>
+    <url>/uncategorized/New-Features-in-Prometheus-2-16-0.html</url>
     <content><![CDATA[<p>Prometheus <a href="https://github.com/prometheus/prometheus/releases/tag/v2.16.0" target="_blank" rel="noopener">2.16.0</a> 现在(2020.02.13)已经发布，在上个月的 <a href="http://erdong.site/Prometheus/New-Features/New-Features-in-Prometheus-2-15-0.html">2.15.0</a> 之后又进行了一些修正和改进。</p>
 <a id="more"></a>
 <p>在这个版本中有很多的性能改进，如果你的查询只涉及最近几个小时的数值，会变的非常快，因为 Brian Brazil 删除了一些不必要的排序。在实际使用中，这会使得记录规则在处理 100 万个序列的高基数时快 1 秒。</p>
@@ -262,19 +183,10 @@
 <p>======================<br>由于无法及时收到评论内容，所以关闭评论功能。<br>大家有问题欢迎发邮件到 <a href="mailto:erdong@mail.erdong.site">erdong@mail.erdong.site</a> ，或者 <a href="https://github.com/erdong/erdong.github.io/issues" target="_blank" rel="noopener">https://github.com/erdong/erdong.github.io/issues</a> 提 Issue ，我会及时回复。</p>
 <p>======================<br>Erdong, A Linux user !</p>
 ]]></content>
-      <categories>
-        <category>Prometheus</category>
-        <category>New-Features</category>
-      </categories>
-      <tags>
-        <tag>Prometheus</tag>
-        <tag>Features</tag>
-        <tag>release</tag>
-      </tags>
   </entry>
   <entry>
     <title>Prometheus 2.17.0 新特性</title>
-    <url>/Prometheus/New-Features/New-Features-in-Prometheus-2-17-0.html</url>
+    <url>/uncategorized/New-Features-in-Prometheus-2-17-0.html</url>
     <content><![CDATA[<p>Prometheus <a href="https://github.com/prometheus/prometheus/releases/tag/v2.17.0" target="_blank" rel="noopener">2.17.0</a> 现在(2020.03.24)已经发布，在上个月的 <a href="http://erdong.site/Prometheus/New-Features/New-Features-in-Prometheus-2-16-0.html">2.16.0</a> 之后又进行了一些修正和改进。</p>
 <a id="more"></a>
 <p>这个版本中最大的变化是将隔离添加到了tsdb中。API查询和记录规则保证只能看到完整的片段和完整的记录规则。这样在内存使用和 CPU 使用上会多一些，但是相对的，不会产生错误的结果，这样做是值得的。在查询过程中提高部分命中 head 的查询性能</p>
@@ -297,19 +209,10 @@
 <p>======================<br>由于无法及时收到评论内容，所以关闭评论功能。<br>大家有问题欢迎发邮件到 <a href="mailto:erdong@mail.erdong.site">erdong@mail.erdong.site</a> ，或者 <a href="https://github.com/erdong/erdong.github.io/issues" target="_blank" rel="noopener">https://github.com/erdong/erdong.github.io/issues</a> 提 Issue ，我会及时回复。</p>
 <p>======================<br>Erdong, A Linux user !</p>
 ]]></content>
-      <categories>
-        <category>Prometheus</category>
-        <category>New-Features</category>
-      </categories>
-      <tags>
-        <tag>Prometheus</tag>
-        <tag>Features</tag>
-        <tag>release</tag>
-      </tags>
   </entry>
   <entry>
     <title>Prometheus 2.18.0 新特性</title>
-    <url>/Prometheus/New-Features/New-Features-in-Prometheus-2-18-0.html</url>
+    <url>/uncategorized/New-Features-in-Prometheus-2-18-0.html</url>
     <content><![CDATA[<p>Prometheus <a href="https://github.com/prometheus/prometheus/releases/tag/v2.18.0" target="_blank" rel="noopener">2.18.0</a> 现在(2020.05.05)已经发布，在上个月的 <a href="http://erdong.site/Prometheus/New-Features/New-Features-in-Prometheus-2-17-0.html">2.17.0</a> 之后又进行了一些修正和改进。</p>
 <a id="more"></a>
 <p>这是一个相当轻的版本。最显著的变化是，WAL保存在磁盘上的时间已经减少了一半，从6个小时减少到3个小时，这是我为之前的一篇博客文章所做的研究得出的结论。</p>
@@ -325,19 +228,10 @@
 <p>======================<br>由于无法及时收到评论内容，所以关闭评论功能。<br>大家有问题欢迎发邮件到 <a href="mailto:erdong@mail.erdong.site">erdong@mail.erdong.site</a> ，或者 <a href="https://github.com/erdong/erdong.github.io/issues" target="_blank" rel="noopener">https://github.com/erdong/erdong.github.io/issues</a> 提 Issue ，我会及时回复。</p>
 <p>======================<br>Erdong, A Linux user !</p>
 ]]></content>
-      <categories>
-        <category>Prometheus</category>
-        <category>New-Features</category>
-      </categories>
-      <tags>
-        <tag>Prometheus</tag>
-        <tag>Features</tag>
-        <tag>release</tag>
-      </tags>
   </entry>
   <entry>
     <title>Prometheus 2.19.0 新特性</title>
-    <url>/Prometheus/New-Features/New-Features-in-Prometheus-2-19-0.html</url>
+    <url>/uncategorized/New-Features-in-Prometheus-2-19-0.html</url>
     <content><![CDATA[<p>Prometheus <a href="https://github.com/prometheus/prometheus/releases/tag/v2.19.0" target="_blank" rel="noopener">2.19.0</a> 现在(2020.06.15)已经发布，在上个月的 <a href="http://erdong.site/Prometheus/New-Features/New-Features-in-Prometheus-2-18-0.html">2.18.0</a> 之后又进行了很多的修复和改进。</p>
 <a id="more"></a>
 
@@ -356,19 +250,10 @@
 <p>======================<br>由于无法及时收到评论内容，所以关闭评论功能。<br>大家有问题欢迎发邮件到 <a href="mailto:erdong@mail.erdong.site">erdong@mail.erdong.site</a> ，或者 <a href="https://github.com/erdong/erdong.github.io/issues" target="_blank" rel="noopener">https://github.com/erdong/erdong.github.io/issues</a> 提 Issue ，我会及时回复。</p>
 <p>======================<br>Erdong, A Linux user !</p>
 ]]></content>
-      <categories>
-        <category>Prometheus</category>
-        <category>New-Features</category>
-      </categories>
-      <tags>
-        <tag>Prometheus</tag>
-        <tag>Features</tag>
-        <tag>release</tag>
-      </tags>
   </entry>
   <entry>
     <title>【翻译】Prometheus 2.2.0 新特性</title>
-    <url>/Prometheus/New-Features/New-Features-in-Prometheus-2-2-0.html</url>
+    <url>/uncategorized/New-Features-in-Prometheus-2-2-0.html</url>
     <content><![CDATA[<p>Prometheus <a href="https://github.com/prometheus/prometheus/releases/tag/v2.2.0" target="_blank" rel="noopener">2.2.0</a> 现在(2018.3.12)已经发布，在 1 月份的 <a href="http://erdong.site/Prometheus/New-Features/New-Features-in-Prometheus-2-1-0.html">2.1.0</a> 之后又进行了一些修正和改进。</p>
 <a id="more"></a>
 
@@ -381,19 +266,10 @@
 </ul>
 <p>======================<br>Erdong, A Linux user !</p>
 ]]></content>
-      <categories>
-        <category>Prometheus</category>
-        <category>New-Features</category>
-      </categories>
-      <tags>
-        <tag>Prometheus</tag>
-        <tag>Features</tag>
-        <tag>release</tag>
-      </tags>
   </entry>
   <entry>
     <title>Prometheus 2.20.0 新特性</title>
-    <url>/Prometheus/New-Features/New-Features-in-Prometheus-2-20-0.html</url>
+    <url>/uncategorized/New-Features-in-Prometheus-2-20-0.html</url>
     <content><![CDATA[<p>Prometheus <a href="https://github.com/prometheus/prometheus/releases/tag/v2.20.0" target="_blank" rel="noopener">2.20.0</a> 现在(2020.07.22)已经发布，在上个月的 <a href="http://erdong.site/Prometheus/New-Features/New-Features-in-Prometheus-2-19-0.html">2.19.0</a> 之后又进行了很多的修复和改进。</p>
 <a id="more"></a>
 <p>现在 Prometheus 会默认启动 WAL 压缩，之前的版本是可以选择是否启动 WAL 压缩。这样可以节省一些磁盘空间和 IOPS，降低因为 IOPS 一个小成本的 CPU。</p>
@@ -411,19 +287,10 @@
 <p>======================<br>Erdong, A Linux user !</p>
 <p><img src="https://erdong.site/images/erdongxtnew.jpg" alt="微信公众号"></p>
 ]]></content>
-      <categories>
-        <category>Prometheus</category>
-        <category>New-Features</category>
-      </categories>
-      <tags>
-        <tag>Prometheus</tag>
-        <tag>Features</tag>
-        <tag>release</tag>
-      </tags>
   </entry>
   <entry>
     <title>【翻译】Prometheus 2.3.0 新特性</title>
-    <url>/Prometheus/New-Features/New-Features-in-Prometheus-2-3-0.html</url>
+    <url>/uncategorized/New-Features-in-Prometheus-2-3-0.html</url>
     <content><![CDATA[<p>Prometheus <a href="https://github.com/prometheus/prometheus/releases/tag/v2.3.0" target="_blank" rel="noopener">2.3.0</a> 现在(2018.6.11)已经发布，在 3 月份的 <a href="http://erdong.site/Prometheus/New-Features/New-Features-in-Prometheus-2-2-0.html">2.2.0</a> 之后又进行了一些修正和改进。</p>
 <a id="more"></a>
 
@@ -435,19 +302,10 @@
 </ul>
 <p>======================<br>Erdong, A Linux user !</p>
 ]]></content>
-      <categories>
-        <category>Prometheus</category>
-        <category>New-Features</category>
-      </categories>
-      <tags>
-        <tag>Prometheus</tag>
-        <tag>Features</tag>
-        <tag>release</tag>
-      </tags>
   </entry>
   <entry>
     <title>【翻译】Prometheus 2.4.0 新特性</title>
-    <url>/Prometheus/New-Features/New-Features-in-Prometheus-2-4-0.html</url>
+    <url>/uncategorized/New-Features-in-Prometheus-2-4-0.html</url>
     <content><![CDATA[<p>Prometheus <a href="https://github.com/prometheus/prometheus/releases/tag/v2.4.0" target="_blank" rel="noopener">2.4.0</a> 现在(2018.9.17)已经发布，在 6 月份的 <a href="http://erdong.site/Prometheus/New-Features/New-Features-in-Prometheus-2-3-0.html">2.3.0</a> 之后又进行了一些修正和改进。</p>
 <a id="more"></a>
 
@@ -460,19 +318,10 @@
 </ul>
 <p>======================<br>Erdong, A Linux user !</p>
 ]]></content>
-      <categories>
-        <category>Prometheus</category>
-        <category>New-Features</category>
-      </categories>
-      <tags>
-        <tag>Prometheus</tag>
-        <tag>Features</tag>
-        <tag>release</tag>
-      </tags>
   </entry>
   <entry>
     <title>【翻译】Prometheus 2.5.0 新特性</title>
-    <url>/Prometheus/New-Features/New-Features-in-Prometheus-2-5-0.html</url>
+    <url>/uncategorized/New-Features-in-Prometheus-2-5-0.html</url>
     <content><![CDATA[<p>Prometheus <a href="https://github.com/prometheus/prometheus/releases/tag/v2.5.0" target="_blank" rel="noopener">2.5.0</a> 现在(2018.11.12)已经发布，在 9 月份的 <a href="http://erdong.site/Prometheus/New-Features/New-Features-in-Prometheus-2-4-0.html">2.4.0</a> 之后又进行了一些修正和改进。</p>
 <a id="more"></a>
 
@@ -488,19 +337,10 @@
 </ul>
 <p>======================<br>Erdong, A Linux user !</p>
 ]]></content>
-      <categories>
-        <category>Prometheus</category>
-        <category>New-Features</category>
-      </categories>
-      <tags>
-        <tag>Prometheus</tag>
-        <tag>Features</tag>
-        <tag>release</tag>
-      </tags>
   </entry>
   <entry>
     <title>【翻译】Prometheus 2.6.0 新特性</title>
-    <url>/Prometheus/New-Features/New-Features-in-Prometheus-2-6-0.html</url>
+    <url>/uncategorized/New-Features-in-Prometheus-2-6-0.html</url>
     <content><![CDATA[<p>Prometheus <a href="https://github.com/prometheus/prometheus/releases/tag/v2.6.0" target="_blank" rel="noopener">2.6.0</a> 现在(2018.12.24)已经发布，在上个月的 <a href="http://erdong.site/Prometheus/New-Features/New-Features-in-Prometheus-2-5-0.html">2.5.0</a> 之后又进行了一些修正和改进。</p>
 <a id="more"></a>
 
@@ -512,19 +352,10 @@
 </ul>
 <p>======================<br>Erdong, A Linux user !</p>
 ]]></content>
-      <categories>
-        <category>Prometheus</category>
-        <category>New-Features</category>
-      </categories>
-      <tags>
-        <tag>Prometheus</tag>
-        <tag>Features</tag>
-        <tag>release</tag>
-      </tags>
   </entry>
   <entry>
     <title>【翻译】Prometheus 2.7.0 新特性</title>
-    <url>/Prometheus/New-Features/New-Features-in-Prometheus-2-7-0.html</url>
+    <url>/uncategorized/New-Features-in-Prometheus-2-7-0.html</url>
     <content><![CDATA[<p>Prometheus <a href="https://github.com/prometheus/prometheus/releases/tag/v2.7.0" target="_blank" rel="noopener">2.7.0</a> 现在(2019.01.28)已经发布，在上个月的 <a href="http://erdong.site/Prometheus/New-Features/New-Features-in-Prometheus-2-6-0.html">2.6.0</a> 之后又进行了一些修正和改进。</p>
 <a id="more"></a>
 
@@ -539,19 +370,10 @@
 </ul>
 <p>======================<br>Erdong, A Linux user !</p>
 ]]></content>
-      <categories>
-        <category>Prometheus</category>
-        <category>New-Features</category>
-      </categories>
-      <tags>
-        <tag>Prometheus</tag>
-        <tag>Features</tag>
-        <tag>release</tag>
-      </tags>
   </entry>
   <entry>
     <title>【翻译】Prometheus 2.8.0 新特性</title>
-    <url>/Prometheus/New-Features/New-Features-in-Prometheus-2-8-0.html</url>
+    <url>/uncategorized/New-Features-in-Prometheus-2-8-0.html</url>
     <content><![CDATA[<p>Prometheus <a href="https://github.com/prometheus/prometheus/releases/tag/v2.8.0" target="_blank" rel="noopener">2.8.0</a> 现在(2019.03.18)已经发布，在上个月的 <a href="http://erdong.site/Prometheus/New-Features/New-Features-in-Prometheus-2-7-0.html">2.7.0</a> 之后又进行了一些修正和改进。</p>
 <a id="more"></a>
 
@@ -564,19 +386,10 @@
 </ul>
 <p>======================<br>Erdong, A Linux user !</p>
 ]]></content>
-      <categories>
-        <category>Prometheus</category>
-        <category>New-Features</category>
-      </categories>
-      <tags>
-        <tag>Prometheus</tag>
-        <tag>Features</tag>
-        <tag>release</tag>
-      </tags>
   </entry>
   <entry>
     <title>CentOS 7 初始化</title>
-    <url>/linux/system/centos7-initialization.html</url>
+    <url>/uncategorized/centos7-initialization.html</url>
     <content><![CDATA[<p>使用 Linux 首要的一点就是安装操作系统，初始化环境，这个过程根据不同的需求会有不同的方式结果。<br>下面我来介绍一个实验环境的搭建过程。</p>
 <p>需求：</p>
 <ul>
@@ -630,17 +443,10 @@
 <p>至此，一个基于 CentOS 7 的可以使用 docker 的基础实验环境已经搭建完成，我后续的很多实验都是基于这个环境进行的。</p>
 <p>=========================<br>Erdong, A Linux user !</p>
 ]]></content>
-      <categories>
-        <category>linux</category>
-        <category>system</category>
-      </categories>
-      <tags>
-        <tag>linux</tag>
-      </tags>
   </entry>
   <entry>
     <title>【翻译】Prometheus 2.9.0 新特性</title>
-    <url>/Prometheus/New-Features/New-Features-in-Prometheus-2-9-0.html</url>
+    <url>/uncategorized/New-Features-in-Prometheus-2-9-0.html</url>
     <content><![CDATA[<p>Prometheus <a href="https://github.com/prometheus/prometheus/releases/tag/v2.9.0" target="_blank" rel="noopener">2.9.0</a> 现在(2019.04.15)已经发布，在上个月的 <a href="http://erdong.site/Prometheus/New-Features/New-Features-in-Prometheus-2-8-0.html">2.8.0</a> 之后又进行了一些修正和改进。</p>
 <a id="more"></a>
 
@@ -654,19 +460,10 @@
 </ul>
 <p>======================<br>Erdong, A Linux user !</p>
 ]]></content>
-      <categories>
-        <category>Prometheus</category>
-        <category>New-Features</category>
-      </categories>
-      <tags>
-        <tag>Prometheus</tag>
-        <tag>Features</tag>
-        <tag>release</tag>
-      </tags>
   </entry>
   <entry>
     <title>三种方法解决域名解析的主机记录冲突</title>
-    <url>/article/cname-and-mx-conflicts.html</url>
+    <url>/uncategorized/cname-and-mx-conflicts.html</url>
     <content><![CDATA[<p>申请域名用作网站访问添加了 CNAME 主机记录以后，又想添加邮箱的 MX 的主机记录，或者想添加 CDN 的 CNAME 记录，这时候经常会遇到主机记录冲突的问题导致添加失败。接下来我们详细分析一下。</p>
 <a id="more"></a>
 
@@ -761,18 +558,10 @@
 </ul>
 <p>======================<br>Erdong, A Linux user !</p>
 ]]></content>
-      <categories>
-        <category>article</category>
-      </categories>
-      <tags>
-        <tag>域名解析</tag>
-        <tag>CNAME</tag>
-        <tag>MX</tag>
-      </tags>
   </entry>
   <entry>
     <title>网易博客要关闭了</title>
-    <url>/life/gossip/blog-163-closed.html</url>
+    <url>/uncategorized/blog-163-closed.html</url>
     <content><![CDATA[<p>今天在查找资料时，有一条跳转到了网易的博客，接着就弹出了网易的博客要关闭的提示框，提示公告如下：</p>
 <p><a href="http://blog.163.com/bearer.do" target="_blank" rel="noopener">http://blog.163.com/bearer.do</a></p>
 <p>没想到曾经很大的博客网站就这样要宣布结束了，很是感慨，不知道要说什么。<br> <a id="more"></a> </p>
@@ -780,17 +569,10 @@
 <p>在阿里云的云栖社区写了一年的博客， 在 2020.06.11 关闭了，要迁移到阿里云开发者社区。</p>
 <p>======================<br>Erdong, A Linux user !</p>
 ]]></content>
-      <categories>
-        <category>life</category>
-        <category>gossip</category>
-      </categories>
-      <tags>
-        <tag>blog</tag>
-      </tags>
   </entry>
   <entry>
     <title>Erdong Notes</title>
-    <url>/article/erdong-notes.html</url>
+    <url>/uncategorized/erdong-notes.html</url>
     <content><![CDATA[<p>这里记录我的一些学习笔记和一些发布在其他地方的文章。</p>
 <a id="more"></a>
 
@@ -809,17 +591,10 @@
 </ul>
 <h1 id="Article"><a href="#Article" class="headerlink" title="Article"></a>Article</h1><h2 id="CCF-TF-讲稿整理"><a href="#CCF-TF-讲稿整理" class="headerlink" title="CCF TF 讲稿整理"></a>CCF TF 讲稿整理</h2><p>======================<br>Erdong, A Linux user !</p>
 ]]></content>
-      <categories>
-        <category>article</category>
-      </categories>
-      <tags>
-        <tag>article</tag>
-        <tag>note</tag>
-      </tags>
   </entry>
   <entry>
     <title>CUDA 10.0 安装包浅析</title>
-    <url>/GPU/cuda-introduction.html</url>
+    <url>/uncategorized/cuda-introduction.html</url>
     <content><![CDATA[<p>本文基于最新的 CUDA 10.0 CentOS 7 操作系统的 run 文件安装包来进行解压分析，看看里边都有些什么内容。有些可能遇到的问题放在最后的 FAQ 里了。CUDA 9.x 会和10.0 有一些差别，不过大部分还是比较接近的。</p>
 <p>CUDA 的源代码在 <a href="https://developer.download.nvidia.cn/compute/cuda/opensource/10.0.130/" target="_blank" rel="noopener">https://developer.download.nvidia.cn/compute/cuda/opensource/10.0.130/</a></p>
 <a id="more"></a>
@@ -930,16 +705,10 @@
 <p>在重新执行 run 包即可。</p>
 <p>======================<br>Erdong, A Linux user !</p>
 ]]></content>
-      <categories>
-        <category>GPU</category>
-      </categories>
-      <tags>
-        <tag>cuda</tag>
-      </tags>
   </entry>
   <entry>
     <title>K8S 中的 Grafana 数据持久化</title>
-    <url>/Grafana/grafana-kubernetes-config-persistence.html</url>
+    <url>/uncategorized/grafana-kubernetes-config-persistence.html</url>
     <content><![CDATA[<p>自从将 Grafana 部署到 K8S 中以后，带来了很多的便利性，但是也有一个问题一直困扰着我，那就是 Grafana 中的数据无法持久化，经常配置好的 Datasource 和 Dashboards 在运行一段时间后就丢失了，有时候刚要排查问题，结果什么都找不到了。我们都知道，Grafana 在启动后，数据会存储到数据库中，包括 datasource 的配置，Dashboards 的配置。要解决 Grafana 的数据持久化可以从 2 个方面来进行思考并且解决。</p>
 <a id="more"></a>
 <p>方案一：</p>
@@ -965,12 +734,6 @@
 <p>======================<br>由于无法及时收到评论内容，所以关闭评论功能。<br>大家有问题欢迎发邮件到 <a href="mailto:erdong@mail.erdong.site">erdong@mail.erdong.site</a> ，或者 <a href="https://github.com/erdong/erdong.github.io/issues" target="_blank" rel="noopener">https://github.com/erdong/erdong.github.io/issues</a> 提 Issue ，我会及时回复。</p>
 <p>======================<br>Erdong, A Linux user !</p>
 ]]></content>
-      <categories>
-        <category>Grafana</category>
-      </categories>
-      <tags>
-        <tag>Grafana</tag>
-      </tags>
   </entry>
   <entry>
     <title>Hello World</title>
@@ -986,7 +749,7 @@
   </entry>
   <entry>
     <title>IB 速率 SDR DDR QDR FDR EDR 缩写介绍</title>
-    <url>/tools/ib-speed.html</url>
+    <url>/uncategorized/ib-speed.html</url>
     <content><![CDATA[<p>InfiniBand（直译为“无限带宽”技术，缩写为IB）是一个用于高性能计算的计算机网络通信标准，它具有极高的吞吐量和极低的延迟，用于计算机与计算机之间的数据互连。InfiniBand也用作服务器与存储系统之间的直接或交换互连，以及存储系统之间的互连。</p>
 <a id="more"></a>
 
@@ -996,16 +759,10 @@
 <p><a href="https://mp.weixin.qq.com/s/6ifysnYjZptorr3RBv9ASw" target="_blank" rel="noopener">一文掌握InfiniBand技术和架构</a></p>
 <p>======================<br>Erdong, A Linux user !</p>
 ]]></content>
-      <categories>
-        <category>tools</category>
-      </categories>
-      <tags>
-        <tag>ib</tag>
-      </tags>
   </entry>
   <entry>
     <title>常见 DNS 地址</title>
-    <url>/linux/system/dns-server-ip.html</url>
+    <url>/uncategorized/dns-server-ip.html</url>
     <content><![CDATA[<p>如果您是程序员、系统管理员或任何类型的 IT 工作者，那么您可能有自己最喜欢的用于故障排除的 IP 地址。而且你可能已经用了好几年了。</p>
 <p>这些 ip 可用于:</p>
 <ul>
@@ -1067,17 +824,10 @@
 </ul>
 <p>======================<br>Erdong, A Linux user !</p>
 ]]></content>
-      <categories>
-        <category>linux</category>
-        <category>system</category>
-      </categories>
-      <tags>
-        <tag>DNS</tag>
-      </tags>
   </entry>
   <entry>
     <title>计算机中遇到的单位该怎么换算</title>
-    <url>/linux/system/computer-unit-conversion.html</url>
+    <url>/uncategorized/computer-unit-conversion.html</url>
     <content><![CDATA[<p>在计算机行业经常进行单位换算，这些单位到底该怎么换算，通过本文来说明一下。</p>
 <a id="more"></a>
 
@@ -1129,18 +879,10 @@
 <p>那就是单位里含有 byte 或者 bit 的时候，用 1024 来进行换算。其实按照 IEC 的规定，使用 Mi 和 M 进行区分就不会有这样的歧义和疑惑了。</p>
 <p>======================<br>Erdong, A Linux user !</p>
 ]]></content>
-      <categories>
-        <category>linux</category>
-        <category>system</category>
-      </categories>
-      <tags>
-        <tag>unit</tag>
-        <tag>conversion</tag>
-      </tags>
   </entry>
   <entry>
     <title>Grafana 重置 admin 密码</title>
-    <url>/Grafana/grafana-admin-password-reset.html</url>
+    <url>/uncategorized/grafana-admin-password-reset.html</url>
     <content><![CDATA[<p>Grafana 的使用越来越广泛，在使用过程中经常遇到要重置密码的需求，尤其是 admin 密码，先说常规问题。</p>
 <a id="more"></a>
 
@@ -1176,16 +918,10 @@
 </ul>
 <p>======================<br>Erdong, A Linux user !</p>
 ]]></content>
-      <categories>
-        <category>Grafana</category>
-      </categories>
-      <tags>
-        <tag>Grafana</tag>
-      </tags>
   </entry>
   <entry>
     <title>Kong 介绍</title>
-    <url>/Kong/kong-01.html</url>
+    <url>/uncategorized/kong-01.html</url>
     <content><![CDATA[<h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><p>Kong 是在客户端和（微）服务间转发API通信的API网关，通过插件扩展功能。</p>
 <p>Kong 的官方网站，<a href="https://konghq.com/kong" target="_blank" rel="noopener">https://konghq.com/kong</a><br>Kong 的官方 Github 站点：<a href="https://github.com/kong/kong" target="_blank" rel="noopener">https://github.com/kong/kong</a><br>Kong 有两个主要组件：</p>
 <p>Kong Server ：基于 nginx 的服务器，用来接收 API 请求。<br>Apache Cassandra ：用来存储操作数据。</p>
@@ -1287,16 +1023,10 @@
 <p>======================<br>由于无法及时收到评论内容，所以关闭评论功能。<br>大家有问题欢迎发邮件到 <a href="mailto:erdong@mail.erdong.site">erdong@mail.erdong.site</a> ，或者 <a href="https://github.com/erdong/erdong.github.io/issues" target="_blank" rel="noopener">https://github.com/erdong/erdong.github.io/issues</a> 提 Issue ，我会及时回复。</p>
 <p>======================<br>Erdong, A Linux user !</p>
 ]]></content>
-      <categories>
-        <category>Kong</category>
-      </categories>
-      <tags>
-        <tag>Kong</tag>
-      </tags>
   </entry>
   <entry>
     <title>KongA 介绍</title>
-    <url>/Kong/kong-02.html</url>
+    <url>/uncategorized/kong-02.html</url>
     <content><![CDATA[<p>KongA 是 Kong 的一个 GUI 工具。GitHub 地址是 <a href="https://github.com/pantsel/konga" target="_blank" rel="noopener">https://github.com/pantsel/konga</a> 。</p>
 <a id="more"></a>
 
@@ -1339,17 +1069,10 @@
 <p>======================<br>由于无法及时收到评论内容，所以关闭评论功能。<br>大家有问题欢迎发邮件到 <a href="mailto:erdong@mail.erdong.site">erdong@mail.erdong.site</a> ，或者 <a href="https://github.com/erdong/erdong.github.io/issues" target="_blank" rel="noopener">https://github.com/erdong/erdong.github.io/issues</a> 提 Issue ，我会及时回复。</p>
 <p>======================<br>Erdong, A Linux user !</p>
 ]]></content>
-      <categories>
-        <category>Kong</category>
-      </categories>
-      <tags>
-        <tag>Kong</tag>
-        <tag>KongA</tag>
-      </tags>
   </entry>
   <entry>
     <title>Kong 四大参考说明</title>
-    <url>/Kong/kong-03.html</url>
+    <url>/uncategorized/kong-03.html</url>
     <content><![CDATA[<p>Kong 的官方有很多详细的参考说明，比如配置文件、命令行、Admin API、代理、负载均衡，接下来我们简单看一下，都提供什么内容。</p>
 <p>本文主要基于 Kong 1.3 版本进行描述，如有更新，请查看最新文档。</p>
 <a id="more"></a>
@@ -1438,16 +1161,10 @@
 <p>======================<br>由于无法及时收到评论内容，所以关闭评论功能。<br>大家有问题欢迎发邮件到 <a href="mailto:erdong@mail.erdong.site">erdong@mail.erdong.site</a> ，或者 <a href="https://github.com/erdong/erdong.github.io/issues" target="_blank" rel="noopener">https://github.com/erdong/erdong.github.io/issues</a> 提 Issue ，我会及时回复。</p>
 <p>======================<br>Erdong, A Linux user !</p>
 ]]></content>
-      <categories>
-        <category>Kong</category>
-      </categories>
-      <tags>
-        <tag>Kong</tag>
-      </tags>
   </entry>
   <entry>
     <title>Nginx、OpenResty、Kong 的基本概念和区别联系</title>
-    <url>/Kong/kong-04.html</url>
+    <url>/uncategorized/kong-04.html</url>
     <content><![CDATA[<p>Nginx、OpenRestry、Kong 这三个项目关系比较紧密： </p>
 <ul>
 <li>Nginx 是模块化设计的反向代理软件，C语言开发； </li>
@@ -1481,16 +1198,10 @@
 <p>======================<br>由于无法及时收到评论内容，所以关闭评论功能。<br>大家有问题欢迎发邮件到 <a href="mailto:erdong@mail.erdong.site">erdong@mail.erdong.site</a> ，或者 <a href="https://github.com/erdong/erdong.github.io/issues" target="_blank" rel="noopener">https://github.com/erdong/erdong.github.io/issues</a> 提 Issue ，我会及时回复。</p>
 <p>======================<br>Erdong, A Linux user !</p>
 ]]></content>
-      <categories>
-        <category>Kong</category>
-      </categories>
-      <tags>
-        <tag>Kong</tag>
-      </tags>
   </entry>
   <entry>
     <title>Kong 的健康检查和监控</title>
-    <url>/Kong/kong-05.html</url>
+    <url>/uncategorized/kong-05.html</url>
     <content><![CDATA[<p>Kong 的健康检查和监控</p>
 <p>您可以让 Kong 代理的 API 使用 ring-balancer ， 通过添加包含一个或多个目标实体的upstream 实体来配置，每个目标指向不同的IP地址(或主机名)和端口。ring-balancer 将在不同的target之间平衡负载，并基于 uptream 配置对目标执行健康检查，使它们成为健康或不健康的，无论它们是否响应，ring-balancer 将只把流量路由到健康的target。</p>
 <a id="more"></a>
@@ -1543,17 +1254,10 @@
 <p>======================<br>由于无法及时收到评论内容，所以关闭评论功能。<br>大家有问题欢迎发邮件到 <a href="mailto:erdong@mail.erdong.site">erdong@mail.erdong.site</a> ，或者 <a href="https://github.com/erdong/erdong.github.io/issues" target="_blank" rel="noopener">https://github.com/erdong/erdong.github.io/issues</a> 提 Issue ，我会及时回复。</p>
 <p>======================<br>Erdong, A Linux user !</p>
 ]]></content>
-      <categories>
-        <category>Kong</category>
-      </categories>
-      <tags>
-        <tag>Kong</tag>
-        <tag>Heath Check</tag>
-      </tags>
   </entry>
   <entry>
     <title>Kong 的集群怎么用</title>
-    <url>/Kong/kong-06.html</url>
+    <url>/uncategorized/kong-06.html</url>
     <content><![CDATA[<p>Kong 集群允许您通过添加更多的机器来处理更多的传入请求来横向扩展系统。它们将共享相同的配置，因为它们指向相同的数据库。指向相同数据存储的 Kong 节点将属于相同的 Kong 集群。</p>
 <p>您需要在Kong集群前面安装一个负载平衡器，以便在可用节点之间分配流量。</p>
 <a id="more"></a>
@@ -1599,17 +1303,10 @@
 <p>======================<br>由于无法及时收到评论内容，所以关闭评论功能。<br>大家有问题欢迎发邮件到 <a href="mailto:erdong@mail.erdong.site">erdong@mail.erdong.site</a> ，或者 <a href="https://github.com/erdong/erdong.github.io/issues" target="_blank" rel="noopener">https://github.com/erdong/erdong.github.io/issues</a> 提 Issue ，我会及时回复。</p>
 <p>======================<br>Erdong, A Linux user !</p>
 ]]></content>
-      <categories>
-        <category>Kong</category>
-      </categories>
-      <tags>
-        <tag>Kong</tag>
-        <tag>cluster</tag>
-      </tags>
   </entry>
   <entry>
     <title>limit 详解</title>
-    <url>/linux/system/limit-detailed-introduction.html</url>
+    <url>/uncategorized/limit-detailed-introduction.html</url>
     <content><![CDATA[<p>今天在使用 Prometheus 时遇到了问题，报错  err=”list block dirs /prometheus/data/: open /prometheus/data/: too many open files”, 经查询发现，系统默认的普通用户系统最大打开文件数为 1024，Prometheus 数据太多导致该问题，将普通用户的这个限制适当的上调即可。</p>
 <p>经过这个事情发现，对 limit 的掌握并不熟悉，特意搜索了 limit 的相关信息整理在这里，学习以及备忘。</p>
 <p>环境说明：</p>
@@ -1703,18 +1400,10 @@
 </ul>
 <p>======================<br>Erdong, A Linux user !</p>
 ]]></content>
-      <categories>
-        <category>linux</category>
-        <category>system</category>
-      </categories>
-      <tags>
-        <tag>linux</tag>
-        <tag>limit</tag>
-      </tags>
   </entry>
   <entry>
     <title>linux 的下载工具</title>
-    <url>/tools/linux-download-tool.html</url>
+    <url>/uncategorized/linux-download-tool.html</url>
     <content><![CDATA[<p>有时候在 linux 下需要下载一些镜像，但是文件较大，使用 wget 要下载很长时间，这个时候如果有 BT 种子文件可以加速下载。</p>
 <a id="more"></a>
 
@@ -1728,16 +1417,10 @@
 <p>10种下载工具的简单说明<br><a href="https://linux.cn/article-7369-1.html" target="_blank" rel="noopener">https://linux.cn/article-7369-1.html</a></p>
 <p>======================<br>Erdong, A Linux user !</p>
 ]]></content>
-      <categories>
-        <category>tools</category>
-      </categories>
-      <tags>
-        <tag>torrent</tag>
-      </tags>
   </entry>
   <entry>
     <title>MAC OS 下 HomeBrew 使用</title>
-    <url>/macos/macos-homebrew-introduction.html</url>
+    <url>/uncategorized/macos-homebrew-introduction.html</url>
     <content><![CDATA[<p>Homebrew 是一个很方便的包管理器，主要用来管理 mac 操作系统的软件包，现在也支持 linux 操作系统的包管理以及 Windows 10 Subsystem for Linux。官网是 <a href="https://brew.sh" target="_blank" rel="noopener">https://brew.sh</a>  。</p>
 <a id="more"></a>
 <p>Homebrew 通过 Tap 方式定义源，官方默认提供了 brew、homebrew-core 、homebrew-cask 、homebrew-bottles 四个常用的源（仓库），用户也可以通过 Tap 定义自己的源。</p>
@@ -1771,17 +1454,10 @@
 <p>======================<br>由于无法及时收到评论内容，所以关闭评论功能。<br>大家有问题欢迎发邮件到 <a href="mailto:erdong@mail.erdong.site">erdong@mail.erdong.site</a> ，或者 <a href="https://github.com/erdong/erdong.github.io/issues" target="_blank" rel="noopener">https://github.com/erdong/erdong.github.io/issues</a> 提 Issue ，我会及时回复。</p>
 <p>======================<br>Erdong, A Linux user !</p>
 ]]></content>
-      <categories>
-        <category>macos</category>
-      </categories>
-      <tags>
-        <tag>macos</tag>
-        <tag>brew</tag>
-      </tags>
   </entry>
   <entry>
     <title>发布一本用 GitBook 编辑的书</title>
-    <url>/gitbook/gitbook-release-book.html</url>
+    <url>/uncategorized/gitbook-release-book.html</url>
     <content><![CDATA[<p>在上一篇的文章里，我们已经写好了一本名叫 <code>erdong-first-book</code> 的书，但是在本地浏览很不方便，我们希望放到网络上，可以随时、方便的访问这个书籍。这个需求可以使用多种方式来实现，比如第一种，可以通过 GitBook 官网来发布这本书，GitBook 除了是一个电子书的工具以为，自身也有一个网址，在该网站注册成为会员后，可以发布自己的电子书，并且可以和 GitHub 进行关联。</p>
 <p>除了使用 GitBook 官网以外，可以直接将电子书放在 GitHub 上，通过 GitHub Pages 来发布这本书。</p>
 <a id="more"></a>
@@ -1809,16 +1485,10 @@
 <p>======================<br>由于无法及时收到评论内容，所以关闭评论功能。<br>大家有问题欢迎发邮件到 <a href="mailto:erdong@mail.erdong.site">erdong@mail.erdong.site</a> ，或者 <a href="https://github.com/erdong/erdong.github.io/issues" target="_blank" rel="noopener">https://github.com/erdong/erdong.github.io/issues</a> 提 Issue ，我会及时回复。</p>
 <p>======================<br>Erdong, A Linux user !</p>
 ]]></content>
-      <categories>
-        <category>gitbook</category>
-      </categories>
-      <tags>
-        <tag>gitbook</tag>
-      </tags>
   </entry>
   <entry>
     <title>解决 EXT4 使用无法挂载</title>
-    <url>/linux/system/ext4-error-loading-journal.html</url>
+    <url>/uncategorized/ext4-error-loading-journal.html</url>
     <content><![CDATA[<h1 id="现象"><a href="#现象" class="headerlink" title="现象"></a>现象</h1><p>使用新版本的操作系统自带的文件系统格式化工具进行分区格式化以后，在较低的操作系统版本上会有提示，提示如下：</p>
 <a id="more"></a>
 
@@ -1903,17 +1573,10 @@
 <p>如果无法预知操作系统，那么在实际使用中遇到了问题，可以查找是哪个新的特性导致的该问题，尝试移除这个文件系统的特性，之后就可以正常使用了。但是贸然移除某个特性，可能会导致磁盘上的数据丢失，这个应该做过充分的调研确认以后再操作。</p>
 <p>======================<br>Erdong, A Linux user !</p>
 ]]></content>
-      <categories>
-        <category>linux</category>
-        <category>system</category>
-      </categories>
-      <tags>
-        <tag>ext4</tag>
-      </tags>
   </entry>
   <entry>
     <title>MinIO 分布式集群搭建</title>
-    <url>/minio/minio-cluster.html</url>
+    <url>/uncategorized/minio-cluster.html</url>
     <content><![CDATA[<h1 id="MinIO-分布式集群搭建"><a href="#MinIO-分布式集群搭建" class="headerlink" title="MinIO 分布式集群搭建"></a>MinIO 分布式集群搭建</h1><p>分布式 Minio 可以让你将多块硬盘（甚至在不同的机器上）组成一个对象存储服务。由于硬盘分布在不同的节点上，分布式 Minio 避免了单点故障。</p>
 <p>Minio 分布式模式可以搭建一个高可用的对象存储服务，你可以使用这些存储设备，而不用考虑其真实物理位置。</p>
 <a id="more"></a>
@@ -1950,17 +1613,10 @@
 <p>======================<br>由于无法及时收到评论内容，所以关闭评论功能。<br>大家有问题欢迎发邮件到 <a href="mailto:erdong@mail.erdong.site">erdong@mail.erdong.site</a> ，或者 <a href="https://github.com/erdong/erdong.github.io/issues" target="_blank" rel="noopener">https://github.com/erdong/erdong.github.io/issues</a> 提 Issue ，我会及时回复。</p>
 <p>======================<br>Erdong, A Linux user !</p>
 ]]></content>
-      <categories>
-        <category>minio</category>
-      </categories>
-      <tags>
-        <tag>cluster</tag>
-        <tag>minio</tag>
-      </tags>
   </entry>
   <entry>
     <title>用 GitBook 创建一本书</title>
-    <url>/gitbook/gitbook-create-book.html</url>
+    <url>/uncategorized/gitbook-create-book.html</url>
     <content><![CDATA[<h1 id="用-GitBook-创建一本书"><a href="#用-GitBook-创建一本书" class="headerlink" title="用 GitBook 创建一本书"></a>用 GitBook 创建一本书</h1><p>gitbook 首先是一个软件，它使用 Git 和 Markdown 来编排书本，如果你没有听过 Git 和 Markdown，那么 gitbook 可能不适合你直接入手，你需要先去学习 Git 和 Markdown。Git 是一个版本控制工具，Markdown 是一个文本编辑语法，基本的使用大概几个小时就可以都学会了，并不复杂。</p>
 <a id="more"></a>
 <p>这是 gitbook 项目主页上对 gitbook 的定义。</p>
@@ -2006,16 +1662,10 @@
 <p>======================<br>由于无法及时收到评论内容，所以关闭评论功能。<br>大家有问题欢迎发邮件到 <a href="mailto:erdong@mail.erdong.site">erdong@mail.erdong.site</a> ，或者 <a href="https://github.com/erdong/erdong.github.io/issues" target="_blank" rel="noopener">https://github.com/erdong/erdong.github.io/issues</a> 提 Issue ，我会及时回复。</p>
 <p>======================<br>Erdong, A Linux user !</p>
 ]]></content>
-      <categories>
-        <category>gitbook</category>
-      </categories>
-      <tags>
-        <tag>gitbook</tag>
-      </tags>
   </entry>
   <entry>
     <title>MinIO 参数解析与限制</title>
-    <url>/minio/minio-parameter-and-limit.html</url>
+    <url>/uncategorized/minio-parameter-and-limit.html</url>
     <content><![CDATA[<h1 id="MinIO-参数解析与限制"><a href="#MinIO-参数解析与限制" class="headerlink" title="MinIO 参数解析与限制"></a>MinIO 参数解析与限制</h1><p>MinIO server 在默认情况下会将所有配置信息存到 <code>${HOME}/.minio/config.json</code> 文件中。 以下部分提供每个字段的详细说明以及如何自定义它们。一个完整的 config.json 在 <a href="https://raw.githubusercontent.com/minio/minio/master/docs/config/config.sample.json" target="_blank" rel="noopener">这里</a></p>
 <a id="more"></a>
 <p>默认的配置目录是 <code>${HOME}/.minio</code>，你可以使用 <code>--config-dir</code> 选项指定新的路径覆盖默认的路径。MinIO server 在首次启动时会生成一个新的 config.json ，里面带有自动生成的访问凭据。</p>
@@ -2161,16 +1811,10 @@
 <p>======================<br>由于无法及时收到评论内容，所以关闭评论功能。<br>大家有问题欢迎发邮件到 <a href="mailto:erdong@mail.erdong.site">erdong@mail.erdong.site</a> ，或者 <a href="https://github.com/erdong/erdong.github.io/issues" target="_blank" rel="noopener">https://github.com/erdong/erdong.github.io/issues</a> 提 Issue ，我会及时回复。</p>
 <p>======================<br>Erdong, A Linux user !</p>
 ]]></content>
-      <categories>
-        <category>minio</category>
-      </categories>
-      <tags>
-        <tag>minio</tag>
-      </tags>
   </entry>
   <entry>
     <title>MinIO 简介和搭建</title>
-    <url>/minio/minio-introduction.html</url>
+    <url>/uncategorized/minio-introduction.html</url>
     <content><![CDATA[<h1 id="MinIO-搭建"><a href="#MinIO-搭建" class="headerlink" title="MinIO 搭建"></a>MinIO 搭建</h1><p>MinIO 是一个基于 Apache License v2.0 开源协议的对象存储服务。它兼容亚马逊 S3 云存储服务接口，非常适合于存储大容量非结构化的数据，例如图片、视频、日志文件、备份数据和容器/虚拟机镜像等，而一个对象文件可以是任意大小，从几 kb 到最大 5T 不等。</p>
 <a id="more"></a>
 <p>MinIO 是一个非常轻量的服务,可以很简单的和其他应用的结合，类似 NodeJS, Redis 或者 MySQL。</p>
@@ -2251,16 +1895,10 @@
 <h1 id="end"><a href="#end" class="headerlink" title="end"></a>end</h1><p>======================<br>由于无法及时收到评论内容，所以关闭评论功能。<br>大家有问题欢迎发邮件到 <a href="mailto:erdong@mail.erdong.site">erdong@mail.erdong.site</a> ，或者 <a href="https://github.com/erdong/erdong.github.io/issues" target="_blank" rel="noopener">https://github.com/erdong/erdong.github.io/issues</a> 提 Issue ，我会及时回复。</p>
 <p>======================<br>Erdong, A Linux user !</p>
 ]]></content>
-      <categories>
-        <category>minio</category>
-      </categories>
-      <tags>
-        <tag>minio</tag>
-      </tags>
   </entry>
   <entry>
     <title>公告-20190809</title>
-    <url>/notice/notice-20190809.html</url>
+    <url>/uncategorized/notice-20190809.html</url>
     <content><![CDATA[<p> 最近有一些事情和大家说一下，大概也就是 2 点吧。</p>
 <p>1、请假：最近事情有点多，weekly 的每周分享停更几周。目前最新的更新是 第 29 周分享，我请假到第 35 周吧，第 36 周开始正常更新。</p>
 <p>2、关于评论：我之前写文章聊过微信公众号的留言评论功能，最近我在业余时间翻看了我之前的文章，发现有读者给我在我的文章下留言了，但是我使用的留言系统没有给我任何提示，错过了和大家交流的机会。我仔细思考了这个流程发现，当前使用的评论系统可能是存在一些问题，所以我决定先关闭评论功能，等以后找到合适的工具了再开启。这段时间大家有问题可以给我发邮件或者在 GitHub 上留言，感谢大家的支持。</p>
@@ -2276,16 +1914,10 @@
 <p>======================<br>由于无法及时收到评论内容，所以关闭评论功能。<br>大家有问题欢迎发邮件到 <a href="mailto:erdong@mail.erdong.site">erdong@mail.erdong.site</a> ，或者 <a href="https://github.com/erdong/erdong.github.io/issues" target="_blank" rel="noopener">https://github.com/erdong/erdong.github.io/issues</a> 提 Issue ，我会及时回复。</p>
 <p>======================<br>Erdong, A Linux user !</p>
 ]]></content>
-      <categories>
-        <category>notice</category>
-      </categories>
-      <tags>
-        <tag>notice</tag>
-      </tags>
   </entry>
   <entry>
     <title>OpenVPN linux 客户端安装使用</title>
-    <url>/tools/openvpn-client-use.html</url>
+    <url>/uncategorized/openvpn-client-use.html</url>
     <content><![CDATA[<h1 id="openVPN-linux-客户端安装使用"><a href="#openVPN-linux-客户端安装使用" class="headerlink" title="openVPN linux 客户端安装使用"></a>openVPN linux 客户端安装使用</h1><a id="more"></a>
 
 <h1 id="安装软件"><a href="#安装软件" class="headerlink" title="安装软件"></a>安装软件</h1><p>安装openssl和lzo，lzo用于压缩通讯数据加快传输速度</p>
@@ -2308,16 +1940,10 @@
 <p>为了使用简单，可以把该进程放在后台运行，或者使用 supervisor 来进行守护，增加易用性和可靠性。</p>
 <p>======================<br>Erdong, A Linux user !</p>
 ]]></content>
-      <categories>
-        <category>tools</category>
-      </categories>
-      <tags>
-        <tag>openvpn</tag>
-      </tags>
   </entry>
   <entry>
     <title>Parted 创建 GPT 分区</title>
-    <url>/tools/parted-create-gpt-partition.html</url>
+    <url>/uncategorized/parted-create-gpt-partition.html</url>
     <content><![CDATA[<p>对于磁盘的分区表 MBR与GPT区别。<br>MBR：MBR分区表(即主引导记录)大家都很熟悉，是过去我们使用windows时常用的。<br>所支持的最大卷：2T，而且对分区有限制：最多4个主分区或3个主分区加一个扩展分区</p>
 <p>GPT： GPT（即GUID分区表）。是源自EFI标准的一种较新的磁盘分区表结构的标准，是未来磁盘分区的主要形式。与MBR分区方式相比，具有如下优点。</p>
 <a id="more"></a>
@@ -2378,19 +2004,10 @@
 <p><a href="https://rainbow.chard.org/2013/01/30/how-to-align-partitions-for-best-performance-using-parted/" target="_blank" rel="noopener">https://rainbow.chard.org/2013/01/30/how-to-align-partitions-for-best-performance-using-parted/</a></p>
 <p>======================<br>Erdong, A Linux user !</p>
 ]]></content>
-      <categories>
-        <category>tools</category>
-      </categories>
-      <tags>
-        <tag>parted</tag>
-        <tag>fdisk</tag>
-        <tag>GPT</tag>
-        <tag>MBR</tag>
-      </tags>
   </entry>
   <entry>
     <title>【翻译】时序数据库为什么选 Prometheus</title>
-    <url>/Prometheus/guide/prometheus-comparison-tsdb.html</url>
+    <url>/uncategorized/prometheus-comparison-tsdb.html</url>
     <content><![CDATA[<h1 id="Prometheus-与-Graphite"><a href="#Prometheus-与-Graphite" class="headerlink" title="Prometheus 与 Graphite"></a>Prometheus 与 Graphite</h1><h2 id="范围"><a href="#范围" class="headerlink" title="范围"></a>范围</h2><p>Graphite 专注于成为一个具有查询语言和绘图功能的被动时间序列数据库。任何其他问题都由外部组件处理。</p>
 <p>Prometheus 是一个完整的监控和趋势系统，包括内置和活动的抓取、存储、查询、绘图和基于时间序列数据的报警。它知道监控应该是什么样子(监控点应该存在，时间序列模式意味着什么问题，等等)，并积极地寻找错误。</p>
 <a id="more"></a>
@@ -2464,22 +2081,10 @@
 <p>欢迎访问网站 <a href="https://erdong.site">https://erdong.site</a> 来获取更多内容。</p>
 <p>======================<br>Erdong, A Linux user !</p>
 ]]></content>
-      <categories>
-        <category>Prometheus</category>
-        <category>guide</category>
-      </categories>
-      <tags>
-        <tag>prometheus</tag>
-        <tag>OpenTSDB</tag>
-        <tag>InfluxDB</tag>
-        <tag>Graphite</tag>
-        <tag>Nagios</tag>
-        <tag>Sensu</tag>
-      </tags>
   </entry>
   <entry>
     <title>Prometheus 删除指定 Metric</title>
-    <url>/prometheus/prometheus-delete-metrics.html</url>
+    <url>/uncategorized/prometheus-delete-metrics.html</url>
     <content><![CDATA[<p>Prometheus 发布以后，很长的一段时间里，是无法删除指定的 Metric 。如果你在某次测试中，有一些 Metric 的名称或者值有问题，那么你没有任何办法及时处理，只能等待数据的时间到了以后自动删除。我一度以为直到现在也是这样，最近在翻看 Prometheus 的官方文档的时候发现，Prometheus 在 2.0 版本以后已经提供了一个简单的管理接口，可以用来删除这些坏 Metric 数据。</p>
 <a id="more"></a>
 <p>下面我们来一起看一下 Prometheus 的管理 API 接口，官方到现在一共提供了三个接口，对应的分别是快照功能、数据删除功能、数据清理功能，想要使用 API 需要先添加启动参数 <code>--web.enable-admin-api</code> 打开这个接口，默认这个接口是关闭的。</p>
@@ -2522,16 +2127,10 @@
 <p>======================<br>由于无法及时收到评论内容，所以关闭评论功能。<br>大家有问题欢迎发邮件到 <a href="mailto:erdong@mail.erdong.site">erdong@mail.erdong.site</a> ，或者 <a href="https://github.com/erdong/erdong.github.io/issues" target="_blank" rel="noopener">https://github.com/erdong/erdong.github.io/issues</a> 提 Issue ，我会及时回复。</p>
 <p>======================<br>Erdong, A Linux user !</p>
 ]]></content>
-      <categories>
-        <category>prometheus</category>
-      </categories>
-      <tags>
-        <tag>prometheus</tag>
-      </tags>
   </entry>
   <entry>
     <title>【转载】Prometheus 不完全避坑指南</title>
-    <url>/Prometheus/guide/prometheus-incomplete-guide.html</url>
+    <url>/uncategorized/prometheus-incomplete-guide.html</url>
     <content><![CDATA[<p>Prometheus 是一个开源监控系统，它本身已经成为了云原生中指标监控的事实标准，几乎所有 k8s 的核心组件以及其它云原生系统都以 Prometheus 的指标格式输出自己的运行时监控信息。我在工作中也比较深入地使用过 Prometheus，最大的感受就是它非常容易维护，突出一个简单省心成本低。当然，这当中也免不了踩过一些坑，下面就总结一下。</p>
 <blockquote>
 <p>假如你没有用过 Prometheus，建议先看一遍 官方文档</p>
@@ -2582,17 +2181,10 @@
 <p>原文链接： <a href="https://aleiwu.com/post/prometheus-bp/" target="_blank" rel="noopener">https://aleiwu.com/post/prometheus-bp/</a></p>
 <p>======================<br>Erdong, A Linux user !</p>
 ]]></content>
-      <categories>
-        <category>Prometheus</category>
-        <category>guide</category>
-      </categories>
-      <tags>
-        <tag>Prometheus</tag>
-      </tags>
   </entry>
   <entry>
     <title>Prometheus 安装</title>
-    <url>/Prometheus/notes/prometheus-install.html</url>
+    <url>/uncategorized/prometheus-install.html</url>
     <content><![CDATA[<p>Prometheus是一个监控平台，它通过抓取这些目标主机上采集器暴露的指标来展示监控数据。本文介绍如何安装、配置和监控 Prometheus。你需要下载安装 Prometheus 并且安装 Exporter，这些工具采集了主机和对应服务的时间序列数据。我们的第一个 Exporter 是 Prometheus 本身，它提供了关于内存使用、垃圾收集等各种各样的主机级指标。</p>
 <a id="more"></a>
 <h1 id="下载-Prometheus"><a href="#下载-Prometheus" class="headerlink" title="下载 Prometheus"></a>下载 Prometheus</h1><p>首先下载最新版本的 Prometheus 然后解压，下载地址如下：</p>
@@ -2663,17 +2255,10 @@
 <p>大家根据自己需求取用、修改。</p>
 <p>======================<br>Erdong, A Linux user !</p>
 ]]></content>
-      <categories>
-        <category>Prometheus</category>
-        <category>notes</category>
-      </categories>
-      <tags>
-        <tag>Prometheus</tag>
-      </tags>
   </entry>
   <entry>
     <title>Prometheus 简介</title>
-    <url>/Prometheus/notes/prometheus-introduction.html</url>
+    <url>/uncategorized/prometheus-introduction.html</url>
     <content><![CDATA[<p>Prometheus 是一个开源的系统监控和警报工具，最初是在 SoundCloud 上构建的。自2012年启动以来，许多公司和组织都采用了 Prometheus，该项目拥有非常活跃的开发人员和用户社区。它现在是一个独立的开源项目，独立于任何公司进行维护。为了强调这一点，并阐明该项目的治理结构，Prometheus 于2016年加入 CNCF （云原生计算基金会），成为继 Kubernetes 之后的第二个托管项目。2018 年 8 月 9 日，CNCF 宣布开放源代码监控工具 Prometheus 已从孵化状态进入毕业状态。</p>
 <a id="more"></a>
 <h1 id="特性"><a href="#特性" class="headerlink" title="特性"></a>特性</h1><p>Prometheus 的主要特性有：</p>
@@ -2699,13 +2284,6 @@
 <p>关于日志类的监控，请使用其他日志系统，比如 Grafana 的 Loki ，可以在 Grafana 中进行展示。Loki 目前还在测试阶段，可以进行尝试，请在稳定后再用于生产系统。</p>
 <p>======================<br>Erdong, A Linux user !</p>
 ]]></content>
-      <categories>
-        <category>Prometheus</category>
-        <category>notes</category>
-      </categories>
-      <tags>
-        <tag>Prometheus</tag>
-      </tags>
   </entry>
   <entry>
     <title>Prometheus 由于时间不同步导致数据不显示</title>
@@ -2724,14 +2302,10 @@
 <p>不确定 Grafana 和 Prometheus 的这两个是值是偶然相同还是有必然联系，留待以后验证。</p>
 <p>======================<br>Erdong, A Linux user !</p>
 ]]></content>
-      <tags>
-        <tag>prometheus</tag>
-        <tag>time</tag>
-      </tags>
   </entry>
   <entry>
     <title>QDS01 Grafana</title>
-    <url>/QDS/qds01.html</url>
+    <url>/uncategorized/qds01.html</url>
     <content><![CDATA[<p>QDS （Quick Deployment Series）快速的部署一个软件。这次我们来部署 Grafana 。</p>
 <a id="more"></a>
 
@@ -2750,17 +2324,10 @@
 <p>如果有防火墙，请放开对应端口。</p>
 <p>======================<br>Erdong, A Linux user !</p>
 ]]></content>
-      <categories>
-        <category>QDS</category>
-      </categories>
-      <tags>
-        <tag>Grafana</tag>
-        <tag>QDS</tag>
-      </tags>
   </entry>
   <entry>
     <title>QDS02 Docker</title>
-    <url>/QDS/qds02.html</url>
+    <url>/uncategorized/qds02.html</url>
     <content><![CDATA[<p>QDS （Quick Deployment Series）快速的部署一个软件。这次我们来部署 Docker 。</p>
 <a id="more"></a>
 
@@ -2786,17 +2353,10 @@
 
 <p>======================<br>Erdong, A Linux user !</p>
 ]]></content>
-      <categories>
-        <category>QDS</category>
-      </categories>
-      <tags>
-        <tag>QDS</tag>
-        <tag>Docker</tag>
-      </tags>
   </entry>
   <entry>
     <title>QDS03 pip</title>
-    <url>/QDS/qds03.html</url>
+    <url>/uncategorized/qds03.html</url>
     <content><![CDATA[<p>QDS （Quick Deployment Series）快速的部署一个软件。这次我们来部署 pip 。</p>
 <p>pip 是 Python 包管理工具，该工具提供了对Python 包的查找、下载、安装、卸载的功能。<br>pip 官网：<a href="https://pypi.org/project/pip/" target="_blank" rel="noopener">https://pypi.org/project/pip/</a></p>
 <a id="more"></a>
@@ -2819,17 +2379,10 @@
 
 <p>======================<br>Erdong, A Linux user !</p>
 ]]></content>
-      <categories>
-        <category>QDS</category>
-      </categories>
-      <tags>
-        <tag>QDS</tag>
-        <tag>pip</tag>
-      </tags>
   </entry>
   <entry>
     <title>QDS04 TensorFlow</title>
-    <url>/QDS/qds04.html</url>
+    <url>/uncategorized/qds04.html</url>
     <content><![CDATA[<p>QDS （Quick Deployment Series）快速的部署一个软件。这次我们来部署 TensorFlow。</p>
 <a id="more"></a>
 
@@ -2861,17 +2414,10 @@
 <p>可以看到，已经安装了 TensorFlow 的 1.12 版本和安装的路径。</p>
 <p>======================<br>Erdong, A Linux user !</p>
 ]]></content>
-      <categories>
-        <category>QDS</category>
-      </categories>
-      <tags>
-        <tag>QDS</tag>
-        <tag>TensorFlow</tag>
-      </tags>
   </entry>
   <entry>
     <title>QDS05 Prometheus</title>
-    <url>/QDS/qds05.html</url>
+    <url>/uncategorized/qds05.html</url>
     <content><![CDATA[<p>QDS （Quick Deployment Series）快速的部署一个软件。这次我们来部署 Prometheus 。</p>
 <p>Prometheus 有两个意思，一个是时序数据库，另一个是基于时序数据库的监控解决方案。</p>
 <p>我们本次安装特指安装 Prometheus 时序数据库。</p>
@@ -2927,17 +2473,10 @@
 
 <p>======================<br>Erdong, A Linux user !</p>
 ]]></content>
-      <categories>
-        <category>QDS</category>
-      </categories>
-      <tags>
-        <tag>prometheus</tag>
-        <tag>QDS</tag>
-      </tags>
   </entry>
   <entry>
     <title>【翻译】10年博客的经验</title>
-    <url>/article/starting-a-blog.html</url>
+    <url>/uncategorized/starting-a-blog.html</url>
     <content><![CDATA[<p>我21岁，但我写博客已经快10年了。</p>
 <p>我就是这样长大的。</p>
 <a id="more"></a>
@@ -3111,16 +2650,10 @@
 </ul>
 <p>======================<br>Erdong, A Linux user !</p>
 ]]></content>
-      <categories>
-        <category>article</category>
-      </categories>
-      <tags>
-        <tag>blog</tag>
-      </tags>
   </entry>
   <entry>
     <title>Superset 介绍及 docker 安装</title>
-    <url>/tools/superset-introduction.html</url>
+    <url>/uncategorized/superset-introduction.html</url>
     <content><![CDATA[<p>人是视觉动物，要用数据把一个故事讲活，图表是必不可少的。如果你经常看到做数据分析同事，在SQL客户端里执行完查询，把结果复制/粘贴到Excel里再做成图表，那说明你的公司缺少一个可靠的数据可视化平台。数据可视化是Business Intelligence(简称BI)中的核心功能，有许多成熟的解决方案，例如今天要介绍的 Superset 。</p>
 <p>Superset最初是由Airbnb的数据团队开源的，目前已进入Apache Incubator，算是明星级的开源项目。</p>
 <a id="more"></a> 
@@ -3187,17 +2720,10 @@
 </ul>
 <p>======================<br>Erdong, A Linux user !</p>
 ]]></content>
-      <categories>
-        <category>tools</category>
-      </categories>
-      <tags>
-        <tag>superset</tag>
-        <tag>BI</tag>
-      </tags>
   </entry>
   <entry>
     <title>工程师的显示器怎么选</title>
-    <url>/article/two-monitors-or-one-ultrawide.html</url>
+    <url>/uncategorized/two-monitors-or-one-ultrawide.html</url>
     <content><![CDATA[<p>作为计算机工程师，我们想用各种方法来提高我们的生产力，今天我们来看看显示器对生产力的影响。小尺寸的显示器，用户同时打开很多窗口不能全部展示，在窗口之间切换很费时。</p>
 <a id="more"></a>
 
@@ -3233,17 +2759,10 @@
 <p>一个带鱼显示器（21：9）的 30~35 寸是最合适的。</p>
 <p>======================<br>Erdong, A Linux user !</p>
 ]]></content>
-      <categories>
-        <category>article</category>
-      </categories>
-      <tags>
-        <tag>monitor</tag>
-        <tag>ultrawide</tag>
-      </tags>
   </entry>
   <entry>
     <title>使用 vuls 对 CentOS 操作系统安全评估</title>
-    <url>/tools/vuls-tool-introduction.html</url>
+    <url>/uncategorized/vuls-tool-introduction.html</url>
     <content><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>由于某些安全事件的发生，对于系统安全需要进行进行一步的评估，本次主要使用 vuls 工具对日常主要使用的几个版本操作系统对其进行安全基线的建立和系统安全性的评分。</p>
 <a id="more"></a>
 <h1 id="评估工具"><a href="#评估工具" class="headerlink" title="评估工具"></a>评估工具</h1><p>vuls 是一个 Linux/FreeBSD 的无代理漏洞扫描器，使用 go 语言编写。</p>
@@ -3396,16 +2915,10 @@
 </ul>
 <p>======================<br>Erdong, A Linux user !</p>
 ]]></content>
-      <categories>
-        <category>tools</category>
-      </categories>
-      <tags>
-        <tag>vuls</tag>
-      </tags>
   </entry>
   <entry>
     <title>微信公众号如何创建赞赏账户</title>
-    <url>/article/wechat-appreciates.html</url>
+    <url>/uncategorized/wechat-appreciates.html</url>
     <content><![CDATA[<p>开始写微信公众号有一段时间了，经常看到别人的公众号内可以给作者赞赏。如果作者的文章可以收到赞赏也是对作者能力的一种认可。</p>
 <p>翻了翻网站的帮助手册，以及搜索引擎的搜索结果。现在总结一下吧。</p>
 <p>微信公众号平台可能会经常更新，所以现在基于的版本是2018年6月6号以后的赞赏功能。</p>
@@ -3440,16 +2953,10 @@
 <h2 id="赞赏功能"><a href="#赞赏功能" class="headerlink" title="赞赏功能"></a>赞赏功能</h2><p>作者授权公众号后，公众号群发文章可以选择已授权的作者，文章若有勾选“赞赏”读者阅读文章时在底部会有“喜欢作者”选项，读者可以自愿赞赏作者，赞赏的资金平台会结算到开通作者的个人微信号，结算周期为 T+7。作者可以通过“赞赏账户”小程序查看赞赏明细。</p>
 <p>======================<br>Erdong, A Linux user !</p>
 ]]></content>
-      <categories>
-        <category>article</category>
-      </categories>
-      <tags>
-        <tag>wechat</tag>
-      </tags>
   </entry>
   <entry>
     <title>聊聊微信公众号留言</title>
-    <url>/article/wechat-message-board.html</url>
+    <url>/uncategorized/wechat-message-board.html</url>
     <content><![CDATA[<p>在写了半年多微信公众号好以后，上周突然发现，我的微信公众号没有留言功能。起初没什么感觉是读者比较少，想着也没什么人给我留言，后来说自己给自己留个言，看看后台是怎么个操作过程，结果才发现没有这个功能。</p>
 <a id="more"></a>
 <p>刚发现的时候，很是迷惑，也不知道为什么。</p>
@@ -3475,16 +2982,10 @@
 <p>对于我来说，迁移账号我没有带留言功能的账号，有不想使用三方插件。至于其他的渠道，现在读者比较少，等多一些了再考虑。目前来看使用公众号的账号留言也是不错的选择。</p>
 <p>======================<br>Erdong, A Linux user !</p>
 ]]></content>
-      <categories>
-        <category>article</category>
-      </categories>
-      <tags>
-        <tag>wechat</tag>
-      </tags>
   </entry>
   <entry>
     <title>第01周分享</title>
-    <url>/weekly/weekly01.html</url>
+    <url>/uncategorized/weekly01.html</url>
     <content><![CDATA[<p>这里记录过去一周，我看到的值得分享的东西。</p>
 <a id="more"></a>
 
@@ -3506,13 +3007,10 @@
 <p><a href="https://landing.google.com/sre/books/" target="_blank" rel="noopener">https://landing.google.com/sre/books/</a></p>
 <p>======================<br>Erdong, A Linux user !</p>
 ]]></content>
-      <categories>
-        <category>weekly</category>
-      </categories>
   </entry>
   <entry>
     <title>第02周分享</title>
-    <url>/weekly/weekly02.html</url>
+    <url>/uncategorized/weekly02.html</url>
     <content><![CDATA[<p>这里记录过去一周，我看到的值得分享的东西。</p>
 <a id="more"></a>
 
@@ -3526,13 +3024,10 @@
 <p>开源地址 ： <a href="https://github.com/ucloud/netanalysis-sdk-android" target="_blank" rel="noopener">https://github.com/ucloud/netanalysis-sdk-android</a></p>
 <p>======================<br>Erdong, A Linux user !</p>
 ]]></content>
-      <categories>
-        <category>weekly</category>
-      </categories>
   </entry>
   <entry>
     <title>第03周分享</title>
-    <url>/weekly/weekly03.html</url>
+    <url>/uncategorized/weekly03.html</url>
     <content><![CDATA[<p>这里记录过去一周，我看到的值得分享的东西。</p>
 <a id="more"></a>
 
@@ -3552,13 +3047,10 @@
 <p>20% 的程序员不知道有其他 80% 程序员的存在（难道不是每个程序员都用 git？难道不是每个程序员都用 php、pyhon、ruby？都什么年代了，还有人用 .net 或 java？）；同样，80% 程序员也不知道其他 20% 程序员的存在（还有人在下班后去编程做自己的项目？难道不都是用 .net 或 java？）。</p>
 <p>======================<br>Erdong, A Linux user !</p>
 ]]></content>
-      <categories>
-        <category>weekly</category>
-      </categories>
   </entry>
   <entry>
     <title>第04周分享</title>
-    <url>/weekly/weekly04.html</url>
+    <url>/uncategorized/weekly04.html</url>
     <content><![CDATA[<p>这里记录过去一周，我看到的值得分享的东西。</p>
 <a id="more"></a>
 
@@ -3582,13 +3074,10 @@
 <p>作者用简单的实例和清晰的文风向大家介绍了如何高效的在 Github 搜索开源项目，提高大家的搜索效率。</p>
 <p>======================<br>Erdong, A Linux user !</p>
 ]]></content>
-      <categories>
-        <category>weekly</category>
-      </categories>
   </entry>
   <entry>
     <title>第05周分享</title>
-    <url>/weekly/weekly05.html</url>
+    <url>/uncategorized/weekly05.html</url>
     <content><![CDATA[<p>这里记录过去一周，我看到的值得分享的东西。</p>
 <a id="more"></a>
 
@@ -3604,16 +3093,10 @@
 <p>年底很多人喜欢写总结，可是我不知道该总结什么。</p>
 <p>======================<br>Erdong, A Linux user !</p>
 ]]></content>
-      <categories>
-        <category>weekly</category>
-      </categories>
-      <tags>
-        <tag>Newsletter</tag>
-      </tags>
   </entry>
   <entry>
     <title>第06周分享</title>
-    <url>/weekly/weekly06.html</url>
+    <url>/uncategorized/weekly06.html</url>
     <content><![CDATA[<p>这里记录过去一周，我看到的值得分享的东西。</p>
 <a id="more"></a>
 
@@ -3635,13 +3118,10 @@
 <p>Curl 作者 Daniel Stenberg 出品</p>
 <p>======================<br>Erdong, A Linux user !</p>
 ]]></content>
-      <categories>
-        <category>weekly</category>
-      </categories>
   </entry>
   <entry>
     <title>第07周分享</title>
-    <url>/weekly/weekly07.html</url>
+    <url>/uncategorized/weekly07.html</url>
     <content><![CDATA[<p>这里记录过去一周，我看到的值得分享的东西。</p>
 <a id="more"></a>
 
@@ -3651,13 +3131,10 @@
 <p>三本书都是创造 “Clean神话” 的 Bob 大叔撰写，推荐大家阅读。</p>
 <p>======================<br>Erdong, A Linux user !</p>
 ]]></content>
-      <categories>
-        <category>weekly</category>
-      </categories>
   </entry>
   <entry>
     <title>第08周分享</title>
-    <url>/weekly/weekly08.html</url>
+    <url>/uncategorized/weekly08.html</url>
     <content><![CDATA[<p>这里记录过去一周，我看到的值得分享的东西。</p>
 <a id="more"></a>
 
@@ -3673,13 +3150,10 @@
 </ul>
 <p>======================<br>Erdong, A Linux user !</p>
 ]]></content>
-      <categories>
-        <category>weekly</category>
-      </categories>
   </entry>
   <entry>
     <title>第09周分享</title>
-    <url>/weekly/weekly09.html</url>
+    <url>/uncategorized/weekly09.html</url>
     <content><![CDATA[<p>这里记录过去一周，我看到的值得分享的东西。</p>
 <a id="more"></a>
 
@@ -3690,13 +3164,10 @@
 <p>Github 地址<br><a href="https://github.com/mbinary/USTC-CS-Courses-Resource" target="_blank" rel="noopener">https://github.com/mbinary/USTC-CS-Courses-Resource</a></p>
 <p>======================<br>Erdong, A Linux user !</p>
 ]]></content>
-      <categories>
-        <category>weekly</category>
-      </categories>
   </entry>
   <entry>
     <title>第10周分享</title>
-    <url>/weekly/weekly10.html</url>
+    <url>/uncategorized/weekly10.html</url>
     <content><![CDATA[<p>这里记录过去一周，我看到的值得分享的东西。</p>
 <a id="more"></a>
 
@@ -3712,13 +3183,10 @@
 <p>　　当然，Google正在为开发人员调整.dev顶级域名，这可能是为了修复最初获取.dev名称造成的损害。值得一提的是，就像今年早些时候推出的.app顶级域名一样，HTTPS安全性也是默认开启的！那些有需要的朋友，现在就可以行动起来了。</p>
 <p>======================<br>Erdong, A Linux user !</p>
 ]]></content>
-      <categories>
-        <category>weekly</category>
-      </categories>
   </entry>
   <entry>
     <title>第11周分享</title>
-    <url>/weekly/weekly11.html</url>
+    <url>/uncategorized/weekly11.html</url>
     <content><![CDATA[<p>这里记录过去一周，我看到的值得分享的东西。</p>
 <a id="more"></a>
 
@@ -3726,16 +3194,10 @@
 <p>这本书或者能帮你很好的学习。</p>
 <p>======================<br>Erdong, A Linux user !</p>
 ]]></content>
-      <categories>
-        <category>weekly</category>
-      </categories>
-      <tags>
-        <tag>weekly</tag>
-      </tags>
   </entry>
   <entry>
     <title>第12周分享</title>
-    <url>/weekly/weekly12.html</url>
+    <url>/uncategorized/weekly12.html</url>
     <content><![CDATA[<p>这里记录过去一周，我看到的值得分享的东西。</p>
 <a id="more"></a>
 
@@ -3743,16 +3205,10 @@
 <p>上边是官方的介绍，虽然官方定义为 K8s 的监控，应该可以把 Grafana 里的 Prometheus 数据进行展示，目前只有 iOS 版本。</p>
 <p>======================<br>Erdong, A Linux user !</p>
 ]]></content>
-      <categories>
-        <category>weekly</category>
-      </categories>
-      <tags>
-        <tag>weekly</tag>
-      </tags>
   </entry>
   <entry>
     <title>第13周分享</title>
-    <url>/weekly/weekly13.html</url>
+    <url>/uncategorized/weekly13.html</url>
     <content><![CDATA[<p>这里记录过去一周，我看到的值得分享的东西。</p>
 <a id="more"></a>
 
@@ -3760,16 +3216,10 @@
 <h2 id="2-Redox"><a href="#2-Redox" class="headerlink" title="2. Redox"></a>2. <a href="https://www.redox-os.org/" target="_blank" rel="noopener">Redox</a></h2><p>Redox是一个用Rust语言编写的类UNIX操作系统 , 它的目标是把Rust语言的创新带入到一个现代的微内核和全系列的应用程序。</p>
 <p>======================<br>Erdong, A Linux user !</p>
 ]]></content>
-      <categories>
-        <category>weekly</category>
-      </categories>
-      <tags>
-        <tag>weekly</tag>
-      </tags>
   </entry>
   <entry>
     <title>第14周分享</title>
-    <url>/weekly/weekly14.html</url>
+    <url>/uncategorized/weekly14.html</url>
     <content><![CDATA[<p>这里记录过去一周，我看到的值得分享的东西。</p>
 <a id="more"></a>
 
@@ -3780,16 +3230,10 @@
 <h1 id="工具"><a href="#工具" class="headerlink" title="工具"></a>工具</h1><h2 id="1-LayAuto"><a href="#1-LayAuto" class="headerlink" title="1. LayAuto"></a>1. <a href="https://sspai.com/post/4152" target="_blank" rel="noopener">LayAuto</a></h2><p>LayAuto 2.0 版本已经发布，作为一个窗口管理工具，它以解放双手的全自动化的桌面窗口整理和体贴的多分辨率显示器智能适配为卖点，从许多优秀 Mac 窗口管理工具的红海中杀出重围。文中介绍了 layauto 的新功能特点。</p>
 <p>======================<br>Erdong, A Linux user !</p>
 ]]></content>
-      <categories>
-        <category>weekly</category>
-      </categories>
-      <tags>
-        <tag>weekly</tag>
-      </tags>
   </entry>
   <entry>
     <title>第15周分享</title>
-    <url>/weekly/weekly15.html</url>
+    <url>/uncategorized/weekly15.html</url>
     <content><![CDATA[<p>这里记录过去一周，我看到的值得分享的东西。</p>
 <a id="more"></a>
 
@@ -3798,16 +3242,10 @@
 <h1 id="资源"><a href="#资源" class="headerlink" title="资源"></a>资源</h1><h2 id="1-Serverless-FaaS-的现状和未来"><a href="#1-Serverless-FaaS-的现状和未来" class="headerlink" title="1. Serverless/FaaS 的现状和未来"></a>1. <a href="http://jolestar.com/serverless-faas-current-status-and-future/" target="_blank" rel="noopener">Serverless/FaaS 的现状和未来</a></h2><p>这篇文章 Serverless 和 FaaS 说的还比较明白。</p>
 <p>======================<br>Erdong, A Linux user !</p>
 ]]></content>
-      <categories>
-        <category>weekly</category>
-      </categories>
-      <tags>
-        <tag>weekly</tag>
-      </tags>
   </entry>
   <entry>
     <title>第16周分享</title>
-    <url>/weekly/weekly16.html</url>
+    <url>/uncategorized/weekly16.html</url>
     <content><![CDATA[<p>这里记录过去一周，我看到的值得分享的东西。</p>
 <a id="more"></a>
 
@@ -3819,16 +3257,10 @@
 <p>一个高清壁纸网站，有各种高分辨率的图片，还可以针对部分设备型号进行下载。</p>
 <p>======================<br>Erdong, A Linux user !</p>
 ]]></content>
-      <categories>
-        <category>weekly</category>
-      </categories>
-      <tags>
-        <tag>weekly</tag>
-      </tags>
   </entry>
   <entry>
     <title>第17周分享</title>
-    <url>/weekly/weekly17.html</url>
+    <url>/uncategorized/weekly17.html</url>
     <content><![CDATA[<p>这里记录过去一周，我看到的值得分享的东西。</p>
 <a id="more"></a>
 
@@ -3838,16 +3270,10 @@
 <h2 id="4-广东工业大学计算机学院课程"><a href="#4-广东工业大学计算机学院课程" class="headerlink" title="4. 广东工业大学计算机学院课程"></a>4. <a href="https://github.com/brenner8023/gdut-course" target="_blank" rel="noopener">广东工业大学计算机学院课程</a></h2><p>该仓库收集该校从大一到大四各门课程的资料。</p>
 <p>======================<br>Erdong, A Linux user !</p>
 ]]></content>
-      <categories>
-        <category>weekly</category>
-      </categories>
-      <tags>
-        <tag>weekly</tag>
-      </tags>
   </entry>
   <entry>
     <title>第18周分享</title>
-    <url>/weekly/weekly18.html</url>
+    <url>/uncategorized/weekly18.html</url>
     <content><![CDATA[<p>这里记录过去一周，我看到的值得分享的东西。</p>
 <a id="more"></a>
 
@@ -3858,16 +3284,10 @@
 <p>还有一个相似的网站 ：  <a href="http://www.4243.net/" target="_blank" rel="noopener">http://www.4243.net/</a> 。</p>
 <p>======================<br>Erdong, A Linux user !</p>
 ]]></content>
-      <categories>
-        <category>weekly</category>
-      </categories>
-      <tags>
-        <tag>weekly</tag>
-      </tags>
   </entry>
   <entry>
     <title>第19周分享</title>
-    <url>/weekly/weekly19.html</url>
+    <url>/uncategorized/weekly19.html</url>
     <content><![CDATA[<p>这里记录过去一周，我看到的值得分享的东西。</p>
 <a id="more"></a>
 
@@ -3886,16 +3306,10 @@
 <h2 id="2-shields"><a href="#2-shields" class="headerlink" title="2. shields"></a>2. <a href="https://shields.io" target="_blank" rel="noopener">shields</a></h2><p>一个徽章工具，用在很多 Github 的开源项目里，但是不仅仅能用在 Github，可以用在任何你想使用的地方。这篇文章对 shields 有一个基本的介绍。</p>
 <p>======================<br>Erdong, A Linux user !</p>
 ]]></content>
-      <categories>
-        <category>weekly</category>
-      </categories>
-      <tags>
-        <tag>weekly</tag>
-      </tags>
   </entry>
   <entry>
     <title>第20周分享</title>
-    <url>/weekly/weekly20.html</url>
+    <url>/uncategorized/weekly20.html</url>
     <content><![CDATA[<p>这里记录过去一周，我看到的值得分享的东西。</p>
 <a id="more"></a>
 
@@ -3911,16 +3325,10 @@
 <h1 id="资源"><a href="#资源" class="headerlink" title="资源"></a>资源</h1><h2 id="1-kindle电子书分享网"><a href="#1-kindle电子书分享网" class="headerlink" title="1. kindle电子书分享网"></a>1. <a href="https://kindle.51nazhun.pub" target="_blank" rel="noopener">kindle电子书分享网</a></h2><p>一个小网站，以解决找电子书的烦恼，后端基于rails，</p>
 <p>======================<br>Erdong, A Linux user !</p>
 ]]></content>
-      <categories>
-        <category>weekly</category>
-      </categories>
-      <tags>
-        <tag>weekly</tag>
-      </tags>
   </entry>
   <entry>
     <title>第21周分享</title>
-    <url>/weekly/weekly21.html</url>
+    <url>/uncategorized/weekly21.html</url>
     <content><![CDATA[<p>这里记录过去一周，我看到的值得分享的东西。</p>
 <a id="more"></a>
 
@@ -3935,16 +3343,10 @@
 </ul>
 <p>======================<br>Erdong, A Linux user !</p>
 ]]></content>
-      <categories>
-        <category>weekly</category>
-      </categories>
-      <tags>
-        <tag>weekly</tag>
-      </tags>
   </entry>
   <entry>
     <title>第22周分享</title>
-    <url>/weekly/weekly22.html</url>
+    <url>/uncategorized/weekly22.html</url>
     <content><![CDATA[<p>这里记录过去一周，我看到的值得分享的东西。</p>
 <a id="more"></a>
 
@@ -3953,16 +3355,10 @@
 <h1 id="教程"><a href="#教程" class="headerlink" title="教程"></a>教程</h1><h2 id="1-TCP-Traeroute"><a href="#1-TCP-Traeroute" class="headerlink" title="1. TCP Traeroute"></a>1. <a href="https://support.opendns.com/hc/en-us/articles/227989007-How-to-Running-a-TCP-Traceroute" target="_blank" rel="noopener">TCP Traeroute</a></h2><p>该文章介绍了如何在 linux 、MacOS 、window 下如何追踪 TCP 过程。</p>
 <p>======================<br>Erdong, A Linux user !</p>
 ]]></content>
-      <categories>
-        <category>weekly</category>
-      </categories>
-      <tags>
-        <tag>weekly</tag>
-      </tags>
   </entry>
   <entry>
     <title>第23周分享</title>
-    <url>/weekly/weekly23.html</url>
+    <url>/uncategorized/weekly23.html</url>
     <content><![CDATA[<p>这里记录过去一周，我看到的值得分享的东西。</p>
 <a id="more"></a>
 
@@ -3971,16 +3367,10 @@
 <h1 id="资源"><a href="#资源" class="headerlink" title="资源"></a>资源</h1><h2 id="1-MongoDB-教程"><a href="#1-MongoDB-教程" class="headerlink" title="1. MongoDB 教程"></a>1. <a href="https://www.runoob.com/mongodb/mongodb-tutorial.html" target="_blank" rel="noopener">MongoDB 教程</a></h2><p>初次使用 MongoDB 可以使用该教程快速查询了解。</p>
 <p>======================<br>Erdong, A Linux user !</p>
 ]]></content>
-      <categories>
-        <category>weekly</category>
-      </categories>
-      <tags>
-        <tag>weekly</tag>
-      </tags>
   </entry>
   <entry>
     <title>第24周分享</title>
-    <url>/weekly/weekly24.html</url>
+    <url>/uncategorized/weekly24.html</url>
     <content><![CDATA[<p>这里记录过去一周，我看到的值得分享的东西。</p>
 <a id="more"></a>
 
@@ -3989,16 +3379,10 @@
 <h1 id="教程"><a href="#教程" class="headerlink" title="教程"></a>教程</h1><h2 id="1-illustrations"><a href="#1-illustrations" class="headerlink" title="1. illustrations"></a>1. <a href="https://undraw.co/illustrations" target="_blank" rel="noopener">illustrations</a></h2><p>一个插画网站，可以方便的下载该风格的插画，可以自定义颜色，网站会定期更新，用来做 PPT 或者文章插图和合适。</p>
 <p>======================<br>Erdong, A Linux user !</p>
 ]]></content>
-      <categories>
-        <category>weekly</category>
-      </categories>
-      <tags>
-        <tag>weekly</tag>
-      </tags>
   </entry>
   <entry>
     <title>第25周分享</title>
-    <url>/weekly/weekly25.html</url>
+    <url>/uncategorized/weekly25.html</url>
     <content><![CDATA[<p>这里记录过去一周，我看到的值得分享的东西。</p>
 <a id="more"></a>
 
@@ -4009,16 +3393,10 @@
 <h2 id="2-多吉搜索"><a href="#2-多吉搜索" class="headerlink" title="2. 多吉搜索"></a>2. <a href="https://dogedoge.com" target="_blank" rel="noopener">多吉搜索</a></h2><p>一个新的国产搜索引擎，搜索结果比较清爽。</p>
 <p>======================<br>Erdong, A Linux user !</p>
 ]]></content>
-      <categories>
-        <category>weekly</category>
-      </categories>
-      <tags>
-        <tag>weekly</tag>
-      </tags>
   </entry>
   <entry>
     <title>第29周分享</title>
-    <url>/weekly/weekly29.html</url>
+    <url>/uncategorized/weekly29.html</url>
     <content><![CDATA[<p>这里记录过去一周，我看到的值得分享的东西。</p>
 <a id="more"></a>
 
@@ -4031,16 +3409,10 @@
 <p>读者可以咨询，但请不要发布与招聘无关的内容，禁止对公司或岗位进行评论或抱怨。如果有意应聘，请直接与发贴人联系。</p>
 <p>======================<br>Erdong, A Linux user !</p>
 ]]></content>
-      <categories>
-        <category>weekly</category>
-      </categories>
-      <tags>
-        <tag>weekly</tag>
-      </tags>
   </entry>
   <entry>
     <title>第30周分享</title>
-    <url>/weekly/weekly30.html</url>
+    <url>/uncategorized/weekly30.html</url>
     <content><![CDATA[<p>这里记录过去一周，我看到的值得分享的东西。</p>
 <a id="more"></a>
 
@@ -4051,16 +3423,10 @@
 <h1 id="随笔"><a href="#随笔" class="headerlink" title="随笔"></a>随笔</h1><p>前段时间事情太多，导致 weekly 断更了一段时间，最近事情快忙完了，会逐渐的恢复。</p>
 <p>======================<br>Erdong, A Linux user !</p>
 ]]></content>
-      <categories>
-        <category>weekly</category>
-      </categories>
-      <tags>
-        <tag>weekly</tag>
-      </tags>
   </entry>
   <entry>
     <title>第31周分享</title>
-    <url>/weekly/weekly31.html</url>
+    <url>/uncategorized/weekly31.html</url>
     <content><![CDATA[<p>这里记录过去一周，我看到的值得分享的东西。</p>
 <a id="more"></a>
 
@@ -4075,16 +3441,10 @@
 </ul>
 <p>======================<br>Erdong, A Linux user !</p>
 ]]></content>
-      <categories>
-        <category>weekly</category>
-      </categories>
-      <tags>
-        <tag>weekly</tag>
-      </tags>
   </entry>
   <entry>
     <title>第32周分享</title>
-    <url>/weekly/weekly32.html</url>
+    <url>/uncategorized/weekly32.html</url>
     <content><![CDATA[<p>这里记录过去一周，我看到的值得分享的东西。</p>
 <a id="more"></a>
 
@@ -4120,16 +3480,10 @@
 </ul>
 <h2 id="2-Distro-Test"><a href="#2-Distro-Test" class="headerlink" title="2. Distro Test"></a>2. <a href="https://distrotest.net/" target="_blank" rel="noopener">Distro Test</a></h2><h1 id="首发在线操作系统测试网站，网站收录了-200-Linux-发行版操作系统，可以在线体验各个版本的特性，网站通过-noVNC-来提供图形给用户。"><a href="#首发在线操作系统测试网站，网站收录了-200-Linux-发行版操作系统，可以在线体验各个版本的特性，网站通过-noVNC-来提供图形给用户。" class="headerlink" title="首发在线操作系统测试网站，网站收录了 200+ Linux 发行版操作系统，可以在线体验各个版本的特性，网站通过 noVNC 来提供图形给用户。"></a>首发在线操作系统测试网站，网站收录了 200+ Linux 发行版操作系统，可以在线体验各个版本的特性，网站通过 noVNC 来提供图形给用户。</h1><p>Erdong, A Linux user !</p>
 ]]></content>
-      <categories>
-        <category>weekly</category>
-      </categories>
-      <tags>
-        <tag>weekly</tag>
-      </tags>
   </entry>
   <entry>
     <title>第33周分享</title>
-    <url>/weekly/weekly33.html</url>
+    <url>/uncategorized/weekly33.html</url>
     <content><![CDATA[<p>这里记录过去一周，我看到的值得分享的东西。</p>
 <a id="more"></a>
 
@@ -4141,16 +3495,10 @@
 <p>======================<br>由于无法及时收到评论内容，所以关闭评论功能。<br>大家有问题欢迎发邮件到 <a href="mailto:erdong@mail.erdong.site">erdong@mail.erdong.site</a> ，或者 <a href="https://github.com/erdong/erdong.github.io/issues" target="_blank" rel="noopener">https://github.com/erdong/erdong.github.io/issues</a> 提 Issue ，我会及时回复。</p>
 <p>======================<br>Erdong, A Linux user !</p>
 ]]></content>
-      <categories>
-        <category>weekly</category>
-      </categories>
-      <tags>
-        <tag>weekly</tag>
-      </tags>
   </entry>
   <entry>
     <title>第34周分享</title>
-    <url>/weekly/weekly34.html</url>
+    <url>/uncategorized/weekly34.html</url>
     <content><![CDATA[<p>这里记录过去一周，我看到的值得分享的东西。</p>
 <a id="more"></a>
 
@@ -4162,16 +3510,10 @@
 <p>======================<br>由于无法及时收到评论内容，所以关闭评论功能。<br>大家有问题欢迎发邮件到 <a href="mailto:erdong@mail.erdong.site">erdong@mail.erdong.site</a> ，或者 <a href="https://github.com/erdong/erdong.github.io/issues" target="_blank" rel="noopener">https://github.com/erdong/erdong.github.io/issues</a> 提 Issue ，我会及时回复。</p>
 <p>======================<br>Erdong, A Linux user !</p>
 ]]></content>
-      <categories>
-        <category>weekly</category>
-      </categories>
-      <tags>
-        <tag>weekly</tag>
-      </tags>
   </entry>
   <entry>
     <title>第35周分享</title>
-    <url>/weekly/weekly35.html</url>
+    <url>/uncategorized/weekly35.html</url>
     <content><![CDATA[<p>这里记录过去一周，我看到的值得分享的东西。</p>
 <a id="more"></a>
 
@@ -4185,16 +3527,10 @@
 <p>======================<br>由于无法及时收到评论内容，所以关闭评论功能。<br>大家有问题欢迎发邮件到 <a href="mailto:erdong@mail.erdong.site">erdong@mail.erdong.site</a> ，或者 <a href="https://github.com/erdong/erdong.github.io/issues" target="_blank" rel="noopener">https://github.com/erdong/erdong.github.io/issues</a> 提 Issue ，我会及时回复。</p>
 <p>======================<br>Erdong, A Linux user !</p>
 ]]></content>
-      <categories>
-        <category>weekly</category>
-      </categories>
-      <tags>
-        <tag>weekly</tag>
-      </tags>
   </entry>
   <entry>
     <title>攻城狮周刊：第36期</title>
-    <url>/weekly/weekly36.html</url>
+    <url>/uncategorized/weekly36.html</url>
     <content><![CDATA[<p>这里记录过去一周，我看到的值得分享的东西。</p>
 <a id="more"></a>
 
@@ -4223,16 +3559,10 @@
 <p>======================<br>由于无法及时收到评论内容，所以关闭评论功能。<br>大家有问题欢迎发邮件到 <a href="mailto:erdong@mail.erdong.site">erdong@mail.erdong.site</a> ，或者 <a href="https://github.com/erdong/erdong.github.io/issues" target="_blank" rel="noopener">https://github.com/erdong/erdong.github.io/issues</a> 提 Issue ，我会及时回复。</p>
 <p>======================<br>Erdong, A Linux user !</p>
 ]]></content>
-      <categories>
-        <category>weekly</category>
-      </categories>
-      <tags>
-        <tag>weekly</tag>
-      </tags>
   </entry>
   <entry>
     <title>攻城狮周刊：第37期</title>
-    <url>/weekly/weekly37.html</url>
+    <url>/uncategorized/weekly37.html</url>
     <content><![CDATA[<p>这里记录过去一周，我看到的值得分享的东西。</p>
 <a id="more"></a>
 
@@ -4243,16 +3573,10 @@
 <h2 id="3-IBM-Developer"><a href="#3-IBM-Developer" class="headerlink" title="3. IBM Developer"></a>3. <a href="https://www.ibm.com/developerworks/cn/" target="_blank" rel="noopener">IBM Developer</a></h2><p>曾经叫做 developerWorks ，现在叫 IBM Developer ，是 IBM 公司提供的一个知识社区，里边有很多文章条理清晰、阅读体验良好。很适合学一写东西。</p>
 <p>======================<br>Erdong, A Linux user !</p>
 ]]></content>
-      <categories>
-        <category>weekly</category>
-      </categories>
-      <tags>
-        <tag>weekly</tag>
-      </tags>
   </entry>
   <entry>
     <title>攻城狮周刊：第38期</title>
-    <url>/weekly/weekly38.html</url>
+    <url>/uncategorized/weekly38.html</url>
     <content><![CDATA[<p>这里记录过去一周，我看到的值得分享的东西。</p>
 <a id="more"></a>
 
@@ -4268,16 +3592,10 @@
 <h2 id="1-《Go语言高级编程》"><a href="#1-《Go语言高级编程》" class="headerlink" title="1. 《Go语言高级编程》"></a>1. <a href="https://github.com/chai2010/advanced-go-programming-book" target="_blank" rel="noopener">《Go语言高级编程》</a></h2><p>《Go语言高级编程》开源图书，涵盖CGO、Go汇编语言、RPC实现、Protobuf插件实现、Web框架实现、分布式系统等高阶主题</p>
 <p>======================<br>Erdong, A Linux user !</p>
 ]]></content>
-      <categories>
-        <category>weekly</category>
-      </categories>
-      <tags>
-        <tag>weekly</tag>
-      </tags>
   </entry>
   <entry>
     <title>攻城狮周刊：第39期</title>
-    <url>/weekly/weekly39.html</url>
+    <url>/uncategorized/weekly39.html</url>
     <content><![CDATA[<p>这里记录过去一周，我看到的值得分享的东西。</p>
 <a id="more"></a>
 
@@ -4286,16 +3604,10 @@
 <h1 id="资源"><a href="#资源" class="headerlink" title="资源"></a>资源</h1><h2 id="1-云厂商官方文档汇总"><a href="#1-云厂商官方文档汇总" class="headerlink" title="1. 云厂商官方文档汇总"></a>1. <a href="">云厂商官方文档汇总</a></h2><p>云计算领域一些比较常用的工具和概念在云厂商的官方文档里都有介绍，可以当做快速入门的参考手册。<br>AWS： <a href="https://docs.aws.amazon.com">https://docs.aws.amazon.com</a><br>微乳云： <a href="https://docs.microsoft.com/zh-cn/azure/" target="_blank" rel="noopener">https://docs.microsoft.com/zh-cn/azure/</a><br>阿里云： <a href="https://help.aliyun.com" target="_blank" rel="noopener">https://help.aliyun.com</a><br>腾讯云： <a href="https://cloud.tencent.com/document/product" target="_blank" rel="noopener">https://cloud.tencent.com/document/product</a><br>华为云： <a href="https://support.huaweicloud.com/index.html" target="_blank" rel="noopener">https://support.huaweicloud.com/index.html</a></p>
 <p>======================<br>Erdong, A Linux user !</p>
 ]]></content>
-      <categories>
-        <category>weekly</category>
-      </categories>
-      <tags>
-        <tag>weekly</tag>
-      </tags>
   </entry>
   <entry>
     <title>攻城狮周刊：第40期</title>
-    <url>/weekly/weekly40.html</url>
+    <url>/uncategorized/weekly40.html</url>
     <content><![CDATA[<p>这里记录过去一周，我看到的值得分享的东西。</p>
 <a id="more"></a>
 <h1 id="资源"><a href="#资源" class="headerlink" title="资源"></a>资源</h1><h2 id="1-Mozilla-HTTP教程"><a href="#1-Mozilla-HTTP教程" class="headerlink" title="1. Mozilla HTTP教程"></a>1. <a href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP" target="_blank" rel="noopener">Mozilla HTTP教程</a></h2><p>MDN Web Docs 是一个提供的 HTTP 教程，比较详细。</p>
@@ -4311,16 +3623,10 @@
 <h2 id="3-面向信仰编程"><a href="#3-面向信仰编程" class="headerlink" title="3. 面向信仰编程"></a>3. <a href="https://draveness.me/" target="_blank" rel="noopener">面向信仰编程</a></h2><p>给 kubernetes 提交 pr 的大神的博客，里边有很多设计相关的内容，值得查看思考。</p>
 <p>======================<br>Erdong, A Linux user !</p>
 ]]></content>
-      <categories>
-        <category>weekly</category>
-      </categories>
-      <tags>
-        <tag>weekly</tag>
-      </tags>
   </entry>
   <entry>
     <title>攻城狮周刊：第41期</title>
-    <url>/weekly/weekly41.html</url>
+    <url>/uncategorized/weekly41.html</url>
     <content><![CDATA[<p>这里记录过去一周，我看到的值得分享的东西。</p>
 <a id="more"></a>
 
@@ -4328,32 +3634,20 @@
 <h1 id="资源"><a href="#资源" class="headerlink" title="资源"></a>资源</h1><h2 id="1-图解-HTTP"><a href="#1-图解-HTTP" class="headerlink" title="1. 图解 HTTP"></a>1. <a href="https://item.jd.com/11449491.html?dist=jd" target="_blank" rel="noopener">图解 HTTP</a></h2><p>《图灵程序设计丛书：图解HTTP》对 HTTP 协议进行了全面系统的介绍。作者由HTTP 协议的发展历史娓娓道来，严谨细致地剖析了HTTP协议的结构，列举诸多常见通信场景及实战案例，最后延伸到Web安全、全新技术动向等方面。《图解HTTP》的特色为在讲解的同时，辅以大量生动形象的通信图例，更好地帮助读者深刻理解 HTTP 通信过程中客户端与服务器之间的交互情况。读者可通过《图灵程序设计丛书：图解 HTTP》快速了解并掌握 HTTP 协议的基础，前端工程师分析抓包数据，后端工程师实现 REST API、实现自己的 HTTP 服务器等过程中所需的 HTTP 相关知识点本书均有介绍。<br>　　《图灵程序设计丛书：图解HTTP》适合 Web 开发工程师，以及对 HTTP 协议感兴趣的各层次读者。<br>　　该书作者是上野·宣 ，OWASP 日本分会会长，TRICORDER株式会社董事长。主要从事安全咨询、风险评估、信息安全教育等工作。著有《今晚我们一起学习邮件协议》（今夜わかるメールプロトコル）、《今晚我们一起学习TCP/IP》（今夜わかるTCP/IP）、《今晚我们一起学习HTTP》（今夜わかるHTTP）。担任The Tangled Web：A Guide to Securing Modern Web Application日文版的审校工作。<br>　　<br>　　于均良（译者），上海交通大学硕士，高级软件工程师，马拉松跑者，四点网创始人。</p>
 <p>======================<br>Erdong, A Linux user !</p>
 ]]></content>
-      <categories>
-        <category>weekly</category>
-      </categories>
-      <tags>
-        <tag>weekly</tag>
-      </tags>
   </entry>
   <entry>
     <title>攻城狮周刊：第42期</title>
-    <url>/weekly/weekly42.html</url>
+    <url>/uncategorized/weekly42.html</url>
     <content><![CDATA[<p>这里记录过去一周，我看到的值得分享的东西。</p>
 <a id="more"></a>
 
 <h1 id="新闻"><a href="#新闻" class="headerlink" title="新闻"></a>新闻</h1><h1 id="资源"><a href="#资源" class="headerlink" title="资源"></a>资源</h1><h2 id="1-chinese-poetry"><a href="#1-chinese-poetry" class="headerlink" title="1. chinese poetry"></a>1. <a href="https://github.com/chinese-poetry/chinese-poetry" target="_blank" rel="noopener">chinese poetry</a></h2><p>中文古诗的一个仓库，据作者介绍，唐宋两朝近一万四千古诗人, 接近5.5万首唐诗加26万宋诗. 两宋时期1564位词人，21050首词。 </p>
 <h1 id="这么全的话用来做深度学习可能不错。"><a href="#这么全的话用来做深度学习可能不错。" class="headerlink" title="这么全的话用来做深度学习可能不错。"></a>这么全的话用来做深度学习可能不错。</h1><p>Erdong, A Linux user !</p>
 ]]></content>
-      <categories>
-        <category>weekly</category>
-      </categories>
-      <tags>
-        <tag>weekly</tag>
-      </tags>
   </entry>
   <entry>
     <title>攻城狮周刊：第43期</title>
-    <url>/weekly/weekly43.html</url>
+    <url>/uncategorized/weekly43.html</url>
     <content><![CDATA[<p>这里记录过去一周，我看到的值得分享的东西。</p>
 <a id="more"></a>
 
@@ -4363,16 +3657,10 @@
 <p>从以上分析来看，我认为dockerfile_lint其实更具潜力，因为dockerfile扫描规则其实是不固定的。每个用户都可以有自己的dockerfile扫描规范，所以通过脚本添加规则其实是一种刚需。 hadolint和dockerlint恰恰不具备这个能力，所以我最终选择了dockerfile_lint作为扫描工具。</p>
 <p>======================<br>Erdong, A Linux user !</p>
 ]]></content>
-      <categories>
-        <category>weekly</category>
-      </categories>
-      <tags>
-        <tag>weekly</tag>
-      </tags>
   </entry>
   <entry>
     <title>攻城狮周刊：第44期</title>
-    <url>/weekly/weekly44.html</url>
+    <url>/uncategorized/weekly44.html</url>
     <content><![CDATA[<p>这里记录过去一周，我看到的值得分享的东西。</p>
 <a id="more"></a>
 
@@ -4386,16 +3674,10 @@
 <h1 id="杂谈"><a href="#杂谈" class="headerlink" title="杂谈"></a>杂谈</h1><h2 id="1-开源程序员主题相声"><a href="#1-开源程序员主题相声" class="headerlink" title="1. 开源程序员主题相声"></a>1. <a href="https://github.com/koolob/programmer-crosstalk" target="_blank" rel="noopener">开源程序员主题相声</a></h2><p>有点意思，无聊的时候可以看看，或者表演节目的时候可以用上。</p>
 <p>======================<br>由于无法及时收到评论内容，所以关闭评论功能。<br>大家有问题欢迎发邮件到 <a href="mailto:erdong@mail.erdong.site">erdong@mail.erdong.site</a> ，或者 <a href="https://github.com/erdong/erdong.github.io/issues" target="_blank" rel="noopener">https://github.com/erdong/erdong.github.io/issues</a> 提 Issue ，我会及时回复&gt;。<br>======================<br>Erdong, A Linux user !</p>
 ]]></content>
-      <categories>
-        <category>weekly</category>
-      </categories>
-      <tags>
-        <tag>weekly</tag>
-      </tags>
   </entry>
   <entry>
     <title>攻城狮周刊：第45期</title>
-    <url>/weekly/weekly45.html</url>
+    <url>/uncategorized/weekly45.html</url>
     <content><![CDATA[<p>这里记录过去一周，我看到的值得分享的东西。</p>
 <a id="more"></a>
 
@@ -4409,16 +3691,10 @@
 <h2 id="4-javaagent"><a href="#4-javaagent" class="headerlink" title="4. javaagent"></a>4. <a href="https://github.com/dingjs/javaagent" target="_blank" rel="noopener">javaagent</a></h2><p>基于javaagent开发的APM工具，收集方法的执行次数和执行时间，定时输出成json格式的日志。</p>
 <h1 id="资源"><a href="#资源" class="headerlink" title="资源"></a>资源</h1><h2 id="1-阿里云藏经阁"><a href="#1-阿里云藏经阁" class="headerlink" title="1. 阿里云藏经阁"></a>1. <a href="https://developer.aliyun.com/topic/ebook" target="_blank" rel="noopener">阿里云藏经阁</a></h2><h1 id="阿里云开发者社区——藏经阁系列电子书，汇聚了一线大厂的技术沉淀精华，爆款不断。"><a href="#阿里云开发者社区——藏经阁系列电子书，汇聚了一线大厂的技术沉淀精华，爆款不断。" class="headerlink" title="阿里云开发者社区——藏经阁系列电子书，汇聚了一线大厂的技术沉淀精华，爆款不断。"></a>阿里云开发者社区——藏经阁系列电子书，汇聚了一线大厂的技术沉淀精华，爆款不断。</h1><p>由于无法及时收到评论内容，所以关闭评论功能。<br>大家有问题欢迎发邮件到 <a href="mailto:erdong@mail.erdong.site">erdong@mail.erdong.site</a> ，或者 <a href="https://github.com/erdong/erdong.github.io/issues" target="_blank" rel="noopener">https://github.com/erdong/erdong.github.io/issues</a> 提 Issue ，我会及时回复&gt;。<br>======================<br>Erdong, A Linux user !</p>
 ]]></content>
-      <categories>
-        <category>weekly</category>
-      </categories>
-      <tags>
-        <tag>weekly</tag>
-      </tags>
   </entry>
   <entry>
     <title>攻城狮周刊：第46期</title>
-    <url>/weekly/weekly46.html</url>
+    <url>/uncategorized/weekly46.html</url>
     <content><![CDATA[<p>这里记录过去一周，我看到的值得分享的东西。</p>
 <a id="more"></a>
 
@@ -4427,16 +3703,10 @@
 <h1 id="资源"><a href="#资源" class="headerlink" title="资源"></a>资源</h1><h2 id="1-Kubernetes-工具"><a href="#1-Kubernetes-工具" class="headerlink" title="1. Kubernetes 工具"></a>1. <a href="https://zhuanlan.zhihu.com/p/88340421" target="_blank" rel="noopener">Kubernetes 工具</a></h2><p>50 多种 Kubernetes 集群部署、监控、安全及测试等相关工具，在知乎发表的文章。</p>
 <p>======================<br>由于无法及时收到评论内容，所以关闭评论功能。<br>大家有问题欢迎发邮件到 <a href="mailto:erdong@mail.erdong.site">erdong@mail.erdong.site</a> ，或者 <a href="https://github.com/erdong/erdong.github.io/issues" target="_blank" rel="noopener">https://github.com/erdong/erdong.github.io/issues</a> 提 Issue ，我会及时回复&gt;。<br>======================<br>Erdong, A Linux user !</p>
 ]]></content>
-      <categories>
-        <category>weekly</category>
-      </categories>
-      <tags>
-        <tag>weekly</tag>
-      </tags>
   </entry>
   <entry>
     <title>攻城狮周刊：第47期</title>
-    <url>/weekly/weekly47.html</url>
+    <url>/uncategorized/weekly47.html</url>
     <content><![CDATA[<p>这里记录过去一周，我看到的值得分享的东西。</p>
 <a id="more"></a>
 
@@ -4452,16 +3722,10 @@
 <h1 id="杂谈"><a href="#杂谈" class="headerlink" title="杂谈"></a>杂谈</h1><h2 id=""><a href="#" class="headerlink" title=""></a></h2><p>2020 年后半年总是忙于各种事务，博客更新有些慢了。变成了一个咕咕星人。哈哈</p>
 <p>======================<br>由于无法及时收到评论内容，所以关闭评论功能。<br>大家有问题欢迎发邮件到 <a href="mailto:erdong@mail.erdong.site">erdong@mail.erdong.site</a> ，或者 <a href="https://github.com/erdong/erdong.github.io/issues" target="_blank" rel="noopener">https://github.com/erdong/erdong.github.io/issues</a> 提 Issue ，我会及时回复&gt;。<br>======================<br>Erdong, A Linux user !</p>
 ]]></content>
-      <categories>
-        <category>weekly</category>
-      </categories>
-      <tags>
-        <tag>weekly</tag>
-      </tags>
   </entry>
   <entry>
     <title>攻城狮周刊：第48期</title>
-    <url>/weekly/weekly48.html</url>
+    <url>/uncategorized/weekly48.html</url>
     <content><![CDATA[<p>这里记录过去一周，我看到的值得分享的东西。</p>
 <a id="more"></a>
 
@@ -4480,16 +3744,10 @@
 <p>斯坦福教授、Tcl 语言发明者 John Ousterhout 的著作《A Philosophy of Software Design》，自出版以来，好评如潮。按照 IT 图书出版的惯例，如果冠名为“实践”，书中内容关注的是某项技术的细节和技巧；冠名为“艺术”，内容可能是记录一件优秀作品的设计过程和经验；而冠名为“哲学”，则是一些通用的原则和方法论，这些原则方法论串起来，能够形成一个体系。正如”知行合一”、“世界是由原子构成的”、“我思故我在”，这些耳熟能详的句子能够一定程度上代表背后的人物和思想。用一句话概括《A Philosophy of Software Design》，软件设计的核心在于降低复杂性。</p>
 <p>======================<br>由于无法及时收到评论内容，所以关闭评论功能。<br>大家有问题欢迎发邮件到 <a href="mailto:erdong@mail.erdong.site">erdong@mail.erdong.site</a> ，或者 <a href="https://github.com/erdong/erdong.github.io/issues" target="_blank" rel="noopener">https://github.com/erdong/erdong.github.io/issues</a> 提 Issue ，我会及时回复&gt;。<br>======================<br>Erdong, A Linux user !</p>
 ]]></content>
-      <categories>
-        <category>weekly</category>
-      </categories>
-      <tags>
-        <tag>weekly</tag>
-      </tags>
   </entry>
   <entry>
     <title>阿里云云栖社区博客相关问题</title>
-    <url>/life/gossip/yunqi-blog.html</url>
+    <url>/uncategorized/yunqi-blog.html</url>
     <content><![CDATA[<p>最近在阿里云的云栖社区内发表了多篇博客，发现一些奇怪的问题。比如，博客发布以后，会处于审核中的状态，这个审核要多久，都审核什么，一直是处于未知状态。经过几天的摸索，对于几个问题有了一些答案，记录在这里，和大家分享一下。</p>
 <a id="more"></a>
 
@@ -4509,17 +3767,10 @@
 <p>总的来说，云栖的博客系统还有很多要改进的地方。</p>
 <p>======================<br>Erdong, A Linux user !</p>
 ]]></content>
-      <categories>
-        <category>life</category>
-        <category>gossip</category>
-      </categories>
-      <tags>
-        <tag>博客</tag>
-      </tags>
   </entry>
   <entry>
     <title>第28周分享</title>
-    <url>/weekly/weekly28.html</url>
+    <url>/uncategorized/weekly28.html</url>
     <content><![CDATA[<p>这里记录过去一周，我看到的值得分享的东西。</p>
 <a id="more"></a>
 
@@ -4530,16 +3781,10 @@
 <h1 id="资源"><a href="#资源" class="headerlink" title="资源"></a>资源</h1><h2 id="1-如何超过大多数人"><a href="#1-如何超过大多数人" class="headerlink" title="1. 如何超过大多数人"></a>1. <a href="https://coolshell.cn/articles/19464.html" target="_blank" rel="noopener">如何超过大多数人</a></h2><p>左耳朵耗子 陈皓 最近写的一篇文章，很值得阅读，而且值得多次阅读。</p>
 <p>======================<br>Erdong, A Linux user !</p>
 ]]></content>
-      <categories>
-        <category>weekly</category>
-      </categories>
-      <tags>
-        <tag>weekly</tag>
-      </tags>
   </entry>
   <entry>
     <title>第27周分享</title>
-    <url>/weekly/weekly27.html</url>
+    <url>/uncategorized/weekly27.html</url>
     <content><![CDATA[<p>这里记录过去一周，我看到的值得分享的东西。</p>
 <a id="more"></a>
 
@@ -4554,16 +3799,10 @@
 <h1 id="资源"><a href="#资源" class="headerlink" title="资源"></a>资源</h1><h2 id="1-高性能计算-HPC-技术、方案和行业全面解析"><a href="#1-高性能计算-HPC-技术、方案和行业全面解析" class="headerlink" title="1. 高性能计算(HPC)技术、方案和行业全面解析"></a>1. <a href="http://weidian.com/s/343499232?wfr=c" target="_blank" rel="noopener">高性能计算(HPC)技术、方案和行业全面解析</a></h2><p>“架构师技术联盟”微信公众号整理了 HPC 行业的一些基础架构以及存储的内容，很适合出入 HPC 的人员学习了解 HPC 。该文档需要付费才能获取。</p>
 <p>======================<br>Erdong, A Linux user !</p>
 ]]></content>
-      <categories>
-        <category>weekly</category>
-      </categories>
-      <tags>
-        <tag>weekly</tag>
-      </tags>
   </entry>
   <entry>
     <title>第26周分享</title>
-    <url>/weekly/weekly26.html</url>
+    <url>/uncategorized/weekly26.html</url>
     <content><![CDATA[<p>这里记录过去一周，我看到的值得分享的东西。</p>
 <a id="more"></a>
 
@@ -4572,16 +3811,10 @@
 <h1 id="教程"><a href="#教程" class="headerlink" title="教程"></a>教程</h1><h2 id="1-二维码的生成细节和原理"><a href="#1-二维码的生成细节和原理" class="headerlink" title="1. 二维码的生成细节和原理"></a>1. <a href="https://coolshell.cn/articles/10590.html#jtss-tsina" target="_blank" rel="noopener">二维码的生成细节和原理</a></h2><p>2013 年的时候陈皓写的二维码的生成细节和原理，把二维码的生成过程讲的很好。</p>
 <p>======================<br>Erdong, A Linux user !</p>
 ]]></content>
-      <categories>
-        <category>weekly</category>
-      </categories>
-      <tags>
-        <tag>weekly</tag>
-      </tags>
   </entry>
   <entry>
     <title>攻城狮周刊：第49期</title>
-    <url>/weekly/weekly49.html</url>
+    <url>/uncategorized/weekly49.html</url>
     <content><![CDATA[<p>这里记录过去一周，我看到的值得分享的东西。</p>
 <a id="more"></a>
 
@@ -4608,16 +3841,10 @@
 <h2 id="2-在-GitHub-上构建一个看上去正规的-Golang-项目"><a href="#2-在-GitHub-上构建一个看上去正规的-Golang-项目" class="headerlink" title="2. 在 GitHub 上构建一个看上去正规的 Golang 项目"></a>2. <a href="https://developer.aliyun.com/article/710165" target="_blank" rel="noopener">在 GitHub 上构建一个看上去正规的 Golang 项目</a></h2><p>在 GitHub 上开源 Golang 语言的仓库的一个基础知识点教学，简单介绍了 Goland 的配置、Travis CI 的使用、GoReleaser 用来进行 release 的发布。</p>
 <p>======================<br>由于无法及时收到评论内容，所以关闭评论功能。<br>大家有问题欢迎发邮件到 <a href="mailto:erdong@mail.erdong.site">erdong@mail.erdong.site</a> ，或者 <a href="https://github.com/erdong/erdong.github.io/issues" target="_blank" rel="noopener">https://github.com/erdong/erdong.github.io/issues</a> 提 Issue ，我会及时回复&gt;。<br>======================<br>Erdong, A Linux user !</p>
 ]]></content>
-      <categories>
-        <category>weekly</category>
-      </categories>
-      <tags>
-        <tag>weekly</tag>
-      </tags>
   </entry>
   <entry>
     <title>Prometheus 2.22.0 新特性</title>
-    <url>/Prometheus/New-Features/New-Features-in-Prometheus-2-22-0.html</url>
+    <url>/uncategorized/New-Features-in-Prometheus-2-22-0.html</url>
     <content><![CDATA[<p>Prometheus <a href="https://github.com/prometheus/prometheus/releases/tag/v2.22.0" target="_blank" rel="noopener">2.22.0</a> 现在(2020.10.15)已经发布，在上个月的 <a href="http://erdong.site/Prometheus/New-Features/New-Features-in-Prometheus-2-21-0.html">2.21.0</a> 之后又进行了很多的修复和改进。</p>
 <a id="more"></a>
 
@@ -4636,19 +3863,10 @@
 <p>======================<br>Erdong, A Linux user !</p>
 <p><img src="https://erdong.site/images/erdongxtnew.jpg" alt="微信公众号"></p>
 ]]></content>
-      <categories>
-        <category>Prometheus</category>
-        <category>New-Features</category>
-      </categories>
-      <tags>
-        <tag>Prometheus</tag>
-        <tag>Features</tag>
-        <tag>release</tag>
-      </tags>
   </entry>
   <entry>
     <title>Prometheus 2.23.0 新特性</title>
-    <url>/Prometheus/New-Features/New-Features-in-Prometheus-2-23-0.html</url>
+    <url>/uncategorized/New-Features-in-Prometheus-2-23-0.html</url>
     <content><![CDATA[<p>Prometheus <a href="https://github.com/prometheus/prometheus/releases/tag/v2.23.0" target="_blank" rel="noopener">2.23.0</a> 现在(2020.11.26)已经发布，在上个月的 <a href="http://erdong.site/Prometheus/New-Features/New-Features-in-Prometheus-2-22-0.html">2.22.0</a> 之后又进行了很多的修复和改进。</p>
 <a id="more"></a>
 
@@ -4673,19 +3891,10 @@
 <p>======================<br>Erdong, A Linux user !</p>
 <p><img src="https://erdong.site/images/erdongxtnew.jpg" alt="微信公众号"></p>
 ]]></content>
-      <categories>
-        <category>Prometheus</category>
-        <category>New-Features</category>
-      </categories>
-      <tags>
-        <tag>Prometheus</tag>
-        <tag>Features</tag>
-        <tag>release</tag>
-      </tags>
   </entry>
   <entry>
     <title>Prometheus 2.24.0 新特性</title>
-    <url>/Prometheus/New-Features/New-Features-in-Prometheus-2-24-0.html</url>
+    <url>/uncategorized/New-Features-in-Prometheus-2-24-0.html</url>
     <content><![CDATA[<p>Prometheus <a href="https://github.com/prometheus/prometheus/releases/tag/v2.24.0" target="_blank" rel="noopener">2.24.0</a> 现在(2021.01.06)已经发布，在上个月的 <a href="http://erdong.site/Prometheus/New-Features/New-Features-in-Prometheus-2-23-0.html">2.23.0</a> 之后又进行了很多的修复和改进。</p>
 <a id="more"></a>
 
@@ -4703,19 +3912,10 @@
 <p>======================<br>Erdong, A Linux user !</p>
 <p><img src="https://erdong.site/images/erdongxtnew.jpg" alt="微信公众号"></p>
 ]]></content>
-      <categories>
-        <category>Prometheus</category>
-        <category>New-Features</category>
-      </categories>
-      <tags>
-        <tag>Prometheus</tag>
-        <tag>Features</tag>
-        <tag>release</tag>
-      </tags>
   </entry>
   <entry>
     <title>Prometheus 2.25.0 新特性</title>
-    <url>/Prometheus/New-Features/New-Features-in-Prometheus-2-25-0.html</url>
+    <url>/uncategorized/New-Features-in-Prometheus-2-25-0.html</url>
     <content><![CDATA[<p>Prometheus <a href="https://github.com/prometheus/prometheus/releases/tag/v2.25.0" target="_blank" rel="noopener">2.25.0</a> 现在(2021.02.17)已经发布，在上个月的 <a href="http://erdong.site/Prometheus/New-Features/New-Features-in-Prometheus-2-24-0.html">2.24.0</a> 之后又进行了很多的修复和改进。</p>
 <a id="more"></a>
 
@@ -4736,19 +3936,10 @@
 <p>======================<br>Erdong, A Linux user !</p>
 <p><img src="https://erdong.site/images/erdongxtnew.jpg" alt="微信公众号"></p>
 ]]></content>
-      <categories>
-        <category>Prometheus</category>
-        <category>New-Features</category>
-      </categories>
-      <tags>
-        <tag>Prometheus</tag>
-        <tag>Features</tag>
-        <tag>release</tag>
-      </tags>
   </entry>
   <entry>
     <title>Prometheus 2.26.0 新特性</title>
-    <url>/Prometheus/New-Features/New-Features-in-Prometheus-2-26-0.html</url>
+    <url>/uncategorized/New-Features-in-Prometheus-2-26-0.html</url>
     <content><![CDATA[<p>Prometheus <a href="https://github.com/prometheus/prometheus/releases/tag/v2.26.0" target="_blank" rel="noopener">2.26.0</a> 现在(2021.03.31)已经发布，在上个月的 <a href="http://erdong.site/Prometheus/New-Features/New-Features-in-Prometheus-2-25-0.html">2.25.0</a> 之后又进行了很多的修复和改进。</p>
 <a id="more"></a>
 <p>Prometheus 现在已经构建并支持 Go 1.16 版本。这将恢复Go 1.12中添加的内存释放模式。这使得常见的 RSS 使用指标能够更准确的显示 Prometheus 使用的实际内存。</p>
@@ -4769,19 +3960,10 @@
 <p>======================<br>Erdong, A Linux user !</p>
 <p><img src="https://erdong.site/images/erdongxtnew.jpg" alt="微信公众号"></p>
 ]]></content>
-      <categories>
-        <category>Prometheus</category>
-        <category>New-Features</category>
-      </categories>
-      <tags>
-        <tag>Prometheus</tag>
-        <tag>Features</tag>
-        <tag>release</tag>
-      </tags>
   </entry>
   <entry>
     <title>Prometheus 2.27.0 新特性</title>
-    <url>/Prometheus/New-Features/New-Features-in-Prometheus-2-27-0.html</url>
+    <url>/uncategorized/New-Features-in-Prometheus-2-27-0.html</url>
     <content><![CDATA[<p>Prometheus <a href="https://github.com/prometheus/prometheus/releases/tag/v2.27.0" target="_blank" rel="noopener">2.27.0</a> 现在(2021.05.12)已经发布，在上个月的 <a href="http://erdong.site/Prometheus/New-Features/New-Features-in-Prometheus-2-26-0.html">2.26.0</a> 之后又进行了很多的修复和改进。</p>
 <a id="more"></a>
 
@@ -4799,19 +3981,10 @@
 <p>======================<br>Erdong, A Linux user !</p>
 <p><img src="https://erdong.site/images/erdongxtnew.jpg" alt="微信公众号"></p>
 ]]></content>
-      <categories>
-        <category>Prometheus</category>
-        <category>New-Features</category>
-      </categories>
-      <tags>
-        <tag>Prometheus</tag>
-        <tag>Features</tag>
-        <tag>release</tag>
-      </tags>
   </entry>
   <entry>
     <title>Prometheus 2.28.0 新特性</title>
-    <url>/Prometheus/New-Features/New-Features-in-Prometheus-2-28-0.html</url>
+    <url>/uncategorized/New-Features-in-Prometheus-2-28-0.html</url>
     <content><![CDATA[<p>Prometheus <a href="https://github.com/prometheus/prometheus/releases/tag/v2.28.0" target="_blank" rel="noopener">2.28.0</a> 现在(2021.06.21)已经发布，在上个月的 <a href="http://erdong.site/Prometheus/New-Features/New-Features-in-Prometheus-2-27-0.html">2.27.0</a> 之后又进行了很多的修复和改进。</p>
 <a id="more"></a>
 <p>本次更新主要集中在 UI 、服务发现和时序数据库方面，其他方面的更新内容较少。</p>
@@ -4829,19 +4002,10 @@
 <p>======================<br>Erdong, A Linux user !</p>
 <p><img src="https://erdong.site/images/erdongxtnew.jpg" alt="微信公众号"></p>
 ]]></content>
-      <categories>
-        <category>Prometheus</category>
-        <category>New-Features</category>
-      </categories>
-      <tags>
-        <tag>Prometheus</tag>
-        <tag>Features</tag>
-        <tag>release</tag>
-      </tags>
   </entry>
   <entry>
     <title>Prometheus 2.29.0 新特性</title>
-    <url>/Prometheus/New-Features/New-Features-in-Prometheus-2-29-0.html</url>
+    <url>/uncategorized/New-Features-in-Prometheus-2-29-0.html</url>
     <content><![CDATA[<p>Prometheus <a href="https://github.com/prometheus/prometheus/releases/tag/v2.29.0" target="_blank" rel="noopener">2.29.0</a> 现在(2021.08.11)已经发布，在上个月的 <a href="http://erdong.site/Prometheus/New-Features/New-Features-in-Prometheus-2-28-0.html">2.28.0</a> 之后又进行了很多的修复和改进。</p>
 <a id="more"></a>
 <p>这次感觉更新了很多内容。<br>macOS用户需要注意一下: 由于即将发布的 Go 1.17的变化，这是支持macOS 10.12 Sierra 的最后一个 Prometheus 版本。</p>
@@ -4864,19 +4028,10 @@
 <p>======================<br>Erdong, A Linux user !</p>
 <p><img src="https://erdong.site/images/erdongxtnew.jpg" alt="微信公众号"></p>
 ]]></content>
-      <categories>
-        <category>Prometheus</category>
-        <category>New-Features</category>
-      </categories>
-      <tags>
-        <tag>Prometheus</tag>
-        <tag>Features</tag>
-        <tag>release</tag>
-      </tags>
   </entry>
   <entry>
     <title>Prometheus 2.30.0 新特性</title>
-    <url>/Prometheus/New-Features/New-Features-in-Prometheus-2-30-0.html</url>
+    <url>/uncategorized/New-Features-in-Prometheus-2-30-0.html</url>
     <content><![CDATA[<p>Prometheus <a href="https://github.com/prometheus/prometheus/releases/tag/v2.30.0" target="_blank" rel="noopener">2.30.0</a> 现在(2021.09.14)已经发布，在上个月的 <a href="http://erdong.site/Prometheus/New-Features/New-Features-in-Prometheus-2-29-0.html">2.29.0</a> 之后又进行了很多的修复和改进。</p>
 <a id="more"></a>
 <p>本次 Prometheus 针对时序数据库 TSDB 新增了一个实验性质的特性，使用 <code>--enable-feature=memory-snapshot-on-shutdown</code> 在关闭时对内存块进行快照，以更快地重新启动 Prometheus 。还有就是对于 Scrape 也新增了一个实验性的特性，<code>__scrape_interval__</code> 和 <code>__scrape_timeout__</code> ，使用这两个label 进行重新标记，配置指标采集时间和采集超时。</p>
@@ -4897,19 +4052,10 @@
 <p>======================<br>Erdong, A Linux user !</p>
 <p><img src="https://erdong.site/images/erdongxtnew.jpg" alt="微信公众号"></p>
 ]]></content>
-      <categories>
-        <category>Prometheus</category>
-        <category>New-Features</category>
-      </categories>
-      <tags>
-        <tag>Prometheus</tag>
-        <tag>Features</tag>
-        <tag>release</tag>
-      </tags>
   </entry>
   <entry>
     <title>Prometheus 2.31.0 新特性</title>
-    <url>/Prometheus/New-Features/New-Features-in-Prometheus-2-31-0.html</url>
+    <url>/uncategorized/New-Features-in-Prometheus-2-31-0.html</url>
     <content><![CDATA[<p>Prometheus <a href="https://github.com/prometheus/prometheus/releases/tag/v2.31.0" target="_blank" rel="noopener">2.31.0</a> 现在(2021.11.02)已经发布，在上个月的 <a href="http://erdong.site/Prometheus/New-Features/New-Features-in-Prometheus-2-30-0.html">2.30.0</a> 之后又进行了很多的修复和改进。</p>
 <a id="more"></a>
 
@@ -4931,19 +4077,10 @@
 <p>======================<br>Erdong, A Linux user !</p>
 <p><img src="https://erdong.site/images/erdongxtnew.jpg" alt="微信公众号"></p>
 ]]></content>
-      <categories>
-        <category>Prometheus</category>
-        <category>New-Features</category>
-      </categories>
-      <tags>
-        <tag>Prometheus</tag>
-        <tag>Features</tag>
-        <tag>release</tag>
-      </tags>
   </entry>
   <entry>
     <title>Prometheus 2.21.0 新特性</title>
-    <url>/Prometheus/New-Features/New-Features-in-Prometheus-2-21-0.html</url>
+    <url>/uncategorized/New-Features-in-Prometheus-2-21-0.html</url>
     <content><![CDATA[<p>Prometheus <a href="https://github.com/prometheus/prometheus/releases/tag/v2.21.0" target="_blank" rel="noopener">2.21.0</a> 现在(2020.09.11)已经发布，在上个月的 <a href="http://erdong.site/Prometheus/New-Features/New-Features-in-Prometheus-2-20-0.html">2.20.0</a> 之后又进行了很多的修复和改进。</p>
 <a id="more"></a>
 <p>这个版本使用了 Go 1.15 进行编译，不赞成在TLS证书验证中使用 X.509 CommonName 。</p>
@@ -4962,19 +4099,10 @@
 <p>======================<br>Erdong, A Linux user !</p>
 <p><img src="https://erdong.site/images/erdongxtnew.jpg" alt="微信公众号"></p>
 ]]></content>
-      <categories>
-        <category>Prometheus</category>
-        <category>New-Features</category>
-      </categories>
-      <tags>
-        <tag>Prometheus</tag>
-        <tag>Features</tag>
-        <tag>release</tag>
-      </tags>
   </entry>
   <entry>
     <title>Prometheus 2.32.0 新特性</title>
-    <url>/Prometheus/New-Features/New-Features-in-Prometheus-2-32-0.html</url>
+    <url>/uncategorized/New-Features-in-Prometheus-2-32-0.html</url>
     <content><![CDATA[<p>Prometheus <a href="https://github.com/prometheus/prometheus/releases/tag/v2.32.0" target="_blank" rel="noopener">2.32.0</a> 现在(2021.12.09)已经发布，在上个月的 <a href="http://erdong.site/Prometheus/New-Features/New-Features-in-Prometheus-2-31-0.html">2.31.0</a> 之后又进行了很多的修复和改进。</p>
 <a id="more"></a>
 <p>这次更新新增了很多的特性，并且修复一些 BUG 。</p>
@@ -4993,19 +4121,10 @@
 <p>======================<br>Erdong, A Linux user !</p>
 <p><img src="https://erdong.site/images/erdongxtnew.jpg" alt="微信公众号"></p>
 ]]></content>
-      <categories>
-        <category>Prometheus</category>
-        <category>New-Features</category>
-      </categories>
-      <tags>
-        <tag>Prometheus</tag>
-        <tag>Features</tag>
-        <tag>release</tag>
-      </tags>
   </entry>
   <entry>
     <title>Prometheus 2.33.0 新特性</title>
-    <url>/Prometheus/New-Features/New-Features-in-Prometheus-2-33-0.html</url>
+    <url>/uncategorized/New-Features-in-Prometheus-2-33-0.html</url>
     <content><![CDATA[<p>Prometheus <a href="https://github.com/prometheus/prometheus/releases/tag/v2.33.0" target="_blank" rel="noopener">2.33.0</a> 现在(2022.01.29)已经发布，在上个月的 <a href="http://erdong.site/Prometheus/New-Features/New-Features-in-Prometheus-2-32-0.html">2.32.0</a> 之后又进行了很多的修复和改进。</p>
 <a id="more"></a>
 <p>这次更新新增了很多的特性，并且修复一些 BUG 。</p>
@@ -5034,19 +4153,10 @@
 <p>======================<br>Erdong, A Linux user !</p>
 <p><img src="https://erdong.site/images/erdongxtnew.jpg" alt="微信公众号"></p>
 ]]></content>
-      <categories>
-        <category>Prometheus</category>
-        <category>New-Features</category>
-      </categories>
-      <tags>
-        <tag>Prometheus</tag>
-        <tag>Features</tag>
-        <tag>release</tag>
-      </tags>
   </entry>
   <entry>
     <title>Prometheus 2.34.0 新特性</title>
-    <url>/Prometheus/New-Features/New-Features-in-Prometheus-2-34-0.html</url>
+    <url>/uncategorized/New-Features-in-Prometheus-2-34-0.html</url>
     <content><![CDATA[<p>Prometheus <a href="https://github.com/prometheus/prometheus/releases/tag/v2.34.0" target="_blank" rel="noopener">2.34.0</a> 现在(2022.03.15)已经发布，在上个月的 <a href="http://erdong.site/Prometheus/New-Features/New-Features-in-Prometheus-2-33-0.html">2.33.0</a> 之后又进行了很多的修复和改进。</p>
 <a id="more"></a>
 <p>这次更新新增了很多的特性，并且修复一些 BUG 。</p>
@@ -5067,57 +4177,30 @@
 <p>======================<br>Erdong, A Linux user !</p>
 <p><img src="https://erdong.site/images/erdongxtnew.jpg" alt="微信公众号"></p>
 ]]></content>
-      <categories>
-        <category>Prometheus</category>
-        <category>New-Features</category>
-      </categories>
-      <tags>
-        <tag>Prometheus</tag>
-        <tag>Features</tag>
-        <tag>release</tag>
-      </tags>
   </entry>
   <entry>
     <title>Prometheus 2.33.0 新特性</title>
-    <url>/Prometheus/New-Features/New-Features-in-Prometheus-2-35-0.html</url>
+    <url>/uncategorized/New-Features-in-Prometheus-2-35-0.html</url>
     <content><![CDATA[<a id="more"></a>
 
 <p>======================<br>由于无法及时收到评论内容，所以关闭评论功能。<br>大家有问题欢迎发邮件到 <a href="mailto:erdong@mail.erdong.site">erdong@mail.erdong.site</a> ，或者 <a href="https://github.com/erdong/erdong.github.io/issues" target="_blank" rel="noopener">https://github.com/erdong/erdong.github.io/issues</a> 提 Issue ，我会及时回复。</p>
 <p>======================<br>Erdong, A Linux user !</p>
 <p><img src="https://erdong.site/images/erdongxtnew.jpg" alt="微信公众号"></p>
 ]]></content>
-      <categories>
-        <category>Prometheus</category>
-        <category>New-Features</category>
-      </categories>
-      <tags>
-        <tag>Prometheus</tag>
-        <tag>Features</tag>
-        <tag>release</tag>
-      </tags>
   </entry>
   <entry>
     <title>Prometheus 2.33.0 新特性</title>
-    <url>/Prometheus/New-Features/New-Features-in-Prometheus-2-36-0.html</url>
+    <url>/uncategorized/New-Features-in-Prometheus-2-36-0.html</url>
     <content><![CDATA[<a id="more"></a>
 
 <p>======================<br>由于无法及时收到评论内容，所以关闭评论功能。<br>大家有问题欢迎发邮件到 <a href="mailto:erdong@mail.erdong.site">erdong@mail.erdong.site</a> ，或者 <a href="https://github.com/erdong/erdong.github.io/issues" target="_blank" rel="noopener">https://github.com/erdong/erdong.github.io/issues</a> 提 Issue ，我会及时回复。</p>
 <p>======================<br>Erdong, A Linux user !</p>
 <p><img src="https://erdong.site/images/erdongxtnew.jpg" alt="微信公众号"></p>
 ]]></content>
-      <categories>
-        <category>Prometheus</category>
-        <category>New-Features</category>
-      </categories>
-      <tags>
-        <tag>Prometheus</tag>
-        <tag>Features</tag>
-        <tag>release</tag>
-      </tags>
   </entry>
   <entry>
     <title>漫谈公网网络延迟</title>
-    <url>/Linux/public-network-latency.html</url>
+    <url>/uncategorized/public-network-latency.html</url>
     <content><![CDATA[<p>互联网发展至今，网络可以说是基础，所有的数据、内容都跑在网络上，今天和同事在沟通工作的过程中，发现很多人对公网的网络延迟是没有概念的。</p>
 <a id="more"></a>
 <p>我们知道网络延迟是指数据在传输介质中传输所用的时间，即从报文开始进入网络到它开始离开网络之间的时间。针对这个延迟我们可以使用 Ping 命令基于 ICMP 协议来进行测试。比如我们 Ping 百度的域名。</p>
@@ -5136,11 +4219,87 @@
 <p>======================<br>由于无法及时收到评论内容，所以关闭评论功能。<br>大家有问题欢迎发邮件到 <a href="mailto:erdong@mail.erdong.site">erdong@mail.erdong.site</a> ，或者 <a href="https://github.com/erdong/erdong.github.io/issues" target="_blank" rel="noopener">https://github.com/erdong/erdong.github.io/issues</a> 提 Issue ，我会及时回复。</p>
 <p>======================<br>Erdong, A Linux user !</p>
 ]]></content>
-      <categories>
-        <category>Linux</category>
-      </categories>
-      <tags>
-        <tag>Network</tag>
-      </tags>
+  </entry>
+  <entry>
+    <title>远程办公三部曲 - 如何合理提高工作效率</title>
+    <url>/uncategorized/telecommuting03-how-to-imporove-work-efficiency.html</url>
+    <content><![CDATA[<p>作为远程办公三部曲，我前边分别聊了  远程办公三部曲 - 如何合理安排时间| 社区征文 和 远程办公三部曲 - 如何提高沟通效率| 社区征文，那么今天我们聊聊最后的一个话题，如何提高工作效率。</p>
+<a id="more"></a>
+<h1 id="工作的仪式感"><a href="#工作的仪式感" class="headerlink" title="工作的仪式感"></a>工作的仪式感</h1><p>远程办公的时候一般是在家里，在家里经常会有一种生活和工作混淆的感觉，没有了严格的界限，有时候太随意导致工作效率下降。其实我们可以通过增加一些工作的仪式感来通过潜意识告诉自己，我要开始工作了，以及我今天的工作结束了，我下班了，要开始准备生活的部分了。</p>
+<p>第一点，上班前有一个小的活动，让自己的身体苏醒过来，告诉自己，我要开始上班了，不要刚起床就打开电脑办公。</p>
+<p>第二点，在家里远程办公的时候，在开始办公之前，可以给自己更换一下衣服，换成每天出门要穿的衣服，不要穿着家居服就开始办公。更换衣服可以起到很好的仪式作用，告诉自己，我要开始办公了，下班以后更换自己的家居服，告诉自己，我下班了。这个通过一个更换衣服的动作，来给自己的生活和工作分隔开来，更专注高效的完成工作。</p>
+<p>第三点，可以在办公的桌子上放一面小镜子，时不时的通过镜子看一眼自己的状态，看看自己是不是处于一个工作的状态，还是处于休闲的状态。如果是处于休闲的状态，那么告诉自己，我现在是需要工作的，我工作到一定时间了才可以休息。很多客服之前用桌面放镜子的方式来检查自己的状态，我觉得用在远程办公的场景下，也很不错。</p>
+<p>第四点，工作的时候，坐在电脑前，不工作休息的时候，去其他地方，把电脑周围有意识的塑造成一个办公的区域。</p>
+<p>通过上述 4 个方面来增强自己办公的仪式感，告诉自己，我在工作，专注于工作，这样可以提高工作的效率。</p>
+<h1 id="合理的办公环境"><a href="#合理的办公环境" class="headerlink" title="合理的办公环境"></a>合理的办公环境</h1><p>除了上边提到的仪式感以外，一个合理的办公环境也是必不可少的。最好能拥有如下条件：<br>1、 尽量隔离的单人空间<br>2、单独的办公桌子和椅子<br>3、合理的通风、光线布局<br>4、网络质量良好的网络环境</p>
+<p>就单独的个人空间来说，最好是自己有一个单独的书房用来办公，这样环境安静、空间宽敞是最好不过了。最不建议的位置是在卧室的床边，这样第一是生活和工作没有完全隔离开来，看着床铺，总想着躺着休息一下，不利于专心工作。我目前的办公环境是在客厅的一角，我也没有单独的书房，但是我把客厅的一角布置成了办公的样子，专门放置了桌子和椅子。从空间角度确实不如单独的书房好，但是权衡以后比卧室好很多，单独的桌子和椅子也提供了很大的便利。之前居家办公的时候，有同事在餐桌上办公，餐桌的高度和餐椅的高度都不适合办公使用。后来很多同事都专门买了办公的椅子，椅子因为长时间坐了，建议购买人体工学椅，不建议购置休闲椅和电竞椅，这两个类型都不利于长期办公。</p>
+<p>另外就是办公区域的通风和光线非常重要，通风不好，工作时间久了会觉得头晕，闷闷沉沉的，之前见过一个 UP 主为了光线的布置导致屋里空气流通不畅，他最后的解决方式是防止了一个空气质量检测仪，实时监测办公桌上的 二氧化碳浓度，一旦过高，就打开窗户进行通风。另外一个就是光线了，良好的光线环境可以缓解视觉疲劳，不要过分刺眼的阳台环境，也不要过于昏暗的角落，保持正常的光线环境，有利于视力的保护，天暗了以后的灯具选择也很重要，建议选择适合办公的灯具，比如办公的台灯或者屏幕挂灯。</p>
+<p>最后就是网络环境了，网络环境可以说是远程办公的基础，网络环境太差对于工作的影响太大了，根据不同的工作场景选择对应的网络带宽和网络设备，合理的使用有线或者无线可以创造良好的办公网络环境。如果没有经验，也可以找专人来搭建。</p>
+<h1 id="一些设备和工具"><a href="#一些设备和工具" class="headerlink" title="一些设备和工具"></a>一些设备和工具</h1><p>在办公过程中，有很多的设备和工具是可以提高办公效率的，比如前边提到的办公桌子和人体工学椅。除了这些以外，还有很多的设备和工具可以来提高工作效率。</p>
+<p>1、鼠标和键盘<br>2、番茄钟以及类似产品<br>3、视频会议软件<br>4、显示器<br>5、屏幕挂灯<br>6、升降桌</p>
+<p>首先，作为输入设备和生产力工具，键盘和鼠标是排在第一位的，合适、顺手的键盘鼠标可以不止一倍的提升工作效率。比如视频剪辑工作者的剪辑键盘，文字编辑工作者的键盘，选择一个适合自己的办公场景的鼠标键盘是重要的，比如我经常打字，我经常使用的就是一把 cherry 的青轴机械键盘，自己用的很开心，效率也很好，就是在多人办公的情况下，青轴不太友好，不过自己在家办公就无所谓了。</p>
+<p>第二就是为了让自己的工作和中间休息合理搭配的番茄钟，这样可以工作 40 分钟，休息 10 分钟这样轮换着来。当然，有人需要一个实体的物件来提醒自己，有些人不需要，以及有些朋友是不使用番茄工作法来进行工作。我们可以使用任何自己觉得合适的方法以及工具来平衡工作时间内的工作和休息，适合自己就好。</p>
+<p>第三是远程视频会议软件，作为远程工作和其他同事交流的重要工具，一个好的不卡顿、无故障的视频会议软件太重要了，这可以极大的提高沟通效率和工作效率。</p>
+<p>剩下的基本都是可选项，基于我们的办公内容选自一个合适的显示器，以及改变工作桌上光线布局的屏幕挂灯，比如我现在打字，长长的带鱼屏显示器就非常适合我，可以一边查资料一边写内容，都不用切换窗口布局。晚上打字的时候，打开屏幕挂灯，调节好亮度和色温，比屋里的顶灯好用太多了。如果觉得久坐不好，也可以选择升降桌来进行站坐交替的办公形式。</p>
+<p>总之，在远程办公的场景下，让自己的办公过程具有仪式感，并且布置合理的办公场景，加上一些合适个设备和工具，是可以极大的提供自己的工作效率的。</p>
+<p>本文收录于远程办公三部曲：</p>
+<p>======================<br>由于无法及时收到评论内容，所以关闭评论功能。<br>大家有问题欢迎发邮件到 <a href="mailto:erdong@mail.erdong.site">erdong@mail.erdong.site</a> ，或者 <a href="https://github.com/erdong/erdong.github.io/issues" target="_blank" rel="noopener">https://github.com/erdong/erdong.github.io/issues</a> 提 Issue ，我会及时回复。</p>
+<p>======================<br>Erdong, A Linux user !</p>
+<p><img src="https://erdong.site/images/erdongxtnew.jpg" alt="微信公众号"></p>
+]]></content>
+  </entry>
+  <entry>
+    <title>远程办公三部曲 - 如何提高沟通效率</title>
+    <url>/uncategorized/telecommuting02-how-to-imporove-communication-efficiency.html</url>
+    <content><![CDATA[<p>前边我们聊了如何安排时间，没有看的朋友可以去看 远程办公三部曲 - 如何合理安排时间| 社区征文 。远程办公的和固定工作场所办公有很多区别，其中比较重要的一点就是沟通。那么远程办公的沟通效率怎么样呢，有没有办法提高呢。</p>
+<a id="more"></a>
+<h1 id="固定场所的沟通方式"><a href="#固定场所的沟通方式" class="headerlink" title="固定场所的沟通方式"></a>固定场所的沟通方式</h1><p>在公司办公的时候，在沟通上有一点，那就是方便。不论是和身边的同事沟通简单的问题，还是比较复杂的项目沟通，都可以很快速的完成。<br>这个时候的沟通方式有<br>1、即时通讯工具图文沟通<br>2、小问题两三个人面对面沟通<br>3、大型项目或者复杂问题通过会议面对面沟通<br>4、通过工具进行语音沟通。<br>这些沟通方式中，面对面沟通基本占了大头，超过 60%的沟通都是面对面解决的，这是在固定场所集体办公的优势。而且小问题几个人面对面的讨论更容易梳理问题，表达思想描述事情的信息损耗是最小的。面对复杂问题需要更多人处理的时候，召开会议，面对面进行沟通也能很快的解决问题。在这种场景下，使用即时通讯工具进行基础事情的沟通的次数反而变少。</p>
+<h1 id="远程办公的沟通方式"><a href="#远程办公的沟通方式" class="headerlink" title="远程办公的沟通方式"></a>远程办公的沟通方式</h1><p>当脱离了固定场所办公，远程办公一般是在家里居家办公，个别情况下会有租赁共享办公室之类的现象，在这种情况下，和异地的同事进行沟通，大概有这么几种方式</p>
+<p>1、即时通讯工具图文沟通<br>2、通过工具进行语音沟通。<br>3、使用会议软件进行沟通</p>
+<p>在这种场景下，从面对面为主的沟通变成了打电话为主的语音沟通或者图文沟通，这样会有两个变化，第一个是增加了沟通时间，第二是降低了沟通的效率，大家需要谨慎的确认对方是否真的理解了要表达的内容。</p>
+<h1 id="如何提高沟通效率"><a href="#如何提高沟通效率" class="headerlink" title="如何提高沟通效率"></a>如何提高沟通效率</h1><p>对于远程办公的沟通效率较低的问题，我们可以尝试通过一些方法来解决，比如：<br>1、事先准备<br>2、条理清晰<br>3、善用工具<br>4、做好记录</p>
+<p>首先，我们应该在沟通之前做好准备，准备好这次要沟通的内容，需要参与沟通的人员，最后需要得出哪个方向的结论，不要设置漫无目的讨论，这样会大量的浪费时间，</p>
+<p>其次在沟通过程中要做到条理清晰，发起人介绍完事情背景以后要把控整个沟通的节奏，一条一条的进行讨论得出结果，并且记录，防止出现沟通偏离主题的现象。</p>
+<p>第三要善用各种工具，包括沟通的语音或者会议工具，记录的文档系统，跟进的系统等等。由于是远程，首先需要一个稳定的沟通工具，这个大家根据自己的实际情况选择就好，一定要保证可以容纳当前会议的人数，并且保证语言传输稳定且清晰。</p>
+<p>第四点就是做好沟通记录，沟通过程中大家对每一条达成的结论，最后由谁负责，中间需要哪个团队来配合，需要什么资源，在什么时间完成，这些都要记录清楚，并且同步在场的每一个人。</p>
+<h1 id="如何确保沟通结果"><a href="#如何确保沟通结果" class="headerlink" title="如何确保沟通结果"></a>如何确保沟通结果</h1><p>沟通结束以后，其实并不代表事情已经结束，我们还需要对这个事情进行跟踪，确保落实，否则还需要重新进行沟通，不节约资源。对于确保沟通结果可以尝试以下方法<br>1、记录到文档内<br>2、发送给所有参与者<br>3、定期检查进度，<br>4、出现问题及时沟通处理。</p>
+<p>首先我们要保证所有沟通的内容都已经记录下来了，记录在一个文档中，这个文档描述了谁负责那件事情，中间需要哪个团队来配合，需要什么资源，在什么时间完成。</p>
+<p>其次我们通过邮件发给每个人，或者组建一个所有参与者都在的沟通群，将这个文档放在这群里。</p>
+<p>第三就是一定要定期检查进度，看看是否遇到了什么困难，要怎么处理，是否需要新的资源加入进来。</p>
+<p>综上所述，对于沟通我们一定要做好沟通前的准备，沟通时的条理，沟通后的保障，这样才能在远程办公的情况下，提高沟通效率。</p>
+<p>本文收录于远程办公三部曲：</p>
+<p>======================<br>由于无法及时收到评论内容，所以关闭评论功能。<br>大家有问题欢迎发邮件到 <a href="mailto:erdong@mail.erdong.site">erdong@mail.erdong.site</a> ，或者 <a href="https://github.com/erdong/erdong.github.io/issues" target="_blank" rel="noopener">https://github.com/erdong/erdong.github.io/issues</a> 提 Issue ，我会及时回复。</p>
+<p>======================<br>Erdong, A Linux user !</p>
+<p><img src="https://erdong.site/images/erdongxtnew.jpg" alt="微信公众号"></p>
+]]></content>
+  </entry>
+  <entry>
+    <title>远程办公三部曲 - 如何合理安排时间</title>
+    <url>/uncategorized/telecommuting01-how-to-manage-your-time.html</url>
+    <content><![CDATA[<p>自从 2019 年十二月疫情开始，将近 3 年的时候，远程办公的频率也越来越多。疫情之前，远程办公还只是少数组织或者公司为了更灵活的人员安排而采取的一种方式，疫情当下，已经是一种必要的工作方式的补充。</p>
+<a id="more"></a>
+<p>在远程办公的时候，如何合理的安排时间也是一个需要斟酌考虑的方面，远程办公和在公司固定场所还是有很大区别的。</p>
+<p>首先远程办公按照不同办公区域可以分为同时区的办公和跨时区两个场景。针对不同的场景，会略有不同。</p>
+<h1 id="同时区办公场景"><a href="#同时区办公场景" class="headerlink" title="同时区办公场景"></a>同时区办公场景</h1><p>首先对于同时区的办公场景，比如大家都在同一个城市，只是由于疫情的原因而采取了居家办公的方式，或者都在国内，分处不同城市的分公司等等。在同时区的办公场景下，大家的作息时间基本一致，安排起来其实相对简单。</p>
+<p>我们假定每天上午 9 点上班，中午休息 1.5 小时到 2 小时，下午大约 6 点到 7 点下班。针对这个工作时间，建议的作息时间是：<br>7:00 起床<br>8:00 早餐<br>9:00 开始上班<br>12:00 准备午餐<br>13:30 or 14:00 休息结束<br>18:30 下班<br>19:30  晚饭<br>23:00 准备睡觉</p>
+<h2 id="早上"><a href="#早上" class="headerlink" title="早上"></a>早上</h2><p>早上 7 点起床以后，到 9 点开始上班，这中间有 2 个小时，这两个小时用来起床洗漱、制作早餐或者购买早餐，吃早餐，在楼下活动二十分钟到半个小时，打开电脑，接好水杯里的水然后开始工作。早上起来按时吃早餐可以保证一上午的精力充沛，在楼下进行早间的活动可以保证 9 点钟的时候已经是元气满满的工作状态，而不是刚起床的睡眼朦胧，这个活动可以是走路、慢跑或者任何运动量较小的活动。打开电脑接好水则像一个固定仪式一样，告诉我们，我要开始工作了。</p>
+<p>9 点开始工作以后，尽量在半个小时以内梳理好今天的工作内容，是否需要其他同事配合你的工作，是否有会议要参加，然后联系对应的同事进行沟通，展开一天的工作。</p>
+<h2 id="中午"><a href="#中午" class="headerlink" title="中午"></a>中午</h2><p>中午 12 点的时候要准备午饭了，如果中午有 2 小时的休息时间，那么时间还比较宽裕，如果只有 1.5 小时，那么就有些紧张了。午饭尽量在 12:00 ~ 12:40 这 40 分钟之间完成，包含做饭、吃饭、洗碗这些事项，然后 12:40 ~ 13:00 站起来走一走，13:00~13:30 午休，小憩一会儿，下午精力会更好。但是 40 分钟包含做饭、洗碗其实挺难的，可以尝试外卖或者提前做好预处理的菜品，比如早上就切好中午要做的菜。当然如果和家人同住，家人可以做饭的话是最好的，自己单独居住的话就需要多考虑了。</p>
+<h2 id="下午"><a href="#下午" class="headerlink" title="下午"></a>下午</h2><p>下午开始工作以后注意多喝水，在下班前尽量留十几分钟，用来总结今天的工作进度和遇到的问题，以及明天的工作安排。整理好以后下班。下班以后晚上的时间相对丰富一些，可以做一些自己喜欢吃的菜，可以躺着刷剧看视频，和朋友打打游戏，可以做任何自己喜欢的事情，这是休闲放松的时间，然后在大约 23:00 的时候准备上床休息。</p>
+<p>这样的时间安排是比较理想的，根据每个人的工作时间可以自行调节，比如有的朋友是上午 10 点开始上班，那么起床时间、下班时间往后推一个小时就可以。如果是 8 点上班，那评估一下往前调一个小时能不能接受，有些早上的事情是不是可以挪到下班后进行。这样适当的调整会更合适一些。</p>
+<p>还有就是加班问题，遇到加班问题只能是牺牲晚上的娱乐时间了。如果遇到突发问题，那么只能紧急处理了。</p>
+<h1 id="跨时区办公场景"><a href="#跨时区办公场景" class="headerlink" title="跨时区办公场景"></a>跨时区办公场景</h1><p>其次对于跨时区的办公场景，一般是全球化的业务，比如你在中国，有合作的同事在欧洲或者美洲，或者是在其他州有客户的问题需要支持。</p>
+<p>在跨时区的办公场景中，自身的作息时间也可以参照上边的作息时间来安排，和同时区的办公场景最大的不同就是要兼顾其他时区的同事，和同事的沟通都尽量安排在大家共同的工作时间内，其他时间做一些可以独立完成的工作。</p>
+<h1 id="时间安排的原则"><a href="#时间安排的原则" class="headerlink" title="时间安排的原则"></a>时间安排的原则</h1><p>在远程办公场景下，时间安排遵循以下规则可以更好的平衡生活和工作，提高工作效率。</p>
+<p>保证合理的休息、睡眠时间。只有休息好，才有精力工作，休息不好，工作时间犯困，会严重降低工作效率，而且会出错。<br>保证每天的三餐按时食用。吃的好，保持长期的营养均衡，可以打造一个强壮的身体，身体才是革命的本钱。<br>保证每天有一定量的运动。适当的运动可以保持我们的身体健康，长期久坐容易出现各种问题，我们还是要关注自己的健康状态。<br>保证每天水分的摄入。不知道大家是什么情况，我长时间坐在电脑面前经常忘记喝水，所以，一定要经常站起来去接杯水，然后喝水。<br>保留一定的休闲娱乐时间。除了上述的原则，我们也要休闲娱乐，也需要放松，休息好以后才能更好 的工作。</p>
+<p>以上原则是我认为比较重要的一些点，大家在安排时间的时候可以把自己认为重要的点添加进去，比如陪伴家人，参与孩子的活动等等。</p>
+<h1 id="远程办公的自律能力"><a href="#远程办公的自律能力" class="headerlink" title="远程办公的自律能力"></a>远程办公的自律能力</h1><p>远程办公是需要一定的自律能力的，自律能力差的人远程办公的效率会变低，从时间安排角度来看，在时间安排好以后，需要在预定的时间内，完成自己计划的事情，这样才能享受时间安排带来的便利。自律能力差、执行力差会导致在既定的时间内没有完成任务，进而拖延的下一个时间段的计划，久而久之，安排的任务都不能完成，会对自信心造成打击，怀疑自己的能力，厌恶时间安排这个事情，认为计划造成了束缚，开始破罐破摔，丧失信心。</p>
+<p>在一定的自律能力下，合理的安排时间和任务，按照计划执行，发现时间不够或者其他问题以后立即进行调整，然后重新安排时间和任务，形成一个正向的循环，远程办公的时间效率越来越高，最后工作效率也越来越高。</p>
+<p>本文收录于远程办公三部曲：</p>
+<p><a href="">远程办公三部曲 - 如何合理安排时间</a><br><a href="">远程办公三部曲 - 如何提高沟通效率</a><br><a href="">远程办公三部曲 - 如何提高工作效率</a></p>
+<p>======================<br>由于无法及时收到评论内容，所以关闭评论功能。<br>大家有问题欢迎发邮件到 <a href="mailto:erdong@mail.erdong.site">erdong@mail.erdong.site</a> ，或者 <a href="https://github.com/erdong/erdong.github.io/issues" target="_blank" rel="noopener">https://github.com/erdong/erdong.github.io/issues</a> 提 Issue ，我会及时回复。</p>
+<p>======================<br>Erdong, A Linux user !</p>
+<p><img src="https://erdong.site/images/erdongxtnew.jpg" alt="微信公众号"></p>
+]]></content>
   </entry>
 </search>
