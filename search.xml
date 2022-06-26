@@ -4179,7 +4179,7 @@
 ]]></content>
   </entry>
   <entry>
-    <title>Prometheus 2.33.0 新特性</title>
+    <title>Prometheus 2.35.0 新特性</title>
     <url>/uncategorized/New-Features-in-Prometheus-2-35-0.html</url>
     <content><![CDATA[<a id="more"></a>
 
@@ -4189,7 +4189,7 @@
 ]]></content>
   </entry>
   <entry>
-    <title>Prometheus 2.33.0 新特性</title>
+    <title>Prometheus 2.36.0 新特性</title>
     <url>/uncategorized/New-Features-in-Prometheus-2-36-0.html</url>
     <content><![CDATA[<a id="more"></a>
 
@@ -4221,9 +4221,9 @@
 ]]></content>
   </entry>
   <entry>
-    <title>远程办公三部曲 - 如何合理提高工作效率</title>
-    <url>/uncategorized/telecommuting03-how-to-imporove-work-efficiency.html</url>
-    <content><![CDATA[<p>作为远程办公三部曲，我前边分别聊了  远程办公三部曲 - 如何合理安排时间| 社区征文 和 远程办公三部曲 - 如何提高沟通效率| 社区征文，那么今天我们聊聊最后的一个话题，如何提高工作效率。</p>
+    <title>远程办公三部曲 - 如何提高工作效率</title>
+    <url>/telecommuting/telecommuting03-how-to-imporove-work-efficiency.html</url>
+    <content><![CDATA[<p>作为远程办公三部曲，我前边分别聊了 <a href="(https://erdong.site/uncategorized/telecommuting01-how-to-manage-your-time.html">远程办公三部曲 - 如何合理安排时间</a> 和 <a href="https://erdong.site/uncategorized/telecommuting02-how-to-imporove-communication-efficiency.html">远程办公三部曲 - 如何提高沟通效率</a>，那么今天我们聊聊最后的一个话题，如何提高工作效率。</p>
 <a id="more"></a>
 <h1 id="工作的仪式感"><a href="#工作的仪式感" class="headerlink" title="工作的仪式感"></a>工作的仪式感</h1><p>远程办公的时候一般是在家里，在家里经常会有一种生活和工作混淆的感觉，没有了严格的界限，有时候太随意导致工作效率下降。其实我们可以通过增加一些工作的仪式感来通过潜意识告诉自己，我要开始工作了，以及我今天的工作结束了，我下班了，要开始准备生活的部分了。</p>
 <p>第一点，上班前有一个小的活动，让自己的身体苏醒过来，告诉自己，我要开始上班了，不要刚起床就打开电脑办公。</p>
@@ -4242,16 +4242,23 @@
 <p>第三是远程视频会议软件，作为远程工作和其他同事交流的重要工具，一个好的不卡顿、无故障的视频会议软件太重要了，这可以极大的提高沟通效率和工作效率。</p>
 <p>剩下的基本都是可选项，基于我们的办公内容选自一个合适的显示器，以及改变工作桌上光线布局的屏幕挂灯，比如我现在打字，长长的带鱼屏显示器就非常适合我，可以一边查资料一边写内容，都不用切换窗口布局。晚上打字的时候，打开屏幕挂灯，调节好亮度和色温，比屋里的顶灯好用太多了。如果觉得久坐不好，也可以选择升降桌来进行站坐交替的办公形式。</p>
 <p>总之，在远程办公的场景下，让自己的办公过程具有仪式感，并且布置合理的办公场景，加上一些合适个设备和工具，是可以极大的提供自己的工作效率的。</p>
-<p>本文收录于远程办公三部曲：</p>
+<p>本文收录于远程办公三部曲：<br><a href="https://erdong.site/uncategorized/telecommuting01-how-to-manage-your-time.html">远程办公三部曲 - 如何合理安排时间</a><br><a href="https://erdong.site/uncategorized/telecommuting02-how-to-imporove-communication-efficiency.html">远程办公三部曲 - 如何提高沟通效率</a><br><a href="https://erdong.site/uncategorized/telecommuting03-how-to-imporove-work-efficiency.html">远程办公三部曲 - 如何提高工作效率</a></p>
 <p>======================<br>由于无法及时收到评论内容，所以关闭评论功能。<br>大家有问题欢迎发邮件到 <a href="mailto:erdong@mail.erdong.site">erdong@mail.erdong.site</a> ，或者 <a href="https://github.com/erdong/erdong.github.io/issues" target="_blank" rel="noopener">https://github.com/erdong/erdong.github.io/issues</a> 提 Issue ，我会及时回复。</p>
 <p>======================<br>Erdong, A Linux user !</p>
 <p><img src="https://erdong.site/images/erdongxtnew.jpg" alt="微信公众号"></p>
 ]]></content>
+      <categories>
+        <category>telecommuting</category>
+      </categories>
+      <tags>
+        <tag>telecommuting</tag>
+        <tag>work</tag>
+      </tags>
   </entry>
   <entry>
     <title>远程办公三部曲 - 如何提高沟通效率</title>
-    <url>/uncategorized/telecommuting02-how-to-imporove-communication-efficiency.html</url>
-    <content><![CDATA[<p>前边我们聊了如何安排时间，没有看的朋友可以去看 远程办公三部曲 - 如何合理安排时间| 社区征文 。远程办公的和固定工作场所办公有很多区别，其中比较重要的一点就是沟通。那么远程办公的沟通效率怎么样呢，有没有办法提高呢。</p>
+    <url>/telecommuting/telecommuting02-how-to-imporove-communication-efficiency.html</url>
+    <content><![CDATA[<p>前边我们聊了如何安排时间，没有看的朋友可以去看 <a href="https://erdong.site/uncategorized/telecommuting02-how-to-imporove-communication-efficiency.html">远程办公三部曲 - 如何合理安排时间</a> 。远程办公的和固定工作场所办公有很多区别，其中比较重要的一点就是沟通。那么远程办公的沟通效率怎么样呢，有没有办法提高呢。</p>
 <a id="more"></a>
 <h1 id="固定场所的沟通方式"><a href="#固定场所的沟通方式" class="headerlink" title="固定场所的沟通方式"></a>固定场所的沟通方式</h1><p>在公司办公的时候，在沟通上有一点，那就是方便。不论是和身边的同事沟通简单的问题，还是比较复杂的项目沟通，都可以很快速的完成。<br>这个时候的沟通方式有<br>1、即时通讯工具图文沟通<br>2、小问题两三个人面对面沟通<br>3、大型项目或者复杂问题通过会议面对面沟通<br>4、通过工具进行语音沟通。<br>这些沟通方式中，面对面沟通基本占了大头，超过 60%的沟通都是面对面解决的，这是在固定场所集体办公的优势。而且小问题几个人面对面的讨论更容易梳理问题，表达思想描述事情的信息损耗是最小的。面对复杂问题需要更多人处理的时候，召开会议，面对面进行沟通也能很快的解决问题。在这种场景下，使用即时通讯工具进行基础事情的沟通的次数反而变少。</p>
 <h1 id="远程办公的沟通方式"><a href="#远程办公的沟通方式" class="headerlink" title="远程办公的沟通方式"></a>远程办公的沟通方式</h1><p>当脱离了固定场所办公，远程办公一般是在家里居家办公，个别情况下会有租赁共享办公室之类的现象，在这种情况下，和异地的同事进行沟通，大概有这么几种方式</p>
@@ -4267,15 +4274,22 @@
 <p>其次我们通过邮件发给每个人，或者组建一个所有参与者都在的沟通群，将这个文档放在这群里。</p>
 <p>第三就是一定要定期检查进度，看看是否遇到了什么困难，要怎么处理，是否需要新的资源加入进来。</p>
 <p>综上所述，对于沟通我们一定要做好沟通前的准备，沟通时的条理，沟通后的保障，这样才能在远程办公的情况下，提高沟通效率。</p>
-<p>本文收录于远程办公三部曲：</p>
+<p>本文收录于远程办公三部曲：<br><a href="https://erdong.site/uncategorized/telecommuting01-how-to-manage-your-time.html">远程办公三部曲 - 如何合理安排时间</a><br><a href="https://erdong.site/uncategorized/telecommuting02-how-to-imporove-communication-efficiency.html">远程办公三部曲 - 如何提高沟通效率</a><br><a href="https://erdong.site/uncategorized/telecommuting03-how-to-imporove-work-efficiency.html">远程办公三部曲 - 如何提高工作效率</a></p>
 <p>======================<br>由于无法及时收到评论内容，所以关闭评论功能。<br>大家有问题欢迎发邮件到 <a href="mailto:erdong@mail.erdong.site">erdong@mail.erdong.site</a> ，或者 <a href="https://github.com/erdong/erdong.github.io/issues" target="_blank" rel="noopener">https://github.com/erdong/erdong.github.io/issues</a> 提 Issue ，我会及时回复。</p>
 <p>======================<br>Erdong, A Linux user !</p>
 <p><img src="https://erdong.site/images/erdongxtnew.jpg" alt="微信公众号"></p>
 ]]></content>
+      <categories>
+        <category>telecommuting</category>
+      </categories>
+      <tags>
+        <tag>telecommuting</tag>
+        <tag>communication</tag>
+      </tags>
   </entry>
   <entry>
     <title>远程办公三部曲 - 如何合理安排时间</title>
-    <url>/uncategorized/telecommuting01-how-to-manage-your-time.html</url>
+    <url>/telecommuting/telecommuting01-how-to-manage-your-time.html</url>
     <content><![CDATA[<p>自从 2019 年十二月疫情开始，将近 3 年的时候，远程办公的频率也越来越多。疫情之前，远程办公还只是少数组织或者公司为了更灵活的人员安排而采取的一种方式，疫情当下，已经是一种必要的工作方式的补充。</p>
 <a id="more"></a>
 <p>在远程办公的时候，如何合理的安排时间也是一个需要斟酌考虑的方面，远程办公和在公司固定场所还是有很大区别的。</p>
@@ -4296,10 +4310,17 @@
 <h1 id="远程办公的自律能力"><a href="#远程办公的自律能力" class="headerlink" title="远程办公的自律能力"></a>远程办公的自律能力</h1><p>远程办公是需要一定的自律能力的，自律能力差的人远程办公的效率会变低，从时间安排角度来看，在时间安排好以后，需要在预定的时间内，完成自己计划的事情，这样才能享受时间安排带来的便利。自律能力差、执行力差会导致在既定的时间内没有完成任务，进而拖延的下一个时间段的计划，久而久之，安排的任务都不能完成，会对自信心造成打击，怀疑自己的能力，厌恶时间安排这个事情，认为计划造成了束缚，开始破罐破摔，丧失信心。</p>
 <p>在一定的自律能力下，合理的安排时间和任务，按照计划执行，发现时间不够或者其他问题以后立即进行调整，然后重新安排时间和任务，形成一个正向的循环，远程办公的时间效率越来越高，最后工作效率也越来越高。</p>
 <p>本文收录于远程办公三部曲：</p>
-<p><a href="">远程办公三部曲 - 如何合理安排时间</a><br><a href="">远程办公三部曲 - 如何提高沟通效率</a><br><a href="">远程办公三部曲 - 如何提高工作效率</a></p>
+<p><a href="https://erdong.site/uncategorized/telecommuting01-how-to-manage-your-time.html">远程办公三部曲 - 如何合理安排时间</a><br><a href="https://erdong.site/uncategorized/telecommuting02-how-to-imporove-communication-efficiency.html">远程办公三部曲 - 如何提高沟通效率</a><br><a href="https://erdong.site/uncategorized/telecommuting03-how-to-imporove-work-efficiency.html">远程办公三部曲 - 如何提高工作效率</a></p>
 <p>======================<br>由于无法及时收到评论内容，所以关闭评论功能。<br>大家有问题欢迎发邮件到 <a href="mailto:erdong@mail.erdong.site">erdong@mail.erdong.site</a> ，或者 <a href="https://github.com/erdong/erdong.github.io/issues" target="_blank" rel="noopener">https://github.com/erdong/erdong.github.io/issues</a> 提 Issue ，我会及时回复。</p>
 <p>======================<br>Erdong, A Linux user !</p>
 <p><img src="https://erdong.site/images/erdongxtnew.jpg" alt="微信公众号"></p>
 ]]></content>
+      <categories>
+        <category>telecommuting</category>
+      </categories>
+      <tags>
+        <tag>telecommuting</tag>
+        <tag>manage time</tag>
+      </tags>
   </entry>
 </search>
