@@ -1,0 +1,773 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16.ico">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"erdong.site","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":true},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":true,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="我21岁，但我写博客已经快10年了。 我就是这样长大的。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【翻译】10年博客的经验">
+<meta property="og:url" content="https://erdong.site/article/starting-a-blog.html">
+<meta property="og:site_name" content="Erdong’ Blog">
+<meta property="og:description" content="我21岁，但我写博客已经快10年了。 我就是这样长大的。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://ferrucc.io/starting-a-blog/edmnews-views.png">
+<meta property="og:image" content="https://ferrucc.io/starting-a-blog/chat.png">
+<meta property="og:image" content="https://ferrucc.io/starting-a-blog/powerball.gif">
+<meta property="og:image" content="https://ferrucc.io/starting-a-blog/gwern-ugly.png">
+<meta property="og:image" content="https://ferrucc.io/starting-a-blog/shares-data.png">
+<meta property="og:image" content="https://ferrucc.io/starting-a-blog/hubspot.png">
+<meta property="og:image" content="https://ferrucc.io/starting-a-blog/hugo.png">
+<meta property="article:published_time" content="2019-01-18T01:42:15.000Z">
+<meta property="article:modified_time" content="2019-10-14T11:13:25.358Z">
+<meta property="article:author" content="Er Dong">
+<meta property="article:tag" content="blog">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://ferrucc.io/starting-a-blog/edmnews-views.png">
+
+<link rel="canonical" href="https://erdong.site/article/starting-a-blog.html">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>【翻译】10年博客的经验 | Erdong’ Blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="Erdong’ Blog" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Erdong’ Blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">苦练七十二变，笑对八十一难。</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-公告">
+
+    <a href="/notice/" rel="section"><i class="fa fa-list fa-fw"></i>公告</a>
+
+  </li>
+        <li class="menu-item menu-item-rss">
+
+    <a href="/atom.xml" rel="section"><i class="fa fa-rss fa-fw"></i>RSS</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+  <a href="https://github.com/erdong" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://erdong.site/article/starting-a-blog.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/myavatar.jpg">
+      <meta itemprop="name" content="Er Dong">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Erdong’ Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          【翻译】10年博客的经验
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-01-18 09:42:15" itemprop="dateCreated datePublished" datetime="2019-01-18T09:42:15+08:00">2019-01-18</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2019-10-14 19:13:25" itemprop="dateModified" datetime="2019-10-14T19:13:25+08:00">2019-10-14</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/article/" itemprop="url" rel="index"><span itemprop="name">article</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span><br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>6.7k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>6 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>我21岁，但我写博客已经快10年了。</p>
+<p>我就是这样长大的。</p>
+<a id="more"></a>
+
+
+<p>我在互联网上写的东西已经影响了数百万人。我所写的大部分都是意大利语，但我用英语也可以写的很好。我在 Quora [译者注：一个获取和分享知识的地方。它是一个提问的平台，可以与那些提供独特见解和高质量答案的人联系。类似于国内的知乎] 上三个月内达到了40万人的关注。</p>
+<p>通过写博客，我有机会周游世界，获得所有大型音乐节(Ultra, Tomorrowland……你能想到的都有)的免费门票，得到专业的宣传，采访我最喜欢的艺术家。</p>
+<p>以下是我第一个博客 <a href="http://edmnews.it/" target="_blank" rel="noopener">EDMnews.it</a> ，现在我只能找到这个了，其他的域名过期了。</p>
+<p><img src="https://ferrucc.io/starting-a-blog/edmnews-views.png" alt="图片描述"></p>
+<p>最后，由于我没有时间写博客了，我的个人兴趣也从 EDM 转移到了这个网站，它也被同化成了EDM，它是一个谷歌的新闻来源，一个月的浏览量超过10万次。</p>
+<p>因为我的网站使用 Wordpress，我被迫学习如何编程。如果没有写博客，我就不会是今天的我。</p>
+<p>我发现写博客仍然是把你的信息传播出去，结识有趣的人的最好方法。</p>
+<h1 id="打开天窗说亮话"><a href="#打开天窗说亮话" class="headerlink" title="打开天窗说亮话"></a><strong>打开天窗说亮话</strong></h1><p>以下是我对博客的全部了解:</p>
+<ul>
+<li>不要把第一行写得太长让人不想看，没人有时间读你这样的文章</li>
+<li>网站的设计并不重要</li>
+<li>开始的时候你不需要任何的软件</li>
+<li>定义你的受众群体</li>
+<li>弄清楚你的受众群体在哪里</li>
+<li>为了SEO（Search Engine Optimization，搜索引擎优化）不要写短文章（&gt;2000 words）</li>
+<li>一篇研究充分的文章胜过许多平庸的内容</li>
+<li>花一半的时间写作，一半的时间推销。</li>
+<li>把50%的写作时间花在实际写作上，剩下的时间用来调整、阅读和说明。细节是很重要的。</li>
+<li>说出你知道的所有，不要担心你会江郎才尽，你不会的</li>
+<li>没有规则，慢慢打造你独特的风格</li>
+<li>回到你以前的帖子，把它们链接到新的上去</li>
+<li>启动一个 Newsletter</li>
+<li>做别人不敢做的事</li>
+<li>向别人寻求帮助或提供建议</li>
+</ul>
+<p>精心制作一些真正能深入读者心灵的永恒的东西是困难的，但值得去做。</p>
+<p>大多数时候，当你读一些东西的时候，你已经知道了一切。</p>
+<p>10%的情况下，事情是不一样的，你觉得你的头脑中有一个开关打开了，突然看到了不同的东西。</p>
+<p>当我找到让我有这种感觉的内容时，我会每天刷新网站的页面，检查我是否错过了一些新内容。像武痴那样疯狂。</p>
+<p>这就是我们想要的，例如:</p>
+<p>“这很有启发性，它在我的脑海中打开了一个充满可能性的世界。”</p>
+<p>“我一直这么想，但没有勇气把它写下来，谢谢你这么做。”</p>
+<p>“你的话让我终于明白了X没什么大不了的，谢谢。”</p>
+<p>让我们一起来学习如何让这一切发生。</p>
+<h1 id="受众人群"><a href="#受众人群" class="headerlink" title="受众人群"></a>受众人群</h1><p>创建博客的第一步是确定谁是你的读者。我认识的大多数人都会跳过这一步，但这很重要。脱口而出一些单词并在社交媒体上分享它们是很容易的。要创作出与你想接触的人产生共鸣的文章，难度要大得多。</p>
+<p>为了解释如何做到这一点，我将向您展示我现在是如何为这个个人博客做这件事的。</p>
+<p>直到现在，我用这个博客来帮助我思考，但在新的一年里，我决定更认真地对待它。</p>
+<p>我的目标是什么?</p>
+<p>这是我的个人博客。</p>
+<p>它是一个 “个人” 博客并不意味着它是关于我的。</p>
+<p>事实上，这意味着我能为你提供什么。</p>
+<p>我的第一个实用技巧与此相关:</p>
+<p>你博客里的“关于”页面必须是关于你能如何帮助别人，以及人们能从你那里得到什么。然后最终</p>
+<p>关于你……</p>
+<p>但说实话，没人在乎你，也没人在乎我。</p>
+<p>我的受众人群是什么?</p>
+<p>如果你要为你的公司创建一个博客，你必须了解你的客户通常是谁，或者哪些客户是你的理想受众并迎合他们。</p>
+<p>以下是对我的现实读者的描述:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">你的名字是 Vincent，你是一个30岁的多面手，来自法国，你在工作日不会花很长的时间工作。</span><br><span class="line">你花了一些时间远程工作，但现在在美国很稳定。你已经开始了数不清的项目，有些项目是成功的。</span><br><span class="line">你对任何不寻常的东西都感兴趣，你天生就是一个逆向投资者。</span><br><span class="line">你从不回避争论，也从不被冒犯。你并不是真的对退休感兴趣，你更感兴趣的是尝试。</span><br><span class="line">有些人认为你是个混蛋，你一点也不在乎。</span><br></pre></td></tr></table></figure>
+
+<p>一旦你定义了你的受众，你必须<del>弄清楚它是否足够大</del>。</p>
+<p>拜托，这是互联网，别担心，它已经足够大了。</p>
+<p>事实上，如果它对你来说足够大的话，我会考虑小众化。</p>
+<h1 id="名字"><a href="#名字" class="headerlink" title="名字"></a>名字</h1><p>下一步是选择一个名字，这并不重要，只要确定它是你喜欢的，而且它不是太普通或不可能记住。不要在这上面花超过一天的时间，一旦你找到了一个名字，在确定下来之前，至少要睡上一晚。</p>
+<p>在我的例子中，我选择了我的名字 Ferruccio 作为域名，因为我的名字非常罕见，而且我已经拥有了 ferrucc.io 域名。</p>
+<p>不利的一面是，美国人不知道该怎么说，但我对此没有意见。这当然比某些印度名字更容易记住。</p>
+<h1 id="风格"><a href="#风格" class="headerlink" title="风格"></a>风格</h1><p>你博客的风格，比如它的外观，在一开始并不重要。</p>
+<p>另一方面，你的写作风格会带来很大的不同。</p>
+<p>根据你的听众是谁，你必须调整谈话的语气。</p>
+<p>例如，当我选择一个比我年长、经验丰富的人作为目标受众时，如果我的语气是 “无所不知”，那就没有意义了。我的听众不是以英语为母语的人，所以我不会让我的语言变得复杂，我将限制我的词汇量，以尽可能地清晰易懂。</p>
+<p>如果你真的想做一些独特的东西，你可以做的一件事是在你的风格自定义插图。在你的博客里有一个连贯的插图风格可以让人们记住你。</p>
+<p>除了大型企业的博客, <a href="https://waitbutwhy.com/" target="_blank" rel="noopener">Wait But Why</a>做得很好。</p>
+<p>如果你不擅长绘画，学习如何使用 <a href="https://www.sketchapp.com" target="_blank" rel="noopener">Sketch</a>或 <a href="https://www.figma.com" target="_blank" rel="noopener">Figma</a>。</p>
+<p>我仍然在为这个网站上的插图设计风格，但我认为它会是这样的: </p>
+<p><img src="https://ferrucc.io/starting-a-blog/chat.png" alt="chat"></p>
+<p>我有点痴迷于设计，但插图只是你可以做的脱颖而出的事情之一。</p>
+<p>如果你是一名软件开发者，你可以尝试让你的文章里的小程序和用户是可以以可视化的方式交互式的互动。</p>
+<p><a href="https://twitter.com/nealagarwal" target="_blank" rel="noopener">Neal Agarawall</a>的博客 <a href="https://neal.fun" target="_blank" rel="noopener">neal.fun</a> 就是一个很好的例子。看看他做的这个彩票模拟器，直观地解释了为什么赌博是一个坏主意:</p>
+<p><img src="https://ferrucc.io/starting-a-blog/powerball.gif" alt=""></p>
+<p>另一个例子是我创建的<a href="https://lab-cryptotrend.herokuapp.com/" target="_blank" rel="noopener">blockchain simulator</a>(意大利语)，它是我不久前创建的一个意大利加密货币博客的促销产品，一个月内增长到了10k。我还为这幅画创作了独特的插图。</p>
+<p>如果你不具备以上任何一项技能，你可以通过实践来学习，也可以让一切都保持简单，只关注文本内容。为了证明你不需要做这些事情，这里有一些丑陋的博客与伟大的内容:</p>
+<ul>
+<li><a href="http://www.paulgraham.com/articles.html" target="_blank" rel="noopener">Paul Graham’s Blog</a></li>
+<li><a href="https://www.kalzumeus.com/" target="_blank" rel="noopener">Patio11’s Blog</a></li>
+<li><a href="https://sivers.org/" target="_blank" rel="noopener">Derek Sivers’s Blog</a></li>
+<li><a href="https://www.gwern.net/" target="_blank" rel="noopener">Gwern’s blog</a></li>
+</ul>
+<p>以下是Gwern博客的样子:</p>
+<p><img src="https://ferrucc.io/starting-a-blog/gwern-ugly.png" alt=""></p>
+<p>有插图并不重要，但我可以把它们画出来，用视觉来表达我的信息，这一点帮助我脱颖而出。</p>
+<p>所以，找到一些独特的你可以做的，并把它添加到你的网站! <strong>例如，一个不需要特殊技能的想法是添加一个帖子的音频版本。</strong></p>
+<h1 id="写作过程"><a href="#写作过程" class="headerlink" title="写作过程"></a>写作过程</h1><p>在了解了博客的所有基础知识之后，你就可以开始写作了。</p>
+<p>最好的方法是集思广益，想出几个你的读者感兴趣的题目，最好也是你感兴趣的题目，然后开始写作。<br>标题并不一定要描述文章的内容。</p>
+<p>挑选文章标题的一个好方法是使用 <a href="https://en.wikipedia.org/wiki/E._Haldeman-Julius" target="_blank" rel="noopener">Julius Haldeman</a> 20世纪20年代的著作《第一个一亿》(“<a href="https://ferrucc.io/posts/old-school-marketers/" target="_blank" rel="noopener">The First Hundred Million</a>”)的内容。</p>
+<p>显然，你的文章不可能完全脱离主题，但你的目标必须是吸引读者和提供信息。</p>
+<p>根据你的目标读者在哪里，你也必须弄清楚你的文章应该是什么样的。例如，如果你的目标读者在subreddit 上，你可以写700-800字的帖子。</p>
+<p>如果你想在搜索引擎上取得成功，你可能想让你的内容更长。<br>这里有一些数据显示了理想的字数:</p>
+<p><img src="https://ferrucc.io/starting-a-blog/shares-data.png" alt=""></p>
+<p>正如你所看到的，在大于 1000 字范围内的文章得到的分享比短内容多得多。超过 3000 字的分数看起来(字数)/(分享)的奖励开始减少，但没有严格的规则，做你认为合适的就可以。</p>
+<p>你不能忽视的是，较长的内容显然与更多的集中的流量相关:</p>
+<p><img src="https://ferrucc.io/starting-a-blog/hubspot.png" alt=""></p>
+<p>所以我的建议是，如果你想让你的博客成长，那就写长点的内容。</p>
+<p>但是这种相关性也可能是由外部因素造成的。也许写更长的文章平均需要更多的研究，以确保更高质量的内容，从而更多的共享。</p>
+<p>如果你不知道如何写博客，你可以搜索你喜欢的文章，目标读者，解构他们试图找出一个重复的主题或模板结构，你可以遵循。</p>
+<p>您的博客文章将是一个私人的事情，所以我不认为我可以提供其他建议，可以帮助您。</p>
+<p>另一方面，如果你正在创建一个公司博客，一个好的建议是写与你的产品相关的内容。</p>
+<p>例如，我在 <a href="https://boxysuite.com/" target="_blank" rel="noopener">Boxy Suite </a> 的朋友们制作的谷歌应用是Mac OS的原生应用。</p>
+<p>他们最近还决定为公司开设一个博客来吸引更多的客户。</p>
+<p>在他们的案例中，博客的目标是被Gmail的高级用户发现。所以他们的博客文章会是这样的内容:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">“10条Gmail捷径最大化生产力”</span><br><span class="line">“Gmail最好的Chrome扩展”</span><br></pre></td></tr></table></figure>
+
+<p>在你的文章开始的时候，有时把自己限定为一个专家也是一个好主意，展示一些你为什么谈论某事以及为什么人们应该听你说话的背景。</p>
+<p>在很多情况下这样做都有帮助，但这并不意味着你必须这么做。</p>
+<h1 id="修改草稿"><a href="#修改草稿" class="headerlink" title="修改草稿"></a>修改草稿</h1><p>一旦你完成写作，等待一天，开始阅读你写的所有东西，修改打字错误，删除无用的单词。</p>
+<p>如果一个句子没有任何价值，删除它。如果一个句子太长，就把它拆开。</p>
+<p>为了提高可读性，用粗体和斜体突出重要的单词。</p>
+<p>有时候，像我刚才做的那样，用几个短段落引出一个长段落也是一个很好的练习。避免长句子和长段落，它们不容易吸引读者的眼球，会导致人们浏览你的内容。</p>
+<p>一旦你完成了你的文章。再睡一晚吧。</p>
+<p>第二天就把它寄出去。</p>
+<p>如果你第n次读的时候感觉不舒服，那么你可能已经做得很好了。</p>
+<h1 id="促进工作"><a href="#促进工作" class="headerlink" title="促进工作"></a>促进工作</h1><p>当你确定了你的听众，你也知道你的听众在哪里。</p>
+<p>在允许的平台上转发你的文章，比如你所在领域的媒体和看板。</p>
+<p>在社交媒体上分享你的内容，甚至把它发短信给你可能关心它的朋友。</p>
+<p>另一个必须做的，就是收集读者的邮件。如果有人访问了你的网站，然后离开了，他们可能永远不会回来，除非你设法拿到了他们的电子邮件。</p>
+<p>电子邮件很重要，因为它让你直接与人接触，减少了大型媒体公司或社交媒体算法变化对受众的影响。</p>
+<p>同时，开始接触那些拥有类似博客的人，向他们推销客座文章。</p>
+<p>客座文章是一个很好的机会，以挖掘更广泛的受众和获得反向链接到您的网站。</p>
+<h1 id="来自朋友的建议"><a href="#来自朋友的建议" class="headerlink" title="来自朋友的建议"></a>来自朋友的建议</h1><p>因为我想让这篇文章成为博客上最好的资源，我决定接触一些我钦佩的人。</p>
+<p>下面是我的朋友们给我的一些很棒的建议:</p>
+<h2 id="Pat-Walls-of-Starter-Story"><a href="#Pat-Walls-of-Starter-Story" class="headerlink" title="Pat Walls of Starter Story"></a><a href="https://twitter.com/thepatwalls" target="_blank" rel="noopener">Pat Walls</a> of <a href="https://www.starterstory.com" target="_blank" rel="noopener">Starter Story</a></h2><p>在2018年11月的 Starter Story上 有 19,470 个 uniques.</p>
+<p>我不做任何关键字研究。我的大部分内容都是采访，所以我让别人来写。这让我可以做得更多，因为我不需要做所有的艰苦工作的写作。我的大部分工作是确保内容是好的，并与作者合作使其更好。我主要在 Reddit 和社交媒体上推广。在 Reddit 上，我发布“case studies“，主要是将我的博客内容作为一篇自述转发到 subReddit 上。</p>
+<p>我的内容有重复的格式这一事实是一把双刃剑。</p>
+<p>它使我能够系统化内容创建过程。</p>
+<p>它也伤害了我的成长，尽管人们厌倦了同样的格式。</p>
+<h2 id="Hugo-Di-Francesco-of-Code-with-Hugo"><a href="#Hugo-Di-Francesco-of-Code-with-Hugo" class="headerlink" title="Hugo Di Francesco of Code with Hugo"></a><a href="https://twitter.com/hugo__df" target="_blank" rel="noopener">Hugo Di Francesco</a> of <a href="https://codewithhugo.com" target="_blank" rel="noopener">Code with Hugo</a></h2><p>7个月内 0-12k Unique users/month</p>
+<p>做广告并不坏，只要你没有什么可以代替它们。</p>
+<p>基于广告的一切会让你只关注流量，而不是流量的质量。尝试 “让我们在网站上再增加10万用户” 的问题是，10万比10或100更难。</p>
+<p>如果你有什么东西要卖，就卖吧，广告商付钱给你，意味着他们重视你的关注，而不是他们花了多少钱(更别提在中间商和费用上浪费了多少美元)。</p>
+<p>重视你的受众的注意力，获得广告收入，但在你有更好的东西提供之前，把它当作一根拐杖。</p>
+<h2 id="Ethan-of-Code-The-Web"><a href="#Ethan-of-Code-The-Web" class="headerlink" title="Ethan of Code The Web"></a><a href="https://twitter.com/booligoosh" target="_blank" rel="noopener">Ethan</a> of <a href="https://codetheweb.blog/" target="_blank" rel="noopener">Code The Web</a></h2><p><strong>创建邮件列表</strong></p>
+<p>当有人访问你的博客时，他们不太可能经常回来。除非你开始写邮件!确保从一开始就在你的博客上放置一个订阅表单。你也可以通过提供一些PDF格式的特殊内容来鼓励人们加入。</p>
+<p>通过编写 Web 代码，我最终意识到，那些注册的人不仅希望得到新文章的通知，他们还希望学习编写代码。所以我改变了格式，把它变成了每周发送 5-10 个链接到 web 开发教程的电子邮件。我将包括我的一些旧文章，以及一个链接到我的最新文章顶部。这需要更多的努力，但我的电子邮件列表在更改之后开始增长得更快。我还在 Product Hunt 上发布了这款应用，获得了大约500个注册用户(我现在每周都能收到一些!) </p>
+<p>有一个电子邮件列表不仅有利于参与，而且它也可以帮助很多，如果你以后决定寻找赞助商!</p>
+<p><strong>与读者建立联系</strong></p>
+<p>这是运行博客的一个重要(但经常被忽视)方面。记住要表现得像一个真正的人——在你的文章、电子邮件和互动中。每次有新人在我的邮件列表上注册时，我都会给他们发一封邮件，邀请他们自我介绍，并问我任何问题。我最终通过电子邮件帮助了很多人!!这会让你的读者更加忠诚，让你对你的读者有第一手的了解。它也给我带来了一些很好的反馈，其中很多都可以作为我的证明!</p>
+<p>像这样:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">“谢谢你花时间创造了一些有用的东西。内容创造者让这个社会变得更好，尤其是当他们免费分享劳动成果的时候。”</span><br><span class="line"></span><br><span class="line">“我真的很难理解，也很难理解这一切。但在我遇到你的解释之前，我还不够自信。</span><br><span class="line">多亏了你，我觉得我终于明白了，这些概念也不像我曾经想的那么陌生。</span><br><span class="line">我现在很受鼓舞，因为我可以坚持下去，并在这个过程中掌握更多的概念!”</span><br><span class="line"></span><br><span class="line">“我希望你能在很长一段时间内继续创作出令人惊叹、易于理解的内容”</span><br></pre></td></tr></table></figure>
+
+<p><strong>有大量的头脑风暴想法</strong></p>
+<p>在我写第一篇关于 Web 代码的文章之前，我进行了一次大规模的头脑风暴。我设定了一个目标，在一天结束前写下 60 篇博文。这很难!!我试着完全去除所有的心理过滤，只有当我把它们放下来的时候，我才能判断哪些是好的，哪些是坏的。</p>
+<p>我确保这个数字永远不会低于50。我还养成了一种习惯，一旦想法突然出现在我脑海里，我就把它们写下来。我已经超过100了!!拥有一个庞大的博客帖子想法列表真的有助于激励。不知道写些什么真的很可怕，这是你写那篇博客文章的另一个心理障碍。为了获得额外的动力，你也可以给每个想法指定一个日期，然后你就有了一个要坚持的计划!如果你跳过一个星期，你将不得不重新安排其他所有星期的内容</p>
+<p><strong>从标题开始</strong></p>
+<p>这个技巧与你的博客文章的实际写作有关。从空白屏幕开始常常会让人觉得难以承受。事实上，它会导致拖延症或写作障碍!为了解决这个问题，我总是从写下文章的标题开始。这让我对文章的流程有了一个大致的了解，也给了我一个计划，这样我就不太可能放弃或者不知道接下来要写什么了!事实上，我在写这篇文章的时候就用了这个技巧。</p>
+<p><strong>博客帮助你学习</strong></p>
+<p>这不是一个小窍门，我只是想和大家分享一下。我开始以博客的形式编写Web代码，向初学者讲授Web开发。通过这个过程，我自己成为了一个更好的web开发人员。我相信教学是最好的学习方式，通过创建一个完整的学习web开发的路径，我成功地填补了我知识中的许多空白。我学到了很多很酷的东西，比如CSS flexbox、CSS grid、CSS变量、JavaScript箭头函数等等。写博客对读者和作者都有好处!</p>
+<h2 id="KP-of-KP"><a href="#KP-of-KP" class="headerlink" title="KP of KP"></a><a href="https://twitter.com/thisiskp_" target="_blank" rel="noopener">KP</a> of <a href="http://thisiskp.com/" target="_blank" rel="noopener">KP</a></h2><p>每年超过1000篇文章 - 每年18000 独立用户在他的新博客</p>
+<p>确保你拥有黑客一样的动力作为突破点。创建一个简单的例程和一个清晰的重复提示。我的提示是每天早上8:30，我使用的手段是 “打开我的笔记本电脑，输入一个完整的句子” 。因为这是一个可以实现的目标，所以坚持这个习惯变得很容易。当然，我写了不止一句话，但这是一个很好的开始。</p>
+<p><strong>为什么广告是个坏主意</strong></p>
+<p>你网站上的广告是指以下内容。</p>
+<p>通过一个平台(通常会保留50%的资金)的人为推广一款产品所支付的费用是你的两倍。</p>
+<p>这些人并不傻，他们这么做是因为他们期待投资回报。据我所知，他们已经这样做了30多年，到现在还没有停止。</p>
+<p>这意味着这些广告是有效的，即使它们的针对性很差，而且在你看来价格过高。</p>
+<p>我的建议很简单。你比任何广告商都更了解你的读者，所以卖给他们你知道他们想要的东西。</p>
+<p>我和 <a href="https://twitter.com/hugo__df" target="_blank" rel="noopener">Hugo Di Francesco</a> of <a href="https://codewithhugo.com" target="_blank" rel="noopener">Code with Hugo</a> 讨论过，他告诉我，对他来说，网站上的大多数广告都是有意义的。</p>
+<p>原因如下:</p>
+<p>“广告商承担了风险。我降低了用户交互的风险。我不需要建立信任和卖东西就能赚钱。<br>重要的是，你觉得有用的文章的作者肯定比广告商更值得信任。”</p>
+<p>事实上，在与Hugo交谈之后，我们一起意识到他的策略在那些与他销售的东西无关的帖子上效果很好。</p>
+<p>在与他所卖的东西相关的帖子上，他会为自己填充一个广告，而不是普通的广告。</p>
+<p><img src="https://ferrucc.io/starting-a-blog/hugo.png" alt=""></p>
+<h1 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h1><p>写博客没有任何规则。</p>
+<p>你可以从这些年来我学到的东西中得到一些启示，或者忽略一切，以自己的方式做事。</p>
+<p>事实上，如果你违反了规定，给我发一封邮件，把你帖子的链接发给我。我一直在寻找灵感，并着迷于那些改变规则却仍能取得成果的人。</p>
+<p>如果你没有得到结果，重读这篇文章，找出你做错了什么。</p>
+<h1 id="原文链接"><a href="#原文链接" class="headerlink" title="原文链接"></a>原文链接</h1><ul>
+<li><a href="https://ferrucc.io/posts/starting-a-blog/" target="_blank" rel="noopener">https://ferrucc.io/posts/starting-a-blog/</a></li>
+</ul>
+<p>======================<br>Erdong, A Linux user !</p>
+
+    </div>
+
+    
+    
+    
+        <div class="reward-container">
+  <div>坚持原创技术分享， 您的支持将鼓励我继续创作!</div>
+  <button onclick="var qr = document.getElementById('qr'); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+      
+      <div style="display: inline-block;">
+        <img src="/images/WeChatPay.jpg" alt="Er Dong 微信支付">
+        <p>微信支付</p>
+      </div>
+
+  </div>
+</div>
+
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>Er Dong
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://erdong.site/article/starting-a-blog.html" title="【翻译】10年博客的经验">https://erdong.site/article/starting-a-blog.html</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/zh-Hans" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-ND</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/blog/" rel="tag"># blog</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/article/cname-and-mx-conflicts.html" rel="prev" title="三种方法解决域名解析的主机记录冲突">
+      <i class="fa fa-chevron-left"></i> 三种方法解决域名解析的主机记录冲突
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/weekly/weekly03.html" rel="next" title="第03周分享">
+      第03周分享 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#打开天窗说亮话"><span class="nav-number">1.</span> <span class="nav-text">打开天窗说亮话</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#受众人群"><span class="nav-number">2.</span> <span class="nav-text">受众人群</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#名字"><span class="nav-number">3.</span> <span class="nav-text">名字</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#风格"><span class="nav-number">4.</span> <span class="nav-text">风格</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#写作过程"><span class="nav-number">5.</span> <span class="nav-text">写作过程</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#修改草稿"><span class="nav-number">6.</span> <span class="nav-text">修改草稿</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#促进工作"><span class="nav-number">7.</span> <span class="nav-text">促进工作</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#来自朋友的建议"><span class="nav-number">8.</span> <span class="nav-text">来自朋友的建议</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Pat-Walls-of-Starter-Story"><span class="nav-number">8.1.</span> <span class="nav-text">Pat Walls of Starter Story</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Hugo-Di-Francesco-of-Code-with-Hugo"><span class="nav-number">8.2.</span> <span class="nav-text">Hugo Di Francesco of Code with Hugo</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Ethan-of-Code-The-Web"><span class="nav-number">8.3.</span> <span class="nav-text">Ethan of Code The Web</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#KP-of-KP"><span class="nav-number">8.4.</span> <span class="nav-text">KP of KP</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#结论"><span class="nav-number">9.</span> <span class="nav-text">结论</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#原文链接"><span class="nav-number">10.</span> <span class="nav-text">原文链接</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Er Dong"
+      src="/images/myavatar.jpg">
+  <p class="site-author-name" itemprop="name">Er Dong</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">138</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">22</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">58</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/erdong" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;erdong" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:erdong@mail.erdong.site" title="E-Mail → mailto:erdong@mail.erdong.site" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+  <div class="cc-license motion-element" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/zh-Hans" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-nd.svg" alt="Creative Commons"></a>
+  </div>
+
+
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title"><i class="fa fa-link fa-fw"></i>
+      链接
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://erdong.site/acp-notes" title="https:&#x2F;&#x2F;erdong.site&#x2F;acp-notes">ACP 笔记</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://erdong.site/ansible-notes" title="https:&#x2F;&#x2F;erdong.site&#x2F;ansible-notes">Ansible 笔记</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://erdong.site/prometheus-notes" title="https:&#x2F;&#x2F;erdong.site&#x2F;prometheus-notes">Prometheus 笔记</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://erdong.site/cloudnative-notes" title="https:&#x2F;&#x2F;erdong.site&#x2F;cloudnative-notes">CloudNative 笔记</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://erdong.site/sre-lesson-one" title="https:&#x2F;&#x2F;erdong.site&#x2F;sre-lesson-one">SRE Lesson One</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://www.ruanyifeng.com/blog/" title="http:&#x2F;&#x2F;www.ruanyifeng.com&#x2F;blog&#x2F;" rel="noopener" target="_blank">阮一峰的网络日志</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://coolshell.cn/" title="https:&#x2F;&#x2F;coolshell.cn" rel="noopener" target="_blank">左耳朵耗子</a>
+        </li>
+    </ul>
+  </div>
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 2018 – 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Er Dong</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+    <span title="站点总字数">193k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">2:55</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+<script src="/js/bookmark.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

@@ -1,0 +1,693 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16.ico">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"erdong.site","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":true},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":true,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="概述Kong 是在客户端和（微）服务间转发API通信的API网关，通过插件扩展功能。 Kong 的官方网站，https:&#x2F;&#x2F;konghq.com&#x2F;kongKong 的官方 Github 站点：https:&#x2F;&#x2F;github.com&#x2F;kong&#x2F;kongKong 有两个主要组件： Kong Server ：基于 nginx 的服务器，用来接收 API 请求。Apache Cassandra ：用来存储操">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Kong 介绍">
+<meta property="og:url" content="https://erdong.site/Kong/kong-01.html">
+<meta property="og:site_name" content="Erdong’ Blog">
+<meta property="og:description" content="概述Kong 是在客户端和（微）服务间转发API通信的API网关，通过插件扩展功能。 Kong 的官方网站，https:&#x2F;&#x2F;konghq.com&#x2F;kongKong 的官方 Github 站点：https:&#x2F;&#x2F;github.com&#x2F;kong&#x2F;kongKong 有两个主要组件： Kong Server ：基于 nginx 的服务器，用来接收 API 请求。Apache Cassandra ：用来存储操">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2019-10-22T15:44:49.000Z">
+<meta property="article:modified_time" content="2019-12-05T08:50:04.497Z">
+<meta property="article:author" content="Er Dong">
+<meta property="article:tag" content="Kong">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://erdong.site/Kong/kong-01.html">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>Kong 介绍 | Erdong’ Blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="Erdong’ Blog" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Erdong’ Blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">苦练七十二变，笑对八十一难。</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-公告">
+
+    <a href="/notice/" rel="section"><i class="fa fa-list fa-fw"></i>公告</a>
+
+  </li>
+        <li class="menu-item menu-item-rss">
+
+    <a href="/atom.xml" rel="section"><i class="fa fa-rss fa-fw"></i>RSS</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+  <a href="https://github.com/erdong" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://erdong.site/Kong/kong-01.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/myavatar.jpg">
+      <meta itemprop="name" content="Er Dong">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Erdong’ Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Kong 介绍
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-10-22 23:44:49" itemprop="dateCreated datePublished" datetime="2019-10-22T23:44:49+08:00">2019-10-22</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2019-12-05 16:50:04" itemprop="dateModified" datetime="2019-12-05T16:50:04+08:00">2019-12-05</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Kong/" itemprop="url" rel="index"><span itemprop="name">Kong</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span><br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>5.4k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>5 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><p>Kong 是在客户端和（微）服务间转发API通信的API网关，通过插件扩展功能。</p>
+<p>Kong 的官方网站，<a href="https://konghq.com/kong" target="_blank" rel="noopener">https://konghq.com/kong</a><br>Kong 的官方 Github 站点：<a href="https://github.com/kong/kong" target="_blank" rel="noopener">https://github.com/kong/kong</a><br>Kong 有两个主要组件：</p>
+<p>Kong Server ：基于 nginx 的服务器，用来接收 API 请求。<br>Apache Cassandra ：用来存储操作数据。</p>
+<a id="more"></a>
+<p>Kong 的数据存储支持两个组件，Cassandra 和 PostgreSQL 。</p>
+<p>Kong 官方推荐的 GUI 工具叫 Kong-Dashboard，但是友好度不太好。</p>
+<p>Kong 还有一个 GUI 的工具叫做 KongA，GitHub 地址是  <a href="https://github.com/pantsel/konga" target="_blank" rel="noopener">https://github.com/pantsel/konga</a>  。</p>
+<p>你可以通过增加更多 Kong Server 机器对 Kong 服务进行水平扩展，通过前置的负载均衡器向这些机器分发请求。根据文档描述，两个Cassandra节点就足以支撑绝大多数情况，但如果网络非常拥挤，可以考虑适当增加更多节点。</p>
+<p>对于开源社区来说，Kong 中最诱人的一个特性是可以通过插件扩展已有功能，这些插件在 API 请求响应循环的生命周期中被执行。插件使用 Lua 编写，而且 Kong 还有如下几个基础功能：HTTP 基本认证、密钥认证、CORS（ Cross-origin Resource Sharing，跨域资源共享）、TCP、UDP、文件日志、API 请求限流、请求转发以及 nginx 监控。</p>
+<p>Kong 包可运行在部分的 Linux 发行版（包括CentOS、RHEL、Debian、Ubuntu）、Mac OS X 和 Docker 、Kubernetes、AWS-cloud、Google-Cloud 中，无论是本地机还是云端服务器皆可运行。</p>
+<p>除了免费的开源版本，Mashape 还提供了付费的企业版，其中包括技术支持、使用培训服务以及 API 分析插件。</p>
+<h1 id="基于-rpm-安装"><a href="#基于-rpm-安装" class="headerlink" title="基于 rpm 安装"></a>基于 rpm 安装</h1><p>当前基于 CentOS 7 进行安装。</p>
+<p>下载软件包可以从官方地址下载</p>
+<p><a href="https://konghq.com/install/" target="_blank" rel="noopener">https://konghq.com/install/</a></p>
+<p>CentOS 7 的 rpm 包可以从以下地址找到</p>
+<p><a href="https://kong.bintray.com/kong-rpm/centos/7/" target="_blank" rel="noopener">https://kong.bintray.com/kong-rpm/centos/7/</a></p>
+<p>比如最近发布的 1.4.0 版本</p>
+<p><a href="https://kong.bintray.com/kong-rpm/centos/7/kong-1.4.0.el7.noarch.rpm" target="_blank" rel="noopener">https://kong.bintray.com/kong-rpm/centos/7/kong-1.4.0.el7.noarch.rpm</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install kong-1.4.0.el7.noarch.rpm</span><br></pre></td></tr></table></figure>
+
+<h2 id="安装数据存储的数据库"><a href="#安装数据存储的数据库" class="headerlink" title="安装数据存储的数据库"></a>安装数据存储的数据库</h2><p>Kong 在运行过程中可以有数据库，也可以没有数据库。</p>
+<p>如果你要使用数据库，你需要使用 <code>kong.conf</code> 配置文件中去配置启动数据库作为数据存储的方式，以及相应的路由或者 Kong 的代理。</p>
+<p>如果你不需要使用数据数据库，那么你在   <code>kong.conf</code> 文件中指定一个 <code>kong.yml</code>的声明式配置文件来作为数据存储的文件。</p>
+<p>Kong 支持 PostgreSQL 9.5+ 和 Cassandra 3.xx 来作为他的数据存储数据库。</p>
+<p>如果使用数据库：</p>
+<p>如果你使用 PostgreSQL ，需要初始化一个数据库和一个用户，例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">CREATE USER kong; CREATE DATABASE kong OWNER kong;</span><br></pre></td></tr></table></figure>
+
+<p>现在 运行 Kong migrations</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kong migrations bootstrap [-c &#x2F;path&#x2F;to&#x2F;kong.conf]</span><br></pre></td></tr></table></figure>
+
+<p>如果不使用数据库：</p>
+<p>如果要以无db模式运行Kong，应该首先生成声明性配置文件。使用下面的命令在当前的文件夹下，生成一个普通的 <code>kong.yml</code> </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kong config init</span><br></pre></td></tr></table></figure>
+
+<p>在生成好 <code>kong.yml</code> 文件后，编辑你的 <code>kong.conf</code> 文件，设置如下参数：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">database &#x3D; off</span><br><span class="line">declarative_config &#x3D; &#x2F;path&#x2F;to&#x2F;kong.yml</span><br></pre></td></tr></table></figure>
+<h2 id="启动-kong"><a href="#启动-kong" class="headerlink" title="启动 kong"></a>启动 kong</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kong start [-c &#x2F;path&#x2F;to&#x2F;kong.conf]</span><br></pre></td></tr></table></figure>
+
+<p>如果要停止，请使用如下命令来停止</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kong stop</span><br></pre></td></tr></table></figure>
+
+<p>重载命令是 </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kong reload</span><br></pre></td></tr></table></figure>
+
+<h2 id="使用-Kong"><a href="#使用-Kong" class="headerlink" title="使用 Kong"></a>使用 Kong</h2><p>Kong 默认运行在本地的 8001 端口</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -i http:&#x2F;&#x2F;localhost:8001&#x2F;</span><br></pre></td></tr></table></figure>
+
+<h1 id="基于-Docker-安装-Kong"><a href="#基于-Docker-安装-Kong" class="headerlink" title="基于 Docker 安装 Kong"></a>基于 Docker 安装 Kong</h1><h2 id="使用数据库"><a href="#使用数据库" class="headerlink" title="使用数据库"></a>使用数据库</h2><p>接下来可以快速的连接到 Kong 容器以及他的数据库容器。</p>
+<h3 id="创建-Docker-网络"><a href="#创建-Docker-网络" class="headerlink" title="创建 Docker 网络"></a>创建 Docker 网络</h3><p>需要创建一个自定义的网络，运行容器发现并且彼此之间通信，接下来创建一个名称为 <code>kong-net</code> 的网络，也可以使用其他名称。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker network create kong-net</span><br></pre></td></tr></table></figure>
+
+<h3 id="启动数据库"><a href="#启动数据库" class="headerlink" title="启动数据库"></a>启动数据库</h3><p>如果你想要使用 Cassandra 容器</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">docker run -d --name kong-database \</span><br><span class="line">              --network&#x3D;kong-net \</span><br><span class="line">              -p 9042:9042 \</span><br><span class="line">              cassandra:3</span><br></pre></td></tr></table></figure>
+
+<p>如果你想要使用 PostgreSQL  容器</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">docker run -d --name kong-database \</span><br><span class="line">              --network&#x3D;kong-net \</span><br><span class="line">              -p 5432:5432 \</span><br><span class="line">              -e &quot;POSTGRES_USER&#x3D;kong&quot; \</span><br><span class="line">              -e &quot;POSTGRES_DB&#x3D;kong&quot; \</span><br><span class="line">              postgres:9.6</span><br></pre></td></tr></table></figure>
+
+
+<h3 id="初始化数据库"><a href="#初始化数据库" class="headerlink" title="初始化数据库"></a>初始化数据库</h3><p>运行 migrations 使用一个短暂的 Kong 容器</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">docker run --rm \</span><br><span class="line">     --network&#x3D;kong-net \</span><br><span class="line">     -e &quot;KONG_DATABASE&#x3D;postgres&quot; \</span><br><span class="line">     -e &quot;KONG_PG_HOST&#x3D;kong-database&quot; \</span><br><span class="line">     -e &quot;KONG_CASSANDRA_CONTACT_POINTS&#x3D;kong-database&quot; \</span><br><span class="line">     kong:latest kong migrations bootstrap</span><br></pre></td></tr></table></figure>
+
+<p>在上边的示例中，需要你自行修改你的 <code>KONG_DATABASE</code> 参数。</p>
+<h3 id="启动-Kong"><a href="#启动-Kong" class="headerlink" title="启动 Kong"></a>启动 Kong</h3><p>当 migration 已经执行，并且数据库已经准备好，启动 Kong 容器来连接数据库容器，比如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">docker run -d --name kong \</span><br><span class="line">     --network&#x3D;kong-net \</span><br><span class="line">     -e &quot;KONG_DATABASE&#x3D;postgres&quot; \</span><br><span class="line">     -e &quot;KONG_PG_HOST&#x3D;kong-database&quot; \</span><br><span class="line">     -e &quot;KONG_CASSANDRA_CONTACT_POINTS&#x3D;kong-database&quot; \</span><br><span class="line">     -e &quot;KONG_PROXY_ACCESS_LOG&#x3D;&#x2F;dev&#x2F;stdout&quot; \</span><br><span class="line">     -e &quot;KONG_ADMIN_ACCESS_LOG&#x3D;&#x2F;dev&#x2F;stdout&quot; \</span><br><span class="line">     -e &quot;KONG_PROXY_ERROR_LOG&#x3D;&#x2F;dev&#x2F;stderr&quot; \</span><br><span class="line">     -e &quot;KONG_ADMIN_ERROR_LOG&#x3D;&#x2F;dev&#x2F;stderr&quot; \</span><br><span class="line">     -e &quot;KONG_ADMIN_LISTEN&#x3D;0.0.0.0:8001, 0.0.0.0:8444 ssl&quot; \</span><br><span class="line">     -p 8000:8000 \</span><br><span class="line">     -p 8443:8443 \</span><br><span class="line">     -p 8001:8001 \</span><br><span class="line">     -p 8444:8444 \</span><br><span class="line">     kong:latest</span><br></pre></td></tr></table></figure>
+
+<h3 id="使用-Kong-1"><a href="#使用-Kong-1" class="headerlink" title="使用 Kong"></a>使用 Kong</h3><p>Kong 运行在 8001</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -i http:&#x2F;&#x2F;localhost:8001&#x2F;</span><br></pre></td></tr></table></figure>
+
+<h2 id="无数据库模式"><a href="#无数据库模式" class="headerlink" title="无数据库模式"></a>无数据库模式</h2><h3 id="创建-Docker-网络-1"><a href="#创建-Docker-网络-1" class="headerlink" title="创建 Docker 网络"></a>创建 Docker 网络</h3><p>需要创建一个自定义的网络，运行容器发现并且彼此之间通信，接下来创建一个名称为 <code>kong-net</code> 的网络，也可以使用其他名称。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker network create kong-net</span><br></pre></td></tr></table></figure>
+<p>在没有数据库的模式下，不一定需要创建一个专用的网络，但是创建以后可以更好的用来添加其他内容，比如 Redis 集群支持的限速插件。</p>
+<h3 id="创建-Docker-卷"><a href="#创建-Docker-卷" class="headerlink" title="创建 Docker 卷"></a>创建 Docker 卷</h3><p>对于本指南的目的，Docker 卷是主机内的一个文件夹。可以将其映射到容器中的文件夹，我们给卷起一个名字，叫 kong-vol</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker volume create kong-vol</span><br></pre></td></tr></table></figure>
+
+
+<p>使用 如下命令查看 卷的 挂载点路径</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">$ docker volume inspect kong-vol</span><br><span class="line">[</span><br><span class="line">    &#123;</span><br><span class="line">        &quot;CreatedAt&quot;: &quot;2019-05-28T12:40:09Z&quot;,</span><br><span class="line">        &quot;Driver&quot;: &quot;local&quot;,</span><br><span class="line">        &quot;Labels&quot;: &#123;&#125;,</span><br><span class="line">        &quot;Mountpoint&quot;: &quot;&#x2F;var&#x2F;lib&#x2F;docker&#x2F;volumes&#x2F;kong-vol&#x2F;_data&quot;,</span><br><span class="line">        &quot;Name&quot;: &quot;kong-vol&quot;,</span><br><span class="line">        &quot;Options&quot;: &#123;&#125;,</span><br><span class="line">        &quot;Scope&quot;: &quot;local&quot;</span><br><span class="line">    &#125;</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+
+<p>记录 MountPoint 的路径，下边会用到。</p>
+<h3 id="初始化配置文件"><a href="#初始化配置文件" class="headerlink" title="初始化配置文件"></a>初始化配置文件</h3><p>按照声明是配置文件的规范进行修改配置文件，添加必要的配置项，比如 serveice、route、plugins、consumer 等等，保存配置文件在 MountPoint 的路径下，本文会放在 <code>/var/lib/docker/volumes/kong-vol/_data/kong.yml</code></p>
+<h3 id="在无数据库模式下启动-Kong"><a href="#在无数据库模式下启动-Kong" class="headerlink" title="在无数据库模式下启动 Kong"></a>在无数据库模式下启动 Kong</h3><p>使用如下命令启动 Kong ，并且使用 <code>-v</code> 参数挂载数据卷，使用 <code>-e</code> 参数指定必须的环境变量。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">$ docker run -d --name kong \</span><br><span class="line">     --network&#x3D;kong-net \</span><br><span class="line">     -v &quot;kong-vol:&#x2F;usr&#x2F;local&#x2F;kong&#x2F;declarative&quot; \</span><br><span class="line">     -e &quot;KONG_DATABASE&#x3D;off&quot; \</span><br><span class="line">     -e &quot;KONG_DECLARATIVE_CONFIG&#x3D;&#x2F;usr&#x2F;local&#x2F;kong&#x2F;declarative&#x2F;kong.yml&quot; \</span><br><span class="line">     -e &quot;KONG_PROXY_ACCESS_LOG&#x3D;&#x2F;dev&#x2F;stdout&quot; \</span><br><span class="line">     -e &quot;KONG_ADMIN_ACCESS_LOG&#x3D;&#x2F;dev&#x2F;stdout&quot; \</span><br><span class="line">     -e &quot;KONG_PROXY_ERROR_LOG&#x3D;&#x2F;dev&#x2F;stderr&quot; \</span><br><span class="line">     -e &quot;KONG_ADMIN_ERROR_LOG&#x3D;&#x2F;dev&#x2F;stderr&quot; \</span><br><span class="line">     -e &quot;KONG_ADMIN_LISTEN&#x3D;0.0.0.0:8001, 0.0.0.0:8444 ssl&quot; \</span><br><span class="line">     -p 8000:8000 \</span><br><span class="line">     -p 8443:8443 \</span><br><span class="line">     -p 8001:8001 \</span><br><span class="line">     -p 8444:8444 \</span><br><span class="line">     kong:latest</span><br></pre></td></tr></table></figure>
+
+<h3 id="使用-Kong-2"><a href="#使用-Kong-2" class="headerlink" title="使用 Kong"></a>使用 Kong</h3><p>Kong 启动后，就可以使用了，可以使用如下方式来访问 Kong</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -i http:&#x2F;&#x2F;localhost:8001&#x2F;</span><br></pre></td></tr></table></figure>
+
+<p>比如，获取一个service 的列表</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -i http:&#x2F;&#x2F;localhost:8001&#x2F;services</span><br></pre></td></tr></table></figure>
+
+<h1 id="Kong-的默认端口"><a href="#Kong-的默认端口" class="headerlink" title="Kong 的默认端口"></a>Kong 的默认端口</h1><p>Kong 一切正常，启动以后会默认监听如下端口</p>
+<ul>
+<li><code>:8000</code> Kong 监听来自客户端的传入 HTTP 请求，并将其转发到上游服务。</li>
+<li><code>:8443</code> Kong 监听来自 HTTPS 流量，这个端口的行为类似于 <code>:8000</code>，只是用来监控 HTTPS 的请求，没有转发功能，这个端口可以在配置文件里关闭。</li>
+<li><code>:8001</code> Admin API 接口用来对 Kong 的监听服务进行配置。</li>
+<li><code>:8444</code> Admin API 监听 HTTPS 的流量。</li>
+</ul>
+<h1 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h1><p>本文描述了 Kong 是什么，以及如何在 CentOS 下和 Docker 下进行安装。Kong 是 OpenResty 的一个应用组件，如果要从源码安装 Kong 的话，需要先安装 OpenResty，具体参考 <a href="https://docs.konghq.com/install/source/?_ga=2.5871988.63313777.1569377530-595520565.1569377530" target="_blank" rel="noopener">Compile Source</a></p>
+<p>======================<br>由于无法及时收到评论内容，所以关闭评论功能。<br>大家有问题欢迎发邮件到 <a href="mailto:erdong@mail.erdong.site">erdong@mail.erdong.site</a> ，或者 <a href="https://github.com/erdong/erdong.github.io/issues" target="_blank" rel="noopener">https://github.com/erdong/erdong.github.io/issues</a> 提 Issue ，我会及时回复。</p>
+<p>======================<br>Erdong, A Linux user !</p>
+
+    </div>
+
+    
+    
+    
+        <div class="reward-container">
+  <div>坚持原创技术分享， 您的支持将鼓励我继续创作!</div>
+  <button onclick="var qr = document.getElementById('qr'); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+      
+      <div style="display: inline-block;">
+        <img src="/images/WeChatPay.jpg" alt="Er Dong 微信支付">
+        <p>微信支付</p>
+      </div>
+
+  </div>
+</div>
+
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>Er Dong
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://erdong.site/Kong/kong-01.html" title="Kong 介绍">https://erdong.site/Kong/kong-01.html</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/zh-Hans" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-ND</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Kong/" rel="tag"># Kong</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/weekly/weekly33.html" rel="prev" title="第33周分享">
+      <i class="fa fa-chevron-left"></i> 第33周分享
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/Kong/kong-02.html" rel="next" title="KongA 介绍">
+      KongA 介绍 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#概述"><span class="nav-number">1.</span> <span class="nav-text">概述</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#基于-rpm-安装"><span class="nav-number">2.</span> <span class="nav-text">基于 rpm 安装</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#安装数据存储的数据库"><span class="nav-number">2.1.</span> <span class="nav-text">安装数据存储的数据库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#启动-kong"><span class="nav-number">2.2.</span> <span class="nav-text">启动 kong</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用-Kong"><span class="nav-number">2.3.</span> <span class="nav-text">使用 Kong</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#基于-Docker-安装-Kong"><span class="nav-number">3.</span> <span class="nav-text">基于 Docker 安装 Kong</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#使用数据库"><span class="nav-number">3.1.</span> <span class="nav-text">使用数据库</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#创建-Docker-网络"><span class="nav-number">3.1.1.</span> <span class="nav-text">创建 Docker 网络</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#启动数据库"><span class="nav-number">3.1.2.</span> <span class="nav-text">启动数据库</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#初始化数据库"><span class="nav-number">3.1.3.</span> <span class="nav-text">初始化数据库</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#启动-Kong"><span class="nav-number">3.1.4.</span> <span class="nav-text">启动 Kong</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用-Kong-1"><span class="nav-number">3.1.5.</span> <span class="nav-text">使用 Kong</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#无数据库模式"><span class="nav-number">3.2.</span> <span class="nav-text">无数据库模式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#创建-Docker-网络-1"><span class="nav-number">3.2.1.</span> <span class="nav-text">创建 Docker 网络</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#创建-Docker-卷"><span class="nav-number">3.2.2.</span> <span class="nav-text">创建 Docker 卷</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#初始化配置文件"><span class="nav-number">3.2.3.</span> <span class="nav-text">初始化配置文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#在无数据库模式下启动-Kong"><span class="nav-number">3.2.4.</span> <span class="nav-text">在无数据库模式下启动 Kong</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用-Kong-2"><span class="nav-number">3.2.5.</span> <span class="nav-text">使用 Kong</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Kong-的默认端口"><span class="nav-number">4.</span> <span class="nav-text">Kong 的默认端口</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#小结"><span class="nav-number">5.</span> <span class="nav-text">小结</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Er Dong"
+      src="/images/myavatar.jpg">
+  <p class="site-author-name" itemprop="name">Er Dong</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">138</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">22</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">58</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/erdong" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;erdong" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:erdong@mail.erdong.site" title="E-Mail → mailto:erdong@mail.erdong.site" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+  <div class="cc-license motion-element" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/zh-Hans" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-nd.svg" alt="Creative Commons"></a>
+  </div>
+
+
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title"><i class="fa fa-link fa-fw"></i>
+      链接
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://erdong.site/acp-notes" title="https:&#x2F;&#x2F;erdong.site&#x2F;acp-notes">ACP 笔记</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://erdong.site/ansible-notes" title="https:&#x2F;&#x2F;erdong.site&#x2F;ansible-notes">Ansible 笔记</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://erdong.site/prometheus-notes" title="https:&#x2F;&#x2F;erdong.site&#x2F;prometheus-notes">Prometheus 笔记</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://erdong.site/cloudnative-notes" title="https:&#x2F;&#x2F;erdong.site&#x2F;cloudnative-notes">CloudNative 笔记</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://erdong.site/sre-lesson-one" title="https:&#x2F;&#x2F;erdong.site&#x2F;sre-lesson-one">SRE Lesson One</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://www.ruanyifeng.com/blog/" title="http:&#x2F;&#x2F;www.ruanyifeng.com&#x2F;blog&#x2F;" rel="noopener" target="_blank">阮一峰的网络日志</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://coolshell.cn/" title="https:&#x2F;&#x2F;coolshell.cn" rel="noopener" target="_blank">左耳朵耗子</a>
+        </li>
+    </ul>
+  </div>
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 2018 – 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Er Dong</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+    <span title="站点总字数">193k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">2:55</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+<script src="/js/bookmark.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16.ico">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"erdong.site","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":true},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":true,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="今天在使用 Prometheus 时遇到了问题，报错  err&#x3D;”list block dirs &#x2F;prometheus&#x2F;data&#x2F;: open &#x2F;prometheus&#x2F;data&#x2F;: too many open files”, 经查询发现，系统默认的普通用户系统最大打开文件数为 1024，Prometheus 数据太多导致该问题，将普通用户的这个限制适当的上调即可。 经过这个事情发现，对 limi">
+<meta property="og:type" content="article">
+<meta property="og:title" content="limit 详解">
+<meta property="og:url" content="https://erdong.site/linux/system/limit-detailed-introduction.html">
+<meta property="og:site_name" content="Erdong’ Blog">
+<meta property="og:description" content="今天在使用 Prometheus 时遇到了问题，报错  err&#x3D;”list block dirs &#x2F;prometheus&#x2F;data&#x2F;: open &#x2F;prometheus&#x2F;data&#x2F;: too many open files”, 经查询发现，系统默认的普通用户系统最大打开文件数为 1024，Prometheus 数据太多导致该问题，将普通用户的这个限制适当的上调即可。 经过这个事情发现，对 limi">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2018-08-23T03:55:52.000Z">
+<meta property="article:modified_time" content="2019-10-14T11:07:51.615Z">
+<meta property="article:author" content="Er Dong">
+<meta property="article:tag" content="linux">
+<meta property="article:tag" content="limit">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://erdong.site/linux/system/limit-detailed-introduction.html">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>limit 详解 | Erdong’ Blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="Erdong’ Blog" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Erdong’ Blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">苦练七十二变，笑对八十一难。</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-公告">
+
+    <a href="/notice/" rel="section"><i class="fa fa-list fa-fw"></i>公告</a>
+
+  </li>
+        <li class="menu-item menu-item-rss">
+
+    <a href="/atom.xml" rel="section"><i class="fa fa-rss fa-fw"></i>RSS</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+  <a href="https://github.com/erdong" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://erdong.site/linux/system/limit-detailed-introduction.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/myavatar.jpg">
+      <meta itemprop="name" content="Er Dong">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Erdong’ Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          limit 详解
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2018-08-23 11:55:52" itemprop="dateCreated datePublished" datetime="2018-08-23T11:55:52+08:00">2018-08-23</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2019-10-14 19:07:51" itemprop="dateModified" datetime="2019-10-14T19:07:51+08:00">2019-10-14</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/linux/" itemprop="url" rel="index"><span itemprop="name">linux</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/linux/system/" itemprop="url" rel="index"><span itemprop="name">system</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span><br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>5.3k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>5 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>今天在使用 Prometheus 时遇到了问题，报错  err=”list block dirs /prometheus/data/: open /prometheus/data/: too many open files”, 经查询发现，系统默认的普通用户系统最大打开文件数为 1024，Prometheus 数据太多导致该问题，将普通用户的这个限制适当的上调即可。</p>
+<p>经过这个事情发现，对 limit 的掌握并不熟悉，特意搜索了 limit 的相关信息整理在这里，学习以及备忘。</p>
+<p>环境说明：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">CentOS Linux release 7.4.1708 (Core)</span><br><span class="line">Linux hulk 3.10.0-693.el7.x86_64 <span class="comment">#1 SMP Tue Aug 22 21:09:27 UTC 2017 x86_64 x86_64 x86_64 GNU/Linux</span></span><br></pre></td></tr></table></figure>
+
+<a id="more"></a> 
+
+
+<h1 id="ulimit-命令详解"><a href="#ulimit-命令详解" class="headerlink" title="ulimit 命令详解"></a>ulimit 命令详解</h1><p>  Linux是有文件句柄限制的，而且Linux默认普通用户都是1024，root 用户没有限制，作为生产系统使用很容易就达到这个数量</p>
+<p>  操作系统各方面的资源都是非常紧缺的, ulimit 可以起到很大的作用，它是一种简单并且有效的实现资源限制的方式。</p>
+<p>  ulimit 用于限制 shell 启动进程所占用的资源，支持以下各种类型的限制：所创建的内核文件的大小、进程数据块的大小、Shell 进程创建文件的大小、内存锁住的大小、常驻内存集的大小、打开文件描述符的数量、分配堆栈的最大大小、CPU 时间、单个用户的最大线程数、Shell 进程所能使用的最大虚拟内存。同时，它支持硬资源和软资源的限制。</p>
+<p>  作为临时限制，ulimit 可以作用于通过使用其命令登录的 shell 会话，在会话终止时便结束限制，并不影响于其他 shell 会话。而对于长期的固定限制，ulimit 命令语句又可以被添加到由登录 shell 读取的文件中，作用于特定的 shell 用户。</p>
+<p>参数说明</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">-a：显示目前资源限制的设定；</span><br><span class="line">-c &lt;core文件上限&gt;：设定core文件的最大值，单位为区块；</span><br><span class="line">-d &lt;数据节区大小&gt;：程序数据节区的最大值，单位为KB；</span><br><span class="line">-f &lt;文件大小&gt;：shell所能建立的最大文件，单位为区块；</span><br><span class="line">-H：设定资源的硬性限制，也就是管理员所设下的限制；</span><br><span class="line">-m &lt;内存大小&gt;：指定可使用内存的上限，单位为KB；</span><br><span class="line">-n &lt;文件数目&gt;：指定同一时间最多可开启的文件数；</span><br><span class="line">-p &lt;缓冲区大小&gt;：指定管道缓冲区的大小，单位512字节；</span><br><span class="line">-s &lt;堆叠大小&gt;：指定堆叠的上限，单位为KB；</span><br><span class="line">-S：设定资源的弹性限制；</span><br><span class="line">-t &lt;CPU时间&gt;：指定CPU使用时间的上限，单位为秒；</span><br><span class="line">-u &lt;程序数目&gt;：用户最多可开启的程序数目；</span><br><span class="line">-v &lt;虚拟内存大小&gt;：指定可使用的虚拟内存上限，单位为KB。</span><br></pre></td></tr></table></figure>
+
+<h1 id="limit-conf-文件说明"><a href="#limit-conf-文件说明" class="headerlink" title="limit.conf 文件说明"></a>limit.conf 文件说明</h1><p>  limits.conf 文件是 Linux PAM（插入式认证模块，Pluggable Authentication Modules）中 pam_limits.so 的配置文件，pam_limits 模块对用户的会话进行资源限制。对系统访问资源有一定保护作用。</p>
+<p>一个 shell 的初始limits就是由 pam_limits 设定的，用户登录后，pam_limits 会给用户的shell设定在 limits.conf 定义的值。</p>
+<p>pam_limits模块对用户的会话进行资源限制，然后 /etc/pam.d/ 下的应用程序调用 pam_***.so 模块。<br>pam_limits 的设定值也是 per-process 的。<br>pam_limits 的设置是永久生效的。</p>
+<p>limit.conf 文件的格式如下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;domain&gt;        &lt;<span class="built_in">type</span>&gt;  &lt;item&gt;  &lt;value&gt;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>&lt;domain&gt; 可以是如下:</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">- user   可以是一个用户名</span><br><span class="line">- @group 可以是一个组名，但是要加@ ，例如：@group</span><br><span class="line">- *      通配符*来做所有用户的限制</span><br><span class="line">- the wildcard %, can be also used with %group syntax, <span class="keyword">for</span> maxlogin <span class="built_in">limit</span></span><br></pre></td></tr></table></figure>
+
+
+<ul>
+<li>&lt;type&gt; 只能是下列三个值之一:</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">    - soft  当前系统生效的设置值</span><br><span class="line">    - hard  系统中所能设定的最大值</span><br><span class="line">    - -     用 - 就表明同时设置了 soft 和 hard 的值。</span><br><span class="line"></span><br><span class="line">soft 的限制不能比hard 限制高</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>&lt;item&gt; 可以是下列的选项之一:</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">- core           限制内核文件的大小(KB)               - limits the core file size (KB)</span><br><span class="line">- data           最大数据大小(KB)                     - max data size (KB)</span><br><span class="line">- fsize          最大文件大小(KB)                     - maximum filesize (KB)</span><br><span class="line">- memlock        最大锁定内存地址空间(KB)             - max locked-in-memory address space (KB)</span><br><span class="line">- nofile         打开文件的最大数目                   - max number of open file descriptors</span><br><span class="line">- rss            最大持久设置大小(KB)                 - max resident <span class="built_in">set</span> size (KB)</span><br><span class="line">- stack          最大栈大小(KB)                       - max stack size (KB)</span><br><span class="line">- cpu            以分钟为单位的最多 CPU 时间          - max CPU time (MIN)</span><br><span class="line">- nproc          进程的最大数目                       - max number of processes</span><br><span class="line">- as             地址空间限制(KB)                     - address space <span class="built_in">limit</span> (KB)</span><br><span class="line">- maxlogins      此用户允许登录的最大数目             - max number of logins <span class="keyword">for</span> this user</span><br><span class="line">- maxsyslogins   在系统上可以登录的最大数量           - max number of logins on the system</span><br><span class="line">- priority       优先运行该用户的进程                 - the priority to run user process with</span><br><span class="line">- locks          用户可以持有的文件锁的最大数量       - max number of file locks the user can hold</span><br><span class="line">- sigpending     最大等待信号数                       - max number of pending signals</span><br><span class="line">- msgqueue       POSIX消息队列使用的最大内存          - max memory used by POSIX message queues (bytes)</span><br><span class="line">- nice           最大的优先级允许提高到值:[-20, 19]   - max nice priority allowed to raise to values: [-20, 19]</span><br><span class="line">- rtprio         最大的实时优先级                     - max realtime priority</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>&lt;value&gt; 可以选择如下之一：</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">    - 0          最小值</span><br><span class="line">    - x          范围内的整数</span><br><span class="line">    - unlimited  不做限制</span><br><span class="line"></span><br><span class="line">最大值不要超过系统限制的最大值。</span><br></pre></td></tr></table></figure>
+
+<h1 id="查看当前-limit-限制"><a href="#查看当前-limit-限制" class="headerlink" title="查看当前 limit 限制"></a>查看当前 limit 限制</h1><p>使用 ulimit -a 即可查看当前的 limit ，open files 对应的就是当前登陆用户的最大文件打开数量。（也可以用 ulimit -n 快速查看）</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">[root@hulk ~]<span class="comment"># ulimit -a</span></span><br><span class="line">core file size          (blocks, -c) 0</span><br><span class="line">data seg size           (kbytes, -d) unlimited</span><br><span class="line">scheduling priority             (-e) 0</span><br><span class="line">file size               (blocks, -f) unlimited</span><br><span class="line">pending signals                 (-i) 31847</span><br><span class="line">max locked memory       (kbytes, -l) 64</span><br><span class="line">max memory size         (kbytes, -m) unlimited</span><br><span class="line">open files                      (-n) 1024</span><br><span class="line">pipe size            (512 bytes, -p) 8</span><br><span class="line">POSIX message queues     (bytes, -q) 819200</span><br><span class="line">real-time priority              (-r) 0</span><br><span class="line">stack size              (kbytes, -s) 8192</span><br><span class="line">cpu time               (seconds, -t) unlimited</span><br><span class="line">max user processes              (-u) 31847</span><br><span class="line">virtual memory          (kbytes, -v) unlimited</span><br><span class="line">file locks                      (-x) unlimited</span><br><span class="line">[root@hulk ~]<span class="comment">#</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="临时修改-limit-限制"><a href="#临时修改-limit-限制" class="headerlink" title="临时修改 limit 限制"></a>临时修改 limit 限制</h1><p>很多时候为了检查问题，需要临时修改设置以确认问题的原因，或者不希望永久生效，那么可以使用如下命令进行快速设置</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">ulimit</span> -n 4096</span><br></pre></td></tr></table></figure>
+
+<p>很多文章称 ulimit -n 只允许设置得越来越小，比如先执行了ulimit -n 1000，在执行ulimit -n 1001，就会报 “cannot modify limit: Operation not permitted” 错误。<br>这个其实也是不准确的说法。首先要搞清楚，任何用户都可以执行ulimit，但root用户和非root用户是非常不一样的。</p>
+<p>非root用户只能越设置越小，不能越设置越大。<br>root 用户没有限制，可以随意增加或者缩小。</p>
+<h1 id="永久修改-limit-限制"><a href="#永久修改-limit-限制" class="headerlink" title="永久修改 limit 限制"></a>永久修改 limit 限制</h1><p>上述的设置只能临时生效，如果想要永久生效，那么要换其他方法。<br>想要永久生效，有2种方法。</p>
+<h2 id="将上述命令写到登陆后默认加载的文件"><a href="#将上述命令写到登陆后默认加载的文件" class="headerlink" title="将上述命令写到登陆后默认加载的文件"></a>将上述命令写到登陆后默认加载的文件</h2><p>该方法对应的操作是，如果需要<br>所有用户有效，将 ulimit -n 4096 添加到 /etc/profile 。 所有用户登录后都会检查该文件，并加载其中的配置。<br>特定用户有效，将 ulimit -n 4096 添加到对应用户的 ~/.bash_profile 。 用户登录后都会检查自己家目录下的 .bash* 文件，并加载其中的配置。</p>
+<p><strong>个人并不建议使用这种方式进行修改，原因是修改不好或者在某些未考虑周全的情况下，会导致用户无法登录系统，人为增加故障率</strong></p>
+<h2 id="修改-limit-conf-配置文件"><a href="#修改-limit-conf-配置文件" class="headerlink" title="修改 limit.conf 配置文件"></a>修改 limit.conf 配置文件</h2><p>在 /etc/security/limits.conf 文件中按照文件的规则添加配置例如</p>
+<p>设置 test 的最大打开数为8196</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">test - nofile 8196</span><br></pre></td></tr></table></figure>
+
+<p>如果对某一用户或者某中特定的场景有很多的 limit 设置，那么不建议直接修改 /etc/security/limits.conf 文件，这样管理起来成本太大。<br>这种情况下，可以在 /etc/security/limits.d/ 目录下新建 .conf 结尾的配置文件进行单独管理，pam_limits.so 在执行时也会一并加载。</p>
+<p>在系统里，/etc/security/limits.d/ 目录下的文件会覆盖 /etc/security/limits.conf 的内容，所以如果在 limits.conf 文件里配置的内容不要和 limits.d 目录下的内容冲突，如果担心冲突，可以将配置都放在 limits.d 下进行管理。</p>
+<p>覆盖的顺序是，</p>
+<ol>
+<li><p>limits.d 目录下的会覆盖 limits.conf 文件。</p>
+</li>
+<li><p>limits.d 目录下按照英文字母顺序进行加载，后加载的覆盖前边加载的 。</p>
+</li>
+<li><p>数字应该按照 01 、02、……09、10 这样的顺序进行排序。</p>
+</li>
+</ol>
+<h1 id="修改系统总限制。"><a href="#修改系统总限制。" class="headerlink" title="修改系统总限制。"></a>修改系统总限制。</h1><p>上边讲了很多种查看和修改的方法，一般情况下是够用了，那么现在来说说特殊情况。上边提过，最大文件打开数量最大不要超过系统的限制。</p>
+<p>那么怎么查看呢？系统将这个数字存储在了 /proc/sys/fs/file-max 文件，直接查看就好。/proc/sys/fs/file-nr 文件里存储了整个系统目前使用的文件句柄数量。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[<span class="built_in">test</span>@hulk ~]$ cat /proc/sys/fs/file-max</span><br><span class="line">807968</span><br><span class="line">[<span class="built_in">test</span>@hulk ~]$ cat /proc/sys/fs/file-nr</span><br><span class="line">1408	0	807968</span><br><span class="line">[<span class="built_in">test</span>@hulk ~]$</span><br></pre></td></tr></table></figure>
+
+<p>那么怎么修改这个值呢？有2个方法，一个是临时的，一个是永久的。</p>
+<h2 id="临时修改系统限制"><a href="#临时修改系统限制" class="headerlink" title="临时修改系统限制"></a>临时修改系统限制</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span>  6553560 &gt; /proc/sys/fs/file-max</span><br></pre></td></tr></table></figure>
+
+<h2 id="永久修改系统限制"><a href="#永久修改系统限制" class="headerlink" title="永久修改系统限制"></a>永久修改系统限制</h2><p>修改 /etc/sysctl.conf, 加入下列配置，由于修改了系统的内核参数，所以需要使用 sysctl -p 来使新的参数生效。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fs.file-max = 6553560</span><br></pre></td></tr></table></figure>
+
+
+<h1 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h1><ul>
+<li>数值设置根据实际情况进行设置，不要一味的增大，否则会导致系统故障无法运行；</li>
+<li>网上说修改了 limit.conf 以后如果要生效，必须要确保 pam_limits.so 文件被加入到启动文件中。查看 /etc/pam.d/login 文件中有：session required /lib/security/pam_limits.so 。我在 CentOS 7 的系统里找了/etc/pam.d/login 文件，发现没有 pam_limits.so ， 也可以正常生效;</li>
+<li>修改系统最大值时或许可以参考本地磁盘或者存储的相关指标，不要“超标”； </li>
+<li>limits.conf 和sysctl.conf区别在于limits.conf是针对用户，而sysctl.conf是针对整个系统参数配置。</li>
+</ul>
+<p>参考链接</p>
+<ul>
+<li><a href="http://man.linuxde.net/ulimit" target="_blank" rel="noopener">http://man.linuxde.net/ulimit</a></li>
+<li>linux 系统文件 /etc/security/limits.conf </li>
+<li><a href="http://smilejay.com/2016/06/centos-7-systemd-conf-limits/" target="_blank" rel="noopener">http://smilejay.com/2016/06/centos-7-systemd-conf-limits/</a></li>
+</ul>
+<p>======================<br>Erdong, A Linux user !</p>
+
+    </div>
+
+    
+    
+    
+        <div class="reward-container">
+  <div>坚持原创技术分享， 您的支持将鼓励我继续创作!</div>
+  <button onclick="var qr = document.getElementById('qr'); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+      
+      <div style="display: inline-block;">
+        <img src="/images/WeChatPay.jpg" alt="Er Dong 微信支付">
+        <p>微信支付</p>
+      </div>
+
+  </div>
+</div>
+
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>Er Dong
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://erdong.site/linux/system/limit-detailed-introduction.html" title="limit 详解">https://erdong.site/linux/system/limit-detailed-introduction.html</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/zh-Hans" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-ND</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/linux/" rel="tag"># linux</a>
+              <a href="/tags/limit/" rel="tag"># limit</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/life/gossip/blog-163-closed.html" rel="prev" title="网易博客要关闭了">
+      <i class="fa fa-chevron-left"></i> 网易博客要关闭了
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/tools/IB-tool-install.html" rel="next" title="IB 工具安装">
+      IB 工具安装 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#ulimit-命令详解"><span class="nav-number">1.</span> <span class="nav-text">ulimit 命令详解</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#limit-conf-文件说明"><span class="nav-number">2.</span> <span class="nav-text">limit.conf 文件说明</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#查看当前-limit-限制"><span class="nav-number">3.</span> <span class="nav-text">查看当前 limit 限制</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#临时修改-limit-限制"><span class="nav-number">4.</span> <span class="nav-text">临时修改 limit 限制</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#永久修改-limit-限制"><span class="nav-number">5.</span> <span class="nav-text">永久修改 limit 限制</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#将上述命令写到登陆后默认加载的文件"><span class="nav-number">5.1.</span> <span class="nav-text">将上述命令写到登陆后默认加载的文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#修改-limit-conf-配置文件"><span class="nav-number">5.2.</span> <span class="nav-text">修改 limit.conf 配置文件</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#修改系统总限制。"><span class="nav-number">6.</span> <span class="nav-text">修改系统总限制。</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#临时修改系统限制"><span class="nav-number">6.1.</span> <span class="nav-text">临时修改系统限制</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#永久修改系统限制"><span class="nav-number">6.2.</span> <span class="nav-text">永久修改系统限制</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#注意"><span class="nav-number">7.</span> <span class="nav-text">注意</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Er Dong"
+      src="/images/myavatar.jpg">
+  <p class="site-author-name" itemprop="name">Er Dong</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">138</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">22</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">58</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/erdong" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;erdong" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:erdong@mail.erdong.site" title="E-Mail → mailto:erdong@mail.erdong.site" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+  <div class="cc-license motion-element" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/zh-Hans" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-nd.svg" alt="Creative Commons"></a>
+  </div>
+
+
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title"><i class="fa fa-link fa-fw"></i>
+      链接
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://erdong.site/acp-notes" title="https:&#x2F;&#x2F;erdong.site&#x2F;acp-notes">ACP 笔记</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://erdong.site/ansible-notes" title="https:&#x2F;&#x2F;erdong.site&#x2F;ansible-notes">Ansible 笔记</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://erdong.site/prometheus-notes" title="https:&#x2F;&#x2F;erdong.site&#x2F;prometheus-notes">Prometheus 笔记</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://erdong.site/cloudnative-notes" title="https:&#x2F;&#x2F;erdong.site&#x2F;cloudnative-notes">CloudNative 笔记</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://erdong.site/sre-lesson-one" title="https:&#x2F;&#x2F;erdong.site&#x2F;sre-lesson-one">SRE Lesson One</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://www.ruanyifeng.com/blog/" title="http:&#x2F;&#x2F;www.ruanyifeng.com&#x2F;blog&#x2F;" rel="noopener" target="_blank">阮一峰的网络日志</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://coolshell.cn/" title="https:&#x2F;&#x2F;coolshell.cn" rel="noopener" target="_blank">左耳朵耗子</a>
+        </li>
+    </ul>
+  </div>
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 2018 – 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Er Dong</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+    <span title="站点总字数">193k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">2:55</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+<script src="/js/bookmark.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

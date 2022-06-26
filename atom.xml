@@ -43,32 +43,37 @@
   
   <entry>
     <title>Prometheus 2.35.0 新特性</title>
-    <link href="https://erdong.site/uncategorized/New-Features-in-Prometheus-2-35-0.html"/>
-    <id>https://erdong.site/uncategorized/New-Features-in-Prometheus-2-35-0.html</id>
+    <link href="https://erdong.site/Prometheus/New-Features/New-Features-in-Prometheus-2-35-0.html"/>
+    <id>https://erdong.site/Prometheus/New-Features/New-Features-in-Prometheus-2-35-0.html</id>
     <published>2022-06-26T12:16:16.000Z</published>
-    <updated>2022-06-26T09:53:04.012Z</updated>
+    <updated>2022-06-26T14:22:51.513Z</updated>
     
-    <content type="html"><![CDATA[<a id="more"></a><p>======================<br>由于无法及时收到评论内容，所以关闭评论功能。<br>大家有问题欢迎发邮件到 <a href="mailto:erdong@mail.erdong.site">erdong@mail.erdong.site</a> ，或者 <a href="https://github.com/erdong/erdong.github.io/issues" target="_blank" rel="noopener">https://github.com/erdong/erdong.github.io/issues</a> 提 Issue ，我会及时回复。</p><p>======================<br>Erdong, A Linux user !</p><p><img src="https://erdong.site/images/erdongxtnew.jpg" alt="微信公众号"></p>]]></content>
+    <content type="html"><![CDATA[<p>Prometheus <a href="https://github.com/prometheus/prometheus/releases/tag/v2.35.0" target="_blank" rel="noopener">2.35.0</a> 现在(2022.04.21)已经发布，在上个月的 <a href="http://erdong.site/Prometheus/New-Features/New-Features-in-Prometheus-2-34-0.html">2.34.0</a> 之后又进行了很多的修复和改进。</p><a id="more"></a><p>这次更新新增了很多的特性，并且修复一些 BUG 。</p><p>Prometheus 这次发行使用了 Go 1.18 版本进行构建，包含两个与TLS相关的显著更改:</p><p>客户端默认禁用TLS 1.0和1.1协议。Prometheus 用户可以使用 tls_config 的 min_version 参数来覆盖它。如果使用 SHA-1 哈希函数签名的证书将被拒绝，这样不适用于自签名的根证书。</p><h1 id="PromQL-amp-promtool"><a href="#PromQL-amp-promtool" class="headerlink" title="PromQL &amp; promtool"></a>PromQL &amp; promtool</h1><p>Promtool 工具新增了一个参数 <code>--lint</code> ，这个参数用来检查规则和检查配置，导致检查错误的退出码是 （3），该参数默认是开启的。</p><p>PromQL 查询语句使用查询中的样本总数和峰值数量扩展统计信息。<br>此外，在查询 API 中使用 <code>--enable-feature=promql-per-step-stats</code> 和使用 <code>stats=all</code> 可以获得每一步的统计信息。可以使用 <code>--enable-feature=per-step-stats</code> 。</p><h1 id="TSDB"><a href="#TSDB" class="headerlink" title="TSDB"></a>TSDB</h1><p>时序数据库有一个变化，当启动 Prometheus 的时候会删除 *.tmp 的 WAL 文件。时序数据库在启动读 WAL 的可以更有效的排序和分类。</p><h1 id="SD"><a href="#SD" class="headerlink" title="SD"></a>SD</h1><p>Azure 服务发现添加了一个指标去跟踪 Azure 服务发现的失败，还增加了一个 resource_group 的配置选项。</p><p>首先 K8s 服务发现允许将节点元数据附加到发现的 pods 上。其次 K8s 支持 discovery.k8s.io/v1 的 EndpointSlice ，以前只有discovery.k8s.io/v1beta1 EndpointSlice 被支持。</p><p>K8s 服务发现这次修复了一个 BUG，显式包含来自 k8s.io 的 gcp 认证。</p><h1 id="UI"><a href="#UI" class="headerlink" title="UI"></a>UI</h1><p>UI 方面修复了获取指标间隔和持续时间的工具提示不显示在 Target 页面上的问题。</p><h1 id="Prometheus-Agent"><a href="#Prometheus-Agent" class="headerlink" title="Prometheus Agent"></a>Prometheus Agent</h1><p>Prometheus Agent 修复了加载一个包含多个分段的WAL时ID冲突的问题。</p><h1 id="Remote-write"><a href="#Remote-write" class="headerlink" title="Remote-write"></a>Remote-write</h1><p>远程写方面修复了批处理和刷新队列之间的死锁问题。</p><h1 id="Other"><a href="#Other" class="headerlink" title="Other"></a>Other</h1><p>Prometheus 支持自动将变量 GOMAXPROCS 设置为容器 CPU 限制，使用 <code>--enable-feature=auto-gomaxprocs</code> 参数开启。</p><p>Prometheus 修复了 OpenMetrics 解析器以正确排序大写标签。</p><p>Tracing 和 GRPC 方面仅 <code>insecure</code> 为 false 时设置 TLS 的认证凭据。</p><p>OAuth2方面 Prometheus 这次更新以后支持使用代理URL来获取OAuth2令牌</p><p>配置方面，Prometheus 新增了添加禁用 HTTP2 的能力，而且支持覆盖最小TLS版本。</p><p>详细的发行注记可以查看 <a href="https://github.com/prometheus/prometheus/releases/tag/v2.35.0" target="_blank" rel="noopener">release notes</a> 。</p><h1 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h1><ul><li><a href="https://github.com/prometheus/prometheus/releases/tag/v2.35.0" target="_blank" rel="noopener">https://github.com/prometheus/prometheus/releases/tag/v2.35.0</a> ，By prombot of GitHub</li></ul><p>======================<br>由于无法及时收到评论内容，所以关闭评论功能。<br>大家有问题欢迎发邮件到 <a href="mailto:erdong@mail.erdong.site">erdong@mail.erdong.site</a> ，或者 <a href="https://github.com/erdong/erdong.github.io/issues" target="_blank" rel="noopener">https://github.com/erdong/erdong.github.io/issues</a> 提 Issue ，我会及时回复。</p><p>======================<br>Erdong, A Linux user !</p><p><img src="https://erdong.site/images/erdongxtnew.jpg" alt="微信公众号"></p>]]></content>
     
     <summary type="html">
     
-      
-      
-        &lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
-
-&lt;p&gt;======================&lt;br&gt;由于无法及时收到评论内容，所以关闭评论功能。&lt;br&gt;大家有问题欢迎发邮件到 &lt;a href=&quot;mailto:erdong@mail.erdong.site&quot;&gt;erdong@mail.e
-      
+      &lt;p&gt;Prometheus &lt;a href=&quot;https://github.com/prometheus/prometheus/releases/tag/v2.35.0&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;2.35.0&lt;/a&gt; 现在(2022.04.21)已经发布，在上个月的 &lt;a href=&quot;http://erdong.site/Prometheus/New-Features/New-Features-in-Prometheus-2-34-0.html&quot;&gt;2.34.0&lt;/a&gt; 之后又进行了很多的修复和改进。&lt;/p&gt;
     
     </summary>
     
     
+      <category term="Prometheus" scheme="https://erdong.site/categories/Prometheus/"/>
+    
+      <category term="New-Features" scheme="https://erdong.site/categories/Prometheus/New-Features/"/>
+    
+    
+      <category term="Prometheus" scheme="https://erdong.site/tags/Prometheus/"/>
+    
+      <category term="Features" scheme="https://erdong.site/tags/Features/"/>
+    
+      <category term="release" scheme="https://erdong.site/tags/release/"/>
     
   </entry>
   
   <entry>
     <title>Prometheus 2.36.0 新特性</title>
-    <link href="https://erdong.site/uncategorized/New-Features-in-Prometheus-2-36-0.html"/>
-    <id>https://erdong.site/uncategorized/New-Features-in-Prometheus-2-36-0.html</id>
+    <link href="https://erdong.site/Prometheus/New-Features/New-Features-in-Prometheus-2-36-0.html"/>
+    <id>https://erdong.site/Prometheus/New-Features/New-Features-in-Prometheus-2-36-0.html</id>
     <published>2022-06-26T12:16:16.000Z</published>
     <updated>2022-06-26T09:53:21.820Z</updated>
     
@@ -86,6 +91,16 @@
     </summary>
     
     
+      <category term="Prometheus" scheme="https://erdong.site/categories/Prometheus/"/>
+    
+      <category term="New-Features" scheme="https://erdong.site/categories/Prometheus/New-Features/"/>
+    
+    
+      <category term="Prometheus" scheme="https://erdong.site/tags/Prometheus/"/>
+    
+      <category term="Features" scheme="https://erdong.site/tags/Features/"/>
+    
+      <category term="release" scheme="https://erdong.site/tags/release/"/>
     
   </entry>
   
@@ -141,8 +156,8 @@
   
   <entry>
     <title>漫谈公网网络延迟</title>
-    <link href="https://erdong.site/uncategorized/public-network-latency.html"/>
-    <id>https://erdong.site/uncategorized/public-network-latency.html</id>
+    <link href="https://erdong.site/Linux/public-network-latency.html"/>
+    <id>https://erdong.site/Linux/public-network-latency.html</id>
     <published>2022-06-25T15:44:49.000Z</published>
     <updated>2022-06-22T01:41:16.049Z</updated>
     
@@ -155,13 +170,17 @@
     </summary>
     
     
+      <category term="Linux" scheme="https://erdong.site/categories/Linux/"/>
+    
+    
+      <category term="Network" scheme="https://erdong.site/tags/Network/"/>
     
   </entry>
   
   <entry>
     <title>Prometheus 2.33.0 新特性</title>
-    <link href="https://erdong.site/uncategorized/New-Features-in-Prometheus-2-33-0.html"/>
-    <id>https://erdong.site/uncategorized/New-Features-in-Prometheus-2-33-0.html</id>
+    <link href="https://erdong.site/Prometheus/New-Features/New-Features-in-Prometheus-2-33-0.html"/>
+    <id>https://erdong.site/Prometheus/New-Features/New-Features-in-Prometheus-2-33-0.html</id>
     <published>2022-06-25T12:17:11.000Z</published>
     <updated>2022-06-26T09:36:13.668Z</updated>
     
@@ -174,13 +193,23 @@
     </summary>
     
     
+      <category term="Prometheus" scheme="https://erdong.site/categories/Prometheus/"/>
+    
+      <category term="New-Features" scheme="https://erdong.site/categories/Prometheus/New-Features/"/>
+    
+    
+      <category term="Prometheus" scheme="https://erdong.site/tags/Prometheus/"/>
+    
+      <category term="Features" scheme="https://erdong.site/tags/Features/"/>
+    
+      <category term="release" scheme="https://erdong.site/tags/release/"/>
     
   </entry>
   
   <entry>
     <title>Prometheus 2.34.0 新特性</title>
-    <link href="https://erdong.site/uncategorized/New-Features-in-Prometheus-2-34-0.html"/>
-    <id>https://erdong.site/uncategorized/New-Features-in-Prometheus-2-34-0.html</id>
+    <link href="https://erdong.site/Prometheus/New-Features/New-Features-in-Prometheus-2-34-0.html"/>
+    <id>https://erdong.site/Prometheus/New-Features/New-Features-in-Prometheus-2-34-0.html</id>
     <published>2022-06-25T12:17:11.000Z</published>
     <updated>2022-06-26T09:36:55.309Z</updated>
     
@@ -193,13 +222,23 @@
     </summary>
     
     
+      <category term="Prometheus" scheme="https://erdong.site/categories/Prometheus/"/>
+    
+      <category term="New-Features" scheme="https://erdong.site/categories/Prometheus/New-Features/"/>
+    
+    
+      <category term="Prometheus" scheme="https://erdong.site/tags/Prometheus/"/>
+    
+      <category term="Features" scheme="https://erdong.site/tags/Features/"/>
+    
+      <category term="release" scheme="https://erdong.site/tags/release/"/>
     
   </entry>
   
   <entry>
     <title>Prometheus 2.32.0 新特性</title>
-    <link href="https://erdong.site/uncategorized/New-Features-in-Prometheus-2-32-0.html"/>
-    <id>https://erdong.site/uncategorized/New-Features-in-Prometheus-2-32-0.html</id>
+    <link href="https://erdong.site/Prometheus/New-Features/New-Features-in-Prometheus-2-32-0.html"/>
+    <id>https://erdong.site/Prometheus/New-Features/New-Features-in-Prometheus-2-32-0.html</id>
     <published>2021-12-25T12:17:11.000Z</published>
     <updated>2021-12-24T03:26:10.387Z</updated>
     
@@ -212,13 +251,23 @@
     </summary>
     
     
+      <category term="Prometheus" scheme="https://erdong.site/categories/Prometheus/"/>
+    
+      <category term="New-Features" scheme="https://erdong.site/categories/Prometheus/New-Features/"/>
+    
+    
+      <category term="Prometheus" scheme="https://erdong.site/tags/Prometheus/"/>
+    
+      <category term="Features" scheme="https://erdong.site/tags/Features/"/>
+    
+      <category term="release" scheme="https://erdong.site/tags/release/"/>
     
   </entry>
   
   <entry>
     <title>Prometheus 2.31.0 新特性</title>
-    <link href="https://erdong.site/uncategorized/New-Features-in-Prometheus-2-31-0.html"/>
-    <id>https://erdong.site/uncategorized/New-Features-in-Prometheus-2-31-0.html</id>
+    <link href="https://erdong.site/Prometheus/New-Features/New-Features-in-Prometheus-2-31-0.html"/>
+    <id>https://erdong.site/Prometheus/New-Features/New-Features-in-Prometheus-2-31-0.html</id>
     <published>2021-11-13T12:17:11.000Z</published>
     <updated>2021-11-20T15:50:46.579Z</updated>
     
@@ -231,13 +280,23 @@
     </summary>
     
     
+      <category term="Prometheus" scheme="https://erdong.site/categories/Prometheus/"/>
+    
+      <category term="New-Features" scheme="https://erdong.site/categories/Prometheus/New-Features/"/>
+    
+    
+      <category term="Prometheus" scheme="https://erdong.site/tags/Prometheus/"/>
+    
+      <category term="Features" scheme="https://erdong.site/tags/Features/"/>
+    
+      <category term="release" scheme="https://erdong.site/tags/release/"/>
     
   </entry>
   
   <entry>
     <title>Prometheus 2.30.0 新特性</title>
-    <link href="https://erdong.site/uncategorized/New-Features-in-Prometheus-2-30-0.html"/>
-    <id>https://erdong.site/uncategorized/New-Features-in-Prometheus-2-30-0.html</id>
+    <link href="https://erdong.site/Prometheus/New-Features/New-Features-in-Prometheus-2-30-0.html"/>
+    <id>https://erdong.site/Prometheus/New-Features/New-Features-in-Prometheus-2-30-0.html</id>
     <published>2021-09-25T12:17:11.000Z</published>
     <updated>2021-11-20T15:49:59.705Z</updated>
     
@@ -250,13 +309,23 @@
     </summary>
     
     
+      <category term="Prometheus" scheme="https://erdong.site/categories/Prometheus/"/>
+    
+      <category term="New-Features" scheme="https://erdong.site/categories/Prometheus/New-Features/"/>
+    
+    
+      <category term="Prometheus" scheme="https://erdong.site/tags/Prometheus/"/>
+    
+      <category term="Features" scheme="https://erdong.site/tags/Features/"/>
+    
+      <category term="release" scheme="https://erdong.site/tags/release/"/>
     
   </entry>
   
   <entry>
     <title>Prometheus 2.29.0 新特性</title>
-    <link href="https://erdong.site/uncategorized/New-Features-in-Prometheus-2-29-0.html"/>
-    <id>https://erdong.site/uncategorized/New-Features-in-Prometheus-2-29-0.html</id>
+    <link href="https://erdong.site/Prometheus/New-Features/New-Features-in-Prometheus-2-29-0.html"/>
+    <id>https://erdong.site/Prometheus/New-Features/New-Features-in-Prometheus-2-29-0.html</id>
     <published>2021-08-21T12:17:11.000Z</published>
     <updated>2021-11-20T15:49:13.421Z</updated>
     
@@ -269,13 +338,23 @@
     </summary>
     
     
+      <category term="Prometheus" scheme="https://erdong.site/categories/Prometheus/"/>
+    
+      <category term="New-Features" scheme="https://erdong.site/categories/Prometheus/New-Features/"/>
+    
+    
+      <category term="Prometheus" scheme="https://erdong.site/tags/Prometheus/"/>
+    
+      <category term="Features" scheme="https://erdong.site/tags/Features/"/>
+    
+      <category term="release" scheme="https://erdong.site/tags/release/"/>
     
   </entry>
   
   <entry>
     <title>Prometheus 2.28.0 新特性</title>
-    <link href="https://erdong.site/uncategorized/New-Features-in-Prometheus-2-28-0.html"/>
-    <id>https://erdong.site/uncategorized/New-Features-in-Prometheus-2-28-0.html</id>
+    <link href="https://erdong.site/Prometheus/New-Features/New-Features-in-Prometheus-2-28-0.html"/>
+    <id>https://erdong.site/Prometheus/New-Features/New-Features-in-Prometheus-2-28-0.html</id>
     <published>2021-07-01T12:17:11.000Z</published>
     <updated>2021-11-20T15:48:22.364Z</updated>
     
@@ -288,13 +367,23 @@
     </summary>
     
     
+      <category term="Prometheus" scheme="https://erdong.site/categories/Prometheus/"/>
+    
+      <category term="New-Features" scheme="https://erdong.site/categories/Prometheus/New-Features/"/>
+    
+    
+      <category term="Prometheus" scheme="https://erdong.site/tags/Prometheus/"/>
+    
+      <category term="Features" scheme="https://erdong.site/tags/Features/"/>
+    
+      <category term="release" scheme="https://erdong.site/tags/release/"/>
     
   </entry>
   
   <entry>
     <title>Prometheus 2.27.0 新特性</title>
-    <link href="https://erdong.site/uncategorized/New-Features-in-Prometheus-2-27-0.html"/>
-    <id>https://erdong.site/uncategorized/New-Features-in-Prometheus-2-27-0.html</id>
+    <link href="https://erdong.site/Prometheus/New-Features/New-Features-in-Prometheus-2-27-0.html"/>
+    <id>https://erdong.site/Prometheus/New-Features/New-Features-in-Prometheus-2-27-0.html</id>
     <published>2021-05-22T12:17:11.000Z</published>
     <updated>2021-11-20T15:47:31.620Z</updated>
     
@@ -307,13 +396,23 @@
     </summary>
     
     
+      <category term="Prometheus" scheme="https://erdong.site/categories/Prometheus/"/>
+    
+      <category term="New-Features" scheme="https://erdong.site/categories/Prometheus/New-Features/"/>
+    
+    
+      <category term="Prometheus" scheme="https://erdong.site/tags/Prometheus/"/>
+    
+      <category term="Features" scheme="https://erdong.site/tags/Features/"/>
+    
+      <category term="release" scheme="https://erdong.site/tags/release/"/>
     
   </entry>
   
   <entry>
     <title>Prometheus 2.26.0 新特性</title>
-    <link href="https://erdong.site/uncategorized/New-Features-in-Prometheus-2-26-0.html"/>
-    <id>https://erdong.site/uncategorized/New-Features-in-Prometheus-2-26-0.html</id>
+    <link href="https://erdong.site/Prometheus/New-Features/New-Features-in-Prometheus-2-26-0.html"/>
+    <id>https://erdong.site/Prometheus/New-Features/New-Features-in-Prometheus-2-26-0.html</id>
     <published>2021-04-10T12:17:11.000Z</published>
     <updated>2021-11-20T15:46:44.934Z</updated>
     
@@ -326,13 +425,23 @@
     </summary>
     
     
+      <category term="Prometheus" scheme="https://erdong.site/categories/Prometheus/"/>
+    
+      <category term="New-Features" scheme="https://erdong.site/categories/Prometheus/New-Features/"/>
+    
+    
+      <category term="Prometheus" scheme="https://erdong.site/tags/Prometheus/"/>
+    
+      <category term="Features" scheme="https://erdong.site/tags/Features/"/>
+    
+      <category term="release" scheme="https://erdong.site/tags/release/"/>
     
   </entry>
   
   <entry>
     <title>攻城狮周刊：第49期</title>
-    <link href="https://erdong.site/uncategorized/weekly49.html"/>
-    <id>https://erdong.site/uncategorized/weekly49.html</id>
+    <link href="https://erdong.site/weekly/weekly49.html"/>
+    <id>https://erdong.site/weekly/weekly49.html</id>
     <published>2021-03-20T15:50:59.000Z</published>
     <updated>2021-03-21T00:10:08.502Z</updated>
     
@@ -345,13 +454,17 @@
     </summary>
     
     
+      <category term="weekly" scheme="https://erdong.site/categories/weekly/"/>
+    
+    
+      <category term="weekly" scheme="https://erdong.site/tags/weekly/"/>
     
   </entry>
   
   <entry>
     <title>Prometheus 2.25.0 新特性</title>
-    <link href="https://erdong.site/uncategorized/New-Features-in-Prometheus-2-25-0.html"/>
-    <id>https://erdong.site/uncategorized/New-Features-in-Prometheus-2-25-0.html</id>
+    <link href="https://erdong.site/Prometheus/New-Features/New-Features-in-Prometheus-2-25-0.html"/>
+    <id>https://erdong.site/Prometheus/New-Features/New-Features-in-Prometheus-2-25-0.html</id>
     <published>2021-02-27T12:17:11.000Z</published>
     <updated>2021-11-20T15:45:42.651Z</updated>
     
@@ -364,13 +477,23 @@
     </summary>
     
     
+      <category term="Prometheus" scheme="https://erdong.site/categories/Prometheus/"/>
+    
+      <category term="New-Features" scheme="https://erdong.site/categories/Prometheus/New-Features/"/>
+    
+    
+      <category term="Prometheus" scheme="https://erdong.site/tags/Prometheus/"/>
+    
+      <category term="Features" scheme="https://erdong.site/tags/Features/"/>
+    
+      <category term="release" scheme="https://erdong.site/tags/release/"/>
     
   </entry>
   
   <entry>
     <title>攻城狮周刊：第48期</title>
-    <link href="https://erdong.site/uncategorized/weekly48.html"/>
-    <id>https://erdong.site/uncategorized/weekly48.html</id>
+    <link href="https://erdong.site/weekly/weekly48.html"/>
+    <id>https://erdong.site/weekly/weekly48.html</id>
     <published>2021-01-17T15:50:59.000Z</published>
     <updated>2021-01-17T12:34:24.942Z</updated>
     
@@ -383,13 +506,17 @@
     </summary>
     
     
+      <category term="weekly" scheme="https://erdong.site/categories/weekly/"/>
+    
+    
+      <category term="weekly" scheme="https://erdong.site/tags/weekly/"/>
     
   </entry>
   
   <entry>
     <title>攻城狮周刊：第47期</title>
-    <link href="https://erdong.site/uncategorized/weekly47.html"/>
-    <id>https://erdong.site/uncategorized/weekly47.html</id>
+    <link href="https://erdong.site/weekly/weekly47.html"/>
+    <id>https://erdong.site/weekly/weekly47.html</id>
     <published>2021-01-17T13:50:59.000Z</published>
     <updated>2021-01-17T12:34:31.508Z</updated>
     
@@ -402,13 +529,17 @@
     </summary>
     
     
+      <category term="weekly" scheme="https://erdong.site/categories/weekly/"/>
+    
+    
+      <category term="weekly" scheme="https://erdong.site/tags/weekly/"/>
     
   </entry>
   
   <entry>
     <title>Prometheus 2.24.0 新特性</title>
-    <link href="https://erdong.site/uncategorized/New-Features-in-Prometheus-2-24-0.html"/>
-    <id>https://erdong.site/uncategorized/New-Features-in-Prometheus-2-24-0.html</id>
+    <link href="https://erdong.site/Prometheus/New-Features/New-Features-in-Prometheus-2-24-0.html"/>
+    <id>https://erdong.site/Prometheus/New-Features/New-Features-in-Prometheus-2-24-0.html</id>
     <published>2021-01-16T12:17:11.000Z</published>
     <updated>2021-11-20T15:44:58.099Z</updated>
     
@@ -421,13 +552,23 @@
     </summary>
     
     
+      <category term="Prometheus" scheme="https://erdong.site/categories/Prometheus/"/>
+    
+      <category term="New-Features" scheme="https://erdong.site/categories/Prometheus/New-Features/"/>
+    
+    
+      <category term="Prometheus" scheme="https://erdong.site/tags/Prometheus/"/>
+    
+      <category term="Features" scheme="https://erdong.site/tags/Features/"/>
+    
+      <category term="release" scheme="https://erdong.site/tags/release/"/>
     
   </entry>
   
   <entry>
     <title>Prometheus 2.23.0 新特性</title>
-    <link href="https://erdong.site/uncategorized/New-Features-in-Prometheus-2-23-0.html"/>
-    <id>https://erdong.site/uncategorized/New-Features-in-Prometheus-2-23-0.html</id>
+    <link href="https://erdong.site/Prometheus/New-Features/New-Features-in-Prometheus-2-23-0.html"/>
+    <id>https://erdong.site/Prometheus/New-Features/New-Features-in-Prometheus-2-23-0.html</id>
     <published>2020-12-06T12:17:11.000Z</published>
     <updated>2021-11-20T15:44:05.849Z</updated>
     
@@ -440,13 +581,23 @@
     </summary>
     
     
+      <category term="Prometheus" scheme="https://erdong.site/categories/Prometheus/"/>
+    
+      <category term="New-Features" scheme="https://erdong.site/categories/Prometheus/New-Features/"/>
+    
+    
+      <category term="Prometheus" scheme="https://erdong.site/tags/Prometheus/"/>
+    
+      <category term="Features" scheme="https://erdong.site/tags/Features/"/>
+    
+      <category term="release" scheme="https://erdong.site/tags/release/"/>
     
   </entry>
   
   <entry>
     <title>Prometheus 2.22.0 新特性</title>
-    <link href="https://erdong.site/uncategorized/New-Features-in-Prometheus-2-22-0.html"/>
-    <id>https://erdong.site/uncategorized/New-Features-in-Prometheus-2-22-0.html</id>
+    <link href="https://erdong.site/Prometheus/New-Features/New-Features-in-Prometheus-2-22-0.html"/>
+    <id>https://erdong.site/Prometheus/New-Features/New-Features-in-Prometheus-2-22-0.html</id>
     <published>2020-10-25T12:17:11.000Z</published>
     <updated>2021-11-20T15:41:45.326Z</updated>
     
@@ -459,13 +610,23 @@
     </summary>
     
     
+      <category term="Prometheus" scheme="https://erdong.site/categories/Prometheus/"/>
+    
+      <category term="New-Features" scheme="https://erdong.site/categories/Prometheus/New-Features/"/>
+    
+    
+      <category term="Prometheus" scheme="https://erdong.site/tags/Prometheus/"/>
+    
+      <category term="Features" scheme="https://erdong.site/tags/Features/"/>
+    
+      <category term="release" scheme="https://erdong.site/tags/release/"/>
     
   </entry>
   
   <entry>
     <title>Prometheus 2.21.0 新特性</title>
-    <link href="https://erdong.site/uncategorized/New-Features-in-Prometheus-2-21-0.html"/>
-    <id>https://erdong.site/uncategorized/New-Features-in-Prometheus-2-21-0.html</id>
+    <link href="https://erdong.site/Prometheus/New-Features/New-Features-in-Prometheus-2-21-0.html"/>
+    <id>https://erdong.site/Prometheus/New-Features/New-Features-in-Prometheus-2-21-0.html</id>
     <published>2020-10-23T12:17:11.000Z</published>
     <updated>2021-11-20T15:40:26.023Z</updated>
     
@@ -478,13 +639,23 @@
     </summary>
     
     
+      <category term="Prometheus" scheme="https://erdong.site/categories/Prometheus/"/>
+    
+      <category term="New-Features" scheme="https://erdong.site/categories/Prometheus/New-Features/"/>
+    
+    
+      <category term="Prometheus" scheme="https://erdong.site/tags/Prometheus/"/>
+    
+      <category term="Features" scheme="https://erdong.site/tags/Features/"/>
+    
+      <category term="release" scheme="https://erdong.site/tags/release/"/>
     
   </entry>
   
   <entry>
     <title>Prometheus 2.20.0 新特性</title>
-    <link href="https://erdong.site/uncategorized/New-Features-in-Prometheus-2-20-0.html"/>
-    <id>https://erdong.site/uncategorized/New-Features-in-Prometheus-2-20-0.html</id>
+    <link href="https://erdong.site/Prometheus/New-Features/New-Features-in-Prometheus-2-20-0.html"/>
+    <id>https://erdong.site/Prometheus/New-Features/New-Features-in-Prometheus-2-20-0.html</id>
     <published>2020-08-09T15:17:11.000Z</published>
     <updated>2020-08-13T01:49:55.130Z</updated>
     
@@ -497,13 +668,23 @@
     </summary>
     
     
+      <category term="Prometheus" scheme="https://erdong.site/categories/Prometheus/"/>
+    
+      <category term="New-Features" scheme="https://erdong.site/categories/Prometheus/New-Features/"/>
+    
+    
+      <category term="Prometheus" scheme="https://erdong.site/tags/Prometheus/"/>
+    
+      <category term="Features" scheme="https://erdong.site/tags/Features/"/>
+    
+      <category term="release" scheme="https://erdong.site/tags/release/"/>
     
   </entry>
   
   <entry>
     <title>K8S 中的 Grafana 数据持久化</title>
-    <link href="https://erdong.site/uncategorized/grafana-kubernetes-config-persistence.html"/>
-    <id>https://erdong.site/uncategorized/grafana-kubernetes-config-persistence.html</id>
+    <link href="https://erdong.site/Grafana/grafana-kubernetes-config-persistence.html"/>
+    <id>https://erdong.site/Grafana/grafana-kubernetes-config-persistence.html</id>
     <published>2020-07-25T12:41:08.000Z</published>
     <updated>2020-07-25T01:39:39.658Z</updated>
     
@@ -516,13 +697,17 @@
     </summary>
     
     
+      <category term="Grafana" scheme="https://erdong.site/categories/Grafana/"/>
+    
+    
+      <category term="Grafana" scheme="https://erdong.site/tags/Grafana/"/>
     
   </entry>
   
   <entry>
     <title>攻城狮周刊：第46期</title>
-    <link href="https://erdong.site/uncategorized/weekly46.html"/>
-    <id>https://erdong.site/uncategorized/weekly46.html</id>
+    <link href="https://erdong.site/weekly/weekly46.html"/>
+    <id>https://erdong.site/weekly/weekly46.html</id>
     <published>2020-07-19T15:50:59.000Z</published>
     <updated>2020-07-19T16:01:01.644Z</updated>
     
@@ -535,13 +720,17 @@
     </summary>
     
     
+      <category term="weekly" scheme="https://erdong.site/categories/weekly/"/>
+    
+    
+      <category term="weekly" scheme="https://erdong.site/tags/weekly/"/>
     
   </entry>
   
   <entry>
     <title>Prometheus 2.19.0 新特性</title>
-    <link href="https://erdong.site/uncategorized/New-Features-in-Prometheus-2-19-0.html"/>
-    <id>https://erdong.site/uncategorized/New-Features-in-Prometheus-2-19-0.html</id>
+    <link href="https://erdong.site/Prometheus/New-Features/New-Features-in-Prometheus-2-19-0.html"/>
+    <id>https://erdong.site/Prometheus/New-Features/New-Features-in-Prometheus-2-19-0.html</id>
     <published>2020-06-21T15:17:11.000Z</published>
     <updated>2021-09-01T11:52:03.901Z</updated>
     
@@ -554,13 +743,23 @@
     </summary>
     
     
+      <category term="Prometheus" scheme="https://erdong.site/categories/Prometheus/"/>
+    
+      <category term="New-Features" scheme="https://erdong.site/categories/Prometheus/New-Features/"/>
+    
+    
+      <category term="Prometheus" scheme="https://erdong.site/tags/Prometheus/"/>
+    
+      <category term="Features" scheme="https://erdong.site/tags/Features/"/>
+    
+      <category term="release" scheme="https://erdong.site/tags/release/"/>
     
   </entry>
   
   <entry>
     <title>Prometheus 2.18.0 新特性</title>
-    <link href="https://erdong.site/uncategorized/New-Features-in-Prometheus-2-18-0.html"/>
-    <id>https://erdong.site/uncategorized/New-Features-in-Prometheus-2-18-0.html</id>
+    <link href="https://erdong.site/Prometheus/New-Features/New-Features-in-Prometheus-2-18-0.html"/>
+    <id>https://erdong.site/Prometheus/New-Features/New-Features-in-Prometheus-2-18-0.html</id>
     <published>2020-05-31T15:17:11.000Z</published>
     <updated>2020-05-31T11:38:06.395Z</updated>
     
@@ -573,13 +772,23 @@
     </summary>
     
     
+      <category term="Prometheus" scheme="https://erdong.site/categories/Prometheus/"/>
+    
+      <category term="New-Features" scheme="https://erdong.site/categories/Prometheus/New-Features/"/>
+    
+    
+      <category term="Prometheus" scheme="https://erdong.site/tags/Prometheus/"/>
+    
+      <category term="Features" scheme="https://erdong.site/tags/Features/"/>
+    
+      <category term="release" scheme="https://erdong.site/tags/release/"/>
     
   </entry>
   
   <entry>
     <title>MAC OS 下 HomeBrew 使用</title>
-    <link href="https://erdong.site/uncategorized/macos-homebrew-introduction.html"/>
-    <id>https://erdong.site/uncategorized/macos-homebrew-introduction.html</id>
+    <link href="https://erdong.site/macos/macos-homebrew-introduction.html"/>
+    <id>https://erdong.site/macos/macos-homebrew-introduction.html</id>
     <published>2020-05-31T11:46:10.000Z</published>
     <updated>2020-05-31T11:47:31.643Z</updated>
     
@@ -592,13 +801,19 @@
     </summary>
     
     
+      <category term="macos" scheme="https://erdong.site/categories/macos/"/>
+    
+    
+      <category term="macos" scheme="https://erdong.site/tags/macos/"/>
+    
+      <category term="brew" scheme="https://erdong.site/tags/brew/"/>
     
   </entry>
   
   <entry>
     <title>攻城狮周刊：第45期</title>
-    <link href="https://erdong.site/uncategorized/weekly45.html"/>
-    <id>https://erdong.site/uncategorized/weekly45.html</id>
+    <link href="https://erdong.site/weekly/weekly45.html"/>
+    <id>https://erdong.site/weekly/weekly45.html</id>
     <published>2020-05-31T07:16:59.000Z</published>
     <updated>2020-05-31T11:44:15.322Z</updated>
     
@@ -611,13 +826,17 @@
     </summary>
     
     
+      <category term="weekly" scheme="https://erdong.site/categories/weekly/"/>
+    
+    
+      <category term="weekly" scheme="https://erdong.site/tags/weekly/"/>
     
   </entry>
   
   <entry>
     <title>Prometheus 2.17.0 新特性</title>
-    <link href="https://erdong.site/uncategorized/New-Features-in-Prometheus-2-17-0.html"/>
-    <id>https://erdong.site/uncategorized/New-Features-in-Prometheus-2-17-0.html</id>
+    <link href="https://erdong.site/Prometheus/New-Features/New-Features-in-Prometheus-2-17-0.html"/>
+    <id>https://erdong.site/Prometheus/New-Features/New-Features-in-Prometheus-2-17-0.html</id>
     <published>2020-05-30T15:17:11.000Z</published>
     <updated>2020-05-31T11:42:52.324Z</updated>
     
@@ -630,13 +849,23 @@
     </summary>
     
     
+      <category term="Prometheus" scheme="https://erdong.site/categories/Prometheus/"/>
+    
+      <category term="New-Features" scheme="https://erdong.site/categories/Prometheus/New-Features/"/>
+    
+    
+      <category term="Prometheus" scheme="https://erdong.site/tags/Prometheus/"/>
+    
+      <category term="Features" scheme="https://erdong.site/tags/Features/"/>
+    
+      <category term="release" scheme="https://erdong.site/tags/release/"/>
     
   </entry>
   
   <entry>
     <title>Prometheus 2.16.0 新特性</title>
-    <link href="https://erdong.site/uncategorized/New-Features-in-Prometheus-2-16-0.html"/>
-    <id>https://erdong.site/uncategorized/New-Features-in-Prometheus-2-16-0.html</id>
+    <link href="https://erdong.site/Prometheus/New-Features/New-Features-in-Prometheus-2-16-0.html"/>
+    <id>https://erdong.site/Prometheus/New-Features/New-Features-in-Prometheus-2-16-0.html</id>
     <published>2020-05-23T15:17:11.000Z</published>
     <updated>2020-05-23T14:49:55.169Z</updated>
     
@@ -649,13 +878,23 @@
     </summary>
     
     
+      <category term="Prometheus" scheme="https://erdong.site/categories/Prometheus/"/>
+    
+      <category term="New-Features" scheme="https://erdong.site/categories/Prometheus/New-Features/"/>
+    
+    
+      <category term="Prometheus" scheme="https://erdong.site/tags/Prometheus/"/>
+    
+      <category term="Features" scheme="https://erdong.site/tags/Features/"/>
+    
+      <category term="release" scheme="https://erdong.site/tags/release/"/>
     
   </entry>
   
   <entry>
     <title>Prometheus 2.15.0 新特性</title>
-    <link href="https://erdong.site/uncategorized/New-Features-in-Prometheus-2-15-0.html"/>
-    <id>https://erdong.site/uncategorized/New-Features-in-Prometheus-2-15-0.html</id>
+    <link href="https://erdong.site/Prometheus/New-Features/New-Features-in-Prometheus-2-15-0.html"/>
+    <id>https://erdong.site/Prometheus/New-Features/New-Features-in-Prometheus-2-15-0.html</id>
     <published>2020-05-23T14:17:11.000Z</published>
     <updated>2020-05-23T14:54:26.475Z</updated>
     
@@ -668,13 +907,23 @@
     </summary>
     
     
+      <category term="Prometheus" scheme="https://erdong.site/categories/Prometheus/"/>
+    
+      <category term="New-Features" scheme="https://erdong.site/categories/Prometheus/New-Features/"/>
+    
+    
+      <category term="Prometheus" scheme="https://erdong.site/tags/Prometheus/"/>
+    
+      <category term="Features" scheme="https://erdong.site/tags/Features/"/>
+    
+      <category term="release" scheme="https://erdong.site/tags/release/"/>
     
   </entry>
   
   <entry>
     <title>攻城狮周刊：第44期</title>
-    <link href="https://erdong.site/uncategorized/weekly44.html"/>
-    <id>https://erdong.site/uncategorized/weekly44.html</id>
+    <link href="https://erdong.site/weekly/weekly44.html"/>
+    <id>https://erdong.site/weekly/weekly44.html</id>
     <published>2020-05-23T07:16:59.000Z</published>
     <updated>2020-05-23T14:50:28.034Z</updated>
     
@@ -687,13 +936,17 @@
     </summary>
     
     
+      <category term="weekly" scheme="https://erdong.site/categories/weekly/"/>
+    
+    
+      <category term="weekly" scheme="https://erdong.site/tags/weekly/"/>
     
   </entry>
   
   <entry>
     <title>Prometheus 删除指定 Metric</title>
-    <link href="https://erdong.site/uncategorized/prometheus-delete-metrics.html"/>
-    <id>https://erdong.site/uncategorized/prometheus-delete-metrics.html</id>
+    <link href="https://erdong.site/prometheus/prometheus-delete-metrics.html"/>
+    <id>https://erdong.site/prometheus/prometheus-delete-metrics.html</id>
     <published>2020-01-12T14:52:50.000Z</published>
     <updated>2020-01-12T14:54:13.605Z</updated>
     
@@ -706,13 +959,17 @@
     </summary>
     
     
+      <category term="prometheus" scheme="https://erdong.site/categories/prometheus/"/>
+    
+    
+      <category term="prometheus" scheme="https://erdong.site/tags/prometheus/"/>
     
   </entry>
   
   <entry>
     <title>攻城狮周刊：第43期</title>
-    <link href="https://erdong.site/uncategorized/weekly43.html"/>
-    <id>https://erdong.site/uncategorized/weekly43.html</id>
+    <link href="https://erdong.site/weekly/weekly43.html"/>
+    <id>https://erdong.site/weekly/weekly43.html</id>
     <published>2020-01-12T07:16:59.000Z</published>
     <updated>2020-01-12T14:51:09.364Z</updated>
     
@@ -725,13 +982,17 @@
     </summary>
     
     
+      <category term="weekly" scheme="https://erdong.site/categories/weekly/"/>
+    
+    
+      <category term="weekly" scheme="https://erdong.site/tags/weekly/"/>
     
   </entry>
   
   <entry>
     <title>攻城狮周刊：第42期</title>
-    <link href="https://erdong.site/uncategorized/weekly42.html"/>
-    <id>https://erdong.site/uncategorized/weekly42.html</id>
+    <link href="https://erdong.site/weekly/weekly42.html"/>
+    <id>https://erdong.site/weekly/weekly42.html</id>
     <published>2019-12-29T07:16:59.000Z</published>
     <updated>2019-12-29T15:37:02.105Z</updated>
     
@@ -744,13 +1005,17 @@
     </summary>
     
     
+      <category term="weekly" scheme="https://erdong.site/categories/weekly/"/>
+    
+    
+      <category term="weekly" scheme="https://erdong.site/tags/weekly/"/>
     
   </entry>
   
   <entry>
     <title>攻城狮周刊：第41期</title>
-    <link href="https://erdong.site/uncategorized/weekly41.html"/>
-    <id>https://erdong.site/uncategorized/weekly41.html</id>
+    <link href="https://erdong.site/weekly/weekly41.html"/>
+    <id>https://erdong.site/weekly/weekly41.html</id>
     <published>2019-12-22T05:16:59.000Z</published>
     <updated>2019-12-22T15:04:14.249Z</updated>
     
@@ -763,13 +1028,17 @@
     </summary>
     
     
+      <category term="weekly" scheme="https://erdong.site/categories/weekly/"/>
+    
+    
+      <category term="weekly" scheme="https://erdong.site/tags/weekly/"/>
     
   </entry>
   
   <entry>
     <title>攻城狮周刊：第40期</title>
-    <link href="https://erdong.site/uncategorized/weekly40.html"/>
-    <id>https://erdong.site/uncategorized/weekly40.html</id>
+    <link href="https://erdong.site/weekly/weekly40.html"/>
+    <id>https://erdong.site/weekly/weekly40.html</id>
     <published>2019-12-15T05:16:59.000Z</published>
     <updated>2019-12-22T15:04:50.460Z</updated>
     
@@ -782,13 +1051,17 @@
     </summary>
     
     
+      <category term="weekly" scheme="https://erdong.site/categories/weekly/"/>
+    
+    
+      <category term="weekly" scheme="https://erdong.site/tags/weekly/"/>
     
   </entry>
   
   <entry>
     <title>攻城狮周刊：第39期</title>
-    <link href="https://erdong.site/uncategorized/weekly39.html"/>
-    <id>https://erdong.site/uncategorized/weekly39.html</id>
+    <link href="https://erdong.site/weekly/weekly39.html"/>
+    <id>https://erdong.site/weekly/weekly39.html</id>
     <published>2019-12-08T05:16:59.000Z</published>
     <updated>2019-12-08T15:55:49.580Z</updated>
     
@@ -801,13 +1074,17 @@
     </summary>
     
     
+      <category term="weekly" scheme="https://erdong.site/categories/weekly/"/>
+    
+    
+      <category term="weekly" scheme="https://erdong.site/tags/weekly/"/>
     
   </entry>
   
   <entry>
     <title>发布一本用 GitBook 编辑的书</title>
-    <link href="https://erdong.site/uncategorized/gitbook-release-book.html"/>
-    <id>https://erdong.site/uncategorized/gitbook-release-book.html</id>
+    <link href="https://erdong.site/gitbook/gitbook-release-book.html"/>
+    <id>https://erdong.site/gitbook/gitbook-release-book.html</id>
     <published>2019-12-01T15:12:40.000Z</published>
     <updated>2019-12-02T15:16:50.371Z</updated>
     
@@ -821,13 +1098,17 @@
     </summary>
     
     
+      <category term="gitbook" scheme="https://erdong.site/categories/gitbook/"/>
+    
+    
+      <category term="gitbook" scheme="https://erdong.site/tags/gitbook/"/>
     
   </entry>
   
   <entry>
     <title>用 GitBook 创建一本书</title>
-    <link href="https://erdong.site/uncategorized/gitbook-create-book.html"/>
-    <id>https://erdong.site/uncategorized/gitbook-create-book.html</id>
+    <link href="https://erdong.site/gitbook/gitbook-create-book.html"/>
+    <id>https://erdong.site/gitbook/gitbook-create-book.html</id>
     <published>2019-12-01T15:12:28.000Z</published>
     <updated>2019-12-02T15:14:50.438Z</updated>
     
@@ -840,13 +1121,17 @@
     </summary>
     
     
+      <category term="gitbook" scheme="https://erdong.site/categories/gitbook/"/>
+    
+    
+      <category term="gitbook" scheme="https://erdong.site/tags/gitbook/"/>
     
   </entry>
   
   <entry>
     <title>攻城狮周刊：第38期</title>
-    <link href="https://erdong.site/uncategorized/weekly38.html"/>
-    <id>https://erdong.site/uncategorized/weekly38.html</id>
+    <link href="https://erdong.site/weekly/weekly38.html"/>
+    <id>https://erdong.site/weekly/weekly38.html</id>
     <published>2019-12-01T05:16:59.000Z</published>
     <updated>2019-12-02T15:11:26.277Z</updated>
     
@@ -859,13 +1144,17 @@
     </summary>
     
     
+      <category term="weekly" scheme="https://erdong.site/categories/weekly/"/>
+    
+    
+      <category term="weekly" scheme="https://erdong.site/tags/weekly/"/>
     
   </entry>
   
   <entry>
     <title>攻城狮周刊：第37期</title>
-    <link href="https://erdong.site/uncategorized/weekly37.html"/>
-    <id>https://erdong.site/uncategorized/weekly37.html</id>
+    <link href="https://erdong.site/weekly/weekly37.html"/>
+    <id>https://erdong.site/weekly/weekly37.html</id>
     <published>2019-11-24T05:16:59.000Z</published>
     <updated>2019-11-23T09:44:22.555Z</updated>
     
@@ -878,13 +1167,17 @@
     </summary>
     
     
+      <category term="weekly" scheme="https://erdong.site/categories/weekly/"/>
+    
+    
+      <category term="weekly" scheme="https://erdong.site/tags/weekly/"/>
     
   </entry>
   
   <entry>
     <title>Prometheus 2.14.0 新特性</title>
-    <link href="https://erdong.site/uncategorized/New-Features-in-Prometheus-2-14-0.html"/>
-    <id>https://erdong.site/uncategorized/New-Features-in-Prometheus-2-14-0.html</id>
+    <link href="https://erdong.site/Prometheus/New-Features/New-Features-in-Prometheus-2-14-0.html"/>
+    <id>https://erdong.site/Prometheus/New-Features/New-Features-in-Prometheus-2-14-0.html</id>
     <published>2019-11-16T15:17:11.000Z</published>
     <updated>2019-11-23T09:31:36.743Z</updated>
     
@@ -897,13 +1190,23 @@
     </summary>
     
     
+      <category term="Prometheus" scheme="https://erdong.site/categories/Prometheus/"/>
+    
+      <category term="New-Features" scheme="https://erdong.site/categories/Prometheus/New-Features/"/>
+    
+    
+      <category term="Prometheus" scheme="https://erdong.site/tags/Prometheus/"/>
+    
+      <category term="Features" scheme="https://erdong.site/tags/Features/"/>
+    
+      <category term="release" scheme="https://erdong.site/tags/release/"/>
     
   </entry>
   
   <entry>
     <title>MinIO 参数解析与限制</title>
-    <link href="https://erdong.site/uncategorized/minio-parameter-and-limit.html"/>
-    <id>https://erdong.site/uncategorized/minio-parameter-and-limit.html</id>
+    <link href="https://erdong.site/minio/minio-parameter-and-limit.html"/>
+    <id>https://erdong.site/minio/minio-parameter-and-limit.html</id>
     <published>2019-11-11T13:47:35.000Z</published>
     <updated>2019-11-11T13:48:40.069Z</updated>
     
@@ -916,13 +1219,17 @@
     </summary>
     
     
+      <category term="minio" scheme="https://erdong.site/categories/minio/"/>
+    
+    
+      <category term="minio" scheme="https://erdong.site/tags/minio/"/>
     
   </entry>
   
   <entry>
     <title>MinIO 分布式集群搭建</title>
-    <link href="https://erdong.site/uncategorized/minio-cluster.html"/>
-    <id>https://erdong.site/uncategorized/minio-cluster.html</id>
+    <link href="https://erdong.site/minio/minio-cluster.html"/>
+    <id>https://erdong.site/minio/minio-cluster.html</id>
     <published>2019-11-10T06:36:48.000Z</published>
     <updated>2019-11-10T06:38:02.247Z</updated>
     
@@ -936,13 +1243,19 @@
     </summary>
     
     
+      <category term="minio" scheme="https://erdong.site/categories/minio/"/>
+    
+    
+      <category term="cluster" scheme="https://erdong.site/tags/cluster/"/>
+    
+      <category term="minio" scheme="https://erdong.site/tags/minio/"/>
     
   </entry>
   
   <entry>
     <title>MinIO 简介和搭建</title>
-    <link href="https://erdong.site/uncategorized/minio-introduction.html"/>
-    <id>https://erdong.site/uncategorized/minio-introduction.html</id>
+    <link href="https://erdong.site/minio/minio-introduction.html"/>
+    <id>https://erdong.site/minio/minio-introduction.html</id>
     <published>2019-11-09T15:52:21.000Z</published>
     <updated>2019-11-09T15:54:11.198Z</updated>
     
@@ -955,13 +1268,17 @@
     </summary>
     
     
+      <category term="minio" scheme="https://erdong.site/categories/minio/"/>
+    
+    
+      <category term="minio" scheme="https://erdong.site/tags/minio/"/>
     
   </entry>
   
   <entry>
     <title>攻城狮周刊：第36期</title>
-    <link href="https://erdong.site/uncategorized/weekly36.html"/>
-    <id>https://erdong.site/uncategorized/weekly36.html</id>
+    <link href="https://erdong.site/weekly/weekly36.html"/>
+    <id>https://erdong.site/weekly/weekly36.html</id>
     <published>2019-11-09T15:16:59.000Z</published>
     <updated>2019-11-10T07:26:53.696Z</updated>
     
@@ -974,13 +1291,17 @@
     </summary>
     
     
+      <category term="weekly" scheme="https://erdong.site/categories/weekly/"/>
+    
+    
+      <category term="weekly" scheme="https://erdong.site/tags/weekly/"/>
     
   </entry>
   
   <entry>
     <title>第35周分享</title>
-    <link href="https://erdong.site/uncategorized/weekly35.html"/>
-    <id>https://erdong.site/uncategorized/weekly35.html</id>
+    <link href="https://erdong.site/weekly/weekly35.html"/>
+    <id>https://erdong.site/weekly/weekly35.html</id>
     <published>2019-11-03T15:16:59.000Z</published>
     <updated>2019-11-03T15:23:33.348Z</updated>
     
@@ -993,13 +1314,17 @@
     </summary>
     
     
+      <category term="weekly" scheme="https://erdong.site/categories/weekly/"/>
+    
+    
+      <category term="weekly" scheme="https://erdong.site/tags/weekly/"/>
     
   </entry>
   
   <entry>
     <title>第34周分享</title>
-    <link href="https://erdong.site/uncategorized/weekly34.html"/>
-    <id>https://erdong.site/uncategorized/weekly34.html</id>
+    <link href="https://erdong.site/weekly/weekly34.html"/>
+    <id>https://erdong.site/weekly/weekly34.html</id>
     <published>2019-10-27T15:16:59.000Z</published>
     <updated>2019-10-27T13:38:36.519Z</updated>
     
@@ -1012,13 +1337,17 @@
     </summary>
     
     
+      <category term="weekly" scheme="https://erdong.site/categories/weekly/"/>
+    
+    
+      <category term="weekly" scheme="https://erdong.site/tags/weekly/"/>
     
   </entry>
   
   <entry>
     <title>Kong 的集群怎么用</title>
-    <link href="https://erdong.site/uncategorized/kong-06.html"/>
-    <id>https://erdong.site/uncategorized/kong-06.html</id>
+    <link href="https://erdong.site/Kong/kong-06.html"/>
+    <id>https://erdong.site/Kong/kong-06.html</id>
     <published>2019-10-22T15:46:29.000Z</published>
     <updated>2019-10-22T15:59:05.237Z</updated>
     
@@ -1032,13 +1361,19 @@
     </summary>
     
     
+      <category term="Kong" scheme="https://erdong.site/categories/Kong/"/>
+    
+    
+      <category term="Kong" scheme="https://erdong.site/tags/Kong/"/>
+    
+      <category term="cluster" scheme="https://erdong.site/tags/cluster/"/>
     
   </entry>
   
   <entry>
     <title>Kong 的健康检查和监控</title>
-    <link href="https://erdong.site/uncategorized/kong-05.html"/>
-    <id>https://erdong.site/uncategorized/kong-05.html</id>
+    <link href="https://erdong.site/Kong/kong-05.html"/>
+    <id>https://erdong.site/Kong/kong-05.html</id>
     <published>2019-10-22T15:46:26.000Z</published>
     <updated>2019-10-22T15:52:23.474Z</updated>
     
@@ -1052,13 +1387,19 @@
     </summary>
     
     
+      <category term="Kong" scheme="https://erdong.site/categories/Kong/"/>
+    
+    
+      <category term="Kong" scheme="https://erdong.site/tags/Kong/"/>
+    
+      <category term="Heath Check" scheme="https://erdong.site/tags/Heath-Check/"/>
     
   </entry>
   
   <entry>
     <title>Nginx、OpenResty、Kong 的基本概念和区别联系</title>
-    <link href="https://erdong.site/uncategorized/kong-04.html"/>
-    <id>https://erdong.site/uncategorized/kong-04.html</id>
+    <link href="https://erdong.site/Kong/kong-04.html"/>
+    <id>https://erdong.site/Kong/kong-04.html</id>
     <published>2019-10-22T15:46:23.000Z</published>
     <updated>2019-10-22T15:51:27.471Z</updated>
     
@@ -1076,13 +1417,17 @@
     </summary>
     
     
+      <category term="Kong" scheme="https://erdong.site/categories/Kong/"/>
+    
+    
+      <category term="Kong" scheme="https://erdong.site/tags/Kong/"/>
     
   </entry>
   
   <entry>
     <title>Kong 四大参考说明</title>
-    <link href="https://erdong.site/uncategorized/kong-03.html"/>
-    <id>https://erdong.site/uncategorized/kong-03.html</id>
+    <link href="https://erdong.site/Kong/kong-03.html"/>
+    <id>https://erdong.site/Kong/kong-03.html</id>
     <published>2019-10-22T15:46:21.000Z</published>
     <updated>2019-10-22T15:50:23.522Z</updated>
     
@@ -1096,13 +1441,17 @@
     </summary>
     
     
+      <category term="Kong" scheme="https://erdong.site/categories/Kong/"/>
+    
+    
+      <category term="Kong" scheme="https://erdong.site/tags/Kong/"/>
     
   </entry>
   
   <entry>
     <title>KongA 介绍</title>
-    <link href="https://erdong.site/uncategorized/kong-02.html"/>
-    <id>https://erdong.site/uncategorized/kong-02.html</id>
+    <link href="https://erdong.site/Kong/kong-02.html"/>
+    <id>https://erdong.site/Kong/kong-02.html</id>
     <published>2019-10-22T15:46:18.000Z</published>
     <updated>2019-10-22T15:50:45.179Z</updated>
     
@@ -1115,13 +1464,19 @@
     </summary>
     
     
+      <category term="Kong" scheme="https://erdong.site/categories/Kong/"/>
+    
+    
+      <category term="Kong" scheme="https://erdong.site/tags/Kong/"/>
+    
+      <category term="KongA" scheme="https://erdong.site/tags/KongA/"/>
     
   </entry>
   
   <entry>
     <title>Kong 介绍</title>
-    <link href="https://erdong.site/uncategorized/kong-01.html"/>
-    <id>https://erdong.site/uncategorized/kong-01.html</id>
+    <link href="https://erdong.site/Kong/kong-01.html"/>
+    <id>https://erdong.site/Kong/kong-01.html</id>
     <published>2019-10-22T15:44:49.000Z</published>
     <updated>2019-12-05T08:50:04.497Z</updated>
     
@@ -1136,13 +1491,17 @@
     </summary>
     
     
+      <category term="Kong" scheme="https://erdong.site/categories/Kong/"/>
+    
+    
+      <category term="Kong" scheme="https://erdong.site/tags/Kong/"/>
     
   </entry>
   
   <entry>
     <title>第33周分享</title>
-    <link href="https://erdong.site/uncategorized/weekly33.html"/>
-    <id>https://erdong.site/uncategorized/weekly33.html</id>
+    <link href="https://erdong.site/weekly/weekly33.html"/>
+    <id>https://erdong.site/weekly/weekly33.html</id>
     <published>2019-10-20T15:16:59.000Z</published>
     <updated>2019-10-20T15:18:43.988Z</updated>
     
@@ -1155,13 +1514,17 @@
     </summary>
     
     
+      <category term="weekly" scheme="https://erdong.site/categories/weekly/"/>
+    
+    
+      <category term="weekly" scheme="https://erdong.site/tags/weekly/"/>
     
   </entry>
   
   <entry>
     <title>Prometheus 2.13.0 新特性</title>
-    <link href="https://erdong.site/uncategorized/New-Features-in-Prometheus-2-13-0.html"/>
-    <id>https://erdong.site/uncategorized/New-Features-in-Prometheus-2-13-0.html</id>
+    <link href="https://erdong.site/Prometheus/New-Features/New-Features-in-Prometheus-2-13-0.html"/>
+    <id>https://erdong.site/Prometheus/New-Features/New-Features-in-Prometheus-2-13-0.html</id>
     <published>2019-10-16T15:17:11.000Z</published>
     <updated>2019-10-16T15:19:40.005Z</updated>
     
@@ -1174,13 +1537,23 @@
     </summary>
     
     
+      <category term="Prometheus" scheme="https://erdong.site/categories/Prometheus/"/>
+    
+      <category term="New-Features" scheme="https://erdong.site/categories/Prometheus/New-Features/"/>
+    
+    
+      <category term="Prometheus" scheme="https://erdong.site/tags/Prometheus/"/>
+    
+      <category term="Features" scheme="https://erdong.site/tags/Features/"/>
+    
+      <category term="release" scheme="https://erdong.site/tags/release/"/>
     
   </entry>
   
   <entry>
     <title>第32周分享</title>
-    <link href="https://erdong.site/uncategorized/weekly32.html"/>
-    <id>https://erdong.site/uncategorized/weekly32.html</id>
+    <link href="https://erdong.site/weekly/weekly32.html"/>
+    <id>https://erdong.site/weekly/weekly32.html</id>
     <published>2019-10-13T07:06:24.000Z</published>
     <updated>2019-10-14T15:17:25.182Z</updated>
     
@@ -1193,13 +1566,17 @@
     </summary>
     
     
+      <category term="weekly" scheme="https://erdong.site/categories/weekly/"/>
+    
+    
+      <category term="weekly" scheme="https://erdong.site/tags/weekly/"/>
     
   </entry>
   
   <entry>
     <title>第31周分享</title>
-    <link href="https://erdong.site/uncategorized/weekly31.html"/>
-    <id>https://erdong.site/uncategorized/weekly31.html</id>
+    <link href="https://erdong.site/weekly/weekly31.html"/>
+    <id>https://erdong.site/weekly/weekly31.html</id>
     <published>2019-09-29T07:06:24.000Z</published>
     <updated>2019-10-14T15:16:02.342Z</updated>
     
@@ -1212,13 +1589,17 @@
     </summary>
     
     
+      <category term="weekly" scheme="https://erdong.site/categories/weekly/"/>
+    
+    
+      <category term="weekly" scheme="https://erdong.site/tags/weekly/"/>
     
   </entry>
   
   <entry>
     <title>第30周分享</title>
-    <link href="https://erdong.site/uncategorized/weekly30.html"/>
-    <id>https://erdong.site/uncategorized/weekly30.html</id>
+    <link href="https://erdong.site/weekly/weekly30.html"/>
+    <id>https://erdong.site/weekly/weekly30.html</id>
     <published>2019-09-15T07:06:24.000Z</published>
     <updated>2019-10-13T15:31:57.911Z</updated>
     
@@ -1231,13 +1612,17 @@
     </summary>
     
     
+      <category term="weekly" scheme="https://erdong.site/categories/weekly/"/>
+    
+    
+      <category term="weekly" scheme="https://erdong.site/tags/weekly/"/>
     
   </entry>
   
   <entry>
     <title>【翻译】Prometheus 2.10.0 新特性</title>
-    <link href="https://erdong.site/uncategorized/New-Features-in-Prometheus-2-10-0.html"/>
-    <id>https://erdong.site/uncategorized/New-Features-in-Prometheus-2-10-0.html</id>
+    <link href="https://erdong.site/Prometheus/New-Features/New-Features-in-Prometheus-2-10-0.html"/>
+    <id>https://erdong.site/Prometheus/New-Features/New-Features-in-Prometheus-2-10-0.html</id>
     <published>2019-08-20T13:09:34.000Z</published>
     <updated>2019-10-13T15:31:57.912Z</updated>
     
@@ -1250,13 +1635,23 @@
     </summary>
     
     
+      <category term="Prometheus" scheme="https://erdong.site/categories/Prometheus/"/>
+    
+      <category term="New-Features" scheme="https://erdong.site/categories/Prometheus/New-Features/"/>
+    
+    
+      <category term="Prometheus" scheme="https://erdong.site/tags/Prometheus/"/>
+    
+      <category term="Features" scheme="https://erdong.site/tags/Features/"/>
+    
+      <category term="release" scheme="https://erdong.site/tags/release/"/>
     
   </entry>
   
   <entry>
     <title>【翻译】Prometheus 2.11.0 新特性</title>
-    <link href="https://erdong.site/uncategorized/New-Features-in-Prometheus-2-11-0.html"/>
-    <id>https://erdong.site/uncategorized/New-Features-in-Prometheus-2-11-0.html</id>
+    <link href="https://erdong.site/Prometheus/New-Features/New-Features-in-Prometheus-2-11-0.html"/>
+    <id>https://erdong.site/Prometheus/New-Features/New-Features-in-Prometheus-2-11-0.html</id>
     <published>2019-08-20T13:09:34.000Z</published>
     <updated>2019-10-13T15:31:57.912Z</updated>
     
@@ -1269,13 +1664,23 @@
     </summary>
     
     
+      <category term="Prometheus" scheme="https://erdong.site/categories/Prometheus/"/>
+    
+      <category term="New-Features" scheme="https://erdong.site/categories/Prometheus/New-Features/"/>
+    
+    
+      <category term="Prometheus" scheme="https://erdong.site/tags/Prometheus/"/>
+    
+      <category term="Features" scheme="https://erdong.site/tags/Features/"/>
+    
+      <category term="release" scheme="https://erdong.site/tags/release/"/>
     
   </entry>
   
   <entry>
     <title>【翻译】Prometheus 2.12.0 新特性</title>
-    <link href="https://erdong.site/uncategorized/New-Features-in-Prometheus-2-12-0.html"/>
-    <id>https://erdong.site/uncategorized/New-Features-in-Prometheus-2-12-0.html</id>
+    <link href="https://erdong.site/Prometheus/New-Features/New-Features-in-Prometheus-2-12-0.html"/>
+    <id>https://erdong.site/Prometheus/New-Features/New-Features-in-Prometheus-2-12-0.html</id>
     <published>2019-08-20T13:09:34.000Z</published>
     <updated>2019-10-13T15:31:57.912Z</updated>
     
@@ -1288,13 +1693,23 @@
     </summary>
     
     
+      <category term="Prometheus" scheme="https://erdong.site/categories/Prometheus/"/>
+    
+      <category term="New-Features" scheme="https://erdong.site/categories/Prometheus/New-Features/"/>
+    
+    
+      <category term="Prometheus" scheme="https://erdong.site/tags/Prometheus/"/>
+    
+      <category term="Features" scheme="https://erdong.site/tags/Features/"/>
+    
+      <category term="release" scheme="https://erdong.site/tags/release/"/>
     
   </entry>
   
   <entry>
     <title>公告-20190809</title>
-    <link href="https://erdong.site/uncategorized/notice-20190809.html"/>
-    <id>https://erdong.site/uncategorized/notice-20190809.html</id>
+    <link href="https://erdong.site/notice/notice-20190809.html"/>
+    <id>https://erdong.site/notice/notice-20190809.html</id>
     <published>2019-08-09T12:04:05.000Z</published>
     <updated>2019-10-13T15:31:57.911Z</updated>
     
@@ -1310,13 +1725,17 @@
     </summary>
     
     
+      <category term="notice" scheme="https://erdong.site/categories/notice/"/>
+    
+    
+      <category term="notice" scheme="https://erdong.site/tags/notice/"/>
     
   </entry>
   
   <entry>
     <title>第29周分享</title>
-    <link href="https://erdong.site/uncategorized/weekly29.html"/>
-    <id>https://erdong.site/uncategorized/weekly29.html</id>
+    <link href="https://erdong.site/weekly/weekly29.html"/>
+    <id>https://erdong.site/weekly/weekly29.html</id>
     <published>2019-07-21T07:06:24.000Z</published>
     <updated>2019-10-14T11:18:34.550Z</updated>
     
@@ -1329,13 +1748,17 @@
     </summary>
     
     
+      <category term="weekly" scheme="https://erdong.site/categories/weekly/"/>
+    
+    
+      <category term="weekly" scheme="https://erdong.site/tags/weekly/"/>
     
   </entry>
   
   <entry>
     <title>聊聊微信公众号留言</title>
-    <link href="https://erdong.site/uncategorized/wechat-message-board.html"/>
-    <id>https://erdong.site/uncategorized/wechat-message-board.html</id>
+    <link href="https://erdong.site/article/wechat-message-board.html"/>
+    <id>https://erdong.site/article/wechat-message-board.html</id>
     <published>2019-07-20T03:14:42.000Z</published>
     <updated>2019-10-14T11:14:20.250Z</updated>
     
@@ -1348,13 +1771,17 @@
     </summary>
     
     
+      <category term="article" scheme="https://erdong.site/categories/article/"/>
+    
+    
+      <category term="wechat" scheme="https://erdong.site/tags/wechat/"/>
     
   </entry>
   
   <entry>
     <title>第28周分享</title>
-    <link href="https://erdong.site/uncategorized/weekly28.html"/>
-    <id>https://erdong.site/uncategorized/weekly28.html</id>
+    <link href="https://erdong.site/weekly/weekly28.html"/>
+    <id>https://erdong.site/weekly/weekly28.html</id>
     <published>2019-07-14T07:06:24.000Z</published>
     <updated>2019-10-14T11:18:29.390Z</updated>
     
@@ -1367,13 +1794,17 @@
     </summary>
     
     
+      <category term="weekly" scheme="https://erdong.site/categories/weekly/"/>
+    
+    
+      <category term="weekly" scheme="https://erdong.site/tags/weekly/"/>
     
   </entry>
   
   <entry>
     <title>第27周分享</title>
-    <link href="https://erdong.site/uncategorized/weekly27.html"/>
-    <id>https://erdong.site/uncategorized/weekly27.html</id>
+    <link href="https://erdong.site/weekly/weekly27.html"/>
+    <id>https://erdong.site/weekly/weekly27.html</id>
     <published>2019-07-07T07:06:24.000Z</published>
     <updated>2019-10-14T11:18:22.633Z</updated>
     
@@ -1386,13 +1817,17 @@
     </summary>
     
     
+      <category term="weekly" scheme="https://erdong.site/categories/weekly/"/>
+    
+    
+      <category term="weekly" scheme="https://erdong.site/tags/weekly/"/>
     
   </entry>
   
   <entry>
     <title>第26周分享</title>
-    <link href="https://erdong.site/uncategorized/weekly26.html"/>
-    <id>https://erdong.site/uncategorized/weekly26.html</id>
+    <link href="https://erdong.site/weekly/weekly26.html"/>
+    <id>https://erdong.site/weekly/weekly26.html</id>
     <published>2019-06-30T02:06:24.000Z</published>
     <updated>2019-10-14T11:18:13.708Z</updated>
     
@@ -1405,13 +1840,17 @@
     </summary>
     
     
+      <category term="weekly" scheme="https://erdong.site/categories/weekly/"/>
+    
+    
+      <category term="weekly" scheme="https://erdong.site/tags/weekly/"/>
     
   </entry>
   
   <entry>
     <title>QDS05 Prometheus</title>
-    <link href="https://erdong.site/uncategorized/qds05.html"/>
-    <id>https://erdong.site/uncategorized/qds05.html</id>
+    <link href="https://erdong.site/QDS/qds05.html"/>
+    <id>https://erdong.site/QDS/qds05.html</id>
     <published>2019-06-27T10:22:14.000Z</published>
     <updated>2019-10-14T11:13:15.635Z</updated>
     
@@ -1426,13 +1865,19 @@
     </summary>
     
     
+      <category term="QDS" scheme="https://erdong.site/categories/QDS/"/>
+    
+    
+      <category term="prometheus" scheme="https://erdong.site/tags/prometheus/"/>
+    
+      <category term="QDS" scheme="https://erdong.site/tags/QDS/"/>
     
   </entry>
   
   <entry>
     <title>第25周分享</title>
-    <link href="https://erdong.site/uncategorized/weekly25.html"/>
-    <id>https://erdong.site/uncategorized/weekly25.html</id>
+    <link href="https://erdong.site/weekly/weekly25.html"/>
+    <id>https://erdong.site/weekly/weekly25.html</id>
     <published>2019-06-22T02:06:24.000Z</published>
     <updated>2019-10-14T11:18:07.278Z</updated>
     
@@ -1445,13 +1890,17 @@
     </summary>
     
     
+      <category term="weekly" scheme="https://erdong.site/categories/weekly/"/>
+    
+    
+      <category term="weekly" scheme="https://erdong.site/tags/weekly/"/>
     
   </entry>
   
   <entry>
     <title>第24周分享</title>
-    <link href="https://erdong.site/uncategorized/weekly24.html"/>
-    <id>https://erdong.site/uncategorized/weekly24.html</id>
+    <link href="https://erdong.site/weekly/weekly24.html"/>
+    <id>https://erdong.site/weekly/weekly24.html</id>
     <published>2019-06-16T03:06:24.000Z</published>
     <updated>2019-10-14T11:18:00.202Z</updated>
     
@@ -1464,13 +1913,17 @@
     </summary>
     
     
+      <category term="weekly" scheme="https://erdong.site/categories/weekly/"/>
+    
+    
+      <category term="weekly" scheme="https://erdong.site/tags/weekly/"/>
     
   </entry>
   
   <entry>
     <title>第23周分享</title>
-    <link href="https://erdong.site/uncategorized/weekly23.html"/>
-    <id>https://erdong.site/uncategorized/weekly23.html</id>
+    <link href="https://erdong.site/weekly/weekly23.html"/>
+    <id>https://erdong.site/weekly/weekly23.html</id>
     <published>2019-06-09T03:06:24.000Z</published>
     <updated>2019-10-14T11:17:54.126Z</updated>
     
@@ -1483,13 +1936,17 @@
     </summary>
     
     
+      <category term="weekly" scheme="https://erdong.site/categories/weekly/"/>
+    
+    
+      <category term="weekly" scheme="https://erdong.site/tags/weekly/"/>
     
   </entry>
   
   <entry>
     <title>第22周分享</title>
-    <link href="https://erdong.site/uncategorized/weekly22.html"/>
-    <id>https://erdong.site/uncategorized/weekly22.html</id>
+    <link href="https://erdong.site/weekly/weekly22.html"/>
+    <id>https://erdong.site/weekly/weekly22.html</id>
     <published>2019-06-02T03:06:24.000Z</published>
     <updated>2019-10-14T11:17:47.903Z</updated>
     
@@ -1502,13 +1959,17 @@
     </summary>
     
     
+      <category term="weekly" scheme="https://erdong.site/categories/weekly/"/>
+    
+    
+      <category term="weekly" scheme="https://erdong.site/tags/weekly/"/>
     
   </entry>
   
   <entry>
     <title>第21周分享</title>
-    <link href="https://erdong.site/uncategorized/weekly21.html"/>
-    <id>https://erdong.site/uncategorized/weekly21.html</id>
+    <link href="https://erdong.site/weekly/weekly21.html"/>
+    <id>https://erdong.site/weekly/weekly21.html</id>
     <published>2019-05-26T03:06:24.000Z</published>
     <updated>2019-10-14T11:17:41.982Z</updated>
     
@@ -1521,13 +1982,17 @@
     </summary>
     
     
+      <category term="weekly" scheme="https://erdong.site/categories/weekly/"/>
+    
+    
+      <category term="weekly" scheme="https://erdong.site/tags/weekly/"/>
     
   </entry>
   
   <entry>
     <title>第20周分享</title>
-    <link href="https://erdong.site/uncategorized/weekly20.html"/>
-    <id>https://erdong.site/uncategorized/weekly20.html</id>
+    <link href="https://erdong.site/weekly/weekly20.html"/>
+    <id>https://erdong.site/weekly/weekly20.html</id>
     <published>2019-05-19T03:06:24.000Z</published>
     <updated>2019-10-14T11:17:34.927Z</updated>
     
@@ -1540,13 +2005,17 @@
     </summary>
     
     
+      <category term="weekly" scheme="https://erdong.site/categories/weekly/"/>
+    
+    
+      <category term="weekly" scheme="https://erdong.site/tags/weekly/"/>
     
   </entry>
   
   <entry>
     <title>Prometheus 简介</title>
-    <link href="https://erdong.site/uncategorized/prometheus-introduction.html"/>
-    <id>https://erdong.site/uncategorized/prometheus-introduction.html</id>
+    <link href="https://erdong.site/Prometheus/notes/prometheus-introduction.html"/>
+    <id>https://erdong.site/Prometheus/notes/prometheus-introduction.html</id>
     <published>2019-05-16T14:01:25.000Z</published>
     <updated>2019-10-14T11:11:42.702Z</updated>
     
@@ -1559,13 +2028,19 @@
     </summary>
     
     
+      <category term="Prometheus" scheme="https://erdong.site/categories/Prometheus/"/>
+    
+      <category term="notes" scheme="https://erdong.site/categories/Prometheus/notes/"/>
+    
+    
+      <category term="Prometheus" scheme="https://erdong.site/tags/Prometheus/"/>
     
   </entry>
   
   <entry>
     <title>Prometheus 安装</title>
-    <link href="https://erdong.site/uncategorized/prometheus-install.html"/>
-    <id>https://erdong.site/uncategorized/prometheus-install.html</id>
+    <link href="https://erdong.site/Prometheus/notes/prometheus-install.html"/>
+    <id>https://erdong.site/Prometheus/notes/prometheus-install.html</id>
     <published>2019-05-16T13:57:45.000Z</published>
     <updated>2019-10-22T03:49:38.852Z</updated>
     
@@ -1578,13 +2053,19 @@
     </summary>
     
     
+      <category term="Prometheus" scheme="https://erdong.site/categories/Prometheus/"/>
+    
+      <category term="notes" scheme="https://erdong.site/categories/Prometheus/notes/"/>
+    
+    
+      <category term="Prometheus" scheme="https://erdong.site/tags/Prometheus/"/>
     
   </entry>
   
   <entry>
     <title>工程师的显示器怎么选</title>
-    <link href="https://erdong.site/uncategorized/two-monitors-or-one-ultrawide.html"/>
-    <id>https://erdong.site/uncategorized/two-monitors-or-one-ultrawide.html</id>
+    <link href="https://erdong.site/article/two-monitors-or-one-ultrawide.html"/>
+    <id>https://erdong.site/article/two-monitors-or-one-ultrawide.html</id>
     <published>2019-05-11T07:15:28.000Z</published>
     <updated>2019-10-14T11:13:48.612Z</updated>
     
@@ -1597,13 +2078,19 @@
     </summary>
     
     
+      <category term="article" scheme="https://erdong.site/categories/article/"/>
+    
+    
+      <category term="monitor" scheme="https://erdong.site/tags/monitor/"/>
+    
+      <category term="ultrawide" scheme="https://erdong.site/tags/ultrawide/"/>
     
   </entry>
   
   <entry>
     <title>第19周分享</title>
-    <link href="https://erdong.site/uncategorized/weekly19.html"/>
-    <id>https://erdong.site/uncategorized/weekly19.html</id>
+    <link href="https://erdong.site/weekly/weekly19.html"/>
+    <id>https://erdong.site/weekly/weekly19.html</id>
     <published>2019-05-11T03:06:24.000Z</published>
     <updated>2019-10-14T11:17:25.897Z</updated>
     
@@ -1616,13 +2103,17 @@
     </summary>
     
     
+      <category term="weekly" scheme="https://erdong.site/categories/weekly/"/>
+    
+    
+      <category term="weekly" scheme="https://erdong.site/tags/weekly/"/>
     
   </entry>
   
   <entry>
     <title>Erdong Notes</title>
-    <link href="https://erdong.site/uncategorized/erdong-notes.html"/>
-    <id>https://erdong.site/uncategorized/erdong-notes.html</id>
+    <link href="https://erdong.site/article/erdong-notes.html"/>
+    <id>https://erdong.site/article/erdong-notes.html</id>
     <published>2019-05-11T02:58:15.000Z</published>
     <updated>2019-10-14T11:06:50.015Z</updated>
     
@@ -1635,13 +2126,19 @@
     </summary>
     
     
+      <category term="article" scheme="https://erdong.site/categories/article/"/>
+    
+    
+      <category term="article" scheme="https://erdong.site/tags/article/"/>
+    
+      <category term="note" scheme="https://erdong.site/tags/note/"/>
     
   </entry>
   
   <entry>
     <title>第18周分享</title>
-    <link href="https://erdong.site/uncategorized/weekly18.html"/>
-    <id>https://erdong.site/uncategorized/weekly18.html</id>
+    <link href="https://erdong.site/weekly/weekly18.html"/>
+    <id>https://erdong.site/weekly/weekly18.html</id>
     <published>2019-05-05T03:06:24.000Z</published>
     <updated>2019-10-14T11:17:19.961Z</updated>
     
@@ -1654,13 +2151,17 @@
     </summary>
     
     
+      <category term="weekly" scheme="https://erdong.site/categories/weekly/"/>
+    
+    
+      <category term="weekly" scheme="https://erdong.site/tags/weekly/"/>
     
   </entry>
   
   <entry>
     <title>第17周分享</title>
-    <link href="https://erdong.site/uncategorized/weekly17.html"/>
-    <id>https://erdong.site/uncategorized/weekly17.html</id>
+    <link href="https://erdong.site/weekly/weekly17.html"/>
+    <id>https://erdong.site/weekly/weekly17.html</id>
     <published>2019-04-28T03:06:24.000Z</published>
     <updated>2019-10-14T11:17:12.340Z</updated>
     
@@ -1673,13 +2174,17 @@
     </summary>
     
     
+      <category term="weekly" scheme="https://erdong.site/categories/weekly/"/>
+    
+    
+      <category term="weekly" scheme="https://erdong.site/tags/weekly/"/>
     
   </entry>
   
   <entry>
     <title>【翻译】Prometheus 2.8.0 新特性</title>
-    <link href="https://erdong.site/uncategorized/New-Features-in-Prometheus-2-8-0.html"/>
-    <id>https://erdong.site/uncategorized/New-Features-in-Prometheus-2-8-0.html</id>
+    <link href="https://erdong.site/Prometheus/New-Features/New-Features-in-Prometheus-2-8-0.html"/>
+    <id>https://erdong.site/Prometheus/New-Features/New-Features-in-Prometheus-2-8-0.html</id>
     <published>2019-04-24T22:09:34.000Z</published>
     <updated>2019-10-14T11:10:13.176Z</updated>
     
@@ -1692,13 +2197,23 @@
     </summary>
     
     
+      <category term="Prometheus" scheme="https://erdong.site/categories/Prometheus/"/>
+    
+      <category term="New-Features" scheme="https://erdong.site/categories/Prometheus/New-Features/"/>
+    
+    
+      <category term="Prometheus" scheme="https://erdong.site/tags/Prometheus/"/>
+    
+      <category term="Features" scheme="https://erdong.site/tags/Features/"/>
+    
+      <category term="release" scheme="https://erdong.site/tags/release/"/>
     
   </entry>
   
   <entry>
     <title>【翻译】Prometheus 2.9.0 新特性</title>
-    <link href="https://erdong.site/uncategorized/New-Features-in-Prometheus-2-9-0.html"/>
-    <id>https://erdong.site/uncategorized/New-Features-in-Prometheus-2-9-0.html</id>
+    <link href="https://erdong.site/Prometheus/New-Features/New-Features-in-Prometheus-2-9-0.html"/>
+    <id>https://erdong.site/Prometheus/New-Features/New-Features-in-Prometheus-2-9-0.html</id>
     <published>2019-04-24T22:09:34.000Z</published>
     <updated>2019-10-14T11:10:22.388Z</updated>
     
@@ -1711,13 +2226,23 @@
     </summary>
     
     
+      <category term="Prometheus" scheme="https://erdong.site/categories/Prometheus/"/>
+    
+      <category term="New-Features" scheme="https://erdong.site/categories/Prometheus/New-Features/"/>
+    
+    
+      <category term="Prometheus" scheme="https://erdong.site/tags/Prometheus/"/>
+    
+      <category term="Features" scheme="https://erdong.site/tags/Features/"/>
+    
+      <category term="release" scheme="https://erdong.site/tags/release/"/>
     
   </entry>
   
   <entry>
     <title>第16周分享</title>
-    <link href="https://erdong.site/uncategorized/weekly16.html"/>
-    <id>https://erdong.site/uncategorized/weekly16.html</id>
+    <link href="https://erdong.site/weekly/weekly16.html"/>
+    <id>https://erdong.site/weekly/weekly16.html</id>
     <published>2019-04-21T03:06:24.000Z</published>
     <updated>2019-10-14T11:17:05.746Z</updated>
     
@@ -1730,13 +2255,17 @@
     </summary>
     
     
+      <category term="weekly" scheme="https://erdong.site/categories/weekly/"/>
+    
+    
+      <category term="weekly" scheme="https://erdong.site/tags/weekly/"/>
     
   </entry>
   
   <entry>
     <title>第15周分享</title>
-    <link href="https://erdong.site/uncategorized/weekly15.html"/>
-    <id>https://erdong.site/uncategorized/weekly15.html</id>
+    <link href="https://erdong.site/weekly/weekly15.html"/>
+    <id>https://erdong.site/weekly/weekly15.html</id>
     <published>2019-04-14T03:06:24.000Z</published>
     <updated>2019-10-14T11:16:57.284Z</updated>
     
@@ -1749,13 +2278,17 @@
     </summary>
     
     
+      <category term="weekly" scheme="https://erdong.site/categories/weekly/"/>
+    
+    
+      <category term="weekly" scheme="https://erdong.site/tags/weekly/"/>
     
   </entry>
   
   <entry>
     <title>第14周分享</title>
-    <link href="https://erdong.site/uncategorized/weekly14.html"/>
-    <id>https://erdong.site/uncategorized/weekly14.html</id>
+    <link href="https://erdong.site/weekly/weekly14.html"/>
+    <id>https://erdong.site/weekly/weekly14.html</id>
     <published>2019-04-07T03:06:24.000Z</published>
     <updated>2019-10-14T11:16:50.335Z</updated>
     
@@ -1768,13 +2301,17 @@
     </summary>
     
     
+      <category term="weekly" scheme="https://erdong.site/categories/weekly/"/>
+    
+    
+      <category term="weekly" scheme="https://erdong.site/tags/weekly/"/>
     
   </entry>
   
   <entry>
     <title>第13周分享</title>
-    <link href="https://erdong.site/uncategorized/weekly13.html"/>
-    <id>https://erdong.site/uncategorized/weekly13.html</id>
+    <link href="https://erdong.site/weekly/weekly13.html"/>
+    <id>https://erdong.site/weekly/weekly13.html</id>
     <published>2019-03-31T03:06:24.000Z</published>
     <updated>2019-10-14T11:16:43.848Z</updated>
     
@@ -1787,13 +2324,17 @@
     </summary>
     
     
+      <category term="weekly" scheme="https://erdong.site/categories/weekly/"/>
+    
+    
+      <category term="weekly" scheme="https://erdong.site/tags/weekly/"/>
     
   </entry>
   
   <entry>
     <title>第12周分享</title>
-    <link href="https://erdong.site/uncategorized/weekly12.html"/>
-    <id>https://erdong.site/uncategorized/weekly12.html</id>
+    <link href="https://erdong.site/weekly/weekly12.html"/>
+    <id>https://erdong.site/weekly/weekly12.html</id>
     <published>2019-03-24T03:06:24.000Z</published>
     <updated>2019-10-14T11:16:37.037Z</updated>
     
@@ -1806,13 +2347,17 @@
     </summary>
     
     
+      <category term="weekly" scheme="https://erdong.site/categories/weekly/"/>
+    
+    
+      <category term="weekly" scheme="https://erdong.site/tags/weekly/"/>
     
   </entry>
   
   <entry>
     <title>第11周分享</title>
-    <link href="https://erdong.site/uncategorized/weekly11.html"/>
-    <id>https://erdong.site/uncategorized/weekly11.html</id>
+    <link href="https://erdong.site/weekly/weekly11.html"/>
+    <id>https://erdong.site/weekly/weekly11.html</id>
     <published>2019-03-17T03:06:24.000Z</published>
     <updated>2019-10-14T11:16:31.071Z</updated>
     
@@ -1825,13 +2370,17 @@
     </summary>
     
     
+      <category term="weekly" scheme="https://erdong.site/categories/weekly/"/>
+    
+    
+      <category term="weekly" scheme="https://erdong.site/tags/weekly/"/>
     
   </entry>
   
   <entry>
     <title>微信公众号如何创建赞赏账户</title>
-    <link href="https://erdong.site/uncategorized/wechat-appreciates.html"/>
-    <id>https://erdong.site/uncategorized/wechat-appreciates.html</id>
+    <link href="https://erdong.site/article/wechat-appreciates.html"/>
+    <id>https://erdong.site/article/wechat-appreciates.html</id>
     <published>2019-03-17T02:57:15.000Z</published>
     <updated>2019-10-14T11:14:07.645Z</updated>
     
@@ -1846,13 +2395,17 @@
     </summary>
     
     
+      <category term="article" scheme="https://erdong.site/categories/article/"/>
+    
+    
+      <category term="wechat" scheme="https://erdong.site/tags/wechat/"/>
     
   </entry>
   
   <entry>
     <title>解决 EXT4 使用无法挂载</title>
-    <link href="https://erdong.site/uncategorized/ext4-error-loading-journal.html"/>
-    <id>https://erdong.site/uncategorized/ext4-error-loading-journal.html</id>
+    <link href="https://erdong.site/linux/system/ext4-error-loading-journal.html"/>
+    <id>https://erdong.site/linux/system/ext4-error-loading-journal.html</id>
     <published>2019-03-12T10:49:09.000Z</published>
     <updated>2019-10-14T11:07:01.283Z</updated>
     
@@ -1865,13 +2418,19 @@
     </summary>
     
     
+      <category term="linux" scheme="https://erdong.site/categories/linux/"/>
+    
+      <category term="system" scheme="https://erdong.site/categories/linux/system/"/>
+    
+    
+      <category term="ext4" scheme="https://erdong.site/tags/ext4/"/>
     
   </entry>
   
   <entry>
     <title>第10周分享</title>
-    <link href="https://erdong.site/uncategorized/weekly10.html"/>
-    <id>https://erdong.site/uncategorized/weekly10.html</id>
+    <link href="https://erdong.site/weekly/weekly10.html"/>
+    <id>https://erdong.site/weekly/weekly10.html</id>
     <published>2019-03-10T00:35:49.000Z</published>
     <updated>2019-10-14T11:16:21.952Z</updated>
     
@@ -1884,13 +2443,15 @@
     </summary>
     
     
+      <category term="weekly" scheme="https://erdong.site/categories/weekly/"/>
+    
     
   </entry>
   
   <entry>
     <title>常见 DNS 地址</title>
-    <link href="https://erdong.site/uncategorized/dns-server-ip.html"/>
-    <id>https://erdong.site/uncategorized/dns-server-ip.html</id>
+    <link href="https://erdong.site/linux/system/dns-server-ip.html"/>
+    <id>https://erdong.site/linux/system/dns-server-ip.html</id>
     <published>2019-03-04T13:51:58.000Z</published>
     <updated>2019-10-14T11:06:40.897Z</updated>
     
@@ -1910,13 +2471,19 @@
     </summary>
     
     
+      <category term="linux" scheme="https://erdong.site/categories/linux/"/>
+    
+      <category term="system" scheme="https://erdong.site/categories/linux/system/"/>
+    
+    
+      <category term="DNS" scheme="https://erdong.site/tags/DNS/"/>
     
   </entry>
   
   <entry>
     <title>第09周分享</title>
-    <link href="https://erdong.site/uncategorized/weekly09.html"/>
-    <id>https://erdong.site/uncategorized/weekly09.html</id>
+    <link href="https://erdong.site/weekly/weekly09.html"/>
+    <id>https://erdong.site/weekly/weekly09.html</id>
     <published>2019-03-03T15:10:13.000Z</published>
     <updated>2019-10-14T11:16:14.027Z</updated>
     
@@ -1929,13 +2496,15 @@
     </summary>
     
     
+      <category term="weekly" scheme="https://erdong.site/categories/weekly/"/>
+    
     
   </entry>
   
   <entry>
     <title>【翻译】时序数据库为什么选 Prometheus</title>
-    <link href="https://erdong.site/uncategorized/prometheus-comparison-tsdb.html"/>
-    <id>https://erdong.site/uncategorized/prometheus-comparison-tsdb.html</id>
+    <link href="https://erdong.site/Prometheus/guide/prometheus-comparison-tsdb.html"/>
+    <id>https://erdong.site/Prometheus/guide/prometheus-comparison-tsdb.html</id>
     <published>2019-03-02T03:39:13.000Z</published>
     <updated>2019-10-14T11:11:11.280Z</updated>
     
@@ -1949,13 +2518,29 @@
     </summary>
     
     
+      <category term="Prometheus" scheme="https://erdong.site/categories/Prometheus/"/>
+    
+      <category term="guide" scheme="https://erdong.site/categories/Prometheus/guide/"/>
+    
+    
+      <category term="prometheus" scheme="https://erdong.site/tags/prometheus/"/>
+    
+      <category term="OpenTSDB" scheme="https://erdong.site/tags/OpenTSDB/"/>
+    
+      <category term="InfluxDB" scheme="https://erdong.site/tags/InfluxDB/"/>
+    
+      <category term="Graphite" scheme="https://erdong.site/tags/Graphite/"/>
+    
+      <category term="Nagios" scheme="https://erdong.site/tags/Nagios/"/>
+    
+      <category term="Sensu" scheme="https://erdong.site/tags/Sensu/"/>
     
   </entry>
   
   <entry>
     <title>Parted 创建 GPT 分区</title>
-    <link href="https://erdong.site/uncategorized/parted-create-gpt-partition.html"/>
-    <id>https://erdong.site/uncategorized/parted-create-gpt-partition.html</id>
+    <link href="https://erdong.site/tools/parted-create-gpt-partition.html"/>
+    <id>https://erdong.site/tools/parted-create-gpt-partition.html</id>
     <published>2019-02-27T11:44:34.000Z</published>
     <updated>2019-10-14T11:10:58.268Z</updated>
     
@@ -1969,13 +2554,23 @@
     </summary>
     
     
+      <category term="tools" scheme="https://erdong.site/categories/tools/"/>
+    
+    
+      <category term="parted" scheme="https://erdong.site/tags/parted/"/>
+    
+      <category term="fdisk" scheme="https://erdong.site/tags/fdisk/"/>
+    
+      <category term="GPT" scheme="https://erdong.site/tags/GPT/"/>
+    
+      <category term="MBR" scheme="https://erdong.site/tags/MBR/"/>
     
   </entry>
   
   <entry>
     <title>【转载】Prometheus 不完全避坑指南</title>
-    <link href="https://erdong.site/uncategorized/prometheus-incomplete-guide.html"/>
-    <id>https://erdong.site/uncategorized/prometheus-incomplete-guide.html</id>
+    <link href="https://erdong.site/Prometheus/guide/prometheus-incomplete-guide.html"/>
+    <id>https://erdong.site/Prometheus/guide/prometheus-incomplete-guide.html</id>
     <published>2019-02-26T13:23:57.000Z</published>
     <updated>2019-10-14T11:11:21.826Z</updated>
     
@@ -1991,13 +2586,19 @@
     </summary>
     
     
+      <category term="Prometheus" scheme="https://erdong.site/categories/Prometheus/"/>
+    
+      <category term="guide" scheme="https://erdong.site/categories/Prometheus/guide/"/>
+    
+    
+      <category term="Prometheus" scheme="https://erdong.site/tags/Prometheus/"/>
     
   </entry>
   
   <entry>
     <title>OpenVPN linux 客户端安装使用</title>
-    <link href="https://erdong.site/uncategorized/openvpn-client-use.html"/>
-    <id>https://erdong.site/uncategorized/openvpn-client-use.html</id>
+    <link href="https://erdong.site/tools/openvpn-client-use.html"/>
+    <id>https://erdong.site/tools/openvpn-client-use.html</id>
     <published>2019-02-25T14:07:32.000Z</published>
     <updated>2019-10-14T11:10:48.411Z</updated>
     
@@ -2010,13 +2611,17 @@
     </summary>
     
     
+      <category term="tools" scheme="https://erdong.site/categories/tools/"/>
+    
+    
+      <category term="openvpn" scheme="https://erdong.site/tags/openvpn/"/>
     
   </entry>
   
   <entry>
     <title>第08周分享</title>
-    <link href="https://erdong.site/uncategorized/weekly08.html"/>
-    <id>https://erdong.site/uncategorized/weekly08.html</id>
+    <link href="https://erdong.site/weekly/weekly08.html"/>
+    <id>https://erdong.site/weekly/weekly08.html</id>
     <published>2019-02-24T14:49:58.000Z</published>
     <updated>2019-10-14T11:16:06.323Z</updated>
     
@@ -2029,13 +2634,15 @@
     </summary>
     
     
+      <category term="weekly" scheme="https://erdong.site/categories/weekly/"/>
+    
     
   </entry>
   
   <entry>
     <title>阿里云云栖社区博客相关问题</title>
-    <link href="https://erdong.site/uncategorized/yunqi-blog.html"/>
-    <id>https://erdong.site/uncategorized/yunqi-blog.html</id>
+    <link href="https://erdong.site/life/gossip/yunqi-blog.html"/>
+    <id>https://erdong.site/life/gossip/yunqi-blog.html</id>
     <published>2019-02-22T08:58:27.000Z</published>
     <updated>2019-10-14T11:18:49.913Z</updated>
     
@@ -2048,13 +2655,44 @@
     </summary>
     
     
+      <category term="life" scheme="https://erdong.site/categories/life/"/>
+    
+      <category term="gossip" scheme="https://erdong.site/categories/life/gossip/"/>
+    
+    
+      <category term="博客" scheme="https://erdong.site/tags/%E5%8D%9A%E5%AE%A2/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>QDS04 TensorFlow</title>
+    <link href="https://erdong.site/QDS/qds04.html"/>
+    <id>https://erdong.site/QDS/qds04.html</id>
+    <published>2019-02-21T12:19:47.000Z</published>
+    <updated>2019-10-14T11:13:07.541Z</updated>
+    
+    <content type="html"><![CDATA[<p>QDS （Quick Deployment Series）快速的部署一个软件。这次我们来部署 TensorFlow。</p><a id="more"></a><h1 id="系统要求"><a href="#系统要求" class="headerlink" title="系统要求"></a>系统要求</h1><p>Ubuntu 16.04 或更高版本（64 位）<br>macOS 10.12.6 (Sierra) 或更高版本（64 位）（不支持 GPU）<br>Windows 7 或更高版本（64 位）（仅支持 Python 3）<br>Raspbian 9.0 或更高版本</p><h1 id="硬件要求"><a href="#硬件要求" class="headerlink" title="硬件要求"></a>硬件要求</h1><p>从 TensorFlow 1.6 开始，二进制文件使用 AVX 指令，这些指令可能无法在旧版 CPU 上运行。</p><p>CUDA® 计算能力为 3.5 或更高的 NVIDIA® GPU 卡。</p><h1 id="软件要求"><a href="#软件要求" class="headerlink" title="软件要求"></a>软件要求</h1><p>必须在系统中安装以下 NVIDIA® 软件：</p><ul><li>NVIDIA® GPU 驱动程序 - CUDA 9.0 需要 384.x 或更高版本。</li><li>CUDA® 工具包 - TensorFlow 支持 CUDA 9.0。</li><li>CUDA 工具包附带的 CUPTI。</li><li>cuDNN SDK（7.2 及更高版本）</li><li>（可选）NCCL 2.2，可实现多 GPU 支持。</li><li>（可选）TensorRT 4.0，可缩短在某些模型上进行推断的延迟并提高吞吐量。</li></ul><h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><h2 id="环境检测"><a href="#环境检测" class="headerlink" title="环境检测"></a>环境检测</h2><p>python 2 环境检测，如果没有某个部分，请补装。</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">python --version</span><br><span class="line">pip --version</span><br></pre></td></tr></table></figure><p>python3 和 python2 类似，换成 python3 的命令即可。</p><h2 id="安装-1"><a href="#安装-1" class="headerlink" title="安装"></a>安装</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">pip install tensorflow  &#x2F;&#x2F; 安装 TensorFlow CPU 版本</span><br><span class="line">pip install tensorflow-gpu  &#x2F;&#x2F; 安装 TensorFlow GPU 版本</span><br><span class="line">pip install tf-nightly    &#x2F;&#x2F; 安装 TensorFlow CPU 暗夜版本 不稳定</span><br><span class="line">pip install tf-nightly-gpu   &#x2F;&#x2F; 安装 TensorFlow GPU 暗夜版本 不稳定</span><br></pre></td></tr></table></figure><p>不过这样通过 pip 安装速度有点慢啊，使用了 pip 官方的源。</p><p>换阿里云的 pip 源以后很快就完成了。</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install -i https:&#x2F;&#x2F;mirrors.aliyun.com&#x2F;pypi&#x2F;simple tensorflow-gpu</span><br></pre></td></tr></table></figure><h1 id="验证"><a href="#验证" class="headerlink" title="验证"></a>验证</h1><p>依次输入如下命令：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">[root@node31 ~]# python</span><br><span class="line">Python 2.7.5 (default, Jul 13 2018, 13:06:57)</span><br><span class="line">[GCC 4.8.5 20150623 (Red Hat 4.8.5-28)] on linux2</span><br><span class="line">Type &quot;help&quot;, &quot;copyright&quot;, &quot;credits&quot; or &quot;license&quot; for more information.</span><br><span class="line">&gt;&gt;&gt; import tensorflow as tf</span><br><span class="line">&gt;&gt;&gt; tf.__version__</span><br><span class="line">&#39;1.12.0&#39;</span><br><span class="line">&gt;&gt;&gt; tf.__path__</span><br><span class="line">[&#39;&#x2F;usr&#x2F;lib&#x2F;python2.7&#x2F;site-packages&#x2F;tensorflow&#39;, &#39;&#x2F;usr&#x2F;lib&#x2F;python2.7&#x2F;site-packages&#x2F;tensorflow&#x2F;python&#x2F;estimator&#x2F;api&#39;, &#39;&#x2F;usr&#x2F;lib&#x2F;python2.7&#x2F;site-packages&#x2F;tensorflow&#x2F;_api&#x2F;v1&#39;]</span><br><span class="line">&gt;&gt;&gt;</span><br></pre></td></tr></table></figure><p>可以看到，已经安装了 TensorFlow 的 1.12 版本和安装的路径。</p><p>======================<br>Erdong, A Linux user !</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;QDS （Quick Deployment Series）快速的部署一个软件。这次我们来部署 TensorFlow。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="QDS" scheme="https://erdong.site/categories/QDS/"/>
+    
+    
+      <category term="QDS" scheme="https://erdong.site/tags/QDS/"/>
+    
+      <category term="TensorFlow" scheme="https://erdong.site/tags/TensorFlow/"/>
     
   </entry>
   
   <entry>
     <title>QDS03 pip</title>
-    <link href="https://erdong.site/uncategorized/qds03.html"/>
-    <id>https://erdong.site/uncategorized/qds03.html</id>
+    <link href="https://erdong.site/QDS/qds03.html"/>
+    <id>https://erdong.site/QDS/qds03.html</id>
     <published>2019-02-21T12:19:47.000Z</published>
     <updated>2019-10-14T11:12:58.519Z</updated>
     
@@ -2068,32 +2706,19 @@
     </summary>
     
     
-    
-  </entry>
-  
-  <entry>
-    <title>QDS04 TensorFlow</title>
-    <link href="https://erdong.site/uncategorized/qds04.html"/>
-    <id>https://erdong.site/uncategorized/qds04.html</id>
-    <published>2019-02-21T12:19:47.000Z</published>
-    <updated>2019-10-14T11:13:07.541Z</updated>
-    
-    <content type="html"><![CDATA[<p>QDS （Quick Deployment Series）快速的部署一个软件。这次我们来部署 TensorFlow。</p><a id="more"></a><h1 id="系统要求"><a href="#系统要求" class="headerlink" title="系统要求"></a>系统要求</h1><p>Ubuntu 16.04 或更高版本（64 位）<br>macOS 10.12.6 (Sierra) 或更高版本（64 位）（不支持 GPU）<br>Windows 7 或更高版本（64 位）（仅支持 Python 3）<br>Raspbian 9.0 或更高版本</p><h1 id="硬件要求"><a href="#硬件要求" class="headerlink" title="硬件要求"></a>硬件要求</h1><p>从 TensorFlow 1.6 开始，二进制文件使用 AVX 指令，这些指令可能无法在旧版 CPU 上运行。</p><p>CUDA® 计算能力为 3.5 或更高的 NVIDIA® GPU 卡。</p><h1 id="软件要求"><a href="#软件要求" class="headerlink" title="软件要求"></a>软件要求</h1><p>必须在系统中安装以下 NVIDIA® 软件：</p><ul><li>NVIDIA® GPU 驱动程序 - CUDA 9.0 需要 384.x 或更高版本。</li><li>CUDA® 工具包 - TensorFlow 支持 CUDA 9.0。</li><li>CUDA 工具包附带的 CUPTI。</li><li>cuDNN SDK（7.2 及更高版本）</li><li>（可选）NCCL 2.2，可实现多 GPU 支持。</li><li>（可选）TensorRT 4.0，可缩短在某些模型上进行推断的延迟并提高吞吐量。</li></ul><h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><h2 id="环境检测"><a href="#环境检测" class="headerlink" title="环境检测"></a>环境检测</h2><p>python 2 环境检测，如果没有某个部分，请补装。</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">python --version</span><br><span class="line">pip --version</span><br></pre></td></tr></table></figure><p>python3 和 python2 类似，换成 python3 的命令即可。</p><h2 id="安装-1"><a href="#安装-1" class="headerlink" title="安装"></a>安装</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">pip install tensorflow  &#x2F;&#x2F; 安装 TensorFlow CPU 版本</span><br><span class="line">pip install tensorflow-gpu  &#x2F;&#x2F; 安装 TensorFlow GPU 版本</span><br><span class="line">pip install tf-nightly    &#x2F;&#x2F; 安装 TensorFlow CPU 暗夜版本 不稳定</span><br><span class="line">pip install tf-nightly-gpu   &#x2F;&#x2F; 安装 TensorFlow GPU 暗夜版本 不稳定</span><br></pre></td></tr></table></figure><p>不过这样通过 pip 安装速度有点慢啊，使用了 pip 官方的源。</p><p>换阿里云的 pip 源以后很快就完成了。</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install -i https:&#x2F;&#x2F;mirrors.aliyun.com&#x2F;pypi&#x2F;simple tensorflow-gpu</span><br></pre></td></tr></table></figure><h1 id="验证"><a href="#验证" class="headerlink" title="验证"></a>验证</h1><p>依次输入如下命令：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">[root@node31 ~]# python</span><br><span class="line">Python 2.7.5 (default, Jul 13 2018, 13:06:57)</span><br><span class="line">[GCC 4.8.5 20150623 (Red Hat 4.8.5-28)] on linux2</span><br><span class="line">Type &quot;help&quot;, &quot;copyright&quot;, &quot;credits&quot; or &quot;license&quot; for more information.</span><br><span class="line">&gt;&gt;&gt; import tensorflow as tf</span><br><span class="line">&gt;&gt;&gt; tf.__version__</span><br><span class="line">&#39;1.12.0&#39;</span><br><span class="line">&gt;&gt;&gt; tf.__path__</span><br><span class="line">[&#39;&#x2F;usr&#x2F;lib&#x2F;python2.7&#x2F;site-packages&#x2F;tensorflow&#39;, &#39;&#x2F;usr&#x2F;lib&#x2F;python2.7&#x2F;site-packages&#x2F;tensorflow&#x2F;python&#x2F;estimator&#x2F;api&#39;, &#39;&#x2F;usr&#x2F;lib&#x2F;python2.7&#x2F;site-packages&#x2F;tensorflow&#x2F;_api&#x2F;v1&#39;]</span><br><span class="line">&gt;&gt;&gt;</span><br></pre></td></tr></table></figure><p>可以看到，已经安装了 TensorFlow 的 1.12 版本和安装的路径。</p><p>======================<br>Erdong, A Linux user !</p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;QDS （Quick Deployment Series）快速的部署一个软件。这次我们来部署 TensorFlow。&lt;/p&gt;
-    
-    </summary>
+      <category term="QDS" scheme="https://erdong.site/categories/QDS/"/>
     
     
+      <category term="QDS" scheme="https://erdong.site/tags/QDS/"/>
+    
+      <category term="pip" scheme="https://erdong.site/tags/pip/"/>
     
   </entry>
   
   <entry>
     <title>QDS02 Docker</title>
-    <link href="https://erdong.site/uncategorized/qds02.html"/>
-    <id>https://erdong.site/uncategorized/qds02.html</id>
+    <link href="https://erdong.site/QDS/qds02.html"/>
+    <id>https://erdong.site/QDS/qds02.html</id>
     <published>2019-02-20T12:19:47.000Z</published>
     <updated>2021-10-22T09:59:44.906Z</updated>
     
@@ -2106,13 +2731,19 @@
     </summary>
     
     
+      <category term="QDS" scheme="https://erdong.site/categories/QDS/"/>
+    
+    
+      <category term="QDS" scheme="https://erdong.site/tags/QDS/"/>
+    
+      <category term="Docker" scheme="https://erdong.site/tags/Docker/"/>
     
   </entry>
   
   <entry>
     <title>QDS01 Grafana</title>
-    <link href="https://erdong.site/uncategorized/qds01.html"/>
-    <id>https://erdong.site/uncategorized/qds01.html</id>
+    <link href="https://erdong.site/QDS/qds01.html"/>
+    <id>https://erdong.site/QDS/qds01.html</id>
     <published>2019-02-20T12:19:36.000Z</published>
     <updated>2019-10-14T11:12:03.377Z</updated>
     
@@ -2125,6 +2756,12 @@
     </summary>
     
     
+      <category term="QDS" scheme="https://erdong.site/categories/QDS/"/>
+    
+    
+      <category term="Grafana" scheme="https://erdong.site/tags/Grafana/"/>
+    
+      <category term="QDS" scheme="https://erdong.site/tags/QDS/"/>
     
   </entry>
   
@@ -2145,12 +2782,16 @@
     
     
     
+      <category term="prometheus" scheme="https://erdong.site/tags/prometheus/"/>
+    
+      <category term="time" scheme="https://erdong.site/tags/time/"/>
+    
   </entry>
   
   <entry>
     <title>第07周分享</title>
-    <link href="https://erdong.site/uncategorized/weekly07.html"/>
-    <id>https://erdong.site/uncategorized/weekly07.html</id>
+    <link href="https://erdong.site/weekly/weekly07.html"/>
+    <id>https://erdong.site/weekly/weekly07.html</id>
     <published>2019-02-17T01:31:23.000Z</published>
     <updated>2019-10-14T11:15:57.385Z</updated>
     
@@ -2163,13 +2804,15 @@
     </summary>
     
     
+      <category term="weekly" scheme="https://erdong.site/categories/weekly/"/>
+    
     
   </entry>
   
   <entry>
     <title>第06周分享</title>
-    <link href="https://erdong.site/uncategorized/weekly06.html"/>
-    <id>https://erdong.site/uncategorized/weekly06.html</id>
+    <link href="https://erdong.site/weekly/weekly06.html"/>
+    <id>https://erdong.site/weekly/weekly06.html</id>
     <published>2019-02-11T01:31:23.000Z</published>
     <updated>2019-10-14T11:15:50.279Z</updated>
     
@@ -2182,13 +2825,15 @@
     </summary>
     
     
+      <category term="weekly" scheme="https://erdong.site/categories/weekly/"/>
+    
     
   </entry>
   
   <entry>
     <title>第05周分享</title>
-    <link href="https://erdong.site/uncategorized/weekly05.html"/>
-    <id>https://erdong.site/uncategorized/weekly05.html</id>
+    <link href="https://erdong.site/weekly/weekly05.html"/>
+    <id>https://erdong.site/weekly/weekly05.html</id>
     <published>2019-02-02T09:31:10.000Z</published>
     <updated>2019-10-14T11:15:42.440Z</updated>
     
@@ -2201,13 +2846,17 @@
     </summary>
     
     
+      <category term="weekly" scheme="https://erdong.site/categories/weekly/"/>
+    
+    
+      <category term="Newsletter" scheme="https://erdong.site/tags/Newsletter/"/>
     
   </entry>
   
   <entry>
     <title>CUDA 10.0 安装包浅析</title>
-    <link href="https://erdong.site/uncategorized/cuda-introduction.html"/>
-    <id>https://erdong.site/uncategorized/cuda-introduction.html</id>
+    <link href="https://erdong.site/GPU/cuda-introduction.html"/>
+    <id>https://erdong.site/GPU/cuda-introduction.html</id>
     <published>2019-01-30T13:40:59.000Z</published>
     <updated>2019-10-14T11:06:31.049Z</updated>
     
@@ -2221,13 +2870,17 @@
     </summary>
     
     
+      <category term="GPU" scheme="https://erdong.site/categories/GPU/"/>
+    
+    
+      <category term="cuda" scheme="https://erdong.site/tags/cuda/"/>
     
   </entry>
   
   <entry>
     <title>【翻译】Prometheus 2.7.0 新特性</title>
-    <link href="https://erdong.site/uncategorized/New-Features-in-Prometheus-2-7-0.html"/>
-    <id>https://erdong.site/uncategorized/New-Features-in-Prometheus-2-7-0.html</id>
+    <link href="https://erdong.site/Prometheus/New-Features/New-Features-in-Prometheus-2-7-0.html"/>
+    <id>https://erdong.site/Prometheus/New-Features/New-Features-in-Prometheus-2-7-0.html</id>
     <published>2019-01-29T22:09:34.000Z</published>
     <updated>2019-10-14T11:10:03.128Z</updated>
     
@@ -2240,13 +2893,23 @@
     </summary>
     
     
+      <category term="Prometheus" scheme="https://erdong.site/categories/Prometheus/"/>
+    
+      <category term="New-Features" scheme="https://erdong.site/categories/Prometheus/New-Features/"/>
+    
+    
+      <category term="Prometheus" scheme="https://erdong.site/tags/Prometheus/"/>
+    
+      <category term="Features" scheme="https://erdong.site/tags/Features/"/>
+    
+      <category term="release" scheme="https://erdong.site/tags/release/"/>
     
   </entry>
   
   <entry>
     <title>计算机中遇到的单位该怎么换算</title>
-    <link href="https://erdong.site/uncategorized/computer-unit-conversion.html"/>
-    <id>https://erdong.site/uncategorized/computer-unit-conversion.html</id>
+    <link href="https://erdong.site/linux/system/computer-unit-conversion.html"/>
+    <id>https://erdong.site/linux/system/computer-unit-conversion.html</id>
     <published>2019-01-29T01:39:21.000Z</published>
     <updated>2019-10-14T11:06:11.994Z</updated>
     
@@ -2259,13 +2922,21 @@
     </summary>
     
     
+      <category term="linux" scheme="https://erdong.site/categories/linux/"/>
+    
+      <category term="system" scheme="https://erdong.site/categories/linux/system/"/>
+    
+    
+      <category term="unit" scheme="https://erdong.site/tags/unit/"/>
+    
+      <category term="conversion" scheme="https://erdong.site/tags/conversion/"/>
     
   </entry>
   
   <entry>
     <title>第04周分享</title>
-    <link href="https://erdong.site/uncategorized/weekly04.html"/>
-    <id>https://erdong.site/uncategorized/weekly04.html</id>
+    <link href="https://erdong.site/weekly/weekly04.html"/>
+    <id>https://erdong.site/weekly/weekly04.html</id>
     <published>2019-01-26T00:47:50.000Z</published>
     <updated>2019-10-14T11:15:32.347Z</updated>
     
@@ -2278,13 +2949,15 @@
     </summary>
     
     
+      <category term="weekly" scheme="https://erdong.site/categories/weekly/"/>
+    
     
   </entry>
   
   <entry>
     <title>IB 速率 SDR DDR QDR FDR EDR 缩写介绍</title>
-    <link href="https://erdong.site/uncategorized/ib-speed.html"/>
-    <id>https://erdong.site/uncategorized/ib-speed.html</id>
+    <link href="https://erdong.site/tools/ib-speed.html"/>
+    <id>https://erdong.site/tools/ib-speed.html</id>
     <published>2019-01-26T00:44:50.000Z</published>
     <updated>2019-10-14T11:07:28.636Z</updated>
     
@@ -2297,13 +2970,17 @@
     </summary>
     
     
+      <category term="tools" scheme="https://erdong.site/categories/tools/"/>
+    
+    
+      <category term="ib" scheme="https://erdong.site/tags/ib/"/>
     
   </entry>
   
   <entry>
     <title>第03周分享</title>
-    <link href="https://erdong.site/uncategorized/weekly03.html"/>
-    <id>https://erdong.site/uncategorized/weekly03.html</id>
+    <link href="https://erdong.site/weekly/weekly03.html"/>
+    <id>https://erdong.site/weekly/weekly03.html</id>
     <published>2019-01-19T17:49:48.000Z</published>
     <updated>2019-10-14T11:15:20.418Z</updated>
     
@@ -2316,13 +2993,15 @@
     </summary>
     
     
+      <category term="weekly" scheme="https://erdong.site/categories/weekly/"/>
+    
     
   </entry>
   
   <entry>
     <title>【翻译】10年博客的经验</title>
-    <link href="https://erdong.site/uncategorized/starting-a-blog.html"/>
-    <id>https://erdong.site/uncategorized/starting-a-blog.html</id>
+    <link href="https://erdong.site/article/starting-a-blog.html"/>
+    <id>https://erdong.site/article/starting-a-blog.html</id>
     <published>2019-01-18T01:42:15.000Z</published>
     <updated>2019-10-14T11:13:25.358Z</updated>
     
@@ -2336,13 +3015,17 @@
     </summary>
     
     
+      <category term="article" scheme="https://erdong.site/categories/article/"/>
+    
+    
+      <category term="blog" scheme="https://erdong.site/tags/blog/"/>
     
   </entry>
   
   <entry>
     <title>三种方法解决域名解析的主机记录冲突</title>
-    <link href="https://erdong.site/uncategorized/cname-and-mx-conflicts.html"/>
-    <id>https://erdong.site/uncategorized/cname-and-mx-conflicts.html</id>
+    <link href="https://erdong.site/article/cname-and-mx-conflicts.html"/>
+    <id>https://erdong.site/article/cname-and-mx-conflicts.html</id>
     <published>2019-01-17T01:40:25.000Z</published>
     <updated>2019-10-14T11:05:57.317Z</updated>
     
@@ -2355,13 +3038,21 @@
     </summary>
     
     
+      <category term="article" scheme="https://erdong.site/categories/article/"/>
+    
+    
+      <category term="域名解析" scheme="https://erdong.site/tags/%E5%9F%9F%E5%90%8D%E8%A7%A3%E6%9E%90/"/>
+    
+      <category term="CNAME" scheme="https://erdong.site/tags/CNAME/"/>
+    
+      <category term="MX" scheme="https://erdong.site/tags/MX/"/>
     
   </entry>
   
   <entry>
     <title>【翻译】Prometheus 2.6.0 新特性</title>
-    <link href="https://erdong.site/uncategorized/New-Features-in-Prometheus-2-6-0.html"/>
-    <id>https://erdong.site/uncategorized/New-Features-in-Prometheus-2-6-0.html</id>
+    <link href="https://erdong.site/Prometheus/New-Features/New-Features-in-Prometheus-2-6-0.html"/>
+    <id>https://erdong.site/Prometheus/New-Features/New-Features-in-Prometheus-2-6-0.html</id>
     <published>2019-01-11T22:09:34.000Z</published>
     <updated>2019-10-14T11:09:51.612Z</updated>
     
@@ -2374,13 +3065,23 @@
     </summary>
     
     
+      <category term="Prometheus" scheme="https://erdong.site/categories/Prometheus/"/>
+    
+      <category term="New-Features" scheme="https://erdong.site/categories/Prometheus/New-Features/"/>
+    
+    
+      <category term="Prometheus" scheme="https://erdong.site/tags/Prometheus/"/>
+    
+      <category term="Features" scheme="https://erdong.site/tags/Features/"/>
+    
+      <category term="release" scheme="https://erdong.site/tags/release/"/>
     
   </entry>
   
   <entry>
     <title>【翻译】Prometheus 2.5.0 新特性</title>
-    <link href="https://erdong.site/uncategorized/New-Features-in-Prometheus-2-5-0.html"/>
-    <id>https://erdong.site/uncategorized/New-Features-in-Prometheus-2-5-0.html</id>
+    <link href="https://erdong.site/Prometheus/New-Features/New-Features-in-Prometheus-2-5-0.html"/>
+    <id>https://erdong.site/Prometheus/New-Features/New-Features-in-Prometheus-2-5-0.html</id>
     <published>2019-01-11T22:08:34.000Z</published>
     <updated>2019-10-14T11:09:41.063Z</updated>
     
@@ -2393,13 +3094,23 @@
     </summary>
     
     
+      <category term="Prometheus" scheme="https://erdong.site/categories/Prometheus/"/>
+    
+      <category term="New-Features" scheme="https://erdong.site/categories/Prometheus/New-Features/"/>
+    
+    
+      <category term="Prometheus" scheme="https://erdong.site/tags/Prometheus/"/>
+    
+      <category term="Features" scheme="https://erdong.site/tags/Features/"/>
+    
+      <category term="release" scheme="https://erdong.site/tags/release/"/>
     
   </entry>
   
   <entry>
     <title>【翻译】Prometheus 2.4.0 新特性</title>
-    <link href="https://erdong.site/uncategorized/New-Features-in-Prometheus-2-4-0.html"/>
-    <id>https://erdong.site/uncategorized/New-Features-in-Prometheus-2-4-0.html</id>
+    <link href="https://erdong.site/Prometheus/New-Features/New-Features-in-Prometheus-2-4-0.html"/>
+    <id>https://erdong.site/Prometheus/New-Features/New-Features-in-Prometheus-2-4-0.html</id>
     <published>2019-01-11T22:07:34.000Z</published>
     <updated>2019-10-14T11:09:30.577Z</updated>
     
@@ -2412,13 +3123,23 @@
     </summary>
     
     
+      <category term="Prometheus" scheme="https://erdong.site/categories/Prometheus/"/>
+    
+      <category term="New-Features" scheme="https://erdong.site/categories/Prometheus/New-Features/"/>
+    
+    
+      <category term="Prometheus" scheme="https://erdong.site/tags/Prometheus/"/>
+    
+      <category term="Features" scheme="https://erdong.site/tags/Features/"/>
+    
+      <category term="release" scheme="https://erdong.site/tags/release/"/>
     
   </entry>
   
   <entry>
     <title>【翻译】Prometheus 2.3.0 新特性</title>
-    <link href="https://erdong.site/uncategorized/New-Features-in-Prometheus-2-3-0.html"/>
-    <id>https://erdong.site/uncategorized/New-Features-in-Prometheus-2-3-0.html</id>
+    <link href="https://erdong.site/Prometheus/New-Features/New-Features-in-Prometheus-2-3-0.html"/>
+    <id>https://erdong.site/Prometheus/New-Features/New-Features-in-Prometheus-2-3-0.html</id>
     <published>2019-01-11T22:06:34.000Z</published>
     <updated>2019-10-14T11:09:21.865Z</updated>
     
@@ -2431,13 +3152,23 @@
     </summary>
     
     
+      <category term="Prometheus" scheme="https://erdong.site/categories/Prometheus/"/>
+    
+      <category term="New-Features" scheme="https://erdong.site/categories/Prometheus/New-Features/"/>
+    
+    
+      <category term="Prometheus" scheme="https://erdong.site/tags/Prometheus/"/>
+    
+      <category term="Features" scheme="https://erdong.site/tags/Features/"/>
+    
+      <category term="release" scheme="https://erdong.site/tags/release/"/>
     
   </entry>
   
   <entry>
     <title>【翻译】Prometheus 2.2.0 新特性</title>
-    <link href="https://erdong.site/uncategorized/New-Features-in-Prometheus-2-2-0.html"/>
-    <id>https://erdong.site/uncategorized/New-Features-in-Prometheus-2-2-0.html</id>
+    <link href="https://erdong.site/Prometheus/New-Features/New-Features-in-Prometheus-2-2-0.html"/>
+    <id>https://erdong.site/Prometheus/New-Features/New-Features-in-Prometheus-2-2-0.html</id>
     <published>2019-01-11T22:05:34.000Z</published>
     <updated>2019-10-14T11:09:14.026Z</updated>
     
@@ -2450,13 +3181,23 @@
     </summary>
     
     
+      <category term="Prometheus" scheme="https://erdong.site/categories/Prometheus/"/>
+    
+      <category term="New-Features" scheme="https://erdong.site/categories/Prometheus/New-Features/"/>
+    
+    
+      <category term="Prometheus" scheme="https://erdong.site/tags/Prometheus/"/>
+    
+      <category term="Features" scheme="https://erdong.site/tags/Features/"/>
+    
+      <category term="release" scheme="https://erdong.site/tags/release/"/>
     
   </entry>
   
   <entry>
     <title>【翻译】Prometheus 2.1.0 新特性</title>
-    <link href="https://erdong.site/uncategorized/New-Features-in-Prometheus-2-1-0.html"/>
-    <id>https://erdong.site/uncategorized/New-Features-in-Prometheus-2-1-0.html</id>
+    <link href="https://erdong.site/Prometheus/New-Features/New-Features-in-Prometheus-2-1-0.html"/>
+    <id>https://erdong.site/Prometheus/New-Features/New-Features-in-Prometheus-2-1-0.html</id>
     <published>2019-01-11T22:04:34.000Z</published>
     <updated>2019-10-14T11:08:42.341Z</updated>
     
@@ -2469,13 +3210,23 @@
     </summary>
     
     
+      <category term="Prometheus" scheme="https://erdong.site/categories/Prometheus/"/>
+    
+      <category term="New-Features" scheme="https://erdong.site/categories/Prometheus/New-Features/"/>
+    
+    
+      <category term="Prometheus" scheme="https://erdong.site/tags/Prometheus/"/>
+    
+      <category term="Features" scheme="https://erdong.site/tags/Features/"/>
+    
+      <category term="release" scheme="https://erdong.site/tags/release/"/>
     
   </entry>
   
   <entry>
     <title>第02周分享</title>
-    <link href="https://erdong.site/uncategorized/weekly02.html"/>
-    <id>https://erdong.site/uncategorized/weekly02.html</id>
+    <link href="https://erdong.site/weekly/weekly02.html"/>
+    <id>https://erdong.site/weekly/weekly02.html</id>
     <published>2019-01-11T19:59:53.000Z</published>
     <updated>2019-10-14T11:15:11.412Z</updated>
     
@@ -2488,13 +3239,15 @@
     </summary>
     
     
+      <category term="weekly" scheme="https://erdong.site/categories/weekly/"/>
+    
     
   </entry>
   
   <entry>
     <title>【翻译】Prometheus 2.0.0 新特性</title>
-    <link href="https://erdong.site/uncategorized/New-Features-in-Prometheus-2-0-0.html"/>
-    <id>https://erdong.site/uncategorized/New-Features-in-Prometheus-2-0-0.html</id>
+    <link href="https://erdong.site/Prometheus/New-Features/New-Features-in-Prometheus-2-0-0.html"/>
+    <id>https://erdong.site/Prometheus/New-Features/New-Features-in-Prometheus-2-0-0.html</id>
     <published>2019-01-09T22:04:34.000Z</published>
     <updated>2019-10-14T11:08:20.976Z</updated>
     
@@ -2507,13 +3260,23 @@
     </summary>
     
     
+      <category term="Prometheus" scheme="https://erdong.site/categories/Prometheus/"/>
+    
+      <category term="New-Features" scheme="https://erdong.site/categories/Prometheus/New-Features/"/>
+    
+    
+      <category term="Prometheus" scheme="https://erdong.site/tags/Prometheus/"/>
+    
+      <category term="Features" scheme="https://erdong.site/tags/Features/"/>
+    
+      <category term="release" scheme="https://erdong.site/tags/release/"/>
     
   </entry>
   
   <entry>
     <title>Grafana 重置 admin 密码</title>
-    <link href="https://erdong.site/uncategorized/grafana-admin-password-reset.html"/>
-    <id>https://erdong.site/uncategorized/grafana-admin-password-reset.html</id>
+    <link href="https://erdong.site/Grafana/grafana-admin-password-reset.html"/>
+    <id>https://erdong.site/Grafana/grafana-admin-password-reset.html</id>
     <published>2019-01-09T01:47:17.000Z</published>
     <updated>2019-10-14T11:07:10.492Z</updated>
     
@@ -2526,13 +3289,17 @@
     </summary>
     
     
+      <category term="Grafana" scheme="https://erdong.site/categories/Grafana/"/>
+    
+    
+      <category term="Grafana" scheme="https://erdong.site/tags/Grafana/"/>
     
   </entry>
   
   <entry>
     <title>第01周分享</title>
-    <link href="https://erdong.site/uncategorized/weekly01.html"/>
-    <id>https://erdong.site/uncategorized/weekly01.html</id>
+    <link href="https://erdong.site/weekly/weekly01.html"/>
+    <id>https://erdong.site/weekly/weekly01.html</id>
     <published>2019-01-06T02:09:47.000Z</published>
     <updated>2019-10-14T11:14:34.281Z</updated>
     
@@ -2545,13 +3312,15 @@
     </summary>
     
     
+      <category term="weekly" scheme="https://erdong.site/categories/weekly/"/>
+    
     
   </entry>
   
   <entry>
     <title>使用 vuls 对 CentOS 操作系统安全评估</title>
-    <link href="https://erdong.site/uncategorized/vuls-tool-introduction.html"/>
-    <id>https://erdong.site/uncategorized/vuls-tool-introduction.html</id>
+    <link href="https://erdong.site/tools/vuls-tool-introduction.html"/>
+    <id>https://erdong.site/tools/vuls-tool-introduction.html</id>
     <published>2018-09-18T14:43:14.000Z</published>
     <updated>2019-10-14T11:13:57.273Z</updated>
     
@@ -2564,13 +3333,17 @@
     </summary>
     
     
+      <category term="tools" scheme="https://erdong.site/categories/tools/"/>
+    
+    
+      <category term="vuls" scheme="https://erdong.site/tags/vuls/"/>
     
   </entry>
   
   <entry>
     <title>linux 的下载工具</title>
-    <link href="https://erdong.site/uncategorized/linux-download-tool.html"/>
-    <id>https://erdong.site/uncategorized/linux-download-tool.html</id>
+    <link href="https://erdong.site/tools/linux-download-tool.html"/>
+    <id>https://erdong.site/tools/linux-download-tool.html</id>
     <published>2018-09-18T14:40:29.000Z</published>
     <updated>2019-10-14T11:08:04.197Z</updated>
     
@@ -2583,13 +3356,17 @@
     </summary>
     
     
+      <category term="tools" scheme="https://erdong.site/categories/tools/"/>
+    
+    
+      <category term="torrent" scheme="https://erdong.site/tags/torrent/"/>
     
   </entry>
   
   <entry>
     <title>Superset 介绍及 docker 安装</title>
-    <link href="https://erdong.site/uncategorized/superset-introduction.html"/>
-    <id>https://erdong.site/uncategorized/superset-introduction.html</id>
+    <link href="https://erdong.site/tools/superset-introduction.html"/>
+    <id>https://erdong.site/tools/superset-introduction.html</id>
     <published>2018-08-31T01:53:29.000Z</published>
     <updated>2019-10-14T11:13:33.542Z</updated>
     
@@ -2603,13 +3380,19 @@
     </summary>
     
     
+      <category term="tools" scheme="https://erdong.site/categories/tools/"/>
+    
+    
+      <category term="superset" scheme="https://erdong.site/tags/superset/"/>
+    
+      <category term="BI" scheme="https://erdong.site/tags/BI/"/>
     
   </entry>
   
   <entry>
     <title>IB 工具安装</title>
-    <link href="https://erdong.site/uncategorized/IB-tool-install.html"/>
-    <id>https://erdong.site/uncategorized/IB-tool-install.html</id>
+    <link href="https://erdong.site/tools/IB-tool-install.html"/>
+    <id>https://erdong.site/tools/IB-tool-install.html</id>
     <published>2018-08-30T10:12:28.000Z</published>
     <updated>2019-10-14T11:07:40.493Z</updated>
     
@@ -2624,13 +3407,19 @@
     </summary>
     
     
+      <category term="tools" scheme="https://erdong.site/categories/tools/"/>
+    
+    
+      <category term="linux" scheme="https://erdong.site/tags/linux/"/>
+    
+      <category term="ib" scheme="https://erdong.site/tags/ib/"/>
     
   </entry>
   
   <entry>
     <title>limit 详解</title>
-    <link href="https://erdong.site/uncategorized/limit-detailed-introduction.html"/>
-    <id>https://erdong.site/uncategorized/limit-detailed-introduction.html</id>
+    <link href="https://erdong.site/linux/system/limit-detailed-introduction.html"/>
+    <id>https://erdong.site/linux/system/limit-detailed-introduction.html</id>
     <published>2018-08-23T03:55:52.000Z</published>
     <updated>2019-10-14T11:07:51.615Z</updated>
     
@@ -2646,13 +3435,21 @@
     </summary>
     
     
+      <category term="linux" scheme="https://erdong.site/categories/linux/"/>
+    
+      <category term="system" scheme="https://erdong.site/categories/linux/system/"/>
+    
+    
+      <category term="linux" scheme="https://erdong.site/tags/linux/"/>
+    
+      <category term="limit" scheme="https://erdong.site/tags/limit/"/>
     
   </entry>
   
   <entry>
     <title>网易博客要关闭了</title>
-    <link href="https://erdong.site/uncategorized/blog-163-closed.html"/>
-    <id>https://erdong.site/uncategorized/blog-163-closed.html</id>
+    <link href="https://erdong.site/life/gossip/blog-163-closed.html"/>
+    <id>https://erdong.site/life/gossip/blog-163-closed.html</id>
     <published>2018-08-23T03:45:47.000Z</published>
     <updated>2020-07-22T02:33:34.094Z</updated>
     
@@ -2667,13 +3464,19 @@
     </summary>
     
     
+      <category term="life" scheme="https://erdong.site/categories/life/"/>
+    
+      <category term="gossip" scheme="https://erdong.site/categories/life/gossip/"/>
+    
+    
+      <category term="blog" scheme="https://erdong.site/tags/blog/"/>
     
   </entry>
   
   <entry>
     <title>CentOS 7 初始化</title>
-    <link href="https://erdong.site/uncategorized/centos7-initialization.html"/>
-    <id>https://erdong.site/uncategorized/centos7-initialization.html</id>
+    <link href="https://erdong.site/linux/system/centos7-initialization.html"/>
+    <id>https://erdong.site/linux/system/centos7-initialization.html</id>
     <published>2018-08-22T10:51:04.000Z</published>
     <updated>2021-12-22T10:07:10.413Z</updated>
     
@@ -2695,6 +3498,12 @@
     </summary>
     
     
+      <category term="linux" scheme="https://erdong.site/categories/linux/"/>
+    
+      <category term="system" scheme="https://erdong.site/categories/linux/system/"/>
+    
+    
+      <category term="linux" scheme="https://erdong.site/tags/linux/"/>
     
   </entry>
   
