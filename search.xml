@@ -866,7 +866,7 @@
     <url>/Prometheus/New-Features/New-Features-in-Prometheus-2-37-0.html</url>
     <content><![CDATA[<p>Prometheus <a href="https://github.com/prometheus/prometheus/releases/tag/v2.37.0" target="_blank" rel="noopener">2.37.0</a> 现在(2022.07.14)已经发布，在上个月的 <a href="http://erdong.site/Prometheus/New-Features/New-Features-in-Prometheus-2-36-0.html">2.36.0</a> 之后又进行了很多的修复和改进。</p>
 <a id="more"></a>
-<p>这次发布的版本是一个 LTS 长期支持的版本，预计会支持到 2023.01.31，详细更多的信息可以查看 <a href="https://erdong.site/">https://erdong.site/</a></p>
+<p>这次发布的版本是一个 LTS 长期支持的版本，预计会支持到 2023.01.31，详细更多的信息可以查看 <a href="https://erdong.site/Prometheus/New-Features/prometheus-lts-release.html">https://erdong.site/Prometheus/New-Features/prometheus-lts-release.html</a> 。</p>
 <p>由于 OpenBSD 中缺乏统一的缓存而导致用户数据丢失，在找到合适的解决方案之前，Prometheus 开发团队将不再发布支持 OpenBSD 的 Prometheus 长期版本。</p>
 <p>这次的 LTS 版本发布主要以稳定性为主，进行了大量的 BUG 修复，只新增了一个新的功能特性，以及一些实验性的功能。</p>
 <h1 id="服务发现"><a href="#服务发现" class="headerlink" title="服务发现"></a>服务发现</h1><p>本次版本更新唯一的一个稳定功能增加就是 基于 Nomad 的服务发现，Nomad 是 HashiCorp 出品的一个简单、灵活的调度工具，官网地址是 <a href="https://www.nomadproject.io" target="_blank" rel="noopener">https://www.nomadproject.io</a> 。</p>
