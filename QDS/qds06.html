@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16.ico">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"erdong.site","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":true},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":true,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="QDS （Quick Deployment Series）快速的部署一个软件。这次我们来部署 Iperf 。 Iperf 是一个网络性能测试工具。Iperf 可以测试最大 TCP 和 UDP 带宽性能，具有多种参数和 UDP 特性，可以根据需要调整，可以报告带宽、延迟抖动和数据包丢失。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="QDS06 Iperf 测网速">
+<meta property="og:url" content="https://erdong.site/QDS/qds06.html">
+<meta property="og:site_name" content="Erdong’ Blog">
+<meta property="og:description" content="QDS （Quick Deployment Series）快速的部署一个软件。这次我们来部署 Iperf 。 Iperf 是一个网络性能测试工具。Iperf 可以测试最大 TCP 和 UDP 带宽性能，具有多种参数和 UDP 特性，可以根据需要调整，可以报告带宽、延迟抖动和数据包丢失。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://erdong.site/images/erdongxtnew.jpg">
+<meta property="article:published_time" content="2022-07-23T10:22:14.000Z">
+<meta property="article:modified_time" content="2022-07-22T16:21:41.426Z">
+<meta property="article:author" content="Er Dong">
+<meta property="article:tag" content="Iperf">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://erdong.site/images/erdongxtnew.jpg">
+
+<link rel="canonical" href="https://erdong.site/QDS/qds06.html">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>QDS06 Iperf 测网速 | Erdong’ Blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="Erdong’ Blog" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Erdong’ Blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">苦练七十二变，笑对八十一难。</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-公告">
+
+    <a href="/notice/" rel="section"><i class="fa fa-list fa-fw"></i>公告</a>
+
+  </li>
+        <li class="menu-item menu-item-rss">
+
+    <a href="/atom.xml" rel="section"><i class="fa fa-rss fa-fw"></i>RSS</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+  <a href="https://github.com/erdong" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://erdong.site/QDS/qds06.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/myavatar.jpg">
+      <meta itemprop="name" content="Er Dong">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Erdong’ Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          QDS06 Iperf 测网速
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2022-07-23 18:22:14 / 修改时间：00:21:41" itemprop="dateCreated datePublished" datetime="2022-07-23T18:22:14+08:00">2022-07-23</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/QDS/" itemprop="url" rel="index"><span itemprop="name">QDS</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span><br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>13k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>12 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>QDS （Quick Deployment Series）快速的部署一个软件。这次我们来部署 Iperf 。</p>
+<p>Iperf 是一个网络性能测试工具。Iperf 可以测试最大 TCP 和 UDP 带宽性能，具有多种参数和 UDP 特性，可以根据需要调整，可以报告带宽、延迟抖动和数据包丢失。</p>
+<a id="more"></a>
+
+<h1 id="下载安装"><a href="#下载安装" class="headerlink" title="下载安装"></a>下载安装</h1><h2 id="yum-安装"><a href="#yum-安装" class="headerlink" title="yum 安装"></a>yum 安装</h2><p>如果可以正常使用 yum ，那么可以使用 yum 来安装 Iperf ，该软件包在 epel 源中，需要先安装 epel 。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">yum install -y epel-release</span><br><span class="line"></span><br><span class="line">yum install -y iperf</span><br></pre></td></tr></table></figure>
+
+<p>这样就安装好了 Iperf ，版本默认是 2.x 。</p>
+<h2 id="编译安装"><a href="#编译安装" class="headerlink" title="编译安装"></a>编译安装</h2><p>如果所在机器无法正常使用 yum ，或者想要使用最新版本的 Iperf ，那么请选择编译安装，在编译前请确保该机器相关编译器已经正确安装且可以使用。</p>
+<p>Iperf 开源在 Github，所以我们可以在 Github 上找到最新的源代码。</p>
+<p>Github 仓库地址：<a href="https://github.com/esnet/iperf" target="_blank" rel="noopener">https://github.com/esnet/iperf</a></p>
+<p>Github 发布地址：<a href="https://github.com/esnet/iperf/releases" target="_blank" rel="noopener">https://github.com/esnet/iperf/releases</a></p>
+<p>仓库里有最早的 2.0 （2007 年 8 月发布）到现在最新的 3.7 版本都有，我们以最新的 3.7 版本为例进行编译安装。</p>
+<p>下载安装包并且解压</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">wget https:&#x2F;&#x2F;github.com&#x2F;esnet&#x2F;iperf&#x2F;archive&#x2F;3.7.tar.gz</span><br><span class="line">tar -zxf 3.7.tar.gz -C iperf</span><br></pre></td></tr></table></figure>
+
+<p>编译</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cd iperf</span><br><span class="line">.&#x2F;configure </span><br><span class="line">make</span><br></pre></td></tr></table></figure>
+
+<p>到这里可以暂停一下，如果你只是一次性使用，那么就不需要继续了，你只要进入到 <code>iperf/src</code> 目录下，该目录下有一个 <code>iperf3</code> 的可执行文件，直接执行该文件，就可以运行 Iperf 并且进行测试。</p>
+<p>如果你希望以后使用更方便，那么你需要接着上边的步骤把编译好的 Iperf 安装到系统中。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">make install</span><br></pre></td></tr></table></figure>
+
+<p>这样你就可以在系统的任意位置运行 Iperf ，因为已经安装到了系统中。</p>
+<h1 id="简单测试"><a href="#简单测试" class="headerlink" title="简单测试"></a>简单测试</h1><p>因为网络测试是两个点之间的网络，所以需要在两台机器上都部署 Iperf 。</p>
+<p>我们的测试环境如下所示</p>
+<p>node01 ：192.168.0.2 用作 Server<br>node02 ：192.168.0.3 用作 Client</p>
+<p>在 Server 端启动 Server 服务</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">.&#x2F;iperf3 -s</span><br></pre></td></tr></table></figure>
+
+<p>在 Client 端启动 Client ，并且指定 Server 的 IP 地址。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">.&#x2F;iperf3 -c 192.168.0.2</span><br></pre></td></tr></table></figure>
+
+<p>下面是测试过程中服务端的显示</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">[root@node01 src]# .&#x2F;iperf3 -s</span><br><span class="line">-----------------------------------------------------------</span><br><span class="line">Server listening on 5201</span><br><span class="line">-----------------------------------------------------------</span><br><span class="line">Accepted connection from 192.168.0.3, port 36406</span><br><span class="line">[  5] local 192.168.0.2 port 5201 connected to 192.168.0.3 port 36410</span><br><span class="line">[ ID] Interval           Transfer     Bitrate</span><br><span class="line">[  5]   0.00-1.00   sec  36.2 MBytes   304 Mbits&#x2F;sec</span><br><span class="line">[  5]   1.00-2.00   sec  47.6 MBytes   399 Mbits&#x2F;sec</span><br><span class="line">[  5]   2.00-3.00   sec  50.7 MBytes   425 Mbits&#x2F;sec</span><br><span class="line">[  5]   3.00-4.00   sec  47.4 MBytes   397 Mbits&#x2F;sec</span><br><span class="line">[  5]   4.00-5.00   sec  53.0 MBytes   444 Mbits&#x2F;sec</span><br><span class="line">[  5]   5.00-6.00   sec  45.8 MBytes   384 Mbits&#x2F;sec</span><br><span class="line">[  5]   6.00-7.00   sec  50.9 MBytes   427 Mbits&#x2F;sec</span><br><span class="line">[  5]   7.00-8.00   sec  53.4 MBytes   448 Mbits&#x2F;sec</span><br><span class="line">[  5]   8.00-9.00   sec  56.5 MBytes   474 Mbits&#x2F;sec</span><br><span class="line">[  5]   9.00-10.00  sec  47.8 MBytes   401 Mbits&#x2F;sec</span><br><span class="line">[  5]  10.00-10.29  sec  4.03 MBytes   118 Mbits&#x2F;sec</span><br><span class="line">- - - - - - - - - - - - - - - - - - - - - - - - -</span><br><span class="line">[ ID] Interval           Transfer     Bitrate</span><br><span class="line">[  5]   0.00-10.29  sec   493 MBytes   402 Mbits&#x2F;sec        receiver</span><br><span class="line">-----------------------------------------------------------</span><br><span class="line">Server listening on 5201</span><br><span class="line">-----------------------------------------------------------</span><br></pre></td></tr></table></figure>
+<p>可以看到最后测试的结果是 402 Mbits/sec ，结果看 Bitrate 字段。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">[root@node02 src]# .&#x2F;iperf3 -c 192.168.0.2</span><br><span class="line">Connecting to host 192.168.0.2, port 5201</span><br><span class="line">[  5] local 192.168.0.3 port 36410 connected to 192.168.0.2 port 5201</span><br><span class="line">[ ID] Interval           Transfer     Bitrate         Retr  Cwnd</span><br><span class="line">[  5]   0.00-1.00   sec  40.7 MBytes   341 Mbits&#x2F;sec  2239   4.47 MBytes</span><br><span class="line">[  5]   1.00-2.00   sec  48.8 MBytes   409 Mbits&#x2F;sec  1925   4.73 MBytes</span><br><span class="line">[  5]   2.00-3.00   sec  48.8 MBytes   409 Mbits&#x2F;sec  1683   4.47 MBytes</span><br><span class="line">[  5]   3.00-4.00   sec  47.5 MBytes   398 Mbits&#x2F;sec  2364   2.44 MBytes</span><br><span class="line">[  5]   4.00-5.00   sec  53.8 MBytes   451 Mbits&#x2F;sec  1492   5.02 MBytes</span><br><span class="line">[  5]   5.00-6.00   sec  45.0 MBytes   377 Mbits&#x2F;sec  2556   4.46 MBytes</span><br><span class="line">[  5]   6.00-7.00   sec  51.2 MBytes   430 Mbits&#x2F;sec  1766   4.75 MBytes</span><br><span class="line">[  5]   7.00-8.00   sec  52.5 MBytes   440 Mbits&#x2F;sec  2159   2.28 MBytes</span><br><span class="line">[  5]   8.00-9.00   sec  57.5 MBytes   482 Mbits&#x2F;sec  1424   5.00 MBytes</span><br><span class="line">[  5]   9.00-10.00  sec  47.5 MBytes   398 Mbits&#x2F;sec  2358   4.36 MBytes</span><br><span class="line">- - - - - - - - - - - - - - - - - - - - - - - - -</span><br><span class="line">[ ID] Interval           Transfer     Bitrate         Retr</span><br><span class="line">[  5]   0.00-10.00  sec   493 MBytes   414 Mbits&#x2F;sec  19966     sender</span><br><span class="line">[  5]   0.00-10.29  sec   493 MBytes   402 Mbits&#x2F;sec           receiver</span><br><span class="line"></span><br><span class="line">iperf Done.</span><br><span class="line">[root@node02 src]#</span><br></pre></td></tr></table></figure>
+
+<p>从客户端来看，测试结果约是 400 Mbits/sec ，结果看 Bitrate 的值。</p>
+<p>可以使用 <code>-P</code> 参数指定多个进程来压测带宽，使得达到该线路的极限。</p>
+<p>服务端显示如下所示，</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line">^@Accepted connection from 192.168.0.3, port 36434</span><br><span class="line">[  5] local 192.168.0.2 port 5201 connected to 192.168.0.3 port 36436</span><br><span class="line">[  8] local 192.168.0.2 port 5201 connected to 192.168.0.3 port 36438</span><br><span class="line">[ 10] local 192.168.0.2 port 5201 connected to 192.168.0.3 port 36440</span><br><span class="line">[ 12] local 192.168.0.2 port 5201 connected to 192.168.0.3 port 36442</span><br><span class="line">[ 14] local 192.168.0.2 port 5201 connected to 192.168.0.3 port 36444</span><br><span class="line">[ 16] local 192.168.0.2 port 5201 connected to 192.168.0.3 port 36446</span><br><span class="line">[ 18] local 192.168.0.2 port 5201 connected to 192.168.0.3 port 36448</span><br><span class="line">[ 20] local 192.168.0.2 port 5201 connected to 192.168.0.3 port 36450</span><br><span class="line">[ 22] local 192.168.0.2 port 5201 connected to 192.168.0.3 port 36452</span><br><span class="line">[ 24] local 192.168.0.2 port 5201 connected to 192.168.0.3 port 36454</span><br><span class="line">[ ID] Interval           Transfer     Bitrate</span><br><span class="line">[  5]   0.00-1.00   sec  8.06 MBytes  67.6 Mbits&#x2F;sec</span><br><span class="line">[  8]   0.00-1.00   sec  7.84 MBytes  65.7 Mbits&#x2F;sec</span><br><span class="line">[ 10]   0.00-1.00   sec  9.01 MBytes  75.6 Mbits&#x2F;sec</span><br><span class="line">[ 12]   0.00-1.00   sec  8.68 MBytes  72.8 Mbits&#x2F;sec</span><br><span class="line">[ 14]   0.00-1.00   sec  8.65 MBytes  72.6 Mbits&#x2F;sec</span><br><span class="line">[ 16]   0.00-1.00   sec  8.14 MBytes  68.2 Mbits&#x2F;sec</span><br><span class="line">[ 18]   0.00-1.00   sec  8.04 MBytes  67.5 Mbits&#x2F;sec</span><br><span class="line">[ 20]   0.00-1.00   sec  8.76 MBytes  73.5 Mbits&#x2F;sec</span><br><span class="line">[ 22]   0.00-1.00   sec  8.44 MBytes  70.8 Mbits&#x2F;sec</span><br><span class="line">[ 24]   0.00-1.00   sec  8.64 MBytes  72.5 Mbits&#x2F;sec</span><br><span class="line">[SUM]   0.00-1.00   sec  84.3 MBytes   707 Mbits&#x2F;sec</span><br><span class="line">- - - - - - - - - - - - - - - - - - - - - - - - -</span><br><span class="line">省略部分测试过程。</span><br><span class="line">- - - - - - - - - - - - - - - - - - - - - - - - -</span><br><span class="line">[  5]  10.00-10.26  sec  2.71 MBytes  86.5 Mbits&#x2F;sec</span><br><span class="line">[  8]  10.00-10.26  sec  2.76 MBytes  88.2 Mbits&#x2F;sec</span><br><span class="line">[ 10]  10.00-10.26  sec  2.63 MBytes  84.1 Mbits&#x2F;sec</span><br><span class="line">[ 12]  10.00-10.26  sec  3.56 MBytes   113 Mbits&#x2F;sec</span><br><span class="line">[ 14]  10.00-10.26  sec  1.43 MBytes  45.7 Mbits&#x2F;sec</span><br><span class="line">[ 16]  10.00-10.26  sec  1.50 MBytes  47.8 Mbits&#x2F;sec</span><br><span class="line">[ 18]  10.00-10.26  sec  3.54 MBytes   113 Mbits&#x2F;sec</span><br><span class="line">[ 20]  10.00-10.26  sec  3.79 MBytes   121 Mbits&#x2F;sec</span><br><span class="line">[ 22]  10.00-10.26  sec   645 KBytes  20.1 Mbits&#x2F;sec</span><br><span class="line">[ 24]  10.00-10.26  sec  2.92 MBytes  93.2 Mbits&#x2F;sec</span><br><span class="line">[SUM]  10.00-10.26  sec  25.5 MBytes   813 Mbits&#x2F;sec</span><br><span class="line">- - - - - - - - - - - - - - - - - - - - - - - - -</span><br><span class="line">[ ID] Interval           Transfer     Bitrate</span><br><span class="line">[  5]   0.00-10.26  sec   107 MBytes  87.3 Mbits&#x2F;sec        receiver</span><br><span class="line">[  8]   0.00-10.26  sec   107 MBytes  87.6 Mbits&#x2F;sec        receiver</span><br><span class="line">[ 10]   0.00-10.26  sec   107 MBytes  87.8 Mbits&#x2F;sec        receiver</span><br><span class="line">[ 12]   0.00-10.26  sec   113 MBytes  92.2 Mbits&#x2F;sec        receiver</span><br><span class="line">[ 14]   0.00-10.26  sec   108 MBytes  88.6 Mbits&#x2F;sec        receiver</span><br><span class="line">[ 16]   0.00-10.26  sec   106 MBytes  86.6 Mbits&#x2F;sec        receiver</span><br><span class="line">[ 18]   0.00-10.26  sec   110 MBytes  90.0 Mbits&#x2F;sec        receiver</span><br><span class="line">[ 20]   0.00-10.26  sec   111 MBytes  91.0 Mbits&#x2F;sec        receiver</span><br><span class="line">[ 22]   0.00-10.26  sec   107 MBytes  87.1 Mbits&#x2F;sec        receiver</span><br><span class="line">[ 24]   0.00-10.26  sec   112 MBytes  91.2 Mbits&#x2F;sec        receiver</span><br><span class="line">[SUM]   0.00-10.26  sec  1.06 GBytes   889 Mbits&#x2F;sec        receiver</span><br><span class="line">-----------------------------------------------------------</span><br><span class="line">Server listening on 5201</span><br><span class="line">-----------------------------------------------------------</span><br><span class="line">^Ciperf3: interrupt - the server has terminated</span><br></pre></td></tr></table></figure>
+
+<p>在服务端可以看到在使用 10 个进程压测以后，总带宽是 889 Mbits/sec ，已经比较接近千兆网线的物理极限了。测试结果看最后的 SUM 行，Bitrate 的值。</p>
+<p>客户端的显示如下所示。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br></pre></td><td class="code"><pre><span class="line">[root@node02 src]# .&#x2F;iperf3 -c 192.168.0.2 -P 10</span><br><span class="line">Connecting to host 192.168.0.2, port 5201</span><br><span class="line">[  5] local 192.168.0.3 port 36436 connected to 192.168.0.2 port 5201</span><br><span class="line">[  7] local 192.168.0.3 port 36438 connected to 192.168.0.2 port 5201</span><br><span class="line">[  9] local 192.168.0.3 port 36440 connected to 192.168.0.2 port 5201</span><br><span class="line">[ 11] local 192.168.0.3 port 36442 connected to 192.168.0.2 port 5201</span><br><span class="line">[ 13] local 192.168.0.3 port 36444 connected to 192.168.0.2 port 5201</span><br><span class="line">[ 15] local 192.168.0.3 port 36446 connected to 192.168.0.2 port 5201</span><br><span class="line">[ 17] local 192.168.0.3 port 36448 connected to 192.168.0.2 port 5201</span><br><span class="line">[ 19] local 192.168.0.3 port 36450 connected to 192.168.0.2 port 5201</span><br><span class="line">[ 21] local 192.168.0.3 port 36452 connected to 192.168.0.2 port 5201</span><br><span class="line">[ 23] local 192.168.0.3 port 36454 connected to 192.168.0.2 port 5201</span><br><span class="line">[ ID] Interval           Transfer     Bitrate         Retr  Cwnd</span><br><span class="line">[  5]   0.00-1.00   sec  11.6 MBytes  97.7 Mbits&#x2F;sec  308    718 KBytes</span><br><span class="line">[  7]   0.00-1.00   sec  10.4 MBytes  86.9 Mbits&#x2F;sec  260    696 KBytes</span><br><span class="line">[  9]   0.00-1.00   sec  11.6 MBytes  97.3 Mbits&#x2F;sec  313    749 KBytes</span><br><span class="line">[ 11]   0.00-1.00   sec  11.6 MBytes  97.3 Mbits&#x2F;sec  304    673 KBytes</span><br><span class="line">[ 13]   0.00-1.00   sec  12.4 MBytes   104 Mbits&#x2F;sec  308    662 KBytes</span><br><span class="line">[ 15]   0.00-1.00   sec  11.5 MBytes  96.6 Mbits&#x2F;sec  309    650 KBytes</span><br><span class="line">[ 17]   0.00-1.00   sec  11.3 MBytes  94.9 Mbits&#x2F;sec  307    634 KBytes</span><br><span class="line">[ 19]   0.00-1.00   sec  11.4 MBytes  95.4 Mbits&#x2F;sec  352    650 KBytes</span><br><span class="line">[ 21]   0.00-1.00   sec  11.6 MBytes  97.3 Mbits&#x2F;sec  289    724 KBytes</span><br><span class="line">[ 23]   0.00-1.00   sec  11.5 MBytes  96.7 Mbits&#x2F;sec  410    650 KBytes</span><br><span class="line">[SUM]   0.00-1.00   sec   115 MBytes   964 Mbits&#x2F;sec  3160</span><br><span class="line">- - - - - - - - - - - - - - - - - - - - - - - - -</span><br><span class="line">  省略部分测试过程。</span><br><span class="line">- - - - - - - - - - - - - - - - - - - - - - - - -</span><br><span class="line">[  5]   9.00-10.00  sec  10.0 MBytes  83.9 Mbits&#x2F;sec  212    707 KBytes</span><br><span class="line">[  7]   9.00-10.00  sec  11.2 MBytes  94.4 Mbits&#x2F;sec  248   1.04 MBytes</span><br><span class="line">[  9]   9.00-10.00  sec  10.0 MBytes  83.9 Mbits&#x2F;sec  252   5.66 KBytes</span><br><span class="line">[ 11]   9.00-10.00  sec  12.5 MBytes   105 Mbits&#x2F;sec  169   1.10 MBytes</span><br><span class="line">[ 13]   9.00-10.00  sec  10.0 MBytes  83.9 Mbits&#x2F;sec  201   5.66 KBytes</span><br><span class="line">[ 15]   9.00-10.00  sec  11.2 MBytes  94.4 Mbits&#x2F;sec  203   5.66 KBytes</span><br><span class="line">[ 17]   9.00-10.00  sec  12.5 MBytes   105 Mbits&#x2F;sec  217   1.36 MBytes</span><br><span class="line">[ 19]   9.00-10.00  sec  12.5 MBytes   105 Mbits&#x2F;sec  195   1.24 MBytes</span><br><span class="line">[ 21]   9.00-10.00  sec  11.2 MBytes  94.4 Mbits&#x2F;sec  222   5.66 KBytes</span><br><span class="line">[ 23]   9.00-10.00  sec  11.2 MBytes  94.4 Mbits&#x2F;sec  247   1.21 MBytes</span><br><span class="line">[SUM]   9.00-10.00  sec   112 MBytes   944 Mbits&#x2F;sec  2166</span><br><span class="line">- - - - - - - - - - - - - - - - - - - - - - - - -</span><br><span class="line">[ ID] Interval           Transfer     Bitrate         Retr</span><br><span class="line">[  5]   0.00-10.00  sec   108 MBytes  90.5 Mbits&#x2F;sec  2700      sender</span><br><span class="line">[  5]   0.00-10.26  sec   107 MBytes  87.3 Mbits&#x2F;sec           receiver</span><br><span class="line">[  7]   0.00-10.00  sec   108 MBytes  90.5 Mbits&#x2F;sec  2914      sender</span><br><span class="line">[  7]   0.00-10.26  sec   107 MBytes  87.6 Mbits&#x2F;sec           receiver</span><br><span class="line">[  9]   0.00-10.00  sec   108 MBytes  90.5 Mbits&#x2F;sec  2697      sender</span><br><span class="line">[  9]   0.00-10.26  sec   107 MBytes  87.8 Mbits&#x2F;sec           receiver</span><br><span class="line">[ 11]   0.00-10.00  sec   113 MBytes  94.7 Mbits&#x2F;sec  2427      sender</span><br><span class="line">[ 11]   0.00-10.26  sec   113 MBytes  92.2 Mbits&#x2F;sec           receiver</span><br><span class="line">[ 13]   0.00-10.00  sec   110 MBytes  92.2 Mbits&#x2F;sec  2674      sender</span><br><span class="line">[ 13]   0.00-10.26  sec   108 MBytes  88.6 Mbits&#x2F;sec           receiver</span><br><span class="line">[ 15]   0.00-10.00  sec   108 MBytes  90.4 Mbits&#x2F;sec  2719      sender</span><br><span class="line">[ 15]   0.00-10.26  sec   106 MBytes  86.6 Mbits&#x2F;sec           receiver</span><br><span class="line">[ 17]   0.00-10.00  sec   110 MBytes  92.3 Mbits&#x2F;sec  2908      sender</span><br><span class="line">[ 17]   0.00-10.26  sec   110 MBytes  90.0 Mbits&#x2F;sec           receiver</span><br><span class="line">[ 19]   0.00-10.00  sec   111 MBytes  93.4 Mbits&#x2F;sec  2650      sender</span><br><span class="line">[ 19]   0.00-10.26  sec   111 MBytes  91.0 Mbits&#x2F;sec           receiver</span><br><span class="line">[ 21]   0.00-10.00  sec   109 MBytes  91.5 Mbits&#x2F;sec  2616      sender</span><br><span class="line">[ 21]   0.00-10.26  sec   107 MBytes  87.1 Mbits&#x2F;sec           receiver</span><br><span class="line">[ 23]   0.00-10.00  sec   112 MBytes  93.6 Mbits&#x2F;sec  3176      sender</span><br><span class="line">[ 23]   0.00-10.26  sec   112 MBytes  91.2 Mbits&#x2F;sec           receiver</span><br><span class="line">[SUM]   0.00-10.00  sec  1.07 GBytes   920 Mbits&#x2F;sec  27481     sender</span><br><span class="line">[SUM]   0.00-10.26  sec  1.06 GBytes   889 Mbits&#x2F;sec           receiver</span><br><span class="line"></span><br><span class="line">iperf Done.</span><br><span class="line">[root@node02 src]#</span><br></pre></td></tr></table></figure>
+
+<p>看最后的测试结果，可以发现，网络带宽在 900 Mbits/sec ,其中 sender 的带宽是 920 Mbits/sec ，receiver 带宽是 889 Mbits/sec 。测试结果看 SUM 行，Bitrate 的值。</p>
+<blockquote>
+<p>说明：<br>该测试只测试了 TCP 的网络带宽，更多详细的测试请关注本博客，后续会放出。<br>通过 Server 端和 Client 的测试结果来看，两者的结果一致，只要关注 Client 的结果即可。</p>
+</blockquote>
+<h1 id="附录-help-参数"><a href="#附录-help-参数" class="headerlink" title="附录 -help 参数"></a>附录 -help 参数</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br></pre></td><td class="code"><pre><span class="line">[root@node01 src]$ .&#x2F;iperf3 -h</span><br><span class="line">Usage: iperf3 [-s|-c host] [options]</span><br><span class="line">       iperf3 [-h|--help] [-v|--version]</span><br><span class="line"></span><br><span class="line">Server or Client:</span><br><span class="line">  -p, --port      #         server port to listen on&#x2F;connect to</span><br><span class="line">  -f, --format   [kmgtKMGT] format to report: Kbits, Mbits, Gbits, Tbits</span><br><span class="line">  -i, --interval  #         seconds between periodic throughput reports</span><br><span class="line">  -F, --file name           xmit&#x2F;recv the specified file</span><br><span class="line">  -A, --affinity n&#x2F;n,m      set CPU affinity</span><br><span class="line">  -B, --bind      &lt;host&gt;    bind to the interface associated with the address &lt;host&gt;</span><br><span class="line">  -V, --verbose             more detailed output</span><br><span class="line">  -J, --json                output in JSON format</span><br><span class="line">  --logfile f               send output to a log file</span><br><span class="line">  --forceflush              force flushing output at every interval</span><br><span class="line">  -d, --debug               emit debugging output</span><br><span class="line">  -v, --version             show version information and quit</span><br><span class="line">  -h, --help                show this message and quit</span><br><span class="line">Server specific:</span><br><span class="line">  -s, --server              run in server mode</span><br><span class="line">  -D, --daemon              run the server as a daemon</span><br><span class="line">  -I, --pidfile file        write PID file</span><br><span class="line">  -1, --one-off             handle one client connection then exit</span><br><span class="line">  --rsa-private-key-path    path to the RSA private key used to decrypt</span><br><span class="line">                            authentication credentials</span><br><span class="line">  --authorized-users-path   path to the configuration file containing user</span><br><span class="line">                            credentials</span><br><span class="line">Client specific:</span><br><span class="line">  -c, --client    &lt;host&gt;    run in client mode, connecting to &lt;host&gt;</span><br><span class="line">  -u, --udp                 use UDP rather than TCP</span><br><span class="line">  --connect-timeout #       timeout for control connection setup (ms)</span><br><span class="line">  -b, --bitrate #[KMG][&#x2F;#]  target bitrate in bits&#x2F;sec (0 for unlimited)</span><br><span class="line">                            (default 1 Mbit&#x2F;sec for UDP, unlimited for TCP)</span><br><span class="line">                            (optional slash and packet count for burst mode)</span><br><span class="line">  --pacing-timer #[KMG]     set the timing for pacing, in microseconds (default 1000)</span><br><span class="line">  --fq-rate #[KMG]          enable fair-queuing based socket pacing in</span><br><span class="line">                            bits&#x2F;sec (Linux only)</span><br><span class="line">  -t, --time      #         time in seconds to transmit for (default 10 secs)</span><br><span class="line">  -n, --bytes     #[KMG]    number of bytes to transmit (instead of -t)</span><br><span class="line">  -k, --blockcount #[KMG]   number of blocks (packets) to transmit (instead of -t or -n)</span><br><span class="line">  -l, --length    #[KMG]    length of buffer to read or write</span><br><span class="line">                            (default 128 KB for TCP, dynamic or 1460 for UDP)</span><br><span class="line">  --cport         &lt;port&gt;    bind to a specific client port (TCP and UDP, default: ephemeral port)</span><br><span class="line">  -P, --parallel  #         number of parallel client streams to run</span><br><span class="line">  -R, --reverse             run in reverse mode (server sends, client receives)</span><br><span class="line">  --bidir                   run in bidirectional mode.</span><br><span class="line">                            Client and server send and receive data.</span><br><span class="line">  -w, --window    #[KMG]    set window size &#x2F; socket buffer size</span><br><span class="line">  -C, --congestion &lt;algo&gt;   set TCP congestion control algorithm (Linux and FreeBSD only)</span><br><span class="line">  -M, --set-mss   #         set TCP&#x2F;SCTP maximum segment size (MTU - 40 bytes)</span><br><span class="line">  -N, --no-delay            set TCP&#x2F;SCTP no delay, disabling Nagle&#39;s Algorithm</span><br><span class="line">  -4, --version4            only use IPv4</span><br><span class="line">  -6, --version6            only use IPv6</span><br><span class="line">  -S, --tos N               set the IP type of service, 0-255.</span><br><span class="line">                            The usual prefixes for octal and hex can be used,</span><br><span class="line">                            i.e. 52, 064 and 0x34 all specify the same value.</span><br><span class="line">  --dscp N or --dscp val    set the IP dscp value, either 0-63 or symbolic.</span><br><span class="line">                            Numeric values can be specified in decimal,</span><br><span class="line">                            octal and hex (see --tos above).</span><br><span class="line">  -L, --flowlabel N         set the IPv6 flow label (only supported on Linux)</span><br><span class="line">  -Z, --zerocopy            use a &#39;zero copy&#39; method of sending data</span><br><span class="line">  -O, --omit N              omit the first n seconds</span><br><span class="line">  -T, --title str           prefix every output line with this string</span><br><span class="line">  --extra-data str          data string to include in client and server JSON</span><br><span class="line">  --get-server-output       get results from server</span><br><span class="line">  --udp-counters-64bit      use 64-bit counters in UDP test packets</span><br><span class="line">  --repeating-payload       use repeating pattern in payload, instead of</span><br><span class="line">                            randomized payload (like in iperf2)</span><br><span class="line">  --username                username for authentication</span><br><span class="line">  --rsa-public-key-path     path to the RSA public key used to encrypt</span><br><span class="line">                            authentication credentials</span><br><span class="line"></span><br><span class="line">[KMG] indicates options that support a K&#x2F;M&#x2F;G suffix for kilo-, mega-, or giga-</span><br><span class="line"></span><br><span class="line">iperf3 homepage at: https:&#x2F;&#x2F;software.es.net&#x2F;iperf&#x2F;</span><br><span class="line">Report bugs to:     https:&#x2F;&#x2F;github.com&#x2F;esnet&#x2F;iperf</span><br><span class="line">[root@node01 src]$</span><br></pre></td></tr></table></figure>
+
+
+<p>ok ,结束。</p>
+<p>======================<br>由于无法及时收到评论内容，所以关闭评论功能。<br>大家有问题欢迎发邮件到 <a href="mailto:erdong@mail.erdong.site">erdong@mail.erdong.site</a> ，或者 <a href="https://github.com/erdong/erdong.github.io/issues" target="_blank" rel="noopener">https://github.com/erdong/erdong.github.io/issues</a> 提 Issue ，我会及时回复。</p>
+<p>======================<br>Erdong, A Linux user !</p>
+<p><img src="https://erdong.site/images/erdongxtnew.jpg" alt="微信公众号"></p>
+
+    </div>
+
+    
+    
+    
+        <div class="reward-container">
+  <div>坚持原创技术分享， 您的支持将鼓励我继续创作!</div>
+  <button onclick="var qr = document.getElementById('qr'); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+      
+      <div style="display: inline-block;">
+        <img src="/images/WeChatPay.jpg" alt="Er Dong 微信支付">
+        <p>微信支付</p>
+      </div>
+
+  </div>
+</div>
+
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>Er Dong
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://erdong.site/QDS/qds06.html" title="QDS06 Iperf 测网速">https://erdong.site/QDS/qds06.html</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/zh-Hans" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-ND</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/QDS/" rel="tag"># QDS</a>
+              <a href="/tags/Iperf/" rel="tag"># Iperf</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/Prometheus/New-Features/prometheus-lts-release.html" rel="prev" title="Prometheus 发布 LTS 长期支持版本啦">
+      <i class="fa fa-chevron-left"></i> Prometheus 发布 LTS 长期支持版本啦
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/Prometheus/New-Features/New-Features-in-Prometheus-2-37-0.html" rel="next" title="Prometheus 2.37.0 新特性">
+      Prometheus 2.37.0 新特性 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#下载安装"><span class="nav-number">1.</span> <span class="nav-text">下载安装</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#yum-安装"><span class="nav-number">1.1.</span> <span class="nav-text">yum 安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#编译安装"><span class="nav-number">1.2.</span> <span class="nav-text">编译安装</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#简单测试"><span class="nav-number">2.</span> <span class="nav-text">简单测试</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#附录-help-参数"><span class="nav-number">3.</span> <span class="nav-text">附录 -help 参数</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Er Dong"
+      src="/images/myavatar.jpg">
+  <p class="site-author-name" itemprop="name">Er Dong</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">143</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">21</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">61</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/erdong" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;erdong" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:erdong@mail.erdong.site" title="E-Mail → mailto:erdong@mail.erdong.site" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+  <div class="cc-license motion-element" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/zh-Hans" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-nd.svg" alt="Creative Commons"></a>
+  </div>
+
+
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title"><i class="fa fa-link fa-fw"></i>
+      链接
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://erdong.site/acp-notes" title="https:&#x2F;&#x2F;erdong.site&#x2F;acp-notes">ACP 笔记</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://erdong.site/ansible-notes" title="https:&#x2F;&#x2F;erdong.site&#x2F;ansible-notes">Ansible 笔记</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://erdong.site/prometheus-notes" title="https:&#x2F;&#x2F;erdong.site&#x2F;prometheus-notes">Prometheus 笔记</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://erdong.site/cloudnative-notes" title="https:&#x2F;&#x2F;erdong.site&#x2F;cloudnative-notes">CloudNative 笔记</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://erdong.site/sre-lesson-one" title="https:&#x2F;&#x2F;erdong.site&#x2F;sre-lesson-one">SRE Lesson One</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://www.ruanyifeng.com/blog/" title="http:&#x2F;&#x2F;www.ruanyifeng.com&#x2F;blog&#x2F;" rel="noopener" target="_blank">阮一峰的网络日志</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://coolshell.cn/" title="https:&#x2F;&#x2F;coolshell.cn" rel="noopener" target="_blank">左耳朵耗子</a>
+        </li>
+    </ul>
+  </div>
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 2018 – 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Er Dong</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+    <span title="站点总字数">213k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">3:14</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+<script src="/js/bookmark.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
