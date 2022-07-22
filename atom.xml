@@ -1673,6 +1673,35 @@
   </entry>
   
   <entry>
+    <title>【翻译】Prometheus 2.10.0 新特性</title>
+    <link href="https://erdong.site/Prometheus/New-Features/New-Features-in-Prometheus-2-10-0.html"/>
+    <id>https://erdong.site/Prometheus/New-Features/New-Features-in-Prometheus-2-10-0.html</id>
+    <published>2019-08-20T13:09:34.000Z</published>
+    <updated>2019-10-13T15:31:57.912Z</updated>
+    
+    <content type="html"><![CDATA[<p>Prometheus <a href="https://github.com/prometheus/prometheus/releases/tag/v2.10.0" target="_blank" rel="noopener">2.10.0</a> 现在(2019.05.25)已经发布，在上个月的 <a href="http://erdong.site/Prometheus/New-Features/New-Features-in-Prometheus-2-9-0.html">2.9.0</a> 之后又进行了一些修正和改进。</p><a id="more"></a><p>TSDB 的数据记录又一次得到了改进，这意味着对许多系列的查询速度更快。还添加了一个新的特殊度量 <code>scrape_series_add</code> ，这将有助于找到引起混乱的目标。</p><p>在 Azure 上添加公共 IP 可以使 Kubernetes 的服务发现 endpoint 节点和主机名。用于警报的 UI 也得到了改进，模板添加了新的变量。</p><p>对于使用 Alerts API的人来说有一个小的中断更改，该值现在是一个字符串，而不是一个浮点数(正如我们在查询 API 上所做的那样)，以正确地支持 non-real values。</p><p>还有许多改进、bug修复和其他更改，可以查看 <a href="https://github.com/prometheus/prometheus/releases/tag/v2.10.0" target="_blank" rel="noopener">release notes</a> 来获取更多的信息。</p><h1 id="原文链接"><a href="#原文链接" class="headerlink" title="原文链接"></a>原文链接</h1><ul><li><a href="https://www.robustperception.io/new-features-in-prometheus-2-10-0" target="_blank" rel="noopener">https://www.robustperception.io/new-features-in-prometheus-2-10-0</a> ， By Brian Brazil</li></ul><p>======================<br>Erdong, A Linux user !</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Prometheus &lt;a href=&quot;https://github.com/prometheus/prometheus/releases/tag/v2.10.0&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;2.10.0&lt;/a&gt; 现在(2019.05.25)已经发布，在上个月的 &lt;a href=&quot;http://erdong.site/Prometheus/New-Features/New-Features-in-Prometheus-2-9-0.html&quot;&gt;2.9.0&lt;/a&gt; 之后又进行了一些修正和改进。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="Prometheus" scheme="https://erdong.site/categories/Prometheus/"/>
+    
+      <category term="New-Features" scheme="https://erdong.site/categories/Prometheus/New-Features/"/>
+    
+    
+      <category term="Prometheus" scheme="https://erdong.site/tags/Prometheus/"/>
+    
+      <category term="Features" scheme="https://erdong.site/tags/Features/"/>
+    
+      <category term="release" scheme="https://erdong.site/tags/release/"/>
+    
+  </entry>
+  
+  <entry>
     <title>【翻译】Prometheus 2.11.0 新特性</title>
     <link href="https://erdong.site/Prometheus/New-Features/New-Features-in-Prometheus-2-11-0.html"/>
     <id>https://erdong.site/Prometheus/New-Features/New-Features-in-Prometheus-2-11-0.html</id>
@@ -1713,35 +1742,6 @@
     <summary type="html">
     
       &lt;p&gt;Prometheus &lt;a href=&quot;https://github.com/prometheus/prometheus/releases/tag/v2.12.0&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;2.12.0&lt;/a&gt; 现在(2019.08.17)已经发布，在上个月的 &lt;a href=&quot;http://erdong.site/Prometheus/New-Features/New-Features-in-Prometheus-2-11-0.html&quot;&gt;2.11.0&lt;/a&gt; 之后又进行了一些修正和改进。&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="Prometheus" scheme="https://erdong.site/categories/Prometheus/"/>
-    
-      <category term="New-Features" scheme="https://erdong.site/categories/Prometheus/New-Features/"/>
-    
-    
-      <category term="Prometheus" scheme="https://erdong.site/tags/Prometheus/"/>
-    
-      <category term="Features" scheme="https://erdong.site/tags/Features/"/>
-    
-      <category term="release" scheme="https://erdong.site/tags/release/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>【翻译】Prometheus 2.10.0 新特性</title>
-    <link href="https://erdong.site/Prometheus/New-Features/New-Features-in-Prometheus-2-10-0.html"/>
-    <id>https://erdong.site/Prometheus/New-Features/New-Features-in-Prometheus-2-10-0.html</id>
-    <published>2019-08-20T13:09:34.000Z</published>
-    <updated>2019-10-13T15:31:57.912Z</updated>
-    
-    <content type="html"><![CDATA[<p>Prometheus <a href="https://github.com/prometheus/prometheus/releases/tag/v2.10.0" target="_blank" rel="noopener">2.10.0</a> 现在(2019.05.25)已经发布，在上个月的 <a href="http://erdong.site/Prometheus/New-Features/New-Features-in-Prometheus-2-9-0.html">2.9.0</a> 之后又进行了一些修正和改进。</p><a id="more"></a><p>TSDB 的数据记录又一次得到了改进，这意味着对许多系列的查询速度更快。还添加了一个新的特殊度量 <code>scrape_series_add</code> ，这将有助于找到引起混乱的目标。</p><p>在 Azure 上添加公共 IP 可以使 Kubernetes 的服务发现 endpoint 节点和主机名。用于警报的 UI 也得到了改进，模板添加了新的变量。</p><p>对于使用 Alerts API的人来说有一个小的中断更改，该值现在是一个字符串，而不是一个浮点数(正如我们在查询 API 上所做的那样)，以正确地支持 non-real values。</p><p>还有许多改进、bug修复和其他更改，可以查看 <a href="https://github.com/prometheus/prometheus/releases/tag/v2.10.0" target="_blank" rel="noopener">release notes</a> 来获取更多的信息。</p><h1 id="原文链接"><a href="#原文链接" class="headerlink" title="原文链接"></a>原文链接</h1><ul><li><a href="https://www.robustperception.io/new-features-in-prometheus-2-10-0" target="_blank" rel="noopener">https://www.robustperception.io/new-features-in-prometheus-2-10-0</a> ， By Brian Brazil</li></ul><p>======================<br>Erdong, A Linux user !</p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;Prometheus &lt;a href=&quot;https://github.com/prometheus/prometheus/releases/tag/v2.10.0&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;2.10.0&lt;/a&gt; 现在(2019.05.25)已经发布，在上个月的 &lt;a href=&quot;http://erdong.site/Prometheus/New-Features/New-Features-in-Prometheus-2-9-0.html&quot;&gt;2.9.0&lt;/a&gt; 之后又进行了一些修正和改进。&lt;/p&gt;
     
     </summary>
     
@@ -2718,31 +2718,6 @@
   </entry>
   
   <entry>
-    <title>QDS04 TensorFlow</title>
-    <link href="https://erdong.site/QDS/qds04.html"/>
-    <id>https://erdong.site/QDS/qds04.html</id>
-    <published>2019-02-21T12:19:47.000Z</published>
-    <updated>2019-10-14T11:13:07.541Z</updated>
-    
-    <content type="html"><![CDATA[<p>QDS （Quick Deployment Series）快速的部署一个软件。这次我们来部署 TensorFlow。</p><a id="more"></a><h1 id="系统要求"><a href="#系统要求" class="headerlink" title="系统要求"></a>系统要求</h1><p>Ubuntu 16.04 或更高版本（64 位）<br>macOS 10.12.6 (Sierra) 或更高版本（64 位）（不支持 GPU）<br>Windows 7 或更高版本（64 位）（仅支持 Python 3）<br>Raspbian 9.0 或更高版本</p><h1 id="硬件要求"><a href="#硬件要求" class="headerlink" title="硬件要求"></a>硬件要求</h1><p>从 TensorFlow 1.6 开始，二进制文件使用 AVX 指令，这些指令可能无法在旧版 CPU 上运行。</p><p>CUDA® 计算能力为 3.5 或更高的 NVIDIA® GPU 卡。</p><h1 id="软件要求"><a href="#软件要求" class="headerlink" title="软件要求"></a>软件要求</h1><p>必须在系统中安装以下 NVIDIA® 软件：</p><ul><li>NVIDIA® GPU 驱动程序 - CUDA 9.0 需要 384.x 或更高版本。</li><li>CUDA® 工具包 - TensorFlow 支持 CUDA 9.0。</li><li>CUDA 工具包附带的 CUPTI。</li><li>cuDNN SDK（7.2 及更高版本）</li><li>（可选）NCCL 2.2，可实现多 GPU 支持。</li><li>（可选）TensorRT 4.0，可缩短在某些模型上进行推断的延迟并提高吞吐量。</li></ul><h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><h2 id="环境检测"><a href="#环境检测" class="headerlink" title="环境检测"></a>环境检测</h2><p>python 2 环境检测，如果没有某个部分，请补装。</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">python --version</span><br><span class="line">pip --version</span><br></pre></td></tr></table></figure><p>python3 和 python2 类似，换成 python3 的命令即可。</p><h2 id="安装-1"><a href="#安装-1" class="headerlink" title="安装"></a>安装</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">pip install tensorflow  &#x2F;&#x2F; 安装 TensorFlow CPU 版本</span><br><span class="line">pip install tensorflow-gpu  &#x2F;&#x2F; 安装 TensorFlow GPU 版本</span><br><span class="line">pip install tf-nightly    &#x2F;&#x2F; 安装 TensorFlow CPU 暗夜版本 不稳定</span><br><span class="line">pip install tf-nightly-gpu   &#x2F;&#x2F; 安装 TensorFlow GPU 暗夜版本 不稳定</span><br></pre></td></tr></table></figure><p>不过这样通过 pip 安装速度有点慢啊，使用了 pip 官方的源。</p><p>换阿里云的 pip 源以后很快就完成了。</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install -i https:&#x2F;&#x2F;mirrors.aliyun.com&#x2F;pypi&#x2F;simple tensorflow-gpu</span><br></pre></td></tr></table></figure><h1 id="验证"><a href="#验证" class="headerlink" title="验证"></a>验证</h1><p>依次输入如下命令：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">[root@node31 ~]# python</span><br><span class="line">Python 2.7.5 (default, Jul 13 2018, 13:06:57)</span><br><span class="line">[GCC 4.8.5 20150623 (Red Hat 4.8.5-28)] on linux2</span><br><span class="line">Type &quot;help&quot;, &quot;copyright&quot;, &quot;credits&quot; or &quot;license&quot; for more information.</span><br><span class="line">&gt;&gt;&gt; import tensorflow as tf</span><br><span class="line">&gt;&gt;&gt; tf.__version__</span><br><span class="line">&#39;1.12.0&#39;</span><br><span class="line">&gt;&gt;&gt; tf.__path__</span><br><span class="line">[&#39;&#x2F;usr&#x2F;lib&#x2F;python2.7&#x2F;site-packages&#x2F;tensorflow&#39;, &#39;&#x2F;usr&#x2F;lib&#x2F;python2.7&#x2F;site-packages&#x2F;tensorflow&#x2F;python&#x2F;estimator&#x2F;api&#39;, &#39;&#x2F;usr&#x2F;lib&#x2F;python2.7&#x2F;site-packages&#x2F;tensorflow&#x2F;_api&#x2F;v1&#39;]</span><br><span class="line">&gt;&gt;&gt;</span><br></pre></td></tr></table></figure><p>可以看到，已经安装了 TensorFlow 的 1.12 版本和安装的路径。</p><p>======================<br>Erdong, A Linux user !</p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;QDS （Quick Deployment Series）快速的部署一个软件。这次我们来部署 TensorFlow。&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="QDS" scheme="https://erdong.site/categories/QDS/"/>
-    
-    
-      <category term="QDS" scheme="https://erdong.site/tags/QDS/"/>
-    
-      <category term="TensorFlow" scheme="https://erdong.site/tags/TensorFlow/"/>
-    
-  </entry>
-  
-  <entry>
     <title>QDS03 pip</title>
     <link href="https://erdong.site/QDS/qds03.html"/>
     <id>https://erdong.site/QDS/qds03.html</id>
@@ -2765,6 +2740,31 @@
       <category term="QDS" scheme="https://erdong.site/tags/QDS/"/>
     
       <category term="pip" scheme="https://erdong.site/tags/pip/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>QDS04 TensorFlow</title>
+    <link href="https://erdong.site/QDS/qds04.html"/>
+    <id>https://erdong.site/QDS/qds04.html</id>
+    <published>2019-02-21T12:19:47.000Z</published>
+    <updated>2019-10-14T11:13:07.541Z</updated>
+    
+    <content type="html"><![CDATA[<p>QDS （Quick Deployment Series）快速的部署一个软件。这次我们来部署 TensorFlow。</p><a id="more"></a><h1 id="系统要求"><a href="#系统要求" class="headerlink" title="系统要求"></a>系统要求</h1><p>Ubuntu 16.04 或更高版本（64 位）<br>macOS 10.12.6 (Sierra) 或更高版本（64 位）（不支持 GPU）<br>Windows 7 或更高版本（64 位）（仅支持 Python 3）<br>Raspbian 9.0 或更高版本</p><h1 id="硬件要求"><a href="#硬件要求" class="headerlink" title="硬件要求"></a>硬件要求</h1><p>从 TensorFlow 1.6 开始，二进制文件使用 AVX 指令，这些指令可能无法在旧版 CPU 上运行。</p><p>CUDA® 计算能力为 3.5 或更高的 NVIDIA® GPU 卡。</p><h1 id="软件要求"><a href="#软件要求" class="headerlink" title="软件要求"></a>软件要求</h1><p>必须在系统中安装以下 NVIDIA® 软件：</p><ul><li>NVIDIA® GPU 驱动程序 - CUDA 9.0 需要 384.x 或更高版本。</li><li>CUDA® 工具包 - TensorFlow 支持 CUDA 9.0。</li><li>CUDA 工具包附带的 CUPTI。</li><li>cuDNN SDK（7.2 及更高版本）</li><li>（可选）NCCL 2.2，可实现多 GPU 支持。</li><li>（可选）TensorRT 4.0，可缩短在某些模型上进行推断的延迟并提高吞吐量。</li></ul><h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><h2 id="环境检测"><a href="#环境检测" class="headerlink" title="环境检测"></a>环境检测</h2><p>python 2 环境检测，如果没有某个部分，请补装。</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">python --version</span><br><span class="line">pip --version</span><br></pre></td></tr></table></figure><p>python3 和 python2 类似，换成 python3 的命令即可。</p><h2 id="安装-1"><a href="#安装-1" class="headerlink" title="安装"></a>安装</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">pip install tensorflow  &#x2F;&#x2F; 安装 TensorFlow CPU 版本</span><br><span class="line">pip install tensorflow-gpu  &#x2F;&#x2F; 安装 TensorFlow GPU 版本</span><br><span class="line">pip install tf-nightly    &#x2F;&#x2F; 安装 TensorFlow CPU 暗夜版本 不稳定</span><br><span class="line">pip install tf-nightly-gpu   &#x2F;&#x2F; 安装 TensorFlow GPU 暗夜版本 不稳定</span><br></pre></td></tr></table></figure><p>不过这样通过 pip 安装速度有点慢啊，使用了 pip 官方的源。</p><p>换阿里云的 pip 源以后很快就完成了。</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install -i https:&#x2F;&#x2F;mirrors.aliyun.com&#x2F;pypi&#x2F;simple tensorflow-gpu</span><br></pre></td></tr></table></figure><h1 id="验证"><a href="#验证" class="headerlink" title="验证"></a>验证</h1><p>依次输入如下命令：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">[root@node31 ~]# python</span><br><span class="line">Python 2.7.5 (default, Jul 13 2018, 13:06:57)</span><br><span class="line">[GCC 4.8.5 20150623 (Red Hat 4.8.5-28)] on linux2</span><br><span class="line">Type &quot;help&quot;, &quot;copyright&quot;, &quot;credits&quot; or &quot;license&quot; for more information.</span><br><span class="line">&gt;&gt;&gt; import tensorflow as tf</span><br><span class="line">&gt;&gt;&gt; tf.__version__</span><br><span class="line">&#39;1.12.0&#39;</span><br><span class="line">&gt;&gt;&gt; tf.__path__</span><br><span class="line">[&#39;&#x2F;usr&#x2F;lib&#x2F;python2.7&#x2F;site-packages&#x2F;tensorflow&#39;, &#39;&#x2F;usr&#x2F;lib&#x2F;python2.7&#x2F;site-packages&#x2F;tensorflow&#x2F;python&#x2F;estimator&#x2F;api&#39;, &#39;&#x2F;usr&#x2F;lib&#x2F;python2.7&#x2F;site-packages&#x2F;tensorflow&#x2F;_api&#x2F;v1&#39;]</span><br><span class="line">&gt;&gt;&gt;</span><br></pre></td></tr></table></figure><p>可以看到，已经安装了 TensorFlow 的 1.12 版本和安装的路径。</p><p>======================<br>Erdong, A Linux user !</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;QDS （Quick Deployment Series）快速的部署一个软件。这次我们来部署 TensorFlow。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="QDS" scheme="https://erdong.site/categories/QDS/"/>
+    
+    
+      <category term="QDS" scheme="https://erdong.site/tags/QDS/"/>
+    
+      <category term="TensorFlow" scheme="https://erdong.site/tags/TensorFlow/"/>
     
   </entry>
   
