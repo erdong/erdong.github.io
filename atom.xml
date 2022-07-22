@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://erdong.site/"/>
-  <updated>2022-07-22T16:25:44.911Z</updated>
+  <updated>2022-07-22T16:27:17.376Z</updated>
   <id>https://erdong.site/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>QDS08 curl 安装</title>
+    <link href="https://erdong.site/QDS/qds08.html"/>
+    <id>https://erdong.site/QDS/qds08.html</id>
+    <published>2022-07-24T12:12:15.000Z</published>
+    <updated>2022-07-22T16:27:17.376Z</updated>
+    
+    <content type="html"><![CDATA[<p>curl 是常用的命令行工具，用来请求 Web 服务器。它的名字就是客户端（client）的 URL 工具的意思。</p><a id="more"></a><p>它的功能非常强大，命令行参数多达几十种。如果熟练的话，完全可以取代 Postman 这一类的图形界面工具。</p><p>官方是： <a href="https://curl.se" target="_blank" rel="noopener">https://curl.se</a> </p><p>在 CentOS 7 上安装</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install curl</span><br></pre></td></tr></table></figure><p>查看 Curl 的版本</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">[root@erdong ~]# curl --version</span><br><span class="line">curl 7.29.0 (x86_64-redhat-linux-gnu) libcurl&#x2F;7.29.0 NSS&#x2F;3.28.4 zlib&#x2F;1.2.7 libidn&#x2F;1.28 libssh2&#x2F;1.4.3</span><br><span class="line">Protocols: dict file ftp ftps gopher http https imap imaps ldap ldaps pop3 pop3s rtsp scp sftp smtp smtps telnet tftp</span><br><span class="line">Features: AsynchDNS GSS-Negotiate IDN IPv6 Largefile NTLM NTLM_WB SSL libz unix-sockets</span><br><span class="line">[root@erdong ~]# cat &#x2F;etc&#x2F;redhat-release</span><br><span class="line">CentOS Linux release 7.9.2009 (Core)</span><br><span class="line">[root@erdong ~]#</span><br></pre></td></tr></table></figure><p>我们可以看到在 CentOS 7.9 上，缺省的 Curl 版本是 7.29.0 ，当前（2021.08）Curl 的最新版本是 7.78 。</p><p>接下来我们进行升级 Curl , Curl 支持多个平台多种操作系统的安装和使用，我们来下载 Linux 平台下使用的二进制包，访问 GitHub 如下链接，就可以看到最近发布的版本，选择 AMD64 架构来下载</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https:&#x2F;&#x2F;github.com&#x2F;moparisthebest&#x2F;static-curl&#x2F;releases</span><br></pre></td></tr></table></figure><p>执行下列操作来进行更新</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">wget https:&#x2F;&#x2F;github.com&#x2F;moparisthebest&#x2F;static-curl&#x2F;releases&#x2F;tag&#x2F;v7.78.0</span><br><span class="line"></span><br><span class="line">chmod +x curl-amd64</span><br><span class="line">mv curl-amd64 &#x2F;usr&#x2F;bin&#x2F;curl</span><br></pre></td></tr></table></figure><p>这样就更新了 Curl 的可执行文件。</p><p>另外我们也可以通过 Yum 来更新 cURL ，首先创建 <code>repo</code> 仓库文件。</p><p><code>vi /etc/yum.repos.d/city-fan.repo</code><br>写入如下内容：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[CityFan]</span><br><span class="line">name&#x3D;City Fan Repo</span><br><span class="line">baseurl&#x3D;http:&#x2F;&#x2F;www.city-fan.org&#x2F;ftp&#x2F;contrib&#x2F;yum-repo&#x2F;rhel$releasever&#x2F;$basearch&#x2F;</span><br><span class="line">enabled&#x3D;1</span><br><span class="line">gpgcheck&#x3D;0</span><br></pre></td></tr></table></figure><p>然后进行更新</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum update curl</span><br></pre></td></tr></table></figure><p>在查看版本就已经更新好了</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[root@erdong ~]# curl --version</span><br><span class="line">curl 7.78.0 (x86_64-redhat-linux-gnu) libcurl&#x2F;7.78.0 NSS&#x2F;3.53.1 zlib&#x2F;1.2.7 libpsl&#x2F;0.7.0 (+libicu&#x2F;50.1.2) libssh2&#x2F;1.9.0 nghttp2&#x2F;1.33.0 OpenLDAP&#x2F;2.4.44</span><br><span class="line">Release-Date: 2021-07-21</span><br><span class="line">Protocols: dict file ftp ftps gopher gophers http https imap imaps ldap ldaps mqtt pop3 pop3s rtsp scp sftp smb smbs smtp smtps telnet tftp</span><br><span class="line">Features: alt-svc AsynchDNS GSS-API HSTS HTTP2 HTTPS-proxy IPv6 Kerberos Largefile libz NTLM NTLM_WB PSL SPNEGO SSL UnixSockets</span><br><span class="line">[root@erdong ~]#</span><br></pre></td></tr></table></figure><p>ok ,结束。</p><p>======================<br>由于无法及时收到评论内容，所以关闭评论功能。<br>大家有问题欢迎发邮件到 <a href="mailto:erdong@mail.erdong.site">erdong@mail.erdong.site</a> ，或者 <a href="https://github.com/erdong/erdong.github.io/issues" target="_blank" rel="noopener">https://github.com/erdong/erdong.github.io/issues</a> 提 Issue ，我会及时回复。</p><p>======================<br>Erdong, A Linux user !</p><p><img src="https://erdong.site/images/erdongxtnew.jpg" alt="微信公众号"></p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;curl 是常用的命令行工具，用来请求 Web 服务器。它的名字就是客户端（client）的 URL 工具的意思。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="QDS" scheme="https://erdong.site/categories/QDS/"/>
+    
+    
+      <category term="QDS" scheme="https://erdong.site/tags/QDS/"/>
+    
+      <category term="curl" scheme="https://erdong.site/tags/curl/"/>
+    
+  </entry>
   
   <entry>
     <title>QDS07 MySQL 安装</title>
@@ -38,31 +63,6 @@
       <category term="QDS" scheme="https://erdong.site/tags/QDS/"/>
     
       <category term="MySQL" scheme="https://erdong.site/tags/MySQL/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>QDS08 curl 安装</title>
-    <link href="https://erdong.site/QDS/qds08.html"/>
-    <id>https://erdong.site/QDS/qds08.html</id>
-    <published>2022-07-24T10:22:14.000Z</published>
-    <updated>2022-07-22T16:25:56.701Z</updated>
-    
-    <content type="html"><![CDATA[<p>curl 是常用的命令行工具，用来请求 Web 服务器。它的名字就是客户端（client）的 URL 工具的意思。</p><a id="more"></a><p>它的功能非常强大，命令行参数多达几十种。如果熟练的话，完全可以取代 Postman 这一类的图形界面工具。</p><p>官方是： <a href="https://curl.se" target="_blank" rel="noopener">https://curl.se</a> </p><p>在 CentOS 7 上安装</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install curl</span><br></pre></td></tr></table></figure><p>查看 Curl 的版本</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">[root@erdong ~]# curl --version</span><br><span class="line">curl 7.29.0 (x86_64-redhat-linux-gnu) libcurl&#x2F;7.29.0 NSS&#x2F;3.28.4 zlib&#x2F;1.2.7 libidn&#x2F;1.28 libssh2&#x2F;1.4.3</span><br><span class="line">Protocols: dict file ftp ftps gopher http https imap imaps ldap ldaps pop3 pop3s rtsp scp sftp smtp smtps telnet tftp</span><br><span class="line">Features: AsynchDNS GSS-Negotiate IDN IPv6 Largefile NTLM NTLM_WB SSL libz unix-sockets</span><br><span class="line">[root@erdong ~]# cat &#x2F;etc&#x2F;redhat-release</span><br><span class="line">CentOS Linux release 7.9.2009 (Core)</span><br><span class="line">[root@erdong ~]#</span><br></pre></td></tr></table></figure><p>我们可以看到在 CentOS 7.9 上，缺省的 Curl 版本是 7.29.0 ，当前（2021.08）Curl 的最新版本是 7.78 。</p><p>接下来我们进行升级 Curl , Curl 支持多个平台多种操作系统的安装和使用，我们来下载 Linux 平台下使用的二进制包，访问 GitHub 如下链接，就可以看到最近发布的版本，选择 AMD64 架构来下载</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https:&#x2F;&#x2F;github.com&#x2F;moparisthebest&#x2F;static-curl&#x2F;releases</span><br></pre></td></tr></table></figure><p>执行下列操作来进行更新</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">wget https:&#x2F;&#x2F;github.com&#x2F;moparisthebest&#x2F;static-curl&#x2F;releases&#x2F;tag&#x2F;v7.78.0</span><br><span class="line"></span><br><span class="line">chmod +x curl-amd64</span><br><span class="line">mv curl-amd64 &#x2F;usr&#x2F;bin&#x2F;curl</span><br></pre></td></tr></table></figure><p>这样就更新了 Curl 的可执行文件。</p><p>另外我们也可以通过 Yum 来更新 cURL ，首先创建 <code>repo</code> 仓库文件。</p><p><code>vi /etc/yum.repos.d/city-fan.repo</code><br>写入如下内容：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[CityFan]</span><br><span class="line">name&#x3D;City Fan Repo</span><br><span class="line">baseurl&#x3D;http:&#x2F;&#x2F;www.city-fan.org&#x2F;ftp&#x2F;contrib&#x2F;yum-repo&#x2F;rhel$releasever&#x2F;$basearch&#x2F;</span><br><span class="line">enabled&#x3D;1</span><br><span class="line">gpgcheck&#x3D;0</span><br></pre></td></tr></table></figure><p>然后进行更新</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum update curl</span><br></pre></td></tr></table></figure><p>在查看版本就已经更新好了</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[root@erdong ~]# curl --version</span><br><span class="line">curl 7.78.0 (x86_64-redhat-linux-gnu) libcurl&#x2F;7.78.0 NSS&#x2F;3.53.1 zlib&#x2F;1.2.7 libpsl&#x2F;0.7.0 (+libicu&#x2F;50.1.2) libssh2&#x2F;1.9.0 nghttp2&#x2F;1.33.0 OpenLDAP&#x2F;2.4.44</span><br><span class="line">Release-Date: 2021-07-21</span><br><span class="line">Protocols: dict file ftp ftps gopher gophers http https imap imaps ldap ldaps mqtt pop3 pop3s rtsp scp sftp smb smbs smtp smtps telnet tftp</span><br><span class="line">Features: alt-svc AsynchDNS GSS-API HSTS HTTP2 HTTPS-proxy IPv6 Kerberos Largefile libz NTLM NTLM_WB PSL SPNEGO SSL UnixSockets</span><br><span class="line">[root@erdong ~]#</span><br></pre></td></tr></table></figure><p>ok ,结束。</p><p>======================<br>由于无法及时收到评论内容，所以关闭评论功能。<br>大家有问题欢迎发邮件到 <a href="mailto:erdong@mail.erdong.site">erdong@mail.erdong.site</a> ，或者 <a href="https://github.com/erdong/erdong.github.io/issues" target="_blank" rel="noopener">https://github.com/erdong/erdong.github.io/issues</a> 提 Issue ，我会及时回复。</p><p>======================<br>Erdong, A Linux user !</p><p><img src="https://erdong.site/images/erdongxtnew.jpg" alt="微信公众号"></p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;curl 是常用的命令行工具，用来请求 Web 服务器。它的名字就是客户端（client）的 URL 工具的意思。&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="QDS" scheme="https://erdong.site/categories/QDS/"/>
-    
-    
-      <category term="QDS" scheme="https://erdong.site/tags/QDS/"/>
-    
-      <category term="curl" scheme="https://erdong.site/tags/curl/"/>
     
   </entry>
   
