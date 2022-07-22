@@ -5372,7 +5372,7 @@
       </tags>
   </entry>
   <entry>
-    <title>QDS05 MySQL 安装</title>
+    <title>QDS07 MySQL 安装</title>
     <url>/QDS/qds07.html</url>
     <content><![CDATA[<p>MySQL 是经常使用的数据库软件，我们在做测试和实验的时候希望能够快速的安装 MySQL。接下来我们看怎么进行。</p>
 <a id="more"></a>
@@ -5432,7 +5432,7 @@ Erdong, A Linux user !
       </tags>
   </entry>
   <entry>
-    <title>QDS05 curl 安装</title>
+    <title>QDS08 curl 安装</title>
     <url>/QDS/qds08.html</url>
     <content><![CDATA[<p>curl 是常用的命令行工具，用来请求 Web 服务器。它的名字就是客户端（client）的 URL 工具的意思。</p>
 <a id="more"></a>
