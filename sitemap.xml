@@ -2,6 +2,34 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://erdong.site/Prometheus/New-Features/New-Features-in-Prometheus-2-37-0.html</loc>
+    
+    <lastmod>2022-07-22T16:04:03.910Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://erdong.site/Prometheus/guide/prometheus-delete-metrics.html</loc>
+    
+    <lastmod>2022-07-21T05:48:14.014Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://erdong.site/Prometheus/New-Features/prometheus-lts-release.html</loc>
+    
+    <lastmod>2022-07-21T05:45:35.478Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://erdong.site/Prometheus/New-Features/New-Features-in-Prometheus-2-36-0.html</loc>
+    
+    <lastmod>2022-06-28T14:45:49.578Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://erdong.site/telecommuting/telecommuting03-how-to-imporove-work-efficiency.html</loc>
     
     <lastmod>2022-06-26T14:34:09.084Z</lastmod>
@@ -26,13 +54,6 @@
     <loc>https://erdong.site/Prometheus/New-Features/New-Features-in-Prometheus-2-35-0.html</loc>
     
     <lastmod>2022-06-26T14:22:51.513Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://erdong.site/Prometheus/New-Features/New-Features-in-Prometheus-2-36-0.html</loc>
-    
-    <lastmod>2022-06-26T09:53:21.820Z</lastmod>
     
   </url>
   
@@ -271,13 +292,6 @@
     <loc>https://erdong.site/Prometheus/New-Features/New-Features-in-Prometheus-2-16-0.html</loc>
     
     <lastmod>2020-05-23T14:49:55.169Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://erdong.site/prometheus/prometheus-delete-metrics.html</loc>
-    
-    <lastmod>2020-01-12T14:54:13.605Z</lastmod>
     
   </url>
   

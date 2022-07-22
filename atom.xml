@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://erdong.site/"/>
-  <updated>2022-06-26T14:33:16.801Z</updated>
+  <updated>2022-07-22T16:04:03.910Z</updated>
   <id>https://erdong.site/</id>
   
   <author>
@@ -15,6 +15,62 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Prometheus 2.37.0 新特性</title>
+    <link href="https://erdong.site/Prometheus/New-Features/New-Features-in-Prometheus-2-37-0.html"/>
+    <id>https://erdong.site/Prometheus/New-Features/New-Features-in-Prometheus-2-37-0.html</id>
+    <published>2022-07-23T12:16:16.000Z</published>
+    <updated>2022-07-22T16:04:03.910Z</updated>
+    
+    <content type="html"><![CDATA[<p>Prometheus <a href="https://github.com/prometheus/prometheus/releases/tag/v2.37.0" target="_blank" rel="noopener">2.37.0</a> 现在(2022.07.14)已经发布，在上个月的 <a href="http://erdong.site/Prometheus/New-Features/New-Features-in-Prometheus-2-36-0.html">2.36.0</a> 之后又进行了很多的修复和改进。</p><a id="more"></a><p>这次发布的版本是一个 LTS 长期支持的版本，预计会支持到 2023.01.31，详细更多的信息可以查看 <a href="https://erdong.site/">https://erdong.site/</a></p><p>由于 OpenBSD 中缺乏统一的缓存而导致用户数据丢失，在找到合适的解决方案之前，Prometheus 开发团队将不再发布支持 OpenBSD 的 Prometheus 长期版本。</p><p>这次的 LTS 版本发布主要以稳定性为主，进行了大量的 BUG 修复，只新增了一个新的功能特性，以及一些实验性的功能。</p><h1 id="服务发现"><a href="#服务发现" class="headerlink" title="服务发现"></a>服务发现</h1><p>本次版本更新唯一的一个稳定功能增加就是 基于 Nomad 的服务发现，Nomad 是 HashiCorp 出品的一个简单、灵活的调度工具，官网地址是 <a href="https://www.nomadproject.io" target="_blank" rel="noopener">https://www.nomadproject.io</a> 。</p><p>对于 Kubernetes 的服务发现，进行了优化，在 endpoint 的 role 中允许增加节点的 label。</p><p>修复了  Uyuni 服务发现的 BUG，制作相对于 Prometheus 配置文件的认证文件，并且修复了默认配置文件的值。<br>修复了 Hetzner 服务发现的 BUG ，制作相对于 Prometheus 配置文件的认证文件。</p><h1 id="TSDB"><a href="#TSDB" class="headerlink" title="TSDB"></a>TSDB</h1><p>对了 TSDB 首先对内存进行了优化。其次优化了读取 WAL 是的睡眠时间，睡眠时间变短了。</p><p>针对 TSDB 修复了 3 个 BUG，第一个是当 context 被取消时，不增加prometheus_tsdb_compactions_failed_total  的值。第二个是修复了在删除 series时没有找到 series 的问题。第三个是当打开顺序错误时，会增加prometheus_tsdb_mmap_chunk_corruptions_total 的值。</p><h1 id="PromQL-amp-Promtool"><a href="#PromQL-amp-Promtool" class="headerlink" title="PromQL &amp; Promtool"></a>PromQL &amp; Promtool</h1><p>优化了 PromQL ，优化了创建签名时带 label 或者不带 label 的问题。</p><p>对于 Promtool 工具修复了 Promtool 检查配置文件失败时不能正确提示错误的问题 。</p><h1 id="OAuth2"><a href="#OAuth2" class="headerlink" title="OAuth2"></a>OAuth2</h1><p>对于 OAuth2 进行了优化，增加了适当的超时和 User-Agent 头 。</p><h1 id="Other"><a href="#Other" class="headerlink" title="Other"></a>Other</h1><p>针对 Alerting 修复了警报排队时 Alertmanager 目标不更新的问题。</p><p>针对 Scrape 修复在服务重载配置时保持重新标记的获取监控数据时间间隔和超时时间。</p><p>详细的发行注记可以查看 <a href="https://github.com/prometheus/prometheus/releases/tag/v2.37.0" target="_blank" rel="noopener">release notes</a> 。</p><h1 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h1><ul><li><a href="https://github.com/prometheus/prometheus/releases/tag/v2.37.0" target="_blank" rel="noopener">https://github.com/prometheus/prometheus/releases/tag/v2.37.0</a> ，By prombot of GitHub</li></ul><p>======================<br>由于无法及时收到评论内容，所以关闭评论功能。<br>大家有问题欢迎发邮件到 <a href="mailto:erdong@mail.erdong.site">erdong@mail.erdong.site</a> ，或者 <a href="https://github.com/erdong/erdong.github.io/issues" target="_blank" rel="noopener">https://github.com/erdong/erdong.github.io/issues</a> 提 Issue ，我会及时回复。</p><p>======================<br>Erdong, A Linux user !</p><p><img src="https://erdong.site/images/erdongxtnew.jpg" alt="微信公众号"></p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Prometheus &lt;a href=&quot;https://github.com/prometheus/prometheus/releases/tag/v2.37.0&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;2.37.0&lt;/a&gt; 现在(2022.07.14)已经发布，在上个月的 &lt;a href=&quot;http://erdong.site/Prometheus/New-Features/New-Features-in-Prometheus-2-36-0.html&quot;&gt;2.36.0&lt;/a&gt; 之后又进行了很多的修复和改进。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="Prometheus" scheme="https://erdong.site/categories/Prometheus/"/>
+    
+      <category term="New-Features" scheme="https://erdong.site/categories/Prometheus/New-Features/"/>
+    
+    
+      <category term="Prometheus" scheme="https://erdong.site/tags/Prometheus/"/>
+    
+      <category term="Features" scheme="https://erdong.site/tags/Features/"/>
+    
+      <category term="release" scheme="https://erdong.site/tags/release/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Prometheus 发布 LTS 长期支持版本啦</title>
+    <link href="https://erdong.site/Prometheus/New-Features/prometheus-lts-release.html"/>
+    <id>https://erdong.site/Prometheus/New-Features/prometheus-lts-release.html</id>
+    <published>2022-07-23T05:41:39.000Z</published>
+    <updated>2022-07-21T05:45:35.478Z</updated>
+    
+    <content type="html"><![CDATA[<p>最近翻看 Prometheus 的发布记录，发现在 2022.07.14 发布了新的版本 v2.37.0 ，这个版本的新特性更新和 BUG 修复我们下篇文章再讲，这个版本和其他版本有一个最大的不同，那就是这个版本是 Prometheus 的第一个 LTS 版本。</p><a id="more"></a><p>LTS ，Long Time Support ，长期支持版本，这是 Prometheus 的第一个长期支持版本，这个版本会支持到 2023.01.31 ，按照 Prometheus 之前的发版频率，大约会横跨 4 个版本，直到 v2.41.0 ，个人预计 v2.42.0 或者 v2.43.0 会是下一个长期支持版本。</p><p>Prometheus 开发组一直按照每 6 周发布一个新的 Prometheus 小版本的节奏在发版，在过去的 6 周里，小版本通常不再接收 BUG 修复。如果用户在某一个小版本中受到 BUG 的影响，他们通常需要升级到最新的 Prometheus 版本。</p><p>由于 Prometheus Server 的 API 稳定性保证，升级 Prometheus 是很快捷和方便的。但是新增的功能特性和功能增加也会增加出现的问题的风险，导致需要再次升级。</p><p>Prometheus 的长期支持版本 对会进行 BUG 修复、安全性修复和文档的错误更正。这使得依赖于 Prometheus 的公司能够对版本升级的风险在可以控制的范围内，同时也可以让社区开发者继续开发维护 Prometheus 服务。</p><h1 id="LTS-版本的局限性"><a href="#LTS-版本的局限性" class="headerlink" title="LTS 版本的局限性"></a>LTS 版本的局限性</h1><p>针对长期支持版本的 Prometheus ，有一些功能是被排除在 LTS 之外的，</p><ul><li>API 的稳定性保证中被列为不稳定的接口</li><li>实验性质的功能</li><li>对 OpenBSD 的支持</li></ul><p>上边列出的这些功能是不被 LTS 支持的。</p><p>所以在使用 Prometheus 长期支持版本的时候要做好评估，在稳定性和新功能之间做好平衡。</p><p>======================<br>由于无法及时收到评论内容，所以关闭评论功能。<br>大家有问题欢迎发邮件到 <a href="mailto:erdong@mail.erdong.site">erdong@mail.erdong.site</a> ，或者 <a href="https://github.com/erdong/erdong.github.io/issues" target="_blank" rel="noopener">https://github.com/erdong/erdong.github.io/issues</a> 提 Issue ，我会及时回复。</p><p>======================<br>Erdong, A Linux user !</p><p><img src="https://erdong.site/images/erdongxtnew.jpg" alt="微信公众号"></p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;最近翻看 Prometheus 的发布记录，发现在 2022.07.14 发布了新的版本 v2.37.0 ，这个版本的新特性更新和 BUG 修复我们下篇文章再讲，这个版本和其他版本有一个最大的不同，那就是这个版本是 Prometheus 的第一个 LTS 版本。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="Prometheus" scheme="https://erdong.site/categories/Prometheus/"/>
+    
+      <category term="New-Features" scheme="https://erdong.site/categories/Prometheus/New-Features/"/>
+    
+    
+      <category term="Prometheus" scheme="https://erdong.site/tags/Prometheus/"/>
+    
+      <category term="release" scheme="https://erdong.site/tags/release/"/>
+    
+  </entry>
   
   <entry>
     <title>远程办公三部曲 - 如何合理安排时间</title>
@@ -75,18 +131,13 @@
     <link href="https://erdong.site/Prometheus/New-Features/New-Features-in-Prometheus-2-36-0.html"/>
     <id>https://erdong.site/Prometheus/New-Features/New-Features-in-Prometheus-2-36-0.html</id>
     <published>2022-06-26T12:16:16.000Z</published>
-    <updated>2022-06-26T09:53:21.820Z</updated>
+    <updated>2022-06-28T14:45:49.578Z</updated>
     
-    <content type="html"><![CDATA[<a id="more"></a><p>======================<br>由于无法及时收到评论内容，所以关闭评论功能。<br>大家有问题欢迎发邮件到 <a href="mailto:erdong@mail.erdong.site">erdong@mail.erdong.site</a> ，或者 <a href="https://github.com/erdong/erdong.github.io/issues" target="_blank" rel="noopener">https://github.com/erdong/erdong.github.io/issues</a> 提 Issue ，我会及时回复。</p><p>======================<br>Erdong, A Linux user !</p><p><img src="https://erdong.site/images/erdongxtnew.jpg" alt="微信公众号"></p>]]></content>
+    <content type="html"><![CDATA[<p>Prometheus <a href="https://github.com/prometheus/prometheus/releases/tag/v2.36.0" target="_blank" rel="noopener">2.36.0</a> 现在(2022.05.30)已经发布，在上个月的 <a href="http://erdong.site/Prometheus/New-Features/New-Features-in-Prometheus-2-35-0.html">2.35.0</a> 之后又进行了很多的修复和改进。</p><a id="more"></a><p>这次更新的 Prometheus  版本使用的是 Go 1.18 ，之后的版本在构建的时候需要最小使用 Go 1.17 的版本，其他 Go 版本将不能在用来构建 Prometheus 。</p><p>这次更新的内容相对以往的版本少一些。</p><p>首先新增了一个添加小写和大写的重新标记动作的功能。</p><p>第二还新增了 stripDomain 的模板函数功能。</p><p>第三，对于 Agent 模式添加了一个标识符。</p><p>对于 UI 方面，这次新增了一个开关，打开后可以主动搜索掉线的 Target。</p><p>对于服务发现这部分，这次新增了 2 种，分别是 IONOS Cloud 和 Vultr ，另外这次新增了 Linode 服务发现失败计数的 指标。</p><p>对于 Promtool 工具这次支持在查询 Label 值的时候使用匹配器。</p><p>接下来就是 BUG 修复了。</p><ul><li><ol><li>将 TotalQueryableSamples 从 int 更改为了 int 64 </li></ol></li><li><ol start="2"><li>TSDB 以及 Agent 会忽略重复的 Exemplar。</li></ol></li><li><ol start="3"><li>TSDB 修复了在变化的 rate 的时候数据块溢出以的问题</li></ol></li><li><ol start="4"><li>在 TSDB 停止之前会先停止规则管理器</li></ol></li></ul><p>后来更新了 2.36.1 ，Promtool 工具新了一个 <code>--lint-fatal</code> 选项。</p><p>再后来更新了 2.36.2 ，修复了字体和图表等一些静态资源的问题。</p><p>这个版本更新的内容不太多，感觉开发团队是不是在憋大招呀，大家可以等等下一个版本，如果没有什么需求的话，可以等下一个版本再升级。</p><p>Prometheus 在 V2 这个版本已经发布了 36 个版本，差不多快赶上 0.x 和1.x 的总和了。我们期待一下，看看什么时候进入 3.0 ，以及会有什么更大的变化。</p><p>详细的发行注记可以查看 <a href="https://github.com/prometheus/prometheus/releases/tag/v2.36.0" target="_blank" rel="noopener">release notes</a> 。</p><h1 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h1><ul><li><a href="https://github.com/prometheus/prometheus/releases/tag/v2.36.0" target="_blank" rel="noopener">https://github.com/prometheus/prometheus/releases/tag/v2.36.0</a> ，By prombot of GitHub</li></ul><p>======================<br>由于无法及时收到评论内容，所以关闭评论功能。<br>大家有问题欢迎发邮件到 <a href="mailto:erdong@mail.erdong.site">erdong@mail.erdong.site</a> ，或者 <a href="https://github.com/erdong/erdong.github.io/issues" target="_blank" rel="noopener">https://github.com/erdong/erdong.github.io/issues</a> 提 Issue ，我会及时回复。</p><p>======================<br>Erdong, A Linux user !</p><p><img src="https://erdong.site/images/erdongxtnew.jpg" alt="微信公众号"></p>]]></content>
     
     <summary type="html">
     
-      
-      
-        &lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
-
-&lt;p&gt;======================&lt;br&gt;由于无法及时收到评论内容，所以关闭评论功能。&lt;br&gt;大家有问题欢迎发邮件到 &lt;a href=&quot;mailto:erdong@mail.erdong.site&quot;&gt;erdong@mail.e
-      
+      &lt;p&gt;Prometheus &lt;a href=&quot;https://github.com/prometheus/prometheus/releases/tag/v2.36.0&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;2.36.0&lt;/a&gt; 现在(2022.05.30)已经发布，在上个月的 &lt;a href=&quot;http://erdong.site/Prometheus/New-Features/New-Features-in-Prometheus-2-35-0.html&quot;&gt;2.35.0&lt;/a&gt; 之后又进行了很多的修复和改进。&lt;/p&gt;
     
     </summary>
     
@@ -945,10 +996,10 @@
   
   <entry>
     <title>Prometheus 删除指定 Metric</title>
-    <link href="https://erdong.site/prometheus/prometheus-delete-metrics.html"/>
-    <id>https://erdong.site/prometheus/prometheus-delete-metrics.html</id>
+    <link href="https://erdong.site/Prometheus/guide/prometheus-delete-metrics.html"/>
+    <id>https://erdong.site/Prometheus/guide/prometheus-delete-metrics.html</id>
     <published>2020-01-12T14:52:50.000Z</published>
-    <updated>2020-01-12T14:54:13.605Z</updated>
+    <updated>2022-07-21T05:48:14.014Z</updated>
     
     <content type="html"><![CDATA[<p>Prometheus 发布以后，很长的一段时间里，是无法删除指定的 Metric 。如果你在某次测试中，有一些 Metric 的名称或者值有问题，那么你没有任何办法及时处理，只能等待数据的时间到了以后自动删除。我一度以为直到现在也是这样，最近在翻看 Prometheus 的官方文档的时候发现，Prometheus 在 2.0 版本以后已经提供了一个简单的管理接口，可以用来删除这些坏 Metric 数据。</p><a id="more"></a><p>下面我们来一起看一下 Prometheus 的管理 API 接口，官方到现在一共提供了三个接口，对应的分别是快照功能、数据删除功能、数据清理功能，想要使用 API 需要先添加启动参数 <code>--web.enable-admin-api</code> 打开这个接口，默认这个接口是关闭的。</p><p>快速启动 Prometheus 可以使用如下命令 ，详细规范的启动方式可以参考之前的文章。</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">.&#x2F;prometheus --web.enable-admin-api</span><br></pre></td></tr></table></figure><h1 id="数据删除"><a href="#数据删除" class="headerlink" title="数据删除"></a>数据删除</h1><p>使用数据删除接口可以删除一定时间范围内的 Metric 数据。实际的数据仍然存在于磁盘上，并在将来的压缩中清除，也可以通过数据清理接口显式地清除。</p><p>如果删除成功，会返回 204 。接口如下：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">POST &#x2F;api&#x2F;v1&#x2F;admin&#x2F;tsdb&#x2F;delete_series</span><br><span class="line">PUT &#x2F;api&#x2F;v1&#x2F;admin&#x2F;tsdb&#x2F;delete_series</span><br></pre></td></tr></table></figure><p>这个接口可以使用 3 个参数，分别如下：</p><ul><li>match[]=<series_selector> : Metric 的名称</li><li>start=&lt;rfc3339 | unix_timestamp&gt; : 开始的时间戳</li><li>end=&lt;rfc3339 | unix_timestamp&gt;  : 结束的时间戳</li></ul><p>如果没有指定开始和结束时间将清除数据库中匹配的所有数据。</p><p>接下来举几个例子</p><p> 删除指定 Metric 名称的全部数据</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -X POST -g &#39;http:&#x2F;&#x2F;127.0.0.1:9090&#x2F;api&#x2F;v1&#x2F;admin&#x2F;tsdb&#x2F;delete_series?match[]&#x3D;node_cpu_seconds_total&#39;</span><br></pre></td></tr></table></figure><p>删除指定 Metric 名称和特定 label 名称的全部数据</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -X POST -g &#39;http:&#x2F;&#x2F;127.0.0.1:9090&#x2F;api&#x2F;v1&#x2F;admin&#x2F;tsdb&#x2F;delete_series?match[]&#x3D;node_cpu_seconds_total&#123;mode&#x3D;&quot;idle&quot;&#125;&#39;</span><br></pre></td></tr></table></figure><p>删除指定时间范围内的 Metric 数据</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -X POST -g &#39;http:&#x2F;&#x2F;127.0.0.1:9090&#x2F;api&#x2F;v1&#x2F;admin&#x2F;tsdb&#x2F;delete_series?start&#x3D;1578301194&amp;end&#x3D;1578301694&amp;match[]&#x3D;node_cpu_seconds_total&#123;mode&#x3D;&quot;idle&quot;&#125;&#39;</span><br></pre></td></tr></table></figure><blockquote><p>linux 可以使用 <code>date  +%s</code> 获得当前的时间戳，可以使用 <code>date -d &quot;2019-12-22 00:00:00&quot; +%s</code> 将指定的日期转成时间戳。</p></blockquote><h1 id="数据清理"><a href="#数据清理" class="headerlink" title="数据清理"></a>数据清理</h1><p>数据清理会从磁盘删除已经被 <code>delete_series</code> 接口删除的数据，并清理现有的 tombstones。可以在使用 <code>delete_series</code> 接口删除数据之后使用它来释放空间。</p><p>如果清理成功，会返回 204 。</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">POST &#x2F;api&#x2F;v1&#x2F;admin&#x2F;tsdb&#x2F;clean_tombstones</span><br><span class="line">PUT &#x2F;api&#x2F;v1&#x2F;admin&#x2F;tsdb&#x2F;clean_tombstones</span><br></pre></td></tr></table></figure><p>示例</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -X POST http:&#x2F;&#x2F;127.0.0.1:9090&#x2F;api&#x2F;v1&#x2F;admin&#x2F;tsdb&#x2F;clean_tombstones</span><br></pre></td></tr></table></figure><p>这个接口不需要参数。</p><h1 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h1><ul><li><a href="https://prometheus.io/docs/prometheus/latest/querying/api/#tsdb-admin-apis" target="_blank" rel="noopener">https://prometheus.io/docs/prometheus/latest/querying/api/#tsdb-admin-apis</a></li></ul><p>======================<br>由于无法及时收到评论内容，所以关闭评论功能。<br>大家有问题欢迎发邮件到 <a href="mailto:erdong@mail.erdong.site">erdong@mail.erdong.site</a> ，或者 <a href="https://github.com/erdong/erdong.github.io/issues" target="_blank" rel="noopener">https://github.com/erdong/erdong.github.io/issues</a> 提 Issue ，我会及时回复。</p><p>======================<br>Erdong, A Linux user !</p>]]></content>
     
@@ -959,10 +1010,12 @@
     </summary>
     
     
-      <category term="prometheus" scheme="https://erdong.site/categories/prometheus/"/>
+      <category term="Prometheus" scheme="https://erdong.site/categories/Prometheus/"/>
+    
+      <category term="guide" scheme="https://erdong.site/categories/Prometheus/guide/"/>
     
     
-      <category term="prometheus" scheme="https://erdong.site/tags/prometheus/"/>
+      <category term="Prometheus" scheme="https://erdong.site/tags/Prometheus/"/>
     
   </entry>
   
